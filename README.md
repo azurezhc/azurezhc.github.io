@@ -1,6 +1,6 @@
 # 欢迎！
 
-azurezhc.github.io
+https://azurezhc.github.io
 
 这里是本人AzureZHC建立在Github上的文档博客。
 
