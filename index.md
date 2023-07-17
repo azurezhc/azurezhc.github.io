@@ -1,5 +1,7 @@
 # azurezhc.github.io
 
+欢迎！
+
 这里是本人AzureZHC建立在Github上的文档博客。
 
 主要记录了我在游戏开发生涯中的种种程序相关的遐想。
