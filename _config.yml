@@ -1,5 +1,5 @@
 title: azurezhc.github.io
 description: AzureZHC的程序随笔
-show_downloads: false
 google_analytics:
 theme: jekyll-theme-cayman
+is_project_page: true
