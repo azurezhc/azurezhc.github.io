@@ -2,9 +2,4 @@
 
 source "https://rubygems.org"
 
-gem "jeklly"
-
-group :jekyll_plugins do
-    gem "jeklly-feed"
-    gem "jeklly-seo-tag"
-end
+gem "jekyll-theme-cayman"
