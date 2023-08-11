@@ -8,4 +8,4 @@ layout: default
 
 # 文章目录
 
-* <font size=4>[XNode介绍](./XNode介绍.md)</font>
+* [<font size=4>XNode介绍</font>](./XNode介绍.md)
