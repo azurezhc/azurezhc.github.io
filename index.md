@@ -27,19 +27,19 @@ layout: default
 
 # 文章目录
 
-## 无疆程序技术
+## 程序技术
 
 [游戏架构哲学理论](./Documents/游戏架构理论/游戏架构哲学理论.md)
 
-[游戏架构实践]()
+[游戏架构实践](./Documents/游戏功能实现/功能实现大纲.md)
 
-[Unity插件研究](./Documents/Unity插件研究/Unity插件研究.md)
+[Unity相关](./Documents/Unity相关/Unity相关.md)
 
-## 幽暗数学深渊
+## 数学深渊
 
 [计算几何-课程笔记](./Documents/计算几何-课程笔记/计算几何-笔记大纲.md)
 
 
-## 灵魂游戏设计
+## 游戏设计
 
 ## 数学，哲学与游戏
