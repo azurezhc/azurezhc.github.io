@@ -33,11 +33,28 @@ layout: default
 
 [游戏架构实践](./Documents/游戏功能实现/功能实现大纲.md)
 
+
+UE相关
+
 [Unity相关](./Documents/Unity相关/Unity相关.md)
+
+UnityShader相关
+
+基础算法相关
+
+语言相关
 
 ## 数学深渊
 
 [计算几何-课程笔记](./Documents/计算几何-课程笔记/计算几何-笔记大纲.md)
+
+动力系统
+
+离散几何与计算几何
+
+动画曲线
+
+
 
 
 ## 游戏设计
