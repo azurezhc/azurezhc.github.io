@@ -71,9 +71,9 @@
 <p>本文也算是总结使用，顺便看一下其架构设计。</p>
 <h1 id="xnode使用概述">XNode使用概述</h1>
 <p>从整个结构来看，XNode是简单而清晰的。其针对图，节点，端口三个概念进行了包装和处理，并没有给与这些概念过多的逻辑结构，这是很好的一点。而这些元素也精确的落实在了图表示上面，XNode的结点图可视化如下：</p>
-<!-- raw HTML omitted -->
+<center> <img src="../01.assets/p1.png"></center>
 <p>先看一下其整个结构部分：</p>
-<!-- raw HTML omitted -->
+<center> <img src="../01.assets/d1.drawio.png"></center>
 <p>从数据结构来看简单明了：</p>
 <ul>
 <li>NodeGraph：图对象数据结构，持有一个列表存着所有节点概念对象。</li>
@@ -116,7 +116,7 @@
 </span></span><span class="line"><span class="cl">	<span class="k">private</span> <span class="k">class</span> <span class="nc">PortDataCache</span> <span class="p">:</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">System</span><span class="p">.</span><span class="n">Type</span><span class="p">,</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">NodePort</span><span class="p">&gt;&gt;</span> <span class="p">{</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>然后当发生新的节点创建的时候，会触发重新构建cache的操作，简单流程如下：</p>
-<!-- raw HTML omitted -->
+<center> <img src="../01.assets/d2.drawio.png"></center>
 <p>最后就是形成一个类型&ndash;节点端口的映射表。而这个映射表结构就是用来构建可视化Node节点UI结构的基础。</p>
 <ul>
 <li>当编辑器运行的时候，通过这个类型&ndash;节点端口结构，生成UI上节点的<strong>显示结构</strong>。即这个节点编辑条，端口等。</li>
@@ -126,11 +126,11 @@
 <li>所以当游戏运行时，只有上面暴漏出来的Node，NodeGraph两个类型。而这也是开发者更关心的数据。</li>
 </ul>
 <p>而这就涉及到整个编辑器侧的架构，编辑表现跟逻辑分离，之间只有编辑器数据部分是相互关联的。整个结构图如下：</p>
-<!-- raw HTML omitted -->
+<center> <img src="../01.assets/d3.drawio.png"></center>
 <p>简单来说跟HighLevel想法对应。即NodeGraphEditor跟开发者关心的目标数据层NodeGraph结构关联。NodeEditor则跟数据层的Node关联。两个Editor类型提供编辑侧的绘制工作，以及借用Unity的属性反射结构，生成对应的属性Property的编辑窗口，进而可以编辑属性并且落地到数据层上去。</p>
 <p>可以通过几个较为重要的运行时流程来看整个结构</p>
-<p><strong><!-- raw HTML omitted --> 添加节点 <!-- raw HTML omitted --></strong></p>
-<!-- raw HTML omitted -->
+<p><strong><font size = 4> 添加节点 </font></strong></p>
+<center> <img src="../01.assets/d4.drawio.png"></center>
 <p>添加节点一般通过在节点图中右键来打开一个菜单栏实现。
 其调用过程就如上图：</p>
 <ul>
@@ -139,7 +139,7 @@
 <li>对应Node创建后重新绘制Window。</li>
 <li>重新绘制过程中，创建NodeEditor，构成编辑器中的GUI节点对象。</li>
 </ul>
-<p><strong><!-- raw HTML omitted --> Node绘制细节 <!-- raw HTML omitted --></strong></p>
+<p><strong><font size = 4> Node绘制细节 </font></strong></p>
 <p>绘制节点的方法基本都封装在NodeEditor中，这相当于NodeEditor即描述了一个Node如何绘制成GUI节点，同时又相当于GUI节点的实例对象。同时其基类，NodeEditorBase中还存有一个静态字典，形成了一个Node和NodeEditor实例的全局映射表。从这些结构来看，这里封装可能有点混乱，但也是OK的。</p>
 <p>绘制GUI节点主要位两个方法</p>
 <ul>
@@ -147,15 +147,15 @@
 <li>OnBodyGUI：绘制节点内结构。</li>
 </ul>
 <p>其中我们可能更为关心的是对于节点内结构的绘制。其结构即是，便利类对象的属性列表，如果其可见遍调用NodeEditorGUILayout将其绘制出来。</p>
-<!-- raw HTML omitted -->
+<center> <img src="../01.assets/d5.drawio.png"></center>
 <h1 id="xnode功能说明">XNode功能说明</h1>
 <p>基于上面，可以对整体结构有一个大概的了解。然后就可以很方便的理解提供的注解用途了。并且可以去扩展一些自己想要的功能结构。</p>
 <p>在上面的参考文章<a class="link-markdown-demo-site" href="https://www.bilibili.com/video/BV12P411F7Zu/?spm_id_from=333.337.search-card.all.click&amp;vd_source=8d35ead0946519f56d2ab5f9c83045df" rel="noopener">xNode插件的简单使用</a>中也已经对大部分功能做了详细的说明。</p>
 <p>这里只是总结一些细节使用。</p>
 <p>Node 相关内容</p>
-<!-- raw HTML omitted -->
+<center> <img src="../01.assets/d6.drawio.png"></center>
 <p>NodePort 相关内容</p>
-<!-- raw HTML omitted -->
+<center> <img src="../01.assets/d7.drawio.png"></center>
 <h1 id="xnode运行时">XNode运行时</h1>
 <p>在运行时则简单化了。关注主体只有NodeGraph，Node，NodePort这些相关部分。因为相关的绘制部分全部由NodeEditor侧承当。所以可以单纯从底层数据结构触发获取整个结构，即加载NodeGraph后就可以获得整个序列化后的对象结构。</p>
 <p>而运行时的实际效果则由需求决定细化：</p>

@@ -7,14 +7,24 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <managingEditor>azurezhc@gmail.com (azurezhc)</managingEditor>
-    <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><atom:link href="http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/index.xml" rel="self" type="application/rss+xml" />
+    <webMaster>azurezhc@gmail.com (azurezhc)</webMaster>
+    <lastBuildDate>Fri, 18 Aug 2023 10:31:01 +0800</lastBuildDate><atom:link href="http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title></title>
+      <title>功能实现大纲</title>
       <link>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E5%A4%A7%E7%BA%B2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 18 Aug 2023 10:31:01 +0800</pubDate>
       <author>azurezhc@gmail.com (azurezhc)</author>
       <guid>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E5%A4%A7%E7%BA%B2/</guid>
       <description>功能实现大纲 本文档主要记录了各种想要效果的理论实现结构。是各种资料研究的总结，记录。 本文内容有部分会与一些学习笔记，理论学习重复，主要因为该</description>
+    </item>
+    
+    <item>
+      <title>技能逻辑框架</title>
+      <link>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/%E6%88%98%E6%96%97%E6%9E%B6%E6%9E%84/%E6%8A%80%E8%83%BD%E9%80%BB%E8%BE%91%E6%A1%86%E6%9E%B6/</link>
+      <pubDate>Fri, 18 Aug 2023 10:31:01 +0800</pubDate>
+      <author>azurezhc@gmail.com (azurezhc)</author>
+      <guid>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/%E6%88%98%E6%96%97%E6%9E%B6%E6%9E%84/%E6%8A%80%E8%83%BD%E9%80%BB%E8%BE%91%E6%A1%86%E6%9E%B6/</guid>
+      <description>技能逻辑框架 本文主要记录在祖龙开发的战斗技能逻辑结构编辑器。本结构主要使用了节点图的概念来包装。实际上节点图本身就是一个执行顺序的图像化而已</description>
     </item>
     
     <item>
@@ -24,15 +34,6 @@
       <author>azurezhc@gmail.com (azurezhc)</author>
       <guid>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/%E6%88%98%E6%96%97%E6%9E%B6%E6%9E%84/%E6%8A%80%E8%83%BD%E9%80%BB%E8%BE%91xnode%E5%AE%9E%E7%8E%B0/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/%E6%88%98%E6%96%97%E6%9E%B6%E6%9E%84/%E6%8A%80%E8%83%BD%E9%80%BB%E8%BE%91%E6%A1%86%E6%9E%B6/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>azurezhc@gmail.com (azurezhc)</author>
-      <guid>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/%E6%88%98%E6%96%97%E6%9E%B6%E6%9E%84/%E6%8A%80%E8%83%BD%E9%80%BB%E8%BE%91%E6%A1%86%E6%9E%B6/</guid>
-      <description>技能逻辑框架 本文主要记录在祖龙开发的战斗技能逻辑结构编辑器。本结构主要使用了节点图的概念来包装。实际上节点图本身就是一个执行顺序的图像化而已</description>
     </item>
     
     <item>

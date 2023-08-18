@@ -16,7 +16,7 @@
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/01%E5%AE%B9%E5%99%A8%E5%8C%96%E7%90%86%E8%AE%BA/" /><link rel="prev" href="http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/02%E7%8A%B6%E6%80%81%E4%B8%8E%E5%87%BD%E6%95%B0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/01%E5%AE%B9%E5%99%A8%E5%8C%96%E7%90%86%E8%AE%BA/" /><link rel="prev" href="http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/02%E7%8A%B6%E6%80%81%E4%B8%8E%E5%87%BD%E6%95%B0/" /><link rel="next" href="http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E5%93%B2%E5%AD%A6%E7%90%86%E8%AE%BA/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA\/01%E5%AE%B9%E5%99%A8%E5%8C%96%E7%90%86%E8%AE%BA\/"
-        },"genre": "游戏架构理论","wordcount":  6263 ,
+        },"genre": "游戏架构理论","wordcount":  6341 ,
         "url": "http:\/\/azurezhc.github.io\/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA\/01%E5%AE%B9%E5%99%A8%E5%8C%96%E7%90%86%E8%AE%BA\/","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -80,14 +80,7 @@
 <h1 id="dispatcher结构">Dispatcher结构</h1>
 <p>在游戏开发过程中我们会经常碰到诸如，技能，buff等概念，或者任务，道具等系统。对于所有这些实际上都是有着固定回调点操作的，其封装或多或少不太一样，但是存在着潜在结构上的一致性。就是某些流程会固定的触发一些事件，另一边接受事件并且运行相应的处理逻辑。我们一般会使用Dispatcher设计模式来进行解耦操作。</p>
 <p>这是一种最常见最常用的解耦结构。其本质是一个监听者模式加单例结构，结构大致如下图。</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="01%e5%ae%b9%e5%99%a8%e5%8c%96%e7%90%86%e8%ae%baassets/dispatcher.png"
-        data-srcset="01%e5%ae%b9%e5%99%a8%e5%8c%96%e7%90%86%e8%ae%baassets/dispatcher.png, 01%e5%ae%b9%e5%99%a8%e5%8c%96%e7%90%86%e8%ae%baassets/dispatcher.png 1.5x, 01%e5%ae%b9%e5%99%a8%e5%8c%96%e7%90%86%e8%ae%baassets/dispatcher.png 2x"
-        data-sizes="auto"
-        alt="01容器化理论assets/dispatcher.png"
-        title="dispatcher" /></p>
+<center><img src="../01容器化理论assets/dispatcher.png"></center>
 <p>该结构特征实际上通过一个中心节点，Dispatcher对象，加一个dict（map）的结构，解耦了分发者和回调者之间的调用过程。</p>
 <p>在此为方便说明，定义一下回调者角色和分发者角色：</p>
 <blockquote>
@@ -105,6 +98,7 @@
         data-sizes="auto"
         alt="01容器化理论assets/container_struct.png"
         title="container_struct" /></p>
+<center><img src="../01容器化理论assets/dispatcher.png"></center>
 <ul>
 <li>当回调者xxxInstance实例被执行时，其会将函数对象注册到Dispatcher对象中去。而Dispatcher则实际上将该函数指针放入到List例表中去。</li>
 <li>当分发者Notifier运行时，其会找到Dispatcher实例对象，并分发指定事件。Dispatcher则会按顺序依次调用事件对应列表中的每个函数指针以进行回调。</li>
@@ -156,7 +150,7 @@
 <p>此外在此基础之上，容器化结构可以<strong>抽象封装调用链结构</strong>。</p>
 <p>例如假设有一个调用链，A调用B，B调用C，如果没有返回值的情况下进行尾调用。实际上便可以结合函数签名绑定设计一个链表，其会固定沿顺序调用。那么对于这种调用形式，如果在没有返回值运行的情况下，可以分别将A，B，C三个对象调用函数放在链表中，然后按顺序依次调用即可产生相同的效果。那么这个调用链的结构实际上就被容器加上调用规则所取代了。而在这个基础上，被调用的函数被动态装配，而不是在代码层写死调用结构。</p>
 <p>现在再假设在上面调用链的基础上，存在条件分支情况。那么可以将条件筛选和实际运行函数拆开，封装成两个函数对象。对于条件筛选函数，其会返回一系列标志位。然后根据标志位将实际运行函数放在对应的槽位中即可构成解耦的条件筛选调用，其结构大致如下图：</p>
-<!-- raw HTML omitted -->
+<img src="../01容器化理论assets/container_struct_4.png">
 <p>而这个调用实际上也可类比堆栈调用的方式。根据一些条件，将每一个调用函数压栈，来进行运行，然后运行完出栈。那么容器结构实际上就承担了这个调用链结构的封装。被压入栈的结构，就是栈在正常情况下应当运行的结构链。</p>
 <p>在我个人看来实际上这种容器结构的基本封装了计算的特征。或者说lambda演算的结构。我们放在最后再讨论一些相关功能。</p>
 <hr>
@@ -200,7 +194,7 @@
 </ul>
 <p>所以可以看到原来Dispatcher结构的
 通过生成拼装结构，将结构的生成和调用完全解耦。</p>
-<!-- raw HTML omitted -->
+<img src="../01容器化理论assets/container_struct_3.png">
 <p>其实可以看到两种方式区别在于
 共同点在于：<strong>存在则调用，不存在则无视的设计理念上</strong></p>
 <p>另一方面可以从拼装容器结构看到，<strong>数据驱动结构拼装</strong></p>
@@ -231,9 +225,12 @@
 <p>关于Lambda的概念和效果在后面也会反复提及，甚至图灵机的计算模型也会不断出现。其实可以发现这两个计算模型跟我们软件的架构息息相关的，正如所有计算机都是图灵机的实例一般，架构，语言等其实都是在计算模型上的深挖。对计算模型不断的研究其实可以发现更多精妙的结构和技术。</p>
 <h1 id="容器结构与数理逻辑">容器结构与数理逻辑</h1>
 <h1 id="参考资料">参考资料</h1>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<div style = "float:left">《HEAD FIRST 设计模式》</div>
+<div style = "text-align:right">[美]Eric Freeman等</div>
+<div style = "float:left">《软件架构与模式》</div>
+<div style = "text-align:right">[德]Joachim Goll</div>
+<div style = "float:left">《计算机程序的构造和解释》</div>
+<div style = "text-align:right">[美]Harold Abelson;Gerald Jay Sussman等</div>
 </div></div></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
