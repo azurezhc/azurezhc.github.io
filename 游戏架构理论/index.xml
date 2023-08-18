@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>游戏架构理论s on azurezhc的游戏开发人生</title>
+    <link>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/</link>
+    <description>Recent content in 游戏架构理论s on azurezhc的游戏开发人生</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <managingEditor>azurezhc@gmail.com (azurezhc)</managingEditor>
+    <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><atom:link href="http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/01%E5%AE%B9%E5%99%A8%E5%8C%96%E7%90%86%E8%AE%BA/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>azurezhc@gmail.com (azurezhc)</author>
+      <guid>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/01%E5%AE%B9%E5%99%A8%E5%8C%96%E7%90%86%E8%AE%BA/</guid>
+      <description>01容器化理论 本文，主要总结我在写游戏代码过程中对于容器类型结构的使用。 容器化理论：一个容器可以认为是一种结构特性的封装。例如常见的线性结构</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/02%E7%8A%B6%E6%80%81%E4%B8%8E%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>azurezhc@gmail.com (azurezhc)</author>
+      <guid>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/02%E7%8A%B6%E6%80%81%E4%B8%8E%E5%87%BD%E6%95%B0/</guid>
+      <description>02状态与函数 本文，主要总结我在写游戏代码过程中对于状态与函数的理解和使用。 在写游戏架构的过程中，我们经常会根据需求来封装对象结构和功能接口</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/03timeline%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>azurezhc@gmail.com (azurezhc)</author>
+      <guid>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/03timeline%E7%BB%93%E6%9E%84/</guid>
+      <description>TimeLine结构 本文，主要总结我在写游戏代码过程中对于时间轴概念的理解和使用。 在游戏开发过程中，不管是客户端还是服务器开发，不可避免的会</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E5%93%B2%E5%AD%A6%E7%90%86%E8%AE%BA/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>azurezhc@gmail.com (azurezhc)</author>
+      <guid>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E5%93%B2%E5%AD%A6%E7%90%86%E8%AE%BA/</guid>
+      <description>游戏架构哲学理论 架构在开发中其实是一个很重要的东西，一个好的架构有助于整个项目的健康成长和推进。一个差的架构除了难以扩展以外更是伴随着无数的</description>
+    </item>
+    
+  </channel>
+</rss>

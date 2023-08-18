@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title> - azurezhc的游戏开发人生</title><meta name="Description" content="azurezhc记录其游戏开发人生的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="技能逻辑框架补充 本文主要记录一下技能框架文档中一些补充开发点与想法，绝大部分都是针对节点的颗粒度结构。相当于技能逻辑框架中节点结构的延展细化" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/%E6%88%98%E6%96%97%E6%9E%B6%E6%9E%84/%E6%8A%80%E8%83%BD%E9%80%BB%E8%BE%91%E6%A1%86%E6%9E%B6%E8%A1%A5%E5%85%85/" /><meta property="article:section" content="游戏功能实现" />
+
+<meta property="og:site_name" content="azurezhc的游戏开发人生" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="技能逻辑框架补充 本文主要记录一下技能框架文档中一些补充开发点与想法，绝大部分都是针对节点的颗粒度结构。相当于技能逻辑框架中节点结构的延展细化"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/%E6%88%98%E6%96%97%E6%9E%B6%E6%9E%84/%E6%8A%80%E8%83%BD%E9%80%BB%E8%BE%91%E6%A1%86%E6%9E%B6%E8%A1%A5%E5%85%85/" /><link rel="next" href="http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/%E6%88%98%E6%96%97%E6%9E%B6%E6%9E%84/%E6%8A%80%E8%83%BD%E9%80%BB%E8%BE%91%E6%A1%86%E6%9E%B6/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0\/%E6%88%98%E6%96%97%E6%9E%B6%E6%9E%84\/%E6%8A%80%E8%83%BD%E9%80%BB%E8%BE%91%E6%A1%86%E6%9E%B6%E8%A1%A5%E5%85%85\/"
+        },"genre": "游戏功能实现","wordcount":  1453 ,
+        "url": "http:\/\/azurezhc.github.io\/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0\/%E6%88%98%E6%96%97%E6%9E%B6%E6%9E%84\/%E6%8A%80%E8%83%BD%E9%80%BB%E8%BE%91%E6%A1%86%E6%9E%B6%E8%A1%A5%E5%85%85\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster"></h1><div class="content" id="content"><h1 id="技能逻辑框架补充">技能逻辑框架补充</h1>
+<p>本文主要记录一下技能框架文档中一些补充开发点与想法，绝大部分都是针对节点的颗粒度结构。相当于技能逻辑框架中节点结构的延展细化讨论，针对各种具体情况进行细化思考。</p>
+<p><a class="link-markdown-demo-site" href="/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/%E6%88%98%E6%96%97%E6%9E%B6%E6%9E%84/%E6%8A%80%E8%83%BD%E9%80%BB%E8%BE%91%E6%A1%86%E6%9E%B6/" rel="noopener">技能逻辑框架</a></p>
+<h1 id="使用条件">使用条件</h1>
+<p>有些技能有一定的使用条件结构。例如卡牌游戏，当满足某些条件的时候，卡牌才可以使用。</p>
+<ul>
+<li>满足某些要求才可以使用。</li>
+<li>满足某些要求表现上会有变化。</li>
+</ul>
+<h1 id="关键字结构">关键字结构</h1>
+<p>【关键字】结构，即某一个【关键字】其实代表一个逻辑处理结构。简单例如《杀戮尖塔》中的【消耗】这种关键字，复杂如《万智牌》中的【议定】【循环】等关键字。
+有些处理起来可能很简单，例如【消耗】可以简单处理成一个tag，而在某些时刻根据tag进入不同处理分支。而有些则可能是一串复杂的逻辑，例如【循环：花费X后，丢弃该牌，抽一张牌】。</p>
+<p>但这种结构，不论通过一个tag数据字段，还是一段复杂的逻辑代码。我觉得其实本质意味着逻辑模板复用。即这个关键字对应的逻辑结构可以复用化。我想到有几种处理方法来做：</p>
+<ul>
+<li>建立【关键字】对应的节点结构。使用该节点，即认为拥有该关键字结构属性。把相关逻辑都封装在节点内。</li>
+<li>建立节点图上的节点复用结构。即，提供一个特殊节点，可以把另一个节点图的结构，在该节点图中复用。这相当于UE中的蓝图的Function功能，有一个特殊的节点图，有定义</li>
+<li>建立节点图复用结构。即，一个技能结构可以使用多个节点图逻辑。相当于拥有多个节点图完整逻辑。</li>
+</ul>
+<p>方案大致感觉如下：</p>
+<!-- raw HTML omitted -->
+<p>方案3：
+不一定能有效的处理很多情况。因为其没有前后输出，以至于不能抽象出一个流程模板结构，对于不同情况下的模板逻辑流程无法实现。例如上面的循环，核心部分是丢弃该牌，抽一张牌，但是其花费是不确定的，可以是消耗血量，也可以是费用，也可以是别的什么。另一方面这样一个节点图只能是一个自完备的逻辑功能，不能跟其他节点图产生化学反应。对于可以复用的整体逻辑该结构也是可以胜任的。</p>
+<p>方案2：
+是最完全的功能，其本质相当于UE中蓝图的Function，或者ASE中的材质函数。包装一个特殊节点，节点内部逻辑来源于另一个可视化函数节点流程，该节点图必须显示定义一个输入，一个输出。暴漏出外面调用时需要传递的参数结构，使得外面可以传递参数等。</p>
+<p>方案1：
+则相对朴素简单，即相当于把方案2中的函数节点图内的复杂逻辑直接程序写在代码里。要修改内部的结构逻辑只能修改节点内代码实现。其支持跟方案2中一样的外部可变结构，只是没办法快捷修改关键字逻辑。</p>
+<p>其实针对大部分情况，第一种方式已经足够了。即将关键字所有相关逻辑概念放在一个节点内，拥有该节点即拥有该关键字逻辑。该关键字可以带有后续的处理效果，相关的参数，以及先置输入。</p>
+<p>这主要是建立在以下对于【关键字】的特性上：</p>
+<ul>
+<li>之所以提取出关键字，是因为其有通用逻辑。通用逻辑就说明其结构统一，定义好后不会随便修改。玩家也才能感知到这个关键字对应的体验效果。</li>
+<li>关键字个数增长不会非常迅速，因为创建关键字是为了复用某类逻辑结构，同时方便玩家快速get到。如果每个不同点都赋予一个【关键字】，那关键字将没有意义。所以关键字不会快速变化增长。</li>
+</ul>
+<p>而这样建立的关键字由如下好处：</p>
+<ul>
+<li>复用性保留，使用该节点就可以标记关键字。并且关键字自成一体。可以明确标识出该关键字相关内容。</li>
+<li>可以嵌入到其他流程中去。在某些可变更点上跟外部节点图保持相融。</li>
+</ul>
+<p>对于程序来说，方案1完全够用，因为不需要花费太多精力去修改节点图结构。同时修改关键字逻辑也很方便。
+但是方案2则具有具有强大的通用性，但是这是一把双刃剑。其我把它放在下面来讨论。</p>
+<h1 id="节点图函数功能">节点图函数功能</h1>
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title> - azurezhc的游戏开发人生</title><meta name="Description" content="azurezhc记录其游戏开发人生的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="DoTween介绍 DoTween可以给变量定义一个沿着曲线变化。 官网网址 http://dotween.demigiant.com/ DoTween提供比较便捷的动画控制效果，对比Unity原生的An" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/dotween%E4%BB%8B%E7%BB%8D/" /><meta property="article:section" content="Unity相关" />
+
+<meta property="og:site_name" content="azurezhc的游戏开发人生" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="DoTween介绍 DoTween可以给变量定义一个沿着曲线变化。 官网网址 http://dotween.demigiant.com/ DoTween提供比较便捷的动画控制效果，对比Unity原生的An"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/dotween%E4%BB%8B%E7%BB%8D/" /><link rel="prev" href="http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/odininspector/odin%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/unity%E7%9B%B8%E5%85%B3\/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6\/dotween%E4%BB%8B%E7%BB%8D\/"
+        },"genre": "Unity相关","wordcount":  1878 ,
+        "url": "http:\/\/azurezhc.github.io\/unity%E7%9B%B8%E5%85%B3\/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6\/dotween%E4%BB%8B%E7%BB%8D\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster"></h1><div class="content" id="content"><h1 id="dotween介绍">DoTween介绍</h1>
+<p>DoTween可以给变量定义一个沿着曲线变化。</p>
+<p>官网网址
+<a class="link-markdown-demo-site" href="http://dotween.demigiant.com/" rel="noopener">http://dotween.demigiant.com/</a></p>
+<p>DoTween提供比较便捷的动画控制效果，对比Unity原生的Animation动画曲线控制，其多了局域动画属性控制，但是我思考后决定根据情况使用DoTween插件，原来我觉得从某些架构角度来讲并不合适，但是后面发现虽然都是事实但是也有对应的方法，好处。这里描述这些HighLevel想法，然后记录DoTween的一些功能接口。</p>
+<h2 id="原来理由">原来理由</h2>
+<p>给出的不使用理由</p>
+<p><!-- raw HTML omitted -->1：<!-- raw HTML omitted --></p>
+<p>根据其官方文档介绍，其实际应该是一个中心注册式的Timer管理器。对于调用的接口实际都是形成了一个实例放在了DoTween中心里面。而这种中心管理式的Timer，存在很多的弊端。更何况交付给一个插件管理，举例来说如下：</p>
+<ul>
+<li>对于一个中心管理器，如果其Tick的索引的对象销毁，都要手动去销毁关联的Timer，容易出现bug，trace。</li>
+<li>其次中心管理器中的实例会索引对象，相对应的管理中心Tick会不停访问不同对象，进而降低内存命中。这要就没办法做ECS这种对象密集型，而对于这种就需要把Timer放到对象身上。</li>
+<li>而如果把Timer实体放在主体对象上，通过统一的Tick接口来执行则不存在其他引用。销毁后Timer自然销毁，不需要多余操作。简单来说就是负责运行Tick的对象究竟是何的问题。</li>
+<li>但是如果只是单纯的简单Timer表现效果，这种中心Timer的效果实现会很快速，方便快速出原型对象。而且如果表现不需要被打断修改，则不会出现什么复杂情况。</li>
+</ul>
+<p><!-- raw HTML omitted -->2：<!-- raw HTML omitted --></p>
+<p>而从其内部功能来看，其提供大多数都是一些简单的曲线移动控制。而这类都可以同过以下两个过程封装实现，而且具有更高的可控性。</p>
+<ul>
+<li>Timer运行器：放在主体身上，每个Update进行调用</li>
+<li>采样器：从目标曲线上获取当前值</li>
+<li>修改器：将采样的值，通过规则作用到目标</li>
+</ul>
+<p>而且这个方式还更容易扩展。</p>
+<p><!-- raw HTML omitted -->3：<!-- raw HTML omitted -->
+最后，可以看到DoTween没有基于Editor提供一个好的可视化编辑。准确说是两方面。</p>
+<ul>
+<li>对于曲线的可视化编辑，可以key帧曲线，进行方便的修改。</li>
+<li>曲线作用后效果无法在Editor模式先预览。</li>
+</ul>
+<p>类比Unity自己的Animation系统，其本身可以拉曲线，并且直接再Editor模式预览动画的最终效果。当然有些预览有一定问题，毕竟需要跟逻辑挂钩，但是有一些例如UI位移，材质动画，这些也要进入游戏就显得太过鸡肋，不如自己做一个简单的曲线编辑器接入。</p>
+<p>不过DoTween对于Transform的Path进行了较好的支持。</p>
+<p>但是要做到全套预览的方案，不如自己建立基于曲线，Timeline的编辑器更加强大。</p>
+<h2 id="新的理由">新的理由</h2>
+<p>DoTween确实是一个中心化结构。即所有时间Tick运行状态对象是放在一个中心里面。如果目标对象运行过程中销毁，那会报错。所以导致使用时去注册，但销毁关联结构的时候，要去移除，更麻烦的是有一些特殊情况下对运动状态的修改需要反复去进行添加移除。但是有更高的角度，理由来看到这个问题，使我接受他。</p>
+<ul>
+<li>上述问题确实存在，但对于中心式的移除和添加其实只是一句话的事情，代码量并没有那么多。在大部分情况下使用起来还能接受，并不是特别麻烦。</li>
+<li>中心管理器确实索引对象，导致内存命中降低，但是这点程序损耗对于非特定类型游戏不是很大，完全可以接受。对于小体量游戏，初期开发。验证与开发效率才是第一保障。功能实现，表现良好才是目标。</li>
+<li>DoTween实际已经实现了大部分功能曲线，而且这些功能原理是类似的，自己再去写一遍，只是重复别人工作。使用DoTween可以快速使用类似功能，而不是再去造轮子。</li>
+<li>即使自己写可视化编辑器部分，其实也只是曲线编辑器部分，一方面DoTween其实也提供了。但更值得一说的是，对于这些可控制的曲线部分还不能完全承担起计算功能部分。还是要用类似动力系统的方式去定义，用方程曲线来实现效果。</li>
+<li>再其次，一般对于可视化编辑的部分也会有详细的编辑方式来实现特定的功能，这种功能需要挖掘到一定程度，明确内容之后再建立。例如跟随操作的二阶运动系统，这种需要一个反应参数特性的变化曲线，但是这种功能比较明确化。</li>
+</ul>
+<p>跟重要的一点。</p>
+<ul>
+<li>对于DoTween已经了解非常深入了，对于某些内容，是用DoTween，还是自己曲线编辑器其实都取决于使用者。目前看来，DoTween尤其适合的地方，应该使用之，不适合的地方，自己开发结构来满足也不是问题。而这种情况的判断，已经有能力快速决断。从这种用于不用都可以的角度来说，即功能性应当提供，找合适切入点操作。而复杂合适的功能自己来实现也很OK。</li>
+</ul>
+<h1 id="总结">总结</h1>
+<p>DoTween还是应当了解功能结构，找到合适的情景使用。</p>
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

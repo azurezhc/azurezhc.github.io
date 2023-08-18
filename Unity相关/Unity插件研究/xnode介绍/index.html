@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title> - azurezhc的游戏开发人生</title><meta name="Description" content="azurezhc记录其游戏开发人生的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="XNode介绍 本文主要介绍我对XNode源码结构的刨析。查看一个其节点图的想法思路，方便我来进一步使用节点图，以及改造其结构。 网上也有一些视" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/xnode%E4%BB%8B%E7%BB%8D/" /><meta property="article:section" content="Unity相关" />
+
+<meta property="og:site_name" content="azurezhc的游戏开发人生" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="XNode介绍 本文主要介绍我对XNode源码结构的刨析。查看一个其节点图的想法思路，方便我来进一步使用节点图，以及改造其结构。 网上也有一些视"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/xnode%E4%BB%8B%E7%BB%8D/" /><link rel="prev" href="http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E7%9B%B8%E5%85%B3/" /><link rel="next" href="http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/odininspector/odin%E5%AD%97%E6%AE%B5%E5%8A%9F%E8%83%BD%E8%AF%B4%E6%98%8E/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/unity%E7%9B%B8%E5%85%B3\/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6\/xnode%E4%BB%8B%E7%BB%8D\/"
+        },"genre": "Unity相关","wordcount":  2387 ,
+        "url": "http:\/\/azurezhc.github.io\/unity%E7%9B%B8%E5%85%B3\/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6\/xnode%E4%BB%8B%E7%BB%8D\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster"></h1><div class="content" id="content"><h1 id="xnode介绍">XNode介绍</h1>
+<p>本文主要介绍我对XNode源码结构的刨析。查看一个其节点图的想法思路，方便我来进一步使用节点图，以及改造其结构。</p>
+<p>网上也有一些视频讲解怎么使用如：
+<a class="link-markdown-demo-site" href="https://www.bilibili.com/video/BV12P411F7Zu/?spm_id_from=333.337.search-card.all.click&amp;vd_source=8d35ead0946519f56d2ab5f9c83045df" rel="noopener">xNode插件的简单使用</a></p>
+<p>本文也算是总结使用，顺便看一下其架构设计。</p>
+<h1 id="xnode使用概述">XNode使用概述</h1>
+<p>从整个结构来看，XNode是简单而清晰的。其针对图，节点，端口三个概念进行了包装和处理，并没有给与这些概念过多的逻辑结构，这是很好的一点。而这些元素也精确的落实在了图表示上面，XNode的结点图可视化如下：</p>
+<!-- raw HTML omitted -->
+<p>先看一下其整个结构部分：</p>
+<!-- raw HTML omitted -->
+<p>从数据结构来看简单明了：</p>
+<ul>
+<li>NodeGraph：图对象数据结构，持有一个列表存着所有节点概念对象。</li>
+<li>Node：节点基类，相当于对节点概念的一个类型封装。子类型实现各个功能节点。其存在一个字典NodePortDictionary，存放了这个节点上的一个名字&ndash;端口的映射表。</li>
+<li>NodePort：端口概念的类型封装。有名字，方向（出或入）等概念。以及一个重要的链接表。存放着这个端口上所有链接的端口对象。</li>
+</ul>
+<p>而对XNode结点图的使用也很简单：继承Node并且实现对应的功能即可向图中添加一个可以显示的节点如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">SkillActionNode</span> <span class="p">:</span> <span class="n">Node</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="na">	[Input]</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span> <span class="n">Node</span> <span class="n">prev</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">	[Output]</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span> <span class="n">Node</span> <span class="n">next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Use this for initialization</span>
+</span></span><span class="line"><span class="cl">	<span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="n">Init</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">base</span><span class="p">.</span><span class="n">Init</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Return the correct value of an output port when requested</span>
+</span></span><span class="line"><span class="cl">	<span class="k">public</span> <span class="k">override</span> <span class="kt">object</span> <span class="n">GetValue</span><span class="p">(</span><span class="n">NodePort</span> <span class="n">port</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="k">null</span><span class="p">;</span> <span class="c1">// Replace this</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>其描述部分主要通过注解来建立属性字段与端口上的联系。</p>
+<ul>
+<li>通过类Node，生成对应的节点对象。</li>
+<li>通过注解，生成对应属性的端口NodePort对象。</li>
+</ul>
+<p>而这个通过注解生成对应结构的部分则是结点图易用性，以及改造的重点。所以可以先看其注解生成整个GUI部分，再总结每个注解属性对应的功能，来详细了解整个结构。</p>
+<h1 id="xnode整体结构">XNode整体结构</h1>
+<p>HighLevel思路很简单，我们定义的每一个类型都相当于一个节点类型概念，所以要建立一个类对象&ndash;到UI结构的描述映射。即创建每一个Node类($A$)，相当于一个节点原型($B$)。当创建节点的时候，实际创建($B$)描述的UI对象结构实例($B_1$)，以及一个对应的Node类的实例($A_1$)。其中($B$)就是这个节点的显示样式，($A_1$)就是落地的数据实例。</p>
+<p>首先可以NodeDataCache文件，该文件包装了一个NodeDataCache的静态类里面有一个数据结构存放了每个Node类型，跟其关联的NodePort列表：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 节点的静态缓存结构</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">NodeDataCache</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 节点缓存Dict </span>
+</span></span><span class="line"><span class="cl">	<span class="k">private</span> <span class="k">static</span> <span class="n">PortDataCache</span> <span class="n">portDataCache</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// PortDataCache 继承于 Dictionary结构 有Dictionary结构</span>
+</span></span><span class="line"><span class="cl">	<span class="k">private</span> <span class="k">class</span> <span class="nc">PortDataCache</span> <span class="p">:</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">System</span><span class="p">.</span><span class="n">Type</span><span class="p">,</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">NodePort</span><span class="p">&gt;&gt;</span> <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>然后当发生新的节点创建的时候，会触发重新构建cache的操作，简单流程如下：</p>
+<!-- raw HTML omitted -->
+<p>最后就是形成一个类型&ndash;节点端口的映射表。而这个映射表结构就是用来构建可视化Node节点UI结构的基础。</p>
+<ul>
+<li>当编辑器运行的时候，通过这个类型&ndash;节点端口结构，生成UI上节点的<strong>显示结构</strong>。即这个节点编辑条，端口等。</li>
+<li>根据节点图中实际存储的节点实例结构，结合UI显示结构，形成节点图显示。</li>
+<li>当添加新节点的时候，生成实例，并在编辑器中显示节点UI。</li>
+<li>最后编辑节点数据，编辑器落地数据到对应实例内。最后序列化成持久数据。</li>
+<li>所以当游戏运行时，只有上面暴漏出来的Node，NodeGraph两个类型。而这也是开发者更关心的数据。</li>
+</ul>
+<p>而这就涉及到整个编辑器侧的架构，编辑表现跟逻辑分离，之间只有编辑器数据部分是相互关联的。整个结构图如下：</p>
+<!-- raw HTML omitted -->
+<p>简单来说跟HighLevel想法对应。即NodeGraphEditor跟开发者关心的目标数据层NodeGraph结构关联。NodeEditor则跟数据层的Node关联。两个Editor类型提供编辑侧的绘制工作，以及借用Unity的属性反射结构，生成对应的属性Property的编辑窗口，进而可以编辑属性并且落地到数据层上去。</p>
+<p>可以通过几个较为重要的运行时流程来看整个结构</p>
+<p><strong><!-- raw HTML omitted --> 添加节点 <!-- raw HTML omitted --></strong></p>
+<!-- raw HTML omitted -->
+<p>添加节点一般通过在节点图中右键来打开一个菜单栏实现。
+其调用过程就如上图：</p>
+<ul>
+<li>点击触发后，从NodeGraphEditor中获取整个菜单来内容。</li>
+<li>菜单栏中的一项，绑定响应时间CreateNode。点击后创建对应的Node。</li>
+<li>对应Node创建后重新绘制Window。</li>
+<li>重新绘制过程中，创建NodeEditor，构成编辑器中的GUI节点对象。</li>
+</ul>
+<p><strong><!-- raw HTML omitted --> Node绘制细节 <!-- raw HTML omitted --></strong></p>
+<p>绘制节点的方法基本都封装在NodeEditor中，这相当于NodeEditor即描述了一个Node如何绘制成GUI节点，同时又相当于GUI节点的实例对象。同时其基类，NodeEditorBase中还存有一个静态字典，形成了一个Node和NodeEditor实例的全局映射表。从这些结构来看，这里封装可能有点混乱，但也是OK的。</p>
+<p>绘制GUI节点主要位两个方法</p>
+<ul>
+<li>OnHeaderGUI：绘制标签。</li>
+<li>OnBodyGUI：绘制节点内结构。</li>
+</ul>
+<p>其中我们可能更为关心的是对于节点内结构的绘制。其结构即是，便利类对象的属性列表，如果其可见遍调用NodeEditorGUILayout将其绘制出来。</p>
+<!-- raw HTML omitted -->
+<h1 id="xnode功能说明">XNode功能说明</h1>
+<p>基于上面，可以对整体结构有一个大概的了解。然后就可以很方便的理解提供的注解用途了。并且可以去扩展一些自己想要的功能结构。</p>
+<p>在上面的参考文章<a class="link-markdown-demo-site" href="https://www.bilibili.com/video/BV12P411F7Zu/?spm_id_from=333.337.search-card.all.click&amp;vd_source=8d35ead0946519f56d2ab5f9c83045df" rel="noopener">xNode插件的简单使用</a>中也已经对大部分功能做了详细的说明。</p>
+<p>这里只是总结一些细节使用。</p>
+<p>Node 相关内容</p>
+<!-- raw HTML omitted -->
+<p>NodePort 相关内容</p>
+<!-- raw HTML omitted -->
+<h1 id="xnode运行时">XNode运行时</h1>
+<p>在运行时则简单化了。关注主体只有NodeGraph，Node，NodePort这些相关部分。因为相关的绘制部分全部由NodeEditor侧承当。所以可以单纯从底层数据结构触发获取整个结构，即加载NodeGraph后就可以获得整个序列化后的对象结构。</p>
+<p>而运行时的实际效果则由需求决定细化：</p>
+<ul>
+<li>可以放在节点内，把节点也当做游戏实际运行时的一环。这样可以方便做一些可视化Debug。</li>
+<li>也可以把节点当作一个操作，实际功能承载交付给游戏内承载对象。</li>
+</ul>
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

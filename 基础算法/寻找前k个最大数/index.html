@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title> - azurezhc的游戏开发人生</title><meta name="Description" content="azurezhc记录其游戏开发人生的博客"><meta property="og:title" content="" />
+<meta property="og:description" content="寻找前K个最大数 着是一个经典的面试问题，于是想在在这里记录一下相关的一些算法和思想。 问题描述： 给定一个包含n个数的乱序数组，寻找其中前K个最" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%AF%BB%E6%89%BE%E5%89%8Dk%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0/" /><meta property="article:section" content="基础算法" />
+
+<meta property="og:site_name" content="azurezhc的游戏开发人生" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="寻找前K个最大数 着是一个经典的面试问题，于是想在在这里记录一下相关的一些算法和思想。 问题描述： 给定一个包含n个数的乱序数组，寻找其中前K个最"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%AF%BB%E6%89%BE%E5%89%8Dk%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0/" /><link rel="prev" href="http://azurezhc.github.io/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E6%96%87%E6%9C%AC%E6%90%9C%E7%B4%A2/" /><link rel="next" href="http://azurezhc.github.io/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/00%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E7%AB%A0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95\/%E5%AF%BB%E6%89%BE%E5%89%8Dk%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0\/"
+        },"genre": "基础算法","wordcount":  2450 ,
+        "url": "http:\/\/azurezhc.github.io\/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95\/%E5%AF%BB%E6%89%BE%E5%89%8Dk%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster"></h1><div class="content" id="content"><h1 id="寻找前k个最大数">寻找前K个最大数</h1>
+<p>着是一个经典的面试问题，于是想在在这里记录一下相关的一些算法和思想。</p>
+<p>问题描述：</p>
+<ul>
+<li>给定一个包含n个数的乱序数组，寻找其中前K个最大数</li>
+</ul>
+<p>网上也有很多相关文章的描述，例如这篇描述的也很详细，讲述了很多种算法特点。</p>
+<p><a class="link-markdown-demo-site" href="https://blog.csdn.net/ywcpig/article/details/52476174" rel="noopener">https://blog.csdn.net/ywcpig/article/details/52476174</a></p>
+<p>为了方便描述我们这里可以将其转换为等价的寻找前K个最小数，这样便于描述。</p>
+<h1 id="排序">排序</h1>
+<p>其实最简单的方法就是&ndash;排序。排序花费$O(nlogn)$时间步骤后即可得到整个数组的线性序，通过线性序可以简单得到前K个最小数字。</p>
+<p>但是这很值得思考，这是最快的方法么？这个方法利用了什么？这些方法是观察到了什么特点？</p>
+<p>假设整个数组组成的集合为$S$，数组元素为$a_i\in{}S$，那么排序可以认为是为了获得如下的线性序：</p>
+<p>$$a_1&lt;a_2&lt;\cdots&lt;a_k&lt;\cdots&lt;a_n$$</p>
+<p>通过该严格线性序结构，我们可以通过数组索引K快速获得前K个最小的数字。但是我们的目标实际上是求前K个最小的数字，这实际是一个划分问题，该个问题可以转换为求一个数$a_k$，满足如下条件：</p>
+<p>$$a_1,\cdots,a_{k-1}&lt;a_k&lt;a_{k+1},\cdots,a_n$$</p>
+<p>这个结构显然是比上面结构要弱很多的，这暗含，可能存在更快的算法，更好的结构来求算该结构。实际上存在$O(n)$算法求一个数组中第K小的数是什么。只要求出该数字，然后遍历一遍数组，取出所有比该数小的数即可满足结果。</p>
+<h1 id="随机算法思想">随机算法思想</h1>
+<p>这个算法也来自于这本书</p>
+<p>这个更快的随机算法来自于一个观察：</p>
+<p>就是对于一个给定的元素$a\in{}S$，我们可以用$n-1$次比较回答以下问题。</p>
+<ul>
+<li>$a$是第K小元素么。</li>
+<li>或者$a$大于第K小元素么。</li>
+<li>或者$a$小于第K小元素么。</li>
+</ul>
+<p>这个显然是可以的。所以思路就很简单了，随机选一个元素，然后求算哪些元素比其，哪些元素比其大，然后不断毕竟第K小元素。上面这个判定问题，使得其实际就跟2分查找的情况类似。</p>
+<p>步骤如下：</p>
+<ul>
+<li>使用任意元素$a$作为分界线，遍历数组，划分成如下两个集合
+<ul>
+<li>$S_&gt;=\set{x\in{}S-a|x&gt;a}$</li>
+<li>$S_&lt;=\set{x\in{}S-a|x&lt;a}$</li>
+</ul>
+</li>
+<li>随后递归查找
+<ul>
+<li>如果$|S_&lt;|&lt;K$则在$|S_&gt;|$中查找第$K-|S_&lt;|$小元素。</li>
+<li>如果$|S_&lt;|&gt;K$则继续在$|S_&lt;|$中查找第$K$小元素。</li>
+</ul>
+</li>
+</ul>
+<p>$$S_&gt;=\set{x\in{}S-a|x&gt;a}$$</p>
+<p>思路很简单，不过复杂的是，算法复杂度分析。时间地推关系如下</p>
+<p>$$T(n)\leq{}max{T(|S_&lt;|),T(|S_&gt;|)}+O(n)$$</p>
+<p>即遍历一遍的耗时，加上子树中的耗时。直观来看这个耗时跟选取的划分元相关，如果其恰好为$a_k$，那么一次遍历$O(n)$即可。如果运气不好的情况，我们将一个个剔除元素，这种情况下将是$O(n^2)$。</p>
+<p>这里我们就需要考虑随机元素的平均情况问题。实际上对于选取的划分轴$a$如果其实际在数组中位置为$i$。那么显然有</p>
+<ul>
+<li>$i&lt;k$。算法将剔除$k-i$个元素，剩下$n-k+i$个元素。</li>
+<li>$i&gt;k$。算法将提出$n-i+1$个元素，剩下$i-1$个元素。</li>
+</ul>
+<p>所以对于一次随机选择的平均情况。</p>
+<p>$$\overline{T}(n)=\frac{1}{n}\sum_{i=k}^{n-1}\overline{T}(i)+\frac{1}{n}\sum_{i=1}^{k-1}\overline{T}(n-k+i)+O(n)$$</p>
+<p>可以说当$k=n/2$时，处于最坏情况。则原公式变为：</p>
+<p>$$
+\begin{aligned}
+\overline{T}(n) &amp;=\frac{1}{n}(\sum_{i=n/2}^{n-1}\overline{T}(i)+\sum_{i=1}^{n/2-1}\overline{T}(n/2+i))+O(n)\
+&amp;=\frac{2}{n}\sum_{i=n/2}^{n-1}\overline{T}(i)+O(n)
+\end{aligned}
+$$</p>
+<p>容易验证$\overline{T}(n)=cn$是符合递推公式的解：</p>
+<p>$$
+\overline{T}(n)=\frac{2}{n}\sum_{i=n/2}^{n-1}ci+O(n) \leq{}c(\frac{3}{4}n-2)+O(n)=O(n)
+$$</p>
+<p>不得不说，有些时候很多问题，随机算法往往有不错的结果。实际上我觉得这是因为，对于输入组成的线性序，可以认为是一个均匀分布，但是其中某些极差的结构，放大了算法的使用消耗。而随机算法，相当于用一个均匀分布，抹平了这些极差的输入状况。</p>
+<h1 id="寻找第k小元素">寻找第K小元素</h1>
+<p>这个算法也来自于这本书</p>
+<p>在该书中明确介绍了一个算法可以在$O(n)$时间内找到第K大数。实际上我觉得，这个算法算是随机算法的去随机化。在本书中的随机算法章节，也讲述了该算法。其观察则来自于，对于数组中剔除元素个数的操作。</p>
+<p>即如果每一步都可以稳定剔除一定比例错误元素，例如$1/3$。那么对剩余$2/3$比例的元素会使得其指数降低，当剔除所有错误元素之后，就是逼近正确的元素。而这个过程的开销如果每一步都是线性耗时，那么最终耗时如下：</p>
+<p>$$cn+(2/3)cn+(2/3)^2cn+\cdots+(2/3)^icn+\cdots=3cn=\Theta(n)$$</p>
+<p>这个算法是这样运行的，具体细节可以看书：</p>
+<ul>
+<li>将n个元素划分成$q=\lfloor\frac{n}{5}\rfloor$组。每组5个元素，如果5不整除p，则排除剩余元素。</li>
+<li>针对每一组单独排序，找出中项。所有中项的集合为$M$。</li>
+<li>递归调用，去除中项集合的中项元素$mm$。</li>
+<li>通过mm将元素分组成三组
+<ul>
+<li>$S_1=\set{a|a&lt;mm}$</li>
+<li>$S_2=\set{a|a=mm}$</li>
+<li>$S_3=\set{a|a&gt;mm}$</li>
+</ul>
+</li>
+<li>分情况递归计算
+<ul>
+<li>$|S_1|&gt;k$：递归计算$S_1$集合</li>
+<li>$|S_1|+|S_2|\geq{}k$：返回mm</li>
+<li>$|S_1|+|S_2|&lt;k$：递归计算$S_3$集合中第$k-(|S_1|+|S_2|)$小元素。</li>
+</ul>
+</li>
+</ul>
+<p>不难明白这个算法一定能计算出正确的第K小数值。但是同样的，算法的效率分析非常复杂。</p>
+<p>其实这个算法的分析关键点就是中位数$mm$筛选出了多数严格大于，严格小于的数字。实际上这个过程可以认为是把数字排成一个$5\times{}q$的矩阵，其左下角部分数字是严格小于，则右上角部分数字为严格大于。进而保证了$S_1,S_3$两个集合的大小。这个值大概是$\frac{3}{2}\lfloor{}n/5\rfloor\leq{}S_1\leq0.7n+1.2$。也就是每次留下的集合大小会在$0.7n+1.2$左右。最后可以推出，时间复杂度是严格$\Theta{}(n)$。</p>
+<!-- raw HTML omitted -->
+<h1 id="其他方式">其他方式</h1>
+<p>其余的方法就是一些经典方法，这里只做一定解释。</p>
+<h2 id="最大堆方式">最大堆方式</h2>
+<p>使用$O(n)$时间的MakeHeap算法，在原地将数组构建一个最大堆数据结构。然后Pop出顶部的K个最大元素即可。算法时间复杂度$O(n+klogn)$</p>
+<h2 id="基数排序方式">基数排序方式</h2>
+<p>可以首先筛选一个最大数出来，假设其有$m$位。然后按照基数排序的想法，但是这里不用从最小的开始，而是可以从最大的开始，然后hash进$0-9$的桶里面，然后计数，可以逐步确定我们要的第K小数是落在什么桶里面。例如这里可能落在$4$号桶里面，则针对该桶内的数，继续进行基数排序操作。</p>
+<h1 id="结尾">结尾</h1>
+<p>其实可以看到，不论什么方式。这个问题最后落在的关键点都是一个问题。如何逐步的剔除那些非正确的数字。越快剔除的方法，其效率就越高。相对应的，如果能按照某个比例去剔除，那么他就会是一个线性算法。</p>
+<h1 id="参考资料">参考资料</h1>
+<p>随机算法与寻找第K小元素元素在下面的书籍中有详细的介绍。</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
