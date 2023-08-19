@@ -19,10 +19,10 @@
     
     <item>
       <title></title>
-      <link>http://azurezhc.github.io/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%AF%BB%E6%89%BE%E5%89%8Dk%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0/</link>
+      <link>http://azurezhc.github.io/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%AF%BB%E6%89%BE%E5%89%8DK%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>azurezhc@gmail.com (azurezhc)</author>
-      <guid>http://azurezhc.github.io/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%AF%BB%E6%89%BE%E5%89%8Dk%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0/</guid>
+      <guid>http://azurezhc.github.io/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%AF%BB%E6%89%BE%E5%89%8DK%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0/</guid>
       <description>寻找前K个最大数 着是一个经典的面试问题，于是想在在这里记录一下相关的一些算法和思想。 问题描述： 给定一个包含n个数的乱序数组，寻找其中前K个最</description>
     </item>
     

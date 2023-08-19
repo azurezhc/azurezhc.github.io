@@ -38,10 +38,10 @@
     
     <item>
       <title></title>
-      <link>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/03timeline%E7%BB%93%E6%9E%84/</link>
+      <link>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/03TimeLine%E7%BB%93%E6%9E%84/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>azurezhc@gmail.com (azurezhc)</author>
-      <guid>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/03timeline%E7%BB%93%E6%9E%84/</guid>
+      <guid>http://azurezhc.github.io/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/03TimeLine%E7%BB%93%E6%9E%84/</guid>
       <description>TimeLine结构 本文，主要总结我在写游戏代码过程中对于时间轴概念的理解和使用。 在游戏开发过程中，不管是客户端还是服务器开发，不可避免的会</description>
     </item>
     

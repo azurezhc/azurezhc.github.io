@@ -10,46 +10,46 @@
     <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><atom:link href="http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/dotween%E4%BB%8B%E7%BB%8D/</link>
+      <link>http://azurezhc.github.io/Unity%E7%9B%B8%E5%85%B3/Unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/DoTween%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>azurezhc@gmail.com (azurezhc)</author>
-      <guid>http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/dotween%E4%BB%8B%E7%BB%8D/</guid>
+      <guid>http://azurezhc.github.io/Unity%E7%9B%B8%E5%85%B3/Unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/DoTween%E4%BB%8B%E7%BB%8D/</guid>
       <description>DoTween介绍 DoTween可以给变量定义一个沿着曲线变化。 官网网址 http://dotween.demigiant.com/ DoTween提供比较便捷的动画控制效果，对比Unity原生的An</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/odininspector/odin%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/</link>
+      <link>http://azurezhc.github.io/Unity%E7%9B%B8%E5%85%B3/Unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/OdinInspector/Odin%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>azurezhc@gmail.com (azurezhc)</author>
-      <guid>http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/odininspector/odin%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/</guid>
+      <guid>http://azurezhc.github.io/Unity%E7%9B%B8%E5%85%B3/Unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/OdinInspector/Odin%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/</guid>
       <description>Obdin基础介绍 Odin是一个Unity插件。根据官网介绍，器主要目的是使得用户可以享受强大，可自定义，用户友好的编辑器，而不写一行编辑器</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/odininspector/odin%E5%AD%97%E6%AE%B5%E5%8A%9F%E8%83%BD%E8%AF%B4%E6%98%8E/</link>
+      <link>http://azurezhc.github.io/Unity%E7%9B%B8%E5%85%B3/Unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/OdinInspector/Odin%E5%AD%97%E6%AE%B5%E5%8A%9F%E8%83%BD%E8%AF%B4%E6%98%8E/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>azurezhc@gmail.com (azurezhc)</author>
-      <guid>http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/odininspector/odin%E5%AD%97%E6%AE%B5%E5%8A%9F%E8%83%BD%E8%AF%B4%E6%98%8E/</guid>
+      <guid>http://azurezhc.github.io/Unity%E7%9B%B8%E5%85%B3/Unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/OdinInspector/Odin%E5%AD%97%E6%AE%B5%E5%8A%9F%E8%83%BD%E8%AF%B4%E6%98%8E/</guid>
       <description>Odin字段功能说明 本文章主要为功能记录文章，研究Odin每个字段的功能并且予以一定的记录。 Odin的OdinAttributeOvervi</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/xnode%E4%BB%8B%E7%BB%8D/</link>
+      <link>http://azurezhc.github.io/Unity%E7%9B%B8%E5%85%B3/Unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/XNode%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>azurezhc@gmail.com (azurezhc)</author>
-      <guid>http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/xnode%E4%BB%8B%E7%BB%8D/</guid>
+      <guid>http://azurezhc.github.io/Unity%E7%9B%B8%E5%85%B3/Unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/XNode%E4%BB%8B%E7%BB%8D/</guid>
       <description>XNode介绍 本文主要介绍我对XNode源码结构的刨析。查看一个其节点图的想法思路，方便我来进一步使用节点图，以及改造其结构。 网上也有一些视</description>
     </item>
     
     <item>
       <title></title>
-      <link>http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E7%9B%B8%E5%85%B3/</link>
+      <link>http://azurezhc.github.io/Unity%E7%9B%B8%E5%85%B3/Unity%E7%9B%B8%E5%85%B3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>azurezhc@gmail.com (azurezhc)</author>
-      <guid>http://azurezhc.github.io/unity%E7%9B%B8%E5%85%B3/unity%E7%9B%B8%E5%85%B3/</guid>
+      <guid>http://azurezhc.github.io/Unity%E7%9B%B8%E5%85%B3/Unity%E7%9B%B8%E5%85%B3/</guid>
       <description>Unity相关 本文档主要记录Unity相关的一些内容，包括引擎功能，插件相关，以及一些Unity开源工程的研究。 积累Unity相关技术，方便</description>
     </item>
     
