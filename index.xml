@@ -2,7 +2,7 @@
     <channel>
         <title>azurezhc的游戏开发人生</title>
         <link>http://azurezhc.github.io/</link>
-        <description>azurezhc记录其游戏开发人生的博客</description>
+        <description>一个热爱游戏的平凡程序</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>azurezhc@gmail.com (azurezhc)</managingEditor>
             <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Fri, 18 Aug 2023 10:31:01 &#43;0800</lastBuildDate>
             <atom:link href="http://azurezhc.github.io/index.xml" rel="self" type="application/rss+xml" />
