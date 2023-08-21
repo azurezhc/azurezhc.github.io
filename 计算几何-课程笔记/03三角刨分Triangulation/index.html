@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title> - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="" />
+<meta property="og:description" content="03三角刨分(Triangulation) 计算几何第三章课程主要讲述如何进行三角刨分，首先要明确Triangulation有两种不同的用途场" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/03%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Triangulation/" /><meta property="article:section" content="计算几何-课程笔记" />
+
+<meta property="og:site_name" content="一个小博客" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="03三角刨分(Triangulation) 计算几何第三章课程主要讲述如何进行三角刨分，首先要明确Triangulation有两种不同的用途场"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/03%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Triangulation/" /><link rel="prev" href="http://azurezhc.github.io/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E7%AC%94%E8%AE%B0%E5%A4%A7%E7%BA%B2/" /><link rel="next" href="http://azurezhc.github.io/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/02%E5%87%A0%E4%BD%95%E6%B1%82%E4%BA%A4Geometric-Intersection/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/03%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Triangulation\/"
+        },"genre": "计算几何-课程笔记","wordcount":  6841 ,
+        "url": "http:\/\/azurezhc.github.io\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/03%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Triangulation\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster"></h1><div class="content" id="content"><h1 id="03三角刨分triangulation">03三角刨分(Triangulation)</h1>
+<p>计算几何第三章课程主要讲述如何进行三角刨分，首先要明确Triangulation有两种不同的用途场合，一种是多边形内部刨分成多个三角形面片。另一种是给定一个点集，用三角面覆盖连接所有点。</p>
+<p>小节内容概览</p>
+<ul>
+<li>Methodology
+<ul>
+<li>介绍三角刨分基础概念。</li>
+</ul>
+</li>
+<li>Art Gallery Problem
+<ul>
+<li>引入画廊看守问题，即一个多边形需要几个保安可覆盖所有角落。给出了问题的难度为NP-Hard。同时给了一定解决的方法。引入给定n边形，求取最大哨兵数问题。</li>
+</ul>
+</li>
+<li>Art Gallery Theorem
+<ul>
+<li>介绍了Art Gallery 定理。对于一个n边形最多用$\lfloor{}n/3\rfloor$个哨兵即可覆盖所有区间。</li>
+</ul>
+</li>
+<li>Fisk&rsquo;s Proof
+<ul>
+<li>在上述定理中需要证明一个n边形最多可被分解成$\lfloor{}n/3\rfloor$个扇形，该章即是该定理的证明。</li>
+</ul>
+</li>
+<li>Orthogonal Polygons
+<ul>
+<li>主要介绍了画廊理论的一个变体。在正交多边形情况下的一个变体。</li>
+</ul>
+</li>
+<li>Triangulation
+<ul>
+<li>本章主题部分，三角刨分相关概念的介绍。</li>
+</ul>
+</li>
+<li>Triangulating Monotone Polygons
+<ul>
+<li>先介绍了三角刨分的整个流程。一：分成单调多边形(Monotone Plygons)，二：对每个单调多边形三角刨分。而对整体则使用扫描线策略。介绍了单调多边形。</li>
+</ul>
+</li>
+<li>Monotone Decomposition
+<ul>
+<li>将一个简单多边形如何刨分成几个单调多边形结构。其主要问题在于解决Stalactite与Stalagmite</li>
+</ul>
+</li>
+<li>Tetrahedralization
+<ul>
+<li>主要介绍了高维空间的刨分内容。Tetrahedralization即三维空间的四面体刨分。也介绍了三维中一些简单遇到的问题。</li>
+</ul>
+</li>
+</ul>
+<h1 id="画廊看守问题art-gallery-theorem">画廊看守问题(Art Gallery Theorem)</h1>
+<p>主要引入了画廊看守问题。</p>
+<p>画廊看守问题的描述：</p>
+<blockquote>
+<p>有一个2D多边形区域，现在需要在其中布置360度视角的哨兵，问至少要多少个哨兵才能覆盖整个多边形区域内部。<br>
+用数学语言描述就是，设$P$是任意一个多边形，求$G(P)=min{|X|\mid X\ dominates\ P}$的值是多少</p>
+</blockquote>
+<p>这里有一些显然的结论：</p>
+<ul>
+<li>对于某一些多边形，$G(P)=1$。</li>
+</ul>
+<p>例如一些正多边形，在中间位置放一个即可。其实更宽泛的讲，所有凸多边形都只需要一个哨兵。出了图多边形来说，星形也是可以的，在其核中放一个哨兵即可。</p>
+<ul>
+<li>对于一般$n$个点的多边形，最多需要$n$个哨兵。</li>
+</ul>
+<p>结论也是显然的，因为在每一个点上放一个哨兵即可，每个点上都由哨兵覆盖。所以也覆盖了整个凸多边形内部。</p>
+<p>实际上已经有人证明了如下结论：</p>
+<blockquote>
+<p>D. T. Lee &amp; A. K. Lin, 1986<br>
+对于任何多边形，求解其最少数量的顶点哨兵(Vertex)/点哨兵(Point)/边哨兵(Edge)是NP-hard的。</p>
+</blockquote>
+<blockquote>
+<p>D. Schuchardt &amp; H. Hecker, 1995<br>
+对于任何正多边形来说，求解器最少数量的顶点哨兵(Vertex)/点哨兵(Point)也是NP-hard的。</p>
+</blockquote>
+<p>下面便是证明画廊定理。</p>
+<ul>
+<li>即一个边数为$n$多边形，最多用$\lfloor{}n/3\rfloor$个哨兵即可覆盖所有区间。</li>
+</ul>
+<p>这个证明的方式，就是通过三角刨分来完成的。大致来讲，就是刨分成一系列三角形。然后每个三角形顶点着色，最后只在其中一种颜色上放置哨兵即可。所以关键点就是，存在三角刨分可被三种颜色顶点着色。而这个总是可以的，如下图：</p>
+<center><img src="../03.assets/p1.png"></center>
+<p>这个证明方式是一个构造性证明。其来源于平面刨分图的对偶图。其实可以看到，对于无空洞的多边形，其对偶图一定是一个树，因为每两个三角形只可能有一条边相交，且不存在环状路线三角刨分。所以思路很简单：</p>
+<ul>
+<li>对于这样一个三角刨分，取其对偶图。</li>
+<li>任取一个三角形，对其顶点进行三色着色。</li>
+<li>沿着对偶图遍历整棵树。</li>
+<li>当我们进入新的三角形的时候，有一个公共边，对于新的顶点，我们赋值为第三种颜色即可。</li>
+</ul>
+<p>现在我们观察这个三角刨分。可以看到，对于这里面任何一个三角形，其三个顶点必由着三个颜色组成。也就是说，如果放在任何一个颜色上放置哨兵，则所有三角形都将被覆盖。</p>
+<p>但是可以注意的是这个证明要求，无环多边形，实际上可以看见如果有环，其中遍历树的时候，可能出现已经染色过的多边形而无法进行染色的状况。实际上这种状况不一定是可以3着色的。</p>
+<p>而对于一个正多边形来说则有如下定理：</p>
+<blockquote>
+<p>Kahn, Klawe &amp; Kleitman, 1980<br>
+对于$n$条边的正多边形，其最多使用$\lfloor{}n/4\rfloor$哨兵就能覆盖多边形。</p>
+</blockquote>
+<p>这个证明过程跟Fisk证明很类似。但是不再使用三角刨分，而是一种四边形刨分。</p>
+<h1 id="三角刨分triangulation">三角刨分(Triangulation)</h1>
+<p>在上面的章节中，我们看到了。三角刨分存在的必要性以及重要性。所以研究这种多边形三角刨分是很必要的。</p>
+<p>而这里可以看到，对于简单多边形(Simple Polygon)其三角刨分是一定存在的。简单多边形又称之为(Jordan Polygon)，其一定会将平面分成两个区域。而对于非简单多边形(Non-Simple Polygon)则不是这里考虑的对象。非简单多边形主要是指那种两条边相交，顶点重叠的多边形结构。</p>
+<p><strong><font size = 4>Ear-Cutting 算法</font></strong></p>
+<p>这个算法描述起来很简单，对于多边形上连续三个相邻顶点。可以围成一个三角形，我们成之为Ear，其存在三种状态：</p>
+<ul>
+<li>完全落在多边形内。</li>
+<li>完全落在多边形外。</li>
+<li>部分在多边形内，部分在多边形外。</li>
+</ul>
+<p>但是总可以找到这种完全落在多边形内的Ear，进而将其切除，然后递归切除更多的耳朵。可以注意到，这个过程中，每进行一步，多边形的顶点减1。所以其总可以约减成只有3个点的单纯三角形。</p>
+<p>而这个步骤依赖于Ear的存在性，好在前人已经证明，对于任何一个非简单的多边形都存在2个Ear。所以算法总是可以执行的，下面就是要构造这个算法了。</p>
+<p>为了说明严谨，这里先定义了凸多边形上的一个良序。即定义一个跟多边形孔洞和顶点个数相关联的顺序概念。因为我们上面看到，每一次Ear切除，顶点都会少1。如果建立了这种良序，找到了从高一级如何降低到第一级的方式，那么根据数学归纳法，这个操作可以递归执行，最后降低到最低的级别上去。这个良序可以如下定义。</p>
+<p>定义一个多边形的空洞个数为$H(P)$，顶点个数为$V(P)$。定义多边形的序关系$\prec$如下：</p>
+<ul>
+<li>如果$H(P_1)&lt;H(P_2)$，则称$P_1\prec{}P_2$。</li>
+<li>如果$H(P_1)=H(P_2)$，则当$V(P_1)&lt;V(P_2)$时称$P_1\prec{}P_2$。</li>
+</ul>
+<p>可以注意这是个良序，即任意非空子集都有最小元素。所以剩下的就是如何操作进行归纳法了。操作方式可以如下图表示。</p>
+<center><img src="../03.assets/p2.png"></center>
+<p>可以先在某一个方向上去取一个极值点，考察其相邻点组成的三角形。这个点一定是凸的，不然肯定会有在该方向上更远的点。而这个邻点组成的三角形一共有两种状况：</p>
+<ul>
+<li>三角形完全落在多边形内：
+<ul>
+<li>此时可以完全切除该三角形。</li>
+<li>操作后多边形定点数稳定减1.</li>
+</ul>
+</li>
+<li>三角形有一部分落在多边形外：
+<ul>
+<li>此时找离边IK最远的点M，MJ即我们要进行切割的内对角线。MJ必不可能跟其他边相交，如果相交，则必然存在一个点，该点距离IK的距离，比M距离IK的距离远。</li>
+<li>如果M是内部孔洞上的点，则操作后孔洞数减1。点数则会增加。</li>
+<li>如果M是上部边上的点，则操作后，变成了两个多边形，且每个多边形点数都比原来少。</li>
+</ul>
+</li>
+</ul>
+<p>通过上面的操作，可以看到，每一步操作，都使得多边形往序数变小的方向行动。由此可以得出结论，即每一个简单多边形都存在三角刨分。而且可以证明，对于一个顶点数为$n$的多边形，进行三角刨分，会形成$n-3$条内对角线，$n-2$个三角形。这个值会成为后面时间复杂度分析的重要依据。</p>
+<p>而对于有$n$个顶点，$h$个空洞的多边形，进行三角刨分，则会形成$n-3+3h$条内对角线，$n-2+2h$个三角形。思路很简单，就是对每一个空洞，都找一个顶点，剪开，这样就可以消除空洞，变成一个无空洞多边形，而这个操作会使得$n$个顶点的多边形，增加$2h$个顶点，所以会分割成$n-2+2h$个三角形，同时注意这剪下去的也是一条内对角线，所以内对角线一共有$n+2h-3+h$条。</p>
+<h1 id="单调多边形三角刨分triangulating-monotone-polygons">单调多边形三角刨分(Triangulating Monotone Polygons)</h1>
+<p>整个多边形三角刨分的过程可概述分成以下几步：</p>
+<ul>
+<li>通过扫描线的方式，将多边形分成多个单调多边形。</li>
+<li>通过扫描线的方式，将每个单调多边形进行三角刨分，分成多个简单三角形。</li>
+</ul>
+<p>所以这里需要先定义单调多边形，而单调多边形则是由单调链构成，所以先定义单调链结构。</p>
+<blockquote>
+<p>单调链(Monotone Chain)<br>
+使$M={p_1,\cdots,p_n}$为一个多边形链(polygonal chain)，$L$为一条线。如果$M$每个点在$L$上的投影顺序，依然保持点在链上的顺序。那么我们称$M$相对于直线$L$为单调的。如果一个polygonal chain在某个方向上为单调的，我们就称之为单调链。</p>
+</blockquote>
+<blockquote>
+<p>单调多边形(Monotone Polygon)<br>
+如果一个多边形称之为单调多边形。则其可以分解为两个链，并且这两条链相对于同一条直线单调。</p>
+</blockquote>
+<p>所以我们第一步则是确定，某个多边形是否单调的。这可以分成两个层面。</p>
+<ul>
+<li>判断一个多边形沿着某一边是单调的。这个是简单的。</li>
+<li>判断一个多边形是否是单调的。这个是稍微复杂的。不过有算法，可以在$O(n)$时间内确定，并且给出所有单调方向。</li>
+</ul>
+<p>但是这些问题不是主线。现在核心问题就是，如何刨分单调多边形(Monotone Polygon)。
+其实做法就是扫面线策略。其想法就很简单，存在一条扫面线，按照单调方向扫过去，按照情况逐个切分出刨分三角形，划分整个多边形即可。</p>
+<p>整个算法过程图如下：</p>
+<center><img src="../03.assets/p3.png"></center>
+<p>为了进行扫描线，我们要把所有点按单调方向保存好，形成一个事件队列。这个事件队列就是我们处理事件的顺序列表。然后在处理整个事件列表过程中，我们有可能会构造三角形，也有可能不。所以要使用一个栈(Stack)来保存遍历过的顶点，作为数据记录。整个处理过程就围绕着当前节点$c$，栈顶$t$，以及栈里第二个顶点$s$的情况来判断是否构造三角形。而这三个点的情况恰好可以根据整个刨分状态来进行分类。具体可以分成两大类，三小类。</p>
+<h2 id="case-a1-same-side--reflex">Case A1: Same Side + Reflex</h2>
+<center><img src="../03.assets/p4.png"></center>
+<p>如上图，此时：
+$c,t,s$在同一侧，同时$c,t,s$所定义的向内的角度大于180的。
+此时会发现，$c,t,s$无法构成任何三角形。也没有任何合适刨分三角形可以构造，所以此时只能把$c$缓存到栈中。</p>
+<h2 id="case-a2-same-side--convex">Case A2: Same Side + Convex</h2>
+<center><img src="../03.assets/p5.png"></center>
+<p>如上图，此时：</p>
+<p>$c,t,s$在同一侧，同时$c,t,s$所定义的向内的角度小于180的。
+此时会发现，$c,t,s$刚好构成一个Ear，是一个好的刨分三角形，所以此时可以Pop出$t$，并且构成一个刨分三角形。同时我们可以发现原来的$s$成为了新的$t$，而这种新情况下，有可能有新的Ear，此时也应该要切除。所以这是一个循环的检测，不停判断$c,t,s$关系，持续切除直到如下两个情况：</p>
+<ul>
+<li>不满足小于180度状况。</li>
+<li>只剩下栈最底部节点。</li>
+</ul>
+<p>此时都应该把$c$在Push到战中去。来继续为后面刨分做服务。</p>
+<h2 id="case-b-opposite-side">Case B: Opposite Side</h2>
+<center><img src="../03.assets/p6.png"></center>
+<p>如上图，此时：</p>
+<p>$c$会在对面侧，注意此时，根据前面描述：栈中的点都是在同一侧，且在一条链上。根据前面描述，此时点应该都是一个凹角，那么这个时候$c,t,s$可以大胆相连，构成一个三角形。而这也建立在，我们是一个单调多边形基础上。所以此时我们可以把栈清空，形成所有刨分三角形。</p>
+<p>而之后我们可以压入$c$，此后我们就相当于从这一侧开始进行刨分。根据对称等消息，前面情况任然使用。而最后会把整个多边形刨分成多个三角形。</p>
+<p><strong><font size = 4>算法分析</font></strong></p>
+<p>首先是正确性，这个可以通过前面保持的性质推出。</p>
+<p>而这个算法的复杂度，则不超过$O(n)$。在整个算法中一共有如下几步消耗：</p>
+<ul>
+<li>单调多边形两条单调链构成事件队列。这可以简单通过MergeSort，只需花费$O(n)$时间完成。</li>
+<li>每一个顶点最多被2次压入栈。</li>
+<li>一共有$n-2$个三角形刨分，每弹出一次，形成一个刨分三角形。所以扫描过程最多$O(n)$时间消耗。</li>
+</ul>
+<p>这说明算法的复杂度，不超过$O(n)$时间复杂度。</p>
+<h1 id="简单多边形分解monotone-decomposition">简单多边形分解(Monotone Decomposition)</h1>
+<p>上一章中讲述了单调多边形的三角刨分算法。所以对一个简单多边形的刨分问题，就剩下如何刨分成一个单调多边形集合了。</p>
+<p>而刨分成单调多边形，则建立在这样一个观察上面：对于某个方向上之所以不是单调的，那肯定是在这个方向上出现了褶皱。可细分为如下两个状况：</p>
+<ul>
+<li>stalactite：往下走的链突然向上走。</li>
+<li>stalagmite：往上走的链突然向下走。</li>
+</ul>
+<p>这两种情况，可以参看下面图示。所以算法就是要消除这两种情况。消除方法自然也是，使用一个内对角线连接即可。那么问题就是如何连这个内对角线问题了。</p>
+<p>这里是从stalagmite出发来说，如何去找一个合适的内对角线。实际想法很简答。就是对于一个stalagmite来说，其一定存在一个向上的空的支撑梯形。这个支持梯形，有一个上支点。这个支点可能来自于两边，也可能来自于一个stalactitie，但是因为梯形为空，所以这两个点相连，一定是一个内对角线，这条内对角线就是我们所求的对角线。</p>
+<center><img src="../03.assets/p7.png"></center>
+<p>所以对一个潜在的stalagmit我们都要预先记录一个helper来帮助我们快速找到这个空梯形的上支撑点。方式就是记录并维护这个活跃的空梯形。这里一共有潜在的6中可能性，对于每一个，我们都可以根据潜在可能性维护一个活跃梯形。具体来说如下</p>
+<ul>
+<li>Start Vertext
+<ul>
+<li>一个顶部的三角形凹点，这个点是一个可能退化的梯形开始，此时下方形成一个潜在的梯形，所以要该点加入，并且维护这个潜在梯形。</li>
+</ul>
+</li>
+<li>End Vertext
+<ul>
+<li>一个底部的三角形凹点，这个点标志着梯形的消失，应该删除对应的潜在梯形。</li>
+</ul>
+</li>
+<li>Left Adjaccency
+<ul>
+<li>左侧有一个向内拐点，此时原来梯形不再成立，此时需要一个新的梯形，就是这个点下方的潜在梯形，相当于用新梯形替换老的梯形。</li>
+</ul>
+</li>
+<li>Right Adjaccency
+<ul>
+<li>跟左侧情况类似。</li>
+</ul>
+</li>
+<li>Stalagmite
+<ul>
+<li>碰到Stalagmite，此时会取出helper，接连内对角线。此时原来的梯形被划开，消失了。同时注意Stalagmite此时会分裂，会划分成左右两个潜在的梯形。所以需要将原先梯形替换为这样一个左右的梯形，并且这个stalagmite点会成为这两个梯形的helper。</li>
+</ul>
+</li>
+<li>Stalactite
+<ul>
+<li>碰到Stalactite，此时显然，还不能直接找到其消除点。但是其预示着两个潜在梯形的合并，下方大空间是一个潜在的梯形结构，此时就要进行梯形合并操作。</li>
+</ul>
+</li>
+</ul>
+<p>以上就是为stalagmite寻找helper的情况分类，每一种都是根据点下方可能形成的潜在梯形来判断的。最后可以看到，当找到Stalagmite的时候，总是有一个空梯形可用，可以找到helper来划分梯形。</p>
+<p>一下图简单来说明：</p>
+<center><img src="../03.assets/p8.png"></center>
+<p>整个过程先按照高度排序号整个顶点，并从0开始。整个过程如下：</p>
+<ul>
+<li>遇到0，1。都是Start Event。可以认为开始维护其下方一个小小的潜在梯形。</li>
+<li>遇到2。这是相对于0梯形的一个Right Adjaccency。要将原来的梯形，替换成2对应的梯形。</li>
+<li>遇到3。这是一个Stalactite。两侧分别是1，2两个梯形。需要将梯形合并，并且标记helper为3.</li>
+<li>遇到4。这是一个相当于3梯形的一个Left Adjacceny。要将原来的梯形，替换成4对应的梯形。</li>
+<li>遇到5。这是一个Stalagmite。按照算法我们应该要破除该Stalagmite，将该点跟helper相连。即跟4相连。同时我们要将原来的梯形分割成，5左，5右两个梯形。</li>
+<li>遇到6。这是一个Stalagmit。按照算法，此时维护梯形为5左，所以其应该跟5相连。同时将5左梯形分割成，6左，6右两个梯形。</li>
+<li>然后遇到7，8，9。这些都是End Event。一次标志着，5右，6右，6左梯形的消亡。</li>
+</ul>
+<blockquote>
+<p>这里其实有个细节问题。对于Staglamite的处理过程，并没有完全处理Stalactite。可以看上面处理过程，任然有一个stalactite导致不是单调多边形。<br>
+对于Stalactite来说，可以明显看到，如果一路只遇到End Event也应该要将Stalactite跟其连接，这说明还有情况为处理。实际上对于Stalactite来说，其应该是要找一个下梯形支撑点。按照上面情况分类，这个可以由End Vertext，Left Adjaccency，Right Adjaccency，Stalagmite来提供。</p>
+</blockquote>
+<p><strong><font size = 4>算法分析</font></strong></p>
+<p>整个过程主要就是两部分：</p>
+<ul>
+<li>将整个顶点排序，这一定要花费$O(nlogn)$时间。</li>
+<li>遍历顶点，并且维护梯形结构，同时遇到Stalagmite，Stalactite时候查找结构，连接内对角线。这个可以通过一些如字典的数据结构实现。这样每一步消耗不超过$O(logn)$时间。</li>
+</ul>
+<p>所以整个刨分过程消耗为$O(nlogn)$量级。</p>
+<p>不过这个算法并不是最优算法。最后这个问题被Chazelle画上了句号。他给出了一个惊人的结论，就是对于任何一个简单多边形都可以在$O(n)$线性时间内完成三角刨分。</p>
+<h1 id="高维情况">高维情况</h1>
+<p>高维情况，这里只是概述了很多有意思的结论，多余的信息就需要自己去查找相关资料研究了。</p>
+<p>例如对于3维的三角刨分，我么可以刨分成四面体，称之为四面体刨分。首先有个直观的结论就是，这种刨分方式是不一定的，对应的刨分成的四面体个数也是不一定的。甚至有更坏的情况。存在一些多面体，无法只通过建立在顶点上的四面体刨分来完成。</p>
+<p>再例如对于3维来说，相对于画廊问题也存在完全相反的情况。这个便是Seidel&rsquo;s Polygon。在这个多面体内部，存在一个位置，即便在多面体所有点放上哨兵，也看不到这个位置。</p>
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
