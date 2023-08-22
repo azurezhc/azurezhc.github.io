@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title> - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="" />
+<meta property="og:description" content="04Voronoi图(Voronoi Diagram) 本章主题介绍平面如何划分。通过对平面划分成距离点最近的区域，与Voronoi图相关联。Voronoi图" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/04Voronoi%E5%9B%BEVoronoi-Diagram/" /><meta property="article:section" content="计算几何-课程笔记" />
+
+<meta property="og:site_name" content="一个小博客" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="04Voronoi图(Voronoi Diagram) 本章主题介绍平面如何划分。通过对平面划分成距离点最近的区域，与Voronoi图相关联。Voronoi图"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/04Voronoi%E5%9B%BEVoronoi-Diagram/" /><link rel="prev" href="http://azurezhc.github.io/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/05%E7%82%B9%E9%9B%86%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Delaunary-Triangulation/" /><link rel="next" href="http://azurezhc.github.io/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/03%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Triangulation/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/04Voronoi%E5%9B%BEVoronoi-Diagram\/"
+        },"genre": "计算几何-课程笔记","wordcount":  5806 ,
+        "url": "http:\/\/azurezhc.github.io\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/04Voronoi%E5%9B%BEVoronoi-Diagram\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster"></h1><div class="content" id="content"><h1 id="04voronoi图voronoi-diagram">04Voronoi图(Voronoi Diagram)</h1>
+<p>本章主题介绍平面如何划分。通过对平面划分成距离点最近的区域，与Voronoi图相关联。Voronoi图是一个经典问题，同时介绍了计算几何中的一个经典数据结构DCEL。</p>
+<ul>
+<li>Introduction
+<ul>
+<li>介绍Voronoi图的来源，应用场景。有一篇很不错的背景介绍文章。</li>
+</ul>
+</li>
+<li>Terminologies
+<ul>
+<li>介绍Voronoi图相关概念术语。</li>
+</ul>
+</li>
+<li>Properties
+<ul>
+<li>介绍Voronoi的特性。主要是等距性和非空性。</li>
+</ul>
+</li>
+<li>Complexity
+<ul>
+<li>简单介绍Voronoi的存储复杂性。</li>
+</ul>
+</li>
+<li>Representation
+<ul>
+<li>介绍对Voronoi的存储，表示。主要方式为主区域刨分(Subdivision)，同时也适用于其他一些表示。同时为了快速的查找，引入了DCEL。</li>
+</ul>
+</li>
+<li>DCEL
+<ul>
+<li>介绍了DECL数据结构来存储平面图结构。</li>
+</ul>
+</li>
+<li>Hardness
+<ul>
+<li>规约技术界定了Voronoi图的复杂度，使用的是排序方式来规约操作。</li>
+</ul>
+</li>
+<li>Sorted Sets
+<ul>
+<li>关注在某些情况下Voronoi图的求解问题是否会更容易。例如在某个方向排好顺序，类似凸包的Graham Scan方式，是否可以有效降低复杂度。</li>
+</ul>
+</li>
+<li>$VD_{sorted}$
+<ul>
+<li>$VD_{sorted}$即排序的Voronoi图复杂度。在这里引入了$\epsilon{}-Closeness$问题并将其归约到$VD_{sorted}$来说明排序对于降低Voronoi图的复杂度并没有帮助。值得一说的是，即便知道Voronoi图的问题也不能帮助排序，看似两个问题结构毫无关联。</li>
+</ul>
+</li>
+<li>Naive Construction
+<ul>
+<li>简单说明一下最朴素的构造方式。</li>
+</ul>
+</li>
+<li>Incremental Construction
+<ul>
+<li>增量式构造。即每次增加一个点的方式来构造Voronoi图</li>
+</ul>
+</li>
+<li>Divide-And-Conquer
+<ul>
+<li>基于分而治之的思路，将平面划分，分成多个区域然后合并起来操作。</li>
+</ul>
+</li>
+<li>Plane-Sweep
+<ul>
+<li>基于扫描线的方式来生成Voronoi图结构。基本想法是，根据已经扫描过的点来确定一些潜在的生成Voronoi点的事件位置。高层想法是基于抛物线结构。</li>
+</ul>
+</li>
+</ul>
+<h1 id="voronoi图介绍">Voronoi图介绍</h1>
+<p>Voronoi图第一次由G. F. Voronoi(1868 - 1908)第一次正式的提出并且界定，于是后来这种图结构，一般都称之为Voronoi图。直观来看Voronoi图由一系列点和边构成，这些边会把点隔开，各自围成一个区域，在该区域内的点距离该点的距离是最近的，如下图：</p>
+<center><img src="../04.assets/p1.png"></center>
+<ul>
+<li>这些中心点，我们称之为Voronoi Site，简称Site。</li>
+<li>这些区域，我们称之为Voronoi Cell，简成为Cell。从几何上来看，该Site之所以拥有这个Cell，是因为这个Cell中的点距离这个Site是最近的。</li>
+</ul>
+<p>用数学的方式定义来说如下：</p>
+<p>Voronoi图由一些d维空间中点$S=\Set{p_1,\cdots,p_n}$构成，每个点$p_i$称之为Site。对于每一个Site来说，存在一个区域Cell，该Cell包围目标$p_i$，该区域可表示为$Cell(p_i)=\set{q\in{}\mathbb{R}^n|d(q,p_i)&lt;d(q,p_j),\forall{}j\neq{}i}$。</p>
+<ul>
+<li>对于这样围成各个Cell的边，我们称之为Voronoi Edge，Voronoi边。</li>
+<li>对于这样各个Cell的点，我们称之为Voronoi Vertex，Voronoi顶点。</li>
+</ul>
+<p>根据这些定义我们可以得到一些特性：</p>
+<blockquote>
+<p>每个Cell都是凸的。</p>
+</blockquote>
+<p>因为对于每个Cell可以通过$p_i$跟其余$n-1$个点求所在半平面的交来来确定，因为半平面可以认为是一个凸多边形。而凸多边形在交运算下保持，所以Cell也是凸的。</p>
+<div class="details admonition question">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>思考问题<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>Voronoi图会包含线段，射线，以及直线</li>
+</ul>
+<p>只当所有点都在一条线上的时候会出现直线。因为存在直线，那么所有点间平分线都必须平行。有一个相交则都有交点。所以所有Site都在一条直线上。所以直线数目最哦多不超过$n-1$条。</div>
+        </div>
+    </div>
+<blockquote>
+<p>Non-empty Cells<br>
+非空Cell特性：每个Site都会有一个非空的Cell</p>
+</blockquote>
+<p>考察每个Site中，以$p_i$为中心的一个半径为$s$的$Disk(s,p_i)$。可以看到这个Disk必然会落到自己的Cell中。这是因为这里点集是一个有限集合，所以每个点之间的距离一定有一个最小值，取$s$为最小值的一半，这个$Disk(s,p_i)$里的点必然离这个$p_i$最近，所以会落到在Cell中。</p>
+<blockquote>
+<p>Empty Disks<br>
+空圆特性：给定平面上任何一个点$x$。存在一个$Disk(s,x)$为空的。即Disk不包含任何Site。</p>
+</blockquote>
+<p>这个地方可以简单讨论一下。当$x$落在Cell中的时候。可以发现，这个Disk的最大半径就是$x$到Cell所对应Site的距离。当$x$落在Voronoi Edge上时，其对应的最大半径就是$x$到该边相邻两个Cell上对应Site的距离。这两个距离时相等的。当$x$落在Voronoi Vertex上时，同理。这些都可以通过对Voronoi图的定义来得到。</p>
+<blockquote>
+<p>Nearest = Concyclic<br>
+最近邻Site皆共圆。</p>
+</blockquote>
+<p>这里并没有强调，这个最近邻Site有几个，就算有多个，由上面讨论，加上圆的定义可知，这个是显然的。实际上也可以反过来说，如果有两个最近邻Site，那可以认为$x$落在一条边上。如果有不少于3个，那么这个$x$一定是一个Voronoi Vertex。</p>
+<div class="details admonition question">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>思考问题<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>构造一个情况，每个Vertex的度小于4，但任然有大于3个点是共圆的。</li>
+</ul>
+<p>注意这里没有说一定要是最近邻的点了。所以实际上取一个圆上4个点，使其构成的四边形不相互平行就可以了。</div>
+        </div>
+    </div>
+<p>最后我们可以考察一个点$x$在边上的运动。当一个点在边上运动的时候，考察其最大空圆，可以看到这个空圆伴随变化。等到了Voronoi Vertex的时候，就会看到这个最大空圆犹如发生了分裂，沿着其余各个线的方向传递过去。</p>
+<h1 id="dcel结构">DCEL结构</h1>
+<p>下面就是考虑Voronoi图的存储描述问题，如果其存储过大，那显然其结构不会简单，时间复杂度不会低。所以这个时候就需要对其规模进行一个界定。其实方法就是从平面图出发，可以注意到Voronoi图一定是一个平面图结构，就可以掏出我们无敌的欧拉公式来处理他，处理方式可以如下图。</p>
+<center><img src="../04.assets/p2.png"></center>
+<p>可以添加一个无穷远点，并且将所有射线连接到这个无穷远点。这样就会成为一个标准的平面连通图。对于欧拉公式来说我们有：
+$$v-e+f-c=1$$</p>
+<p>其中$v$是顶点个数，$e$是边个数，$f$是面个数，而$c$则是连通分支个数。通常来说这个$c=1$，即只有一个连通分支。也是熟知连通平面图的欧拉公式。这里面我们有$n$个Site，所以$f=n$。</p>
+<p>此时我们还可以注意到对于Voronoi图来说，每个Vertex其度数一定大于等于3，即$3v&lt;D=2e$。结合两个公式有：</p>
+<p>$$e=v+n-2\leq{}\frac{2}{3}e+n-2\rightarrow{}n\leq{}3n-6$$</p>
+<p>所以我们可以得出上界</p>
+<ul>
+<li>Voronoi Vertex个数为$O(2n-4)$</li>
+<li>Voronoi Edge边数位$O(3n-6)$</li>
+</ul>
+<p>可以看到对于$n$个Site的Voronoi图产生的Vertex和Edge都是线性的。</p>
+<div class="details admonition note">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>注意<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">老师这里好像讲错了，依靠平面图特性，并不能得出上面的上限公式。而通过$v,e$的关系是可以的。而反过来讲，平面图并不能保证每个Vertex的度数大于3，所以应该跟平面图的特性无关，而是基于Voronoi图的特性出发。</div>
+        </div>
+    </div>
+<p><strong><font size = 4>DCEL结构</font></strong></p>
+<p>接下来就是讲如何存储Voronoi图，这里用的是一种通用的结构，子区域刨分结构。该结构可以用来存储所有类似的平面结构，即讲一个平面细分成一个一个的区域结构。而这些区域互相没有重叠，同时没有任何覆盖。Voronoi图则相当于这种形式的一个特例。</p>
+<p>现在来看这样一个数据结构的设计，首先有个HighLevel思想，设计需要达成什么目标。这里通俗来讲需要：</p>
+<ul>
+<li>图所有组成元素要记录下来。</li>
+<li>要存储关联关系。
+<ul>
+<li>从一个点可以找出所有与它关联的边，关联的面。</li>
+<li>从一个边可以找到所有与他关联的边，关联点等等。</li>
+<li>有些时候，我们要关注一个面，找到他的边界，以及边界的点等。</li>
+</ul>
+</li>
+</ul>
+<p>而DCEL结构切可以满足上述要求。DCEL是一种基于边的数据结构，结构大体来说由点，边，面三部分来组成。其最主要的技术就是边分解技术，即将一条有向边，分解成两个有向边，一个正向，一个逆向。而形成的数据结构可由下面三类表组成：</p>
+<p><strong><font size = 4>Half-Edge</font></strong></p>
+<center><img src="../04.assets/p3.png"></center>
+<p>Half-Edge数据结构如图。其相当于一条边中的那半条有向边。作为一条边的两部分，其要记录其孪生兄弟边(twin)。然后作为有向边要记录其起点(ori)。同时因为有向，可以定义其左右方向，就可以区分其两侧面的位置。这里约定以有向边的左侧定义其关联面，称之为Incidence Face，记录为inc。因为然后为了遍历需求，其还要记录其前后的Hals-Edge。记录在pred和succ。</p>
+<p>注意的是有向边的终点可以通过其twin的ori来确定。同时这个前驱和后继是唯一的，这个唯一性可以由其Incidence Face来确定。</p>
+<p><strong><font size = 4>Vertex</font></strong></p>
+<center><img src="../04.assets/p4.png"></center>
+<p>Vertex数据结构如图。对于一个顶点来说，要记录其坐标，即x和y。同时要记录这个顶点上关联的边。这里的记录方式是借助Half-Edge，通过类似于链表的方式来实现。准确来说，其随机记录一个出去的Incidence Edge来作为找到围绕顶点遍历的第一条边。随后通过后面的方式来遍历。</p>
+<p><strong><font size = 4>Face</font></strong></p>
+<center><img src="../04.assets/p5.png"></center>
+<p>Face数据结构如图。Face结构更少，其存储的只有一个inc字段。这个存储着一条Hals-Edge</p>
+<p>简述几个遍历操作思路</p>
+<ul>
+<li>给定一个面f如何遍历其所有边</li>
+</ul>
+<p>通过f的inc找到其边上的一个Half-Edge，然后通过其前驱后继遍历即可。</p>
+<ul>
+<li>给定一个点v如果找到其关联的所有边</li>
+</ul>
+<p>通过v的inc找到第一条Half-Edge，我们记录为e。然后注意到e-&gt;pred这条有向边，这个有向边，以v为终点。这相当于找到了另一条跟v关联的边。然后现在关注其孪生边e-&gt;pred-&gt;twin。这个边将是一个以v为源点的边，同时其所属在另一个平面中，这说明其pred边将不会是原先的e。这个可以通过简单画图看出来。所以可以通过这样的方式不断翻越，遍历v所关联的所有边。</p>
+<div class="details admonition question">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>思考问题<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>False，主要关注所在面。</li>
+<li>True</li>
+<li>True</li>
+<li>False</li>
+</ul>
+</div>
+        </div>
+    </div>
+<h1 id="voronoi图复杂度分析">Voronoi图复杂度分析</h1>
+<p>现在考虑给定点集合，构造出上述DCEL的时间复杂度。那么我们首先需要界定一下这个问题大致的难度。</p>
+<p>这里直接的想法就是规约。找到一个方法来界定下限。这里用到的规约方法就是如下的：</p>
+<p>$$Sorting\leq_N{}1D-VD\leq_N{}2D-VD$$</p>
+<p>其中$1D-VD$即1维的Voronoi图问题，对于1维来说，这即给定一系列点，确定其每个点间的最近距离平分线位置，所以规约如下进行。</p>
+<ul>
+<li>对于一个排序输入原封不动的传入1维Voronoi图算法。</li>
+<li>对于1维Voronoi图算法的输出，最后会给出一系列平分线组成的边结构。这个结构应该是一个简化的DCEL结构，然后通过一次扫描找到最小的那个点，通过不断的边翻越结构，依次列出所有后续的有序点即可。</li>
+</ul>
+<p>现在剩下到2维的规约。这里直接给出了一个$Sorting\leq_N{}2D-VD$的规约。</p>
+<p>其思路就是将排序点集放在圆上，然后通过2维Voronoi图算法来处理。然后此时因为所有点都在圆上，所以此时Voronoi图只有唯一的一个Vertex即那个圆的圆心。并且每个圆上每两个相邻点有一个平分射线，有Vertex发出设想外部。所以规约可以如下进行：</p>
+<ul>
+<li>对于一个排序输入，转化到单位圆上。</li>
+<li>对于2维Voronoi图算法，给出一个DCEL。然后类似的通过边翻越即可找到所有点的顺序。</li>
+</ul>
+<p>这里还提到了一种跟泛用的规约，即用抛物线映射，而不是圆来提到一样会得到相同的结论。</p>
+<p>现在考虑一些特殊结构情况，即拥有一些特殊结构后，其复杂度是否会降低？</p>
+<p>例如给出一个排序集合是否可以降低复杂度？在凸包问题中这个是可以降低到$O(n)$量级的。但是很可惜的是在Voronoi图问题中，即便已经排好序其任然要花费$\Omega(nlogn)$时间。</p>
+<p>这个问题实际上说明了凸包和Voronoi图结构本质上的区别。</p>
+<ul>
+<li>凸包结构是一种组合结结构(Combinatorial Structures)。</li>
+<li>Voronoi图则是一种几何结构(Geometric Structures)。</li>
+</ul>
+<p>区分这两个方式就是通过仿射变换来看(affine transform)。在仿射变化下，凸包具有不变性，即原来构成凸包的点，依旧是变化后点集构成凸包的点。但是对于Voronoi图来说，则不是，例如一个压缩变化，那么Voronoi则会发生巨大改变。实际上Voronoi图来说，强烈依赖于距离这个概念，距离这个概念则是几何中相当重要的一部分。</p>
+<p><font size = 4>$\mathbf{VD_{sorted}}$问题</font></p>
+<p>现在来说明，排好序的结构，对于Voronoi图来说，依然是$\Omega(nlogn)$。这个问题归结于$\epsilon-Closeness$问题，对于这个问题是Min-Gap的判定问题，其时间复杂度依然是$\Theta(nlog)$的。剩下就是看规约构造这个排序问题。</p>
+<p>这个规约可以用如下图表示：</p>
+<center><img src="../04.assets/p6.png"></center>
+<p>根据规约我们应该是</p>
+<ul>
+<li>对于$\epsilon-Closeness$的输入，变换到Voronoi图的输入。</li>
+<li>对于Voronoi图的输出，我们在变化回$\epsilon-Closeness$问题的输出。</li>
+</ul>
+<p>所以首先是一步骤提升变化对于$\epsilon-Closeness$的输入$x_1,\cdots,x_n$我们构造如下点$(x_i,\frac{i}{n}\epsilon)$作为Voronoi图的输入。这一步类似于提升操作，把所有点升到2维中去。</p>
+<p>然后我们通过Voronoi图算法给出Voronoi的DCEL结构。此时我们关注穿过x轴的那些Face和Edge。这个是很容易做到的，因为一定有一个负无穷远点。判断这个点在什么Site里面即可，然后通过Site找到Face不断遍历边判断是否跟X轴相交，即可找到x轴穿过的所有Site。</p>
+<p>现在我们关注每个点$x$是否都落在自己提升后点$(x_i,\frac{i}{n}\epsilon)$所张成的Cell中。这两有两种情况</p>
+<ul>
+<li>所有都在。这说明x轴穿过了所有Cell，那此时穿越顺序也构成了点的排序。那遍历一遍可以得到Min-Gap的情况，就可以得到是否小于$\epsilon$。</li>
+<li>至少存在一个点不在自己提升后张成的Cell中。则可以参考下图：</li>
+</ul>
+<center><img src="../04.assets/p7.png"></center>
+<p>那么存在一个提升后$I$，其对应的原来点$i$落在了$J$张成的Cell中。那么如图所示，我们可以简单得到关系:</p>
+<p>$$d(x_i,x_j)&lt;d(x_i,x_J)&lt;d(x_i,x_I)=\frac{i}{n}\epsilon\leq{}\epsilon$$</p>
+<p>由此可以得到$\epsilon-Closeness$问题的答案。</p>
+<h1 id="voronoi图构造">Voronoi图构造</h1>
+<p>最简单来讲，我们可以通过原始暴力算法来做。方法思路就是，每个点原始占用整个平面，然后通过计算每个点跟其他点的平分线来剪切整个平面最后依次计算出每个Voronoi图Cell。显然这个方法非常笨重，甚至无法有效构造DCEL结构。所以后面来看更高效的思路。</p>
+<h2 id="incremental-construction">Incremental Construction</h2>
+<h2 id="divide-and-conqure">Divide-And-Conqure</h2>
+<h2 id="plane-sweep">Plane-Sweep</h2>
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

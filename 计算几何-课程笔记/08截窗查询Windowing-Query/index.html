@@ -5,18 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title> - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="" />
-<meta property="og:description" content="计算几何-笔记大纲 本系列笔记主要记录学堂在线上，清华大学计算几何的教学内容。 清华大学-计算几何 本大纲概述讲述的课程内容，并做以简短的论述。 本" />
+<meta property="og:description" content="08截窗查询(Windowing Query) 在第七章中讨论的Range Query是给定一个矩形，查询有多少落在矩形中的点。而在本章，则相当于其一个扩展" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://azurezhc.github.io/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E7%AC%94%E8%AE%B0%E5%A4%A7%E7%BA%B2/" /><meta property="article:section" content="计算几何-课程笔记" />
+<meta property="og:url" content="http://azurezhc.github.io/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query/" /><meta property="article:section" content="计算几何-课程笔记" />
 
 <meta property="og:site_name" content="一个小博客" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="计算几何-笔记大纲 本系列笔记主要记录学堂在线上，清华大学计算几何的教学内容。 清华大学-计算几何 本大纲概述讲述的课程内容，并做以简短的论述。 本"/>
+<meta name="twitter:description" content="08截窗查询(Windowing Query) 在第七章中讨论的Range Query是给定一个矩形，查询有多少落在矩形中的点。而在本章，则相当于其一个扩展"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E7%AC%94%E8%AE%B0%E5%A4%A7%E7%BA%B2/" /><link rel="next" href="http://azurezhc.github.io/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query/" /><link rel="prev" href="http://azurezhc.github.io/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E7%AC%94%E8%AE%B0%E5%A4%A7%E7%BA%B2/" /><link rel="next" href="http://azurezhc.github.io/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -26,9 +26,9 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/azurezhc.github.io\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E7%AC%94%E8%AE%B0%E5%A4%A7%E7%BA%B2\/"
-        },"genre": "计算几何-课程笔记","wordcount":  330 ,
-        "url": "http:\/\/azurezhc.github.io\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E7%AC%94%E8%AE%B0%E5%A4%A7%E7%BA%B2\/","publisher": {
+            "@id": "http:\/\/azurezhc.github.io\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query\/"
+        },"genre": "计算几何-课程笔记","wordcount":  950 ,
+        "url": "http:\/\/azurezhc.github.io\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query\/","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -64,25 +64,60 @@
             </a></div>
     </div>
 </header><main class="main">
-                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster"></h1><div class="content" id="content"><h1 id="计算几何-笔记大纲">计算几何-笔记大纲</h1>
-<p>本系列笔记主要记录学堂在线上，清华大学计算几何的教学内容。</p>
-<p><a class="link-markdown-demo-site" href="https://www.xuetangx.com/course/THU08091000327/16906681?channel=i.area.manual_search" rel="noopener">清华大学-计算几何</a></p>
-<p>本大纲概述讲述的课程内容，并做以简短的论述。</p>
-<p>本课程主要参考教材即CGAA
-Computational Geometry Algorithm and Applications</p>
-<p>其中绝大部分内容跟本书有对应，也在此稍微引用。
-另外一点是，对于计算几何的部分内容，部分算法教材也会有引用到。因为计算几何其实就可以理解为，用算法来解决几何问题。</p>
-<h1 id="课程的主要内容">课程的主要内容</h1>
-<p>课程主要分为几个主要命题，命题如下：</p>
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster"></h1><div class="content" id="content"><h1 id="08截窗查询windowing-query">08截窗查询(Windowing Query)</h1>
+<p>在第七章中讨论的Range Query是给定一个矩形，查询有多少落在矩形中的点。而在本章，则相当于其一个扩展。对于点来说相当于对0维物体的查询，这里也可以对更高维度物体进行查询。例如对于1维来说，相当于给定一个矩形，查询与矩形相交的线段。</p>
 <ul>
-<li><a class="link-markdown-demo-site" href="/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/01%E5%87%B8%E5%8C%85Convex-Hull/" rel="noopener"><font size=4>01凸包(Convex Hull)</font></a></li>
-<li><a class="link-markdown-demo-site" href="/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/02%E5%87%A0%E4%BD%95%E6%B1%82%E4%BA%A4Geometric-Intersection/" rel="noopener"><font size=4>02几何求交(Geometric Intersection)</font></a></li>
-<li><a class="link-markdown-demo-site" href="/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/03%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Triangulation/" rel="noopener"><font size=4>03三角刨分(Triangulation)</font></a></li>
-<li><a class="link-markdown-demo-site" href="/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/04Voronoi%E5%9B%BEVoronoi-Diagram/" rel="noopener"><font size=4>04Voronoi图(Voronoi Diagram)</font></a></li>
-<li><a class="link-markdown-demo-site" href="/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/05%E7%82%B9%E9%9B%86%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Delaunary-Triangulation/" rel="noopener"><font size=4>05点集三角刨分(Delaunary Triangulation)</font></a></li>
-<li><a class="link-markdown-demo-site" href="/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/06%E7%82%B9%E5%AE%9A%E4%BD%8DPoint-Location/" rel="noopener"><font size=4>06点定位(Point Location)</font></a></li>
-<li><a class="link-markdown-demo-site" href="/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search/" rel="noopener"><font size=4>07几何范围查找(Geometric Range Search)</font></a></li>
-<li><a class="link-markdown-demo-site" href="/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query/" rel="noopener"><font size=4>08截窗查询(Windowing Query)</font></a></li>
+<li>Orthogonal Windowing Query
+<ul>
+<li>主要介绍正交截窗查询(Orthogonal Windowing Query)的定义和分类。</li>
+</ul>
+</li>
+<li>Stabbing Query
+<ul>
+<li>主要介绍Stabbing Query。针对上述给出的Type B类型转化为1维查询问题。而该1维查询就相当于给定一个值，Stabbing出所有相交线段。</li>
+</ul>
+</li>
+<li>Interval Tree: Construction
+<ul>
+<li>本节主要介绍Interval Tree结构。介绍其构成方式，内部构成结构。最后给出一个简单的复杂度。</li>
+</ul>
+</li>
+<li>Interval Tree: Query
+<ul>
+<li>本节主要介绍如何在Interval Tree上左Stabbing Query。在该算法上给出查询的时间复杂度。</li>
+</ul>
+</li>
+<li>Stabbing With A Segment
+<ul>
+<li>介绍完1维直线的Stabbing Query之后，还需要回到2维的问题上。在2维中，这里实际是一个线段去做Stabbing Query。这里的主要改变就是修改Interval Tree中的两边List改为Range Tree。最后给出一个Windowing Query的算法，并分析出其算法性能。</li>
+</ul>
+</li>
+<li>Grounded Range Query
+<ul>
+<li>本节主要目标为了优化上面算法中的空间复杂度度。因为使用了Range Tree使得算法空间复杂度为$O(n)$，而思路想法在于Windowing Query中的Range Query实际上是一个无界的边界，所以构成了一个特殊的Range Query，即Grounded Range Query。</li>
+</ul>
+</li>
+<li>1D-GRQ Using Heap
+<ul>
+<li>本节介绍在1维中使用最小堆(Minimum Heap)来实现上面的GRQ算法。这里用堆的一个重要原因是因为其可以拓展到2维情况下。</li>
+</ul>
+</li>
+<li>Priority Search Tree
+<ul>
+<li>主要介绍优先搜索树(Priority Search Tree)，PST=Heap+BBST。</li>
+</ul>
+</li>
+<li>2D-GRQ Using PST
+<ul>
+<li>主要介绍基于PST怎么来做上面的2维Windowing Query。讲述了算法伪代码，举出了求解的例子，还分析了查询时间。注意到这个查询树的时间任然是O(r+logn)但是空间复杂依然变为O(n)</li>
+</ul>
+</li>
+<li>Segment Tree
+<ul>
+<li>本节主要目标其实是解决通用的Windowing Query。在通用的情况下线条并不再是正交的，于是对于上面Type B的那些线段，前述方法将失效。而解决方法就是使用Segment tree。</li>
+</ul>
+</li>
+<li>Vertical Segment Stabbing Query</li>
 </ul>
 </div></div></div>
             </main><footer class="footer">
