@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title> - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="" />
+<meta property="og:description" content="TimeLine结构 本文，主要总结我在写游戏代码过程中对于时间轴概念的理解和使用。 在游戏开发过程中，不管是客户端还是服务器开发，不可避免的会" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/03TimeLine%E7%BB%93%E6%9E%84/" /><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="一个小博客" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="TimeLine结构 本文，主要总结我在写游戏代码过程中对于时间轴概念的理解和使用。 在游戏开发过程中，不管是客户端还是服务器开发，不可避免的会"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/03TimeLine%E7%BB%93%E6%9E%84/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/02%E7%8A%B6%E6%80%81%E4%B8%8E%E5%87%BD%E6%95%B0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA\/03TimeLine%E7%BB%93%E6%9E%84\/"
+        },"genre": "posts","wordcount":  6099 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA\/03TimeLine%E7%BB%93%E6%9E%84\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 6099 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 13 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#timeline结构">TimeLine结构</a></li>
+    <li><a href="#全局timer">全局Timer</a>
+      <ul>
+        <li><a href="#时间轮与时间累计">时间轮与时间累计</a></li>
+      </ul>
+    </li>
+    <li><a href="#全局还是局部">全局还是局部</a>
+      <ul>
+        <li><a href="#全局与协程">全局与协程</a></li>
+      </ul>
+    </li>
+    <li><a href="#一次触发与持续修改">一次触发与持续修改</a></li>
+    <li><a href="#时间膨胀">时间膨胀</a></li>
+    <li><a href="#持续概念的封装">持续概念的封装</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="timeline结构">TimeLine结构</h1>
+<p>本文，主要总结我在写游戏代码过程中对于时间轴概念的理解和使用。</p>
+<p>在游戏开发过程中，不管是客户端还是服务器开发，不可避免的会遇到定时器的概念，即经过一段时间之后再执行某段逻辑。甚至对于电子游戏来说，其本身就是不断Tick进行逻辑刷新来推进的，时间概念在游戏中必不可少。</p>
+<p>而在此之前已经描述过状态的抽象概念，在客户端表现中，与时间相关的状态随处可见。例如，一段动画，需要Tick来不断计算骨骼位置，同时又可以随时打断动画，这就说明这个动画播放的时候存在一个状态对象概念，打断之时，有对应操作来切换动画。</p>
+<p>本文主要记录我对抽象时间轴的理解，封装和使用。</p>
+<h1 id="全局timer">全局Timer</h1>
+<p>首先，对于定时器来说，实际上定时触发与要触发逻辑是一个完全无关的结构。例如0.5s之后触发一个弹出UI逻辑，这个弹出UI逻辑可以替换为任意一个逻辑结构。即定时触发这一个功能概念，可以封装成一个稳定结构。该结构可以与任何结构服用组合在一起，所以一般的项目都会提供一个全局的Timer类型，例如如下的一个简单C#代码结构。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">TimerManager</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 单一实例 </span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="n">TimerManager</span> <span class="n">instance</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 存储所有tick的实例计数</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">SingleTimer</span><span class="p">&gt;</span> <span class="n">timer_dict</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">timer_index</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 添加一个在固定时间回调的函数，C#中Action 相当于一个无参数函数</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">AddTimer</span><span class="p">(</span><span class="kt">float</span> <span class="n">time</span><span class="p">,</span> <span class="n">Action</span> <span class="n">action</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">instance</span><span class="p">.</span><span class="n">timer_index</span> <span class="p">+=</span> <span class="m">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">instance</span><span class="p">.</span><span class="n">timer_dict</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">instance</span><span class="p">.</span><span class="n">timer_index</span><span class="p">,</span> <span class="k">new</span> <span class="n">SingleTimer</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">action</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">instance</span><span class="p">.</span><span class="n">timer_index</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 记录经过多少时间的数据结构类</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">SingleTimer</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">float</span> <span class="n">total_time</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">float</span> <span class="n">pass_time</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">Action</span> <span class="n">action</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面结构也可以通过下图来表述：</p>
+<center><img src="../TimeLine结构.assets/d1.drawio.png"></center>
+<p>如代码结构所示，调用静态函数接口<code>Timer.AddTimer</code>即可实现在某个时间之后固定调用某个函数功能，而通过该函数回调就可以实现意逻辑的触发结构。但也可以注意到<code>TimerManager</code>是一个静态单例类，存在一个Dictionary结构来存放所有的Timer结构。</p>
+<p>即</p>
+<ul>
+<li>有一个全局的内存字典。</li>
+<li>字典每个索引存放了一个累计记录时间结构。</li>
+<li>每一帧更新的时候，去给<code>pass_time</code>添加<code>delta_time</code>来完成累计时间功能。</li>
+<li>当<code>pass_time</code>跨过<code>total_time</code>的时刻，触发回调。</li>
+</ul>
+<p>这样一个Dictionary存放结构，是因为对于每一个定时回调，都是一个不同的触发逻辑对象。对于同一个函数，两次0.5s后的延时调用，也要触发两次。同时我们又要可以取消延时调用。这说明每一次记时都是不同实例数据结构，以及应该有标记来记录对应的记时操作。</p>
+<p>这里面有一个很重要的地方就是，实际上对于时间来说，一定要有一个状态，一个数据区块，来记录究竟过了多少时间。下面可以看到不论是时间轮，还是时间累计方式，而这个时间记录结构，是不可避免的。这与前面[02状态与函数]中所述对应：</p>
+<p><em><center>对于状态来说，时间是一个本质问题</center></em></p>
+<p>这里我们看到了</p>
+<ul>
+<li>延时与回调无关&ndash;封装记录时间结构，通过回调来触发任意逻辑。</li>
+<li>每次延时不相关&ndash;每次延时，创建不同实例数据结构记录。存放Dictionary。</li>
+<li>记录时间结构&ndash;需要一个地方来记录经过多少时间，在Tick中更新。</li>
+</ul>
+<h2 id="时间轮与时间累计">时间轮与时间累计</h2>
+<p>一般来讲，对于这样一个计时操作，一般首先会想到将时间累计的方式，恰如上面所述。但是我们可以仔细观察，会发现：</p>
+<ul>
+<li>对于绝大部分情况来说，每次Tick只是在更新数据，真正生效的只有<code>pass_time</code>跨过<code>total_time</code>的时刻。</li>
+</ul>
+<p>但是累计时间似乎又是计算<code>pass_time</code>跨过<code>total_time</code>的必要部分。这相当于去计算$\sum_i^n{}t_i&gt;T$这件事情，但是可以简单发现一件事情，如果每次更新时间是一个固定数值即$t_i=t_0$那么可以简单计算出$n=T/t_0$。这相当于计算出第$n$次Tick的时候触发该事件，省略了之前累计时间的开销。这个结构可以用下图表示：</p>
+<center><img src="../TimeLine结构.assets/d2.drawio.png"></center>
+<ul>
+<li>每次Tick前进一格，查询该槽位中对象数量。</li>
+<li></li>
+</ul>
+<p>而这个结构实际就是时间轮模型。</p>
+<p>那么时间轮显然省略了累计时间这件事情，但是有省略记录时间这件事情么？实际上并没有，因为这个时间轮的槽位依旧是时间状态的记录者。我们可以简单想一件事情，如果中途发生了触发事件修改，两个模型将如何操作：</p>
+<ul>
+<li>累计时间模型&ndash;获取目标ID时间记录结构，修改其上的目标时间$T$。</li>
+<li>时间论模型&ndash;将目标ID回调结构，移出当前槽位，放到新的槽位中去。</li>
+</ul>
+<p>实际上可以认为，一个是每次去累计时间，另一个则是一开始算好tick次数来进行延时调用。</p>
+<p>时间轮是Linux上经典的算法，因为其效率对比累计时间方式要高太多了。其原因在于每次Tick不用大批量更新时间记录结构，而是查询一下目标槽位即可知道要触发回调的时间。而这种方式实际上可以认为是通过提前除法计算来建立的，即提前计算，来节约更新时间操作形成。而落到高层想法细节，其实就是不去遍历没必要的时间记录结构。或者换句话说，<strong>如果一个回调要很久以后触发，那么这个回调在最近的Tick中是完全没必要考虑的</strong>。</p>
+<p>通常来讲时间轮，会形成一个轮的形式，而不是一个线的形式。这是因为，如果是单纯一个线，因为每次tick的$t_0$很小。那么其槽位将会非常多，假设$t_0=1s$，那么即时1天小时，也需要86400个槽位。更别说，对于游戏来说定时要求会更精细。那么槽位会非常多，而这些槽位实际上也是要内存记录的。
+怎么解决这个问题？其实就跟建立时间轮的思路一样，也跟现代记录时间的方法对应。对于很久以后的回调，我们不用计算的非常细致，只有在接近的时候，才有仔细划分的必要。结构可以用下图标识：</p>
+<center><img src="../TimeLine结构.assets/d3.drawio.png"></center>
+<p>所以其实思想非常简单。就是提前计算做好映射来减少Tick累计记时，而HighLevel的想法就是对于很久以后的事情，现在并不需要考虑特别细致。</p>
+<h1 id="全局还是局部">全局还是局部</h1>
+<p>这里我们思考一个问题，这个TimerManager是否必须是全局静态单例。我们思考一下全局静态单例结构带来了什么？</p>
+<ul>
+<li>全局单例，相当于把整个延时调用结构封装成一个单纯功能，调用接口即可实现延时调用。任何地方都可以方便使用。</li>
+<li>但是也因为其是全局的，单纯功能封装。所以不知道什么时候该取消回调。而每个回调结构中，实际存有一个跟逻辑回调关联的实例对象。这就导致一个问题，实例对象的生命周期，不由TimerManager管理，但是TimerManager会引用该对象。进而需要在对象生命结束时，手动移除TimerManager中的Timer，避免回调时触发错误逻辑，如下图。</li>
+<li>TimerManager中关联的实例对象，遍布各个模块，这导致其基本不可能是内存连续的。因为每个模块有自己的创建时机，创建流程，这些跟其他模块耦合肯定不大。这说明这些内存分配基本无法统一，这导致内存必定是散乱的。这</li>
+</ul>
+<center><img src="../TimeLine结构.assets/d4.drawio.png"></center>
+<p>从上面可以看到，这样一个全局结构，注定的会导致每个使用TimerManager的模块，还要自己去移除相关的回调结构。这导致每个模块必须记得去<code>Timer.RemoveTimer</code>。如果不移除就会有潜在的trace风险。而根据经验来看，这种事情是经常发生的。</p>
+<p>内存方面问题，看上去并不重要，对于架构来说，其并不影响代码结构。但是如果考虑到内存连续特性，就会发现其又不适合的特点。例如ECS，其效率高效来源之一就是内存连续排布，如果这样做时间管理那必然难以实现ECS。所以ECS是不会有TimerManager结构的，正如其所说。</p>
+<p>另一方面是，这样一个结构可以显然的变成局部结构。即每个相关模块持有一个这样的TimerManager结构，而不是全局TimerManager。如下图的结构也是一样可行的。</p>
+<center><img src="../TimeLine结构.assets/d5.drawio.png"></center>
+<p>这样结构可以看到：</p>
+<ul>
+<li>每次调用不再是一个全局方法直接进行，而是要查找关联对象。然后添加关联回调。这导致调用TimerManager的方式变复杂了，而且要知道自己回调关联什么对象。</li>
+<li>但是这也带来了好处，Tick接口也是通过查找关联对象来走，例如上图中的角色对象。如果角色对象销毁，自然Tick找不到角色对象，角色对象上的Timer也不再更新，自动销毁，我们添加Timer非常直接而无后顾之忧。</li>
+<li>实际上也可以发现，局部TimerManager方式，本质相当于确定对象，然后调用对象上直接轮询的固定Tick接口。例如这里，角色对象一定有一个Tick函数接口，然后去更新里面的Timer，Timer就存放在角色对象结构上。</li>
+</ul>
+<p>这样一个方式可以很好的解决全局TimerManager的一些弊端，例如忘记移除Timer情况。但是很可惜的是，这种划分方式一般很难划分清楚。实际上这个结构如果分到非常细节，那么会变成类似ECS的结构。因为这个结构中，同一类对象都会有一个查找过程，那么这些查找对象可以存放在响相邻的内存块中去遍历。这就是ECS内存块相邻结构的来源，进而也提升了内存命中率。</p>
+<p>其实两种方式都可以，针对目前的项目状况，选取最恰当的实现方式即可。但是要对每个结构有着清楚的认知。</p>
+<h2 id="全局与协程">全局与协程</h2>
+<p>有些语言提供了一中协程的方式，例如lua，unity中C#都提供了协程概念。其似乎是一种底层提供的可以延时调用的快捷方式，例如如下C#代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">GM</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 启动一个协程</span>
+</span></span><span class="line"><span class="cl">        <span class="n">StartCoroutine</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">PrintInfo</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">IEnumerator</span> <span class="n">PrintInfo</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// yield返回 3s之后再继续往下走</span>
+</span></span><span class="line"><span class="cl">        <span class="k">yield</span> <span class="k">return</span> <span class="k">new</span> <span class="n">WaitForSeconds</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&#34;PRINT INFO 1&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kt">float</span> <span class="n">pass_time</span> <span class="p">=</span> <span class="m">0f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">yield</span> <span class="k">return</span> <span class="k">new</span> <span class="n">WaitForSeconds</span><span class="p">(</span><span class="m">0.1f</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">pass_time</span> <span class="p">&gt;</span> <span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">pass_time</span> <span class="p">+=</span> <span class="m">0.1f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>协程跟我们的Timer结构看上去相差很大，可以在代码运行块层级，直接实现一个暂停延迟的效果，甚至可以结合<code>While</code>语句直接构成一个持续更新的效果。
+但实际上其跟全局Timer有异曲同工之妙，只是时间记录的方式，被语言特性所取代。一般来讲，语句都是按顺序同步执行，但是协程过程可以这么理解。</p>
+<ul>
+<li>当运行到<code>yield return</code> 时候返回一个记录固定时间的时间记录结构。</li>
+<li>然后存在一个Tick结构，在该时间结构上累计时间，完成目标计时之后继续往下走。</li>
+</ul>
+<p>所以其本质也会拥有全局Timer的利弊，但是因为其语言特性，会拥有闭包上下文环境，即可方便的访问整个块环境内的任意变量，所以写代码更方便，更快捷。但是也带来了对应的坏处：</p>
+<ul>
+<li>可以方便的访问局部环境内的任意变量。</li>
+<li>不好取消，例如上面代码中，如果涉及对象，那么对象销毁时，根本无法涉入到这个代码块内部中去。只能在代码块中加判空来处理。这相当于Tick结构要知道Tick逻辑的各种状况，并且去处理。</li>
+</ul>
+<h1 id="一次触发与持续修改">一次触发与持续修改</h1>
+<p>在前面的讨论中，我们都是针对延时触发效果来进行叙述的。即延迟一段时间后触发一个逻辑。
+但是在游戏中，尤其是客户端逻辑中，存在大量的持续更新逻辑，最主要的就是，插值效果！对于插值来说，其往往需要在$t\in[0,T]$时间段内持续计算一个$f(t)$的值。而过了该时间段之后，该计算便不再进行。</p>
+<p>显而易见的，这种效果需要$t\in[0,T]$时间段内的值来计算，即需要累计值。所以很简单的问题出现了，时间轮不能很好的完成这个功能！因为这个Timer在时间论上横跨一段时间，这表示：</p>
+<ul>
+<li>如果横跨一段时间轮，那么其添加，移除都很麻烦。如果横跨60个槽位，那么60个槽位都要压入。这操作并不见得省力。</li>
+<li>对于时间轮来说，其掩盖时间间隔，即每个间隔为$t_0$，但是Timer开始到目前所经过的时长不会传给逻辑结构，逻辑还需要自己去算一下时间间隔来计算$t$。而这就显得很没必要了。</li>
+</ul>
+<p>所以简单一想，可以知道累计时间的方式更适合。实际上这说明Timer结构实际可以分成两部分结构来运行，如下图。</p>
+<center><img src="../TimeLine结构.assets/d6.drawio.png"></center>
+<p>其实可以注意到这一步实际上可以理解为最早的TimerManager扩展版：原来的Timer中只包含一个结束时回调逻辑，把这种Timer理解为某一类timer。其结构恰好非常固定，而我们可以添加跟多种类的Timer，例如每次累计时间，都会调用回调函数并固定传入经过时间的Timer，此即可以实现时间轴结构。</p>
+<p>不过通常来讲，这种包含一段持续时间计算的逻辑结构，我都会包装在新Timer之中。即建立新的Timer类型，在其Tick逻辑中，更新完<code>pass_time</code>后，直接计算逻辑。这时候会发现，这种新Timer类型，就彷佛对游戏中各种动画等，时间Tick结构的一种对应封装。</p>
+<h1 id="时间膨胀">时间膨胀</h1>
+<p>对于很多客户端来说，都涉及到时间膨胀的概念。即时间流逝并不是固定的，对于很多游戏表现需求，这基本时必须的。</p>
+<p>正常状况下，游戏中流逝时间跟现实一样，即游戏中的1s相当于现实世界中的1s。但是有一些情况，我们需要加快或放慢游戏中的时间速率。例如，倍速&ndash;游戏中ns相当于现实中1s，游戏中所有流速加快。子弹时间&ndash;游戏中0.1s相当于现实中1s，游戏中速度变慢。</p>
+<p>也就是对于Tick的时间间隔不再固定，而是一个受到倍率参数控制缩放后的值。</p>
+<p>对于累计计时来说，处理就很简单了，对于每次累加的$\Delta{}t$，让其收到倍率参数控制即可，然后所有Timer就都受到了时间膨胀影响。但是时间轮呢？通过简单思考，如果对于加速Tick来说，似乎还可以处理，只需要每次跨越的槽位变多即可。但是如果时间变慢，慢到一帧流逝的时间小于槽位宽度$\Delta{}t&lt;t_0$似乎就无法处理了，因为粒度不够，无发区分槽位中应该触发哪些回调。实际上这里有几个方式来解决：</p>
+<ul>
+<li>细化最小单位槽位，即最小槽位标识的时间间隔更小。但是这会加大时间轮长度，而且实际限定了最小时间膨胀率。</li>
+<li>针对每个槽位Timer对象，添加一个槽位偏移值。然后记录一个累计值，对比累计值与列表中的值来完成回调。如下图：</li>
+</ul>
+<center><img src="../TimeLine结构.assets/d7.drawio.png"></center>
+<ul>
+<li>我们会累计每次Tick时间间隔，记录为$t$，当$t$超过槽位边界的时候减少该槽位值。形成槽位上的余数值$t&rsquo;$，这相当于在该槽位中有一段。</li>
+<li>如果跨过槽位，显然槽位中所有Timer触发，跟原始逻辑一样。当有余数的时候，可以跟槽位中的Timer对比残留时间间隔，如果大于则触发该Timer。</li>
+<li>当时间间隔变为$t_2&lt;t_0$后。此时会在局部槽位中累计余数值$t&rsquo;$。根据上面所述依然会正确的触发对应Timer。而且不限制缩放倍率。</li>
+</ul>
+<p>实际上可以认为，其实累计时间方式也是有个最小间隔，这个最小间隔就是浮点数能表示的最小数值。也就是说，时间膨胀最慢是每帧更新浮点数的最小间隔，这也是因为每次更新的$\Delta{}t$也是一个浮点数。但是用这个数值来直接划分槽位并不合适，于是在给的槽位宽度中才有一个局部的累计计时的方式来筛选触发的回调。不过浮点数的最小间隔并不是一个等距结构，是一个指数分布结构，这里面也不可否认的存在着累计浮点误差的问题。</p>
+<p>此外对于游戏更新来说，也有渲染帧，固定帧区分。对于渲染帧来说，其更新时间往往有一定浮动，例如卡顿，就会导致某一帧的时间间隔大于槽位间隔。此时时长也不可能精确按照槽位来走，也需要一种补充计算操作。
+实际上对于很多计算几何，物理更新部分，当Tick函数更新的时候，也会根据更新时间间隔$\Delta{}t$与最小计算间隔$t_0$来弥补计算次数，因为计算时间间隔$\Delta{}t$过大，回导致jitter现象。所以也去按照一个小间隔去划分更新。</p>
+<h1 id="持续概念的封装">持续概念的封装</h1>
+<p>上面我们深入的讨论了，对于时间相关概念的思考。其实我认为这些都可以汇总成一句话：对于时间封装的思考。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i></a>
+            <a href="/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/02%E7%8A%B6%E6%80%81%E4%B8%8E%E5%87%BD%E6%95%B0/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

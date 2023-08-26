@@ -1,12 +1,10 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>azurezhc的游戏开发人生</title>
-        <link>http://azurezhc.github.io/</link>
-        <description>一个热爱游戏的平凡程序</description>
+        <title>所有文章 - azurezhc的游戏开发人生</title>
+        <link>http://azurezhc.github.io/posts/</link>
+        <description>所有文章 | azurezhc的游戏开发人生</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>azurezhc@gmail.com (azurezhc)</managingEditor>
-            <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Fri, 18 Aug 2023 00:00:00 &#43;0000</lastBuildDate>
-            <atom:link href="http://azurezhc.github.io/index.xml" rel="self" type="application/rss+xml" />
-        <item>
+            <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Fri, 25 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://azurezhc.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>计算几何课程</title>
     <link>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/01%E5%87%B8%E5%8C%85Convex-Hull/</link>
     <pubDate>Fri, 25 Aug 2023 00:00:00 &#43;0000</pubDate>

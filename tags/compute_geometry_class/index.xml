@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>compute_geometry_class - 标签 - azurezhc的游戏开发人生</title>
+        <link>http://azurezhc.github.io/tags/compute_geometry_class/</link>
+        <description>compute_geometry_class - 标签 - azurezhc的游戏开发人生</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>azurezhc@gmail.com (azurezhc)</managingEditor>
+            <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Fri, 25 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://azurezhc.github.io/tags/compute_geometry_class/" rel="self" type="application/rss+xml" /><item>
+    <title>计算几何课程</title>
+    <link>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E7%AC%94%E8%AE%B0%E5%A4%A7%E7%BA%B2/</link>
+    <pubDate>Fri, 25 Aug 2023 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E7%AC%94%E8%AE%B0%E5%A4%A7%E7%BA%B2/</guid>
+    <description><![CDATA[计算几何-笔记大纲 本系列笔记主要记录学堂在线上，清华大学计算几何的教学内容。 清华大学-计算几何 本大纲概述讲述的课程内容，并做以简短的论述。 本]]></description>
+</item>
+</channel>
+</rss>

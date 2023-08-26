@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>计算几何课程 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="计算几何课程" />
+<meta property="og:description" content="02几何求交(Geometric Intersection) 计算几何-笔记目录 计算几何第二章课程主要讲述如何进行几何求交。 章节由浅入深，由简单求交判定问题逐步深入到跟" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/02%E5%87%A0%E4%BD%95%E6%B1%82%E4%BA%A4Geometric-Intersection/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-08-25T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="计算几何课程"/>
+<meta name="twitter:description" content="02几何求交(Geometric Intersection) 计算几何-笔记目录 计算几何第二章课程主要讲述如何进行几何求交。 章节由浅入深，由简单求交判定问题逐步深入到跟"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/02%E5%87%A0%E4%BD%95%E6%B1%82%E4%BA%A4Geometric-Intersection/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/03%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Triangulation/" /><link rel="next" href="http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/01%E5%87%B8%E5%8C%85Convex-Hull/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "计算几何课程",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/02%E5%87%A0%E4%BD%95%E6%B1%82%E4%BA%A4Geometric-Intersection\/"
+        },"genre": "posts","wordcount":  9207 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/02%E5%87%A0%E4%BD%95%E6%B1%82%E4%BA%A4Geometric-Intersection\/","datePublished": "2023-08-25T00:00:00+00:00","dateModified": "2023-08-25T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">计算几何课程</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-25">2023-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 9207 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 19 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#02几何求交geometric-intersection">02几何求交(Geometric Intersection)</a></li>
+    <li><a href="#一维求交">一维求交</a></li>
+    <li><a href="#二维直线求交">二维直线求交</a></li>
+    <li><a href="#bo算法">BO算法</a></li>
+    <li><a href="#凸多边形相交">凸多边形相交</a>
+      <ul>
+        <li><a href="#kirkpatrick算法">Kirkpatrick算法</a></li>
+        <li><a href="#构造凸包重叠区域">构造凸包重叠区域</a></li>
+        <li><a href="#扫面线算法构造重叠区域">扫面线算法构造重叠区域</a></li>
+      </ul>
+    </li>
+    <li><a href="#半平面相交构造">半平面相交构造</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="02几何求交geometric-intersection">02几何求交(Geometric Intersection)</h1>
+<p><a class="link-markdown-demo-site" href="/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E7%AC%94%E8%AE%B0%E5%A4%A7%E7%BA%B2/" rel="noopener">计算几何-笔记目录</a></p>
+<p>计算几何第二章课程主要讲述如何进行几何求交。</p>
+<p>章节由浅入深，由简单求交判定问题逐步深入到跟复杂的求交判定问题。</p>
+<p>小节内容概览</p>
+<ul>
+<li>Introduction
+<ul>
+<li>介绍了凸包的概念，以及凸包的重要性。通过几个实际生活中碰到的问题，介绍了相关的概念和重要性。</li>
+</ul>
+</li>
+<li>Preliminary
+<ul>
+<li>预备章节，主要介绍了EU(Element Uniqueness)问题。给定一堆实数怎么判断是否有数字相同。</li>
+<li>然后介绍了Min-Gap Max-Gap等相关问题</li>
+</ul>
+</li>
+<li>Interval Intersection Detection
+<ul>
+<li>主要讲述了区间求交算法。相当于介绍了一维求交问题，最后归约到IEU上。</li>
+</ul>
+</li>
+<li>Segment Intersection Reporting
+<ul>
+<li>给定平面上的一组线段，求线段之间的相交问题。本节先通过归约给出了问题的下届$\Omega(nlog)$。</li>
+</ul>
+</li>
+<li>BO Algorithm: Strategy
+<ul>
+<li>主要讲解BO算法的策略。描述其设计灵感来源，如果两个线段不相交一定有一个垂直线分割两部分，然后构建出扫描线算法。</li>
+</ul>
+</li>
+<li>BO Algorithm: Implementation
+<ul>
+<li>BO算法的实现。先介绍了BO算法中相交的特殊情况。然后介绍了BO算法的操作细节。</li>
+</ul>
+</li>
+<li>BO Algorithm: Analysis
+<ul>
+<li>对BO算法进行了正确性分析，与复杂度分析。</li>
+</ul>
+</li>
+<li>Convex Polygon Intersection Detection
+<ul>
+<li>先定义了凸多边形相交的概念。然后介绍了两个多边形的相交检测算法。</li>
+</ul>
+</li>
+<li>Edge Chasing
+<ul>
+<li>简单介绍了边追逐算法，可以构造两个凸多边形交集的区域。详细部分还需要查找相关文献。</li>
+</ul>
+</li>
+<li>Plane Sweeping
+<ul>
+<li>借助于BO算法中扫描线算法，也可以来求教所有线的交点。进而求出两个凸多边形的交集。</li>
+</ul>
+</li>
+<li>Halfplane Intersection Construction
+<ul>
+<li>半平面相交构造。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="一维求交">一维求交</h1>
+<p>整个教程由浅入深，其Preliminary，Interval Intersection Detection都可以认为是对一维上的求教问题。而这些问题又简单，易懂，可以规约到更高维的问题上去以求的下届。</p>
+<p>这几节主要介绍了以下几个问题：</p>
+<blockquote>
+<ul>
+<li>EU(Element Uniqueness)<br>
+任意给定一组实数，判断所有元素是否都是不同的。或者说判断是否存在两个元素相等。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Min-Gap<br>
+给定一组实数求元素之间的最短距离。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Max-Gap<br>
+给定一组实数，求元素之间的最大距离。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>IEU(Integer Element Uniqueness)<br>
+EU问题的整数版本，给定一组整数，判断元素是否都是不同的。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Interval Intersection Detection<br>
+区间相交检测</li>
+</ul>
+</blockquote>
+<p><font size = 4> <strong>EU</strong></font></p>
+<p>简单来看EU问题有一个很简单的算法。就是排序一下然后比较相邻元素即可判断是否有相同的元素，这个算法有复杂度$O(nlogn)$。与此同时有人证明了该算法的下界就是$\Omega(nlogn)$。所以这个就是最优算法。</p>
+<p>该复杂度下界的证明来源于该文章</p>
+<p>D. P. Dobkin and R. J. Lipton
+On the complexity of computations under varying sets of primitives
+J. Computer and System Sciences, 18(1979), 86-91</p>
+<p><font size = 4> <strong>Min-Gap</strong></font></p>
+<p>Min-Gap求取元素之间最短的距离。显而易见可以发现，该算法也可以通关排序简单得出距离，该算法复杂度$O(nlogn)$。更进一步可以由EU问题归约到该问题来求解该问题下界。</p>
+<ul>
+<li>对于一个EU问题输入直接就是Min-Gap问题的输入</li>
+<li>对于个Min-Gap问题的输出，我们可以发现如果Min-Gap为0则EU问题为有相等元素。反之则所有元素都不相同。</li>
+</ul>
+<p>所以该问题下界就是$\Omega(nlogn)$</p>
+<p><font size = 4> <strong>Max-Gap</strong></font></p>
+<p>但对于求取元素间最大距离则存在更好的算法，该算法可以视为鸽笼原里的一个操作，具有$O(n)$的复杂度。该算法如下：</p>
+<ul>
+<li>遍历所有元素，求取最小值l和最大值h。</li>
+<li>根据元素个数，将l和h之间分成n-1个区间，并在最后挂一个包含h的第n个桶。结构如下图。</li>
+<li>然后通过除法取余操作将每个元素放进自己所在区间的桶中。同时更新桶中最小元素，与最大元素。</li>
+<li>去掉所有空桶，然后遍历一遍所有桶，对比相邻两个桶中，小桶中最大元素与大桶中最小元素之间的距离。</li>
+<li>最大距离一定存在在这些值之中。</li>
+</ul>
+<center><img src="../02.assets/d1.drawio.png"></center>
+<p>实际上该算法说明，可以用鸽笼原里来说明。
+对于上述描述的一个区间划分结构，对于n-1个点，如果每个桶中都有一个点，则这些点实际上被这些桶拍好了顺序，按顺序求相邻点之间的距离即可获得最大距离。
+如果不是每个桶中都有一个点，则存在至少存在一个空桶。对于空桶两侧的最小值点和最大值点其距离一定大于一个区间长度，这使得所有在区间内的点都不可能拥有最大距离间隔。这使得最大值也只可能在相邻桶的最大值和最小值上。</p>
+<p><strong><font size = 4> IEU </font></strong></p>
+<p>显然是EU的特例。可惜的是IEU的复杂度下届依然是$\Omega(nlogn)$。该下界可以参看一下文章</p>
+<p>A. C. Yao
+Lower bounds for algebraic computation trees with integer inputs
+SIAM J. Computing, 20(1991, pp. 308-313)</p>
+<p><font size = 4> <strong>Interval Intersection Detection</strong></font></p>
+<p>区间相交检测即，给定一系列区间。判断区间是否有相交。可以认为是一维的求交问题。最简单的想法是暴力枚举，不过可以立即发现。该问题也可以通过排序来求解。</p>
+<ul>
+<li>对于一个区间$I_n$，存在两个端点$L_n,R_n$。</li>
+<li>将所有区间端点排序。如果两个区间相交当且仅当出现相邻$LL$或者$RR$。这是源自于区间端点的一个自然观察。</li>
+</ul>
+<p>其效果如下。该算法复杂度$O(nlogn)$。</p>
+<center><img src="../02.assets/p1.png"></center>
+<p>而该问题恰好又可以通过IEU规约而来，这说明该算法排序也就是其最优算法。规约可以如下构造</p>
+<ul>
+<li>对于IEU问题的输入，我们针对输入集合中的元素$i_n$构造区间$[i_n,i_n+0.5)$。转化成区间求交的输入。</li>
+<li>对于区间求交的判定，根据上面转换，我们可以发现，如果没有元素相同，因为都是整数，所以不可能有区间相交。所以如果区间相交一定有相同元素，即可完成转化。</li>
+</ul>
+<h1 id="二维直线求交">二维直线求交</h1>
+<p>二维直线求交即，给定平面上的一堆线段，注意是线段，快速求解这堆线段是否相交，以及交点在什么位置。如下图。</p>
+<center><img src="../02.assets/p2.png"></center>
+<p>我们显然可以通过暴力枚举加单纯两条线求交的方法来求解。即枚举n个线段中两两配对，每个求解一下。这个算法简单易实现，复杂度为$\dbinom{n}{2}=O(n^2)$复杂度。</p>
+<p>对于两条线求交可以有很多方法。视频中用了比较一贯性的方法但不是最优的，有如下方法：</p>
+<ul>
+<li>用To-Left Test
+<ul>
+<li>对于两个线段四个端点。如果有交点，那么可以发现每一条线段的端点都位于另一条线段的两侧。反之，可以发现必有一条线段的两个端点位于一条线段的同一侧，由此可以计算判断出是否相交。</li>
+</ul>
+</li>
+<li>直线方程求解
+<ul>
+<li>联立两个线段参数方程，直接求解参数方程中的参数。看参数是否在$[0,1]$区间之内，如果是则说明相交，还可以计算出交点坐标。</li>
+</ul>
+</li>
+</ul>
+<p>针对求解所有线段相交，只管来说应该存在更快的算法。因为我们可以将$EU$问题归约到这个问题$SID$上面。$EU\leq_n{}SID$规约如下</p>
+<ul>
+<li>对于EU问题的输入，每个点$r_n$，我们都放在二维平面上并且向上拉长一段距离。即构造线段$(r_n,0)\to{}(r_n,1)$这样一条线段。即可转化为线段求交问题。</li>
+<li>对于线段求交问题，在上述转化下，如果线段有交点。那么显然EU存在相等实数，反之则没有。</li>
+</ul>
+<p>另一方面是，我们可以观察到很多空间特性没有使用，例如存在一些空间分割结构，当排序之后，左边的线与右边的线是否相交可以通过端点位置即可排除。</p>
+<p>视频介绍了很多高效算法，但着重介绍了扫描线算法即BO算法。</p>
+<h1 id="bo算法">BO算法</h1>
+<p>BO算法的基础即基于线段的可分割性质，即：</p>
+<ul>
+<li>如果存在一条线段将两条线段分割开来，那么两条线段必然不相交。这是一个冲要条件。</li>
+</ul>
+<p>所以我么可以考察这个状况的一个特殊条件。即垂直可分割(Vertically Separable)。存在一条垂直先，可以将两调线分割开来，那么这两条线必然也是不相交的，如下图：</p>
+<center><img src="../02.assets/p3.png"></center>
+<p>同时我们也可以反过来看，如果两条线段相交的，那么肯定存在一个交点，同时也存在一个过交点的垂直线。而这条垂直线也恰好垂直分割了整个模块。即完全在这条线左右两侧的线段是无法相交的。这引导出了这样一个状况：</p>
+<ul>
+<li>两条线段相交，过交点的垂直线分割整个空间。</li>
+<li>完全在这条线两侧的线段：不可能相交。</li>
+<li>跟这条线有交点的其他线段：才可能相互之间发生相交。</li>
+</ul>
+<p>所以这诞生一个想法，我们是不是可以拿一条垂直线扫过所有线段，处理每个线段上的交点，和端点，维护一个可能相交的集合，不断求解集合内的线段，即可得出所有交点。</p>
+<p>好，这里面就有一个细节，这个可相交集合数据结构如何。如果随意摆放，可以想想依旧是$O(n^2)$量级，即所有线都是平行的，这时候我么还可以观察到一个现象，对于每一条垂直线来说，其穿过的线段只有相邻的线段才有相交的可能性。这启发我们，可以通过定义一个有序结构，来加快求交处理。所以这里我么要定义一个在垂直线上，有各个线段构成的顺序结构，这个结构可以简单定义如下即：</p>
+<ul>
+<li>跟垂直线$L$相交的线段$a_1,a_2,\cdots,a_n$，都会有一个交点，设为$t_1,t_2,\cdots,t_n$。我么称$a_i&lt;a_j$当且仅当$t_i(y)&lt;t_j(y)$，即我么说$a_i$在$a_j$下面，当且仅当交点$t_i$在$t_j$下面。</li>
+</ul>
+<p>这个是一个良好定义的序，是个全序。</p>
+<p>现在可以想到在整个扫描过程中这个相交集合结构是不断在变化的，最简单有进入，有离开。那么怎么维护这个线段集合。其实很简单，可以发现只有在端点和交点处会发生变化。可以简单如下图：</p>
+<center><img src="../02.assets/p4.png"></center>
+<ul>
+<li>当碰到左端点的时候
+<ul>
+<li>这说明有一个新的线段要加入了，应该将该线段加入。并且根据此时垂直线的交点决定插入位置。</li>
+</ul>
+</li>
+<li>当碰到右端点的时候
+<ul>
+<li>这说明对应的线段要离开了，应该将该线段移除。重整整个数据结构。</li>
+</ul>
+</li>
+<li>当碰到交点的时候
+<ul>
+<li>这说明有两个线段要上下翻转位置了，应该要将相交的两个线交换位置即可。</li>
+</ul>
+</li>
+</ul>
+<p>这三种情况是有实质作用的点，这三种情况就称之为事件(Event)。所以这里可以看到将有两种数据结构：</p>
+<ul>
+<li>一种存储事件结构(Event Queue)，用来按顺序逐个处理将要发生的事件(Event)。</li>
+<li>一种存储相交线段结构(Status Structure)，按照上面说的全序顺序存储。用来不断判断可能相交的线段，其会不断生成相交点，并且放入到事件队列中去。</li>
+</ul>
+<p>那么这里就有一个关键问题，对于端点来说，其添加进入事件结构很简单，遇到了添加进去即可。那么相交事件点呢？可以注意到这既是我么要求的交点，也是要更新数据结构的事件。所以这里就要在各个事件上，预处理计算可能的潜在交点事件。这就是一个仔细分情况讨论了，关键点就是前面说的，对于交点来说，只有上下相邻的两个线段有产生交点可能。这里一共有三种情况：</p>
+<center><img src="../02.assets/p5.png"></center>
+<p>Potential Interaction Detection</p>
+<ul>
+<li>当碰到左端点的时候
+<ul>
+<li>此时该线段将会加入，不妨设该线段为$e$，考察这个$e$此时的前驱($pred$)和后继($succ$)。我么可以发现，此时$e$下面的交点事件只可能会跟这两条线发生。如果有其他线段与$e$相交，那么可以看到其一定会跟$succ$或者$pred$有个交点，并且这个交点会在$e$跟$succ$与$pred$交点事件之前发生。所以这些事件会在那个时候处理。</li>
+</ul>
+</li>
+<li>当碰到右端点的时候
+<ul>
+<li>此时该线段将会移除，不妨设该线段为$e$，那么原来不相邻的两条线段相邻了。所以此时考察$e$此时的前驱($pred$)和后继($succ$)线段即可。</li>
+</ul>
+</li>
+<li>当碰到交点的时候
+<ul>
+<li>此时关联的两个线段会互换位置，不妨设该线段为$e,f$。那么此时，两个线段的相邻关系发生了变化。对于$e$来说，其后继从$f$变成了$f$的后继$succ(f)$所以要做一次判断。而$f$同理，需要跟$e$的前驱$pred(e)$来进行判断。</li>
+</ul>
+</li>
+</ul>
+<p>以上就是各种情况下的处理，可以看到，主要是邻近关系的考虑即可。那么可能有没有遗漏情况呢？其实如果$e$有其他线段相交，那么必定会有一与其前驱$pred$或者后继$succ$相交的事件点在出现，那么在这个相交事件点上会判断出对应的后续相交事件。</p>
+<p>上述只是讨论了一般情况，实际上还会有很多特殊情况的出现，这些情况，暂且忽略，但是他们确实出现，实际开发需要注意。例如：端点相交。多个线段交于一个点。两条线段非常近，有一部分重叠。多个线段的端点几乎同时抵达垂直线。等等各种情况。</p>
+<p>剩下关注两个数据结的具体结构组成：</p>
+<ul>
+<li>Event Queue：比较简单直接按照一个优先级对列即可实现。因为我们实际上只要取出下一个最近要处理的事件即可，所以用优先级队列即可。而优先级队列一般可以用堆来实现，也符合我们的操作。</li>
+<li>Status Structure：这里我们需要存储一种有序的结构，可以理清楚每个线段的次序结构。同时其又要方便插入，删除，交换两个节点。所以这里可以使用BBST。即平衡二叉树即可。</li>
+</ul>
+<p><strong><font size = 4>BO算法分析 </font></strong></p>
+<p>所以剩下最重要的部分就是对这个算法的分析：</p>
+<p>正确性说明，其实非常简单也明了，BO算法的正确性主要依赖于下面这样一个事实：</p>
+<ul>
+<li>反过来想，如果两个线段相交，那么在交点前的无限短时间内，一定处于相邻状态。而这个相邻状态一定会被BO算法检测到，并且通过相交算法算处交点。</li>
+</ul>
+<p>所以BO算法不会误报，也不会漏报。其报告的交点一定是正确的。但是其检测算法不一定都是有效的，例如文中举的水平例子，有两条平行线，然后中间有一系列线段。那么当中间线段离开的时候，都会测试这两条平行线，但是没有任何结果。</p>
+<p>现在计算这个算法的复杂度。可以看到算法效率有两部分组成。</p>
+<ul>
+<li>Event Queue的大小，象征着我们要进行相邻检测的次数。</li>
+<li>Status Structure的大小，象征着每次检测时找到相邻边的速度，以及添加，移除，等操作的速度。</li>
+</ul>
+<p>首先Event Queue很显然，其检测次数，即所有事件的点个数，即$2n+I$，这个$I$是所有交点的个数，有可能是一个$n^2$量级。而这个值也是Event Queue最大的大小。所以其操作时间复杂最多不超过$O(log(2n+I))=O(logn)$</p>
+<p>其次看Status Structure，其数据结构大小，即这个垂直线相交的线段。显而易见，这个大小最大为线段个数，即n。所以我们对其的操作每次都不会超过$O(logn)$时间。</p>
+<p>所以综合来说</p>
+<ul>
+<li>Event Queue操作次数为$O(n+I)$，每次操作是一次优先队列，加有限次数的二叉树查找，时间复杂度为$O(logn)$。所以总体复杂度为$O((n+I)*logn)$。</li>
+<li>空间复杂度，主要是Event Queue空间，即$O(n+I)$。</li>
+</ul>
+<p>这里可以看到这个时间复杂度是$O((n+I)*logn)$，而不是最优的算法$O(nlogn+I)$。当$I\sim{}n^2$是这个算法就是$O(n^2logn)$，甚至比前面的蛮力算法还要差。但是不要紧通常意义下这个算法已经足够用了。</p>
+<h1 id="凸多边形相交">凸多边形相交</h1>
+<p>凸多边形相交问题，相当于线段相交的一个推广。但对于多边形来说“相交”会有两种情况。一个是明确的有边界相交，一个是一个包含在另一个里面。在这里做一个约定，一个包含在另一个里面也算作相交。</p>
+<p>此外还可以从求解程度出发看问题，可以划分成几种情况</p>
+<ul>
+<li>判断两个凸多边形是否相交。</li>
+<li>以及两个凸多边形相交的公共区域是哪些。</li>
+</ul>
+<p>显然第二个问题要比第一个更复杂一些。</p>
+<p>这里先讲解如何判断相交的过程，想法。判断方法就是Kirkpatrick算法，来自于其一个敏锐的发现。</p>
+<h2 id="kirkpatrick算法">Kirkpatrick算法</h2>
+<p>这个算法的可靠性来自于一个判定准则。这个判定准则可用下图标识：</p>
+<center><img src="../02.assets/p6.png"></center>
+<ul>
+<li>如果$P,Q$不相交。当且仅当，图中$P_L,Q_R$不相交，或者$P_R,Q_L$不相交。</li>
+<li>如果$P,Q$相交。当且仅当，图中$P_L,Q_R$相交，且$P_R,Q_L$相交。</li>
+</ul>
+<p>其中$P_L,P_R$是指对凸多边形的一个单调刨分Monotone Partitioning。单调刨分即将凸多边形刨分成两个链条，并且这两个链条在某个方向上是单调的。例如最简单的去y轴方向，即垂直一刀刨分，这样就有左右两个链条$P_L,P_R$。这两个链条中的点，关于y坐标一定是单调的。这来自于凸包的性质。然后可以在端点处添加两个射线，形成一个包括区域，即判定用到的判定链。</p>
+<p>对于判定准则证明方式，可以如下：</p>
+<ul>
+<li>假设$P,Q$相交，那么可以取相交区域的一点$x$然后发射一条水平射线，由于其在两个凸包之内，所以跟$P,Q$会分别各有两个交点，且分别在$P_L,P_R,Q_L,Q_R$上。可以注意到与$P_R$的交点一定在$x$右侧，与$Q_L$的交点一定在$x$左侧，着说明$P_R,Q_L$至少有一个点，加上链的射线性质，可以知道，两条链一定相交。</li>
+</ul>
+<blockquote>
+<p>我觉得实际上也可以有个简单的理解方式，凸包在水平上大概呈现两种状况。</p>
+<ul>
+<li>水平分离，有一条垂直线，可以分开两个凸包。</li>
+<li>有重叠。两者的$L,R$链一定交错。</li>
+</ul>
+<p>但是还要加上垂直方向上的判定，而这个就是由水平射线提供的区域划分结构。</p>
+</blockquote>
+<p>所以最后的问题落在了，如何快速判定的链是否相交。其方式是简明的，假设有$Q_R,P_L$两条链。那么可以不断选取中间线段(Median Edge)$e_p,e_q$来判断是否有相交，这里有两种情况：</p>
+<ul>
+<li>$e_p,e_q$相交：那么可以判定相交，直接得出结论。</li>
+<li>$e_p,e_q$不相交：那么可以细分情况，减除部分线段。</li>
+</ul>
+<p>所以细分中间线段的判定情况就是必要的。而这里细节是通过两条线段所在的直线情况来判断。几个简单情况如下面几个图，可以依次剔除掉图中黄色的链，这些链大小至少为原来的$1/2$，这就是减而治之的策略：</p>
+<center><img src="../02.assets/p7.png"> </center>
+<center><img src="../02.assets/p8.png"></center>
+<p>但其实这里需要对所有情况，进行分门别类的讨论。而讨论判定的主要依据就是两个线段所在的直线。因为前面说过，链是单调的，所以对于两条链来说，其前后延长的方向一定在线的一侧，并且其不会通过垂直轴。同时还有一点是，这个判断情况还跟两个线段的各个端点情况有关系。例如图1，并不是说，黄色线段跟$P_L$没有交点可能。实际上其可能跟$P_L$底部的水平射线相交，而这只是一个可能性。但是如果相交，其一定有一个交点在剩余部分，而剩余部分的检索一定可以检测到交点，所以才将黄色部分减除。</p>
+<p>所以要根据两个线段$e_p,e_q$在红色直线上的相对位置，判断如果有交点，那么交点一定发生在某一侧，来进行有效的减枝。</p>
+<p>最后便是这个算法的性能分析。</p>
+<p><strong><font size=4> Kirkpatrick算法分析 </font></strong></p>
+<p>首先可以看到的是，对于上面两个链的剔除策略每次可以有效的剔除$1/4$个点。即规模会缩小到原来的$3n/4$大小。那么通过地推关系可以很简单的得到这个链求交算法的时间复杂度为$O(logn)$。</p>
+<p>那么对于两个大小为$n,m$的凸包来说，其要形成两对链条进行检测。但所有参与检测的线段就是两个凸包上所有的线段。所以这个求交算法可以在$O(log(n+m))$时间内完成。</p>
+<h2 id="构造凸包重叠区域">构造凸包重叠区域</h2>
+<p>本部分老师只是大概讲述了思路，但是具体的相关内容还是要查找更多资料完善。</p>
+<p>现在来看构造两个凸包重叠区域的问题。首先直观来说，这个复杂度就体现在重叠区域的复杂程度上面，因为要刻画重叠区域，所以肯定要找出所有包围的点。所以复杂度跟交点有着关系。</p>
+<p>假设有两个凸多边形$P,Q$。可以发现两个凸多边形的重叠区域，可以通过减除不重叠的区域来完成。而每一个不重叠的区域一定是一个凹进去的形状，称之为Falcate Area。基于这样一个观察，有这样一个大致的算法流程：</p>
+<ul>
+<li>通过遍历两个凸多边形的边，来逐步筛选出Falcate Area然后将其剔除掉即可。</li>
+</ul>
+<p>那么这个过程大体来说，就是不断交替的前进$P,Q$的两条边$e,f$。根据$e,f$相对关系判断下一步，应该哪条边往前走，直到检测出所有Falcate Area。这个过程呈现出一个边不断追赶的过程。所以也称之为Edge Chasing算法。</p>
+<p>所以这个判断方式，将会是算法成立的核心点，那么边判断的准则是什么呢。大致准则如下图：</p>
+<center><img src="../02.assets/p9.png"></center>
+<p>这里老师没有细讲，比较琐碎，总之只是可以判定的。判定方式是终点在线的某一侧以及前进方向决定的。细说如下：</p>
+<p>先定义$P,Q$中点的行进方向都是逆时针方向，当前边为$e,f$，其终点分别为点$E,F$。从点$E,F$在对方线$f,e$的方向一共可以划分为四种情况。</p>
+<blockquote>
+<p>待补充分析</p>
+</blockquote>
+<p><strong><font size=4> 算法分析 </font></strong></p>
+<p>其实可以很简单的看出，对于两个凸包来说，其每条边都会走且仅仅走一次。所以效率简单得出为$O(n+m)$。而这个过程其实很类似于MergeSort。有两个排好顺序的凸包顶点序列，然后以一个方式逐步归并两个序列中的边，构成交点。</p>
+<p>这里还有一个问题，就是前面说过，可能出现两个凸，一个完全在另一个里面的情况。这个情况，在上面的算法可能产生误判，因为没有任何交点产生。但是这个很好解决。其实分别取凸包中一点，检测其是否在另一个凸包中即可。</p>
+<h2 id="扫面线算法构造重叠区域">扫面线算法构造重叠区域</h2>
+<p>思路其实非常简单，就是用前面线段求交的扫面线方法，从左向右扫过整个凸包就可以构造出两个凸包的重叠区域结构。其过程大概就如下图表示：</p>
+<center><img src="../02.assets/p10.png"></center>
+<p>结合前面的扫描线部分，容易想到，一开始将所有凸包边的端点，按从左至右的顺序添加进Event Queue然后按照前面的算法就可以自然得出所有交点位置，并且判断出重叠区域边上的点。</p>
+<p>这里有几个细节。根据凸包的性质，我们可以得出一个结论，就是这条扫描线，与凸包的交点最多是2个。所以Status Structure的大小不会超过4，也就是说，这部分数据结构，以及算法消耗都将会是一个常数量级。而对于Even Queue来说其跟一堆线段相交时判定方式是没有什么问题。也就是每一次事件的消耗是一个常数量级。</p>
+<p>所以可以简单得出其算法效率不会超过$O(n+m+I)$。这$I$是交点事件的个数，而这些交点个数，则可以由凸包来界定。对于两个凸包相交来说，其交点个数不会超过$n+m$个。所以这也说明这个扫面线算法效率为$O(n+m)$。</p>
+<h1 id="半平面相交构造">半平面相交构造</h1>
+<p>这里半平面是一种对于凸多边形的推广，即原来的凸多边形都是封闭的，而这里要考虑的是，有一侧是无界的凸多边形。这种凸多边形，称之为Unbounded Convex Polygons。</p>
+<p>那么有个问题就是上面的算法可以否自然推广到无界凸多边形上。答案是可以的。实际上可以看到，无界凸多边形就是边界处为两个射线的闭凸多边形。将那两个无界点连起来，实际也是一个凸多边形。依旧可以使用凸多边形求解重叠区域的算法。</p>
+<p>但这里可以先界定一下问题的下界，其方法就是规约。这里的规约是$SORTING\leq_N{}HIC$，即从排序归约到HIC问题上去。即假设有一个HIC的算法，那么对于排序的输入来说，找一个方式映射成无界凸包，然后算法给出的解恰好是排序的解。这个过程可以如下进行：</p>
+<center><img src="../02.assets/p11.png"></center>
+<ul>
+<li>对于要排序的数组中每一个元素$x$，找到在y轴上对应的数值$1/x$。然后由y轴，$(x,0),(0,1/x)$，和x轴可以形成一个无界凸包。此即我们用来传给凸包算法的输入。</li>
+<li>经过凸包算法之后，其会给出一个凸包相交的区域。这个区域由一系列点描述。更重要的是，这些点会按顺序排好。而根据前面约定可以知道，对于每一条线段$(x_i,0),(0,1/x_i)$其会跟紧随其后的线段$(x_{i+1},0),(0,1/x_{i+1})$有一个交点，这个交点恰好是凸包上的点。也是说，这个凸包边界点的顺序，说明了数组中元素的顺序。</li>
+</ul>
+<p>所以假设一共有$m$个无界凸多边形，所有凸包的边界点合起来为$n$，那么这里可以采用分而治之的方法。</p>
+<ul>
+<li>即每一次切分成两个规模大概相同的子无界凸多边形区域。</li>
+<li>然后将两个子集合，求解处重叠区域$C_1,C_2$。</li>
+<li>然后在求解$C_1,C_2$的重叠区域。</li>
+</ul>
+<p>对于每一次合并，实际上要遍历两个凸包所有的边，即$O(n)$时间复杂度。而最好情况下，可以将无界凸包分成两个大致相当于的子图包。那么其时间复杂度有地推关系$T(n)=2*T(n/2)+O(n)$，这个时间复杂度显然有$T(n)=O(nlogn)$。此也刚好是这个问题规约给出的下界。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-08-25</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/03%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Triangulation/" class="prev" rel="prev" title="计算几何课程"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>计算几何课程</a>
+            <a href="/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/01%E5%87%B8%E5%8C%85Convex-Hull/" class="next" rel="next" title="计算几何课程">计算几何课程<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
