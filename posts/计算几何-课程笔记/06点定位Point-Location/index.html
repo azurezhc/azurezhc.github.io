@@ -83,7 +83,12 @@
     <li><a href="#slab-method">Slab Method</a></li>
     <li><a href="#pathnode-copying">Path/Node Copying</a></li>
     <li><a href="#kirkpatrick-structure">Kirkpatrick Structure</a></li>
-    <li><a href="#trapezoidal-map">Trapezoidal Map</a></li>
+    <li><a href="#trapezoidal-map">Trapezoidal Map</a>
+      <ul>
+        <li><a href="#ric">RIC</a></li>
+        <li><a href="#算法复杂度分析">算法复杂度分析</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="06点定位point-location">06点定位(Point Location)</h1>
@@ -326,7 +331,7 @@
 <li>蓝色的点：对应着梯形图，也是搜索树中的叶子节点。</li>
 </ul>
 <p>从这个结构可以简明的看出，这个算法的空间复杂度，就是梯形图中的边，顶点以及梯形的数目和。从前面可知，这三者和依旧是一个$O(n)$的空间复杂度。现在问题是，这个时间复杂度是多少呢。这个放在后面讲解，因为这是一个随机算法，所以后面可以看到在期望上，时间复杂度是$O(logn)$量级的，而且构造出这种最好情况的概率，实际相当相当高。</p>
-<p><strong><font size = 4>RIC</font></strong></p>
+<h2 id="ric">RIC</h2>
 <p>显然可以使用扫描线方式来构造梯形图，可惜的是这个方法可以构造梯形图，但是对搜索结构没有帮助。所以这里采用一种随机增量的构造方式来构建搜索树。RIC的过程可以简单描述如下：</p>
 <div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -357,7 +362,7 @@
 <p><strong><font size = 4>Case 3: No Endpoints</font></strong></p>
 <center><img src="../06.assets/p12.png"></center>
 <p>没有端点落在梯形中，即被边分割。显然根据前面讲解，会发现这个梯形会被分割成上下两部分，但是这两部分实际是左右两个梯形延展过来。所以$A,B$显然都是有原先实体的。不过这里的线段$r$则无法沿用之前的。因为在这里，其判断逻辑完全不同。</p>
-<p><strong><font size = 4>算法复杂度分析</font></strong></p>
+<h2 id="算法复杂度分析">算法复杂度分析</h2>
 <p>前面可以看到，对于这个构造过程，实际上存在一个随机步骤。即这个边的插入顺序。这个顺序完全是随机的。分两部分来看。每一步结束，其$TM(S)$都会是一个确定的图形，但是对于$SS(S)$来说，其搜索结构，显然取决于插入顺序，第一个插入的边就决定了，插入的树根，即第一个划分判定方式。</p>
 <p>这里依然要采用后向分析的方式。对于这样一个插入顺序，我们可以标记为一个序列即$S_i=\set{s_1,\cdots,s_i}$。这表示第$i$步插入的线段集合，同时也表示第$i$步插入的线段$s_i$。</p>
 <p>现在考虑第$i$步的时间开销$T(i)$。这个显然由以下几部分构成</p>

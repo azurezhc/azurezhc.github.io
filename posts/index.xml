@@ -4,7 +4,23 @@
         <link>http://azurezhc.github.io/posts/</link>
         <description>所有文章 | azurezhc的游戏开发人生</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>azurezhc@gmail.com (azurezhc)</managingEditor>
-            <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Fri, 25 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://azurezhc.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Sun, 27 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://azurezhc.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>计算几何课程</title>
+    <link>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query/</link>
+    <pubDate>Sun, 27 Aug 2023 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query/</guid>
+    <description><![CDATA[08截窗查询(Windowing Query) 计算几何-笔记目录 在第七章中讨论的Range Query是给定一个矩形，查询有多少落在矩形中的点。而在本章，]]></description>
+</item>
+<item>
+    <title>计算几何课程</title>
+    <link>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search/</link>
+    <pubDate>Sat, 26 Aug 2023 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search/</guid>
+    <description><![CDATA[07几何范围查找(Geometric Range Search) 计算几何-笔记目录 在第六章中主要讨论的是点定位问题，及给定平面的刨分和一个点，确定点所在位置。本章则]]></description>
+</item>
+<item>
     <title>计算几何课程</title>
     <link>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/01%E5%87%B8%E5%8C%85Convex-Hull/</link>
     <pubDate>Fri, 25 Aug 2023 00:00:00 &#43;0000</pubDate>
@@ -67,22 +83,6 @@
     <author>azurezhc</author>
     <guid>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E5%A4%A7%E7%BA%B2/</guid>
     <description><![CDATA[功能实现大纲 本文档主要记录了各种想要效果的理论实现结构。是各种资料研究的总结，记录。 本文内容有部分会与一些学习笔记，理论学习重复，主要因为该]]></description>
-</item>
-<item>
-    <title>技能逻辑框架</title>
-    <link>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/%E6%88%98%E6%96%97%E6%9E%B6%E6%9E%84/%E6%8A%80%E8%83%BD%E9%80%BB%E8%BE%91%E6%A1%86%E6%9E%B6/</link>
-    <pubDate>Fri, 18 Aug 2023 10:31:01 &#43;0800</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/%E6%88%98%E6%96%97%E6%9E%B6%E6%9E%84/%E6%8A%80%E8%83%BD%E9%80%BB%E8%BE%91%E6%A1%86%E6%9E%B6/</guid>
-    <description><![CDATA[技能逻辑框架 本文主要记录在祖龙开发的战斗技能逻辑结构编辑器。本结构主要使用了节点图的概念来包装。实际上节点图本身就是一个执行顺序的图像化而已]]></description>
-</item>
-<item>
-    <title>游戏架构哲学理论</title>
-    <link>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E5%93%B2%E5%AD%A6%E7%90%86%E8%AE%BA/</link>
-    <pubDate>Fri, 18 Aug 2023 10:31:01 &#43;0800</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E5%93%B2%E5%AD%A6%E7%90%86%E8%AE%BA/</guid>
-    <description><![CDATA[游戏架构哲学理论 架构在开发中其实是一个很重要的东西，一个好的架构有助于整个项目的健康成长和推进。一个差的架构除了难以扩展以外更是伴随着无数的]]></description>
 </item>
 </channel>
 </rss>
