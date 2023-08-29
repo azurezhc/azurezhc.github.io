@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Tags - 标签 - azurezhc的游戏开发人生</title>
+        <title>Tags - Tag - azurezhc的游戏开发人生</title>
         <link>http://azurezhc.github.io/tags/</link>
-        <description>Tags - 标签 - azurezhc的游戏开发人生</description>
+        <description>Tags - Tag - azurezhc的游戏开发人生</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>azurezhc@gmail.com (azurezhc)</managingEditor>
             <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Fri, 25 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://azurezhc.github.io/tags/" rel="self" type="application/rss+xml" /><item>
     <title>compute_geometry_class</title>

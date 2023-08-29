@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search\/"
-        },"genre": "posts","wordcount":  5200 ,
+        },"genre": "posts","wordcount":  5225 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search\/","datePublished": "2023-08-26T00:00:00+00:00","dateModified": "2023-08-26T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -44,7 +44,7 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a></div>
         </div>
@@ -59,43 +59,43 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">目录</h2>
+            <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">计算几何课程</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-26">2023-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 5200 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 11 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-26">2023-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5225 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
-                    <span>目录</span>
+                    <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
+  <ol>
     <li><a href="#07几何范围查找geometric-range-search">07几何范围查找(Geometric Range Search)</a></li>
     <li><a href="#范围查找介绍">范围查找介绍</a>
-      <ul>
+      <ol>
         <li><a href="#一维情况">一维情况</a></li>
         <li><a href="#一维bbst">一维BBST</a></li>
-      </ul>
+      </ol>
     </li>
     <li><a href="#kd-tree">KD-Tree</a>
-      <ul>
+      <ol>
         <li><a href="#算法复杂度分析">算法复杂度分析</a></li>
-      </ul>
+      </ol>
     </li>
     <li><a href="#range-tree">Range Tree</a>
-      <ul>
+      <ol>
         <li><a href="#优化">优化</a></li>
-      </ul>
+      </ol>
     </li>
-  </ul>
+  </ol>
 </nav></div>
             </div><div class="content" id="content"><h1 id="07几何范围查找geometric-range-search">07几何范围查找(Geometric Range Search)</h1>
 <p><a class="link-markdown-demo-site" href="/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E7%AC%94%E8%AE%B0%E5%A4%A7%E7%BA%B2/" rel="noopener">计算几何-笔记目录</a></p>
@@ -241,9 +241,12 @@
 <p>首先在x方向进行一个搜索，这个搜索会跟1维的时候一样，从某一个节点开始出现分叉。而在这个分叉之间的那些区域就是我们要进一步搜索的区域。这相当于左图中一些列垂直的Slab。而树中每一个节点对应一个Slab。而每一个节点会给出一个y方向的子树。注意的是，这些子树并不是直接挂在这些节点上，而是由其左右子树拼装构成的一个BBST树。然后再每棵子树上进行y方向的子树查询。</p>
 <p><strong><font size = 4>空间复杂度</font></strong></p>
 <p>现在来看这个多层搜索树空间复杂度。这个数据结构，有多层树。对于x树来说，非常简明，其空间复杂度就是$O(n)$。现在来看y树，根据前面所见，这个树数量可能多达$n$个。同时每一个点可能存在每一棵y树中，这样看每一棵y树可能多达$n$个节点，进而空间复杂度为$O(n^2)$。</p>
-<p>但是可以考虑子区域覆盖状况。对于y树来说，都是挂在x树节点上的。如果一个点在子结点中，那么其必然也会存放在父节点中。其实还有一个思路，对于每一层x树来说，其y树都应该包含所有节点，也就是说，这一层y树是一个所有点的划分。也就是每一个点，只可能在每一层存放1次。x树树高为$logn$，显然所有节点总数即$nlogn$。</p>
+<p>但是可以考虑子区域覆盖状况。对于y树来说，都是挂在x树节点上的。如果一个点在子结点中，那么其必然也会存放在父节点中。所以一个节点最多存放$O(logn)$次。</p>
+<p>其实还有一个更直接的思路，对于每一层x树来说，其y树都应该包含所有节点，也就是说，这一层y树是一个所有点的划分。也就是每一个点，只可能在每一层存放1次。x树树高为$logn$，显然所有节点总数即$nlogn$。</p>
 <p><strong><font size = 4>构造复杂度</font></strong></p>
-<p>构造时间复杂度是$O(nlogn)$，还是非常高效的，对于新增的y树并没有加大构造的时间复杂度。其实这个算法可以这样来构造，就是自底向上的来构造。先把所有点按x轴来排序花费$O(nlogn)$时间。然后这时候可以注意到此时所有叶子节点只有一个点，同时也表示这个y树只有一个节点。现在自底向上的构造。即每两个叶子结点开始，向上构造一个x节点，同时把两个子树合并成父节点的子树。这一步类似于MergeSort。显而易见，这一步构造时间复杂度即两个子树的大小。所以自低向上的Merge也只会开销$O(nlogn)$时间，并没有改边时间复杂度。</p>
+<p>构造时间复杂度是$O(nlogn)$，还是非常高效的，对于新增的y树并没有加大构造的时间复杂度。</p>
+<p>其实这个算法可以这样来构造，就是自底向上的来构造。先把所有点按x轴来排序花费$O(nlogn)$时间。然后这时候可以注意到此时所有叶子节点只有一个点，同时也表示这个y树只有一个节点。</p>
+<p>现在自底向上的构造。即每两个叶子结点开始，向上构造一个x节点，同时把两个子树合并成父节点的子树。这一步类似于MergeSort。显而易见，这一步构造时间复杂度即两个子树的大小。所以自低向上的Merge也只会开销$O(nlogn)$时间，并没有改边时间复杂度。</p>
 <p><strong><font size = 4>查询复杂度</font></strong></p>
 <p>最后这样一个查找效率可以达到$O(r+log^2n)$的效率。这是因为在第一层会花费$logn$时间找出$logn$个树，每个y树都可能是一个多达$n$量级的查找，所以就是$log^2n$的查找效率。这个界是紧的。</p>
 <p>对于$d$维空间来说，其查找效率也可以达到$O(r+log^dn)$的量级，而其空间复杂度则为$O(nlog^{d-1}n)$。</p>
@@ -271,7 +274,7 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-08-26</span>
+                <span>Updated on 2023-08-26</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -284,7 +287,7 @@
     <div class="post-info-more">
         <section class="post-tags"></section>
         <section>
-            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
@@ -293,15 +296,15 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
         </div>
     </footer></div>
 
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
                 <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
