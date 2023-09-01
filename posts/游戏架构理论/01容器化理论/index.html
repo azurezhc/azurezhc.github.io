@@ -4,31 +4,31 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title> - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="" />
+        <title>游戏架构理论 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="游戏架构理论" />
 <meta property="og:description" content="01容器化理论 本文，主要总结我在写游戏代码过程中对于容器类型结构的使用。 容器化理论：一个容器可以认为是一种结构特性的封装。例如常见的线性结构" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/01%E5%AE%B9%E5%99%A8%E5%8C%96%E7%90%86%E8%AE%BA/" /><meta property="article:section" content="posts" />
-
-<meta property="og:site_name" content="一个小博客" />
+<meta property="article:published_time" content="2023-09-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-09-01T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
+<meta name="twitter:title" content="游戏架构理论"/>
 <meta name="twitter:description" content="01容器化理论 本文，主要总结我在写游戏代码过程中对于容器类型结构的使用。 容器化理论：一个容器可以认为是一种结构特性的封装。例如常见的线性结构"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/01%E5%AE%B9%E5%99%A8%E5%8C%96%E7%90%86%E8%AE%BA/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/02%E7%8A%B6%E6%80%81%E4%B8%8E%E5%87%BD%E6%95%B0/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E5%AE%9E%E7%8E%B0/%E6%88%98%E6%96%97%E6%9E%B6%E6%9E%84/%E6%8A%80%E8%83%BD%E9%80%BB%E8%BE%91%E6%A1%86%E6%9E%B6%E8%A1%A5%E5%85%85/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/01%E5%AE%B9%E5%99%A8%E5%8C%96%E7%90%86%E8%AE%BA/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/02%E7%8A%B6%E6%80%81%E4%B8%8E%E5%87%BD%E6%95%B0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "",
+        "headline": "游戏架构理论",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA\/01%E5%AE%B9%E5%99%A8%E5%8C%96%E7%90%86%E8%AE%BA\/"
         },"genre": "posts","wordcount":  6263 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA\/01%E5%AE%B9%E5%99%A8%E5%8C%96%E7%90%86%E8%AE%BA\/","publisher": {
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA\/01%E5%AE%B9%E5%99%A8%E5%8C%96%E7%90%86%E8%AE%BA\/","datePublished": "2023-09-01T00:00:00+00:00","dateModified": "2023-09-01T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -67,9 +67,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">游戏架构理论</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6263 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-09-01">2023-09-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6263 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;13 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -92,13 +92,13 @@
         <li><a href="#容器化结构特点">容器化结构特点</a></li>
       </ol>
     </li>
+    <li><a href="#容器结构与数理逻辑">容器结构与数理逻辑</a></li>
     <li><a href="#引申思考">引申思考</a>
       <ol>
         <li><a href="#层次化作为接口">层次化作为接口</a></li>
         <li><a href="#lambda演算核心">Lambda演算核心</a></li>
       </ol>
     </li>
-    <li><a href="#容器结构与数理逻辑">容器结构与数理逻辑</a></li>
   </ol>
 </nav></div>
             </div><div class="content" id="content"><h1 id="01容器化理论">01容器化理论</h1>
@@ -264,18 +264,18 @@
 </li>
 <li>数据结构的隔离，外部功能都是知道功能承载容器的存在，但是并不清楚目标上有什么功能结构。通过共有的数据字段判定后，具体功能跟内部对应功能对接。</li>
 </ul>
+<h1 id="容器结构与数理逻辑">容器结构与数理逻辑</h1>
 <h1 id="引申思考">引申思考</h1>
 <h2 id="层次化作为接口">层次化作为接口</h2>
 <p>在《计算机程序的构造和解释》一书中，基于Pascal语言阐明了层次化接口的概念。Pascal作为一个面向过程的语言，其写法非常类似于Lambda演算的方式。而书中说到基于Pascal语言的层次化即，</p>
 <h2 id="lambda演算核心">Lambda演算核心</h2>
 <p>在上面我们提到了Lambda演算，Lambda演算做为跟图灵机等效的计算模型，其拥有一样强大的计算能力和对计算本身的洞察。而上面的结构在lambda演算中早已有其体现。</p>
 <p>关于Lambda的概念和效果在后面也会反复提及，甚至图灵机的计算模型也会不断出现。其实可以发现这两个计算模型跟我们软件的架构息息相关的，正如所有计算机都是图灵机的实例一般，架构，语言等其实都是在计算模型上的深挖。对计算模型不断的研究其实可以发现更多精妙的结构和技术。</p>
-<h1 id="容器结构与数理逻辑">容器结构与数理逻辑</h1>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 0001-01-01</span>
+                <span>Updated on 2023-09-01</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -292,8 +292,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/02%E7%8A%B6%E6%80%81%E4%B8%8E%E5%87%BD%E6%95%B0/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i></a>
-            <a href="/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E5%AE%9E%E7%8E%B0/%E6%88%98%E6%96%97%E6%9E%B6%E6%9E%84/%E6%8A%80%E8%83%BD%E9%80%BB%E8%BE%91%E6%A1%86%E6%9E%B6%E8%A1%A5%E5%85%85/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/02%E7%8A%B6%E6%80%81%E4%B8%8E%E5%87%BD%E6%95%B0/" class="prev" rel="prev" title="游戏架构理论"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>游戏架构理论</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
