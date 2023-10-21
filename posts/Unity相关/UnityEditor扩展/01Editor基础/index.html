@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Editor基础 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="Editor基础" />
+<meta property="og:description" content="Editor基础 Unity对于编辑器扩展提供了非常大的空间，可以让开发者在编辑器中定制开发各种功能。 首先要理解Unity对于编辑器开发的一些" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/01Editor%E5%9F%BA%E7%A1%80/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-10-20T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Editor基础"/>
+<meta name="twitter:description" content="Editor基础 Unity对于编辑器扩展提供了非常大的空间，可以让开发者在编辑器中定制开发各种功能。 首先要理解Unity对于编辑器开发的一些"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/01Editor%E5%9F%BA%E7%A1%80/" /><link rel="prev" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/UnityEditor%E6%89%A9%E5%B1%95%E5%A4%A7%E7%BA%B2/" /><link rel="next" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/02Inspector%E6%89%A9%E5%B1%951/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Editor基础",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/UnityEditor%E6%89%A9%E5%B1%95\/01Editor%E5%9F%BA%E7%A1%80\/"
+        },"genre": "posts","wordcount":  1516 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/UnityEditor%E6%89%A9%E5%B1%95\/01Editor%E5%9F%BA%E7%A1%80\/","datePublished": "2023-10-20T00:00:00+00:00","dateModified": "2023-10-20T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Editor基础</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-10-20">2023-10-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1516 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ol>
+    <li><a href="#editor基础">Editor基础</a></li>
+    <li><a href="#常用属性结构">常用属性结构</a></li>
+    <li><a href="#odininspector">OdinInspector</a></li>
+    <li><a href="#事件通知接口">事件通知接口</a></li>
+  </ol>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="editor基础">Editor基础</h1>
+<p>Unity对于编辑器扩展提供了非常大的空间，可以让开发者在编辑器中定制开发各种功能。</p>
+<p>首先要理解Unity对于编辑器开发的一些框架。只有符合框架规范的代码才可以被Unity接受。首先最主要的便是Editor文件夹。Editor文件夹对于Unity来说是一个特殊的文件夹，其跟Plugin，Resources等一样是一个特殊的文件夹。具体内容可以参考官方文档：</p>
+<p><a class="link-markdown-demo-site" href="https://docs.unity3d.com/2021.3/Documentation/Manual/SpecialFolders.html" rel="noopener">https://docs.unity3d.com/2021.3/Documentation/Manual/SpecialFolders.html</a></p>
+<p>简单来说，对于Editor文件夹内的脚本，Unity会默认编译成名为Assembly-CSharp-Editor的程序集，进而排除在运行时代码之外。这也是理所应当，因为编辑器主要针对的是开发用的Editor环境，其必然不能跟运行逻辑有所纠葛。</p>
+<center><img src="../01.assets/p1.png"></center>
+<p>除此之外对于Editor文件夹还有几点：</p>
+<ul>
+<li>对于名为Editor文件夹放在任何位置都可以，只要是这个名字之下的都会被包含进目标程序集。</li>
+<li>但是其放置的位置会受到Unity编译顺序的影响，这个可以见官方文档。例如Plugin中的Editor文件夹会被放进Assembly-CSharp-Editor-firstpass程序之中，在前一步编译。</li>
+</ul>
+<p>相对应的，对于使用了UnityEditor空间的脚本我们都需要放置在Editor文件夹下，不然会编译不通过。而UnityEditor空间内的函数则是我们扩展编辑器的主要接口。</p>
+<h1 id="常用属性结构">常用属性结构</h1>
+<p>Unity提供一套原生的属性(Attribute，也称特性)结构。可以标记一些属性来方便修改对应的Inspector显示。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="na">[RequireComponent(typeof(Transform))]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//RequireComponent 添加该组件时，对应GameObject上要有对应类型组件</span>
+</span></span><span class="line"><span class="cl"><span class="na">[AddComponentMenu(&#34;Game/EditorAttributeTest&#34;)]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//在AddComponent 指定该组件的显示方式，设置为&#34;&#34;可以隐藏该项</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">BaseEditorAttributeTest</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [Header(&#34;Header Info&#34;)]</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//HeaderAttribute可以添加一个文字抬头说明</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [Range(0, 100)]</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//RangeAttribute可以使对应显示变成一个滑动条，限定范围</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">int_num</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [Multiline(4)]</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//MultilineAttribute可以使文本编辑窗口显示多行</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">short_description</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [TextArea(4, 6)]</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//TextAreaAttribute可以显示一个文本编辑器区域</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">long_description</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [Tooltip(&#34;Show Tool Tip Contents&#34;)]</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//TooltipAttribute可以给概述添加一个提示文本</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">bool</span> <span class="n">show_tool_tip</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [ContextMenu(&#34;RandomValue&#34;)]</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//ContextMenuAttribute使得冒号菜单中添加该名称菜单项，点击后调用该方法</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">void</span> <span class="n">RandomValue</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">int_num</span> <span class="p">=</span> <span class="n">Random</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最终显示出来的效果如下：</p>
+<center><img src="../01.assets/p2.png"></center>
+<p>可以看到这些属性只能略微改变原有的显示样式。还达不到扩展Editor的效果。</p>
+<h1 id="odininspector">OdinInspector</h1>
+<p>这里就要隆重介绍OdinInspector。其是一个第三方插件。主要提供了大量属性(Attribute)。通过这些属性可以直接标注目标属性，然后在Inspector上绘制出想要的结构，有了这个工具基本上可以定制出大量自己想要的显示效果。</p>
+<center><img src="../01.assets/p3.png"></center>
+<p>但是跟前面所述一样，对于结构属性之间的关联，其仍然是由使用人员来定义的。OdinInspector只是提供了一系列通用方便的工具结构。</p>
+<h1 id="事件通知接口">事件通知接口</h1>
+<p>除了基础的属性(Attribute)之外。Unity实际上还约定了几个专门的函数，这些函数在Unity约定的情况下会被调用，通过这些接口，就可以对这些情况进行自定义事件处理。</p>
+<p>常用的有：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 当通过Inspector修改属性的时候被调用。</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">void</span> <span class="n">OnValidate</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//绘制该物体的Gizmos，即一个编辑器中用来表示的对象 编辑器每次重回时都会调用该接口</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">void</span> <span class="n">OnDrawGizmos</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Gizmos</span><span class="p">.</span><span class="n">DrawWireSphere</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">,</span> <span class="m">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//当该物体被选中的时候，绘制改物体的Gizmos</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">void</span> <span class="n">OnDrawGizmosSelected</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Gizmos</span><span class="p">.</span><span class="n">DrawSphere</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">,</span> <span class="m">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过OnValidate我们可以对Inpsector的输入输出都进行一个宏观的控制。而Gizmos相关接口，可以在SceneView中给出一个可视化标识。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-10-20</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/UnityEditor%E6%89%A9%E5%B1%95%E5%A4%A7%E7%BA%B2/" class="prev" rel="prev" title="UnityEditor扩展"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>UnityEditor扩展</a>
+            <a href="/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/02Inspector%E6%89%A9%E5%B1%951/" class="next" rel="next" title="Inspector扩展">Inspector扩展<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

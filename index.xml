@@ -7,6 +7,62 @@
             <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Fri, 18 Aug 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="http://azurezhc.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Inspector扩展</title>
+    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/02Inspector%E6%89%A9%E5%B1%951/</link>
+    <pubDate>Sat, 21 Oct 2023 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/02Inspector%E6%89%A9%E5%B1%951/</guid>
+    <description><![CDATA[Inspector扩展 前面了解了一些简单的UnityEditor扩展结构。但是这些都很定制化。我们最终的目标是可以根据想要的数据编辑结构，提]]></description>
+</item>
+<item>
+    <title>Editor基础</title>
+    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/01Editor%E5%9F%BA%E7%A1%80/</link>
+    <pubDate>Fri, 20 Oct 2023 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/01Editor%E5%9F%BA%E7%A1%80/</guid>
+    <description><![CDATA[Editor基础 Unity对于编辑器扩展提供了非常大的空间，可以让开发者在编辑器中定制开发各种功能。 首先要理解Unity对于编辑器开发的一些]]></description>
+</item>
+<item>
+    <title>UnityEditor扩展</title>
+    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/UnityEditor%E6%89%A9%E5%B1%95%E5%A4%A7%E7%BA%B2/</link>
+    <pubDate>Fri, 20 Oct 2023 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/UnityEditor%E6%89%A9%E5%B1%95%E5%A4%A7%E7%BA%B2/</guid>
+    <description><![CDATA[UnityEditor扩展 本文档主要总结资料，给出编辑器扩展的各种基础知识点。 首先我们不得不承认的是，对于编辑器的开发并不是那么通用。每个引]]></description>
+</item>
+<item>
+    <title>Unity相关</title>
+    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E7%9B%B8%E5%85%B3/</link>
+    <pubDate>Fri, 20 Oct 2023 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E7%9B%B8%E5%85%B3/</guid>
+    <description><![CDATA[Unity相关 本文档主要记录Unity相关的一些内容，包括引擎功能，插件相关，以及一些Unity开源工程的研究。 积累Unity相关技术，方便]]></description>
+</item>
+<item>
+    <title>基础算法之章</title>
+    <link>http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/00%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E7%AB%A0/</link>
+    <pubDate>Sun, 03 Sep 2023 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/00%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E7%AB%A0/</guid>
+    <description><![CDATA[基础算法之章 本文档主要记录一些平时见到，经常面试，或常用的一些算法结构。 一方面起到回顾了解作用，另一方面加深对基础算法的了解。虽然基础算法在]]></description>
+</item>
+<item>
+    <title>寻找前K个最大数</title>
+    <link>http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%AF%BB%E6%89%BE%E5%89%8DK%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0/</link>
+    <pubDate>Sun, 03 Sep 2023 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%AF%BB%E6%89%BE%E5%89%8DK%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0/</guid>
+    <description><![CDATA[寻找前K个最大数 着是一个经典的面试问题，于是想在在这里记录一下相关的一些算法和思想。 问题描述： 给定一个包含n个数的乱序数组，寻找其中前K个最]]></description>
+</item>
+<item>
+    <title>柏拉图的洞穴</title>
+    <link>http://azurezhc.github.io/drafts/%E6%95%B0%E5%AD%A6%E6%96%87%E6%A1%A3/%E6%95%B0%E7%90%86%E5%93%B2%E5%AD%A6%E6%80%9D%E8%BE%A8/%E6%9F%8F%E6%8B%89%E5%9B%BE%E7%9A%84%E6%B4%9E%E7%A9%B4/</link>
+    <pubDate>Sun, 03 Sep 2023 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/drafts/%E6%95%B0%E5%AD%A6%E6%96%87%E6%A1%A3/%E6%95%B0%E7%90%86%E5%93%B2%E5%AD%A6%E6%80%9D%E8%BE%A8/%E6%9F%8F%E6%8B%89%E5%9B%BE%E7%9A%84%E6%B4%9E%E7%A9%B4/</guid>
+    <description><![CDATA[柏拉图的洞穴]]></description>
+</item>
+<item>
     <title>游戏架构理论</title>
     <link>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/01%E5%AE%B9%E5%99%A8%E5%8C%96%E7%90%86%E8%AE%BA/</link>
     <pubDate>Fri, 01 Sep 2023 00:00:00 &#43;0000</pubDate>
@@ -29,62 +85,6 @@
     <author>azurezhc</author>
     <guid>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/03TimeLine%E7%BB%93%E6%9E%84/</guid>
     <description><![CDATA[TimeLine结构 本文，主要总结我在写游戏代码过程中对于时间轴概念的理解和使用。 在游戏开发过程中，不管是客户端还是服务器开发，不可避免的会]]></description>
-</item>
-<item>
-    <title>游戏架构理论</title>
-    <link>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/04%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/</link>
-    <pubDate>Fri, 01 Sep 2023 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/04%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/</guid>
-    <description><![CDATA[04类型系统 本文，主要总结我在写游戏代码过程中对于类型系统的理解和使用。 一般讲起类型系统，都会直接想到编程语言中的类型概念，即Int，Lon]]></description>
-</item>
-<item>
-    <title>计算几何课程</title>
-    <link>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query/</link>
-    <pubDate>Mon, 28 Aug 2023 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query/</guid>
-    <description><![CDATA[08截窗查询(Windowing Query) 计算几何-笔记目录 在第七章中讨论的Range Query是给定一个矩形，查询有多少落在矩形中的点。而在本章，]]></description>
-</item>
-<item>
-    <title>计算几何课程</title>
-    <link>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search/</link>
-    <pubDate>Sat, 26 Aug 2023 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search/</guid>
-    <description><![CDATA[07几何范围查找(Geometric Range Search) 计算几何-笔记目录 在第六章中主要讨论的是点定位问题，及给定平面的刨分和一个点，确定点所在位置。本章则]]></description>
-</item>
-<item>
-    <title>计算几何课程</title>
-    <link>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/01%E5%87%B8%E5%8C%85Convex-Hull/</link>
-    <pubDate>Fri, 25 Aug 2023 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/01%E5%87%B8%E5%8C%85Convex-Hull/</guid>
-    <description><![CDATA[01凸包(Convex Hull) 计算几何-笔记目录 计算几何第一章课程主要讲述如何计算凸包。 章节由浅入深，由问题逐步引导出解决方法。讲的非常好。本文主]]></description>
-</item>
-<item>
-    <title>计算几何课程</title>
-    <link>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/02%E5%87%A0%E4%BD%95%E6%B1%82%E4%BA%A4Geometric-Intersection/</link>
-    <pubDate>Fri, 25 Aug 2023 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/02%E5%87%A0%E4%BD%95%E6%B1%82%E4%BA%A4Geometric-Intersection/</guid>
-    <description><![CDATA[02几何求交(Geometric Intersection) 计算几何-笔记目录 计算几何第二章课程主要讲述如何进行几何求交。 章节由浅入深，由简单求交判定问题逐步深入到跟]]></description>
-</item>
-<item>
-    <title>计算几何课程</title>
-    <link>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/03%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Triangulation/</link>
-    <pubDate>Fri, 25 Aug 2023 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/03%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Triangulation/</guid>
-    <description><![CDATA[03三角刨分(Triangulation) 计算几何-笔记目录 计算几何第三章课程主要讲述如何进行三角刨分，首先要明确Triangulation]]></description>
-</item>
-<item>
-    <title>计算几何课程</title>
-    <link>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/04Voronoi%E5%9B%BEVoronoi-Diagram/</link>
-    <pubDate>Fri, 25 Aug 2023 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/04Voronoi%E5%9B%BEVoronoi-Diagram/</guid>
-    <description><![CDATA[04Voronoi图(Voronoi Diagram) 计算几何-笔记目录 本章主题介绍平面如何划分。通过对平面划分成距离点最近的区域，与Voronoi图相关联]]></description>
 </item>
 </channel>
 </rss>
