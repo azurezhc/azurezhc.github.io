@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>IMGUI扩展Inspector基础 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="IMGUI扩展Inspector基础" />
+<meta property="og:description" content="IMGUI扩展Inspector基础 前面了解了一些简单的UnityEditor扩展结构。但是这些都很定制化。我的最终目标是可以根据想要的数据" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/02IMGUI%E6%89%A9%E5%B1%95%E5%9F%BA%E7%A1%80/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-10-21T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="IMGUI扩展Inspector基础"/>
+<meta name="twitter:description" content="IMGUI扩展Inspector基础 前面了解了一些简单的UnityEditor扩展结构。但是这些都很定制化。我的最终目标是可以根据想要的数据"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/02IMGUI%E6%89%A9%E5%B1%95%E5%9F%BA%E7%A1%80/" /><link rel="prev" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/01Editor%E5%9F%BA%E7%A1%80/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "IMGUI扩展Inspector基础",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/UnityEditor%E6%89%A9%E5%B1%95\/02IMGUI%E6%89%A9%E5%B1%95%E5%9F%BA%E7%A1%80\/"
+        },"genre": "posts","wordcount":  4904 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/UnityEditor%E6%89%A9%E5%B1%95\/02IMGUI%E6%89%A9%E5%B1%95%E5%9F%BA%E7%A1%80\/","datePublished": "2023-10-21T00:00:00+00:00","dateModified": "2023-10-21T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">IMGUI扩展Inspector基础</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-10-21">2023-10-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4904 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;10 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ol>
+    <li><a href="#imgui扩展inspector基础">IMGUI扩展Inspector基础</a></li>
+    <li><a href="#inspector扩展">Inspector扩展</a>
+      <ol>
+        <li><a href="#基础绘制">基础绘制</a></li>
+        <li><a href="#布局函数">布局函数</a></li>
+        <li><a href="#自动布局与位置计算">自动布局与位置计算</a></li>
+      </ol>
+    </li>
+    <li><a href="#propertydrawer">PropertyDrawer</a></li>
+    <li><a href="#window扩展">Window扩展</a></li>
+    <li><a href="#最后">最后</a></li>
+  </ol>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="imgui扩展inspector基础">IMGUI扩展Inspector基础</h1>
+<p>前面了解了一些简单的UnityEditor扩展结构。但是这些都很定制化。我的最终目标是可以根据想要的数据编辑结构，提供一个舒适的管线。这里就记录我了解到的，如果扩展Inspector的基础结构。</p>
+<p>Unity经历过长时间的发展，到目前位置已经有了三套UI系统。</p>
+<ul>
+<li>IMGUI，最早的UI系统，后来被逐渐替换成了UGUI。但是在编辑器侧依然维护者IMGUI的框架结构。</li>
+<li>UGUI，后来重构的新GUI框架。现在主要是在游戏运行时提供UI框架结构服务。</li>
+<li>UIToolkit，因为前面UGUI与大众的UI编辑器不一样，借鉴通用UI编辑器而制作的以</li>
+</ul>
+<p>现在普遍来说游戏运行时都是以UGUI为主。而编辑器侧都是以IMGUI方式开发。但是后面可以看到IMGUI的构造方式不够只管。而且都是</p>
+<p>这里主要记录IMGUI扩展Editor的方式，以及接口函数。记录以供入门理解扩展编辑器方式。</p>
+<h1 id="inspector扩展">Inspector扩展</h1>
+<p>如前面所述，在Unity我们写一个类继承MonoBehaviour或者ScriptableObject时候会，Inspector上会显示出相关的一些编辑UI。此即Unity Editor提供的编辑窗口。</p>
+<p>现在我们要扩展对某个类的Inspector窗口。我们要以某种方式跟这个类关联。而Unity则提供了一个简单的方式来关联要扩展Inspector的类。</p>
+<ul>
+<li>写一个继承Editor的类，此及用来提供编辑窗口相关功能的类。</li>
+<li>用CustomEditor属性(Attribute)来关联目标类。</li>
+</ul>
+<p>具体代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 要扩展Inspector显示的目标类</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">MonoAvatar</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">hp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">float</span> <span class="n">speed</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">avatar_name</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//描述Inspector中UI相关结构细节的类</span>
+</span></span><span class="line"><span class="cl"><span class="na">[CustomEditor(typeof(MonoAvatar))]</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">MonoAvatarEditor</span> <span class="p">:</span> <span class="n">Editor</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">void</span> <span class="n">OnEnable</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//当关联的Inspector打开时调用</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">void</span> <span class="n">OnDisable</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//当关联的Inspector关闭时会先调用OnDisable然后调OnDestroy</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">void</span> <span class="n">OnDestroy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//当关联的Inspector关闭时会调用OnDestroy</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">OnInspectorGUI</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//IMGUI框架中绘制InspectorGUI的接口</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//会按照Inspector的绘制帧率来调用该接口</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中OnInspectorGUI接口则是我们用来绘制Inspector窗口的主要战场。如果空置此函数，你会发现Inspector上不再显示原来相关的可编辑接口。这是因为默认的属性编辑Field是由Editor基类里面来提供的。如果想要保持原来的调用base.OnInspectorGUI即可。</p>
+<p>现在我们要对Inspector界面上做一些新的绘制。这里用到的类即：</p>
+<ul>
+<li>EditorGUILayout : 提供了Editor下已经布局好的一些成品组件。</li>
+<li>GUILayout：GUI下已经布局好的一些成品组件。与EditorGUILayout的区别在于GUILayout也包含了运行时的UI结构。</li>
+</ul>
+<p>通过这些以及足以绘制出足够的编辑器结构。</p>
+<h2 id="基础绘制">基础绘制</h2>
+<p>这里先示例，扩展一个Button，该Button可以使得编辑的对象，可以按照x,y,z填的数值，在编辑器中移动对应距离。代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">OnInspectorGUI</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">base</span><span class="p">.</span><span class="n">OnInspectorGUI</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// EditorGUI显示一个帮助提示框</span>
+</span></span><span class="line"><span class="cl">    <span class="n">EditorGUILayout</span><span class="p">.</span><span class="n">HelpBox</span><span class="p">(</span><span class="s">&#34;这都是Editor内的编辑属性&#34;</span><span class="p">,</span> <span class="n">MessageType</span><span class="p">.</span><span class="n">Info</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// EditorGUI用来生成属性编辑框函数 这里即生成3个Int类型的编辑框，并且跟x,y,z三个属性值关联，其编辑获取值为右侧参数，返回值为输出赋值</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="p">=</span> <span class="n">EditorGUILayout</span><span class="p">.</span><span class="n">IntField</span><span class="p">(</span><span class="s">&#34;x&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="p">=</span> <span class="n">EditorGUILayout</span><span class="p">.</span><span class="n">IntField</span><span class="p">(</span><span class="s">&#34;y&#34;</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">z</span> <span class="p">=</span> <span class="n">EditorGUILayout</span><span class="p">.</span><span class="n">IntField</span><span class="p">(</span><span class="s">&#34;z&#34;</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//添加一个Button，当Buttong点击的时候触发回调函数，返回true进而触发点击逻辑。</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">GUILayout</span><span class="p">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&#34;StartMove&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 每个Editor都有一个target对象，绑定目前正在编辑的类型的对象。这里即场景中GameObject上的MonoAvatar类型。</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">avatar</span> <span class="p">=</span> <span class="p">(</span><span class="n">MonoAvatar</span><span class="p">)</span><span class="n">target</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">avatar</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span> <span class="p">+=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最终显示效果如下：</p>
+<center><img src="../02.assets/p1.png"></center>
+<p>而EditorLayout中还有更多一系列接口函数，可以设置更多的空间类型。这些可以参考前面相关文档，研究并绘制出想要的组件结构。</p>
+<p>对于Layout提供的接口中，大部分最后还是提供一个类型GUILayoutOption可变长参数列表。通过这些GUILaytoutOption对象则可以相应的调整显示的效果。</p>
+<p>例如对于IntField来说有：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">IntField</span><span class="p">(</span><span class="kt">string</span> <span class="n">label</span><span class="p">,</span> <span class="kt">int</span> <span class="k">value</span><span class="p">,</span> <span class="k">params</span> <span class="n">GUILayoutOption</span><span class="p">[]</span> <span class="n">options</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">IntField</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="k">value</span><span class="p">,</span> <span class="n">EditorStyles</span><span class="p">.</span><span class="n">numberField</span><span class="p">,</span> <span class="n">options</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后的GUILayoutOption则可以通过诸如GUILayout.Height(40)等参数来调节。</p>
+<h2 id="布局函数">布局函数</h2>
+<p>现在我们考虑在Inspector进行布局的简单控制。这里就可以通过IMGUI的布局函数来实现。我们用Button来做一个示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">OnInspectorGUI</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">base</span><span class="p">.</span><span class="n">OnInspectorGUI</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">EditorGUILayout</span><span class="p">.</span><span class="n">HelpBox</span><span class="p">(</span><span class="s">&#34;这都是Editor内的编辑属性&#34;</span><span class="p">,</span> <span class="n">MessageType</span><span class="p">.</span><span class="n">Info</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vec3</span> <span class="p">=</span> <span class="n">EditorGUILayout</span><span class="p">.</span><span class="n">Vector3IntField</span><span class="p">(</span><span class="s">&#34;Vector3Field&#34;</span><span class="p">,</span> <span class="n">vec3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//构造一个水平布局作用域，在域内的对象会被是为要水平布局的对象。</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="p">(</span><span class="k">new</span> <span class="n">EditorGUILayout</span><span class="p">.</span><span class="n">HorizontalScope</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">GUILayout</span><span class="p">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&#34;LayoutField Left&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">GUILayout</span><span class="p">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&#34;LayoutField Middle&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">GUILayout</span><span class="p">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&#34;LayoutField Right&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//以前的代码中也提供了如下的作用域函数对</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//EditorGUILayout.BeginHorizontal</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//EditorGUILayout.EndHorizontal</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">GUILayout</span><span class="p">.</span><span class="n">Button</span><span class="p">(</span><span class="s">&#34;StartMove&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">avatar</span> <span class="p">=</span> <span class="p">(</span><span class="n">MonoAvatar</span><span class="p">)</span><span class="n">target</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">avatar</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span> <span class="p">+=</span> <span class="k">new</span> <span class="n">Vector3</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最终效果如下：</p>
+<center><img src="../02.assets/p2.png"></center>
+<h2 id="自动布局与位置计算">自动布局与位置计算</h2>
+<p>这里你会发现，前面并没有并没有直接用布局函数修改IntField来实现图中类似于Vector3的效果。这是因为其实对于Layout中接口来说，其都是带有自动布局效果的。如果直接使用HorizontalScope会发现其自动布局效果并不如意，如下。</p>
+<center><img src="../02.assets/p3.png"></center>
+<p>可以发现这是因为这个IntField的Label是根据所在区域的宽度算出的一个固定值。这导致整个Field长度远远长于了Inspector的宽度。同时的是，不论对布局参数如何修改，都无法修改这一部分。其布局修改针对的主要是后面填写区域部分。</p>
+<p>这时候我们非要去制作这样一个显示，可想而知，就要自己去操作布局结构了。而这可以通过Layout对应的两个布局计算类来实现，即：</p>
+<ul>
+<li>EditorGUI : 编辑器下GUI元素的绘制接口。</li>
+<li>GUI : GUI元素的绘制接口。</li>
+</ul>
+<p>但是在IMGUI中直接根据布局函数来绘制UI元素非常麻烦，而且自己计算GUI位置本质就是把布局功能完全接管到自己手里，这样可能导致原来自动布局的各种问题。</p>
+<p>以下是一个自己计算Rect来绘制field的示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">OnInspectorGUI</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">base</span><span class="p">.</span><span class="n">OnInspectorGUI</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">EditorGUILayout</span><span class="p">.</span><span class="n">HelpBox</span><span class="p">(</span><span class="s">&#34;这都是Editor内的编辑属性&#34;</span><span class="p">,</span> <span class="n">MessageType</span><span class="p">.</span><span class="n">Info</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vec3</span> <span class="p">=</span> <span class="n">EditorGUILayout</span><span class="p">.</span><span class="n">Vector3IntField</span><span class="p">(</span><span class="s">&#34;Vector3Field&#34;</span><span class="p">,</span> <span class="n">vec3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//获取当前已绘制好的所有属性占据的</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">now_rect</span> <span class="p">=</span> <span class="n">GUILayoutUtility</span><span class="p">.</span><span class="n">GetLastRect</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//用Space空出要绘制的布局用空间 实际使用GUILayoutUtility的GetRect来获取布局用空间。</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">item_width</span> <span class="p">=</span> <span class="n">now_rect</span><span class="p">.</span><span class="n">width</span> <span class="p">/</span> <span class="m">6</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">EditorGUILayout</span><span class="p">.</span><span class="n">Space</span><span class="p">(</span><span class="m">20</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//根据已经占用的Rect参数来平均布局控件位置</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">start_x</span> <span class="p">=</span> <span class="n">now_rect</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">EditorGUI</span><span class="p">.</span><span class="n">LabelField</span><span class="p">(</span><span class="k">new</span> <span class="n">Rect</span><span class="p">(</span><span class="n">now_rect</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">now_rect</span><span class="p">.</span><span class="n">yMax</span><span class="p">,</span> <span class="n">item_width</span><span class="p">,</span> <span class="m">20</span><span class="p">),</span> <span class="s">&#34;x&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="p">=</span> <span class="n">EditorGUI</span><span class="p">.</span><span class="n">IntField</span><span class="p">(</span><span class="k">new</span> <span class="n">Rect</span><span class="p">(</span><span class="n">start_x</span> <span class="p">+=</span> <span class="n">item_width</span><span class="p">,</span> <span class="n">now_rect</span><span class="p">.</span><span class="n">yMax</span><span class="p">,</span> <span class="n">item_width</span><span class="p">,</span> <span class="m">20</span><span class="p">),</span> <span class="n">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">EditorGUI</span><span class="p">.</span><span class="n">LabelField</span><span class="p">(</span><span class="k">new</span> <span class="n">Rect</span><span class="p">(</span><span class="n">start_x</span> <span class="p">+=</span> <span class="n">item_width</span><span class="p">,</span> <span class="n">now_rect</span><span class="p">.</span><span class="n">yMax</span><span class="p">,</span> <span class="n">item_width</span><span class="p">,</span> <span class="m">20</span><span class="p">),</span> <span class="s">&#34;y&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="p">=</span> <span class="n">EditorGUI</span><span class="p">.</span><span class="n">IntField</span><span class="p">(</span><span class="k">new</span> <span class="n">Rect</span><span class="p">(</span><span class="n">start_x</span> <span class="p">+=</span> <span class="n">item_width</span><span class="p">,</span> <span class="n">now_rect</span><span class="p">.</span><span class="n">yMax</span><span class="p">,</span> <span class="n">item_width</span><span class="p">,</span> <span class="m">20</span><span class="p">),</span> <span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">EditorGUI</span><span class="p">.</span><span class="n">LabelField</span><span class="p">(</span><span class="k">new</span> <span class="n">Rect</span><span class="p">(</span><span class="n">start_x</span> <span class="p">+=</span> <span class="n">item_width</span><span class="p">,</span> <span class="n">now_rect</span><span class="p">.</span><span class="n">yMax</span><span class="p">,</span> <span class="n">item_width</span><span class="p">,</span> <span class="m">20</span><span class="p">),</span> <span class="s">&#34;y&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">z</span> <span class="p">=</span> <span class="n">EditorGUI</span><span class="p">.</span><span class="n">IntField</span><span class="p">(</span><span class="k">new</span> <span class="n">Rect</span><span class="p">(</span><span class="n">start_x</span> <span class="p">+=</span> <span class="n">item_width</span><span class="p">,</span> <span class="n">now_rect</span><span class="p">.</span><span class="n">yMax</span><span class="p">,</span> <span class="n">item_width</span><span class="p">,</span> <span class="m">20</span><span class="p">),</span> <span class="n">z</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最终效果如下：</p>
+<center><img src="../02.assets/p4.png"></center>
+<h1 id="propertydrawer">PropertyDrawer</h1>
+<p>通过上面的方法已经可以对目标类型进行Inspector扩展绘制了。但是这个粒度可能仍然不够使用，例如如下一些情况：</p>
+<ul>
+<li>例如上面的MonoAvatar作为成员变量的时候，会变成一个ObjectField而不是展开其扩展的Inspector面板。</li>
+<li>对于一些基础类型，我们想定制一些自己的Inspector展示方式。</li>
+</ul>
+<p>虽然原有的结构也可以进行一定程度的功能复用。例如我们将一些绘制步骤封装成一个静态函数，复用函数即可复用绘制功能。但是其针对已究</p>
+<p>好在Unity还提供了一种基于属性(Attribue)的绘制方式。通过继承PropertyDrawer并标记目标属性，我们可以对被属性修饰的字段进行定制绘制。</p>
+<p>这里仍以上面的MonoAvatar示例，新增一个Vector3变量。修饰该变量，使得Inspector中多出一个InfoBox和一个Label表示该向量的距离。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 标记绘制属性 需要继承自PropertyAttribute</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">AvatarAttribute</span> <span class="p">:</span> <span class="n">PropertyAttribute</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//通过CustomPropertyDrawer跟目标属性关联</span>
+</span></span><span class="line"><span class="cl"><span class="na">[CustomPropertyDrawer(typeof(AvatarAttribute))]</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">AvatarPropertyAttributeDrawer</span> <span class="p">:</span> <span class="n">PropertyDrawer</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 重载获取属性的绘制高度接口 基于足够的空间来绘制</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">override</span> <span class="kt">float</span> <span class="n">GetPropertyHeight</span><span class="p">(</span><span class="n">SerializedProperty</span> <span class="n">property</span><span class="p">,</span> <span class="n">GUIContent</span> <span class="n">label</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">property_height</span> <span class="p">=</span> <span class="n">EditorGUI</span><span class="p">.</span><span class="n">GetPropertyHeight</span><span class="p">(</span><span class="n">property</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">property_height</span> <span class="p">*</span> <span class="m">2</span> <span class="p">+</span> <span class="m">40</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//绘制属性接口 传入的Rect即整个属性所占用的绘制空间。property则是被标记的属性的抽象封装。</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">OnGUI</span><span class="p">(</span><span class="n">Rect</span> <span class="n">position</span><span class="p">,</span> <span class="n">SerializedProperty</span> <span class="n">property</span><span class="p">,</span> <span class="n">GUIContent</span> <span class="n">label</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">start_y</span> <span class="p">=</span> <span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">help_box_rect</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rect</span><span class="p">(</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">start_y</span><span class="p">,</span> <span class="n">position</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="m">40</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">EditorGUI</span><span class="p">.</span><span class="n">HelpBox</span><span class="p">(</span><span class="n">help_box_rect</span><span class="p">,</span> <span class="s">&#34;这是用Property绘制出来的对话框&#34;</span><span class="p">,</span> <span class="n">MessageType</span><span class="p">.</span><span class="n">Info</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//直接用Vector3IntField将原来的字段绘制出来</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">height</span> <span class="p">=</span> <span class="n">EditorGUI</span><span class="p">.</span><span class="n">GetPropertyHeight</span><span class="p">(</span><span class="n">property</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">property_rect</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rect</span><span class="p">(</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">start_y</span> <span class="p">+=</span> <span class="m">40</span><span class="p">,</span> <span class="n">position</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">target_vector3</span> <span class="p">=</span> <span class="n">property</span><span class="p">.</span><span class="n">vector3IntValue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">property</span><span class="p">.</span><span class="n">vector3IntValue</span> <span class="p">=</span> <span class="n">EditorGUI</span><span class="p">.</span><span class="n">Vector3IntField</span><span class="p">(</span><span class="n">property_rect</span><span class="p">,</span> <span class="s">&#34;Vector3&#34;</span><span class="p">,</span> <span class="n">target_vector3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//绘制一个LabelField 显示出向量的距离值</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">laebl_rect</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Rect</span><span class="p">(</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">start_y</span> <span class="p">+</span> <span class="n">height</span><span class="p">,</span> <span class="n">position</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">EditorGUI</span><span class="p">.</span><span class="n">LabelField</span><span class="p">(</span><span class="n">laebl_rect</span><span class="p">,</span> <span class="k">new</span> <span class="n">GUIContent</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;{0:N2}&#34;</span><span class="p">,</span> <span class="n">target_vector3</span><span class="p">.</span><span class="n">magnitude</span><span class="p">)));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最终效果如下：</p>
+<center><img src="../02.assets/p5.png"></center>
+<p>需要注意的是，PropertyAttribute只能标记字段类型，所以只能拿到可序列化字段相关的数据，以及相关类型的反射数据。并不能拿到相关对象。所以其虽然可以添加Button这样的GUI但是其功能受限的。</p>
+<p>另一方面是对于像是Button这样的功能结构，一般带有操作对象语义，实际上则可以通过Editor来实现，具体来说是走OnInspectorGUI来绘制。例如如下方式：</p>
+<ul>
+<li>定义一个继承自MonoBehaviour或者ScriptableObject的类。</li>
+<li>定义这个类对应的Drawer类型。通过CustomEditor关联起来。</li>
+<li>在OnInspectorGUI中对target对象进行反射遍历，取出对应的属性。</li>
+</ul>
+<p><br>
+对于OdinInspector来说，实际上大部分都是通过Editor方式来进行绘制的。例如Button这个属性。因为PropertyAttribute只能标记字段。但是Button一般标记一个方法，快捷的让方法可以显示出一个Button来调用。所以只能自己实现ButtonAttribute，在OnInspector中进行反射遍历，筛选绘制来实现。正是通过这样的方式，Odin实现了大量的属性，可以方便的通过属性(Attribute)方式快速定制整个Editor界面。</p>
+<h1 id="window扩展">Window扩展</h1>
+<p>除了对Inspector进行扩展。我们有些时候还需要一些编辑管线窗口。例如提供一个窗口来方便的编辑道具功能等等。这个时候就需要定制化的一个窗口来。</p>
+<p>这里示例创建一个窗口筛选场景中所有带有MonoAvatar的Gameobject并且显示出来，当点击时可以快速定位场景。</p>
+<p>Unity创建一个Window非常简单。可以通过如下方式即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">//继承自EditorWindow即可</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">MonoAvatarEditorWindow</span> <span class="p">:</span> <span class="n">EditorWindow</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//添加一个菜单项 创建该Window</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [MenuItem(&#34;Tools/AvatarEditorWindow&#34;)]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="n">ShowWindow</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">window</span> <span class="p">=</span> <span class="n">GetWindow</span><span class="p">&lt;</span><span class="n">MonoAvatarEditorWindow</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">window</span><span class="p">.</span><span class="n">titleContent</span> <span class="p">=</span> <span class="k">new</span> <span class="n">GUIContent</span><span class="p">(</span><span class="s">&#34;AvatarEditoWindow&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">window</span><span class="p">.</span><span class="n">Show</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//跟Inspector一样的一组生命周期接口</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">void</span> <span class="n">OnEnable</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">void</span> <span class="n">OnDisable</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">void</span> <span class="n">OnDestroy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//约定的一个绘制接口，这个不是继承而来，而是由外部系统</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="k">void</span> <span class="n">OnGUI</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以发现对于EditorWindow来说直接使用OnGUI接口，并没有传入任何参数。此时整个窗口的绘制要素都存放在EditorWindow的字段之中。例如position字段为一个Rect类型，表示了此时整个EditorWindow窗口的大小。</p>
+<p>下面筛选场景物体，把MonoAvatar的物体筛选出来。并且显示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="kt">float</span> <span class="n">button_width</span> <span class="p">=</span> <span class="m">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="kt">float</span> <span class="n">button_height</span> <span class="p">=</span> <span class="m">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="n">Vector2</span> <span class="n">scrollview_pos</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="kt">int</span> <span class="n">select_index</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//找到所有对象 然后声明一个ScrollView区域并使用一个SelectionGrid来显示整个内容。</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">objects</span> <span class="p">=</span> <span class="n">Object</span><span class="p">.</span><span class="n">FindObjectsOfType</span><span class="p">&lt;</span><span class="n">MonoAvatar</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">row_capacity</span> <span class="p">=</span> <span class="n">Mathf</span><span class="p">.</span><span class="n">FloorToInt</span><span class="p">(</span><span class="n">position</span><span class="p">.</span><span class="n">width</span> <span class="p">/</span> <span class="n">button_width</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="p">(</span><span class="k">new</span> <span class="n">GUILayout</span><span class="p">.</span><span class="n">ScrollViewScope</span><span class="p">(</span><span class="n">scrollview_pos</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">select_index</span> <span class="p">=</span> <span class="n">GUILayout</span><span class="p">.</span><span class="n">SelectionGrid</span><span class="p">(</span><span class="n">select_index</span><span class="p">,</span> <span class="n">GetObjectContents</span><span class="p">(</span><span class="n">objects</span><span class="p">),</span> <span class="n">row_capacity</span><span class="p">,</span> <span class="n">GetGUIStyle</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">select_index</span> <span class="p">!=</span> <span class="p">-</span><span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//用selection标记当前激活的对象</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Selection</span><span class="p">.</span><span class="n">activeObject</span> <span class="p">=</span> <span class="n">objects</span><span class="p">[</span><span class="n">select_index</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 根据传入的Mono脚本生成对应的GUIContent列表返回，以供SelectionGrid显示。</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="n">GUIContent</span><span class="p">[]</span> <span class="n">GetObjectContents</span><span class="p">(</span><span class="n">MonoAvatar</span><span class="p">[]</span> <span class="n">mono_avatars</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">guicontents</span> <span class="p">=</span> <span class="k">new</span> <span class="n">GUIContent</span><span class="p">[</span><span class="n">mono_avatars</span><span class="p">.</span><span class="n">Length</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">mono_avatars</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">guicontent</span> <span class="p">=</span> <span class="k">new</span> <span class="n">GUIContent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">guicontents</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="n">guicontent</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">guicontent</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="n">mono_avatars</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">name</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">guicontent</span><span class="p">.</span><span class="n">image</span> <span class="p">=</span> <span class="n">AssetPreview</span><span class="p">.</span><span class="n">GetAssetPreview</span><span class="p">(</span><span class="n">mono_avatars</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">gameObject</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">guicontents</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//获取一个GUIStyle定制以下显示格式</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="n">GUIStyle</span> <span class="n">GetGUIStyle</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">style</span> <span class="p">=</span> <span class="k">new</span> <span class="n">GUIStyle</span><span class="p">(</span><span class="n">GUI</span><span class="p">.</span><span class="n">skin</span><span class="p">.</span><span class="n">button</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">style</span><span class="p">.</span><span class="n">alignment</span> <span class="p">=</span> <span class="n">TextAnchor</span><span class="p">.</span><span class="n">LowerCenter</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">style</span><span class="p">.</span><span class="n">imagePosition</span> <span class="p">=</span> <span class="n">ImagePosition</span><span class="p">.</span><span class="n">ImageAbove</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">style</span><span class="p">.</span><span class="n">normal</span><span class="p">.</span><span class="n">textColor</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">white</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">style</span><span class="p">.</span><span class="n">fixedHeight</span> <span class="p">=</span> <span class="n">button_height</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">style</span><span class="p">.</span><span class="n">fixedWidth</span> <span class="p">=</span> <span class="n">button_width</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">style</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后呈现出如下效果：</p>
+<center><img src="../02.assets/p6.png"></center>
+<h1 id="最后">最后</h1>
+<p>这里只是如何扩展Unity Editor的基础介绍。但是很多结构实际上都是建立在基础结构之上一步步搭建起来的。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-10-21</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/01Editor%E5%9F%BA%E7%A1%80/" class="prev" rel="prev" title="Editor基础"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Editor基础</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

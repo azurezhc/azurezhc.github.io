@@ -5,12 +5,12 @@
         <description>All Posts | azurezhc的游戏开发人生</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>azurezhc@gmail.com (azurezhc)</managingEditor>
             <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Sat, 21 Oct 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://azurezhc.github.io/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Inspector扩展</title>
-    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/02Inspector%E6%89%A9%E5%B1%951/</link>
+    <title>IMGUI扩展Inspector基础</title>
+    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/02IMGUI%E6%89%A9%E5%B1%95%E5%9F%BA%E7%A1%80/</link>
     <pubDate>Sat, 21 Oct 2023 00:00:00 &#43;0000</pubDate>
     <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/02Inspector%E6%89%A9%E5%B1%951/</guid>
-    <description><![CDATA[Inspector扩展 前面了解了一些简单的UnityEditor扩展结构。但是这些都很定制化。我们最终的目标是可以根据想要的数据编辑结构，提]]></description>
+    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/02IMGUI%E6%89%A9%E5%B1%95%E5%9F%BA%E7%A1%80/</guid>
+    <description><![CDATA[IMGUI扩展Inspector基础 前面了解了一些简单的UnityEditor扩展结构。但是这些都很定制化。我的最终目标是可以根据想要的数据]]></description>
 </item>
 <item>
     <title>Editor基础</title>

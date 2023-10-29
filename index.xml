@@ -7,12 +7,12 @@
             <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Fri, 18 Aug 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="http://azurezhc.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>Inspector扩展</title>
-    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/02Inspector%E6%89%A9%E5%B1%951/</link>
+    <title>IMGUI扩展Inspector基础</title>
+    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/02IMGUI%E6%89%A9%E5%B1%95%E5%9F%BA%E7%A1%80/</link>
     <pubDate>Sat, 21 Oct 2023 00:00:00 &#43;0000</pubDate>
     <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/02Inspector%E6%89%A9%E5%B1%951/</guid>
-    <description><![CDATA[Inspector扩展 前面了解了一些简单的UnityEditor扩展结构。但是这些都很定制化。我们最终的目标是可以根据想要的数据编辑结构，提]]></description>
+    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/02IMGUI%E6%89%A9%E5%B1%95%E5%9F%BA%E7%A1%80/</guid>
+    <description><![CDATA[IMGUI扩展Inspector基础 前面了解了一些简单的UnityEditor扩展结构。但是这些都很定制化。我的最终目标是可以根据想要的数据]]></description>
 </item>
 <item>
     <title>Editor基础</title>
@@ -55,14 +55,6 @@
     <description><![CDATA[寻找前K个最大数 着是一个经典的面试问题，于是想在在这里记录一下相关的一些算法和思想。 问题描述： 给定一个包含n个数的乱序数组，寻找其中前K个最]]></description>
 </item>
 <item>
-    <title>柏拉图的洞穴</title>
-    <link>http://azurezhc.github.io/drafts/%E6%95%B0%E5%AD%A6%E6%96%87%E6%A1%A3/%E6%95%B0%E7%90%86%E5%93%B2%E5%AD%A6%E6%80%9D%E8%BE%A8/%E6%9F%8F%E6%8B%89%E5%9B%BE%E7%9A%84%E6%B4%9E%E7%A9%B4/</link>
-    <pubDate>Sun, 03 Sep 2023 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/drafts/%E6%95%B0%E5%AD%A6%E6%96%87%E6%A1%A3/%E6%95%B0%E7%90%86%E5%93%B2%E5%AD%A6%E6%80%9D%E8%BE%A8/%E6%9F%8F%E6%8B%89%E5%9B%BE%E7%9A%84%E6%B4%9E%E7%A9%B4/</guid>
-    <description><![CDATA[柏拉图的洞穴]]></description>
-</item>
-<item>
     <title>游戏架构理论</title>
     <link>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/01%E5%AE%B9%E5%99%A8%E5%8C%96%E7%90%86%E8%AE%BA/</link>
     <pubDate>Fri, 01 Sep 2023 00:00:00 &#43;0000</pubDate>
@@ -85,6 +77,14 @@
     <author>azurezhc</author>
     <guid>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/03TimeLine%E7%BB%93%E6%9E%84/</guid>
     <description><![CDATA[TimeLine结构 本文，主要总结我在写游戏代码过程中对于时间轴概念的理解和使用。 在游戏开发过程中，不管是客户端还是服务器开发，不可避免的会]]></description>
+</item>
+<item>
+    <title>游戏架构理论</title>
+    <link>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/04%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/</link>
+    <pubDate>Fri, 01 Sep 2023 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/04%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/</guid>
+    <description><![CDATA[04类型系统 本文，主要总结我在写游戏代码过程中对于类型系统的理解和使用。 一般讲起类型系统，都会直接想到编程语言中的类型概念，即Int，Lon]]></description>
 </item>
 </channel>
 </rss>
