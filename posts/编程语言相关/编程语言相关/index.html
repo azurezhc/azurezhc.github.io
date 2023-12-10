@@ -4,31 +4,31 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>基础算法之章 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="基础算法之章" />
-<meta property="og:description" content="基础算法之章 本文档主要记录一些平时见到，经常面试，或常用的一些算法结构。 一方面起到回顾了解作用，另一方面加深对基础算法的了解。虽然基础算法在" />
+        <title>编程语言相关 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="编程语言相关" />
+<meta property="og:description" content="编程语言 这里主要记录一些编程语言相关的内容。谈到编程语言，我个人觉得这是一个非常广阔的天地。 首先，编程语言必然会涉及到编译原理相关的内容。虽" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/00%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E7%AB%A0/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-09-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-09-03T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-12-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-12-03T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="基础算法之章"/>
-<meta name="twitter:description" content="基础算法之章 本文档主要记录一些平时见到，经常面试，或常用的一些算法结构。 一方面起到回顾了解作用，另一方面加深对基础算法的了解。虽然基础算法在"/>
+<meta name="twitter:title" content="编程语言相关"/>
+<meta name="twitter:description" content="编程语言 这里主要记录一些编程语言相关的内容。谈到编程语言，我个人觉得这是一个非常广阔的天地。 首先，编程语言必然会涉及到编译原理相关的内容。虽"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/00%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E7%AB%A0/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E7%AB%A0/" /><link rel="next" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E7%9B%B8%E5%85%B3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/" /><link rel="prev" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/02IMGUI%E6%89%A9%E5%B1%95%E5%9F%BA%E7%A1%80/" /><link rel="next" href="http://azurezhc.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/03CSharp%E6%95%88%E7%8E%87%E7%A0%94%E7%A9%B6/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "基础算法之章",
+        "headline": "编程语言相关",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/azurezhc.github.io\/posts\/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95\/00%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E7%AB%A0\/"
-        },"genre": "posts","wordcount":  198 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95\/00%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E7%AB%A0\/","datePublished": "2023-09-03T00:00:00+00:00","dateModified": "2023-09-03T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/azurezhc.github.io\/posts\/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3\/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3\/"
+        },"genre": "posts","wordcount":  491 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3\/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3\/","datePublished": "2023-12-03T00:00:00+00:00","dateModified": "2023-12-03T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -67,9 +67,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">基础算法之章</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">编程语言相关</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-09-03">2023-09-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;198 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-12-03">2023-12-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;491 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -78,29 +78,27 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ol>
-    <li><a href="#基础算法之章">基础算法之章</a></li>
-    <li><a href="#参考目录">参考目录</a></li>
-    <li><a href="#算法章节">算法章节</a></li>
+    <li><a href="#编程语言">编程语言</a></li>
+    <li><a href="#c-语言">C# 语言</a></li>
+    <li><a href="#lua语言">Lua语言</a></li>
   </ol>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="基础算法之章">基础算法之章</h1>
-<p>本文档主要记录一些平时见到，经常面试，或常用的一些算法结构。
-一方面起到回顾了解作用，另一方面加深对基础算法的了解。虽然基础算法在平时业务逻辑，架构等不一定会用到。但是其指引性会知道写出的代码跟具有好的效率。</p>
-<h1 id="参考目录">参考目录</h1>
-<p>对于绝大部分算法都可以通过相关算法书籍来获取，以下是我看过的一些算法书籍。</p>
-<div style = "float:left">《算法设计技巧与分析》</div>
-<div style = "text-align:right">[沙特] M. H. Alsuwaiyel</div>
-<div style = "float:left">《现代算法设计与分析》</div>
-<div style = "text-align:right">[印] Sandeep Sen, Amit Kumar</div>
-<h1 id="算法章节">算法章节</h1>
+            </div><div class="content" id="content"><h1 id="编程语言">编程语言</h1>
+<p>这里主要记录一些编程语言相关的内容。谈到编程语言，我个人觉得这是一个非常广阔的天地。</p>
+<p>首先，编程语言必然会涉及到编译原理相关的内容。虽然编译原理，在游戏开发甚至很多应用开发中是一个非常边缘化的位置。但是论及最后，都会发现有编译原理的思想蕴含其中。其次，熟悉编程语言的特性，不仅可以提升我们写代码的效率，还可以提供一种语言思路来看待问题。最后，编程语言跟我们通常的语言也有着关系。正如一句经典名言所述，所有的程序开发都可以认为是开发一门语言。客户用我们的语言来完成相关工作。而在游戏开发中，这个客户就是策划，就是游戏的参与者们，而后会提供给玩家来游玩。所以我觉得对于编程语言的深入学习是很值得的，可以提升我们对于架构的理解，深入程序本身概念。</p>
+<p>这里大部分内容还是只讲语言的特性，讲我对其语言特性的思考，以及最后写一些对语言的胡思乱想。并不会涉及很多编译原理，程序语言设计等深奥的知识，我也没有能力来讲清楚这些内容。但我也可能会涉及到这些，知识大多都是我浅薄的想法，有可能会涉及到这些高深的知识，大家全当一笑，告知于我即可。</p>
+<h1 id="c-语言">C# 语言</h1>
 <ul>
-<li><a class="link-markdown-demo-site" href="/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%AF%BB%E6%89%BE%E5%89%8DK%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0/" rel="noopener"><font size=4>寻找前K个最大数</font></a></li>
+<li><a class="link-markdown-demo-site" href="/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/01CSharp%E7%BB%93%E6%9E%84%E6%80%9D%E8%80%83/" rel="noopener"><font size=4>01 C#结构思考</font></a></li>
+<li><a class="link-markdown-demo-site" href="/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/02CSharp%E8%AF%AD%E8%A8%80%E6%80%9D%E8%80%83/" rel="noopener"><font size=4>02 C#语言思考</font></a></li>
+<li><a class="link-markdown-demo-site" href="/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/03CSharp%E6%95%88%E7%8E%87%E7%A0%94%E7%A9%B6/" rel="noopener"><font size=4>03 C#效率研究</font></a></li>
 </ul>
+<h1 id="lua语言">Lua语言</h1>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-09-03</span>
+                <span>Updated on 2023-12-03</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -117,8 +115,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E7%AB%A0/" class="prev" rel="prev" title="基础算法之章"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>基础算法之章</a>
-            <a href="/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E7%9B%B8%E5%85%B3/" class="next" rel="next" title="Unity相关">Unity相关<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/Unity%E7%9B%B8%E5%85%B3/UnityEditor%E6%89%A9%E5%B1%95/02IMGUI%E6%89%A9%E5%B1%95%E5%9F%BA%E7%A1%80/" class="prev" rel="prev" title="IMGUI扩展Inspector基础"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>IMGUI扩展Inspector基础</a>
+            <a href="/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/03CSharp%E6%95%88%E7%8E%87%E7%A0%94%E7%A9%B6/" class="next" rel="next" title="CSharp效率研究">CSharp效率研究<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
