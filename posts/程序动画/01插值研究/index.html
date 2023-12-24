@@ -160,7 +160,7 @@
 <p>由于Hermite一般为2个点的3次曲线，所以Bezier曲线我们也关注3次曲线部分。即4个控制点的Bezier曲线。</p>
 <p>我们关注<data id="id-56" data-raw></data>时间段内一维情况下的变化，需要注意的是，此时Hermite曲线的语义依旧很明确，即在<data id="id-57" data-raw></data>时取的值以及切线值<data id="id-58" data-raw></data>。但是Bezier曲线，如果直接用构造点的方式，会发现并没有明确对应中间点的t坐标值。实际上这个时候的<data id="id-59" data-raw></data>都会是在x轴上的一个点而已，运动起来，根据构造，其都会是沿着<data id="id-60" data-raw></data>的方向去运动，而不会有往返震荡。</p>
 <p>例如对于一维取值<data id="id-61" data-raw></data>会有如下图像概念。</p>
-<img src="../05.assets/Figure_1.png">
+<img src="../01.assets/Figure_1.png">
 <p>注意到整个曲线任然满足Bezier闭包条件，同时构造的边实际都只有一个前进方向。</p>
 <ul>
 <li>Bezier曲线</li>
@@ -180,7 +180,7 @@
 <p>同时这个公式就提示我们可以如下关联这两个曲线。例如当<data id="id-72" data-raw></data>时，那么两条曲线完全一致。这也提示我们这两个曲线本质一致性。后面可以看到很多曲线编辑器都是用这种方式去编辑的，例如Catmull-rom曲线方式。</p>
 <p><font size = 5> <strong>Catmull-rom</strong></font></p>
 <p>前面看到Bezier上曲线两端跟Hermite斜率上的关系。例如我们要插值<data id="id-73" data-raw></data>两点，我们可以假象前后存在两个假象点<data id="id-74" data-raw></data>。而对于我们要插值的点<data id="id-75" data-raw></data>其斜率部分的值相当于<data id="id-76" data-raw></data>。如下图。</p>
-<img src="../05.assets/p1.png">
+<img src="../01.assets/p1.png">
 <p>那么此时，我们可以通过Herite矩阵简单得出此时的系数矩阵如下：</p>
 <data id="id-77" data-raw></data>
 <p>两个公式相乘可以的出矩阵，实际上就是矩阵的斜率值通过一些已经有的点给了出来。这里的<data id="id-78" data-raw></data>可以理解维曲线的紧张程度。</p>
