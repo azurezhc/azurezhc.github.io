@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>04平面动力系统 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="04平面动力系统" />
+<meta property="og:description" content="平面动力系统 本文主要记录平面动力系统的一些特点，并用程序来模拟其中运动效果。 参考书籍： 《微分方程，动力系统与混沌引论》 平面动力系统可以认为是" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/04%E5%B9%B3%E9%9D%A2%E5%8A%A8%E5%8A%9B%E7%B3%BB%E7%BB%9F/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-12-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-12-24T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="04平面动力系统"/>
+<meta name="twitter:description" content="平面动力系统 本文主要记录平面动力系统的一些特点，并用程序来模拟其中运动效果。 参考书籍： 《微分方程，动力系统与混沌引论》 平面动力系统可以认为是"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/04%E5%B9%B3%E9%9D%A2%E5%8A%A8%E5%8A%9B%E7%B3%BB%E7%BB%9F/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB%E5%A4%A7%E7%BA%B2/" /><link rel="next" href="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/03%E4%BA%8C%E9%98%B6%E8%BF%90%E5%8A%A8%E7%B3%BB%E7%BB%9F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "04平面动力系统",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB\/04%E5%B9%B3%E9%9D%A2%E5%8A%A8%E5%8A%9B%E7%B3%BB%E7%BB%9F\/"
+        },"genre": "posts","wordcount":  1151 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB\/04%E5%B9%B3%E9%9D%A2%E5%8A%A8%E5%8A%9B%E7%B3%BB%E7%BB%9F\/","datePublished": "2023-12-24T00:00:00+00:00","dateModified": "2023-12-24T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">04平面动力系统</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-12-24">2023-12-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1151 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ol>
+    <li><a href="#平面动力系统">平面动力系统</a></li>
+    <li><a href="#平面动力系统分类">平面动力系统分类</a></li>
+  </ol>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="平面动力系统">平面动力系统</h1>
+<p>本文主要记录平面动力系统的一些特点，并用程序来模拟其中运动效果。</p>
+<p>参考书籍：</p>
+<p>《微分方程，动力系统与混沌引论》</p>
+<p>平面动力系统可以认为是微分方程系统在2维下的状况，所谓微分方程组系统可以表示为如下系统：</p>
+<data id="id-1" data-raw></data>
+<p>即每个参数<data id="id-2" data-raw></data>的一阶导数，受所有n个参数和时间t影响，这个影响表现为函数<data id="id-3" data-raw></data>。在二维情况下，如果讨论自治系统，即<data id="id-4" data-raw></data>不与时间关联。我们可以得到如下公式
+<data id="id-5" data-raw></data></p>
+<h1 id="平面动力系统分类">平面动力系统分类</h1>
+<p>现在只考虑简单情况，即<data id="id-6" data-raw></data>都是<data id="id-7" data-raw></data>的线性组合情况，这种情况下可以表示为
+<data id="id-8" data-raw></data></p>
+<p>这算是一种线性动力系统
+根据参考书籍，对于这类有明确分类，可以根据特征值决定运动效果而分为三类</p>
+<data id="id-9" data-raw></data>
+<p>这三类运动都有明显的特征</p>
+<ul>
+<li>实特征向量：沿着实特征向量靠近或者远离</li>
+<li>复特征向量：围绕中心旋转靠经或者远离</li>
+<li>重特征向量：特征向量部分靠近远离，另外一个会是一个关联时间的变化特征向量。</li>
+</ul>
+<p>这三个都可以解析出明确的解析解。但也可以通过数值分步骤模拟来计算。例如对于最简单的圆心转动动力系统，其结构如下：</p>
+<p><data id="id-10" data-raw></data>
+可以解析出其运动解效果为</p>
+<data id="id-11" data-raw></data>
+<p>其实可以简单看出来，这就是一个圆周转动运动。<data id="id-12" data-raw></data>就变成了角速度，时间控制转动角度。这个结论似乎非常平凡，但是可以注意到其可以被一组微分方程描述。因从对于问题的思考方式，不再是直接想到角度转动上的结构，而是从微分方程组上入手。</p>
+<p>此外值得注意的是，上面的微分方程解析解其实被没有规定初始值，实际上这相当于我们给定一个微分运动的动力效果，求解该效果下的解析解方程，而这个解析方程效果，实际对于任意初始值，或者说在平面上的任意一点来说都成立。也就是该微分方程描述力平面上的一个运动场效果。对于初始位置选择的影响，被包含在了<data id="id-13" data-raw></data>之中。</p>
+<p>不过这两种思考方式都导出相同的运动效果，还是非常恰当和神奇的。另一方面是直接从转动入手可能会很难构造出解析解的方程，从微分方程组出发则具有引导性构造出解析解的结构。</p>
+<p>下面是两种方式用计算机离散的模拟运动情况图</p>
+<img src="../04.assets/p1.png">
+<ul>
+<li>蓝色：Euler Method通过微分方程系统计算的解，因为每一步相当于沿着切线递增，可以看到圆在不断外廓。</li>
+<li>红色：解析解给出的随时间变化效果。可以看到就是稳定的圆周运动化。</li>
+</ul>
+<p>实际可以通过Semi Euler Method方式来数值求解微分系统效果。这是后可以看到圆会更加稳定一些。如下图，当然这部分属于数值分析的部分结构。</p>
+<img src="../04.assets/p2.png">
+<p>根据参考资料，如果微分运动方程形式为</p>
+<data id="id-14" data-raw></data>
+<p>则解析解为</p>
+<data id="id-15" data-raw></data>
+<p>当<data id="id-16" data-raw></data>的时候，会是一个收敛的螺旋圆线。但是我们可注意到这个<data id="id-17" data-raw></data>部分实际上就描述了圆的半径部分，其可以是一个任意单纯跟<data id="id-18" data-raw></data>相关联的函数。可以部分改写改解析描述，来修正我们的运动效果。例如我们假定<data id="id-19" data-raw></data>时刻目标归到原点，那么可以这样来修改:</p>
+<data id="id-20" data-raw></data>
+<p>这里面<data id="id-21" data-raw></data>描述了向中心的收敛趋势。</p>
+<img src="../04.assets/p3.png">
+<ul>
+<li>蓝色为动力方程解，红色为线性半径修改解。</li>
+</ul>
+<p>另一方方面我们关注重特征值的微分方程效果。看如下微分方程</p>
+<data id="id-22" data-raw></data>
+<p>其有解析解
+<data id="id-23" data-raw></data></p>
+<p>其不同点的运动方程有如下图示效果</p>
+<img src="../04.assets/p4.png">
+<hr>
+<p><a class="link-markdown-demo-site" href="/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB%E5%A4%A7%E7%BA%B2/" rel="noopener">&raquo;程序动画</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-12-24</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB%E5%A4%A7%E7%BA%B2/" class="prev" rel="prev" title="程序动画大纲"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>程序动画大纲</a>
+            <a href="/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/03%E4%BA%8C%E9%98%B6%E8%BF%90%E5%8A%A8%E7%B3%BB%E7%BB%9F/" class="next" rel="next" title="03二阶运动系统">03二阶运动系统<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"$$\r\n\\mathbf{X}'=\\mathbf{F}(t,\\mathbf{X})\\\\\r\n\\begin{pmatrix}\r\n    x_1'\\\\\r\n    \\vdots\\\\\r\n    x_n'\r\n\\end{pmatrix}=\r\n\\begin{pmatrix}\r\n    f_1(t,x_1,\\cdots,x_n)\\\\\r\n    \\vdots\\\\\r\n    f_n(t,x_1,\\cdots,x_n)\r\n\\end{pmatrix}\r\n$$","id-10":"$$\r\n\\mathbf{X}'=\\begin{pmatrix}\r\n    0\u0026\\beta\\\\\r\n    -\\beta\u00260\r\n\\end{pmatrix}\\mathbf{X}\r\n$$","id-11":"$$\r\n\\mathbf{X}(t)=c_1\\begin{pmatrix}\r\n    \\cos \\beta{}t\\\\\r\n    -\\sin \\beta{}t\r\n\\end{pmatrix}+c_2\\begin{pmatrix}\r\n    \\sin\\beta{}t\\\\\r\n    \\cos\\beta{}t\r\n\\end{pmatrix}\r\n$$","id-12":"$\\beta$","id-13":"$c_1,c_2$","id-14":"$$\r\n\\mathbf{X}'=\\begin{pmatrix}\r\n    \\alpha\u0026\\beta\\\\\r\n    -\\beta\u0026\\alpha\r\n\\end{pmatrix}\\mathbf{X}\r\n$$","id-15":"$$\r\n\\mathbf{X}(t)=c_1e^{\\alpha{}t}\\begin{pmatrix}\r\n    \\cos \\beta{}t\\\\\r\n    -\\sin \\beta{}t\r\n\\end{pmatrix}+c_2e^{\\alpha{}t}\\begin{pmatrix}\r\n    \\sin\\beta{}t\\\\\r\n    \\cos\\beta{}t\r\n\\end{pmatrix}\r\n$$","id-16":"$\\alpha\u003c0$","id-17":"$e^{\\alpha{}t}$","id-18":"$t$","id-19":"$T$","id-2":"$f_i$","id-20":"$$\r\n\\mathbf{X}(t)=h(T)(c_1\\begin{pmatrix}\r\n    \\cos \\beta{}t\\\\\r\n    -\\sin \\beta{}t\r\n\\end{pmatrix}+c_2\\begin{pmatrix}\r\n    \\sin\\beta{}t\\\\\r\n    \\cos\\beta{}t\r\n\\end{pmatrix})=(1-t/T)(c_1\\begin{pmatrix}\r\n    \\cos \\beta{}t\\\\\r\n    -\\sin \\beta{}t\r\n\\end{pmatrix}+c_2\\begin{pmatrix}\r\n    \\sin\\beta{}t\\\\\r\n    \\cos\\beta{}t\r\n\\end{pmatrix})\r\n$$","id-21":"$h(t)$","id-22":"$$\r\n\\mathbf{X}'=\\begin{pmatrix}\r\n    \\lambda\u00261\\\\\r\n    0\u0026\\lambda\r\n\\end{pmatrix}\\mathbf{X}\r\n$$","id-23":"$$\r\n\\mathbf{X}(t)=c_1e^{\\lambda{}t}\\begin{pmatrix}\r\n    1\\\\\r\n    0\r\n\\end{pmatrix}+c_2e^{\\lambda{}t}\\begin{pmatrix}\r\n    t\\\\\r\n    1\r\n\\end{pmatrix}\r\n$$","id-3":"$f_i$","id-4":"$f_i$","id-5":"$$\r\n\\begin{aligned}\r\nx' \u0026=f(x,y)\\\\\r\ny' \u0026=g(x,y)     \r\n\\end{aligned}\r\n$$","id-6":"$f,g$","id-7":"$x,y$","id-8":"$$\r\n\\mathbf{X}'=A\\mathbf{X}\\Rightarrow\\begin{pmatrix}\r\n    x'\\\\\r\n    y'\r\n\\end{pmatrix}=\\begin{pmatrix}\r\n    a \u0026 b\\\\\r\n    c \u0026 d\\\\\r\n\\end{pmatrix}\\begin{pmatrix}\r\n    x\\\\y\r\n\\end{pmatrix}\r\n$$","id-9":"$$\r\n\\begin{pmatrix}\r\n    \\lambda \u0026 0 \\\\\r\n    0 \u0026 \\mu\r\n\\end{pmatrix},\r\n\\begin{pmatrix}\r\n    \\alpha \u0026 \\beta \\\\\r\n    -\\beta \u0026 \\alpha\r\n\\end{pmatrix},\r\n\\begin{pmatrix}\r\n    \\lambda \u0026 1 \\\\\r\n    0 \u0026 \\lambda\r\n\\end{pmatrix}\r\n$$"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

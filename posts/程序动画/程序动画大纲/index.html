@@ -4,31 +4,31 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>C#语言思考 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="C#语言思考" />
-<meta property="og:description" content="Linq思考 Linq是 Partial与结构 反射与程序集" />
+        <title>程序动画大纲 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="程序动画大纲" />
+<meta property="og:description" content="程序动画 本文章系列主要关注于程序控制动画相关的内容。对于动画简单来说，就是关注一个物体位置与时间的函数$\vec{p(t)}$。程序控制动画" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://azurezhc.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/02CSharp%E8%AF%AD%E8%A8%80%E6%80%9D%E8%80%83/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-12-10T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-12-10T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB%E5%A4%A7%E7%BA%B2/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-12-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-12-24T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="C#语言思考"/>
-<meta name="twitter:description" content="Linq思考 Linq是 Partial与结构 反射与程序集"/>
+<meta name="twitter:title" content="程序动画大纲"/>
+<meta name="twitter:description" content="程序动画 本文章系列主要关注于程序控制动画相关的内容。对于动画简单来说，就是关注一个物体位置与时间的函数$\vec{p(t)}$。程序控制动画"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/02CSharp%E8%AF%AD%E8%A8%80%E6%80%9D%E8%80%83/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/" /><link rel="next" href="http://azurezhc.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/01CSharp%E7%BB%93%E6%9E%84%E6%80%9D%E8%80%83/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB%E5%A4%A7%E7%BA%B2/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/03CSharp%E6%95%88%E7%8E%87%E7%A0%94%E7%A9%B6/" /><link rel="next" href="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/04%E5%B9%B3%E9%9D%A2%E5%8A%A8%E5%8A%9B%E7%B3%BB%E7%BB%9F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "C#语言思考",
+        "headline": "程序动画大纲",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/azurezhc.github.io\/posts\/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3\/CSharp\/02CSharp%E8%AF%AD%E8%A8%80%E6%80%9D%E8%80%83\/"
-        },"genre": "posts","wordcount":  27 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3\/CSharp\/02CSharp%E8%AF%AD%E8%A8%80%E6%80%9D%E8%80%83\/","datePublished": "2023-12-10T00:00:00+00:00","dateModified": "2023-12-10T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/azurezhc.github.io\/posts\/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB\/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB%E5%A4%A7%E7%BA%B2\/"
+        },"genre": "posts","wordcount":  525 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB\/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB%E5%A4%A7%E7%BA%B2\/","datePublished": "2023-12-24T00:00:00+00:00","dateModified": "2023-12-24T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -67,10 +67,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">C#语言思考</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">程序动画大纲</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-12-10">2023-12-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;27 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-12-24">2023-12-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;525 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -78,20 +78,29 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ol>
-    <li><a href="#linq思考">Linq思考</a></li>
-    <li><a href="#partial与结构">Partial与结构</a></li>
-    <li><a href="#反射与程序集">反射与程序集</a></li>
+    <li><a href="#程序动画">程序动画</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+    <li><a href="#文章目录">文章目录</a></li>
   </ol>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="linq思考">Linq思考</h1>
-<p>Linq是</p>
-<h1 id="partial与结构">Partial与结构</h1>
-<h1 id="反射与程序集">反射与程序集</h1>
+            </div><div class="content" id="content"><h1 id="程序动画">程序动画</h1>
+<p>本文章系列主要关注于程序控制动画相关的内容。对于动画简单来说，就是关注一个物体位置与时间的函数$\vec{p(t)}$。程序控制动画，即程序代码方式实现对物体位置的控制，即程序实现函数$\vec{p(t)}$。最常见的方式就是按时间的插值。但是实际上除了简单的线性插值外，还有很多方式来控制物体的运动方式，例如通过速度，加速度，这种其实可以算是物理的，更数学的来讲属于动力系统的。再例如各种插值方式。</p>
+<p>这里主要研究各种动画的控制手段，研究产生的效果，方便理解管线，做出一个好的动效等。</p>
+<p>我认为对于游戏中常用的动画基本可以分为两类，一种是程序控制的，用代码实现的动画，一种是美术预先通过外部工具编辑好的动画。但两者其实都可以归于一体，外部工具编辑好的动画，实际上是一族曲线的关键帧信息，然后通过指定的插值方式来驱动位移控制。而这相当于一个程序工具，外部导入其关键信息，属于一种插值控制运动的方式。而这属于动画实现范畴中的一种方式，实际上程序对动画的实现更为广阔，结构可以更为复杂。例如对于动画中某些指定帧进行变形控制后产生的效果。</p>
+<p>所以我觉得对于这些技术的实际效果需要有深刻的认知。</p>
+<h1 id="参考资料">参考资料</h1>
+<h1 id="文章目录">文章目录</h1>
+<ul>
+<li><a class="link-markdown-demo-site" href="/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/01%E6%8F%92%E5%80%BC%E7%A0%94%E7%A9%B6/" rel="noopener"><font size=4>01 插值研究</font></a></li>
+<li><a class="link-markdown-demo-site" href="/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/02%E4%B8%80%E7%BB%B4%E8%BF%90%E5%8A%A8%E7%A0%94%E7%A9%B6/" rel="noopener"><font size=4>02 一维运动研究</font></a></li>
+<li><a class="link-markdown-demo-site" href="/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/03%E4%BA%8C%E9%98%B6%E8%BF%90%E5%8A%A8%E7%B3%BB%E7%BB%9F/" rel="noopener"><font size=4>03 二阶运动系统</font></a></li>
+<li><a class="link-markdown-demo-site" href="/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/04%E5%B9%B3%E9%9D%A2%E5%8A%A8%E5%8A%9B%E7%B3%BB%E7%BB%9F/" rel="noopener"><font size=4>03 平面动力系统</font></a></li>
+</ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-12-10</span>
+                <span>Updated on 2023-12-24</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -108,8 +117,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/" class="prev" rel="prev" title="编程语言相关"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>编程语言相关</a>
-            <a href="/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/01CSharp%E7%BB%93%E6%9E%84%E6%80%9D%E8%80%83/" class="next" rel="next" title="C#结构思考">C#结构思考<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/03CSharp%E6%95%88%E7%8E%87%E7%A0%94%E7%A9%B6/" class="prev" rel="prev" title="C#效率研究"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>C#效率研究</a>
+            <a href="/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/04%E5%B9%B3%E9%9D%A2%E5%8A%A8%E5%8A%9B%E7%B3%BB%E7%BB%9F/" class="next" rel="next" title="04平面动力系统">04平面动力系统<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
