@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3\/CSharp\/03CSharp%E6%95%88%E7%8E%87%E7%A0%94%E7%A9%B6\/"
-        },"genre": "posts","wordcount":  1647 ,
+        },"genre": "posts","wordcount":  1847 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3\/CSharp\/03CSharp%E6%95%88%E7%8E%87%E7%A0%94%E7%A9%B6\/","datePublished": "2023-12-10T00:00:00+00:00","dateModified": "2023-12-10T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,7 +69,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">C#效率研究</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-12-10">2023-12-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1647 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-12-10">2023-12-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1847 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -156,8 +156,9 @@
 </table>
 <p>可以看到Linq耗时还是比较高的，比copy创建List+Sort还要慢。我认为这是因为Linq不仅创建目标数组，还创建了一个中间泛型数组来做比较，称之为Sort数组。这也可以通过其接口只用一个返回Int的函数来看出，这一步相当于一部映射操作，即把对象都映射到整数上，使用整数的序关系来排序。另一方面是即便是排序操作，对于Linq来说，底层也是只有当遍历的时候才进行操作，这个可以看源码是通过一个partial quick sort来操作的。</p>
 <h2 id="all">All</h2>
-<p>Linq还有一些集合操作，可以接受一个断言函数(predict)，输出集合上的或并结果。所谓断言即输出一个true or false的函数。</p>
-<p>显而易见的，对于Linq来说会不断调用断言函数，这种实现必定要慢一些。此处用来记录对比数据。</p>
+<p>Linq还有一些集合操作，可以接受一个断言函数(predict)，输出集合上的对应逻辑运算的结果，例如判断全部满足的All运算。
+所谓断言即输出一个true or false的函数。
+显而易见的，对于Linq来说会不断调用断言函数，这种实现必定要慢一些。但是其写法更加简单，同时更加触及逻辑运算本质。此处主要记录对比会慢多少：</p>
 <table>
 <thead>
 <tr>
@@ -179,7 +180,7 @@
 <td>3863</td>
 </tr>
 <tr>
-<td>Sort</td>
+<td>Loop Check</td>
 <td>391</td>
 </tr>
 </tbody>
@@ -225,7 +226,8 @@
 </tr>
 </tbody>
 </table>
-<p>可以看到效率差异其实都不是很大。只是强转如果类型不同会失败，但是as会返回null。而对于原本就是null类型，强转与as都会给出null。实际对于架构来说，架构内部结构会要求传入的都是程序员知道类型来控制。所以强转也无大问题。</p>
+<p>可以看到效率差异其实都不是很大。只是强转如果类型不同会失败，但是as会返回null。而对于原本就是null类型，强转与as都会给出null。
+实际对于架构来说，架构内部结构会要求传入的都是程序员知道类型来控制。所以强转也无大问题。但是从语义角度来讲实际还是有差异的，对于类型转换来说，实际上相当于调用了转换运算。也就是尝试将目标类型变成目标类型，例如一个类A和类B，如果定义了之间的转化关系，实际上也是可以操作的。从这个方面来讲，as则更有是的意思。从结构来说我们的架构，更多强调的是：我知道，它就是这个。所以比起转化操作，as更好一些。</p>
 <h1 id="diction遍历测试">Diction遍历测试</h1>
 <p>Dictionary遍历主要有两个方面，每次都是遍历Dictionary获取对应的KeyPair然后获取对应的值。还有一个是生成Key或者Value的迭代器来操作。这里主要对比两个方式的效率差异。</p>
 <p>运行次数：$10^9$</p>
@@ -314,11 +316,11 @@
 <td>运行次数：$10^6$</td>
 </tr>
 <tr>
-<td>Linq</td>
+<td>List</td>
 <td>16279</td>
 </tr>
 <tr>
-<td>Sort</td>
+<td>Array</td>
 <td>2170</td>
 </tr>
 </tbody>
@@ -350,7 +352,7 @@
 </article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
         </div>
     </footer></div>
 

@@ -4,7 +4,15 @@
         <link>http://azurezhc.github.io/posts/</link>
         <description>All Posts | azurezhc的游戏开发人生</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>azurezhc@gmail.com (azurezhc)</managingEditor>
-            <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Sun, 24 Dec 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://azurezhc.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Sun, 03 Mar 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://azurezhc.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>01RectTransform相关</title>
+    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/01RectTransform%E7%9B%B8%E5%85%B3/</link>
+    <pubDate>Sun, 03 Mar 2024 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/01RectTransform%E7%9B%B8%E5%85%B3/</guid>
+    <description><![CDATA[RectTransform 本文主要记录一下跟RectTransform相关的操作说明。 其实对于UI布局系统来说，其数学部分已经非常清楚了，详细可以看01UI布局锚点]]></description>
+</item>
+<item>
     <title>01插值研究</title>
     <link>http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/01%E6%8F%92%E5%80%BC%E7%A0%94%E7%A9%B6/</link>
     <pubDate>Sun, 24 Dec 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>azurezhc</author>
     <guid>http://azurezhc.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/01CSharp%E7%BB%93%E6%9E%84%E6%80%9D%E8%80%83/</guid>
     <description><![CDATA[Dispatch实现以及效率 Dispatch结构可以认为是设计模式的监听者模式结构。实际这里最主要的点便是映射结构，更确切的说，是将一个Ke]]></description>
-</item>
-<item>
-    <title>C#语言思考</title>
-    <link>http://azurezhc.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/02CSharp%E8%AF%AD%E8%A8%80%E6%80%9D%E8%80%83/</link>
-    <pubDate>Sun, 10 Dec 2023 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/02CSharp%E8%AF%AD%E8%A8%80%E6%80%9D%E8%80%83/</guid>
-    <description><![CDATA[Linq思考 Linq是 Partial与结构 反射与程序集]]></description>
 </item>
 </channel>
 </rss>

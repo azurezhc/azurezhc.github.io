@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>01RectTransform相关 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="01RectTransform相关" />
+<meta property="og:description" content="RectTransform 本文主要记录一下跟RectTransform相关的操作说明。 其实对于UI布局系统来说，其数学部分已经非常清楚了，详细可以看01UI布局锚点" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/01RectTransform%E7%9B%B8%E5%85%B3/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-03-03T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="01RectTransform相关"/>
+<meta name="twitter:description" content="RectTransform 本文主要记录一下跟RectTransform相关的操作说明。 其实对于UI布局系统来说，其数学部分已经非常清楚了，详细可以看01UI布局锚点"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/01RectTransform%E7%9B%B8%E5%85%B3/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/01%E6%8F%92%E5%80%BC%E7%A0%94%E7%A9%B6/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "01RectTransform相关",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/01RectTransform%E7%9B%B8%E5%85%B3\/"
+        },"genre": "posts","wordcount":  3838 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/01RectTransform%E7%9B%B8%E5%85%B3\/","datePublished": "2024-03-03T00:00:00+00:00","dateModified": "2024-03-03T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">01RectTransform相关</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-03-03">2024-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3838 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ol>
+    <li><a href="#recttransform">RectTransform</a></li>
+    <li><a href="#字段说明">字段说明</a>
+      <ol>
+        <li><a href="#anchoredposition">anchoredPosition</a></li>
+        <li><a href="#offset">offset</a></li>
+        <li><a href="#sizedelta">sizeDelta</a></li>
+        <li><a href="#anchor">Anchor</a></li>
+        <li><a href="#rect">Rect</a></li>
+      </ol>
+    </li>
+    <li><a href="#操作函数">操作函数</a>
+      <ol>
+        <li><a href="#setinsetandsizefromparentedge">SetInsetAndSizeFromParentEdge</a></li>
+        <li><a href="#setsizewithcurrentanchors">SetSizeWithCurrentAnchors</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="recttransform">RectTransform</h1>
+<p>本文主要记录一下跟RectTransform相关的操作说明。</p>
+<p>其实对于UI布局系统来说，其数学部分已经非常清楚了，详细可以看<a class="link-markdown-demo-site" href="/posts/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/01UI%E5%B8%83%E5%B1%80%E9%94%9A%E7%82%B9%E7%BB%93%E6%9E%84/" rel="noopener">01UI布局锚点结构</a>。但是每个引擎对相关概念的接口封装不尽相同。有的除了一些基础概念之外还增添了一些独有概念的字段，对于每个参数的操作也都有不同的方式。所以在此记录一下Unity中对RectTransform中操作的细节。</p>
+<h1 id="字段说明">字段说明</h1>
+<p>根据官方文档https://docs.unity3d.com/ScriptReference/RectTransform.html。
+Unity中RectTransform主要有一下字段：
+其中大部分字段都跟UI布局中的数学概念对应，例如Pivot，Anchor等。</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>官方字段含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>anchoredPosition</td>
+<td>该RectTransform的Pivot相对于其Anchor的位置</td>
+</tr>
+<tr>
+<td>anchoredPosition3D</td>
+<td>该RectTransform的Pivot相对于其Anchor的3D坐标位置</td>
+</tr>
+<tr>
+<td>anchorMax</td>
+<td>Anchor中右上角的归一化坐标（是一个相相对于父对象的比例值）</td>
+</tr>
+<tr>
+<td>anchorMin</td>
+<td>Anchor中左下角的归一化坐标（是一个相相对于父对象的比例值）</td>
+</tr>
+<tr>
+<td>drivenByObject</td>
+<td>表示是否被某个对象驱动控制布局参数</td>
+</tr>
+<tr>
+<td>offsetMax</td>
+<td>该RectTramsform的右上角点相对于Anchor右上角点的偏移</td>
+</tr>
+<tr>
+<td>offsetMin</td>
+<td>该RectTramsform的左下角点相对于Anchor左下角点的偏移</td>
+</tr>
+<tr>
+<td>pivot</td>
+<td>该RectTransofrm的Pivor点定位置</td>
+</tr>
+<tr>
+<td>rect</td>
+<td>该RectTransform所表示的矩形的描述</td>
+</tr>
+<tr>
+<td>sizeDelta</td>
+<td>该RectTramsform相对于Anchor之间的大小</td>
+</tr>
+</tbody>
+</table>
+<h2 id="anchoredposition">anchoredPosition</h2>
+<p><font size=4><b>含义说明</b></font></p>
+<p>即该RectTransform中Pivot点相对于Anchor的位置，如下图：</p>
+<center><img src="../01.assets/p1.png"></center>
+<p>但根据布局锚点的数学结构来说，可以简单看到。对于锚点退化成点的情况下来说，该值就相当于PosX，PosY。如果是线的情况下实际上是通过Offset来计算的，但是该值实际上任然存在。</p>
+<p>实际上该值为：</p>
+<data id="id-1" data-raw></data>
+<p>参考OffsetMin,OffsetMax的含义。当Anchor退化成点的情况，OffsetMax,OffsetMin相当于从一个点出发到当前RectTransform右上角，左下角点的两个向量。所以该公式值就是Anchor点到Pivot所对应点的向量，这也相当于子RectTransform相对于Anchor的位置坐标。当Anchor不是点的时候OffsetMax,OffsetMin尾部不再重叠，此时含义就不再是Anchor到Pivot对应点的向量。此时谈论子RectTransform相遇Anchor的位置也不具有实际意义，这个时候Anchor也不是一个简单的点。</p>
+<p><font size=4><b>操作效果</b></font></p>
+<p>对于AnchoredPosition赋值，不论什么情况下都将设置AnchorPosition值为目标值，保持SizeDelta和Pivot不变，修改OffsetMax和OffsetMin来使得上述公式计算值为目标值。所以：</p>
+<ul>
+<li>当Anchor为点的时候：
+相当于直接操作Pivot相对于Anchor点的距离，即移动子RectTransform。</li>
+<li>当Anchor不为点的时候：
+由于保持SizeDelta不变，即OffsetMax-OffsetMin不变。所以相当于调整OffsetMin值，使得其值增加对应数值。</li>
+</ul>
+<h2 id="offset">offset</h2>
+<p><font size=4><b>含义说明</b></font></p>
+<p>即该RectTransform中右上角，左下角点相对于Anchor右上角，左下角点的偏移。示例如下图：</p>
+<center><img src="../01.assets/p2.png"></center>
+<p>当设置Anchor不为点的情况，此时可以看到设置面板也不再是点情况下的PosX,PoxY,Width,Height的组合。而是Left,Top,Right,Bottom的组合。可以看到：</p>
+<data id="id-2" data-raw></data>
+<p>但是不论什么情况下，无论Anchor是否为点。OffsetMax,OffsetMin的语义都是确定的，即图中所表示的两条向量。</p>
+<p><font size=4><b>操作效果</b></font></p>
+<p>对于Offset赋值，不论什么情况下都将设置Offset值为目标值。于是子RectTransform所形成的矩形区域会对应修改，然后根据矩形区域和Pivot点，重新按照公式修改AnchoredPosition值与SizeDelta值。</p>
+<p>实际上这个修改过程也与UI布局中的数学过程所对应。即先按照比例计算一次Anchor值，然后在Anchor的基础上再做一次左下顶点，右上顶点的平移操作。这里修改的就是直接修改第二次从Anchor计算子RectTransform矩阵中参数值。</p>
+<h2 id="sizedelta">sizeDelta</h2>
+<p><font size=4><b>含义说明</b></font></p>
+<p>sizeDelta值实际即
+<data id="id-3" data-raw></data></p>
+<p>如下图：</p>
+<center><img src="../01.assets/p3.png"></center>
+<p>如果Anchor退化成点，可以看到，这实际上就是当前RectTramsform的对角线向量，表示了这个Rect的大小。但是如果Anchor没有退化成点，可以看到OffsetMax,OffsetMin尾部不重叠。此时SizeDelta的语义不再是RectTransform的对角线向量，实际上混入了Anchor的对角线向量。即</p>
+<data id="id-4" data-raw></data>
+<p>所以sizeDelta相当于子RectTransform的对角线向量减去Anchor的对角线向量。如果Anchor的对角线向量为0向量。那么就想到子子RectTransform的对角线。</p>
+<p><font size=4><b>操作效果</b></font></p>
+<p>对于sizeDelta赋值，不论什么情况下都将设置sizeDelta值为目标值，保持AnchoredPosition大小不变，通过公式反推OffsetMax和OffsetMin的值。所以：</p>
+<ul>
+<li>当Anchor为点的时候：
+相当于直接操作RectTransform的大小，这个大小会基于Pivot点来进行缩放拉伸。</li>
+<li>当Anchor不为点的时候：
+根据前面公式，可以看到，这时候也是相当于修改OffsetMin值，使其修改SizeDelta*Pivot的值。另一方面可以根据SizeDelta计算方式发现，其实此时Anchor的对角线向量不可能变化，所以依旧相当于修改子RectTransform对角线变化相同的数值。</li>
+</ul>
+<h2 id="anchor">Anchor</h2>
+<p><font size=4><b>含义说明</b></font></p>
+<p>Anchor显然就是Anchor右上角点，左下角点相对于父RectTransform的比例值。如下图：</p>
+<center><img src="../01.assets/p4.png"></center>
+<p>Anchor的存在相当于建立起了父子RectTransform之间的一个比例变化对象。</p>
+<p><font size=4><b>操作效果</b></font></p>
+<p>不论什么情况下都将设置Anchor设为目标值，但保持AnchoredPosition,Offset,SizeDelta都不变。所以最后结果相当于直接修改了中间件的区域大小，进而修改最后绘制出的子RectTransform区域大小。</p>
+<h2 id="rect">Rect</h2>
+<p>该值无法设置，其表示的即当前RectTransform所描绘出的Rectangle区域大小。该值由x,y,Width,Height来构成。分别表示了Pivot在当前Rectangle中的位置以及宽高，如下图：</p>
+<center><img src="../01.assets/p5.png"></center>
+<p>具体来说
+<data id="id-5" data-raw></data></p>
+<h1 id="操作函数">操作函数</h1>
+<table>
+<thead>
+<tr>
+<th>操作函数</th>
+<th>官方说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SetInsetAndSizeFromParentEdge</td>
+<td>设置Rectangle相对于父Rectangle指定距离以及大小</td>
+</tr>
+<tr>
+<td>SetSizeWithCurrentAnchors</td>
+<td>使得RectTransform在指定轴上计算给定大小</td>
+</tr>
+</tbody>
+</table>
+<h2 id="setinsetandsizefromparentedge">SetInsetAndSizeFromParentEdge</h2>
+<p>该函数有三个参数：</p>
+<ul>
+<li>相对边(RectTransform.Edge edge)</li>
+<li>间距(flost inset)</li>
+<li>大小(float size)</li>
+</ul>
+<p>该函数主要是直接设置子RectTransform相对于父RectTransform的边距以及大小。其中边有四种，即上下左右(Top,Bottom,Left,Right)四个边。</p>
+<p>其产生的效果主要有三部分：</p>
+<ul>
+<li>设置对应的Anchor：
+对于Left，Anchor中所有X坐标设置为0，其余不变。Right则所有X坐标设置为1，其余不变。对于Top，Anchor中所有Y坐标设置为1，其余不变。Bottom则所有Y坐标设置为0，其余不变。</li>
+<li>使得子RectTransform对应边相对于父RectTransform的对应边相距inset参数大小的值。</li>
+<li>使得子RectTransform在对应边轴向上的宽度为目标size值。</li>
+</ul>
+<p>所以，对于不在设置轴向上参数，实际上是不会进行修改的。例如设置SetInsetAndSizeFromParentEdge(Edge.Left,10,20)则会修改当前子RectTransform在水平方向上宽度为20，并且距离左侧边有10的距离。</p>
+<h2 id="setsizewithcurrentanchors">SetSizeWithCurrentAnchors</h2>
+<p>两个参数：</p>
+<ul>
+<li>轴向(RectTransform.Axis axis)</li>
+<li>对应方向大小(float size)</li>
+</ul>
+<p>该函数主要用来设置RectTransform在目标方向上的大小。前面可以看到类似的字段SizeDelta，但是当Anchor不为点的时候，可以发现通过设置SizeDelta来将RectTransform设置到对应宽度或高度是不准确，虽然其变化量是正确的，但是很多情况下可能需要直接设置到某个数值，而不是先计算之前的数值然后计算变化量。</p>
+<p>而该函数则可以设置目标RectTransform的宽度或高度为给定目标值。
+该计算保持RectTransform中的Pivot坐标不变。通过修改Offset来实现Rectangle宽度或高度的修改。而Pivot坐标不变，实际上相当于保持AnchoredPosition值不变。</p>
+<p>对于RectTransform中Pivot相对于Anchor左下角的坐标<data id="id-6" data-raw></data>以及其对角线向量<data id="id-7" data-raw></data>其可以表示为
+<data id="id-8" data-raw></data></p>
+<p>Anchor不变，所以Anchor的对角线AnchorDiagonal不变。所以<data id="id-9" data-raw></data>不变相当于剩下部分的计算不变，也即AnchorPosition不变。另一方面由上面公式也可以看出，设置对应方向大小，相当于设置<data id="id-10" data-raw></data>数值。而这里面必定参杂了父对角线AnchorDiagonal的值，这也是为什么通过设置SizeDelta不准的原因。如果要根据数值直接计算，则要涉及父节点的Anchor坐标，这就必须要去父节点上去这个值。这是比较麻烦的一件事情，而该接口正是隐藏了这一点。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-03-03</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/01%E6%8F%92%E5%80%BC%E7%A0%94%E7%A9%B6/" class="prev" rel="prev" title="01插值研究"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>01插值研究</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"$$Pos=OffsetMin+(OffsetMax-OffsetMin)*Pivot=OffsetMin+SizeDelta*Pivot$$","id-10":"$R_{diagonal}$","id-2":"$$\r\nOffsetMax = (-Right,-Top),OffsetMin = (Left,Bottom)\r\n$$","id-3":"$$SizeDelta=(OffsetMax-OffsetMin)$$","id-4":"$$OffsetMin+ChildDiagonal = AnchorDiagonal+OffsetMax$$","id-5":"$$\r\nx=-Width*Pivot.x,\\space y=-Htight*Pivot.y\r\n$$","id-6":"$R_{pivot}$","id-7":"$R_{diagonal}$","id-8":"$$\r\nR_{pivot}=OffsetMin+(AnchorDiagonal+OffsetMax-OffsetMin)*Pivot\\\\\r\nR_{diagonal} = AnchorDiagonal+OffsetMax-OffsetMin=AnchorDiagonal+SizeDelta\r\n$$","id-9":"$R_{pivot}$"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

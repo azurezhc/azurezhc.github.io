@@ -4,31 +4,31 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>寻找前K个最大数 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="寻找前K个最大数" />
+        <title> - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="" />
 <meta property="og:description" content="寻找前K个最大数 着是一个经典的面试问题，于是想在在这里记录一下相关的一些算法和思想。 问题描述： 给定一个包含n个数的乱序数组，寻找其中前K个最" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%AF%BB%E6%89%BE%E5%89%8DK%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-09-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-09-03T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+
+<meta property="og:site_name" content="一个小博客" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="寻找前K个最大数"/>
+<meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="寻找前K个最大数 着是一个经典的面试问题，于是想在在这里记录一下相关的一些算法和思想。 问题描述： 给定一个包含n个数的乱序数组，寻找其中前K个最"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%AF%BB%E6%89%BE%E5%89%8DK%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/01%E5%AE%B9%E5%99%A8%E5%8C%96%E7%90%86%E8%AE%BA/" /><link rel="next" href="http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01%E5%AF%BB%E6%89%BE%E5%89%8DK%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%AF%BB%E6%89%BE%E5%89%8DK%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E6%96%87%E6%9C%AC%E6%90%9C%E7%B4%A2/" /><link rel="next" href="http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/00%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E7%AB%A0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "寻找前K个最大数",
+        "headline": "",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95\/%E5%AF%BB%E6%89%BE%E5%89%8DK%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0\/"
-        },"genre": "posts","wordcount":  2435 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95\/%E5%AF%BB%E6%89%BE%E5%89%8DK%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0\/","datePublished": "2023-09-03T00:00:00+00:00","dateModified": "2023-09-03T00:00:00+00:00","publisher": {
+        },"genre": "posts","wordcount":  2503 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95\/%E5%AF%BB%E6%89%BE%E5%89%8DK%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0\/","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -67,9 +67,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">寻找前K个最大数</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-09-03">2023-09-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2435 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2503 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -89,6 +89,7 @@
       </ol>
     </li>
     <li><a href="#结尾">结尾</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
   </ol>
 </nav></div>
             </div><div class="content" id="content"><h1 id="寻找前k个最大数">寻找前K个最大数</h1>
@@ -190,11 +191,16 @@ $$</p>
 <h1 id="结尾">结尾</h1>
 <p>其实可以看到，不论什么方式。这个问题最后落在的关键点都是一个问题。如何逐步的剔除那些非正确的数字。越快剔除的方法，其效率就越高。相对应的，如果能按照某个比例去剔除，那么他就会是一个线性算法。</p>
 <p>关于该算法在参考资料中的《算法设计技巧与分析》有详细的描述。</p>
-</div><div class="post-footer" id="post-footer">
+<h1 id="参考资料">参考资料</h1>
+<p>随机算法与寻找第K小元素元素在下面的书籍中有详细的介绍。</p>
+<div style = "float:left">《现代算法设计与分析》</div>
+<div style = "text-align:right">[印] Sandeep Sen, Amit Kumar</div>
+<div style = "float:left">《算法设计技巧与分析》</div>
+<div style = "text-align:right">[沙特] M. H. Alsuwaiyel</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-09-03</span>
+                <span>Updated on 0001-01-01</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -211,8 +217,8 @@ $$</p>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/01%E5%AE%B9%E5%99%A8%E5%8C%96%E7%90%86%E8%AE%BA/" class="prev" rel="prev" title="游戏架构理论"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>游戏架构理论</a>
-            <a href="/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01%E5%AF%BB%E6%89%BE%E5%89%8DK%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0/" class="next" rel="next" title="寻找前K个最大数">寻找前K个最大数<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E6%96%87%E6%9C%AC%E6%90%9C%E7%B4%A2/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i></a>
+            <a href="/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/00%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E7%AB%A0/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
