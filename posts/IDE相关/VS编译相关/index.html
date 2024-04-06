@@ -4,31 +4,31 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title> - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="" />
-<meta property="og:description" content="" />
+        <title>VS编译相关 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="VS编译相关" />
+<meta property="og:description" content="VS编译相关 主要记录VS项目配置种跟编译流程相关参数。包括包含的库，链接的库，最后导出的目标路径，中间路径等。 首先，对于每个项目的属性都是分" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://azurezhc.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/04CSharp%E9%AB%98%E7%BA%A7%E7%BB%93%E6%9E%84/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/IDE%E7%9B%B8%E5%85%B3/VS%E7%BC%96%E8%AF%91%E7%9B%B8%E5%85%B3/" /><meta property="article:section" content="posts" />
 
 <meta property="og:site_name" content="一个小博客" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="VS编译相关"/>
+<meta name="twitter:description" content="VS编译相关 主要记录VS项目配置种跟编译流程相关参数。包括包含的库，链接的库，最后导出的目标路径，中间路径等。 首先，对于每个项目的属性都是分"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/04CSharp%E9%AB%98%E7%BA%A7%E7%BB%93%E6%9E%84/" /><link rel="prev" href="http://azurezhc.github.io/posts/IDE%E7%9B%B8%E5%85%B3/IDE%E7%9B%B8%E5%85%B3/" /><link rel="next" href="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/%E5%B9%B3%E9%9D%A2%E8%BF%90%E5%8A%A8%E6%95%88%E6%9E%9C/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/IDE%E7%9B%B8%E5%85%B3/VS%E7%BC%96%E8%AF%91%E7%9B%B8%E5%85%B3/" /><link rel="prev" href="http://azurezhc.github.io/posts/IDE%E7%9B%B8%E5%85%B3/VS%E8%B7%AF%E5%BE%84%E8%AF%B4%E6%98%8E/" /><link rel="next" href="http://azurezhc.github.io/posts/IDE%E7%9B%B8%E5%85%B3/VS%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "",
+        "headline": "VS编译相关",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/azurezhc.github.io\/posts\/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3\/CSharp\/04CSharp%E9%AB%98%E7%BA%A7%E7%BB%93%E6%9E%84\/"
-        },"genre": "posts","wordcount":  0 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3\/CSharp\/04CSharp%E9%AB%98%E7%BA%A7%E7%BB%93%E6%9E%84\/","publisher": {
+            "@id": "http:\/\/azurezhc.github.io\/posts\/IDE%E7%9B%B8%E5%85%B3\/VS%E7%BC%96%E8%AF%91%E7%9B%B8%E5%85%B3\/"
+        },"genre": "posts","wordcount":  608 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/IDE%E7%9B%B8%E5%85%B3\/VS%E7%BC%96%E8%AF%91%E7%9B%B8%E5%85%B3\/","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -67,17 +67,123 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">VS编译相关</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;608 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ol>
+    <li><a href="#vs编译相关">VS编译相关</a></li>
+    <li><a href="#配置属性常规">配置属性常规</a></li>
+    <li><a href="#cc">C/C++</a></li>
+    <li><a href="#链接器">链接器</a></li>
+    <li><a href="#msvc部分">MSVC部分</a></li>
+  </ol>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="vs编译相关">VS编译相关</h1>
+<p>主要记录VS项目配置种跟编译流程相关参数。包括包含的库，链接的库，最后导出的目标路径，中间路径等。</p>
+<ul>
+<li>首先，对于每个项目的属性都是分配置和平台的，在项目属性页的最上面配置表示。</li>
+<li>其次会大量用到VS中的路径说明，这部分可以看路径说明那边结构。</li>
+</ul>
+<p>本说明以空项目为例，主要说明几个常用的配置部分。</p>
+<p>具体部分可以参考Microsoft官网
+<a class="link-markdown-demo-site" href="https://learn.microsoft.com/zh-cn/cpp/build/reference/c-cpp-building-reference?view=msvc-170" rel="noopener">https://learn.microsoft.com/zh-cn/cpp/build/reference/c-cpp-building-reference?view=msvc-170</a></p>
+<h1 id="配置属性常规">配置属性常规</h1>
+<img src="../VS编译相关.assets/p1.png">
+<table>
+<thead>
+<tr>
+<th>属性名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输出目录</td>
+<td>编译成最终文件后所在路径。例如.exe文件路径。</td>
+</tr>
+<tr>
+<td>中间目录</td>
+<td>中间文件存放路径。例如.obj文件路径。</td>
+</tr>
+<tr>
+<td>目标文件名</td>
+<td>最终编译出文件的名称。</td>
+</tr>
+<tr>
+<td>配置类型</td>
+<td>最终编译出文件的类型。例如应用程序(.exe)，动态库(.dll)，静态库(.lib)</td>
+</tr>
+<tr>
+<td>Windows SDK版本</td>
+<td>Windows平台工具库，有些编译需要跟SDK对齐</td>
+</tr>
+<tr>
+<td>平台工具集</td>
+<td>VS平台工具库，不同版本VS还有差异，有些编译需要跟平台库对齐</td>
+</tr>
+</tbody>
+</table>
+<h1 id="cc">C/C++</h1>
+<p>主要是跟C/C++编译相关配置。主要用到两项</p>
+<ul>
+<li>常规&ndash;附加包含目录
+<ul>
+<li>当有外部依赖的时候，实际需要在此处包含外部文件的头文件。</li>
+</ul>
+</li>
+<li>预处理器&ndash;预处理器定义
+<ul>
+<li>相当于在编译开始的时候调用#define XXX。定义对应的XXX宏，用来控制编译中可变过程。</li>
+</ul>
+</li>
+</ul>
+<h1 id="链接器">链接器</h1>
+<p>主要是跟链接相关配置。</p>
+<img src="../VS编译相关.assets/l1.png">
+<table>
+<thead>
+<tr>
+<th>属性名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输出文件</td>
+<td>链接完毕之后输出的文件目标</td>
+</tr>
+<tr>
+<td>附加库目录</td>
+<td>链接时添加外部库路径，有一些链接过程要依赖外部，在此引用库路径</td>
+</tr>
+</tbody>
+</table>
+<p>其他部分</p>
+<table>
+<thead>
+<tr>
+<th>属性名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入&ndash;附加依赖项</td>
+<td>外部依赖库的名称</td>
+</tr>
+</tbody>
+</table>
+<h1 id="msvc部分">MSVC部分</h1>
+<p>参考官网说明
+<a class="link-markdown-demo-site" href="https://learn.microsoft.com/zh-cn/cpp/build/building-on-the-command-line?view=msvc-170" rel="noopener">https://learn.microsoft.com/zh-cn/cpp/build/building-on-the-command-line?view=msvc-170</a></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -98,8 +204,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/IDE%E7%9B%B8%E5%85%B3/IDE%E7%9B%B8%E5%85%B3/" class="prev" rel="prev" title="IDE相关"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>IDE相关</a>
-            <a href="/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/%E5%B9%B3%E9%9D%A2%E8%BF%90%E5%8A%A8%E6%95%88%E6%9E%9C/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/IDE%E7%9B%B8%E5%85%B3/VS%E8%B7%AF%E5%BE%84%E8%AF%B4%E6%98%8E/" class="prev" rel="prev" title="VS路径说明"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>VS路径说明</a>
+            <a href="/posts/IDE%E7%9B%B8%E5%85%B3/VS%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" class="next" rel="next" title="VS使用技巧">VS使用技巧<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
