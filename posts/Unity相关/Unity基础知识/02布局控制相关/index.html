@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/02%E5%B8%83%E5%B1%80%E6%8E%A7%E5%88%B6%E7%9B%B8%E5%85%B3\/"
-        },"genre": "posts","wordcount":  266 ,
+        },"genre": "posts","wordcount":  4286 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/02%E5%B8%83%E5%B1%80%E6%8E%A7%E5%88%B6%E7%9B%B8%E5%85%B3\/","datePublished": "2024-04-14T00:00:00+00:00","dateModified": "2024-04-14T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,8 +69,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">02布局控制相关</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-14">2024-04-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;266 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-14">2024-04-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4286 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -79,14 +79,192 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ol>
     <li><a href="#布局控制">布局控制</a></li>
-    <li><a href="#水平与竖直布局">水平与竖直布局</a></li>
+    <li><a href="#布局元素">布局元素</a></li>
+    <li><a href="#contentsizefitter">ContentSizeFitter</a></li>
+    <li><a href="#layoutelement">LayoutElement</a></li>
+    <li><a href="#horizontallayoutgroup与verticallayoutgroup">HorizontalLayoutGroup与VerticalLayoutGroup</a></li>
+    <li><a href="#gridlayoutgroup">GridLayoutGroup</a></li>
+    <li><a href="#参考文档">参考文档</a></li>
   </ol>
 </nav></div>
             </div><div class="content" id="content"><h1 id="布局控制">布局控制</h1>
 <p>主要记录布局控制相关一些控件的效果。主要是每个参数所表示的含义，以及各种边界情况下的效果。</p>
-<p>其实一般来讲，我不太喜欢用官方提供的布局控制器。因为很多动态效果无法提供。对于官方的布局控制器，可以认为做了两件事情，一计算对应布局概念所需要的RectTransform数据，二修改子对象的RectTransform。相当于执行了计算并设置的步骤。这导致很多动态效果很难去实现，如果使用布局控制器，那么动画只能通过在子对象中嵌套一层，在子对象中去模拟布局控制效果来实现，这样计算动画效果未免太不直接了。</p>
-<h1 id="水平与竖直布局">水平与竖直布局</h1>
-<p>即Vertical</p>
+<p>其实一般来讲，我不太喜欢用官方提供的布局控制器。因为很多动态效果无法提供。
+对于官方的布局控制器，可以认为做了两件事情，一：计算对应布局概念所需要的RectTransform数据，二：修改子对象的RectTransform。相当于执行了计算并设置的步骤。这导致很多动态效果很难去实现，如果使用布局控制器的情况下，那么动画只能通过在被布局子对象中嵌套一层节点，即在子对象中去模拟动画效果来实现。这样计算动画效果一方面很不直接，另一方面是对于很复杂的动画，实现起来就更加困难了。</p>
+<p>但是其也有对应的好处，一：其已经实现了一套布局结构。二：这套布局结构可以在Editor模式下预览效果。</p>
+<p>本文主要记录一下这些官方布局器跟各种组件的组合效果。</p>
+<h1 id="布局元素">布局元素</h1>
+<p>这里所说的布局元素。并不是对应RectTransform控件上的各种参数值。可以认为是控件上一套参数，定义该控件潜在需要的布局大小，或者说最后RectTransform算出来的Rect大小。为了方便说明这个属性概念是存在的，可以先来看ContentSizeFitter组件。</p>
+<h1 id="contentsizefitter">ContentSizeFitter</h1>
+<p>该组件图如下：</p>
+<center><img src="../02.assets/p1.png"></center>
+<p>其只有两个参数</p>
+<ul>
+<li>HorizontalFit：根据所在控件的布局元素来设置RectTransform的水平宽度。</li>
+<li>VerticalFit：根据所在控件的布局元素来设置RectTransform的垂直高度。</li>
+</ul>
+<p>可以看到所在GameObject的RectTransform中width与height是锁死的。这是因为ContentSizeFitter根据了所在GameObject的Image的布局元素来进行设置。所以这也导致其为一个自适应组件——根据变化的子对象布局元素来设置自己的RectTransform。</p>
+<p>而这就涉及到有哪些组件有布局元素属性。根据官方文档来看，主要有四类：</p>
+<ul>
+<li>Image</li>
+<li>Text</li>
+<li>LaytouGroup即自动布局组件</li>
+<li>LayoutElement即下面要说明的LayoutElement组件。</li>
+</ul>
+<h1 id="layoutelement">LayoutElement</h1>
+<p>该组件用来覆写当前控件的布局元素属性。为了方便说明还是将布局元素概念与该组件LayoutElement区分开来。</p>
+<center><img src="../02.assets/p2.png"></center>
+<p>看到其提供了6个数据字段，简单来看即</p>
+<ul>
+<li>Width的Min/Preferred/Flexible</li>
+<li>Height的Min/Preferred/Flexible
+以及</li>
+<li>IgnoreLayout：勾选使得系统忽略该布局控件。</li>
+<li>LayoutPriority：布局优先级，数值大的组件的值会生效。忽略数值小的组件。</li>
+</ul>
+<p>而6个数据字段则定义了对应覆写宽高的三类属性，对于ContentSizeFitter组件来说，当：</p>
+<ul>
+<li>Fit设置为MinSize时，会使用Min开头的对应值来设置RectTransform。</li>
+<li>Fit设置为PreferredSize时，会使用Preferred开头的对应值来设置RectTransform。</li>
+</ul>
+<p>而这三个类型的值，则会在自动布局器中有对应语义用途。</p>
+<p>根据官方文档，任何带有RectTransform的GameObject都可以视为一个LayoutElement，但是其对应Min/Preferred/Flexible都默认为0。添加某些Component后可以改变这些布局元素的对应值。</p>
+<p>其中Image和Text Component都是可以提供对应布局元素值的组件。添加该组件后，其会修改Preferred值为对应的图片大小，或者文本区域大小。</p>
+<h1 id="horizontallayoutgroup与verticallayoutgroup">HorizontalLayoutGroup与VerticalLayoutGroup</h1>
+<p>即垂直布局器与水平布局。两个组件空座方向类似，只是方向不一样。只有看其中一个即可，组件参数如下：</p>
+<center><img src="../02.assets/p3.png"></center>
+<p>其中</p>
+<ul>
+<li>Padding：相当于定义子对象的布局范围相对于当前区域Rect的上下左右距离。</li>
+<li>Spacing：则相当于定义每个子对象之间的间隔。</li>
+<li>ChildAlignment：则说明了子对象开始布局的位置，有九个位置。即对应从布局区域九宫格位置开始布局。</li>
+<li>ReverseArrangement：对于布局来说，有个方向匹配的问题。正常情况下，对于子对象列表来说在上面的会排在前面。勾选该选项可以使得排序反过来，在下面的会排在前面。但是布局所占区域不会改边。</li>
+</ul>
+<p>布局效果如下图：</p>
+<center><img src="../02.assets/p4.png"></center>
+<p>如果没有勾选任何ControlChildSize/UseChildScale/ChildForceExpand等参数。那么布局器只会根据子对象的RectTransform和上面的Padding，Spacing等参数来计算Postion进行布局。</p>
+<p>现在来看这三个控制参数的语义：</p>
+<p><strong><font size=5>ControlChildSize</font></strong></p>
+<p>布局控制器同时控制子控件的大小。可以看到这个效果目标跟ContentSizeFitter非常类似，只是从控制自己变成了控制子对象。改功能，也会根据子对象的布局元素来设置子对象的大小。同时会根据子对象的Min/Preferred/Flexible属性来设置子对象大小。根据官方文档计算流程如下：</p>
+<ul>
+<li>首先考虑MinWidth
+<ul>
+<li>先计算所有子对象minimum width和spacing之和，称之为布局器的最小宽度(minimum width of the Horizontal Layout Group)。如果该最小宽度大于当前布局控件的宽度，则不再计算，并且将所有子对象宽度设置为最小宽度。</li>
+</ul>
+</li>
+<li>如果最小宽度小于当前布局宽度，则考虑PreferredWidth。
+<ul>
+<li>如果没有PreferredWidth，则直接考虑FlexibleWidth值的计算。</li>
+<li>如果有PreferredWidth。会开始计算preferred width和spaceing之和。称之为布局器的最适宽度(preferred width of the Horizontal Layout Group)。如果该最适宽度大于当前布局控件的宽度，则会按照一个比例规则开始进行分配。</li>
+</ul>
+</li>
+<li>如果最适宽度小于当前布局宽度，则考虑FlexibleWidth值计算。
+<ul>
+<li>如果没有FlexibleWidth的值，则直接会按照之前计算出的值来进行设置。</li>
+<li>如果有FelxibleWidth，则会按照FlexibleWidth值得比例，将剩余空间按比例进行分配。</li>
+</ul>
+</li>
+</ul>
+<p>简单来说可以认为这是一个递进考虑计算的过程。但是不同控制也会有不同效果。</p>
+<p><strong>PreferredWidth计算</strong></p>
+<p>先详细看一下PreferredWidth超出时候的计算效果。</p>
+<p>我们先看一个例子，PreferredWidth计算示例：</p>
+<center><img src="../02.assets/d1.drawio.png"></center>
+<p>父对象总宽度为400，设置如下表</p>
+<table>
+<thead>
+<tr>
+<th>对象编号</th>
+<th>MinWidth</th>
+<th>PreferredWidth</th>
+<th>实际值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>100</td>
+<td>250</td>
+<td>175</td>
+</tr>
+<tr>
+<td>2</td>
+<td>100</td>
+<td>150</td>
+<td>125</td>
+</tr>
+<tr>
+<td>3</td>
+<td>50</td>
+<td>150</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到实际分配值不是根据PreferredWidth比例来进行设置。实际是如下一个计算过程。</p>
+<ul>
+<li>先用当前的布局总宽度减去布局器的最小宽度，得到一个残余宽度值，设为<data id="id-1" data-raw></data>。</li>
+<li>对于每一个子对象使用PreferredWidth减去MinWidth，得到一个PreferredWidth的分配量，设为<data id="id-2" data-raw></data></li>
+<li>每个对象在MinWidth基础上额外获得按分配量对应比例计算得来的值，即获得的值为
+<data id="id-3" data-raw></data></li>
+<li>例如上面第3个对象额外分配的宽度值即<data id="id-4" data-raw></data>。加上MinWidth的50即100。</li>
+</ul>
+<p><strong>FlexibleWidth计算</strong></p>
+<p>再来看FlexibleWidth计算效果。如果进入该步骤，则说明一：布局器任然有空余控件，二：有设置FlexibleWidth的值。FlexibleWidth的计算是简单明了的。</p>
+<p>即对于所有计算之后的剩余空间<data id="id-5" data-raw></data>，按照每个空间的FlexibleWidth值比例来进行分配。设每个子对象FlexibleWidth值为<data id="id-6" data-raw></data>即每个空间额外获得值为
+<data id="id-7" data-raw></data></p>
+<p><strong><font size=5>UseChildScale</font></strong></p>
+<p>是否使用子对象的放缩值，即Scale对象。UGUI在计算布局的时候，不会计算Scale对象的大小。即可认为Scale是修改的渲染尺寸，而不是UI的布局尺寸。所以会出现如下这样的布局情况：</p>
+<p>中间元素LayoutElement为100但是有一个0.8的缩放。但是任然按照100来计算的布局参数。</p>
+<center><img src="../02.assets/p6.png"></center>
+<p>勾选改参数后会使得计算布局的时候考虑Scale因子的缩放来进行计算。</p>
+<p><strong><font size=5>ChildForceExpand</font></strong></p>
+<p>强制将子对象扩展，以使其填充整个布局区域。直觉上这个效果跟Flexible参数控制很类似。其实际效果相当于给每个组件的Flexible参数默认给了一个1。具体来说</p>
+<ul>
+<li>该子对象没设置Flexible值，则设置为1。</li>
+<li>如果子对象设置了Flexible值，则保持设置，</li>
+</ul>
+<p>所以其具体计算效果，实际上，就是FlexibleWidth的效果来计算。</p>
+<h1 id="gridlayoutgroup">GridLayoutGroup</h1>
+<p>即网格布局器，其会将子对象像网格一样（即Grid样式）布局起来。其组件参数如下：</p>
+<center><img src="../02.assets/p5.png"></center>
+<p>可以看到对比HorizontalLayoutGroup与VerticalLayoutGroup，其并没有根据子对象的 布局元素 来进行各种适配计算的结构。而是会使用GridLayoutGroup设定的参数值，无视子对象的LayoutElement，直接设置子对象的RectTransform的值。</p>
+<ul>
+<li>Padding：相当于定义子对象的布局范围相对于当前区域Rect的上下左右距离。</li>
+<li>CellSize：子对象Rect的宽高值。</li>
+<li>Spacing：相邻子对象在横向，纵向之间的间距距离。</li>
+</ul>
+<p>剩下四个参数，主要都是控制子对象的排序关系的。分别来说明：</p>
+<ul>
+<li>StartCorner：</li>
+</ul>
+<p>起始角落，一共有4个值。该值实际上指明了子对象在自己所张成空间内的布局顺序的起始角落。设置为LowerRight布局效果如下图：</p>
+<center><img src="../02.assets/p7.png"></center>
+<p>可以看到其是从中间右下角开始，按向左顺序布局的。并不是从整个父节点的右下角开始布局。可以这么认为，先计算出所有子对象所占据的矩形空间，并从这个空间的四个角落为起点，开始按顺序布局子对象。</p>
+<ul>
+<li>StartAxis：</li>
+</ul>
+<p>开始轴向，有2个值Horizontal与Vertical。说明子对象是水平方向布局还是垂直方向布局。</p>
+<ul>
+<li>ChildAlignment：</li>
+</ul>
+<p>子对象的对齐位置，一共有9个值。这个值实际上指明了所有子对象所占据的矩形空间，相对于父空间的计算位置。例如MiddleCenter的情况，布局如下图：</p>
+<center><img src="../02.assets/p8.png"></center>
+<p>从中间开始计算整个子对象矩形，同时将子对象矩形的中心点对齐在中心位置。这里可以认为对应9个值，相当于同时选定了子对象所占据的矩形空间的Pivot与Anchor为对应值。会尽量将所有子对象都布局在父对象的空间范围的内部。</p>
+<ul>
+<li>Constraint：</li>
+</ul>
+<p>约束条件，主要有3个值：</p>
+<ul>
+<li>Flexible：不做约束，根据布局父子控件计算，如果对应StartAxis的方向超过了父对象的范围，则会进行换行，在另一个方向上进行延展。</li>
+<li>FixedColumnCount/FixedRowCount：固定行或列的数量，只有超过该数量，则进行换行处理。即使该数值所形成的宽度大于父对象的范围，也会布局到该数量之后进行换行处理。</li>
+</ul>
+<h1 id="参考文档">参考文档</h1>
+<p>Layout官方文档</p>
+<p>LayoutElement:
+<a class="link-markdown-demo-site" href="https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/script-LayoutElement.html" rel="noopener">https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/script-LayoutElement.html</a></p>
+<p>AutoLayout:
+<a class="link-markdown-demo-site" href="https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/UIAutoLayout.html" rel="noopener">https://docs.unity3d.com/Packages/com.unity.ugui@2.0/manual/UIAutoLayout.html</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -123,5 +301,5 @@
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"$L_{r}$","id-2":"$W_{i}=W_{preferred}-W_{min}$","id-3":"$$\r\nL_{r}\\cdot{}W_{i}/\\sum{}W_{i}\r\n$$","id-4":"$(400-250)\\cdot{}100/(150+50+100)=50$","id-5":"$L_{r}$","id-6":"$F_{i}$","id-7":"$$\r\nL_{r}\\cdot{}F_{i}/\\sum{}F_{i}\r\n$$"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
