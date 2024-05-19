@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>04Prefab相关 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="04Prefab相关" />
+<meta property="og:description" content="prefab相关 本文主要记录Unity中Prefab相关的一些细节。辅助理解Prefab这个在Unity中常用的对象究竟是什么。 UnityP" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/05Prefab%E7%9B%B8%E5%85%B3/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-05-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-05-19T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="04Prefab相关"/>
+<meta name="twitter:description" content="prefab相关 本文主要记录Unity中Prefab相关的一些细节。辅助理解Prefab这个在Unity中常用的对象究竟是什么。 UnityP"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/05Prefab%E7%9B%B8%E5%85%B3/" /><link rel="prev" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "04Prefab相关",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/05Prefab%E7%9B%B8%E5%85%B3\/"
+        },"genre": "posts","wordcount":  2923 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/05Prefab%E7%9B%B8%E5%85%B3\/","datePublished": "2024-05-19T00:00:00+00:00","dateModified": "2024-05-19T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">04Prefab相关</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-05-19">2024-05-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2923 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ol>
+    <li><a href="#prefab相关">prefab相关</a></li>
+    <li><a href="#prefab格式说明">Prefab格式说明</a></li>
+    <li><a href="#meta文件">Meta文件</a></li>
+    <li><a href="#prefab-instances">Prefab instances</a></li>
+    <li><a href="#nested-prefabs">Nested Prefabs</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ol>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="prefab相关">prefab相关</h1>
+<p>本文主要记录Unity中Prefab相关的一些细节。辅助理解Prefab这个在Unity中常用的对象究竟是什么。</p>
+<p>UnityPrefab实际上可以理解为一种数据资源的整合结构。可以方便的将一些定义好的组合结构存储成起来。本文主要参考Unity官方论坛的一些资料以及实践。</p>
+<h1 id="prefab格式说明">Prefab格式说明</h1>
+<p>根据参考资料来。Prefab实际上一个储存为YAML格式的文件。YAML是一种可读的序列化格式，类似于XML或者JSON。Unity为了性能考虑，仅实现了YAML语法结构的一个特定子集。也就是说YAML有部分语法特性在Unity中是无效的。</p>
+<p>这里我们主要关注的是Unity构建Prefab所定义的结构。对于一个空Gameobject所构成的Prefab。其内容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">%YAML 1.1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">%TAG !u! tag:unity3d.com,2011</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w"> </span>!<span class="l">u!1 &amp;4632272890024472620</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">GameObject</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_ObjectHideFlags</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_CorrespondingSourceObject</span><span class="p">:</span><span class="w"> </span>{<span class="nt">fileID</span><span class="p">:</span><span class="w"> </span><span class="m">0</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_PrefabInstance</span><span class="p">:</span><span class="w"> </span>{<span class="nt">fileID</span><span class="p">:</span><span class="w"> </span><span class="m">0</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_PrefabAsset</span><span class="p">:</span><span class="w"> </span>{<span class="nt">fileID</span><span class="p">:</span><span class="w"> </span><span class="m">0</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">serializedVersion</span><span class="p">:</span><span class="w"> </span><span class="m">6</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_Component</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">component</span><span class="p">:</span><span class="w"> </span>{<span class="nt">fileID</span><span class="p">:</span><span class="w"> </span><span class="m">6418570937168620578</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_Layer</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_Name</span><span class="p">:</span><span class="w"> </span><span class="l">ChildGameObject</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_TagString</span><span class="p">:</span><span class="w"> </span><span class="l">Untagged</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_Icon</span><span class="p">:</span><span class="w"> </span>{<span class="nt">fileID</span><span class="p">:</span><span class="w"> </span><span class="m">0</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_NavMeshLayer</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_StaticEditorFlags</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_IsActive</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w"> </span>!<span class="l">u!4 &amp;6418570937168620578</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Transform</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_ObjectHideFlags</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_CorrespondingSourceObject</span><span class="p">:</span><span class="w"> </span>{<span class="nt">fileID</span><span class="p">:</span><span class="w"> </span><span class="m">0</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_PrefabInstance</span><span class="p">:</span><span class="w"> </span>{<span class="nt">fileID</span><span class="p">:</span><span class="w"> </span><span class="m">0</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_PrefabAsset</span><span class="p">:</span><span class="w"> </span>{<span class="nt">fileID</span><span class="p">:</span><span class="w"> </span><span class="m">0</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_GameObject</span><span class="p">:</span><span class="w"> </span>{<span class="nt">fileID</span><span class="p">:</span><span class="w"> </span><span class="m">4632272890024472620</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">serializedVersion</span><span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_LocalRotation</span><span class="p">:</span><span class="w"> </span>{<span class="nt">x: 0, y: 0, z: 0, w</span><span class="p">:</span><span class="w"> </span><span class="m">1</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_LocalPosition</span><span class="p">:</span><span class="w"> </span>{<span class="nt">x: 0, y: 415, z</span><span class="p">:</span><span class="w"> </span><span class="m">0</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_LocalScale</span><span class="p">:</span><span class="w"> </span>{<span class="nt">x: 1, y: 1, z</span><span class="p">:</span><span class="w"> </span><span class="m">1</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_ConstrainProportionsScale</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_Children</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_Father</span><span class="p">:</span><span class="w"> </span>{<span class="nt">fileID</span><span class="p">:</span><span class="w"> </span><span class="m">0</span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_LocalEulerAnglesHint</span><span class="p">:</span><span class="w"> </span>{<span class="nt">x: 0, y: 0, z</span><span class="p">:</span><span class="w"> </span><span class="m">0</span>}<span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中前两行为每个prefab文件都有的部分。在后面的数据中也不会出现重复。第一行表示所使用的YAML格式。第二行则是类似于创建了一个小的宏，定义<code>!u!</code>就是<code>tag:unity3d.com,2011:</code>。</p>
+<p>其后的部分则是包含在这个prefab中一系列对象的定义。每一个都会用一个显然的```来做区分。先看这个简单Gameobject的第一个Object对象。</p>
+<center><img src="../05.assets/p1.png"></center>
+<p>每个Object都一定有头部两行。</p>
+<ul>
+<li>第一行则定义了Object的CLASS ID和FILE ID。其格式为&mdash; !u!{CLASS ID} &amp;{FIELD ID}。例如图中CLASS ID为1而FILE ID为4632272890024472620。</li>
+<li>第二行则定义OBJECT TYPE。例如图中OBJECT TYPE为GameObject。</li>
+<li>下面其余部分则是这个Object中各个数据字段的序列化。对于每个字段名称，其都会以m_为开头。例如m_Name则说明了这个Prefab的name为ChildGameObject，m_TagString则说明了这个Prefab的Tag为Untagged，即没有tag标记。</li>
+</ul>
+<p>实际上CLASS ID也指明了该Object对象属于Unity中的什么类型对象。具体的可以参见下表：
+<a class="link-markdown-demo-site" href="https://docs.unity3d.com/Manual/ClassIDReference.html" rel="noopener">https://docs.unity3d.com/Manual/ClassIDReference.html</a>
+这里的CLASS ID为1也说明这是一个Gameobject对象。</p>
+<p>而FILE ID则是起到了引用标记的作用。当我们引用一个Prefab内的对象时，会通过将FIELD ID添加到对应字段内来实现引用关系。参看上面的Prefab格式数据，这个Gameobject有一个Component这个Component引用了一个Prefab内对象，对象的FILE ID为6418570937168620578。而这正是下面Transform的FILE ID。
+而{fileID: 0}则表示这个字段为null没有引用任何对象。</p>
+<p>值得说明的是，对于Unity中各种由Unity产出的资源实际都遵守这样一种数据格式。例如Scene，Animation等都是由相同的格式构成的，只是其中标识字段的语义不太一样。</p>
+<h1 id="meta文件">Meta文件</h1>
+<p>上面可以看到一个Prefab文件是怎么初步建立文件的引用关系的。对于文件内的对象，会通过FILE ID来建立这一层引用。现在有个问题如何引用Prfab之外的对象呢。例如一个Image组件上的图片。而这个就是通过Unity对每个导入文件生成的Meta文件来实现。</p>
+<p>例如一个带有SpriteRenderer组件的Prefab我们可以看到如下序列化结构。</p>
+<center><img src="../05.assets/p2.png"></center>
+<p>即该Sprite字段引用了一个对象，这个对象的FIEL ID为21300000。但是实际上这个对象不在Prefab内，也找不到对应FILE ID的Object。其后跟了一个guid字段，2a191196225f2314aa62eeddbc3d5810，该字段则说明了该对象来自于一个全局对象。实际上就是一个Sprite贴图。其后还有一个type字段。type则用来确定资源来自于Assets目录还是Library目录。</p>
+<ul>
+<li>Type 2：资源文件可以直接被Editor从Assets文件夹下加载。</li>
+<li>Type 3：资源文件已经被处理和写入到Library文件夹中了。可以从Library中被Editor来加载。</li>
+</ul>
+<p>所以对于Unity来说，每个文件到处后都附带一个meta文件是有必要的。另外还有两点是：</p>
+<ul>
+<li>对于Meta文件来说，对于某些文件类型，其还有很多的额外导入设定。这些也都会写在meta文件之中。例如对于一张贴图来说，其导入后的Texture设置，mipmap等信息也都在meta文件之中。</li>
+<li>对于Unity加载资源来说，实际上都是从Library中获取的。但源文件会在Assets目录之中。所以每次Unity都需要一个Import阶段，来处理Asset中资源生成Library中数据。</li>
+</ul>
+<h1 id="prefab-instances">Prefab instances</h1>
+<p>有些时候Prefab会存在在其他对象之中。例如场景Scene之中。这个时候实际上会在对应的文件中生成一个重要的Object对象来承担引用功能，即PrefabInstance对象。来看场景中引用一个简单的prefab对象的数据结构：</p>
+<center><img src="../05.assets/p3.png"></center>
+<p>可以注意到m_SourcePrefab字段引用了一个全局的guid，这个就是Prefab实例所对应的Prefab资源。而FILE ID也是相同的一个占位地址。而m_Modification字段则标识了这个Prefab Intance的修改。可以看到</p>
+<ul>
+<li>m_TransformParent：该对象在场景中的父对象</li>
+<li>m_Modifications：在该对象上字段发生的修改变化。其中每个数据段会呈现出如下形式。</li>
+<li>m_Removed：在Prefab基础上移除的Component与Gameobject。</li>
+<li>m_Added：在Prefab基础上增添的Component与Gameobject</li>
+</ul>
+<center><img src="../05.assets/p4.png"></center>
+<p>每一个都会有一个target来指明修改的对象。guid为目标prefab的全局guid，而fieldID则正是该对象在该prefab中的FILE ID标志。可以对照最前面的prefab数据格式，可以看到这里的两个对象就是前面的Gameobject以及对应的Transform。propertyPath则说明了修改数据字段的路径。value则说明了修改后的数值。</p>
+<h1 id="nested-prefabs">Nested Prefabs</h1>
+<p>现在我们就会看到一个问题。对于放在其他资源对象中的Prefab Instance实际上被没有一个FILE ID。那么在嵌套的Prefab中怎么建立引用关系呢。例如上面的ChildGameObject被放在另一个Prefab之中时。这个时候Unity实际上会生成一个占位的Object对象，并标记为 stripped。如下图：</p>
+<center><img src="../05.assets/p5.png"></center>
+<p>对于Prefab内的引用会通过8665414460562454504，即这个Object的FILE ID来建立。而这个占位对象则有三个字段来指明</p>
+<ul>
+<li>m_CorrespondingSourceObject：指明了这个对象的guid以及对象的fileid。</li>
+<li>m_PrefabInstance：则指明了是哪个PrefabInstance对象。</li>
+</ul>
+<h1 id="参考资料">参考资料</h1>
+<p><a class="link-markdown-demo-site" href="https://blog.unity.com/engine-platform/understanding-unitys-serialization-language-yaml" rel="noopener">https://blog.unity.com/engine-platform/understanding-unitys-serialization-language-yaml</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-05-19</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" class="prev" rel="prev" title="Unity问题记录"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Unity问题记录</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

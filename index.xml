@@ -7,6 +7,14 @@
             <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Fri, 18 Aug 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="http://azurezhc.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>04Prefab相关</title>
+    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/05Prefab%E7%9B%B8%E5%85%B3/</link>
+    <pubDate>Sun, 19 May 2024 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/05Prefab%E7%9B%B8%E5%85%B3/</guid>
+    <description><![CDATA[prefab相关 本文主要记录Unity中Prefab相关的一些细节。辅助理解Prefab这个在Unity中常用的对象究竟是什么。 UnityP]]></description>
+</item>
+<item>
     <title>Unity问题记录</title>
     <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
     <pubDate>Sun, 21 Apr 2024 00:00:00 &#43;0000</pubDate>
@@ -77,14 +85,6 @@
     <author>azurezhc</author>
     <guid>http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB%E5%A4%A7%E7%BA%B2/</guid>
     <description><![CDATA[程序动画 本文章系列主要关注于程序控制动画相关的内容。对于动画简单来说，就是关注一个物体位置与时间的函数$\vec{p(t)}$。程序控制动画]]></description>
-</item>
-<item>
-    <title>01UI布局锚点结构</title>
-    <link>http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/01UI%E5%B8%83%E5%B1%80%E9%94%9A%E7%82%B9%E7%BB%93%E6%9E%84/</link>
-    <pubDate>Sat, 23 Dec 2023 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/01UI%E5%B8%83%E5%B1%80%E9%94%9A%E7%82%B9%E7%BB%93%E6%9E%84/</guid>
-    <description><![CDATA[UI布局锚点结构 游戏中UI父子通常通过锚点布局来实现画布大小，位置的关联。而锚点计算过程基本都是走同一套坐标点计算逻辑。将其从数学上抽象出来]]></description>
 </item>
 </channel>
 </rss>
