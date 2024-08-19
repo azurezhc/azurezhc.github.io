@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>07Serialization相关 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="07Serialization相关" />
+<meta property="og:description" content="Serialization相关 本文主要记录了UnitySerialization的一些细节。 大部分Unity书籍都有介绍到Serializa" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/07Serializaion%E7%9B%B8%E5%85%B3/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-08-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-08-18T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="07Serialization相关"/>
+<meta name="twitter:description" content="Serialization相关 本文主要记录了UnitySerialization的一些细节。 大部分Unity书籍都有介绍到Serializa"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/07Serializaion%E7%9B%B8%E5%85%B3/" /><link rel="prev" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/06Timeline%E7%9B%B8%E5%85%B3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "07Serialization相关",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/07Serializaion%E7%9B%B8%E5%85%B3\/"
+        },"genre": "posts","wordcount":  3570 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/07Serializaion%E7%9B%B8%E5%85%B3\/","datePublished": "2024-08-18T00:00:00+00:00","dateModified": "2024-08-18T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">07Serialization相关</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-18">2024-08-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3570 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ol>
+    <li><a href="#serialization相关">Serialization相关</a></li>
+    <li><a href="#serialization规则">Serialization规则：</a></li>
+    <li><a href="#serializereference">SerializeReference</a></li>
+    <li><a href="#odin情况下的serialization">Odin情况下的Serialization</a></li>
+  </ol>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="serialization相关">Serialization相关</h1>
+<p>本文主要记录了UnitySerialization的一些细节。
+大部分Unity书籍都有介绍到Serialization（序列化）的相关功能。官方文档也有详细的介绍：</p>
+<p>如Serialization规则：
+<a class="link-markdown-demo-site" href="https://docs.unity3d.com/Manual/script-Serialization.html" rel="noopener">https://docs.unity3d.com/Manual/script-Serialization.html</a></p>
+<p>SerializationReference规则：
+<a class="link-markdown-demo-site" href="https://docs.unity3d.com/ScriptReference/SerializeReference.html" rel="noopener">https://docs.unity3d.com/ScriptReference/SerializeReference.html</a></p>
+<h1 id="serialization规则">Serialization规则：</h1>
+<p>根据官方文档，序列化规则会直接作用在C#类的字段上，以方便快速的将对象数据序列化成之久数据。对于Prefab，场景，数据类等都是必须有的功能。相对应的，unity对所对应的字段需要满足一定程度的规则。</p>
+<p>Serialization大部分情况主要作用在MonoBehaviour和ScriptableObject这两个类的环境下。也就是说继承该类型的子类的实例，会被序列化成持久化数据。最常见的就是ScriptableObject类型的序列化。</p>
+<p>对于类字段来说：</p>
+<ul>
+<li>public字段，或者又SeializeField注解的会被序列化。</li>
+<li>static，const，readonly字段不会被序列化。</li>
+</ul>
+<p>对字段的类型也有一定要求：</p>
+<ul>
+<li>C#原始数据类型：<code>int,float,double,bool,string,etc</code>。</li>
+<li>枚举类型：需要32位以内的格式。</li>
+<li>固定大小的buffer。</li>
+<li>Unity内置类型：<code>Vector2,Vector3,Rect,Matrix4x4,Color,AnimationCurve</code>。</li>
+<li>带有Serializable注解的自定义Struct。</li>
+<li>带有Serializable注解的自定义Class。</li>
+<li>UnityEngine.Object的子类。</li>
+<li>以上述类型为参数的，数组或者List类型。</li>
+</ul>
+<p>额外的说明</p>
+<ul>
+<li>对于嵌套类型，多维数组，Dictionary等类型是不支持序列化的。也不会反射显示再Inspector面板上面。</li>
+<li>可以自定义序列化，反序列化流程。只要实现<code>ISerializationCallbackReceiver</code>接口即可。其中有两个方法，<code>OnBeforeSerialize</code>会在序列化前调用触发。<code>OnAfterDeserialize</code> 会在反序列化后触发。通过这两个方法可以自定义一些复炸的数据结构方式。</li>
+</ul>
+<p>这里需要注意到的是:</p>
+<blockquote>
+<p>对于序列化类型来说，文件名字必须和类名相同，否则序列化时可以正常运行。反序列化时会因为找不到对应类型，而初始化会默认值。</p>
+</blockquote>
+<blockquote>
+<p>对于UnityEngine.Object的子类来说，只要是对应类型的即可序列化。但是自定义类型，没有继承自UnityEngine.Object的类型需要标注Serializable。</p>
+</blockquote>
+<p>例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="na">[CreateAssetMenu]</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">TestScriptObject</span> <span class="p">:</span> <span class="n">ScriptableObject</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">NoSerializableClass</span> <span class="n">field1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">HasSerializableClass</span> <span class="n">field2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">InnerScriptObject</span> <span class="n">field3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">InnerScriptObject</span> <span class="p">:</span> <span class="n">ScriptableObject</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">str</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">NoSerializableClass</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">str</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">[Serializable]</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">HasSerializableClass</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">str</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>创建对应的ScriptableObject会发现Inspector面板如下图。其中不存在field1，只有field2可以展开，填写对应的数据字段。而field3则是一个可以放入其他ScriptableObject的引用类型值。</p>
+<center><img src="../07.assets/p1.png"></center>
+<p>这就是因为未标记Serializable的字段不认为可以被序列化，再反序列化的时候也不会被处理。</p>
+<h1 id="serializereference">SerializeReference</h1>
+<p>在上面我们已经可以看到对于自定义类型的序列化，和，继承UnityEngine.Object类型的序列化是有一点不太一样的。一个是直接展示暴露编辑字段，一个是引用对象处理。这里就涉及到Unity序列化的两种方式。</p>
+<ul>
+<li>对于通常默认的序列化，称之为Inline Serialization。unity会将对象的值直接序列化成数据，放在prefab对应字段处。当反序列化时，直接从对应字段处反序列化出来。</li>
+<li>还有一种称之为SerializeReference。即引用序列化。会给序列化后的值赋值给一个引用ID，并将数据放在对应引用ID下面。这样当反序列化后，引用相同ID的字段，会反序列化同一对象。</li>
+</ul>
+<p>举例来说明，对于：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="na">[CreateAssetMenu]</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">TestScriptObject</span> <span class="p">:</span> <span class="n">ScriptableObject</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">HasSerializableClass</span> <span class="n">field1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">HasSerializableClass</span> <span class="n">field2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [Sirenix.OdinInspector.Button]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">void</span> <span class="n">FillField</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="k">value</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HasSerializableClass</span><span class="p">()</span> <span class="p">{</span><span class="n">str</span> <span class="p">=</span> <span class="s">&#34;SaveString&#34;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="n">field1</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">field2</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">[Serializable]</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">HasSerializableClass</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">str</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当我们运行<code>FillField</code>方法是，其会给field1和field2注入一个相同的类型。此时看Inspector面板，会发现field2显示Reference to field1表示是对field1上对象的一个引用。当修改field1中str字段时，会发现，field2中字段也跟着改变。
+但是当我们保存，触发反序列化之后会发现field1和field2变成了两个不相干的对象。这就是每个对应字段都序列化到了自己的inline字段中。</p>
+<p>如果修改成如下结构：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">//情况1</span>
+</span></span><span class="line"><span class="cl"><span class="na">[CreateAssetMenu]</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">TestScriptObject</span> <span class="p">:</span> <span class="n">ScriptableObject</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [SerializeReference]</span> <span class="k">public</span> <span class="n">HasSerializableClass</span> <span class="n">field1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [SerializeReference]</span> <span class="k">public</span> <span class="n">HasSerializableClass</span> <span class="n">field2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//情况2</span>
+</span></span><span class="line"><span class="cl"><span class="na">[CreateAssetMenu]</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">TestScriptObject</span> <span class="p">:</span> <span class="n">ScriptableObject</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">HasSerializableClass</span> <span class="n">field1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [SerializeReference]</span> <span class="k">public</span> <span class="n">HasSerializableClass</span> <span class="n">field2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>则会发现，</p>
+<p>对于情况1：触发反序列化后，两个任然指向同一个对象。这是因为序列化后两个字段都指向同一个引用编号。进而反序列化同一份数据，并且根据编号，两者引用同一个值。
+对于情况2：触发反序列化后，会发现两个是不同对象。并没有说，field2直接引用到field1上面。这是因为field1是inline数据，field2是指向引用id。并不是说直接指向field1，所以还是会产生两个不同数据。</p>
+<p>通过prefab数据我们可以看到这个结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">%YAML 1.1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">%TAG !u! tag:unity3d.com,2011</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w"> </span>!<span class="l">u!114 &amp;11400000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">MonoBehaviour</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">m_EditorClassIdentifier</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">field1</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">str</span><span class="p">:</span><span class="w"> </span><span class="l">SaveString</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">field2</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">rid</span><span class="p">:</span><span class="w"> </span><span class="m">4498571975599325184</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">references</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">RefIds</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">rid</span><span class="p">:</span><span class="w"> </span><span class="m">4498571975599325184</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span>{<span class="nt">class: HasSerializableClass, ns: , asm</span><span class="p">:</span><span class="w"> </span><span class="l">Assembly-CSharp}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">str</span><span class="p">:</span><span class="w"> </span><span class="l">SaveString</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到field1是直接内嵌序列化了一段数据。而对于field2则是记录了一个rid。并且在references中又对应rid对应的类型和数据。</p>
+<hr>
+<p>这就是Reference和直接数据序列化上的区别。这里就说到对于Unity来说</p>
+<ul>
+<li>继承子UnityEngine.Object类型的都是引用序列化。也就是Monobehaviour，Transform，animation等等都是以Reference的方式序列化的。</li>
+<li>其他类型，除非特别声明则是按值内嵌序列化。</li>
+</ul>
+<p>同时官方文档也给出了使用SerializeReference的场景。</p>
+<ul>
+<li>如果你希望多个字段引用同一份数据，可以将其全部声明成SerializReference。</li>
+<li>如果你希望使用字段的多态特性，则可以申明为SerializeReference。
+使用多态特性，即显示的字段，序列化后的数据，是该字段实际类型的数据结构。如果不适用引用序列化，那么其会按照字段申明的类型来进行值序列化，这样就会丢失子类型数据。</li>
+<li>你希望序列化null值。对于值类型来说，并不存在null值结构。</li>
+</ul>
+<p>同时对于值序列化来说其效率是高于SerializeReference的。对于存储，内存占用，加载时间等来说都是如此。</p>
+<p>而对SerializeReference的使用来说，伴随着跟Unity序列化一样的限制结构。前面已经看到Serialization的字段有着很多限制，同时可以思考，这些字段类型，尤其是Array和List的泛型参数，可以是继承UnityEngine.Object类型的。所以SerializeReference也有可以使用的场景，和不能的情况。</p>
+<ul>
+<li>Unity支持对Array以及List类型的引用序列化。对于这些类型，SerializeReference注解相当于作用在其容器中的每个元素上面。但是你不可以申明一个System.Object类型并赋值一个Array或List以期望其按照对应方式序列化。</li>
+<li>对于继承子UnitEngine.Object类型的不可以注解SerializeReference。</li>
+<li>不可以是C#的值类型。</li>
+<li>不可以是Serialization中不可以序列化的容器结构。</li>
+</ul>
+<h1 id="odin情况下的serialization">Odin情况下的Serialization</h1>
+<p>Odin插件也提供了一套序列化方式，这很大一部分原因是因为Inspector的编辑操作依赖于对象类型上的序列化，只有序列化成数据才比较方便去做对应的UI绘制，以及数据编辑操作。</p>
+<p>Odin提供了几种方式来使用Odin序列化。可以看出其实际也是在Unity原有的管线接口上，进行了一层自己的封装。</p>
+<ul>
+<li>方式1：
+直接继承SerializedMonoBehaviour或者SerializedScriptableObject。这个基类里面有对序列化方式的支持。</li>
+<li>方式2：
+实现ISerializationCallbackReceiver。并且在对应接口里面桥接实现Odin的序列化操作。为此Odin提供了一个序列化Ulility<code>UnitySerializationUtility</code>。其需要当前序列化的类，以及一个SerializationData对象。</li>
+</ul>
+<p>Odin的序列化主要就是针对上面所不支持的一些情景进行了填充。操作方式就是将不支持的数据结构，转化成Unity支持序列化的数据结构来进行存储。</p>
+<ul>
+<li>对Dictionary的支持。</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-08-18</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/06Timeline%E7%9B%B8%E5%85%B3/" class="prev" rel="prev" title="06Timeline相关"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>06Timeline相关</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
