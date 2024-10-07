@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/02%E5%B8%83%E5%B1%80%E6%8E%A7%E5%88%B6%E7%9B%B8%E5%85%B3\/"
-        },"genre": "posts","wordcount":  4379 ,
+        },"genre": "posts","wordcount":  4286 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/02%E5%B8%83%E5%B1%80%E6%8E%A7%E5%88%B6%E7%9B%B8%E5%85%B3\/","datePublished": "2024-04-14T00:00:00+00:00","dateModified": "2024-04-14T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,7 +69,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">02布局控制相关</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-14">2024-04-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4379 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-14">2024-04-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4286 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -203,20 +203,16 @@
 </table>
 <p>可以看到实际分配值不是根据PreferredWidth比例来进行设置。实际是如下一个计算过程。</p>
 <ul>
-<li>先用当前的布局总宽度减去布局器的最小宽度，得到一个残余宽度值，设为$L_{r}$。</li>
-<li>对于每一个子对象使用PreferredWidth减去MinWidth，得到一个PreferredWidth的分配量，设为$W_{i}=W_{preferred}-W_{min}$</li>
+<li>先用当前的布局总宽度减去布局器的最小宽度，得到一个残余宽度值，设为<data id="id-1" data-raw></data>。</li>
+<li>对于每一个子对象使用PreferredWidth减去MinWidth，得到一个PreferredWidth的分配量，设为<data id="id-2" data-raw></data></li>
 <li>每个对象在MinWidth基础上额外获得按分配量对应比例计算得来的值，即获得的值为
-$$
-L_{r}\cdot{}W_{i}/\sum{}W_{i}
-$$</li>
-<li>例如上面第3个对象额外分配的宽度值即$(400-250)\cdot{}100/(150+50+100)=50$。加上MinWidth的50即100。</li>
+<data id="id-3" data-raw></data></li>
+<li>例如上面第3个对象额外分配的宽度值即<data id="id-4" data-raw></data>。加上MinWidth的50即100。</li>
 </ul>
 <p><strong>FlexibleWidth计算</strong></p>
 <p>再来看FlexibleWidth计算效果。如果进入该步骤，则说明一：布局器任然有空余控件，二：有设置FlexibleWidth的值。FlexibleWidth的计算是简单明了的。</p>
-<p>即对于所有计算之后的剩余空间$L_{r}$，按照每个空间的FlexibleWidth值比例来进行分配。设每个子对象FlexibleWidth值为$F_{i}$即每个空间额外获得值为
-$$
-L_{r}\cdot{}F_{i}/\sum{}F_{i}
-$$</p>
+<p>即对于所有计算之后的剩余空间<data id="id-5" data-raw></data>，按照每个空间的FlexibleWidth值比例来进行分配。设每个子对象FlexibleWidth值为<data id="id-6" data-raw></data>即每个空间额外获得值为
+<data id="id-7" data-raw></data></p>
 <p><strong><font size=5>UseChildScale</font></strong></p>
 <p>是否使用子对象的放缩值，即Scale对象。UGUI在计算布局的时候，不会计算Scale对象的大小。即可认为Scale是修改的渲染尺寸，而不是UI的布局尺寸。所以会出现如下这样的布局情况：</p>
 <p>中间元素LayoutElement为100但是有一个0.8的缩放。但是任然按照100来计算的布局参数。</p>
@@ -305,5 +301,5 @@ $$</p>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"$L_{r}$","id-2":"$W_{i}=W_{preferred}-W_{min}$","id-3":"$$\r\nL_{r}\\cdot{}W_{i}/\\sum{}W_{i}\r\n$$","id-4":"$(400-250)\\cdot{}100/(150+50+100)=50$","id-5":"$L_{r}$","id-6":"$F_{i}$","id-7":"$$\r\nL_{r}\\cdot{}F_{i}/\\sum{}F_{i}\r\n$$"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
