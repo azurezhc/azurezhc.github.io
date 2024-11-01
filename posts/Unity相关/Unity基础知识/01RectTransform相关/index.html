@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/01RectTransform%E7%9B%B8%E5%85%B3\/"
-        },"genre": "posts","wordcount":  5115 ,
+        },"genre": "posts","wordcount":  5040 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/01RectTransform%E7%9B%B8%E5%85%B3\/","datePublished": "2024-03-03T00:00:00+00:00","dateModified": "2024-03-03T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -44,7 +44,7 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a></div>
         </div>
@@ -59,7 +59,7 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
@@ -69,7 +69,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">01RectTransform相关</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-03-03">2024-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5115 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-03-03">2024-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5040 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -157,10 +157,10 @@ Unity中RectTransform主要有一下字段：
 <h2 id="anchoredposition">anchoredPosition</h2>
 <p><font size=4><b>含义说明</b></font></p>
 <p>即该RectTransform中Pivot点相对于Anchor的位置，如下图：</p>
-<center><img src="01.assets/p1.png"></center>
+<center><img src="../01.assets/p1.png"></center>
 <p>但根据布局锚点的数学结构来说，可以简单看到。对于锚点退化成点的情况下来说，该值就相当于PosX，PosY。如果是线的情况下实际上是通过Offset来计算的，但是该值实际上任然存在。</p>
 <p>实际上该值为：</p>
-<p>$$Pos=OffsetMin+(OffsetMax-OffsetMin)<em>Pivot=OffsetMin+SizeDelta</em>Pivot$$</p>
+<data id="id-1" data-raw></data>
 <p>参考OffsetMin,OffsetMax的含义。当Anchor退化成点的情况，OffsetMax,OffsetMin相当于从一个点出发到当前RectTransform右上角，左下角点的两个向量。所以该公式值就是Anchor点到Pivot所对应点的向量，这也相当于子RectTransform相对于Anchor的位置坐标。当Anchor不是点的时候OffsetMax,OffsetMin尾部不再重叠，此时含义就不再是Anchor到Pivot对应点的向量。此时谈论子RectTransform相对Anchor的位置也不具有实际意义，这个时候Anchor也不是一个简单的点。而是一个区域。</p>
 <p><font size=4><b>操作效果</b></font></p>
 <p>对于AnchoredPosition赋值，不论什么情况下都将设置AnchorPosition值为目标值，保持SizeDelta和Pivot不变，修改OffsetMax和OffsetMin来使得上述公式计算值为目标值。所以：</p>
@@ -173,11 +173,9 @@ Unity中RectTransform主要有一下字段：
 <h2 id="offset">offset</h2>
 <p><font size=4><b>含义说明</b></font></p>
 <p>即该RectTransform中右上角，左下角点相对于Anchor右上角，左下角点的偏移。示例如下图：</p>
-<center><img src="01.assets/p2.png"></center>
+<center><img src="../01.assets/p2.png"></center>
 <p>当设置Anchor不为点的情况，此时可以看到设置面板也不再是点情况下的PosX,PoxY,Width,Height的组合。而是Left,Top,Right,Bottom的组合。可以看到：</p>
-<p>$$
-OffsetMax = (-Right,-Top),OffsetMin = (Left,Bottom)
-$$</p>
+<data id="id-2" data-raw></data>
 <p>但是不论什么情况下，无论Anchor是否为点。OffsetMax,OffsetMin的语义都是确定的，即图中所表示的两条向量。</p>
 <p><font size=4><b>操作效果</b></font></p>
 <p>对于Offset赋值，不论什么情况下都将设置Offset值为目标值。于是子RectTransform所形成的矩形区域会对应修改，然后根据矩形区域和Pivot点，重新按照公式修改AnchoredPosition值与SizeDelta值。</p>
@@ -185,11 +183,11 @@ $$</p>
 <h2 id="sizedelta">sizeDelta</h2>
 <p><font size=4><b>含义说明</b></font></p>
 <p>sizeDelta值实际即
-$$SizeDelta=(OffsetMax-OffsetMin)$$</p>
+<data id="id-3" data-raw></data></p>
 <p>如下图：</p>
-<center><img src="01.assets/p3.png"></center>
+<center><img src="../01.assets/p3.png"></center>
 <p>如果Anchor退化成点，可以看到，这实际上就是当前RectTramsform的对角线向量，表示了这个Rect的大小。但是如果Anchor没有退化成点，可以看到OffsetMax,OffsetMin尾部不重叠。此时SizeDelta的语义不再是RectTransform的对角线向量，实际上混入了Anchor的对角线向量。即</p>
-<p>$$OffsetMin+ChildDiagonal = AnchorDiagonal+OffsetMax$$</p>
+<data id="id-4" data-raw></data>
 <p>所以sizeDelta相当于子RectTransform的对角线向量减去Anchor的对角线向量。如果Anchor的对角线向量为0向量。那么就想到子子RectTransform的对角线。</p>
 <p><font size=4><b>操作效果</b></font></p>
 <p>对于sizeDelta赋值，不论什么情况下都将设置sizeDelta值为目标值，保持AnchoredPosition大小不变，通过公式反推OffsetMax和OffsetMin的值。所以：</p>
@@ -202,17 +200,15 @@ $$SizeDelta=(OffsetMax-OffsetMin)$$</p>
 <h2 id="anchor">Anchor</h2>
 <p><font size=4><b>含义说明</b></font></p>
 <p>Anchor显然就是Anchor右上角点，左下角点相对于父RectTransform的比例值。如下图：</p>
-<center><img src="01.assets/p4.png"></center>
+<center><img src="../01.assets/p4.png"></center>
 <p>Anchor的存在相当于建立起了父子RectTransform之间的一个比例变化对象。</p>
 <p><font size=4><b>操作效果</b></font></p>
 <p>不论什么情况下都将设置Anchor设为目标值，但保持AnchoredPosition,Offset,SizeDelta都不变。所以最后结果相当于直接修改了中间件的区域大小，进而修改最后绘制出的子RectTransform区域大小。</p>
 <h2 id="rect">Rect</h2>
 <p>该值无法设置，其表示的即当前RectTransform所描绘出的Rectangle区域大小。该值由x,y,Width,Height来构成。分别表示了Pivot在当前Rectangle中的位置以及宽高，如下图：</p>
-<center><img src="01.assets/p5.png"></center>
+<center><img src="../01.assets/p5.png"></center>
 <p>具体来说
-$$
-x=-Width<em>Pivot.x,\space y=-Htight</em>Pivot.y
-$$</p>
+<data id="id-5" data-raw></data></p>
 <h1 id="操作函数">操作函数</h1>
 <table>
 <thead>
@@ -257,14 +253,13 @@ $$</p>
 <p>该函数主要用来设置RectTransform在目标方向上的大小。前面可以看到类似的字段SizeDelta，但是当Anchor不为点的时候，可以发现通过设置SizeDelta来将RectTransform设置到对应宽度或高度是不准确，虽然其变化量是正确的，但是很多情况下可能需要直接设置到某个数值，而不是先计算之前的数值然后计算变化量。</p>
 <p>而该函数则可以设置目标RectTransform的宽度或高度为给定目标值。
 该计算保持RectTransform中的Pivot坐标不变。通过修改Offset来实现Rectangle宽度或高度的修改。而Pivot坐标不变，实际上相当于保持AnchoredPosition值不变。</p>
-<p>对于RectTransform中Pivot相对于Anchor左下角的坐标$R_{pivot}$以及其对角线向量$R_{diagonal}$其可以表示为
-$$
-R_{pivot}=OffsetMin+(AnchorDiagonal+OffsetMax-OffsetMin)*Pivot\
-R_{diagonal} = AnchorDiagonal+OffsetMax-OffsetMin=AnchorDiagonal+SizeDelta
-$$</p>
-<p>Anchor不变，所以Anchor的对角线AnchorDiagonal不变。所以$R_{pivot}$不变相当于剩下部分的计算不变，也即AnchorPosition不变。另一方面由上面公式也可以看出，设置对应方向大小，相当于设置$R_{diagonal}$数值。而这里面必定参杂了父对角线AnchorDiagonal的值，这也是为什么通过设置SizeDelta不准的原因。如果要根据数值直接计算，则要涉及父节点的Anchor坐标，这就必须要去父节点上去这个值。这是比较麻烦的一件事情，而该接口正是隐藏了这一点。</p>
+<p>对于RectTransform中Pivot相对于Anchor左下角的坐标<data id="id-6" data-raw></data>以及其对角线向量<data id="id-7" data-raw></data>其可以表示为
+<data id="id-8" data-raw></data></p>
+<p>Anchor不变，所以Anchor的对角线AnchorDiagonal不变。所以<data id="id-9" data-raw></data>不变相当于剩下部分的计算不变，也即AnchorPosition不变。另一方面由上面公式也可以看出，设置对应方向大小，相当于设置<data id="id-10" data-raw></data>数值。而这里面必定参杂了父对角线AnchorDiagonal的值，这也是为什么通过设置SizeDelta不准的原因。如果要根据数值直接计算，则要涉及父节点的Anchor坐标，这就必须要去父节点上去这个值。这是比较麻烦的一件事情，而该接口正是隐藏了这一点。</p>
 <h1 id="recttransform与transform">RectTransform与Transform</h1>
-<p>RectTransform继承于Transform。这是因为Transform描述的是点概念结构，而RectTransform需要描述一个矩形区域概念。所以RectTransform选择在Transform的基础上扩展结构，来实现自己所描述的概念。这有好处，即RectTransform依旧囊括在Transform之中，可以被基本变换结构操控，当遇到3D结构时，其依旧有效。坏处是，继承于Transform，也就相当于拥有Transform的数据结构字段。这些字段有空会令使用者混淆。</p>
+<p>RectTransform继承于Transform。我觉得这有多方面考量原因。</p>
+<p>因为Transform描述的是点概念结构，而RectTransform需要描述一个矩形区域概念。所以RectTransform需要扩展一些字段结构。</p>
+<p>选择在Transform的基础上扩展结构，来实现自己所描述的概念。这有好处，即RectTransform依旧囊括在Transform之中，可以被基本变换结构操控，当遇到3D结构时，其依旧有效。坏处是，继承于Transform，也就相当于拥有Transform的数据结构字段。这些字段有时会令使用者混淆。</p>
 <p>例如RectTransform依旧拥有Transform中的Position，Rotation和Scale数据字段。但是通常UI中并不使用这些字段，而是如上的锚点相关字段。实际上这些字段，依旧有值，并且有其对应含义。</p>
 <table>
 <thead>
@@ -301,17 +296,14 @@ $$</p>
 </tbody>
 </table>
 <ul>
-<li>这里需要注意。即UI所描述的矩形区域也是有着世界坐标的。这个坐标跟我们根节点的Canvas结构挂钩。具体来说，当我们Canvas选定其RenderMode之后，可以看到其有一个不可修改的数值，实际上这个就是根节点Canvas的空间位置。例如如下，我们选择ScreenSpace-Overlay，可以看到在场景中会出现一个跟屏幕分辨率等大的画布。如图，其位置就是$(670.5,285,0)$。其子节点的世界坐标位置position，也就是基于该节点层层变化后的位置。</li>
+<li>这里需要注意。即UI所描述的矩形区域也是有着世界坐标的。这个坐标跟我们根节点的Canvas结构挂钩。具体来说，当我们Canvas选定其RenderMode之后，可以看到其有一个不可修改的数值，实际上这个就是根节点Canvas的空间位置。例如如下，我们选择ScreenSpace-Overlay，可以看到在场景中会出现一个跟屏幕分辨率等大的画布。如图，其位置就是<data id="id-11" data-raw></data>。其子节点的世界坐标位置position，也就是基于该节点层层变化后的位置。</li>
 </ul>
-<center><img src="01.assets/p6.png"></center>
+<center><img src="../01.assets/p6.png"></center>
 <ul>
-<li>所以这里可以注意到一件事，有些情况下localPosition会跟anchoredPosition等价。但两者情况语义实际完全不一样。
-<ul>
+<li>所以这里可以注意到一件事，有些情况下localPosition会跟anchoredPosition等价。但两者情况语义实际完全不一样。</li>
 <li>对于anchoredPosition来说，其将Anchor结构考虑了进去。其本质是相对于Anchor给出点的一个位置偏移。而localPosition则是父子对象Pivot之间的偏移关系。所以对于anchoredPosition来说，其收Anchor影响，有些时候其语义不是很清晰。而localPosition则是相对清晰的，就是Pivot之间偏向量值。</li>
 </ul>
-</li>
-</ul>
-<p>因此如果我们向对坐标点进行坐标变化计算。例如计算Transform A物体下面一个点$A_0$坐标在Transform B下的坐标的时候。可以直接通过Transform A的LocalToWorld矩阵结合Transform B的WorldToLocal矩阵，来算出$A_0$在B下的一个坐标。如果放在RectTransform下面。就是该点相对于RectTransform中Pivot点的坐标距离。需要注意的是，这个相当于localPosition值。而不是能直接设置的anchoredPosition值。</p>
+<p>因此如果我们向对坐标点进行坐标变化计算。例如计算Transform A物体下面一个点<data id="id-12" data-raw></data>坐标在Transform B下的坐标的时候。可以直接通过Transform A的LocalToWorld矩阵结合Transform B的WorldToLocal矩阵，来算出<data id="id-13" data-raw></data>在B下的一个坐标。如果放在RectTransform下面。就是该点相对于RectTransform中Pivot点的坐标距离。需要注意的是，这个相当于localPosition值。而不是能直接设置的anchoredPosition值。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -348,5 +340,5 @@ $$</p>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"$$Pos=OffsetMin+(OffsetMax-OffsetMin)*Pivot=OffsetMin+SizeDelta*Pivot$$","id-10":"$R_{diagonal}$","id-11":"$(670.5,285,0)$","id-12":"$A_0$","id-13":"$A_0$","id-2":"$$\r\nOffsetMax = (-Right,-Top),OffsetMin = (Left,Bottom)\r\n$$","id-3":"$$SizeDelta=(OffsetMax-OffsetMin)$$","id-4":"$$OffsetMin+ChildDiagonal = AnchorDiagonal+OffsetMax$$","id-5":"$$\r\nx=-Width*Pivot.x,\\space y=-Htight*Pivot.y\r\n$$","id-6":"$R_{pivot}$","id-7":"$R_{diagonal}$","id-8":"$$\r\nR_{pivot}=OffsetMin+(AnchorDiagonal+OffsetMax-OffsetMin)*Pivot\\\\\r\nR_{diagonal} = AnchorDiagonal+OffsetMax-OffsetMin=AnchorDiagonal+SizeDelta\r\n$$","id-9":"$R_{pivot}$"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
