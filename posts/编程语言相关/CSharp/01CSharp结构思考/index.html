@@ -77,26 +77,26 @@
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ol>
+  <ul>
     <li><a href="#dispatch实现以及效率">Dispatch实现以及效率</a>
-      <ol>
+      <ul>
         <li><a href="#效率对比">效率对比</a></li>
         <li><a href="#总结说明">总结说明</a></li>
-      </ol>
+      </ul>
     </li>
     <li><a href="#实例类型判定">实例类型判定</a>
-      <ol>
+      <ul>
         <li><a href="#效率对比-1">效率对比</a></li>
         <li><a href="#总结说明-1">总结说明</a></li>
-      </ol>
+      </ul>
     </li>
     <li><a href="#action结构">Action结构</a>
-      <ol>
+      <ul>
         <li><a href="#效率对比-2">效率对比</a></li>
         <li><a href="#总结说明-2">总结说明</a></li>
-      </ol>
+      </ul>
     </li>
-  </ol>
+  </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="dispatch实现以及效率">Dispatch实现以及效率</h1>
 <p>Dispatch结构可以认为是设计模式的监听者模式结构。实际这里最主要的点便是映射结构，更确切的说，是将一个Key值跟一个函数调用（或者一个函数调用List）绑定在一起。通过这个Key值是可以调用目标注入的函数调用。这个结构在很多场合中非常适用，尤其是通过运行时某个字段的值来调用对应处理函数。这在C#中显然要通过Dictionary和delegate结构来实现。虽然delegate跟接口在功能类似化，但是delegate有个显著特性是，只关注函数签名，隐藏相关类型对象，而不是关注函数名称对象。如果用接口，则所有对象上都要实现该接口，这样才能绑定进来。这样在某些场合限制还是很多的。</p>
