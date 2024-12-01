@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95\/"
-        },"genre": "posts","wordcount":  386 ,
+        },"genre": "posts","wordcount":  943 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95\/","datePublished": "2024-04-21T00:00:00+00:00","dateModified": "2024-04-21T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,8 +69,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Unity问题记录</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-21">2024-04-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;386 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-21">2024-04-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;943 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -81,6 +81,7 @@
     <li><a href="#unity问题记录">Unity问题记录</a>
       <ul>
         <li><a href="#unity-autorefresh问题">Unity AutoRefresh问题</a></li>
+        <li><a href="#脚本图标打包问题">脚本图标打包问题</a></li>
       </ul>
     </li>
   </ul>
@@ -98,7 +99,52 @@
 <p>HKEY_CURRENT_USER/Software/UnityTechnologies/UnityEditor5.x/kAutoRefresh = 0
 HKEY_CURRENT_USER/Software/UnityTechnologies/UnityEditor5.x/kAutoRefreshMode = 0</p>
 <p>由此可以看到，这个实际上是Unity版本迭代的问题。如果机子上有老的Unity引擎，那么其Auto Refesh控制kAutoRefresh的01值。如果设置为enable这个值将为1。使得Unity最新版本不能控制自动刷新。所以这里重新设置一下就好了。</p>
-</div><div class="post-footer" id="post-footer">
+<h2 id="脚本图标打包问题">脚本图标打包问题</h2>
+<p>之前用github的一个unity uREPL项目插件。打包的时候出现如下报错。</p>
+<center><img src=".././Unity问题.assets/p2.png"></center>
+<p>神奇的是，启动unity后第一次打包的时候不会出现错误。但是第二次执行打包必定报错。</p>
+<p>网上查找发现有很多情况会触发这个错误。例如Editor下资源被错误放在运行时资源目录下，Editor下脚本被加入打包流程等。而这个报错资源是一个图片资源，放在了uREPL的Resources下面。随后我发现是因为这个图标被ScriptIcon引用导致报错。</p>
+<p>所以清除所有引用该资源Script的ScriptIcon或者删除这个图片就可以。但是手动删除ScriptIcon非常麻烦，要逐个脚本点击，设置为None，然后再经过编译。直接删除图片资源可以快速解决问题，但是scripticon文件数据实际上记录在脚本对应的meta文件中（记录在icon字段内）。这样会在Script的meta文件中留下脏数据感觉不是很好。</p>
+<p>强迫症决定写脚本批量清楚ScriptIcon资源。但发现似乎没有类似结构，经过研究发现如下的方式可以清除，估记录一下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">void</span> <span class="n">ClearMonoScriptIcon</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 查找目标路径下所有Asset资源</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">asset_guids</span> <span class="p">=</span> <span class="n">AssetDatabase</span><span class="p">.</span><span class="n">FindAssets</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">,</span> <span class="k">new</span> <span class="kt">string</span><span class="p">[]</span> <span class="p">{</span> <span class="n">path</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">guid</span> <span class="k">in</span> <span class="n">asset_guids</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">asset_path</span> <span class="p">=</span> <span class="n">AssetDatabase</span><span class="p">.</span><span class="n">GUIDToAssetPath</span><span class="p">(</span><span class="n">guid</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 加载为一个MonoImporter 这个类型专门用来导入脚本</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">mono_importer</span> <span class="p">=</span> <span class="n">AssetImporter</span><span class="p">.</span><span class="n">GetAtPath</span><span class="p">(</span><span class="n">asset_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">MonoImporter</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">mono_importer</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mono_importer</span><span class="p">.</span><span class="n">SetIcon</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">mono_importer</span><span class="p">.</span><span class="n">SaveAndReimport</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
