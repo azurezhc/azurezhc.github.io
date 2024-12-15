@@ -1,0 +1,111 @@
+<mxfile host="Electron" modified="2024-10-07T12:46:42.614Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.11 Chrome/114.0.5735.289 Electron/25.9.8 Safari/537.36" etag="cZDztVCJ0zq6CGsm8DgX" version="22.1.11" type="device">
+  <diagram name="第 1 页" id="n_lde_2Q6zngwP638BM-">
+    <mxGraphModel dx="2074" dy="1204" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="tLOcTwmwj0KGl9j2g9u9-2" value="&lt;span style=&quot;text-align: left;&quot;&gt;GetEventHandler&amp;lt;T&amp;gt;&lt;/span&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#CCE5FF;" parent="1" vertex="1">
+          <mxGeometry x="40" y="280" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="tLOcTwmwj0KGl9j2g9u9-6" value="泛型给定目标接口&lt;br&gt;以root为叶子节点，不断向父节点查找&lt;br&gt;直到最近一个实现目标接口对象" style="rounded=0;whiteSpace=wrap;html=1;" parent="tLOcTwmwj0KGl9j2g9u9-2" vertex="1">
+          <mxGeometry y="30" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tLOcTwmwj0KGl9j2g9u9-7" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;CanHandleEvent&amp;lt;T&amp;gt;&lt;/span&gt;&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#CCE5FF;" parent="1" vertex="1">
+          <mxGeometry x="360" y="280" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="tLOcTwmwj0KGl9j2g9u9-8" value="内部使用接口&lt;br&gt;会调用GetEventList&amp;lt;T&amp;gt;来获取目标对象上&lt;br&gt;实现T接口的列表&lt;br&gt;本身主要提供一个池对象" style="rounded=0;whiteSpace=wrap;html=1;" parent="tLOcTwmwj0KGl9j2g9u9-7" vertex="1">
+          <mxGeometry y="30" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tLOcTwmwj0KGl9j2g9u9-13" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Execute&amp;lt;T&amp;gt;&lt;/span&gt;&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#CCE5FF;" parent="1" vertex="1">
+          <mxGeometry x="40" y="400" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="tLOcTwmwj0KGl9j2g9u9-14" value="事件执行处理接口&lt;div&gt;调用GetEventList获取目标对象上的&lt;br&gt;实现列表后&lt;br&gt;转换类型后，调用对应的Functor进行处理&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="tLOcTwmwj0KGl9j2g9u9-13" vertex="1">
+          <mxGeometry y="30" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="tLOcTwmwj0KGl9j2g9u9-19" value="ExecuteEvents&lt;br&gt;部分实现以及接口" style="shape=card;whiteSpace=wrap;html=1;fillColor=#E6FFCC;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+          <mxGeometry x="40" y="130" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="tLOcTwmwj0KGl9j2g9u9-20" value="&lt;div style=&quot;text-align: left;&quot;&gt;GetEventList&amp;lt;T&amp;gt;&lt;br&gt;&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#CCE5FF;" parent="1" vertex="1">
+          <mxGeometry x="360" y="400" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="tLOcTwmwj0KGl9j2g9u9-21" value="内部使用接口&lt;br&gt;查看目标对象上的所有MonoBehaviour&lt;br&gt;是否有实现对应接口的组件实例" style="rounded=0;whiteSpace=wrap;html=1;" parent="tLOcTwmwj0KGl9j2g9u9-20" vertex="1">
+          <mxGeometry y="30" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tLOcTwmwj0KGl9j2g9u9-22" value="&lt;div style=&quot;text-align: left;&quot;&gt;ExecuteHierarchy&amp;lt;T&amp;gt;&lt;br&gt;&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#CCE5FF;" parent="1" vertex="1">
+          <mxGeometry x="40" y="540" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="tLOcTwmwj0KGl9j2g9u9-23" value="相当于GetEventHandler结合Execute&lt;br&gt;会先把root节点，及其所有父节点都放入列表&lt;br&gt;针对列表中每个对象&lt;br&gt;执行Execute处理" style="rounded=0;whiteSpace=wrap;html=1;" parent="tLOcTwmwj0KGl9j2g9u9-22" vertex="1">
+          <mxGeometry y="30" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="tLOcTwmwj0KGl9j2g9u9-24" value="其中执行处理的时候会用到&lt;br&gt;一系列functor，这是UGUI为了方便调用对应接口而作的一个delegate&lt;div&gt;将接口类型，和传入的事件数据类型做了解耦&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#E6FFCC;" parent="1" vertex="1">
+          <mxGeometry x="650" y="300" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="hXB1s9DQjW5pMUT9sYni-2" value="&lt;div style=&quot;&quot;&gt;delegate&lt;br&gt;&lt;span style=&quot;&quot;&gt;void EventFunction&amp;lt;T1&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#CCE5FF;align=center;" vertex="1" parent="1">
+          <mxGeometry x="650" y="455" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="hXB1s9DQjW5pMUT9sYni-3" value="申明的委托类型&lt;br&gt;T1为目标接口类型&lt;br&gt;后面一个参数为点击数据的基类&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="hXB1s9DQjW5pMUT9sYni-2">
+          <mxGeometry y="30" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hXB1s9DQjW5pMUT9sYni-8" value="&lt;div style=&quot;&quot;&gt;s_xxxHandler&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;一些针对具体接口实现的转调接口&lt;br&gt;每一个都有一个对应的静态Execute&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#EDF7FF;align=center;" vertex="1" parent="1">
+          <mxGeometry x="635" y="575" width="270" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="hXB1s9DQjW5pMUT9sYni-10" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;" vertex="1" parent="hXB1s9DQjW5pMUT9sYni-8">
+          <mxGeometry y="50" width="270" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="hXB1s9DQjW5pMUT9sYni-11" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="hXB1s9DQjW5pMUT9sYni-10">
+          <mxGeometry width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="hXB1s9DQjW5pMUT9sYni-12" value="s_PointerClickHandler" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="hXB1s9DQjW5pMUT9sYni-11">
+          <mxGeometry width="158" height="40" as="geometry">
+            <mxRectangle width="158" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hXB1s9DQjW5pMUT9sYni-13" value="IPointerClickHandler" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="hXB1s9DQjW5pMUT9sYni-11">
+          <mxGeometry x="158" width="112" height="40" as="geometry">
+            <mxRectangle width="112" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hXB1s9DQjW5pMUT9sYni-29" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="hXB1s9DQjW5pMUT9sYni-10">
+          <mxGeometry y="40" width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="hXB1s9DQjW5pMUT9sYni-30" value="s_PointerUpHandler" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="hXB1s9DQjW5pMUT9sYni-29">
+          <mxGeometry width="158" height="40" as="geometry">
+            <mxRectangle width="158" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hXB1s9DQjW5pMUT9sYni-31" value="IPointerUpHandler" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" vertex="1" parent="hXB1s9DQjW5pMUT9sYni-29">
+          <mxGeometry x="158" width="112" height="40" as="geometry">
+            <mxRectangle width="112" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hXB1s9DQjW5pMUT9sYni-32" value="......" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="hXB1s9DQjW5pMUT9sYni-8">
+          <mxGeometry y="130" width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="hXB1s9DQjW5pMUT9sYni-34" value="处理对应的事件接口时&lt;br&gt;传入对应的delegate实例&lt;br&gt;来实现实际的接口调用逻辑" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="370" y="640" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="hXB1s9DQjW5pMUT9sYni-36" value="" style="curved=1;endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="540" as="sourcePoint" />
+            <mxPoint x="620" y="630" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="420" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hXB1s9DQjW5pMUT9sYni-37" value="" style="curved=1;endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="530" as="sourcePoint" />
+            <mxPoint x="340" y="440" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="290" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hXB1s9DQjW5pMUT9sYni-38" value="为什么这么做&lt;br&gt;因为Execute是一个通用的泛型过程&lt;br&gt;在内部实现中可以实现类型强转，转为T&lt;br&gt;但是不知道T的具体类型&lt;br&gt;所以无法调用接口中的函数&lt;br&gt;需要外部传入一个方法来执行对应的操作&lt;br&gt;所以抽取了这么一个delegate" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#E6FFCC;" vertex="1" parent="1">
+          <mxGeometry x="240" y="720" width="260" height="110" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

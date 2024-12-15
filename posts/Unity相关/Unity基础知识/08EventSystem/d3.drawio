@@ -1,0 +1,97 @@
+<mxfile host="Electron" modified="2024-09-19T11:53:38.102Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.6.4 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="lUVwvPvdrDtby6uqHgrw" version="24.6.4" type="device">
+  <diagram name="第 1 页" id="x8nAhbbPYe13R5KYv_6d">
+    <mxGraphModel dx="954" dy="717" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="gMn2beRd0WFKrncwyjXF-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gMn2beRd0WFKrncwyjXF-1" target="gMn2beRd0WFKrncwyjXF-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-1" value="GameObject1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gMn2beRd0WFKrncwyjXF-2" target="gMn2beRd0WFKrncwyjXF-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-2" value="GameObject2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="200" y="280" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-3" value="GameObject3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="320" y="360" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-6" value="&amp;nbsp;存在Graphic的子类&lt;br&gt;调用对应的Raycast函数" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry x="520" y="140" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-7" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="310" width="30" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-8" value="Component1&lt;br&gt;组件对象" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#CCFFCC;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="540" y="310" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-9" value="Graphic子类对象" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#CCFFCC;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="540" y="370" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-10" value="实现了&lt;br&gt;ICanvasRaycastFilter对象" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#CCFFCC;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="540" y="430" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="gMn2beRd0WFKrncwyjXF-11" target="gMn2beRd0WFKrncwyjXF-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-11" value="Graphic对象的Raycast默认实现&lt;br&gt;获取GameObject上的所有组件&lt;br&gt;依次进行检测&lt;br&gt;可大致描述如下" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry x="750" y="250" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-12" value="组件列表" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="470" y="260" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-13" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="gMn2beRd0WFKrncwyjXF-6" target="gMn2beRd0WFKrncwyjXF-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="750" y="170" as="sourcePoint" />
+            <mxPoint x="800" y="120" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="820" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="gMn2beRd0WFKrncwyjXF-14" target="gMn2beRd0WFKrncwyjXF-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-14" value="如果有Canvas组件&lt;br&gt;并且Canvas勾选OverrideSorting&lt;br&gt;则不在递归向上查找" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry x="750" y="360" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="gMn2beRd0WFKrncwyjXF-16" target="gMn2beRd0WFKrncwyjXF-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-16" value="如果没实现&lt;br&gt;ICanvasRaycastFilter&lt;br&gt;跳过，继续下一个组件检测" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry x="750" y="440" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="gMn2beRd0WFKrncwyjXF-18" target="gMn2beRd0WFKrncwyjXF-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="gMn2beRd0WFKrncwyjXF-18" target="gMn2beRd0WFKrncwyjXF-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-18" value="否则调用对应的&lt;br&gt;IsRaycastLocationValid检测" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry x="750" y="520" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-23" value="检测不合格&lt;br&gt;直接返回false&lt;br&gt;检测失败" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="520" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="gMn2beRd0WFKrncwyjXF-25" target="gMn2beRd0WFKrncwyjXF-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-25" value="继续下一个组件检测&lt;br&gt;直到所有组件检测完毕" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry x="520" y="520" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-27" value="&lt;div&gt;递归向父对象上查找&lt;br&gt;知道有一个检测不合格&lt;br&gt;或者到Canvas所在对象结束&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry x="290" y="520" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gMn2beRd0WFKrncwyjXF-31" value="" style="endArrow=classic;html=1;rounded=0;edgeStyle=isometricEdgeStyle;strokeColor=default;elbow=vertical;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="510" as="sourcePoint" />
+            <mxPoint x="220" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,192 @@
+<mxfile host="Electron" modified="2024-09-16T17:44:11.134Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.6.4 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="wet98S691A6b4KGpybBW" version="24.6.4" type="device">
+  <diagram name="第 1 页" id="z18PjsAyJEk9tvi0mwBd">
+    <mxGraphModel dx="954" dy="717" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-1" target="IvFDXh0_Sm4KCRllszfq-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-1" value="生成一个PointerEventData对象&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;" vertex="1" parent="1">
+          <mxGeometry x="160" y="200" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-3" target="IvFDXh0_Sm4KCRllszfq-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-3" value="从BaseInput中获取当前鼠标点位置&lt;br&gt;并赋值给" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;" vertex="1" parent="1">
+          <mxGeometry x="160" y="290" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-5" value="该对象用来存储点击事件的各种信息&lt;div&gt;以及历史信息&lt;br&gt;历史信息包括之前点中的物体等GameObject&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#E6E6E6;" vertex="1" parent="1">
+          <mxGeometry x="440" y="185" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-6" value="该坐标是屏画布空间下的坐标，即1920*1080分辨率下，以左下脚为(0,0)点，右上角为(1920,1080)为坐标值。" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#E6E6E6;" vertex="1" parent="1">
+          <mxGeometry x="440" y="275" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="440" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-7" target="IvFDXh0_Sm4KCRllszfq-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-7" value="调用EventSystem的RaycastAll接口&lt;br&gt;从RaycasterManager中获取一个列表&lt;br&gt;遍历列表来做射线检测" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;" vertex="1" parent="1">
+          <mxGeometry x="160" y="380" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-25" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-12" target="IvFDXh0_Sm4KCRllszfq-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-12" value="RaycastManager" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#D4E1F5;" vertex="1" parent="1">
+          <mxGeometry x="440" y="380" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-17" value="是一个所有Raycaster的管理器&lt;div&gt;列表形式存储管理所有Raycaster&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="IvFDXh0_Sm4KCRllszfq-12">
+          <mxGeometry y="30" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-16" value="BaseRaycaster" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#D4E1F5;" vertex="1" parent="1">
+          <mxGeometry x="780" y="400" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-18" value="UGUI中投射器的抽象基类&lt;br&gt;给出了Raycast接口以及相机字段&lt;br&gt;常用的GraphicRaycaster即其子类" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="IvFDXh0_Sm4KCRllszfq-16">
+          <mxGeometry y="30" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-28" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-19" target="IvFDXh0_Sm4KCRllszfq-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-19" value="GraphicRaycaster&lt;br&gt;UI上常挂的Raycaster结构" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D4E1F5;" vertex="1" parent="1">
+          <mxGeometry x="740" y="520" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-20" value="PanelRaycaster" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D4E1F5;" vertex="1" parent="1">
+          <mxGeometry x="900" y="520" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-21" value="PhysicsRaycaster" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D4E1F5;" vertex="1" parent="1">
+          <mxGeometry x="740" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-22" value="Physics2DRaycaster" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D4E1F5;" vertex="1" parent="1">
+          <mxGeometry x="900" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-23" target="IvFDXh0_Sm4KCRllszfq-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-23" value="" style="swimlane;startSize=0;" vertex="1" parent="1">
+          <mxGeometry x="730" y="510" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-26" target="IvFDXh0_Sm4KCRllszfq-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-26" value="GraphicRaycaster" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#D4E1F5;" vertex="1" parent="1">
+          <mxGeometry x="420" y="550" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-27" value="一定跟随Canvas结构在同一个GameObject上" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="IvFDXh0_Sm4KCRllszfq-26">
+          <mxGeometry y="30" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-29" target="IvFDXh0_Sm4KCRllszfq-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-29" target="IvFDXh0_Sm4KCRllszfq-55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-29" value="对应GraphicRaycaster的Raycast&lt;br&gt;传入PointerEventData来进行射线检测" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;" vertex="1" parent="1">
+          <mxGeometry x="160" y="560" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-31" value="BaseRaycaster采用启用注册方式&lt;br&gt;即当一个Raycaster启动的时候将自己添加到RaycaterManager中的方式进行管理" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#E6E6E6;" vertex="1" parent="1">
+          <mxGeometry x="780" y="310" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-32" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=1;entryY=0;entryDx=0;entryDy=0;dashed=1;exitX=0;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-16" target="IvFDXh0_Sm4KCRllszfq-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="750" y="390" as="sourcePoint" />
+            <mxPoint x="750" y="340" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="710" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-41" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-33" target="IvFDXh0_Sm4KCRllszfq-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-33" value="GraphicRegister" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#D4E1F5;" vertex="1" parent="1">
+          <mxGeometry x="420" y="720" width="240" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-34" value="对UI上的Graphic对象进行一个中心式存储结构" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="IvFDXh0_Sm4KCRllszfq-33">
+          <mxGeometry y="30" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-37" value="" style="line;strokeWidth=2;html=1;" vertex="1" parent="IvFDXh0_Sm4KCRllszfq-33">
+          <mxGeometry y="80" width="240" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-38" value="Dictionary&amp;lt;Canvas, IndexedSet&amp;lt;Graphic&amp;gt;&amp;gt;&lt;br&gt;字典结构，存储一个Canvas下的所有Graphic对象。IndexedSet是一个实现了列表接口，附加Index所以结构的列表。" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="IvFDXh0_Sm4KCRllszfq-33">
+          <mxGeometry y="90" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-54" value="" style="line;strokeWidth=2;html=1;" vertex="1" parent="IvFDXh0_Sm4KCRllszfq-33">
+          <mxGeometry y="150" width="240" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-53" value="注册Graphic以及取消Graphic接口&lt;br&gt;RegisterRaycastGraphicForCanvas&lt;br&gt;UnregisterRaycastGraphicForCanvas" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="IvFDXh0_Sm4KCRllszfq-33">
+          <mxGeometry y="160" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-39" value="Graphic" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#D4E1F5;" vertex="1" parent="1">
+          <mxGeometry x="770" y="720" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-40" value="所有可视UIComponent的基类&lt;br&gt;相当于UI图形对象的抽象基类&lt;br&gt;只有继承该对象才可以被Raycast" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="IvFDXh0_Sm4KCRllszfq-39">
+          <mxGeometry y="30" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-42" value="这几个也是Unity原生常见的&lt;br&gt;如果没法点击的时候添加的组件" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#E6E6E6;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="830" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-44" target="IvFDXh0_Sm4KCRllszfq-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-44" value="" style="swimlane;startSize=0;" vertex="1" parent="1">
+          <mxGeometry x="730" y="840" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-45" value="Image" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D4E1F5;" vertex="1" parent="IvFDXh0_Sm4KCRllszfq-44">
+          <mxGeometry x="10" y="10" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-47" value="RawImage" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D4E1F5;" vertex="1" parent="IvFDXh0_Sm4KCRllszfq-44">
+          <mxGeometry x="170" y="10" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-48" value="Text" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D4E1F5;" vertex="1" parent="IvFDXh0_Sm4KCRllszfq-44">
+          <mxGeometry x="10" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-49" value="MarkableGraphic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D4E1F5;" vertex="1" parent="IvFDXh0_Sm4KCRllszfq-44">
+          <mxGeometry x="170" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-50" value="TextMeshPro&lt;br&gt;系列" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D4E1F5;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="930" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-51" value="Graphic固有一个RaycasterTarget&lt;br&gt;属性。开关该属性会将自己和所在的Canvas注入到GraphicRegister中心中去" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#E6E6E6;" vertex="1" parent="1">
+          <mxGeometry x="1041" y="700" width="219" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-52" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=1;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=0;exitDx=0;exitDy=0;dashed=1;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-39" target="IvFDXh0_Sm4KCRllszfq-33">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="690" y="710" as="sourcePoint" />
+            <mxPoint x="740" y="660" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="720" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-55" target="IvFDXh0_Sm4KCRllszfq-56">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-55" value="从GraphicRegister中取出&lt;br&gt;所在的Canavs下的所有Graphic对象列表。即对应的IndexedSet" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;" vertex="1" parent="1">
+          <mxGeometry x="160" y="720" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-56" target="IvFDXh0_Sm4KCRllszfq-59">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-56" value="遍历对应的Graphic列表&lt;br&gt;检测点击点，是否落在对应的RectTransform之中&lt;br&gt;此外包含相机远近裁剪，Graphic激活等状态检查" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;" vertex="1" parent="1">
+          <mxGeometry x="160" y="810" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-59" target="IvFDXh0_Sm4KCRllszfq-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-59" value="满足条件的Graphic&lt;br&gt;添加进入结果列表&lt;br&gt;最后根据Depth远近进行排序" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;" vertex="1" parent="1">
+          <mxGeometry x="160" y="920" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-63" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="IvFDXh0_Sm4KCRllszfq-61" target="IvFDXh0_Sm4KCRllszfq-59">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IvFDXh0_Sm4KCRllszfq-61" value="最后输出一个列表&lt;br&gt;List&amp;lt;Graphic&amp;gt;&lt;br&gt;由近到远的包含所有符合条件的Graphic对象" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE599;" vertex="1" parent="1">
+          <mxGeometry x="160" y="1010" width="200" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

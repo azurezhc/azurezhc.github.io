@@ -7,6 +7,38 @@
             <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Fri, 18 Aug 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="http://azurezhc.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>抽象代数</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E6%A6%82%E8%A7%88/</link>
+    <pubDate>Sat, 14 Dec 2024 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E6%A6%82%E8%A7%88/</guid>
+    <description><![CDATA[抽象代数 Quote Unknown Quantity 人类对未知量的不舍追踪 请允许我直接引用《代数的历史：人类对未知量的不舍追踪》这本讲述代数历史的标题。这是一本讲述代数的历史书籍]]></description>
+</item>
+<item>
+    <title>群相关</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/%E7%BE%A4%E7%9B%B8%E5%85%B3/</link>
+    <pubDate>Sat, 14 Dec 2024 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/%E7%BE%A4%E7%9B%B8%E5%85%B3/</guid>
+    <description><![CDATA[群相关 群定义 先简单介绍一些群相关概念： 简单记录群的定义 一个群(group)$\lang{}G,*\rang$描述了一个集合$G$以及一个二元]]></description>
+</item>
+<item>
+    <title>09世界，UI与屏幕空间</title>
+    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4/</link>
+    <pubDate>Mon, 02 Dec 2024 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4/</guid>
+    <description><![CDATA[09世界，UI与屏幕空间 这里主要记录一下Unity下这三个概念所表示的含义。因为经常会在这些概念之间混淆，但同时我们又会经常会获得这些空间里]]></description>
+</item>
+<item>
+    <title>08EventSystem</title>
+    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/08EventSystem/</link>
+    <pubDate>Mon, 16 Sep 2024 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/08EventSystem/</guid>
+    <description><![CDATA[EventSystem EventSystem是Unity中UI事件处理的中心。承担将UI层面鼠标点击事件进行分发处理的过程。我这里主要是记录一下EventSys]]></description>
+</item>
+<item>
     <title>07Serialization相关</title>
     <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/07Serializaion%E7%9B%B8%E5%85%B3/</link>
     <pubDate>Sun, 18 Aug 2024 00:00:00 &#43;0000</pubDate>
@@ -53,38 +85,6 @@
     <author>azurezhc</author>
     <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/03Json%E5%BA%8F%E5%88%97%E5%8C%96/</guid>
     <description><![CDATA[JSON序列化 JSON是一种通用的数据格式结构。Unity中有很多工具可以将Class转换成JSON结构并持久化。本文主要记录一些Unity]]></description>
-</item>
-<item>
-    <title>01RectTransform相关</title>
-    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/01RectTransform%E7%9B%B8%E5%85%B3/</link>
-    <pubDate>Sun, 03 Mar 2024 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/01RectTransform%E7%9B%B8%E5%85%B3/</guid>
-    <description><![CDATA[RectTransform 本文主要记录一下跟RectTransform相关的操作说明。 其实对于UI布局系统来说，其数学部分已经非常清楚了，详细可以看01UI布局锚点]]></description>
-</item>
-<item>
-    <title>01插值研究</title>
-    <link>http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/01%E6%8F%92%E5%80%BC%E7%A0%94%E7%A9%B6/</link>
-    <pubDate>Sun, 24 Dec 2023 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/01%E6%8F%92%E5%80%BC%E7%A0%94%E7%A9%B6/</guid>
-    <description><![CDATA[插值研究 本文章主要记录游戏开发中用到的一些插值技术，插值在游戏中主要都是用到一些运动效果过程中。例如最简单的线性插值 但插值相关的技术在更多方]]></description>
-</item>
-<item>
-    <title>02一维运动研究</title>
-    <link>http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/02%E4%B8%80%E7%BB%B4%E8%BF%90%E5%8A%A8%E7%A0%94%E7%A9%B6/</link>
-    <pubDate>Sun, 24 Dec 2023 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/02%E4%B8%80%E7%BB%B4%E8%BF%90%E5%8A%A8%E7%A0%94%E7%A9%B6/</guid>
-    <description><![CDATA[一维运动研究 本文档主要研究一维上的运动效果。所谓运动效果，主要指目标数值随时间的变化效果。即的运动效果。 对于程序实现的运动而言，这相当于一套]]></description>
-</item>
-<item>
-    <title>03二阶运动系统</title>
-    <link>http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/03%E4%BA%8C%E9%98%B6%E8%BF%90%E5%8A%A8%E7%B3%BB%E7%BB%9F/</link>
-    <pubDate>Sun, 24 Dec 2023 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/03%E4%BA%8C%E9%98%B6%E8%BF%90%E5%8A%A8%E7%B3%BB%E7%BB%9F/</guid>
-    <description><![CDATA[二阶运动系统(Second-Order System) youtube视频 https://www.youtube.com/watch?v=KPoeNZZ6H4s 视频里讲解的最重要就是二阶系统(Second-Order System)，该运动在]]></description>
 </item>
 </channel>
 </rss>

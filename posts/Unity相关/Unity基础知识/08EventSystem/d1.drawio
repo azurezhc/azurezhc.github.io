@@ -1,0 +1,79 @@
+<mxfile host="Electron" modified="2024-09-16T11:45:57.531Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.6.4 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="h3-QGg1dI02W_QQyeAr0" version="24.6.4" type="device">
+  <diagram name="第 1 页" id="zv99fCxGXwI9MNwFD-Q6">
+    <mxGraphModel dx="940" dy="702" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-3" style="edgeStyle=entityRelationEdgeStyle;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontStyle=0" edge="1" parent="1" source="nqxmXNIOmMznUNkxZI9P-1" target="nqxmXNIOmMznUNkxZI9P-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-1" value="EventSystem&lt;br&gt;消息分发中心" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#D4E1F5;fontFamily=Helvetica;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="80" y="280" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-2" value="BaseInputModule&lt;br&gt;EventSystem拥有一个InputModule列表&lt;br&gt;InputModule承担了具体不同段下的输入处理方式" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#D4E1F5;fontFamily=Helvetica;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="360" y="300" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-5" value="Update中不断检测激活的Module以及对应module处理" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Helvetica;fillColor=#FFE6CC;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="100" y="470" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-6" value="" style="curved=1;endArrow=classic;html=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="nqxmXNIOmMznUNkxZI9P-5" target="nqxmXNIOmMznUNkxZI9P-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="610" as="sourcePoint" />
+            <mxPoint x="390" y="580" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="350" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-7" value="Module处理对应的查找流程&lt;br&gt;从一个屏幕坐标开始" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Helvetica;fillColor=#FFE6CC;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="410" y="500" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-8" value="RaycastManager&lt;br&gt;可以射线检测的模块管理" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fillColor=#D4E1F5;fontFamily=Helvetica;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-9" value="根据RaycastManager&lt;br&gt;查找到该屏幕坐标所可以命中的GameObject" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Helvetica;fillColor=#FFE6CC;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="100" y="570" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-10" value="" style="curved=1;endArrow=classic;html=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="nqxmXNIOmMznUNkxZI9P-7" target="nqxmXNIOmMznUNkxZI9P-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="510" y="570" as="sourcePoint" />
+            <mxPoint x="300" y="620" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="390" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-11" value="按照Depth排好顺序&lt;br&gt;以返回的第一个Gameobject&lt;br&gt;作为命中目标" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Helvetica;fillColor=#FFE6CC;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="100" y="640" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;" edge="1" parent="1" source="nqxmXNIOmMznUNkxZI9P-12" target="nqxmXNIOmMznUNkxZI9P-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-12" value="生成对应的PointerEventData&lt;br&gt;对鼠标的左中右三键&lt;br&gt;都check一次做处理&lt;br&gt;封装成MouseData" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Helvetica;fillColor=#FFE6CC;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="410" y="680" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-14" value="" style="curved=1;endArrow=classic;html=1;rounded=0;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="nqxmXNIOmMznUNkxZI9P-11" target="nqxmXNIOmMznUNkxZI9P-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="264" y="660" as="sourcePoint" />
+            <mxPoint x="414" y="690" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="354" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-15" value="针对MouseData处理Press，Move，Drag，Click等事件分别进行记录处理" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Helvetica;fillColor=#FFE6CC;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="410" y="780" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-17" value="ExecuteEvents获取GameObject上的对应处理Handler" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Helvetica;fillColor=#FFE6CC;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="640" y="730" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-19" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;" vertex="1" parent="1">
+          <mxGeometry x="590" y="730" width="20" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="nqxmXNIOmMznUNkxZI9P-20" value="调用ExecuteEvents各种事件类型来查看handler上是否实现对应接口，处理事件" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Helvetica;fillColor=#FFE6CC;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="640" y="830" width="160" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

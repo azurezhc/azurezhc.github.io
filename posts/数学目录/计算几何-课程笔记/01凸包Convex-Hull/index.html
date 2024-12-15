@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>计算几何课程 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="计算几何课程" />
+<meta property="og:description" content="01凸包(Convex Hull) 计算几何-笔记目录 计算几何第一章课程主要讲述如何计算凸包。 章节由浅入深，由问题逐步引导出解决方法。讲的非常好。本文主" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/01%E5%87%B8%E5%8C%85Convex-Hull/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-08-25T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="计算几何课程"/>
+<meta name="twitter:description" content="01凸包(Convex Hull) 计算几何-笔记目录 计算几何第一章课程主要讲述如何计算凸包。 章节由浅入深，由问题逐步引导出解决方法。讲的非常好。本文主"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/01%E5%87%B8%E5%8C%85Convex-Hull/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/02%E5%87%A0%E4%BD%95%E6%B1%82%E4%BA%A4Geometric-Intersection/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "计算几何课程",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/01%E5%87%B8%E5%8C%85Convex-Hull\/"
+        },"genre": "posts","wordcount":  11254 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/01%E5%87%B8%E5%8C%85Convex-Hull\/","datePublished": "2023-08-25T00:00:00+00:00","dateModified": "2023-08-25T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">计算几何课程</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-25">2023-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;11254 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;23 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#01凸包convex-hull">01凸包(Convex Hull)</a></li>
+    <li><a href="#极点与极边内容小节">极点与极边内容小节</a></li>
+    <li><a href="#增量式构造incremental-construction">增量式构造(Incremental Construction)</a></li>
+    <li><a href="#jarvis-march">Jarvis March</a></li>
+    <li><a href="#规约">规约</a></li>
+    <li><a href="#凸包下界">凸包下界</a></li>
+    <li><a href="#graham-scan">Graham Scan</a></li>
+    <li><a href="#分而治之">分而治之</a>
+      <ul>
+        <li><a href="#从mergesort到凸包问题">从MergeSort到凸包问题</a></li>
+        <li><a href="#分割凸包合并">分割凸包合并</a></li>
+      </ul>
+    </li>
+    <li><a href="#更广泛的思考">更广泛的思考</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="01凸包convex-hull">01凸包(Convex Hull)</h1>
+<p><a class="link-markdown-demo-site" href="./计算几何-笔记大纲.md" rel="noopener">计算几何-笔记目录</a></p>
+<p>计算几何第一章课程主要讲述如何计算凸包。</p>
+<p>章节由浅入深，由问题逐步引导出解决方法。讲的非常好。本文主要依据课程小节划分，总结每章重要内容，做一总结笔记。</p>
+<p>小节内容概览</p>
+<ul>
+<li>Convexity
+<ul>
+<li>介绍了凸包的概念，以及凸包的重要性。通过几个实际生活中碰到的问题，介绍了相关的概念和重要性。</li>
+</ul>
+</li>
+<li>Extreme Points
+<ul>
+<li>逐步分析凸包的特性，引入了极点的概念和意义。介绍了如何找到凸包一个极点的方法。</li>
+<li>引入了两个重点计算操作：1：In-Triangle Test 2：To-Left Test。</li>
+</ul>
+</li>
+<li>Extreme Edges
+<ul>
+<li>引入了极边的概念和意义。在极点的基础上，建立了找极边的方法。</li>
+</ul>
+</li>
+<li>Incremental Construction
+<ul>
+<li>增量式构造，基于简而治之的方式，构造整个凸包。</li>
+</ul>
+</li>
+<li>Jarvis March
+<ul>
+<li>介绍Jarvis March算法。类似于</li>
+</ul>
+</li>
+<li>Lower Bound
+<ul>
+<li>引入了计算复杂性中重要的规约概念(Reduction)。并且规约了凸包的求解下限。</li>
+</ul>
+</li>
+<li>Graham Scan: Algorithm
+<ul>
+<li>直接介绍Graham Scan的算法。说明其算法原理。</li>
+</ul>
+</li>
+<li>Graham Scan: Example
+<ul>
+<li>介绍了几个用Graham Scan算法求解凸包的例子。</li>
+</ul>
+</li>
+<li>Graham Scan: Correctness
+<ul>
+<li>说明Graham Scan算法的正确性质</li>
+</ul>
+</li>
+<li>Graham Scan: Analysis
+<ul>
+<li>对Graham Scan算法进行性能分析。同时对Graham Scan算法进行了推广。</li>
+</ul>
+</li>
+<li>Divide-And-Conquer(1)
+<ul>
+<li>基于分而治之的思想。在凸包上做一扩展操作。</li>
+</ul>
+</li>
+<li>Divide-And-Conquer(2)
+<ul>
+<li>分而治之</li>
+</ul>
+</li>
+<li>Wrap-up
+<ul>
+<li>总结。同时介绍一些凸包的扩展知识，引导大家去学习。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="极点与极边内容小节">极点与极边内容小节</h1>
+<p>对于凸包求解问题，我们可以用如下形式化的语言来描述：</p>
+<p>给定一个点集$S$。求解一个子集于$S$的最小的点集$P\subseteq{}S$，使得$S$中任意一个点都可以由$P$中的点仿射组合出来。即</p>
+$$\forall{}s\in{}S,s=\sum{}\lambda{}_ip_i,p_i\in{}P,\lambda_i\in{}[0,1],\sum\lambda_i=1$$
+<p>这里面有两个重要条件</p>
+<ul>
+<li>最小的子集\</li>
+<li>$S$中任意一点可被$P$中点仿射组合出来，就是说$S$被$P$张成的图形包裹在内。这个张成的图形就是所谓的凸包(convex hull)</li>
+</ul>
+<p>介绍一个重要的思想：大事化小，小事化了。将问题归约到一个可以简单解决的地步。</p>
+<p>这里要注意，课程是循序渐进的，有些东西不是最有的，但是非常具有启发性。其包含了很多思想方式来解决这些问题。</p>
+<p>所以凸包可能很难求，不如酰求解一些简单的问题。</p>
+<p>首先定义极点和极边：</p>
+<blockquote>
+<p>极点定义(Extreme Point)：
+一个点集$S$中的点$p$称之为极点，如果存在一条过$p$的直线$L$，所有$S$中的点都落在$L$的一侧。否则我们称之为非极点。</p>
+</blockquote>
+<center><img src="./p1.png"></center>
+<p>接着提出了一个简单极点检测方式：对于给定的一个点是否会在某个三角形内部。对于平面来讲，这里就要做三角形内测试(In-Triangle Test)，并且用到计算几何常用的一个技术左方向检测(To-Left Test)。</p>
+<p><strong><font size = 4> In-Triangle Test </font></strong>
+<strong><font size = 4> To-Left Test </font></strong></p>
+<center><img src="./p2.png"></center>
+<p>判断一个点是否在一个三角形内，需要用到To-Left Test。
+具体来讲就是给定三角形的三个点$p,q,r$，判断一个点$s$是否落在其张成的三角形之内。这里我们观察到对于一个点落在三角形内，当且仅当围绕三角形三边前进时，$s$都落在这条边的一侧。</p>
+<p>即
+</p>
+$$
+ToLeft(p,q,s)=true\\
+ToLeft(q,r,s)=true\\
+ToLeft(r,p,s)=true\\
+$$
+<p>而To-Left Test则可以通过叉积简单完成，更深入一点，几何积中2阶部分带有符号信息，是一个有向面积，恰好可以度量这一点。而且这种计算不需要计算三角函数，</p>
+$$
+ToLeft(p,q,s)=
+\begin{vmatrix}
+p.x & p.y & 1 \\
+q.x & q.y & 1 \\
+s.x & s.y & 1
+\end{vmatrix}=
+\begin{vmatrix}
+p.x & p.y & 1 \\
+q.x-p.x & q.y - p.y & 0 \\
+s.x-q.x & s.y - q.y & 0 \\
+\end{vmatrix} = \vec{pq}\wedge\vec{qs}
+$$
+<p>即实际用$\vec{pq},\vec{qs}$两个向量的外积值来判断其方向。</p>
+<p>建立在上述方案中，我们有一个凸包的求解方案，方案如下：</p>
+<ul>
+<li>对于$S$中的点我们可以遍历所有点，然后枚举所有三角形判断是否存在一个三角形将其包括在内。如果包括了，则将其排除掉，否则其就是一个极点。</li>
+</ul>
+<p>对于这样一个方案，我们可以直接看出需要遍历所有三角形，而就需要$O(n^3)$。同时我们还要遍历一遍顶点来找判断点，所以一共需要$O(n^4)$时间。时间成本是非常大的。</p>
+<blockquote>
+<p>极边的定义(Extreme Point)：<br>
+给定一个点集$S$，对于其中两点$s,t\in{}S$构成的边$e=(s,t)$，如果点集中除$s,t$以外的点都落在$e$的一侧，我们就称之为极边。</p>
+</blockquote>
+<center><img src="./p3.png"></center>
+<p>我们可以从定义以及观察中发现。对于一个点集的凸包来说，其所有边都是极边。那么我们只要找到所有极边就可以找到我们需要的凸包。于是自然而然有一下求解凸包思路：</p>
+<ul>
+<li>遍历所有边，然后遍历所有其他点，判断所有点是否都在这条极边的一侧，如果是则将该边放入极边集合。否则继续。</li>
+</ul>
+<p>对于这样一个方案我们可以简单看出对于遍历边需要$O(n*(n-1)*(n-1))=O(n^3)$的时间复杂度。</p>
+<h1 id="增量式构造incremental-construction">增量式构造(Incremental Construction)</h1>
+<p>这个增量式构造，建立于简而治之的方式。可以对比于插入排序。</p>
+<ul>
+<li>对于插入排序来说，每次从未排序的集合中选一个元素，将其插入到已经排序的序列中去。</li>
+<li>类比凸包，对于已经构造好的凸包，每次增加一个点，来逐步扩张凸包。</li>
+</ul>
+<p>对于一个点能否对凸包有贡献，有支持作用。首先可以想到，就是判断这个点是否在凸包里面。如果在凸包外面就是有贡献的点。
+所以来看怎么快速判定一个点是否在凸包里面。</p>
+<center><img src="./p4.png"></center>
+<p>这里面可以通过一些快速的方式来判定。例如上图，假设已经有的凸包已经排好序了。对于一个点$s$,那么可以任选一个点$p$，然后选一个中点$q$，判断点$s$在连线方向$\vec{pq}$的那一侧。注意$p,q$因为凸包点有序，实际将凸包划分成立两部分，确定了点$s$落在凸包点集的什么区域上。然后持续做此测试，直到$q$前后两次为相邻顶点时。这是注意最后判定的多边形实际是一个三角形。此时只要做一个In-Triangle Test 即可确定$s$是否在多边形内。实际上这时$q$最后两次为相邻顶点，恰巧就是我们可以判断$s$所在方向的边，直接比较就可以。</p>
+<p>但是很可惜这个方案不能对我们有什么帮助。其最重要的一点是这个凸包是已经排好序的。对于整个过程来说，这个顺序是逐渐动态，而且在添加点会经常改变。这就没办法维护，很可能每加入一个点，都需要重新排列所有凸包的点。</p>
+<p>所以我们要从别的地方入手。</p>
+<p>对于一个点$s$，其有两种情况落在外面，和落在里面。对于落在外面的情况，其存在两条跟凸包相切的线，凸包所有点都在这两条边的一侧，而这两条线刚好是新图包建立用的两条边，如下图。对于落在里面的情况则没有。</p>
+<center><img src="./p5.png"></center>
+<p>此时我们关注两种情况关于凸包上点的连线情况，并对比In-Triangle Test可以发现。</p>
+<ul>
+<li>若点$x$落在凸包内，则对于凸包上顺序三点$p,q,r$，有$\vec{sp},\vec{pq}$与$\vec{sq},\vec{qr}$的旋转方向总是一致的。</li>
+<li>若点$x$落在凸包外，则存在两个点$t,s$，在$t,s$处前后两条边的旋转方向会发生改变。</li>
+</ul>
+<p>两个点$t,s$就称之为切点。并且可以发现$t,s$将凸包切割成了两部分$st,ts$。每一段都拥有相同的旋转方向。并且其中一段就是要保留的凸包的极边，其与新的两条切边构成了新的凸包结构。而对于这一部分的计算实际上就很简单，对于凸包上的点按照顺序取其前驱和后继跟$x$点做To-Left Test 如果出现变化就将这个点记录下来。一般来讲都是以左方向为 n凸包顺序。这样可以直接判定出两个切点以及要保留的部分。同时也可以简单得到点是否在凸包里面。</p>
+<p>由此我们可以建立一个新的凸包算法如下：</p>
+<ul>
+<li>先选取三个点构成最简单的凸包。</li>
+<li>然后遍历剩下的点，依次按照上述方法求取切点。遍历完，即扩展成整个凸包。</li>
+</ul>
+<p>可以看到对于上面一个点添加进凸包，需要遍历凸包上所有点。所以其复杂度应该为$O(n)$。然后我们要遍历所有点，针对每个点坐上面的增量计算，所以整体复杂度为$O(n^2)$</p>
+<h1 id="jarvis-march">Jarvis March</h1>
+<p>Jarvis March方式则类似于选择排序。</p>
+<ul>
+<li>对于选择排序来说，是每次从未排序结构中，选择一个最大的数值，放到正确位置上来实现。</li>
+<li>类比凸包，我可以像方法从一个点出发，逐个找到构成凸包的极边来构造凸包。假设我们已经构造好凸包的一部分，那么沿着该部分会有一个方向。那么沿着该方向寻找下一个极点方案，可以通过选择剩下点中，转动角度最小的那个点来实现。</li>
+</ul>
+<p>这个过程可以通过如下图来表示。</p>
+<center><img src="./p6.png"></center>
+<p>在该图中$o\rightarrow{}i\rightarrow{}k$为一个已经确定好的凸包边界。其最后一个点为$k$。现在开始寻找下一个极点，这里就是$s$。而这可以看到$s$之所以脱颖而出，是因为在剩下所有点中$\vec{ik},\vec{ks}$的拐角最小。而这个判断可以通过To-Left Test来轻松判断出来。</p>
+<p>该算法还有一个基础的细节问题，那就是第一个点怎么选取。可以看到这个点必须是一个极点，第一条边也必须是一个极边。这就有一个选取问题。这里采用的准则就是(lowest-then-leftmost)，这是类似于一个字典序判定，即先找最低的，如果有多个最低的则最左侧的那个，这样的点一定是一个极点$o$。然后我们根据该点，来找一个过该点的极边即可，而这个可以通过遍历所有点，确定与y轴最小夹角的边来确定。因为$o$为最低，所以不可能有点比它跟下方，所有点都在$o$上侧，这说明找一个下一个边夹角最小一定是极边，所有点都在这个边的一侧。</p>
+<p>可以看到这个过程跟选择排序类似，我们可以简单直接的想到。它的复杂度为$O(n^2)$。跟选择一样。但是我们可以更细致的分析这个算法情况。如下图</p>
+<center><img src="./p7.png"></center>
+<p>在Jarvis March中每一步行进花费都是$O(n)$但是，行进多上步骤却有很大差异。
+对于最好情况来说只用$O(1)$时间，例如上面的三角形，一个最小的凸包就只有三个边，这种情况下走三步就结束了。
+对于最差的情况来说，就需要$O(n)$的时间了，如下图，所有边都是极边，每条边都走了一遍。</p>
+<p>显然这是一个输出敏感算法，即他的算法实际上，是跟输出的大小相关联的。这里如果令给定点集为$S$，则其凸包变数可表示为$h=|CH(S)|$那么算法复杂度将是$O(nh)$</p>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>思考问题<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>本章有个思考问题，给定n个点，找出沿着某个方向上的极点。这个其实非常容易做到，假设方向向量为$\vec{v}$。那么遍历所有点$p$，用点的坐标跟向量做内积即可，然后其极大，极小值所对应的那个点就是极点。</p>
+<p>本章还提出了一个关键的算法类型：输出敏感算法(Ouput Sensitivity)</p>
+<p>输出敏感算法，其算法的效率将由输出集合的大小来确定。</p>
+</div>
+        </div>
+    </div>
+<h1 id="规约">规约</h1>
+<p>本章最重要的是引入了归约的概念。使用规约我们可以将两个问题关联起来，看到问题直接的相关性，甚至可以看到问题的下界。而知道下界，就相当于知道了这个问题可以做到的最好程度，进而看到问题之间的内禀联系。</p>
+<p>规约的思想可以简单表示为下图</p>
+<center><img src="./p8.png"></center>
+<p>对于一个已知的问题A，和一个目标的问题B。我们可以通过如下的方式构建规约概念。</p>
+<ul>
+<li>对于一个A的输入(Input of A)。我们可以通过线性的时间$O(n)$转换为B的输入(Input of B)。</li>
+<li>对于一个B的输出(Ouput of B)。我们可以通过线性的时间$O(n)$转换回A的输出(Input of A)</li>
+</ul>
+<p>其核心的思路在于算法的运行。对于一个已知的A问题，其算法我们已经研究的非常透彻了，其问题本质我们已经了解清楚，例如对于该问题其有下界$T_A(n)=\omega(n)$。那么假设存在上述一个转化，同时我们得到了一个B问题的算法，而该算法有时间复杂度$T_B(n)$。那么我们可以断言$T_B(n)$不会低于$\omega(n)$。如果$T_B(n)$低于$\omega(n)$。那么相当于我们找到了一个A的算法，其可以如下运行。</p>
+<ul>
+<li>把A的输入变成B的输入，花费$O(n)$时间</li>
+<li>使用B的算法求解，花费$T_B(n)$</li>
+<li>把B的输出成A的输出，花费$O(n)$时间</li>
+</ul>
+<p>其效率为$O(n)+T_B(n)+O(n)$要低于$\omega(n)$。而这是不可能的，悖论。</p>
+<p>不过这里要注意的是，其实这里规约的时间为$O(n)$，这也暗含，对于$\omega(n)$来说其至少是线性以上的，不然规约不成立。</p>
+<p>但相对应的，这个规约也可以说明另一方面问题。即对于B来说其算法复杂度的下届不会低于$\omega(n)$。</p>
+<p>这样一个规约操作被标记为$A\leq_nB$，称之为将A规约到B(problem A is linear-time reducible to problem B)。</p>
+<h1 id="凸包下界">凸包下界</h1>
+<p>现在可以通过规约的技术来界定凸包的求解问题。我们的目标就是排序问题，对于一个排序问题A，其输入为一个列表$S={x_1,x_2,\cdots,x_n}$。其需求输出为一个列表$O$，在该列表中所有$x_i$按照从小到大的顺序排列好。</p>
+<p>按照规约描述，这个规约方法执行如下：</p>
+<ul>
+<li>对于排序问题A。其输入列表$S$，可以在线性时间内通过抛物线$y=x^2$，构造其$y$坐标。具体来说就是对于任意$x_i\in{}S$我们映射到$(x_i,x_i^2)$。即构造出集合$P=\{(x_i,x_i^2)\in{}R^2|1\leq{}i\leq{}n\}$，成为凸包问题B的一个输入。</li>
+<li>而对于上述这样一个问题B的输入，假设我们已经经过了一个凸包算法。则凸包算法会给出凸包上所有的极点的一个序列。因为这个序列就是构造凸包的极点排序，是算法要给出的解答。而这个解的序列，恰好也是排序问题的输出。</li>
+<li>这个过程可以参考下图，我们可以看到对于这个抛物线上的点集$P$，其中所有点都是凸包的极点，这是因为抛物线整体就是一个凸的形状，所以所有点都会在凸包算法输出的集合当中。而凸包算法给出的点集合是一个凸包极点的排序，该序列必然是凸包相邻点依次排序而成。而$p_i,p_j\in{}P$相邻则说明，这两个点在$x$轴上也是相邻的，这说明$x_i,x_j$是大小顺序上紧密相邻的点。</li>
+</ul>
+<center><img src="./p9.png"></center>
+<p>该规约给出$Sorting \leq_N{}2d-CH$，进而由该规约我们进而可以给出这个问题的下界$\Omega(nlogn)$。</p>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>思考<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">这个规约实际上也暗含了这样一个感觉，凸包问题本质上跟排序问题是类似的，至少在某种操作转化下会有一样的结构性质。虽然规约只是用来说明一个下界，而且并没用运用到目标问题A的算法，甚至对于找到的问题A可能都存在偏差，例如归约到了一个更低的层次上。但是好的规约似乎可以说明两个问题上一定的联系。我在这有个简单的想法，也是后面Graham Scan所用到的思路的感觉。就是对于凸包问题，如果给定凸包外一点$r$，可以构成该点到平面上所有点的一个向量集合$\vec{rx_i}$，解决这个向量集合的角度排序问题，就可以有效的解决凸包问题。而Graham Scan确实说明了这一点。实际上如果这个点是一个无限远点，这个向量角度就可以转化为到某一个方向上的投影点的排序问题。也是我们上面用的规约的抛物线方案。同时知道了这个$\vec{rx_i}$的排序，我们也可以直接快速的得到两个极点，即两条切线所在的点，对应角度最大，与最小点。通过这两个点，似乎按照某种方式就可以构造出凸包。</div>
+        </div>
+    </div>
+<h1 id="graham-scan">Graham Scan</h1>
+<p>基于上面一个到排序问题的规约，我们可以看到凸包跟排序是有着关联的。这里老师直接介绍了算法，但是我还是觉得可以从规约上看到一丝端倪。可以在凸包下界中看到操作，我们先看算法怎么执行的，并且描述其中一些细节点，说明一下关键要素。</p>
+<p>数据结构上：需要两个堆栈(Stack)。我们这里标记为堆栈$T$和$S$。对于栈顶的元素我们标记为$T[0]$和$S[0]$。
+算法流程上：如下图</p>
+<ul>
+<li>Presoring
+<ul>
+<li>预处理排序，以某一个极点为基础点，例如$p_1$，跟剩下所有点之间的连线$p_1p_i$，按照极坐标排一个序。</li>
+<li>取出成角度最小的那个点，这里不妨假设为$p_2$，将其放入堆栈$S$中。注意改边一定是一个极边。</li>
+</ul>
+</li>
+<li>Scan
+<ul>
+<li>按照前面排序好的顺序依次遍历已经排序好的点，分别进行以下判定。</li>
+<li>$\overrightarrow{S[0]T[0]}$是否在$\overrightarrow{S[1]S[0]}$的左侧，或者说向左旋转。即$ToLeft(S[1],S[0],T[0])$测试。</li>
+<li>如果为true，说明$T[0]$在左侧，是合适点，从$T$中pop出，并压入$S$中。</li>
+<li>如果为false，说明$T[0]$在右侧，说明在弯折，应该把$S[0]$pop出并重新做测试。</li>
+<li>当$T$为空时，$S$的顺序就是凸包极点的顺序。</li>
+</ul>
+</li>
+</ul>
+<p>过程可以从下图中看出。</p>
+<center><img src="./p10.png"></center>
+<p>这里先描述几个算法中的细节问题，在看算法的正确性与复杂度的问题。</p>
+<ul>
+<li>算法会终结么
+<ul>
+<li>一定会，因为$T$有限，而算法会不断弹出T，最后T会消耗空。</li>
+</ul>
+</li>
+<li>算法存在弹出$S$的情况，$S$是否会弹空而出现bug
+<ul>
+<li>不会，因为Presorting已经将点按照角度排序，这说明所有点都应该在最初边$p_1p_2$的左侧。当只剩下$p_1p_2$时，$ToLeft$测试一定为true。</li>
+</ul>
+</li>
+</ul>
+<p>算法的正确性分析，我们可以使用数学归纳法逐个证明。</p>
+<ul>
+<li>对于第1步，即前3个点，很好说明这三个点就是当前的凸包，这是平凡情况。</li>
+<li>假设经过前n步后，算法所处状态给出已经遍历过的n个点的凸包结构。即$S$中存的就是凸包中的极点，那么对于第n+1个点，考虑着n+1个点的集合，其对于当前$S$堆栈顶点的边，无非两种情况。这两种情况可以如下描述。</li>
+<li>现在对于该点$T[0]$，其一定是这n+1个点的极点，因为其角度最大，存在一条该点$p_n$到$p_1$的边，所有点都在该边右侧，所以其一定是极点。</li>
+<li>如果其在$S[1]S[0]$的左侧，那么对于原来的堆栈没有修改。</li>
+<li>如果其在$S[1]S[0]$的右侧，那么因为其必然是一个极点，在原先的凸包上一定存在一个点跟其连线是当前凸包的一条边，而该边必然跟其前面相邻的边呈左旋转。而这条边，同时也无效了一些凸包的点。此时逐个回溯判断即可。</li>
+</ul>
+<center><img src="./p11.png"></center>
+<p>从这里可以看到这个排序的重要性，实际上课程中也讲到如果没有排序，那么存在一种情况，所有点都是沿着左旋转方向前进，但最后不是凸包。可以参看视频，大概就是一系列左旋的线。</p>
+<p>实际上正确性分析也可以简单看出这个排序的威力。对于任意前s个点组成的集合$p_1,p_2,\cdots,p_s$，其$p_1p_2,p_1p_s$一定是这个子集凸包的两条边。对于后续按顺序添加进去的点也一定会成为一个极边，而该通过该极边，与前面凸包的联系，即可增广的推出当前凸包结构。</p>
+<p>现在我们分析一下这个算法效率。其中一共有三步，其中有两步是很好计算的。</p>
+<ul>
+<li>找到最初的极点(LTL)：$O(n)$</li>
+<li>预排序(Presorting)： $O(nlogn)$</li>
+<li>扫描(Scan)： ？</li>
+</ul>
+<p>这里最关键的是每次扫描的花销。很显然，对于扫描存在回溯部分，每次回溯可能会多达$O(n)$次。因为会回溯掉所有点。所以简单可以看出来，会是$O(n)$次，进而总时间会变成$O(n^2)$。但是实际情况显然不太可能，最简单的一个观察从$S$种被pop掉的点不会重新计数。所以我们还需要细致分析。</p>
+<p>这里老师提供了两个视角来说明这件事情，以不同的角度来看到这个开销</p>
+<ul>
+<li>平面图方法
+<ul>
+<li>将scan过程中，直接被抛弃掉的边，和进入过$S$后被抛弃的边分别用颜色标记出来。会发现，因为排序关系，其会构成一个平面图。而所有边都是运算过程中会遍历的边，不会多不会少。根据欧拉定理我们可以知道边数最多不过$O(3n)$。所以scan开销不超过$O(3n)$</li>
+</ul>
+</li>
+<li>摊还分析(Amortization)
+<ul>
+<li>这个方式就非常巧妙。我们关注一个数值量$\cal{A}=S.size+2*T.size$。然后关注该数值变化。可以发现该数值旨在Scan判断完$ToLeft(S[1],S[0],T[0])$之后会发生变化。</li>
+<li>弹出$T$，压入$S$。会发现数值-1</li>
+<li>弹出$S$。会发现数值还是-1</li>
+<li>可以看到整个过程该数值是一直减少的，知道$T$为空，此时$S$给出凸包所有极点，然后这个递减过程的终点。所以总体小号不会超过$\cal{A}$的变化，而这个值变化最多为$O(2n-5)$</li>
+</ul>
+</li>
+</ul>
+<p>最后本章讲到了一些额外的细节。例如一开始，给定点按照某个方向顺序已经排序好了。例如都按照x坐标从小到大的顺序排序好了。我们如果再去计算这个排序，不是浪费了之前的结构么？这个操作其实不用担心，因为你可想象有一个点$i$在无穷远处即可，此时因为非常远$i$到这些点的线都被拉成了直线了。所以这些时候只要直接按照顺序scan操作即可。实际上对于scan来说，需要用到该点的时候只有跟两边极点进行比较的时候，这个时候会有一个默认的向上的方向来作为一个判断。</p>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>思考1<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">这里用到了一个图论的常用公式欧拉定理，这个定理后面还会经常用到。即$V-E+R-F=1$。其中$V$为定点数，$E$为边数，$R$为面数，$F$ 为联通分支个数。这里联通分支就1个所以$V-E+R=2$，然后对于任意一个面来说其最少有3条边，而每条边最多属于2个面。即有$3R<2E$，这里有$n$个顶点$V=n$。带入就有$n+\frac{2}{3}E\geq{}2+E$ 进而得出上界。</div>
+        </div>
+    </div>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>思考2<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">这个额外的细节操作就非常像我们前面规约中的操作。这进一步说明了两者的一致性。</div>
+        </div>
+    </div>
+<h1 id="分而治之">分而治之</h1>
+<p>从分而治之的思路出发，介绍了两个版本的凸包求解算法。这两个求解思路也在后面不断运用。</p>
+<h2 id="从mergesort到凸包问题">从MergeSort到凸包问题</h2>
+<p>在归并排序(MergeSort)中，我们的处理方式可以分为两步：</p>
+<ul>
+<li>Divide：把数组切分成均匀两段，然后递归调用，把两段数组排序好。</li>
+<li>Merge：把两段排序好的数组合并成一段，来完成对数组排序。</li>
+</ul>
+<p>这个过程可以用一个树表示。第一步从上往下逐步切分成更细的段，第二部从下往上将相邻的两段有序数组逐步归并起来。</p>
+<p>这个想法思路也可以借鉴到凸包过程中来：即有两个已经建立好的凸包，怎么把他归并成一个新的凸包。</p>
+<p>而这个过程是显然可行的，因为可以借助之前的Graham Scan就可以得到一个简单的思路。选择一个在凸包内的点，然后按照极角排序两个凸包的点，归并出新的凸包即可。如下图：</p>
+<center><img src="./p12.png"></center>
+<p>这里面有一些细节，我们假设两个子图包为$CH(P_1),CH(P_2)$，根据前面所述，其凸包的数据描述就是两个数组结构，假设为$h_1,h_2$，其中按顺序存放着凸包边界上的点。对于凸包内的点$x$，凸包上的点围绕$x$的角度，恰好是按照有序的角度排序的。即按顺序遍历数组，角度是单调变化的，不会出现突变。所以这里出现了两种情况，</p>
+<ul>
+<li>对于选择的点$x$，如果$x$恰好都在$CH(P_1),CH(P_2)$内部。那么很好，因为两个数组$h_1,h_2$围绕$x$角度都是有序的，两边遍历数组根据Graham Scan合并起来即可。</li>
+<li>对于选择的点$x$，$x$在$CH(P_1)$当中，但不在$CH(P_2)$当中。这个时候$h_2$数组围绕$x$点角度不是单调的，有可能原来是左旋转，突然变成右旋转。所以并不能直接只用Graham Scan来求算。</li>
+</ul>
+<p>所以这里要判断点$x$是不是在$CH(P_1),CH(P_2)$子凸包之中，然后根据不同情况来进行对应操作。这个流程可以如下进行：</p>
+<ul>
+<li>取$CH(P_1)$上随机三个点的重心坐标作为$x$。则$x$点一定在$CH(P_1)$当中。</li>
+<li>然后判断$x$是否在凸包$CH(P_2)$当中。而这个判定在前面已经讲过。如果$x$在$CH(P_2)$中，则可以直接进行类似归并排序的凸包合并操作。如果不在，则可以按照如下方式处理。</li>
+</ul>
+<p><strong><font size = 4> 点落在凸包外情况处理 </font></strong></p>
+<p>前面说了，当$x$落在凸包$H_2$外面时，$H_2$上的点$h_2$并不完全是按照极角单调的顺序排列的，存在突变位置。但是很幸运有办法找到转向突变的点，判断哪段点是单调递增的。这个方式就来自于Incremental Construction中新增点的判断方式。
+如下图：</p>
+<center><img src="./p13.png"></center>
+<p>可以找出两个点$t,s$，使得$\overrightarrow{st},\overrightarrow{ts}$线段上的任意点，对于$x$来说都是单调的。并且恰好的是，其中$\overrightarrow{st}$部分是要进行Merge的部分，而$\overrightarrow{ts}$部分则是明确可以剔除的部分。于是只要凸包$CH(P_1)$部分和$\overrightarrow{st}$进行merge操作即可。</p>
+<h2 id="分割凸包合并">分割凸包合并</h2>
+<p>之所以再介绍这个算法处于两个目的</p>
+<ul>
+<li>这个方法更加简明。</li>
+<li>这个方法可以为后面三角刨分的部分，打下基础。</li>
+</ul>
+<p>这个算法的观察来自于，两个分割开凸包的合并。假设我们现在有两个左右完全分离开的凸包$CH(P_1),CH(P_2)$，完全分割开即两个凸包没有重叠部分，我们要处理的仅仅是这两个凸包上的合并问题。先考虑，怎么使得两个子图包完全分割开来。这个事情是比较容易做到的，因为只要两个凸包分离即可，我们可以假设就是X轴上分离，这个可以通过一个简单的预处理，沿X轴排序，然后左右分成两组点，如果每组点可以构成凸包，则凸包一定是不重叠的。即预处理可得到如下图状况：</p>
+<center><img src="./p14.png"></center>
+<p>这个过程只要预处理排序一次即可，而且排序完，我们还可以轻松得到每个子凸包上上两个关键点，极左和极右点$l,r$。这两个点会在后面算法中起到关键作用。</p>
+<p>那么现在需要考虑的只是如何将这两个完全分割开的凸包$CH(P_1),CH(P_2)$合并为一个新的凸包。从图形上来看，非常简单，只要找到上下两条凸包间的切线就可以了，这两条线称之为凸包间的公切线(Common Tangent)，也可以称之为公共支撑边(Support Line)。并且新凸包的边大部分由原来两个凸包的边构成，只增加了上下两条切线边。</p>
+<p>这里有一个直接观察的误区们就是可以通过直接找到两个子图包最上面的点$t_1,t_2$，最下面的点$b_1,b_2$然后将其连接起来即是我们要的公切线(Common Tangent)。然而情况远比这种简单处理要复杂，如果可以这么简单处理，那么就会挑战上面得出的下界，所以肯定有意外的情况。如下图：</p>
+<center><img src="./p15.png"></center>
+<p>可以简单看到$t,b$对于凸包的贡献，并不完全确定的。</p>
+<p>所以如何连接，这里用到的技术就是Zig-Zag，类似于将两个凸包缝合(Stitch)起来的操作。</p>
+<ul>
+<li>我们先找一条两个凸包之间的连线。</li>
+<li>然后通过攀爬的方式，将该线攀爬到切线位置。</li>
+</ul>
+<p>这个方法可以参考下图：</p>
+<center><img src="./p16.png"></center>
+<p>我们先直接观察这个状况，对于公切线和一条凸包间连起来的线直接有什么异同。</p>
+<ul>
+<li>对于公共切线$t_1t_2$，我们可以关注其点的前驱和后继，例如假设$t_1$的前驱为$f_1$，后继为$l_1$。可以发现$f_1t_2,l_1t_2$都是在$t_1t_2$的一侧。或者说转动方向一致。</li>
+<li>对于非公切线$rl$来讲，其前驱和后继则是在线两侧，两个不同转动方向。</li>
+</ul>
+<p>然后可以观察到，对于凸包间的连线，可以逐步毕竟公切线。所以这里有一个方式来逐步逼近公切线。</p>
+<ul>
+<li>从凸包间任意连线出发，例如$rl$连线。</li>
+<li>计算其某端点，例如$l$点，前驱和后继的转动方向。
+<ul>
+<li>如果不一致则，修改$l$为其前驱，继续判断转动方向。相当于继续向上攀登。</li>
+<li>如果一致，则尝试转换到对面点，例如对面的$r$，来继续进行上述判定过程。</li>
+<li>如果两个端点$r,l$前驱和后继转动方向都一致。那么此时，该线段就是目标切线。</li>
+</ul>
+</li>
+</ul>
+<p><strong><font size = 4> 算法时间复杂度 </font></strong></p>
+<p>可以看到这个Zig-Zag过程中，最多攀登两个子凸包上，组成凸包边界的点每个点各一次。所以如果$|P_1|=n,|P_2|=m$个点，这一步耗时$O(n+m)$。同时我们还可以注意到对于已经攀登过的点，我们不会再攀登第二次，所以Zig-Zag在整体上的耗时不会超过原先规模。所以这一步耗时$O(n)$</p>
+<p>所以整体耗时为预处理部分，加Zig-Zag部分。最后算法时间消耗$O(nlog)$</p>
+<h1 id="更广泛的思考">更广泛的思考</h1>
+<p>限于课时的原因，老师无法再介绍更多的知识。所以老师在最后提出了很多更广泛，可以自发去研究的方向。</p>
+<ul>
+<li>可以将Jarvis March与Graham Scan相结合得出一个可以自适应的算法结构。</li>
+<li>可以对点的分布做一定假设，简而言之就是输入不再是均匀分布，其凸包得Size有多大？而基于这样一个估计，可以建立更优得算法。</li>
+<li>可以对高维的凸包进行深入研究。例如Voronoi图构造问题，任意$d$维Voronoi图问题都可以变成一个$d+1$维的凸包问题。</li>
+<li>而且凸包问题，在二维，三维空间中都可以在$O(nlogn)$时间内完成，而四维，五维空间中也只需要$O(n^2)$时间完成。这背后也隐藏着很深刻的原因。</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-08-25</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

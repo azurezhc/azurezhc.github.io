@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>09世界，UI与屏幕空间 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="09世界，UI与屏幕空间" />
+<meta property="og:description" content="09世界，UI与屏幕空间 这里主要记录一下Unity下这三个概念所表示的含义。因为经常会在这些概念之间混淆，但同时我们又会经常会获得这些空间里" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-12-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-12-02T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="09世界，UI与屏幕空间"/>
+<meta name="twitter:description" content="09世界，UI与屏幕空间 这里主要记录一下Unity下这三个概念所表示的含义。因为经常会在这些概念之间混淆，但同时我们又会经常会获得这些空间里"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4/" /><link rel="prev" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/08EventSystem/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/%E7%BE%A4%E7%9B%B8%E5%85%B3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "09世界，UI与屏幕空间",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4\/"
+        },"genre": "posts","wordcount":  2140 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4\/","datePublished": "2024-12-02T00:00:00+00:00","dateModified": "2024-12-02T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">09世界，UI与屏幕空间</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-12-02">2024-12-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2140 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#09世界ui与屏幕空间">09世界，UI与屏幕空间</a></li>
+    <li><a href="#屏幕空间">屏幕空间</a></li>
+    <li><a href="#canvas结构">Canvas结构</a>
+      <ul>
+        <li><a href="#screenspace-overlay">ScreenSpace-Overlay</a></li>
+        <li><a href="#screespace-camera">ScreeSpace-Camera</a></li>
+        <li><a href="#worldspace">WorldSpace</a></li>
+      </ul>
+    </li>
+    <li><a href="#canvasscaler">CanvasScaler</a></li>
+    <li><a href="#三个空间的划分">三个空间的划分</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="09世界ui与屏幕空间">09世界，UI与屏幕空间</h1>
+<p>这里主要记录一下Unity下这三个概念所表示的含义。因为经常会在这些概念之间混淆，但同时我们又会经常会获得这些空间里面的数值。例如点击输入给出的坐标在屏幕空间，而UI的AnchoredPosition算是UI空间，通常的游戏对象算是在世界空间下。</p>
+<p>所以这里通过文章记录并理清这些关系。</p>
+<p>在RectTransform中有简单提到RectTransform与Transform的关系。从类型上来说是一个简单的继承，但是有着对Rect概念的封装表达。而其中也有部分涉及到UI空间与世界空间的关系。</p>
+<p>这里先简单的定义阐述一下这几个概念：</p>
+<ul>
+<li>Transform本质表示一个变换。这个变换相当于将一个点从父节点所形成空间变换到当前节点的变换矩阵。所有的坐标，转向都是这么变换而来，也可以认为这些概念被这么一个变换表示。通俗的概念来讲s，此时这个Transform的坐标，都是该点在世界空间下连续变化而来，可以认为是对象的世界坐标的一个承载。</li>
+<li>RectTransform继承于Transform。也就是RectTransform本身也是一种变化，拥有Transform所有的概念语义。但它需要额外描述一个二维矩形概念。于是扩展出了Anchor等相关概念数据结构。所以RectTransform本身也有着一个世界坐标数据结构，其描述了Pivot点所在的世界坐标。而基于Anchor的变换结构，则单独给出了一个坐标描述结构。</li>
+<li>而屏幕空间，则存粹的由游戏窗口所描述。即游戏窗口大小所形成的一个空间概念。没有相对关系，就是由简单二维窗口所形成的以左下角为原点的一个空间。</li>
+</ul>
+<p>简单来说这三个概念，以及我想描述的对象：</p>
+<ul>
+<li><strong>世界空间</strong>：游戏场景中基于世界坐标原点所形成的空间。这个空间的下对象的坐标表示，称之为世界坐标。</li>
+<li><strong>UI空间</strong>：由Canvas所形成的一个坐标空间。其中坐标数值通过Anchor变换而来，这个空间下由Rect所描述的坐标称之为，UI空间坐标。</li>
+<li><strong>屏幕空间</strong>：在屏幕空间所形成的一个纯粹空间。其中点的坐标，称之为屏幕空间左边。</li>
+</ul>
+<p>这里简单备注几点。</p>
+<ul>
+<li>实际上来说空间坐标并不准确，一是因为这个忽略了转动，二是因为实际上不论Transform还是RectTransform都实际是父节点的变换，也就是说，都是局部空间表征，不是完全基于原点。</li>
+<li>这里主要是想区分几个坐标概念。实际上主要是他们所在的坐标系，不太一样。所以向记录各个坐标系之间的变换联系。</li>
+</ul>
+<h1 id="屏幕空间">屏幕空间</h1>
+<p>下图大致表示屏幕空间和UI空间的一个区别：</p>
+<center><img src="./p1.png"></center>
+<p>屏幕空间实际上就是游戏视窗实际像素大小所构成的一个空间。</p>
+<ul>
+<li>他坐标系如图，以左下角为原点，右上角为窗口像素的最大值构成坐标系。</li>
+<li>对于一个点击输入，其实际上都是给出点击点在该坐标系下的位置。例如实例屏幕正中间位置则为$(649.5,397.5)$。</li>
+<li>即便鼠标超出整个视窗，依然会基于该坐标系给出数值。</li>
+</ul>
+<p>而要获取游戏屏幕空间的大小，则需要通过对应渲染的Camera来获取。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 返回屏幕空间的大小</span>
+</span></span><span class="line"><span class="cl"><span class="n">Vector2</span> <span class="n">pixelRect</span> <span class="p">=</span> <span class="n">Camera</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">pixelRect</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="canvas结构">Canvas结构</h1>
+<p>而要搞清楚世界空间和UI空间坐标系的联系，就要从Canvas来入手。它决定了这两者之间的一个关系方式。
+总所周知，Canvas有三种模式，一般讲到canvas都会涉及到：</p>
+<ul>
+<li>ScreenSpace-Overlay：直接叠加在屏幕空间上。</li>
+<li>ScreeSpace-Camera：放在相机前面，叠加在屏幕空间上。</li>
+<li>WorldSpace：直接按照世界坐标来渲染。</li>
+</ul>
+<p>对应的实际计算操作是如下的：</p>
+<h2 id="screenspace-overlay">ScreenSpace-Overlay</h2>
+<p>此时Canvas会使用屏幕空间的大小作为自己的Width和Height。然后以世界坐标系原点铺开。
+如下图：</p>
+<center><img src="./p2.png"></center>
+<p>也就是根节点的RectTransform直接放置在如图的世界坐标中。这个时候会有以下特点。</p>
+<ul>
+<li>因为直接以屏幕空间为Width和Height，一个RectTransform的Positon是其Pivot对应点的世界坐标。而这个世界坐标，因为canvas放在世界坐标系原点的缘故，恰好也就是其屏幕空间坐标点。</li>
+<li>RectTransform的GetWorldCorners方法，获得其Rect四个点的世界坐标。也对应其屏幕空间坐标。</li>
+</ul>
+<h2 id="screespace-camera">ScreeSpace-Camera</h2>
+<p>此时Canvas会要求选择一个摄像机。然后Canvas会按照一个距离值放置在相机前方渲染。然后Canvas会撑满整个视窗范围。</p>
+<p>如下图：</p>
+<center><img src="./p3.png"></center>
+<p>为了保持Canvas的Width与Height跟屏幕空间大小一致。canvas自动调整了一个缩放值。使得当前对应的Rect世界坐标大小被放大到目标屏幕空间大小。</p>
+<ul>
+<li>这使得世界坐标跟屏幕空间坐标不再一致，但是可以通过缩放系数算出对应的屏幕空间坐标。（不过有直接方法可以得出屏幕空间坐标）。</li>
+<li>另一方面是放在相机前渲染，与Overlay不太一样。如果有世界物体出现在视窗内，可以跟Canvas的绘制穿插。</li>
+</ul>
+<h2 id="worldspace">WorldSpace</h2>
+<p>直接当作世界空间中的一个物体来渲染绘制。此时x,y,z语义完全跟世界坐标一致。而Width和Height则表明Rect的宽度和高度。此时其单位大小，跟世界空间的单位长度一致。所有Canvas中的物体也只是世界物体Rect中的一部分。</p>
+<h1 id="canvasscaler">CanvasScaler</h1>
+<p>另一个需要注意的就是CanvasScaler。该组件会对应调整Canvas的Rect大小。也就是通常的整体UI画布的缩放自适应组件。</p>
+<h1 id="三个空间的划分">三个空间的划分</h1>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-12-02</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

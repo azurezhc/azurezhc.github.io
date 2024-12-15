@@ -1,0 +1,82 @@
+<mxfile host="Electron" modified="2024-09-23T13:49:09.827Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.6.4 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="69Htx22tyXZadAgQRZ7d" version="24.6.4" type="device">
+  <diagram name="第 1 页" id="i155XpjpAGYcklPSrtU9">
+    <mxGraphModel dx="954" dy="717" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-1" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.orthogonal_triangle" vertex="1" parent="1">
+          <mxGeometry x="80" y="290" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F0FFE0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E6FFCC;" vertex="1" parent="1">
+          <mxGeometry x="280" y="380" width="240" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D5FFB5;" vertex="1" parent="1">
+          <mxGeometry x="520" y="380" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-5" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.orthogonal_triangle" vertex="1" parent="1">
+          <mxGeometry x="280" y="270" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-6" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.orthogonal_triangle" vertex="1" parent="1">
+          <mxGeometry x="520" y="320" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-8" value="&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;每个不同&lt;/span&gt;&lt;br style=&quot;text-wrap: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;GraphicRaycaster之下&lt;/span&gt;&lt;br style=&quot;text-wrap: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;按照Depth&lt;/span&gt;&lt;br style=&quot;text-wrap: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;从大到校顺序&lt;/span&gt;" style="shape=card;whiteSpace=wrap;html=1;fillColor=#E6FFCC;" vertex="1" parent="1">
+          <mxGeometry x="50" y="440" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-9" value="排序操作" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry x="240" y="440" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-10" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="459.5" as="sourcePoint" />
+            <mxPoint x="470" y="459.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="3Ja_LOS7y_dYVr39EOJi-11" target="3Ja_LOS7y_dYVr39EOJi-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-11" value="如果所处Raycaster不一样&lt;br&gt;则根据Raycaster的Priority排序" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry x="490" y="440" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-12" value="先sortOrderPriority&lt;br&gt;大的在前" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry x="760" y="400" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-13" value="renderOrderPriority&lt;br&gt;大的在前" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry x="760" y="480" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="3Ja_LOS7y_dYVr39EOJi-14" target="3Ja_LOS7y_dYVr39EOJi-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-14" value="每个Graphic的sortingLayer不一样&lt;br&gt;则sortingLayer大的在前" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry x="490" y="520" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="3Ja_LOS7y_dYVr39EOJi-16" target="3Ja_LOS7y_dYVr39EOJi-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-16" value="每个Graphic的sortingOrder不一样&lt;br&gt;则sortingOrder大的在前" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry x="490" y="600" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="3Ja_LOS7y_dYVr39EOJi-18" target="3Ja_LOS7y_dYVr39EOJi-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-18" value="如果Depth不一样，且根Caster不一样&lt;br&gt;则depth大的在前" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry x="490" y="680" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-20" value="最后是distance比较&lt;br&gt;distance小的在前" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" vertex="1" parent="1">
+          <mxGeometry x="490" y="760" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="3Ja_LOS7y_dYVr39EOJi-22" target="3Ja_LOS7y_dYVr39EOJi-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-22" value="&lt;span style=&quot;text-wrap: nowrap;&quot;&gt;简单来说就是&lt;br&gt;sortOrderPriority大&lt;br&gt;renderOrderPriority大&lt;br&gt;sortingLayer大&lt;br&gt;sortingOrder大&lt;br&gt;depth大&lt;br&gt;distance小&lt;br&gt;的在前面&lt;/span&gt;" style="shape=card;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="280" y="560" width="160" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="3Ja_LOS7y_dYVr39EOJi-23" value="对于UIGraphic来说&lt;br&gt;sortOrderPriority&lt;br&gt;renderOrderPriority&lt;br&gt;都为int最小值&lt;br&gt;也就是说着&lt;br&gt;UI上来说Canvas的&lt;br&gt;sortingLayer与Order会起作用&lt;br&gt;最后则是depth数值" style="shape=card;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="560" width="165" height="170" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

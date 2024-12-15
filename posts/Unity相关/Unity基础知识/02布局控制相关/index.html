@@ -10,8 +10,8 @@
 <meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/02%E5%B8%83%E5%B1%80%E6%8E%A7%E5%88%B6%E7%9B%B8%E5%85%B3/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-04-14T00:00:00+00:00" />
 <meta property="article:modified_time" content="2024-04-14T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="02布局控制相关"/>
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="02布局控制相关"/>
 <meta name="twitter:description" content="布局控制 主要记录布局控制相关一些控件的效果。主要是每个参数所表示的含义，以及各种边界情况下的效果。 其实一般来讲，我不太喜欢用官方提供的布局控"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -44,7 +44,7 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a></div>
         </div>
@@ -59,7 +59,7 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
@@ -77,7 +77,7 @@
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ol>
+  <ul>
     <li><a href="#布局控制">布局控制</a></li>
     <li><a href="#布局元素">布局元素</a></li>
     <li><a href="#contentsizefitter">ContentSizeFitter</a></li>
@@ -85,7 +85,7 @@
     <li><a href="#horizontallayoutgroup与verticallayoutgroup">HorizontalLayoutGroup与VerticalLayoutGroup</a></li>
     <li><a href="#gridlayoutgroup">GridLayoutGroup</a></li>
     <li><a href="#参考文档">参考文档</a></li>
-  </ol>
+  </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="布局控制">布局控制</h1>
 <p>主要记录布局控制相关一些控件的效果。主要是每个参数所表示的含义，以及各种边界情况下的效果。</p>
@@ -97,7 +97,7 @@
 <p>这里所说的布局元素。并不是对应RectTransform控件上的各种参数值。可以认为是控件上一套参数，定义该控件潜在需要的布局大小，或者说最后RectTransform算出来的Rect大小。为了方便说明这个属性概念是存在的，可以先来看ContentSizeFitter组件。</p>
 <h1 id="contentsizefitter">ContentSizeFitter</h1>
 <p>该组件图如下：</p>
-<center><img src="../02.assets/p1.png"></center>
+<center><img src="./p1.png"></center>
 <p>其只有两个参数</p>
 <ul>
 <li>HorizontalFit：根据所在控件的布局元素来设置RectTransform的水平宽度。</li>
@@ -113,7 +113,7 @@
 </ul>
 <h1 id="layoutelement">LayoutElement</h1>
 <p>该组件用来覆写当前控件的布局元素属性。为了方便说明还是将布局元素概念与该组件LayoutElement区分开来。</p>
-<center><img src="../02.assets/p2.png"></center>
+<center><img src="./p2.png"></center>
 <p>看到其提供了6个数据字段，简单来看即</p>
 <ul>
 <li>Width的Min/Preferred/Flexible</li>
@@ -132,7 +132,7 @@
 <p>其中Image和Text Component都是可以提供对应布局元素值的组件。添加该组件后，其会修改Preferred值为对应的图片大小，或者文本区域大小。</p>
 <h1 id="horizontallayoutgroup与verticallayoutgroup">HorizontalLayoutGroup与VerticalLayoutGroup</h1>
 <p>即垂直布局器与水平布局。两个组件空座方向类似，只是方向不一样。只有看其中一个即可，组件参数如下：</p>
-<center><img src="../02.assets/p3.png"></center>
+<center><img src="./p3.png"></center>
 <p>其中</p>
 <ul>
 <li>Padding：相当于定义子对象的布局范围相对于当前区域Rect的上下左右距离。</li>
@@ -141,7 +141,7 @@
 <li>ReverseArrangement：对于布局来说，有个方向匹配的问题。正常情况下，对于子对象列表来说在上面的会排在前面。勾选该选项可以使得排序反过来，在下面的会排在前面。但是布局所占区域不会改边。</li>
 </ul>
 <p>布局效果如下图：</p>
-<center><img src="../02.assets/p4.png"></center>
+<center><img src="./p4.png"></center>
 <p>如果没有勾选任何ControlChildSize/UseChildScale/ChildForceExpand等参数。那么布局器只会根据子对象的RectTransform和上面的Padding，Spacing等参数来计算Postion进行布局。</p>
 <p>现在来看这三个控制参数的语义：</p>
 <p><strong><font size=5>ControlChildSize</font></strong></p>
@@ -169,7 +169,7 @@
 <p><strong>PreferredWidth计算</strong></p>
 <p>先详细看一下PreferredWidth超出时候的计算效果。</p>
 <p>我们先看一个例子，PreferredWidth计算示例：</p>
-<center><img src="../02.assets/d1.drawio.png"></center>
+<center><img src="./d1.drawio.png"></center>
 <p>父对象总宽度为400，设置如下表</p>
 <table>
 <thead>
@@ -214,13 +214,14 @@ $$</li>
 <p><strong>FlexibleWidth计算</strong></p>
 <p>再来看FlexibleWidth计算效果。如果进入该步骤，则说明一：布局器任然有空余控件，二：有设置FlexibleWidth的值。FlexibleWidth的计算是简单明了的。</p>
 <p>即对于所有计算之后的剩余空间$L_{r}$，按照每个空间的FlexibleWidth值比例来进行分配。设每个子对象FlexibleWidth值为$F_{i}$即每个空间额外获得值为
+</p>
 $$
 L_{r}\cdot{}F_{i}/\sum{}F_{i}
-$$</p>
+$$
 <p><strong><font size=5>UseChildScale</font></strong></p>
 <p>是否使用子对象的放缩值，即Scale对象。UGUI在计算布局的时候，不会计算Scale对象的大小。即可认为Scale是修改的渲染尺寸，而不是UI的布局尺寸。所以会出现如下这样的布局情况：</p>
 <p>中间元素LayoutElement为100但是有一个0.8的缩放。但是任然按照100来计算的布局参数。</p>
-<center><img src="../02.assets/p6.png"></center>
+<center><img src="./p6.png"></center>
 <p>勾选改参数后会使得计算布局的时候考虑Scale因子的缩放来进行计算。</p>
 <p><strong><font size=5>ChildForceExpand</font></strong></p>
 <p>强制将子对象扩展，以使其填充整个布局区域。直觉上这个效果跟Flexible参数控制很类似。其实际效果相当于给每个组件的Flexible参数默认给了一个1。具体来说</p>
@@ -231,7 +232,7 @@ $$</p>
 <p>所以其具体计算效果，实际上，就是FlexibleWidth的效果来计算。</p>
 <h1 id="gridlayoutgroup">GridLayoutGroup</h1>
 <p>即网格布局器，其会将子对象像网格一样（即Grid样式）布局起来。其组件参数如下：</p>
-<center><img src="../02.assets/p5.png"></center>
+<center><img src="./p5.png"></center>
 <p>可以看到对比HorizontalLayoutGroup与VerticalLayoutGroup，其并没有根据子对象的 布局元素 来进行各种适配计算的结构。而是会使用GridLayoutGroup设定的参数值，无视子对象的LayoutElement，直接设置子对象的RectTransform的值。</p>
 <ul>
 <li>Padding：相当于定义子对象的布局范围相对于当前区域Rect的上下左右距离。</li>
@@ -243,7 +244,7 @@ $$</p>
 <li>StartCorner：</li>
 </ul>
 <p>起始角落，一共有4个值。该值实际上指明了子对象在自己所张成空间内的布局顺序的起始角落。设置为LowerRight布局效果如下图：</p>
-<center><img src="../02.assets/p7.png"></center>
+<center><img src="./p7.png"></center>
 <p>可以看到其是从中间右下角开始，按向左顺序布局的。并不是从整个父节点的右下角开始布局。可以这么认为，先计算出所有子对象所占据的矩形空间，并从这个空间的四个角落为起点，开始按顺序布局子对象。</p>
 <ul>
 <li>StartAxis：</li>
@@ -253,7 +254,7 @@ $$</p>
 <li>ChildAlignment：</li>
 </ul>
 <p>子对象的对齐位置，一共有9个值。这个值实际上指明了所有子对象所占据的矩形空间，相对于父空间的计算位置。例如MiddleCenter的情况，布局如下图：</p>
-<center><img src="../02.assets/p8.png"></center>
+<center><img src="./p8.png"></center>
 <p>从中间开始计算整个子对象矩形，同时将子对象矩形的中心点对齐在中心位置。这里可以认为对应9个值，相当于同时选定了子对象所占据的矩形空间的Pivot与Anchor为对应值。会尽量将所有子对象都布局在父对象的空间范围的内部。</p>
 <ul>
 <li>Constraint：</li>
@@ -289,13 +290,10 @@ $$</p>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
-
-    <div class="post-nav"><a href="/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/03Json%E5%BA%8F%E5%88%97%E5%8C%96/" class="prev" rel="prev" title="03Json序列化"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>03Json序列化</a>
-            <a href="/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" class="next" rel="next" title="Unity问题记录">Unity问题记录<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
         </div>
     </footer></div>

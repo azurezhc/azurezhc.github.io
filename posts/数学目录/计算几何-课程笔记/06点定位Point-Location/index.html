@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>计算几何课程 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="计算几何课程" />
+<meta property="og:description" content="06点定位(Point Location) 计算几何-笔记目录 从本章之后的部分主要关注于在线算法部分。在线算法即指，输入没有一次性给出所有输入，而是随着时间逐步" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/06%E7%82%B9%E5%AE%9A%E4%BD%8DPoint-Location/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-08-25T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="计算几何课程"/>
+<meta name="twitter:description" content="06点定位(Point Location) 计算几何-笔记目录 从本章之后的部分主要关注于在线算法部分。在线算法即指，输入没有一次性给出所有输入，而是随着时间逐步"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/06%E7%82%B9%E5%AE%9A%E4%BD%8DPoint-Location/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E7%AC%94%E8%AE%B0%E5%A4%A7%E7%BA%B2/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/05%E7%82%B9%E9%9B%86%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Delaunary-Triangulation/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "计算几何课程",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/06%E7%82%B9%E5%AE%9A%E4%BD%8DPoint-Location\/"
+        },"genre": "posts","wordcount":  10280 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/06%E7%82%B9%E5%AE%9A%E4%BD%8DPoint-Location\/","datePublished": "2023-08-25T00:00:00+00:00","dateModified": "2023-08-25T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">计算几何课程</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-25">2023-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;10280 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;21 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#06点定位point-location">06点定位(Point Location)</a></li>
+    <li><a href="#点定位介绍">点定位介绍</a></li>
+    <li><a href="#slab-method">Slab Method</a></li>
+    <li><a href="#pathnode-copying">Path/Node Copying</a></li>
+    <li><a href="#kirkpatrick-structure">Kirkpatrick Structure</a></li>
+    <li><a href="#trapezoidal-map">Trapezoidal Map</a>
+      <ul>
+        <li><a href="#ric">RIC</a></li>
+        <li><a href="#算法复杂度分析">算法复杂度分析</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="06点定位point-location">06点定位(Point Location)</h1>
+<p><a class="link-markdown-demo-site" href="./计算几何-笔记大纲.md" rel="noopener">计算几何-笔记目录</a></p>
+<p>从本章之后的部分主要关注于在线算法部分。在线算法即指，输入没有一次性给出所有输入，而是随着时间逐步给出。其中点定位PointLocation是其中比较基础的部分。</p>
+<ul>
+<li>Online/Offline Algorithms
+<ul>
+<li>解释在线算法和离线算法的区别。</li>
+</ul>
+</li>
+<li>Introduction
+<ul>
+<li>主要概述Point Location的背景，关联在线算法部分，提出在线算法的要求，给出一个宏观纵览。</li>
+</ul>
+</li>
+<li>Slab Method
+<ul>
+<li>SlabMethod即通过先将图按顶点划分为多个竖条Slab后，再在每个Slab中按照从高到低的顺序来划分。进而使得每一个点坐标都可以通过位置来判断所属区块，进而判断位置。其预处理可以达到$O(nlogn)$时间，但复杂度有$\Theta(n^2)$</li>
+</ul>
+</li>
+<li>Persistence
+<ul>
+<li>本章主要介绍Ephemeral Structure和Persistent Structure之间的区别和用途。细分介绍Partial Persistent Structure和Fully Persistent Structure。</li>
+</ul>
+</li>
+<li>Path Copying
+<ul>
+<li>基于上面介绍的Persistence思路。在扫描线构造的时候不再是每个Slab生成树，而是引用老的一部分树结构。注意这里是平衡二叉树，每次都会插入一个节点，对插入操作的修改部分进行Copy，其余进行引用就可以了。</li>
+</ul>
+</li>
+<li>Node Copying
+<ul>
+<li>本章则是为了追求空间上达到$O(n)$复杂度而进一步优化数据结构，其演算更为复杂不想知道可以跳过。该结构是在Path Copying上进一步细化只Copy旋转改变的节点以达到复制的节点更少。这样的结构需要用到红黑树。同时会使查找时间变成$O(log^2n)$</li>
+</ul>
+</li>
+<li>Limited Node Copying
+<ul>
+<li>在Node Copying的基础上，为了重新降下来时间查找复杂度而而限制每个复制节点的大小。为此要类似B树一样向上分裂各个节点。</li>
+</ul>
+</li>
+<li>Kirkpatrick Structure
+<ul>
+<li>本章主要介绍Kirkpatrick结构以及该结构上的点定位操作。该几何结构，能做到跟Persistent Structure一样的存储结构和效率。该方法需要先预处理Subdivision成一个三角刨分结构。最后通过在细节三角刨分上面删除点来构建一个层级数据结构。该结构可以使得算法的时间复杂度在$O(logn)$而空间复杂度在$O(n)$量级。只是时间复杂度前面有一个巨大的常数。</li>
+</ul>
+</li>
+<li>Trapezoidal Map
+<ul>
+<li>本章主要介绍梯形图算法，这个算法是一个随机算法。本章先介绍了相关基础，给出了一个例子和对应的Search Structure来说明其运作的方式。</li>
+</ul>
+</li>
+<li>Constructin Trapezoidal Map
+<ul>
+<li>本章主要介绍构如何造梯形图的Search Structure。其方法是一种随机构造算法(RIC)。从空图开始，随机选择一条边加入到当前梯形图来处理生成Search Structure。</li>
+</ul>
+</li>
+<li>Performance Of Trapezoidal Map
+<ul>
+<li>本章主要分析梯形图的效率。在Trapezoidal Map算法中只有一个地方随机化，即线段的插入顺序。而在每一步骤中主要有两步时间消耗，生成梯形和点定位。统计求取期望即是，而分析过程中大量使用的主要是基于梯形四边形的后向分析技术。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="点定位介绍">点定位介绍</h1>
+<p>点定位在日常中也是经常遇到的问题。在一堆几何视图中如何确定一个点所在的区域。对于电脑来说，一般情况下都是方形点即区域，而且可能有很多UI层级问题。这里我们关注的则是在子区域刨分(subdivision)上的点定位问题。具体可描述为：</p>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>问题<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">给定一个子区域刨分$\mathcal{S}$，如何对$\mathcal{S}$进行一个预处理，可以使得我们快速确定一个点$q$的位置。</div>
+        </div>
+    </div>
+<p>再一次的，根据无敌的欧拉定理，如果一个子区域刨分$\mathcal{S}$如果有$O(n)$条边，那么其会有$O(n)$个顶点，$O(n)$个面。所以我们可以以$\mathcal{S}$的边数作为一个输入大小。</p>
+<p>这里我们衡量一个算法从下面几个方面考虑：</p>
+<ul>
+<li>Preprocessing time：预处理时间。</li>
+<li>Storage Cost：存储消耗。</li>
+<li>Query time：一次单独查询的时间消耗。对于一个点定位在线算法，最低要求时间消耗是$\Omega(logn)$。</li>
+<li>Update time：更新时间消耗。</li>
+</ul>
+<hr>
+<p>这里给出了所有2D点定位算法的概览如下：</p>
+<center><img src="./p1.png"></center>
+<p>可以看到slab算法的查询已经足够好了，但可惜的是其存储空间需要$O(n^2)$。这是难以接受的。好在可以通过一些方式来进行存储空间优化，例如路径复制(path/node copying)。但是依然为$O(nlogn)$量级。任然有一些方法来进行优化，让存储复杂度降低到$O(n)$，当相对会带来一定的性能损耗。而真正有用的方法大致有两种。Kirkpatrick Struct，可以做到理论上很好的效果，但是其实际有一个巨大的常系数。trapezoidal map，则是一种随机化的方式，可以做到一种期望上的最优，并且其效果是足够好的。</p>
+<h1 id="slab-method">Slab Method</h1>
+<p>Slab方法本质可以认为是一种减而治之。即对于原来的$\mathcal{S}$进行一个分解，从每个点引出一条垂直线，将原来的图按垂直方向划分成一些列条带(slab)。这些条带会将原来的$\mathcal{S}$中的面切割成梯形，而且每条边都会穿过一个slab。整个效果如下图：</p>
+<center><img src="./p2.png"></center>
+<p>此时我们在关注每一个slab中被划分区域效果。可以发现这些梯形，有一个自上而下的顺序。这个顺序是由被边切割Slab导致的。可想而知，如果确认一个点落在这个slab中之后，我们可以通过一个简单的边测试，即可确定该点落在哪个区域之中。</p>
+<p>所以整个结构会建立如图的两颗树结构。</p>
+<ul>
+<li>在每个点上引入垂直线，会产生$n+1$个条带。这些条带自左向右排序，所以可以建立一个自左向右的平衡树。而该树的树高为$O(logn)$</li>
+<li>在每个Slab中，可以被分割成数个梯形，并且这些梯形有一个自上而下的顺序。所以也可以建立成一个自上而下的平衡树。因为每一条边分割出一个梯形，可以知道梯形个数不超过$O(n)$，所以这每一个slab的子树的高度也为$O(logn)$。</li>
+</ul>
+<p>现在来看查询时间，显然有两个阶段。现在x方向上查找，根据x坐标判定即可，但需要走过第一层树的层高。然后进入子树，在用y坐标，查找其落在哪一个梯形里面即可。所以时间花费为$O(logn)时间。</p>
+<p>现在来看预处理时间，这里要利用到Slab之间极强的关联性。这个关联性就是相邻两个slab之间梯形变化只发生在顶点处。即顶点左侧的线终结，右侧会插入新的线。</p>
+<p>所以这里可以使用扫描线策略，在每个顶点处驻足。假设此时已经构建好左侧的梯形树，那么当扫到一个点$v$时，可以根据左侧消亡的线，生成一个合并的梯形，而这个梯形也必定是接下来要操作的梯形。对与从右侧生成的线，则根据线的高低，依次重新划分梯形即可。而这个都建立在BBST上进行增删改查，再加上每个点的度数是常数，所以消耗不超过$O(logn)$。一共有$n$个点，所以整体构建开销为$O(nlogn)$</p>
+<p>最后来看其空间消耗。显而易见的一个问题。每一个slab都对应一颗BBST，而每个这样的BBST存储消耗高达$O(n)$。所以总体消耗即$O(n^2)$，而且存在这样的例子，会使得存储达到这个上限。</p>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>思考问题<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>一个$O(nlogn)$的算法，为什么会产生出$O(n^2)$的存储复杂度。每一次存储都需要一个操作，时间复杂度也应该是$O(n^2)$量级的。</p>
+<p>这里其实有个问题，扫描线每一步构造中，要拿上一个Slab的BBST来进行操作。这个地方就有问题，这个BBST如果不是引用，实际上是要拷贝的。如果拷贝这个量级就是$O(n)$</p>
+</div>
+        </div>
+    </div>
+<h1 id="pathnode-copying">Path/Node Copying</h1>
+<p>我们可以看到对于slab算法，其算法空间复杂度会超过$O(n^2)$。这个是不太能接受的，所以要优化它，这里其实有很多种方式。首先我们要明白如下几种类型的数据结构：</p>
+<blockquote>
+<ul>
+<li>Ephemeral Structure<br>
+我们所学的绝大多数数据结构都是这种类型。我们都只关注这个数据结构最后的状态，而不关心这个结构的历史过程。对于历史记录，这种结构告诉不了我们任何信息。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Persistent Structure<br>
+持久化数据结构。不仅有当前版本，而且对于历史版本都做了存档和记录。又可以细分为Partially Persistent Structure和Fully Persistent Structure。</li>
+<li>Partially Persistent Structure<br>
+有当前版本，也有历史版本。但是对于历史版本我们只能读取不能操作，只能操作当前版本</li>
+<li>Fully Persistent Structure<br>
+有当前版本，也有历史版本。每个版本都可以继续向前延生长，形成一个分叉的树状结构。</li>
+</ul>
+</blockquote>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>思路<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">而对Slab算法的一个改进，就是使用Partially Persisten Structure。即对于每个Slab来说，视作同一个数据结构下不同历史时期的快照。简单来思考，就是扫描线从左向右扫描的时候，在每次中上一个Slab视为当前版本，来更新操作生成下一个版本时，任使用上一个Slab中部分数据。跟我们前面思考问题不谋而合。</div>
+        </div>
+    </div>
+<p>所以就有Path Copying的想法：</p>
+<p><strong><font size = 4>Path Copying</font></strong></p>
+<center><img src="./p3.png"></center>
+<p>既然要降空间复杂度，那么基本想法就是不再存储重复的数据结构。现在来看对于每一次扫描线重新构造Slab的BBST。其中有很多重复的节点，那么现在，不再copy整个树。而是只存储每次增加的新Node。对于BBST来说，我们知道当怎加一个新节点时，会放在叶子，然后依次向上旋转调整整个平衡树，这样便产生了一条路径。可以想到的是，对于路径上的点，是修改了父子关系以及可能新增的节点。而其余枝干部分则没有任何变化，所以这些部分只要存储老Slab的一个枝干引用就可以了。</p>
+<p>整个效果就如上图。上下两个结构逻辑上是等价的。不同在于，下面的树复用了大量的老树数据结构。在这个数据结构中：</p>
+<ul>
+<li>红色的线指向之前的版本，这些都是共享的枝干。</li>
+<li>蓝色的虚线，则指向路径调整过程中，要copy的那部分节点。</li>
+</ul>
+<p>现在来看这种优化是有效的么？</p>
+<p>现在来看我们的操作，这个版本中，我们对每一条路径进行copy，然后再进行一些旋转调整。这个时候我们占用的空间就是这条路径的高度即$O(logn)$。而对于整个过程来说，这种路径copy最多不超过$n$次。所以可以得到这个空间存储效率为$O(nlogn)#上。</p>
+<p><strong><font size = 4>Node Copying</font></strong></p>
+<p>经过路径Copy之后，我们的存储有效的降低到$O(nlogn)$，但是我们不满足于此而是可以降低到$O(n)$量级。这个方式就是Node Copying。这部分内容非常复杂，而且只是理论部分，如果不关心可以跳过。</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>思路<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">我们再看路径Copy，可以发现其存储还可以再降低，对于Copy出来的整个路径，实际上只有在发生旋转的位置才有必要进行修订。另存一个版本。</div>
+        </div>
+    </div>
+<p>既然我们只考虑发生旋转的位置，那么简而言之就是，我们不再Copy整个路径，而是只复制对应的节点。那显然的一个问题，就是每个节点还要带有版本信息，因为此时的粒度已经不是树，而是每一个节点上去存储版本信息了。每个版本每个节点都有可能更改指向。所以每个节点会如下图：</p>
+<center><img src="./p4.png"></center>
+<p>这样每一个节点不单单有两个孩子，而是有一套带有时间标签的列表。时间标签记录了这个时刻其左右子孙的变化情况。</p>
+<p>现在有个问题就是，需要增加时间标签的次数有多少。这些次数对应着BBST中发生旋转的点的个数。而在某些BBST中，经过动态变化后，这种指针变化可以控制在常数$O(1)$。这说明发生这种节点Copy的个数也可以控制在常数$O(1)$量级，进而完成空间复杂度的降低。而这种BBST可以有红黑树来做到。</p>
+<p>但是这里面还有一个细节。因为对于节点修改，增加了一个时间标签列表。这使得在每个节点上的操作不再是常数了。假设这个节点里面有$n$个时间标签，那么我们比对时间标签最快通过二分查找也要$O(logn)$时间，这无形中增加了我们的时间成本。而这种查找有可能在每个节点发生，使得我们整体效率变成$O(log^2n)$</p>
+<p><strong><font size = 4>Limited Node Copying</font></strong></p>
+<p>上面我们看到，如果每个节点我们都使用时间标签来进行标志分发。那么有可能导致节点上有多大$n$个时间标签，进而导致我们的查找速度变慢为$O(log^2n)$。</p>
+<p>而这里的思路就是，我们对于节点增加的标签最多是$k$个。也就是受限的常数个。这样任然会保持查找效率。但是这样可能会出现上溢出情况，即时间标签超过$k$个，那么此时的处理方式就是，类似于B树的分裂。</p>
+<p>现在来看这个有限Copy的效果，其实跟B树类似。虽然这样的分裂，上溢会沿着当前节点一直上升到根节点。但是这种次数均摊来说不会超过常数次。也就是说此时每个节点的规模会控制在$k$个，同时整个书的高度不会发生量级变化任然是$O(logn)$高度。</p>
+<p>所以此时空间复杂度任然为$O(n)$，而时间复杂度为$O(logn)$。</p>
+<h1 id="kirkpatrick-structure">Kirkpatrick Structure</h1>
+<p>可以看到上面的过程非常复杂，在这个问题的历史当中Kirkpatrick则提出了一个更加简明的几何结构，来专门处理这样的问题。这个结构，其实就类似于各种空间查找结构如KD树，八叉树，由粗到细的，分层来定位点的问题。</p>
+<p>Kirkpatrick Structure有两个结构</p>
+<ul>
+<li>子区域刨分$\mathcal{S}$都是有三角形构成。</li>
+<li>最外围面，也是一个三角形。</li>
+</ul>
+<p>这两个条件都不难做到，对于第一个来说是三角刨分，第二个来说，则可以引入三个点来形成一个更大的三角形即可。这两部分，累计所需要时间都不会超过$O(nlogn)。</p>
+<p>整个数据结构可以通过如下两图直观的出。</p>
+<center><img src="./p5.png"></center>
+<blockquote>
+<p>一个Kirkpatrick Structure是一系列三角刨分$\set{T_0,T_1,\cdot,T_H}$\</p>
+<ul>
+<li>$T_0$是原始最基础的三角刨分。</li>
+<li>对$T_{k+1}$层三角刨分来说，其最多覆盖常数个$T_k$层中的三角刨分。</li>
+<li>$T_h$只包含一个三角形，即最外层的三角形。</li>
+</ul>
+</blockquote>
+<p>可以看到这个过程实际只有一个关键步骤，如何通过$T_k$来经过粗化，来得到$T_{k+1}$层的三角刨分。如下图：</p>
+<center><img src="./p6.png"></center>
+<p>这个过程就可以描述为通过选取删除一些点，然后重新细化三角刨分来实现。</p>
+<p>现在来看这个粗化过程要求，这里可以看到两个：</p>
+<ul>
+<li>删除的点越多越好：因为删除的多了，那么整个树高会低。
+<ul>
+<li>所以删除点个数不能低于一个固定比例。</li>
+</ul>
+</li>
+<li>上下三角形重叠越少越好：因为重叠少，每前进一层要做的检查就少。
+<ul>
+<li>每个删除点度数不能太大。</li>
+</ul>
+</li>
+</ul>
+<p>这里为了简洁性，要求删除点之后，留下的空洞彼此没有重叠。这说明，这个点集中任意两点互不相邻。这就要求删除点集为独立子集。而为了删除更多的点，那么这个点集最好是最大独立子集。很可惜的是，找到最大独立子集问题是个NP-hard问题。因为最大独立子集(maximal independent set)对应这最大独立团(maximal clique)。这两个都是NP-hard问题。</p>
+<p>不过好在这里并不需要最大独立子集，只要能删除的点，达到一个固定比例之上就可以了。现在来看删除一个点后，上层三角形最多跟下层多少个三角形相交。其实相交最大个数就是删除点的度数。其实有几度，就意味着这个多边形内有几个三角形。而重新三角化后的三角形，可能会覆盖这里面所有三角形。</p>
+<p>Kirkpatrick强就强在，证明并构造了这样一个算法来找到符合上述条件的独立子集。这里老师给了一个简化证明说明这个证明过程。</p>
+<blockquote>
+<ul>
+<li>对于任意图都可以找到一个独立子集$IS$，其大小不小于$\lceil{}\frac{n}{27}\rceil$。</li>
+</ul>
+</blockquote>
+<p>首先可以通过无敌的欧拉公式来说明，一个平面图平均度数小于等6。说明不超过$\lfloor\frac{n}{2}\rfloor$个点，其度数至少为12。</p>
+<p>类似的Kirkpatrick则证明了，对于平面图来说:</p>
+<blockquote>
+<ul>
+<li>不超过$\lfloor\frac{2n}{3}\rfloor$个点，其度数至少为9。</li>
+<li>不小于$\lceil\frac{n}{3}\rceil$个点，其度数不超过8.</li>
+</ul>
+</blockquote>
+<p>现在来考虑$\lceil\frac{n}{3}\rceil$个度数不超过8的顶点。这个$IS$可以增量的方式来构造。遍历所有顶点，移除度数为9以上的顶点。对于度数不超过8的顶点，当遍历到的时候将其添加到$IS$当中，同时移除其不超过8个邻居顶点。即便这8个邻居顶点都是满足度数不超过8的，那么现在$IS$中至少有$\lceil\frac{n}{3}\rceil/(1+8)=\lceil{}\frac{n}{27}\rceil$个顶点。而这样一个遍历操作只需花费$O(n)$时间。</p>
+<p>所以整个Kirkpatrick Structure可以如下图构造：</p>
+<center><img src="./p7.png"></center>
+<ul>
+<li>每个点代表一个三角形，上下连线代表覆盖关系。</li>
+<li>对于每一个上层顶点，其最多有不超过8个子节点。因为其最多覆盖8个子三角形。</li>
+<li>对于每一个下层顶点，其有不止一个父节点。因为其可以被多个父三角形覆盖。</li>
+</ul>
+<p>这样一个结构是一个DAG，有向无环图。整个搜索，可以从树根出发，逐层向下，每一层做有限个子三角的位置判定。所以搜索主要开销即这个树的深度。由前面可知，每一层都至少有一定比例的删除，所以树高由这个比例确定。这里如果取用删除点为$1/18$比例，那么每层剩余规模为$17/18$。这样来看，整个树高就是$log_{18/17}n$，而不是$log(n)$，这样就产生了一个巨大的常系数$log_{18/17}2$。而从空间复杂度来看，这个空间复杂度同样因为几何级数的问题，会保持在$O(n)$量级。</p>
+<h1 id="trapezoidal-map">Trapezoidal Map</h1>
+<p>上面这些方法或多或少有些不完美，不是很实用。而Trapezoidal Map梯形图就是一个这样比较实用的方法。这是一个随机的方法。</p>
+<p>首先要对原来的子区域刨分$\mathcal{S}$做进一步的简化，即不再是一系列区域，而是一系列彼此独立的线段。线段直接不允许任何跨界，但是可以有端点处的搭接。现在考虑这样一个问题，在这样一个模型中，随机取一个点，求出这个点正上方的线段。可以发现这样一种方式任然能进行点定位(Point Location)操作。而且前面那种点定位问题，跟这个问题是对应的。如果可以求出这个正上方的线段，也就定位了这个点的位置。</p>
+<p>而对于这样一个问题，我们可以通过把整个线段刨分成梯形来进行求解。如下图：</p>
+<center><img src="./p8.png"></center>
+<p>即从每个点发射一条垂直线，但是与Slab不同的是，如果其上下有其他线段阻碍，就停止下来。最后就会刨分成如图的梯形图，给定一个线段集合$S$，我们标记这个梯形图的几何结构为$TM(S)$。</p>
+<p>这样一个梯形块可以看到其有四部分组成，上下左右四个边元素。准确说，上下由边构成，而左右则因为是垂直线，实际上可以转换成左右端点位置。现在来看一共由多少个梯形。假设有$n$条线段，那么最多会有$2n$个端点，对于每一个端点引出一个线段最多增加两个作为梯形的顶点，加上四周的一个四边形Bounding Box所以最多有$6n+4$个顶点。现在来考虑最多有多少个梯形，对于一个线段来说，其左端点有且只有一个梯形，而其右端点有且只有两个梯形。而对于每个梯形来说，其总回有一个右端点(除了最右边的那个)，所以所有梯形都被统计，则一共有$3n+1$个梯形。综上所述：</p>
+<ul>
+<li>一共有$6n+4$个顶点。$3n+1$个梯形。</li>
+</ul>
+<p>显然在上面图实例中，如果能判定点在什么梯形里卖弄，就能判断其正上方线段。而这个判定过程，可以通过x左边以及上下两条线来进行判断。所以在程序中，则应该根据梯形图记录一个查找结构，方便根据这些线段，通过x坐标y坐标来逐步定位在哪个梯形当中。一个搜索结构(Search Struct)如下，这样一个搜索结构我们标记为$SS(S)$：</p>
+<center><img src="./p9.png"></center>
+<p>如图颜色所示，可以看到这个结构中有三种节点，假设其实要判断目标点$p$位置，那么：</p>
+<ul>
+<li>红色的点：对应梯形图中的顶点。相当于垂直线部分。当遇到这样的节点时，判断$p$在垂直线的左右哪一侧，进而确定往下走的方向。</li>
+<li>黄色的点：对应梯形图中的上下边。当遇到这样的节点时，判断$p$在线段的上下哪一侧，进而确定往下走的方向。</li>
+<li>蓝色的点：对应着梯形图，也是搜索树中的叶子节点。</li>
+</ul>
+<p>从这个结构可以简明的看出，这个算法的空间复杂度，就是梯形图中的边，顶点以及梯形的数目和。从前面可知，这三者和依旧是一个$O(n)$的空间复杂度。现在问题是，这个时间复杂度是多少呢。这个放在后面讲解，因为这是一个随机算法，所以后面可以看到在期望上，时间复杂度是$O(logn)$量级的，而且构造出这种最好情况的概率，实际相当相当高。</p>
+<h2 id="ric">RIC</h2>
+<p>显然可以使用扫描线方式来构造梯形图，可惜的是这个方法可以构造梯形图，但是对搜索结构没有帮助。所以这里采用一种随机增量的构造方式来构建搜索树。RIC的过程可以简单描述如下：</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>思路<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">初始化一整个平面为一个根节点，然后随机的插入某一条边，进而重新划分整个平面的同时，重构整个搜索结构。</div>
+        </div>
+    </div>
+<p>对于某一个插入的边$pq$可以通过如下的方式来进行：</p>
+<ul>
+<li>判断$p$所在的梯形$T$，注意这个即是为了构造Search Struct同时也是利用Search Struct。</li>
+<li>对$T$进行细分为不超过3个梯形。</li>
+<li>因为$pq$线会穿过多个梯形，分别更新梯形图，以及搜索结构。
+<ul>
+<li>通过DCEL结构，找到当前梯形相邻的右侧梯形，不断更新这些梯形。</li>
+</ul>
+</li>
+</ul>
+<p>梯形图的更新比较简单，现在问题是如何更新搜索结构(Search Struct)。现在来看不同情况下搜索结构的更新：</p>
+<p><strong><font size = 4>Case 1: Two Endpoints</font></strong></p>
+<center><img src="./p10.png"></center>
+<p>左右两个端点都在一个梯形里面。这样一个梯形会分成四块。显然对于原来的梯形$X$，这个$X$要被替换成这四块上的一个搜索结构，搜所结构如右上角固定即可。</p>
+<p><strong><font size = 4>Case 2: One Endpoints</font></strong></p>
+<center><img src="./p11.png"></center>
+<p>一个端点落在梯形中。显然$X$会被分成三部分，左侧的$L$，以及右侧的$A,B$。注意这里$B$是一定存在的，即右侧一定有一个有界的小梯形。因为两个端点不同时在梯形中。所以一定有一个其他端点发出的线与$pq$相交。而同时这个点发出的线会被阻挡，进而要被剪除，形成A。所以会构成如右上图的判定情况。</p>
+<p>需要注意的是这个$L,B$都是属于原来X中新生成的实体。但是可以注意到$A$，$A$是由原来$X$外的一个实体扩展而来，所以这个时候不是创建，而是要引用到原先那个$A$的实体上去。</p>
+<p><strong><font size = 4>Case 3: No Endpoints</font></strong></p>
+<center><img src="./p12.png"></center>
+<p>没有端点落在梯形中，即被边分割。显然根据前面讲解，会发现这个梯形会被分割成上下两部分，但是这两部分实际是左右两个梯形延展过来。所以$A,B$显然都是有原先实体的。不过这里的线段$r$则无法沿用之前的。因为在这里，其判断逻辑完全不同。</p>
+<h2 id="算法复杂度分析">算法复杂度分析</h2>
+<p>前面可以看到，对于这个构造过程，实际上存在一个随机步骤。即这个边的插入顺序。这个顺序完全是随机的。分两部分来看。每一步结束，其$TM(S)$都会是一个确定的图形，但是对于$SS(S)$来说，其搜索结构，显然取决于插入顺序，第一个插入的边就决定了，插入的树根，即第一个划分判定方式。</p>
+<p>这里依然要采用后向分析的方式。对于这样一个插入顺序，我们可以标记为一个序列即$S_i=\set{s_1,\cdots,s_i}$。这表示第$i$步插入的线段集合，同时也表示第$i$步插入的线段$s_i$。</p>
+<p>现在考虑第$i$步的时间开销$T(i)$。这个显然由以下几部分构成</p>
+<ul>
+<li>点定位开销。标记为$t(i)$。</li>
+<li>对梯形图的创建。标记为$k(i)$。</li>
+</ul>
+<p>首先对于梯形图创建的个数取决于，被线段$s_i$遮挡的射线个数$K(i)$。大致来说$k(i)=K(i)+4$。大致说明如下对于左右端点所在的梯形各会增加2个。而对于中间被分割的梯形粗略就可以认为产生1个梯形，进而得出结论。实际上中间的都是其他梯形延展过来，复用的。但很不辛的是这个$K(i)$存在最坏情况可能高达$i$个，这不是个好消息。但是从期望角度来讲，这个$K(i)$可能是一个常数。下面来证明这个问题。</p>
+<blockquote>
+<p>对于$S$的所有插入顺序枚举，期望来讲这样一次插入导致遮挡射线个数为常数量级。即$E[k(i)]=O(1)$</p>
+</blockquote>
+<p>方法也是后向分析，即第$i$步中，每一条线段被插入概率均等，而此前也是均匀随机的插入$i-1$条线段了。我们要考察这一步生成梯形的期望，为方便设一个函数$\delta(\Delta,s)$。考察当前图中，如果插入$s$导致梯形$\Delta$被创建，则$\delta(\Delta,s)=1$，否则$\delta(\Delta,s)=0$。所以可得：</p>
+$$E[k(i)]=\frac{1}{i}\times\sum_{s\in{}S_i}\sum_{\Delta\in{}TM_i}\delta(\Delta,s)$$
+<p>显然这里可以交换求和符号，简单来说，就是变成对于每个梯形$\Delta$来说，反观线段，即哪条$s$导致了梯形的生成。显然，这一共有四种可能产生这个梯形。所以$\sum_{s\in{}S_i}\delta(\Delta,s)=4$。此即可的$E[k(i)]=O(1)$</p>
+<p>现在来看点定位开销。实际上这个开销就是整个搜索结构的Query开销。这个先放在这里即$E[T(i)]=O(logn)$。所以每一步都是期望$O(logn)$开销，进而总共进行$n$步的开销即$O(nlogn)$。也就是这个构造算法是$O(nlogn)$复杂度。</p>
+<p>现在我们也可以来看这个算法的空间复杂度，实际上这个数值，就是每一次增加的梯形个数，从上面我们已经看到了，每一步期望增加的都是常数，所以总体期望空间复杂度是$O(n)$。实际上可以看搜索结构跟梯形图的对应，就会发现对应梯形图，多出来的数据结构就是黄色节点，即节点，这些节点由每次插入边时，跟多少射线相交产生。而这是期望常数个的。当然最坏情况就是$O(i)$个相交，复杂度也就是$O(n^2)$。</p>
+<p>现在来看这个查询的复杂度是多少。如果从最后结果来看，即对于一个点$q$考虑其查找路径的各种组合，那将会是非常复杂的。这里用的办法即考虑一个点$q$，考察其所在梯形的变化路径，因为这个梯形变化路径实际上就是它的查找路径。这个根据前面的搜索结构构造路径可以看出来。这个可以用下图看出：</p>
+<center><img src="./p13.png"></center>
+<p>而搜索深度增加只可能发生在第2种情况。而且根据前面的构造算法，这样一次操作最多让树增加3层。于是这个搜索深度，就变成了这第二种情况发生的概率综合。即每次插入一条新的线段以后，这个固定点$q$所属梯形发生了变化的概率。这个概率即</p>
+$$3\times(P_1+P_2+\cdots+P_n)$$
+<p>在这里继续使用后向分析，在第$i$步种，这个梯形发生变化，只可能是其4条边是刚插入的边。所以概率为$4/i$。所带入后可得期望查询时间为$O(logn)$。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-08-25</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

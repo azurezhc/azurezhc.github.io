@@ -10,8 +10,8 @@
 <meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/XNode%E4%BB%8B%E7%BB%8D/" /><meta property="article:section" content="posts" />
 
 <meta property="og:site_name" content="一个小博客" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="XNode介绍 本文主要介绍我对XNode源码结构的刨析。查看一个其节点图的想法思路，方便我来进一步使用节点图，以及改造其结构。 网上也有一些视"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -44,7 +44,7 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a></div>
         </div>
@@ -59,7 +59,7 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
@@ -77,13 +77,13 @@
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ol>
+  <ul>
     <li><a href="#xnode介绍">XNode介绍</a></li>
     <li><a href="#xnode使用概述">XNode使用概述</a></li>
     <li><a href="#xnode整体结构">XNode整体结构</a></li>
     <li><a href="#xnode功能说明">XNode功能说明</a></li>
     <li><a href="#xnode运行时">XNode运行时</a></li>
-  </ol>
+  </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="xnode介绍">XNode介绍</h1>
 <p>本文主要介绍我对XNode源码结构的刨析。查看一个其节点图的想法思路，方便我来进一步使用节点图，以及改造其结构。</p>
@@ -92,9 +92,9 @@
 <p>本文也算是总结使用，顺便看一下其架构设计。</p>
 <h1 id="xnode使用概述">XNode使用概述</h1>
 <p>从整个结构来看，XNode是简单而清晰的。其针对图，节点，端口三个概念进行了包装和处理，并没有给与这些概念过多的逻辑结构，这是很好的一点。而这些元素也精确的落实在了图表示上面，XNode的结点图可视化如下：</p>
-<center> <img src="../01.assets/p1.png"></center>
+<center> <img src="./p1.png"></center>
 <p>先看一下其整个结构部分：</p>
-<center> <img src="../01.assets/d1.drawio.png"></center>
+<center> <img src="./d1.drawio.png"></center>
 <p>从数据结构来看简单明了：</p>
 <ul>
 <li>NodeGraph：图对象数据结构，持有一个列表存着所有节点概念对象。</li>
@@ -124,22 +124,22 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">SkillActionNode</span> <span class="p">:</span> <span class="n">Node</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">SkillActionNode</span> <span class="p">:</span> <span class="n">Node</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="na">	[Input]</span>
-</span></span><span class="line"><span class="cl">	<span class="k">public</span> <span class="n">Node</span> <span class="n">prev</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="n">Node</span> <span class="n">prev</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="na">
 </span></span></span><span class="line"><span class="cl"><span class="na">	[Output]</span>
-</span></span><span class="line"><span class="cl">	<span class="k">public</span> <span class="n">Node</span> <span class="n">next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="n">Node</span> <span class="n">next</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="c1">// Use this for initialization</span>
-</span></span><span class="line"><span class="cl">	<span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="n">Init</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">protected</span> <span class="kd">override</span> <span class="k">void</span> <span class="n">Init</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="k">base</span><span class="p">.</span><span class="n">Init</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">		
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="c1">// Return the correct value of an output port when requested</span>
-</span></span><span class="line"><span class="cl">	<span class="k">public</span> <span class="k">override</span> <span class="kt">object</span> <span class="n">GetValue</span><span class="p">(</span><span class="n">NodePort</span> <span class="n">port</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="k">null</span><span class="p">;</span> <span class="c1">// Replace this</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">override</span> <span class="kt">object</span> <span class="n">GetValue</span><span class="p">(</span><span class="n">NodePort</span> <span class="n">port</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">// Replace this</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
@@ -165,16 +165,16 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 节点的静态缓存结构</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">NodeDataCache</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="k">class</span> <span class="nc">NodeDataCache</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="c1">// 节点缓存Dict </span>
-</span></span><span class="line"><span class="cl">	<span class="k">private</span> <span class="k">static</span> <span class="n">PortDataCache</span> <span class="n">portDataCache</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">private</span> <span class="kd">static</span> <span class="n">PortDataCache</span> <span class="n">portDataCache</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="c1">// PortDataCache 继承于 Dictionary结构 有Dictionary结构</span>
-</span></span><span class="line"><span class="cl">	<span class="k">private</span> <span class="k">class</span> <span class="nc">PortDataCache</span> <span class="p">:</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">System</span><span class="p">.</span><span class="n">Type</span><span class="p">,</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">NodePort</span><span class="p">&gt;&gt;</span> <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">private</span> <span class="k">class</span> <span class="nc">PortDataCache</span> <span class="p">:</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">System</span><span class="p">.</span><span class="n">Type</span><span class="p">,</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">NodePort</span><span class="p">&gt;&gt;</span> <span class="p">{</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后当发生新的节点创建的时候，会触发重新构建cache的操作，简单流程如下：</p>
-<center> <img src="../01.assets/d2.drawio.png"></center>
+<center> <img src="./d2.drawio.png"></center>
 <p>最后就是形成一个类型&ndash;节点端口的映射表。而这个映射表结构就是用来构建可视化Node节点UI结构的基础。</p>
 <ul>
 <li>当编辑器运行的时候，通过这个类型&ndash;节点端口结构，生成UI上节点的<strong>显示结构</strong>。即这个节点编辑条，端口等。</li>
@@ -184,11 +184,11 @@
 <li>所以当游戏运行时，只有上面暴漏出来的Node，NodeGraph两个类型。而这也是开发者更关心的数据。</li>
 </ul>
 <p>而这就涉及到整个编辑器侧的架构，编辑表现跟逻辑分离，之间只有编辑器数据部分是相互关联的。整个结构图如下：</p>
-<center> <img src="../01.assets/d3.drawio.png"></center>
+<center> <img src="./d3.drawio.png"></center>
 <p>简单来说跟HighLevel想法对应。即NodeGraphEditor跟开发者关心的目标数据层NodeGraph结构关联。NodeEditor则跟数据层的Node关联。两个Editor类型提供编辑侧的绘制工作，以及借用Unity的属性反射结构，生成对应的属性Property的编辑窗口，进而可以编辑属性并且落地到数据层上去。</p>
 <p>可以通过几个较为重要的运行时流程来看整个结构</p>
 <p><strong><font size = 4> 添加节点 </font></strong></p>
-<center> <img src="../01.assets/d4.drawio.png"></center>
+<center> <img src="./d4.drawio.png"></center>
 <p>添加节点一般通过在节点图中右键来打开一个菜单栏实现。
 其调用过程就如上图：</p>
 <ul>
@@ -205,15 +205,15 @@
 <li>OnBodyGUI：绘制节点内结构。</li>
 </ul>
 <p>其中我们可能更为关心的是对于节点内结构的绘制。其结构即是，便利类对象的属性列表，如果其可见遍调用NodeEditorGUILayout将其绘制出来。</p>
-<center> <img src="../01.assets/d5.drawio.png"></center>
+<center> <img src="./d5.drawio.png"></center>
 <h1 id="xnode功能说明">XNode功能说明</h1>
 <p>基于上面，可以对整体结构有一个大概的了解。然后就可以很方便的理解提供的注解用途了。并且可以去扩展一些自己想要的功能结构。</p>
 <p>在上面的参考文章<a class="link-markdown-demo-site" href="https://www.bilibili.com/video/BV12P411F7Zu/?spm_id_from=333.337.search-card.all.click&amp;vd_source=8d35ead0946519f56d2ab5f9c83045df" rel="noopener">xNode插件的简单使用</a>中也已经对大部分功能做了详细的说明。</p>
 <p>这里只是总结一些细节使用。</p>
 <p>Node 相关内容</p>
-<center> <img src="../01.assets/d6.drawio.png"></center>
+<center> <img src="./d6.drawio.png"></center>
 <p>NodePort 相关内容</p>
-<center> <img src="../01.assets/d7.drawio.png"></center>
+<center> <img src="./d7.drawio.png"></center>
 <h1 id="xnode运行时">XNode运行时</h1>
 <p>在运行时则简单化了。关注主体只有NodeGraph，Node，NodePort这些相关部分。因为相关的绘制部分全部由NodeEditor侧承当。所以可以单纯从底层数据结构触发获取整个结构，即加载NodeGraph后就可以获得整个序列化后的对象结构。</p>
 <p>而运行时的实际效果则由需求决定细化：</p>
@@ -241,13 +241,10 @@
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
-
-    <div class="post-nav"><a href="/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/02%E6%96%87%E6%9C%AC%E6%90%9C%E7%B4%A2/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i></a>
-            <a href="/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/OdinInspector/Odin%E5%AD%97%E6%AE%B5%E5%8A%9F%E8%83%BD%E8%AF%B4%E6%98%8E/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
         </div>
     </footer></div>

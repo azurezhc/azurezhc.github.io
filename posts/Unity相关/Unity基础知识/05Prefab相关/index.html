@@ -10,8 +10,8 @@
 <meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/05Prefab%E7%9B%B8%E5%85%B3/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-05-19T00:00:00+00:00" />
 <meta property="article:modified_time" content="2024-05-19T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="05Prefab相关"/>
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="05Prefab相关"/>
 <meta name="twitter:description" content="prefab相关 本文主要记录Unity中Prefab相关的一些细节。辅助理解Prefab这个在Unity中常用的对象究竟是什么。 UnityP"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -44,7 +44,7 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a></div>
         </div>
@@ -59,7 +59,7 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
@@ -77,14 +77,14 @@
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ol>
+  <ul>
     <li><a href="#prefab相关">prefab相关</a></li>
     <li><a href="#prefab格式说明">Prefab格式说明</a></li>
     <li><a href="#meta文件">Meta文件</a></li>
-    <li><a href="#prefab-instances">Prefab instances</a></li>
+    <li><a href="#prefab-instances">Prefab Instances</a></li>
     <li><a href="#nested-prefabs">Nested Prefabs</a></li>
     <li><a href="#参考资料">参考资料</a></li>
-  </ol>
+  </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="prefab相关">prefab相关</h1>
 <p>本文主要记录Unity中Prefab相关的一些细节。辅助理解Prefab这个在Unity中常用的对象究竟是什么。</p>
@@ -166,7 +166,7 @@
 </div>
 </div><p>其中前两行为每个prefab文件都有的部分。在后面的数据中也不会出现重复。第一行表示所使用的YAML格式。第二行则是类似于创建了一个小的宏，定义<code>!u!</code>就是<code>tag:unity3d.com,2011:</code>。</p>
 <p>其后的部分则是包含在这个prefab中一系列对象的定义。每一个都会用一个显然的```来做区分。先看这个简单Gameobject的第一个Object对象。</p>
-<center><img src="../05.assets/p1.png"></center>
+<center><img src="./p1.png"></center>
 <p>每个Object都一定有头部两行。</p>
 <ul>
 <li>第一行则定义了Object的CLASS ID和FILE ID。其格式为&mdash; !u!{CLASS ID} &amp;{FIELD ID}。例如图中CLASS ID为1而FILE ID为4632272890024472620。</li>
@@ -182,7 +182,7 @@
 <h1 id="meta文件">Meta文件</h1>
 <p>上面可以看到一个Prefab文件是怎么初步建立文件的引用关系的。对于文件内的对象，会通过FILE ID来建立这一层引用。现在有个问题如何引用Prfab之外的对象呢。例如一个Image组件上的图片。而这个就是通过Unity对每个导入文件生成的Meta文件来实现。</p>
 <p>例如一个带有SpriteRenderer组件的Prefab我们可以看到如下序列化结构。</p>
-<center><img src="../05.assets/p2.png"></center>
+<center><img src="./p2.png"></center>
 <p>即该Sprite字段引用了一个对象，这个对象的FIEL ID为21300000。但是实际上这个对象不在Prefab内，也找不到对应FILE ID的Object。其后跟了一个guid字段，2a191196225f2314aa62eeddbc3d5810，该字段则说明了该对象来自于一个全局对象。实际上就是一个Sprite贴图。其后还有一个type字段。type则用来确定资源来自于Assets目录还是Library目录。</p>
 <ul>
 <li>Type 2：资源文件可以直接被Editor从Assets文件夹下加载。</li>
@@ -193,9 +193,9 @@
 <li>对于Meta文件来说，对于某些文件类型，其还有很多的额外导入设定。这些也都会写在meta文件之中。例如对于一张贴图来说，其导入后的Texture设置，mipmap等信息也都在meta文件之中。</li>
 <li>对于Unity加载资源来说，实际上都是从Library中获取的。但源文件会在Assets目录之中。所以每次Unity都需要一个Import阶段，来处理Asset中资源生成Library中数据。</li>
 </ul>
-<h1 id="prefab-instances">Prefab instances</h1>
+<h1 id="prefab-instances">Prefab Instances</h1>
 <p>有些时候Prefab会存在在其他对象之中。例如场景Scene之中。这个时候实际上会在对应的文件中生成一个重要的Object对象来承担引用功能，即PrefabInstance对象。来看场景中引用一个简单的prefab对象的数据结构：</p>
-<center><img src="../05.assets/p3.png"></center>
+<center><img src="./p3.png"></center>
 <p>可以注意到m_SourcePrefab字段引用了一个全局的guid，这个就是Prefab实例所对应的Prefab资源。而FILE ID也是相同的一个占位地址。而m_Modification字段则标识了这个Prefab Intance的修改。可以看到</p>
 <ul>
 <li>m_TransformParent：该对象在场景中的父对象</li>
@@ -203,11 +203,11 @@
 <li>m_Removed：在Prefab基础上移除的Component与Gameobject。</li>
 <li>m_Added：在Prefab基础上增添的Component与Gameobject</li>
 </ul>
-<center><img src="../05.assets/p4.png"></center>
+<center><img src="./p4.png"></center>
 <p>每一个都会有一个target来指明修改的对象。guid为目标prefab的全局guid，而fieldID则正是该对象在该prefab中的FILE ID标志。可以对照最前面的prefab数据格式，可以看到这里的两个对象就是前面的Gameobject以及对应的Transform。propertyPath则说明了修改数据字段的路径。value则说明了修改后的数值。</p>
 <h1 id="nested-prefabs">Nested Prefabs</h1>
 <p>现在我们就会看到一个问题。对于放在其他资源对象中的Prefab Instance实际上被没有一个FILE ID。那么在嵌套的Prefab中怎么建立引用关系呢。例如上面的ChildGameObject被放在另一个Prefab之中时。这个时候Unity实际上会生成一个占位的Object对象，并标记为 stripped。如下图：</p>
-<center><img src="../05.assets/p5.png"></center>
+<center><img src="./p5.png"></center>
 <p>对于Prefab内的引用会通过8665414460562454504，即这个Object的FILE ID来建立。而这个占位对象则有三个字段来指明</p>
 <ul>
 <li>m_CorrespondingSourceObject：指明了这个对象的guid以及对象的fileid。</li>
@@ -235,13 +235,10 @@
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
-
-    <div class="post-nav"><a href="/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" class="prev" rel="prev" title="Unity问题记录"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Unity问题记录</a>
-            <a href="/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/06Timeline%E7%9B%B8%E5%85%B3/" class="next" rel="next" title="06Timeline相关">06Timeline相关<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
         </div>
     </footer></div>

@@ -1,0 +1,118 @@
+<mxfile host="Electron" modified="2024-10-07T12:13:23.380Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.11 Chrome/114.0.5735.289 Electron/25.9.8 Safari/537.36" etag="IEfwPgQUGhptJ79Ahfoy" version="22.1.11" type="device">
+  <diagram name="第 1 页" id="WjxDfxcscBxgLJHHoJi3">
+    <mxGraphModel dx="2058" dy="1188" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3dMX9he-V4tMrhaXt6K2-2" value="借助ExecuteEvnet静态类中的&lt;br&gt;泛型接口来实现查找" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="40" width="190" height="530" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-1" value="ProcessMousePress&lt;br&gt;鼠标按下处理函数接口" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontColor=#000000;fillColor=#CCE5FF;" parent="1" vertex="1">
+          <mxGeometry x="220" y="160" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-3" value="ProcessMouseMove&lt;br&gt;鼠标移动处理函数接口" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontColor=#000000;fillColor=#CCE5FF;" parent="1" vertex="1">
+          <mxGeometry x="220" y="280" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-4" value="ProcessMouseDeag&lt;br&gt;鼠标拖拽处理函数接口" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontColor=#000000;fillColor=#CCE5FF;" parent="1" vertex="1">
+          <mxGeometry x="220" y="400" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-5" value="按顺序对各个函数调用&lt;br&gt;处理鼠标的左中右点击数据" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" parent="1" vertex="1">
+          <mxGeometry x="20" y="160" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-6" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;dashed=1;" parent="1" source="Yrd9TWk8UiwBDh0FWm9P-5" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="340" as="sourcePoint" />
+            <mxPoint x="170" y="430" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="240" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-7" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="830" y="65" width="20" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="Yrd9TWk8UiwBDh0FWm9P-9" target="Yrd9TWk8UiwBDh0FWm9P-21" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-9" value="查看是否Select选中变换&lt;br&gt;使用ExecuteEvents查看是否有实现&lt;br&gt;ISelectHandler&lt;div&gt;如果有且对象不一样触发Select&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" parent="1" vertex="1">
+          <mxGeometry x="870" y="65" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="Yrd9TWk8UiwBDh0FWm9P-19" target="Yrd9TWk8UiwBDh0FWm9P-23" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-19" value="ExecuteEvnet递归查看&lt;br&gt;是否鼠标点击按下事件处理实现" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" parent="1" vertex="1">
+          <mxGeometry x="870" y="145" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-21" value="ISelectHandler" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDF7FF;shadow=0;glass=0;" parent="1" vertex="1">
+          <mxGeometry x="1140" y="75" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-23" value="IPointerDownHandler" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDF7FF;shadow=0;glass=0;" parent="1" vertex="1">
+          <mxGeometry x="1140" y="155" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="Yrd9TWk8UiwBDh0FWm9P-26" target="Yrd9TWk8UiwBDh0FWm9P-28" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-26" value="ExecuteEvnet查看&lt;br&gt;是否有点击事件处理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" parent="1" vertex="1">
+          <mxGeometry x="870" y="225" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-28" value="IPointerClickHandler" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDF7FF;shadow=0;glass=0;" parent="1" vertex="1">
+          <mxGeometry x="1140" y="235" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-30" value="本帧按下&lt;br&gt;PressedThisFrame" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" parent="1" vertex="1">
+          <mxGeometry x="700" y="155" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-31" value="本帧释放&lt;br&gt;ReleasedThisFrame" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" parent="1" vertex="1">
+          <mxGeometry x="700" y="405" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-34" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="830" y="315" width="20" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-36" value="以ProcessMousePress&lt;br&gt;处理为例&lt;br&gt;函数区分按下与抬起部分" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=15.86;notch=0;fillColor=#E6FFCC;" parent="1" vertex="1">
+          <mxGeometry x="490" y="275" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="Yrd9TWk8UiwBDh0FWm9P-37" target="Yrd9TWk8UiwBDh0FWm9P-40" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-37" value="ExecuteEvnet查看&lt;br&gt;是否有点击事件处理&lt;br&gt;如果跟之前记录的为统一对象&lt;br&gt;则触发点击事件" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" parent="1" vertex="1">
+          <mxGeometry x="870" y="315" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-38" value="" style="curved=1;endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1310" y="205" as="sourcePoint" />
+            <mxPoint x="1310" y="385" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1400" y="285" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-39" value="点击与按压事件记录下来&lt;br&gt;用于当抬起的时候判断是否统一物体&lt;br&gt;这相当于点击只有释放的时候才能断定&lt;br&gt;如果时不同物体则也不触发点击" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E6FFCC;shadow=0;glass=0;" parent="1" vertex="1">
+          <mxGeometry x="1390" y="250" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-40" value="IPointerClickHandler" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDF7FF;shadow=0;glass=0;" parent="1" vertex="1">
+          <mxGeometry x="1140" y="325" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="Yrd9TWk8UiwBDh0FWm9P-42" target="Yrd9TWk8UiwBDh0FWm9P-44" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-42" value="ExecuteEvnet查看&lt;br&gt;是否有拖曳释放处理&lt;br&gt;如果当前正在拖曳&lt;br&gt;则触发当前对象上的Drop处理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" parent="1" vertex="1">
+          <mxGeometry x="870" y="395" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-44" value="IDropHandler" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDF7FF;shadow=0;glass=0;" parent="1" vertex="1">
+          <mxGeometry x="1141" y="405" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="Yrd9TWk8UiwBDh0FWm9P-48" target="Yrd9TWk8UiwBDh0FWm9P-49" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-48" value="ExecuteEvnet查看&lt;br&gt;是否有拖曳释放处理&lt;br&gt;如果之前drag对象上的EndDrag处理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;" parent="1" vertex="1">
+          <mxGeometry x="870" y="475" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-49" value="IDropHandler" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDF7FF;shadow=0;glass=0;" parent="1" vertex="1">
+          <mxGeometry x="1141" y="485" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Yrd9TWk8UiwBDh0FWm9P-51" value="还有各种细节的如&lt;br&gt;离开的处理这里不在画出&lt;br&gt;大体来说时根据对应事件的特征需求&lt;br&gt;封装的处理方式&lt;br&gt;例如点击要释放的时候再去判定" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6FFCC;shadow=0;glass=0;dashed=1;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+          <mxGeometry x="700" y="570" width="220" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

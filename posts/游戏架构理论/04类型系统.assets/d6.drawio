@@ -1,0 +1,86 @@
+<mxfile host="Electron" modified="2023-09-01T08:18:32.289Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="u5EdxMVgaPOLoINYyw5d" version="21.6.8" type="device">
+  <diagram name="第 1 页" id="E28E2j5e79PBLsIBp2jc">
+    <mxGraphModel dx="2074" dy="1204" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-1" value="Owner" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#66B2FF;" vertex="1" parent="1">
+          <mxGeometry x="80" y="480" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-2" value="+ Map&lt;string,components&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="MvgXDKQkaPPvYFssrEvx-1">
+          <mxGeometry y="30" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-3" value="" style="line;strokeWidth=2;html=1;" vertex="1" parent="MvgXDKQkaPPvYFssrEvx-1">
+          <mxGeometry y="60" width="160" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-4" value="+ func1 函数1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="MvgXDKQkaPPvYFssrEvx-1">
+          <mxGeometry y="70" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-9" value="组合&lt;br&gt;一种建立在实力层间的组织方式&lt;br&gt;有一个容器组合者&lt;br&gt;其拥有一个Map&lt;br&gt;可以动态的组合各种Component&lt;br&gt;为了区分不同的Component&lt;br&gt;一般要加一个Component标识来区分" style="shape=card;whiteSpace=wrap;html=1;fillColor=#E6FFCC;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="80" y="240" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-10" value="Component1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#66B2FF;" vertex="1" parent="1">
+          <mxGeometry x="400" y="270" width="160" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-11" value="+ componentType1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="MvgXDKQkaPPvYFssrEvx-10">
+          <mxGeometry y="30" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-20" value="+ field1 变量1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="MvgXDKQkaPPvYFssrEvx-10">
+          <mxGeometry y="60" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-21" value="+ field2 变量2" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="MvgXDKQkaPPvYFssrEvx-10">
+          <mxGeometry y="90" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-12" value="" style="line;strokeWidth=2;html=1;" vertex="1" parent="MvgXDKQkaPPvYFssrEvx-10">
+          <mxGeometry y="120" width="160" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-32" value="+ func2 函数2" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="MvgXDKQkaPPvYFssrEvx-10">
+          <mxGeometry y="130" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-22" value="Component1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#66B2FF;" vertex="1" parent="1">
+          <mxGeometry x="400" y="475" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-23" value="+ componentType1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="MvgXDKQkaPPvYFssrEvx-22">
+          <mxGeometry y="30" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-24" value="+ field3 变量3" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="MvgXDKQkaPPvYFssrEvx-22">
+          <mxGeometry y="60" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-26" value="" style="line;strokeWidth=2;html=1;" vertex="1" parent="MvgXDKQkaPPvYFssrEvx-22">
+          <mxGeometry y="90" width="160" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-27" value="Component1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#66B2FF;" vertex="1" parent="1">
+          <mxGeometry x="400" y="650" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-28" value="+ componentType1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="MvgXDKQkaPPvYFssrEvx-27">
+          <mxGeometry y="30" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-31" value="" style="line;strokeWidth=2;html=1;" vertex="1" parent="MvgXDKQkaPPvYFssrEvx-27">
+          <mxGeometry y="60" width="160" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-33" value="+ func3 函数3" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="MvgXDKQkaPPvYFssrEvx-27">
+          <mxGeometry y="70" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="MvgXDKQkaPPvYFssrEvx-2" target="MvgXDKQkaPPvYFssrEvx-10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="525" />
+              <mxPoint x="320" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="MvgXDKQkaPPvYFssrEvx-2" target="MvgXDKQkaPPvYFssrEvx-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MvgXDKQkaPPvYFssrEvx-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="MvgXDKQkaPPvYFssrEvx-2" target="MvgXDKQkaPPvYFssrEvx-27">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="525" />
+              <mxPoint x="320" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

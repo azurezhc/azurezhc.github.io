@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>08EventSystem - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="08EventSystem" />
+<meta property="og:description" content="EventSystem EventSystem是Unity中UI事件处理的中心。承担将UI层面鼠标点击事件进行分发处理的过程。我这里主要是记录一下EventSys" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/08EventSystem/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-09-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-09-16T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="08EventSystem"/>
+<meta name="twitter:description" content="EventSystem EventSystem是Unity中UI事件处理的中心。承担将UI层面鼠标点击事件进行分发处理的过程。我这里主要是记录一下EventSys"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/08EventSystem/" /><link rel="prev" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/07Serializaion%E7%9B%B8%E5%85%B3/" /><link rel="next" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "08EventSystem",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/08EventSystem\/"
+        },"genre": "posts","wordcount":  4501 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/08EventSystem\/","datePublished": "2024-09-16T00:00:00+00:00","dateModified": "2024-09-16T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">08EventSystem</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-09-16">2024-09-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4501 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#eventsystem">EventSystem</a></li>
+    <li><a href="#eventsystem概略">EventSystem概略</a></li>
+    <li><a href="#raycast查找对应gameobject流程">Raycast查找对应GameObject流程</a></li>
+    <li><a href="#对应gameobject上处理各种事件流程">对应GameObject上处理各种事件流程</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="eventsystem">EventSystem</h1>
+<p>EventSystem是Unity中UI事件处理的中心。承担将UI层面鼠标点击事件进行分发处理的过程。我这里主要是记录一下EventSystem的架构，以及事件分发流程。帮助理清Unity中事件的处理流程。</p>
+<p>这里主要是以PC端的处理流程为例。</p>
+<h1 id="eventsystem概略">EventSystem概略</h1>
+<p>在PC端一个鼠标点击事件的处理大概可以用下图表示：</p>
+<center><img src="./d1.drawio.png"></center>
+<p>其中</p>
+<ul>
+<li>蓝色的为大致的类型结构</li>
+<li>黄色部分为事件的处理流程</li>
+</ul>
+<p>简单概括就是。</p>
+<ul>
+<li>在EventSystem中会每帧轮询各个处理module来处理对应的事件。相当于不断轮询各种屏幕点击事件有没有发生。</li>
+<li>对应BaseInputModule的子类会处理各种事件。大致来说可以分为两步：
+<ul>
+<li>通过屏幕坐标，结合RaycastManager中存储的对象，找到对应的GameObject。</li>
+<li>基于找到的GameObject检索，处理事件的脚本，处理对应事件。</li>
+</ul>
+</li>
+</ul>
+<p>下面详细记录这里面各个关键步骤的详细情况</p>
+<h1 id="raycast查找对应gameobject流程">Raycast查找对应GameObject流程</h1>
+<p>首先EventSystem中Update的处理相对简单清晰。先Tick所有Module进行更新，然后查找一个支持且激活的Module设置为当前进行输入处理的Module。即设置为<code>CurrentInputModule</code>，该Module会被调用对应的Process来进行后续的事件处理操作。</p>
+<p>所以这个Update主要逻辑就是筛选适合的Module来进行消息处理。</p>
+<p>对于PC端来说，使用<code>StandaloneInputModule</code>类型，其Process处理最后会进入到<code>ProcessMouseEvent</code>函数，也即是对鼠标事件的处理流程中去。该函数实现如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">protected</span> <span class="k">void</span> <span class="n">ProcessMouseEvent</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 获取鼠标点击信息 返回MouseState对象 其中版包含了点中的GameObject Raycast 点击位置等信息</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 相当于上述步骤中的第一步</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">mouseData</span> <span class="p">=</span> <span class="n">GetMousePointerEventData</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">leftButtonData</span> <span class="p">=</span> <span class="n">mouseData</span><span class="p">.</span><span class="n">GetButtonState</span><span class="p">(</span><span class="n">PointerEventData</span><span class="p">.</span><span class="n">InputButton</span><span class="p">.</span><span class="n">Left</span><span class="p">).</span><span class="n">eventData</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">m_CurrentFocusedGameObject</span> <span class="p">=</span> <span class="n">leftButtonData</span><span class="p">.</span><span class="n">buttonData</span><span class="p">.</span><span class="n">pointerCurrentRaycast</span><span class="p">.</span><span class="n">gameObject</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 可以看到分别处理对应鼠标左键 中键 右键的 按压 移动 拖拽等定义的交互概念事件</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ProcessMousePress</span><span class="p">(</span><span class="n">leftButtonData</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ProcessMove</span><span class="p">(</span><span class="n">leftButtonData</span><span class="p">.</span><span class="n">buttonData</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ProcessDrag</span><span class="p">(</span><span class="n">leftButtonData</span><span class="p">.</span><span class="n">buttonData</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">ProcessMousePress</span><span class="p">(</span><span class="n">mouseData</span><span class="p">.</span><span class="n">GetButtonState</span><span class="p">(</span><span class="n">PointerEventData</span><span class="p">.</span><span class="n">InputButton</span><span class="p">.</span><span class="n">Right</span><span class="p">).</span><span class="n">eventData</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ProcessDrag</span><span class="p">(</span><span class="n">mouseData</span><span class="p">.</span><span class="n">GetButtonState</span><span class="p">(</span><span class="n">PointerEventData</span><span class="p">.</span><span class="n">InputButton</span><span class="p">.</span><span class="n">Right</span><span class="p">).</span><span class="n">eventData</span><span class="p">.</span><span class="n">buttonData</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ProcessMousePress</span><span class="p">(</span><span class="n">mouseData</span><span class="p">.</span><span class="n">GetButtonState</span><span class="p">(</span><span class="n">PointerEventData</span><span class="p">.</span><span class="n">InputButton</span><span class="p">.</span><span class="n">Middle</span><span class="p">).</span><span class="n">eventData</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ProcessDrag</span><span class="p">(</span><span class="n">mouseData</span><span class="p">.</span><span class="n">GetButtonState</span><span class="p">(</span><span class="n">PointerEventData</span><span class="p">.</span><span class="n">InputButton</span><span class="p">.</span><span class="n">Middle</span><span class="p">).</span><span class="n">eventData</span><span class="p">.</span><span class="n">buttonData</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(!</span><span class="n">Mathf</span><span class="p">.</span><span class="n">Approximately</span><span class="p">(</span><span class="n">leftButtonData</span><span class="p">.</span><span class="n">buttonData</span><span class="p">.</span><span class="n">scrollDelta</span><span class="p">.</span><span class="n">sqrMagnitude</span><span class="p">,</span> <span class="m">0.0f</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">scrollHandler</span> <span class="p">=</span> <span class="n">ExecuteEvents</span><span class="p">.</span><span class="n">GetEventHandler</span><span class="p">&lt;</span><span class="n">IScrollHandler</span><span class="p">&gt;(</span><span class="n">leftButtonData</span><span class="p">.</span><span class="n">buttonData</span><span class="p">.</span><span class="n">pointerCurrentRaycast</span><span class="p">.</span><span class="n">gameObject</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ExecuteEvents</span><span class="p">.</span><span class="n">ExecuteHierarchy</span><span class="p">(</span><span class="n">scrollHandler</span><span class="p">,</span> <span class="n">leftButtonData</span><span class="p">.</span><span class="n">buttonData</span><span class="p">,</span> <span class="n">ExecuteEvents</span><span class="p">.</span><span class="n">scrollHandler</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>所以<code>GetMousePointerEventData</code>函数承担了，查找到点击GameObject的功能。最后会调用的EventSysten上的<code>RaycastAll</code>函数上。这里Unity的UGUI系统被没有使用复杂的计算几何中的一些结构和算法。而是直接遍历了<code>RaycasterManager</code>中存储的所有可被射线检测对象，这个流程可以用下图来较为清晰的来说明：</p>
+<center><img src="./d2.drawio.png"></center>
+<p>其中重要几个点在于</p>
+<ul>
+<li>从RaycastManager中获取Raycaster列表，依次调用对应的Raycast函数。对应的Raycaster类型分装了对Raycast概念的包装实现。</li>
+</ul>
+<p><code>RaycastAll</code>函数实现如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">RaycastAll</span><span class="p">(</span><span class="n">PointerEventData</span> <span class="n">eventData</span><span class="p">,</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">RaycastResult</span><span class="p">&gt;</span> <span class="n">raycastResults</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">raycastResults</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">modules</span> <span class="p">=</span> <span class="n">RaycasterManager</span><span class="p">.</span><span class="n">GetRaycasters</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">modulesCount</span> <span class="p">=</span> <span class="n">modules</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">modulesCount</span><span class="p">;</span> <span class="p">++</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">module</span> <span class="p">=</span> <span class="n">modules</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">module</span> <span class="p">==</span> <span class="kc">null</span> <span class="p">||</span> <span class="p">!</span><span class="n">module</span><span class="p">.</span><span class="n">IsActive</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">module</span><span class="p">.</span><span class="n">Raycast</span><span class="p">(</span><span class="n">eventData</span><span class="p">,</span> <span class="n">raycastResults</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">raycastResults</span><span class="p">.</span><span class="n">Sort</span><span class="p">(</span><span class="n">s_RaycastComparer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里<code>GetRaycasters</code>函数返回的是一个BaseRaycaster类型的列表，然后已依次调用Raycast函数。BaseRaycaster采用的是自己注入的方式，其继承于UIBehaviour，可以挂在GameObject上。当其激活Enable的时候，会将自己注册到RaycasterManager中进行管理。而RaycasterManager并没有对其进行排序处理。也就是说，对应Raycaster的激活处理Raycast的顺序，就是其在RaycasterManager中的保存顺序。</p>
+<p>其中GraphicRaycaster是UI系统中用来处理射线检测事件的类型。当调用鼠标点击的时候，最后会由该类型的Raycast函数来处理。GraphicRaycaster要求所在GameObject必须有一个Canvas组件。而这个Canvas对象，正是GraphicRaycaster用来在GraphicRegister中查找要进行检测Graphic对象的键值。</p>
+<ul>
+<li>从GraphicRegister中获取要检测的Graphic对象列表。逐个用PointerEventData来检测是否命中对应的Graphic对象。</li>
+</ul>
+<p>GraphicRegister中以字典的方式存储了每个Canvas下所有Graphic对象列表。字典的键值为Canvas对象，值对象为一个IndexedSet容器，存放了Graphic列表。IndexedSet是UGUI自己实现的一个容器结构，其目标是实现一个带有索引的集合结构。实现上是用Dictionary加List来实现的，Dictionary确保集合对象不重复，同时用来提供给定一个对象，查找索引的功能。而List来有序存储Graphic对象。此外其里面为了高效性还做了很多优化。</p>
+<p>Graphic对象也采用了自己注入的方式，在Graphic基类里面有个通用的RaycastTarget字段。该字段设置为True或Flase时会对应调用GraphicRegister的注册接口或移除接口，将自身注入到GraphicRegister中。每次调用注入的时候，会带上自己所在父GameObject中最近的Canvas对象，用来表示存储到对应的Canvas中去。也就说，同一个Canvas下所有子对象上的Graphic子类对象，会被放进同一个IndexedSet中去管理。</p>
+<ul>
+<li>遍历IndexedSet列表逐个进行检测。</li>
+</ul>
+<p>这个可以直接看GraphicRaycaster类型的Raycast实现。这里面有很多细节：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Canvas为根节点GameObject上的canvas</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// EventCamera 为处理事件相机</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// foundGraphics即检测的Graphic对象列表</span>
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kd">static</span> <span class="k">void</span> <span class="n">Raycast</span><span class="p">(</span><span class="n">Canvas</span> <span class="n">canvas</span><span class="p">,</span> <span class="n">Camera</span> <span class="n">eventCamera</span><span class="p">,</span> <span class="n">Vector2</span> <span class="n">pointerPosition</span><span class="p">,</span> <span class="n">IList</span><span class="p">&lt;</span><span class="n">Graphic</span><span class="p">&gt;</span> <span class="n">foundGraphics</span><span class="p">,</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Graphic</span><span class="p">&gt;</span> <span class="n">results</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Necessary for the event system</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">totalCount</span> <span class="p">=</span> <span class="n">foundGraphics</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">totalCount</span><span class="p">;</span> <span class="p">++</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Graphic</span> <span class="n">graphic</span> <span class="p">=</span> <span class="n">foundGraphics</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// raycast 裁剪 以及深度判定</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(!</span><span class="n">graphic</span><span class="p">.</span><span class="n">raycastTarget</span> <span class="p">||</span> <span class="n">graphic</span><span class="p">.</span><span class="n">canvasRenderer</span><span class="p">.</span><span class="n">cull</span> <span class="p">||</span> <span class="n">graphic</span><span class="p">.</span><span class="n">depth</span> <span class="p">==</span> <span class="p">-</span><span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// RectTransform矩形范围检测 进入引擎底层判定</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(!</span><span class="n">RectTransformUtility</span><span class="p">.</span><span class="n">RectangleContainsScreenPoint</span><span class="p">(</span><span class="n">graphic</span><span class="p">.</span><span class="n">rectTransform</span><span class="p">,</span> <span class="n">pointerPosition</span><span class="p">,</span> <span class="n">eventCamera</span><span class="p">,</span> <span class="n">graphic</span><span class="p">.</span><span class="n">raycastPadding</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 有事件相机的情况下 检测裁剪距离</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">eventCamera</span> <span class="p">!=</span> <span class="kc">null</span> <span class="p">&amp;&amp;</span> <span class="n">eventCamera</span><span class="p">.</span><span class="n">WorldToScreenPoint</span><span class="p">(</span><span class="n">graphic</span><span class="p">.</span><span class="n">rectTransform</span><span class="p">.</span><span class="n">position</span><span class="p">).</span><span class="n">z</span> <span class="p">&gt;</span> <span class="n">eventCamera</span><span class="p">.</span><span class="n">farClipPlane</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 调用Graphic对象上的Raycast实现接口</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">graphic</span><span class="p">.</span><span class="n">Raycast</span><span class="p">(</span><span class="n">pointerPosition</span><span class="p">,</span> <span class="n">eventCamera</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">s_SortedGraphics</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">graphic</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 所有命中对象 进行一个排序 根据depth来进行判定</span>
+</span></span><span class="line"><span class="cl">    <span class="n">s_SortedGraphics</span><span class="p">.</span><span class="n">Sort</span><span class="p">((</span><span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">g2</span><span class="p">.</span><span class="n">depth</span><span class="p">.</span><span class="n">CompareTo</span><span class="p">(</span><span class="n">g1</span><span class="p">.</span><span class="n">depth</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">totalCount</span> <span class="p">=</span> <span class="n">s_SortedGraphics</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">totalCount</span><span class="p">;</span> <span class="p">++</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">results</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">s_SortedGraphics</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">s_SortedGraphics</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到对于每一个Graphic对象这里有一些开关条件判定。例如最常见的RaycastTarget判定以及范围判定，这其中范围判定是直接调用的引擎判定接口。从接口来看，应该是根据RectTransform范围和点来判定点是否落在Rect所示范围之内。
+最后会进入到Graphic具体对象中的Raycast实现判定。而Graphic对象的判定则相对复杂，是一个如下的递归判定。</p>
+<center><img src="./d3.drawio.png"></center>
+<p>简单来说，这个过程的目的就是递归向上查找当前点击是否符合每一个父对象上Graphic组件的IsRaycastLocationValid判定。只要有一个判定不合法，则视为该GameObject没有被点击命中。进而不会添加到结果队列中去。而IsRaycastLocationValid是一个接口函数，对应每个不同对象来说，都有着不同的实现。</p>
+<p>最后，所有满足条件的对象会加入到一个列表中，然后按照深度从大到小的顺序排序后返回给外侧。而所有Raycaster的结果列表会EventSystem那一层汇聚，即<code>RaycastAll</code>函数位置处会讲多由列表合为一个。都放在最后的<code>raycastResults</code>列表中。</p>
+<p>在该层会将所有的Raycaster的结果，即<code>raycastResults</code>列表进行一次排序操作。此时会按照如下的一个优先级顺序来进行排序操作</p>
+<center><img src="./d4.drawio.png"></center>
+<p>最后会返回这个排序列表的第一个来作为Raycast命中的GameObject。</p>
+<p>在鼠标点击情况下，会针对鼠标的左中右键依次生成对应的鼠标事件的数据结构封装。并将Raycast命中信息包装进去，作为本次鼠标的整个点击事件信息返还给外面。</p>
+<h1 id="对应gameobject上处理各种事件流程">对应GameObject上处理各种事件流程</h1>
+<p>事件处理的后半部分便是基于前面筛选出的GameObject对象来进行对应的事件处理。即<code>ProcessMouseEvent</code>函数中，获取到MouseData之后的处理部分。</p>
+<p>Unity对各种点击事件概念是进行了一定的包装和处理的。从设计层角度来说，Unity是提供了一套接口函数。对应被点击的物体上如果有脚本实现了对应的接口，那么会触发对应的实现函数，进而实现开发现者想处理的点击事件逻辑。</p>
+<p><code>ProcessMouseEvent</code>函数后半部分便是对这个分发过程的实现。</p>
+<p>而整个分发过程可用如下图结构表示：</p>
+<center><img src="./d5.drawio.png"></center>
+<p>这里有一个很重要的承载类就是<code>ExecuteEvents</code>类。图中右侧各种查找对应Interface是否实现的方式依靠于这个静态类型，其中提供了一系列静态函数，用来查找给定的事件，在对应GameObject以及其父对象上是否存在。所以ExecuteEvents相当于对查找过程的函数封装。<code>ExecuteEvents</code>类提供的主要部分功能接口如下：</p>
+<center><img src="./d6.drawio.png"></center>
+<p>可以看到主要就是提供了一系列事件接口的查找函数。主要是Execute等。而其查找的方式也很简单。具体来说就是：</p>
+<ul>
+<li>查找当前GameObject上的组件是否有实现对应事件接口</li>
+<li>如果没有对应实现，则向父GameObject上继续查找</li>
+</ul>
+<h1 id="总结">总结</h1>
+<p>其实可以看到UGUI中的事件系统并没有使用特别复杂的数据结构，算法等过程。就是很本质的几步流程：</p>
+<ul>
+<li>所有Graphic对象激活的时候注册到对应Canvas所对应的队列中。</li>
+<li>遍历队列查找当前点击命中的Graphic对象，其中涉及Canvas，Depth等值的大小排序。</li>
+<li>以命中的GameObject对象为基点，开始查找实现接口。</li>
+</ul>
+<p>这样一套结构其实有一些细节问题，其一便是效率问题，实际上，查找过程就相当于不断遍历，不断的获取Component。同时也没有任何几何数据结构的支持。实际上计算几何中对于2D点查询已经有很多研究，不过一般复杂的数据结构和算法，也难以维护。不过这里简单的方式，性能上可能已经足够，同时有便于理解和扩展。</p>
+<p>其次是有些时候会有一些奇怪的点击效果出现。</p>
+<ul>
+<li>最常见的是Button有了，但是没有点击效果，一般都会加一个空image。实际上这个image就是为了是的第一步Raycast对象能命中对象。image本身继承自Graphic，所以会加入到Canvas队列中，进而可以被Raycast检测到。</li>
+<li>对于Graphic检测还有一个ICanvasRaycastFilter接口类型可供检测控制，对于进行检测的GameObject上如果有实现该接口类型的实例对象，那么可以控制检测判定。</li>
+<li>根据上面的流程结构，可以发现对于如下图的UI结构，会发现虽然点击在Image2(蓝色)上面，但是也会触发到Image1上的Button，这是因为Graphic检测对象命中了Image2。但是事件查找的时候递归向上查找事件处理，找到Image1上的Button进行了处理。
+<center><img src="./p1.png"></center>
+这种方式算是符合设计目标的。对于一个Button下可能有很复杂的图形结构，最后都到根节点上进行事件处理。但是也会出现如图这样比较奇怪的事件处理情况。</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-09-16</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

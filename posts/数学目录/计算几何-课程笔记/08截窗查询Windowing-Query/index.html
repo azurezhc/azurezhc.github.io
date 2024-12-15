@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>计算几何课程 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="计算几何课程" />
+<meta property="og:description" content="08截窗查询(Windowing Query) 计算几何-笔记目录 在第七章中讨论的Range Query是给定一个矩形，查询有多少落在矩形中的点。而在本章，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-08-28T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="计算几何课程"/>
+<meta name="twitter:description" content="08截窗查询(Windowing Query) 计算几何-笔记目录 在第七章中讨论的Range Query是给定一个矩形，查询有多少落在矩形中的点。而在本章，"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/04%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "计算几何课程",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query\/"
+        },"genre": "posts","wordcount":  5329 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query\/","datePublished": "2023-08-28T00:00:00+00:00","dateModified": "2023-08-28T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">计算几何课程</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-28">2023-08-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5329 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#08截窗查询windowing-query">08截窗查询(Windowing Query)</a></li>
+    <li><a href="#截窗查询">截窗查询</a></li>
+    <li><a href="#穿刺查询stabbing-query">穿刺查询(Stabbing Query)</a></li>
+    <li><a href="#interval-tree">Interval Tree</a></li>
+    <li><a href="#二维查询">二维查询</a></li>
+    <li><a href="#grounded-range-query">Grounded Range Query</a>
+      <ul>
+        <li><a href="#1d-grq">1D-GRQ</a></li>
+        <li><a href="#priority-search-tree">Priority Search Tree</a></li>
+        <li><a href="#2d-grq">2D-GRQ</a></li>
+      </ul>
+    </li>
+    <li><a href="#segment-tree">Segment Tree</a></li>
+    <li><a href="#vertiacl-segment-stabbing-query">Vertiacl Segment Stabbing Query</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="08截窗查询windowing-query">08截窗查询(Windowing Query)</h1>
+<p><a class="link-markdown-demo-site" href="./计算几何-笔记大纲.md" rel="noopener">计算几何-笔记目录</a></p>
+<p>在第七章中讨论的Range Query是给定一个矩形，查询有多少落在矩形中的点。而在本章，则相当于其一个扩展。对于点来说相当于对0维物体的查询，这里也可以对更高维度物体进行查询。例如对于1维来说，相当于给定一个矩形，查询与矩形相交的线段。</p>
+<ul>
+<li>Orthogonal Windowing Query
+<ul>
+<li>主要介绍正交截窗查询(Orthogonal Windowing Query)的定义和分类。</li>
+</ul>
+</li>
+<li>Stabbing Query
+<ul>
+<li>主要介绍Stabbing Query。针对上述给出的Type B类型转化为1维查询问题。而该1维查询就相当于给定一个值，Stabbing出所有相交线段。</li>
+</ul>
+</li>
+<li>Interval Tree: Construction
+<ul>
+<li>本节主要介绍Interval Tree结构。介绍其构成方式，内部构成结构。最后给出一个简单的复杂度。</li>
+</ul>
+</li>
+<li>Interval Tree: Query
+<ul>
+<li>本节主要介绍如何在Interval Tree上左Stabbing Query。在该算法上给出查询的时间复杂度。</li>
+</ul>
+</li>
+<li>Stabbing With A Segment
+<ul>
+<li>介绍完1维直线的Stabbing Query之后，还需要回到2维的问题上。在2维中，这里实际是一个线段去做Stabbing Query。这里的主要改变就是修改Interval Tree中的两边List改为Range Tree。最后给出一个Windowing Query的算法，并分析出其算法性能。</li>
+</ul>
+</li>
+<li>Grounded Range Query
+<ul>
+<li>本节主要目标为了优化上面算法中的空间复杂度度。因为使用了Range Tree使得算法空间复杂度为$O(n)$，而思路想法在于Windowing Query中的Range Query实际上是一个无界的边界，所以构成了一个特殊的Range Query，即Grounded Range Query。</li>
+</ul>
+</li>
+<li>1D-GRQ Using Heap
+<ul>
+<li>本节介绍在1维中使用最小堆(Minimum Heap)来实现上面的GRQ算法。这里用堆的一个重要原因是因为其可以拓展到2维情况下。</li>
+</ul>
+</li>
+<li>Priority Search Tree
+<ul>
+<li>主要介绍优先搜索树(Priority Search Tree)，PST=Heap+BBST。</li>
+</ul>
+</li>
+<li>2D-GRQ Using PST
+<ul>
+<li>主要介绍基于PST怎么来做上面的2维Windowing Query。讲述了算法伪代码，举出了求解的例子，还分析了查询时间。注意到这个查询树的时间任然是O(r+logn)但是空间复杂依然变为O(n)</li>
+</ul>
+</li>
+<li>Segment Tree
+<ul>
+<li>本节主要目标其实是解决通用的Windowing Query。在通用的情况下线条并不再是正交的，于是对于上面Type B的那些线段，前述方法将失效。而解决方法就是使用Segment tree。</li>
+</ul>
+</li>
+<li>Vertical Segment Stabbing Query
+<ul>
+<li>本节主要是回到二维问题上。将任意线段投影到线段树(Segment Tree)结构上去解决问题。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="截窗查询">截窗查询</h1>
+<p>这一章可以认为是第七章进一步的扩展。对于点查询，相当于对0维物体的查询。这里也可以对更高维度物体进行查询。</p>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>问题<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">截窗查询(Window Query)，即给定平面上一系列线段，以及一个矩形截窗。查询与矩形相交的线段有哪些。</div>
+        </div>
+    </div>
+<center><img src="./p1.png"></center>
+<p>这个问题，可以形式化的描述为：对于平面上存在一组线段集合$S=\set{s_i=[p_i,p_i\']\mid 1\leq i \leq n}$。给定一个截窗(query window)，即一个正交范围$W=[x,x\']\times[y,y\']$/。求出所有与正交范围相交的线段。</p>
+<p>为方便讨论，这里先假设线段方向不是任意的，只有两种类型的线段，垂直的以及水平的。</p>
+<p>可以从图中看到，这些垂直的，水平的线段与截窗都有相交，而细分来看又可以分成两类。</p>
+<ul>
+<li>红色的：至少有一个端点，在截窗$W$里面。我们称之为Type A</li>
+<li>蓝色的：端点都不在截窗里面，而是线横跨在截窗$W$上。我们称之为Type B</li>
+</ul>
+<p>对于Type A来说，这很好判断，相当于回归到第七章几何范围查找。这个查询可以通过Range Tree在$O(k+logn)$时间内找到。</p>
+<p>但是对于Type B来说，其端点都不在$W$里面。这种判定就更复杂一些。这也是截窗查询主要研究问题。</p>
+<h1 id="穿刺查询stabbing-query">穿刺查询(Stabbing Query)</h1>
+<p>实际上可以看到，那种横跨在截窗$W$上的查询。可以分为两步来做，如图：</p>
+<center><img src="./p2.png"></center>
+<p>可以把截窗拆分成两个无限长矩形重叠。即Vertical Slab和Horizontal Slab两部分。此时可以看到对于水平的线段来说，就相当于该线段直接穿过这个Vertical Slab，穿刺Vertical Slab。对于垂直线段来说同理。而这样一种查询都是不折不扣的1维Window Query。</p>
+<p>更进一步的来讲，这种情况，实际上只用判断两条边界中的一条即可。因为前面的操作中已经将Type A都报告了出来。</p>
+<p>让我们先看1维情况，这个情况就可以描述为：给定一组线段之后，每当我们给定一条垂直的直线，将所有与之相交的直线都报告出来。</p>
+<center><img src="./p3.png"></center>
+<h1 id="interval-tree">Interval Tree</h1>
+<p>为了解决这个Stabbing Query问题，所以要根据这些线段建立数据结构。这种数据结构就是Interval Tree。</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>思路<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">根据一定的空间结构，将这一系列线段组合成一个树的形式来方便定位查询。通过这个树的结构，可以快速剔除一些不符合的线段。</div>
+        </div>
+    </div>
+<p>首先要处理一下每个线段，对于每个线段来说可以标记其左端点和右端点。</p>
+<p>然后根据思路，我们应该恰当的划分线段集合。分成左右两部分，这里就是取用了所有端点的中位数点即可。然后根据中位数可以将整个线段集划分成三部分：如下图</p>
+<center><img src="./p4.png"></center>
+<p>以这个中位数$x_{mid}$为界分成三部分：</p>
+<ul>
+<li>线段完全落在左侧：$S_{left}$，这些线段相当于右端点落在$x_{mid}$左侧。</li>
+<li>线段完全落在右侧：$S_{right}$，这些线段相当于左端点落在$x_{mid}$右侧。</li>
+<li>线段与$x_{mid}$相交：$S_{mid}$，线段包含$x_{mid}$，与对应的垂线相交。</li>
+</ul>
+<p>注意的是，这里面每个集合都有可能是空的。例如所有先都与$x_{mid}$相交。则左右为空的。</p>
+<p>通过上述方式可以得到对于左右两个集合$S_{left},S_{right}$来说，其大小最大为$n/2$。而对于$S_{mid}$来说，其最大可以到$n$，即跟所有线段相交，而最小来说则只有$1$。</p>
+<p>现在在这个数据结构上，可以看到已经有了一个大致的思路。给定一个位置$x$，那么通过树查找位置，可以快速剔除左右分支，以及在$S_{mid}$中查找即可。所以可以看到$S_{mid}$也要承担一个内部查找功能，需要在$S_{mid}$上进行一个预排序。</p>
+<p>根据前面所述$S_{mid}$中每条线段左端点在$x_{mid}$左侧，右端点在$x_{mid}$右侧。所以可以根据端点从左至右顺序，来预排序整个序列。其整个结构如下图：</p>
+<center><img src="./p5.png"></center>
+<p>其中$S_{mid}$配置的是一个左右列表形式，如图。左边列表按左端点从左向右的顺序排列。右边列表按从右向左的顺序排列。可以看成是一个从左向右列表，中介本$x_{mid}$截断的样式。</p>
+<p>由这样一个结构可以看出</p>
+<ul>
+<li>其空间复杂度为$O(n)$。因为每个线段存储一次。</li>
+<li>Interval Tree深度为$O(logn)$。因为每下降一层，规模降低一半。</li>
+<li>构造时间需要$O(nlogn)$。</li>
+</ul>
+<p>而查询过程可以这样描述：</p>
+<ul>
+<li>对于给定的查询点$q_x$。从树根开始遍历。</li>
+<li>判断$q_x$与$S_{mid}$所对应的$x_{mid}$的大小关系，小于则递归查询左边的树，大于则递归查询右边的树。</li>
+<li>对于抵达每一个节点，都配有一个$S_{mid}$结构。根据大小关系，选择左右列表，快速的线性查询一遍$S_{mid}$中所有包含$q_x$的线段。</li>
+</ul>
+<p>现在来看这样一个过程的时间复杂度。在每进一步的过程中都会有至少一半被剪枝。这说明途中至少会经过$O(logn)$节点。而在每个节点上都会线性去遍历一遍$S_{mid}$中的节点。而这一部分因为设计的数据结构是一个左右列表形式，而且遍历是从列表的远端开始。这样一个方式，导致其遍历次数就是当下相交的线段个数。所以这一部分累计合并为$O(r)$，即输出大小。所以总体算法时间复杂度是$O(r+logn)$。</p>
+<h1 id="二维查询">二维查询</h1>
+<p>现在回到二维版本情况。</p>
+<p>我们前面实际上相当于用一个直线去跟所有线段相交。现在回到二维，我们就可以认为此时不是一条直线，而是一个线段(Stabbing With A Segment)。而这个可以通过改变上面的Interval Tree来实现，具体来说如下图：</p>
+<center><img src="./p6.png"></center>
+<p>即在前面的$S_{mid}$中不再使用左右list，而是使用一个Range Tree来取代。其实现在来看$S_{mid}$列表中的元素已经是端点了，变成了点与范围的求交，这个时候就可以变换为几何范围查找。用这些点，构建一个x方向和y方向组成的Range Tree。查找在这个Range Tree中与无界范围重叠的那些顶点即可。</p>
+<p>现在来回顾二维的截窗查询问题(Window Query)，其进行了如下分解规约过程：</p>
+<center><img src="./p7.png"></center>
+<p>现在来看其整体复杂度：</p>
+<p>对于这个线段穿刺的情况，我们使用了带有Range Tree的Interval Tree结构。</p>
+<p><strong><font size = 4>空间复杂度</font></strong></p>
+<p>Interval Tree节点部分本身只需要线性的空间。而每一个节点上要存一个Range Tree。对于每一个节点来说Range Tree大小取决于跟其相交的线段个数，即如果有$n_i$个线段，那么空间大小为$n_ilogn_i$。所以总体空间复杂度即$\sum n_ilogn_i=O(nlogn)$</p>
+<p><strong><font size = 4>构造复杂度</font></strong></p>
+<p>构造复杂度，即每个节点上构造Range Tree。所以构造复杂度也一致为$O(nlogn)$。</p>
+<p><strong><font size = 4>查询复杂度</font></strong></p>
+<p>对于整个查询过程，前面我们看到一共要进行$logn$次查询，这个来自于Interval Tree深度。每一次查询一个Range Tree，对于Range Tree查询时间复杂度为$logn_i$。所以总体时间复杂度为$\sum_{i\ visited}logn_i=O(log^2n)$</p>
+<h1 id="grounded-range-query">Grounded Range Query</h1>
+<p>本节主要是为了优化上面算法的空间复杂度，上面的Interval Tree加Range Tree结构。对比经典的BBST多了一个$logn$因子复杂度。但是我们期望其存储空间达到$O(n)$量级。</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>思路<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">思路就是，观察这个范围查询特点，可以看到这个查询范围有一个无界方向。对于一个点是否落在内，其实就是看这个点是否足够远。</div>
+        </div>
+    </div>
+<p>对于这样一种无界的Range Query可以看到其有一个方向是通天的或者落地的，对应的Range Query就称之位Grounded Range Query。</p>
+<h2 id="1d-grq">1D-GRQ</h2>
+<p>先来看1维情况。即，给定线段上一系列点$P=\set{p_1,\cdots,p_2}$。然后给定一个区间$I=(-\infin,q_x]$来查询。</p>
+<p>显然这个查询可以不依赖树结构了，按照从小到大的顺序线性扫描遍历一遍所有节点，即可报告出所有点，时间效率$O(r+1)$。这个特性来自于区间有个无界区间，它一定包含了最小或者最大的点。</p>
+<p>既然如此，可否用一些更简单的数据结构来优化这个过程？有，这个数据结构就是Heap。将一系列点按照Heap的方式组合成一个最小堆，然后从根开始依次比较即可。根据最小堆的性质，其到某一结点之后就会大于比较值$q_x$。进而完成搜索。</p>
+<p>显然这样一个结构来处理数据：</p>
+<ul>
+<li>空间复杂度：$O(n)$</li>
+<li>Heap构造复杂度：$O(n)$</li>
+<li>查询复杂度：$O(r+1)$</li>
+</ul>
+<p>对比起Range Tree的结构，可以看到其无形中把空间复杂度降到了$O(n)$，而且把查询复杂度的$O(logn)$舍弃掉了。</p>
+<h2 id="priority-search-tree">Priority Search Tree</h2>
+<p>现在要把这个Heap数据结构推广到2维。</p>
+<p>为了后面表述习惯，这里先做一个坐标系的旋转。即向右方向，位y轴正方向。向下方向，位x轴正方向。这样一个x轴的Range Query跟前面一样是一个通天或落地的GRQ。</p>
+<p>对于y轴来说任然是一个普通Range Query。这仍然是一个BBST结构。而对于x轴来说，则是GRQ，用一个Heap结构。自然想法就是将这两种结合在一起。这种结构就是Priority Search Tree。</p>
+<p>对于平面点集来说，这种Heap的组织方式是非常自由的。对于一个平面点集，可以先按照x坐标组织成一个堆，这个可以如下图中结构。</p>
+<center><img src="./p8.png"></center>
+<p>这个方式是非常随意的，只规定了节点和其子节点间的大小关系，但是没有明确规定，节点跟左子树与右子树之间的关系。所以这里可以添加规则，即节点的左子树中节点，都在y方向上小于右子树中节点。即</p>
+<ul>
+<li>利用高度，x坐标，来维护这个堆的Order Property。</li>
+<li>同时利用，y坐标的中位数，来均匀的划分左后代和右后代。</li>
+</ul>
+<p>主义的是如图，这个y坐标中午树特性，在父子节点间并不用保持。只是两个子树之间的特性。例如0，1，2。点1，2都在0的左侧。</p>
+<p>这样一个结构即Priority Search Tree。这个结构可以通过$O(nlogn)$时间复杂度构建出来。选出集合中最小的点，然后按中位数划分剩下点集，递归执行即可构造出整个结构。每次划分规模减少一半，找到y中位数消耗$O(n)$，所以最后构造复杂度是$O(nlogn)$。</p>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>思考问题<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>如果点集已经按照y坐标排序好，则可以在$O(n)$时间内完成。</p>
+<p>跟Heap构造一样，自底向上构建。y已经排好，对于最底层得每3个点来说，常数时间构建一个最小Heap。然后自底向上把小Heap合并上去即可。</p>
+</div>
+        </div>
+    </div>
+<h2 id="2d-grq">2D-GRQ</h2>
+<p>现在来看建立在PST结构上得一个Grounded Range Query。</p>
+<p>在拥有这样一个结构之后我们来看这个查询算法。</p>
+<p>这个查询，是一个在x方向上无界，但在y方向上有界得区域。整个查询如图所示：</p>
+<center><img src="./p9.png"></center>
+<p>对于一个PST来说从根出发逐步往下走，因为在这个方向无界，就跟遍历一个Heap一样。会遍历每个落在这个无界区域内得点。</p>
+<p>对于每一个节点来说，剩下则比较其是否在y范围内。</p>
+<ul>
+<li>如果$v.y$在$y_1,y_2$之间则报告。</li>
+<li>如果$y_m<y_1$则根据前面结构，左子树剪枝。</li>
+<li>如果$y_m>y_2$则根据前面结构，右子树剪枝。</li>
+<li>所以反过来说，$y_m\geq y_1$会需要左子树遍历，$y_m<y_2$需要右子树遍历。</li>
+</ul>
+<p>可以看到这个过程就如同一个逐步深入，左右夹紧的一个过程。</p>
+<p>现在来看这个算法的复杂度分析。为了方便分析，约定如下四种颜色的点：</p>
+<center><img src="./p10.png"></center>
+<ul>
+<li>绿色的点：$v.x$不符合情况而被排除的点。</li>
+<li>红色的点：因为$v.x,V.y$都符合情况而被接纳的点。</li>
+<li>蓝色的点：因为$v.x$符合，$v.y$不符合而被排除的点。</li>
+<li>黄色的点：因为$y_m$判断而被剪枝的点。</li>
+</ul>
+<p>现在来看整个查询时间的构成。</p>
+<ul>
+<li>黄色的点：被剪枝的点，没有时间消耗。</li>
+<li>红色的点：都被接受的点，这些点等于输出大小$r$。</li>
+<li>蓝色的点：这一类是因为$v.y$不符合而被排除的点。这些点在每一个层次上都可能出现。但是可以看到蓝色的点在每一层上出现不多于两个。而且一定分在左右两侧。如果在同一侧，连续出现，说明中间这些点也都不符合条件。根据PST结构，每一层都是自左向右递增的。所以他们共同的一个祖先就应该被排除进而剪枝了。总数不超过$O(logn)$</li>
+<li>绿色的点：这一类是因为$v.x$不符合情况而被排除的点。注意到这类节点的父亲一定是红色的或者蓝色的，所以总数不超过$O(r+logn)$。</li>
+</ul>
+<h1 id="segment-tree">Segment Tree</h1>
+<p>前面所解决的问题都是正交的截窗查询。就是对于那些查询线段来说，其都是垂直或水平的。</p>
+<p>现在来看一般线段的截窗查询问题，看看前面的问题有没有借鉴。可以发现确实有可以借鉴的地方，就是要对数据结构做一定转化，此即线段树(Segment Tree)。</p>
+<p>对于这样一个线段集合依然可以分为Type A和Type B部分。对于Type A部分来说依然可以依靠之前的端点范围查询来解决。但对于Type B类的线段，如果我们还套用之前的方式会发现，其不再奏效。这来源于查询的直线不再是非平即直的了。</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>思路<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">思路是将线段细分，划分成更细小的段。而在细小线段</div>
+        </div>
+    </div>
+<p>先来看一维情况。</p>
+<center><img src="./p11.png"></center>
+<p>现在考虑换一种结构，线段树(Segment Tree)。即将$n$条线段的$2n$个端点取出来，其会将整个数轴划分成$2n+1$
+个线段，每个段落称之为Elementary Interval(EI)。可以看到，当穿刺位置在同一个EI中时，其返回的结果时相同的。</p>
+<p>但是这样一个结构，有可能造成空间复杂度的爆炸。因为$n$条线段，每一条线段因为其他线段端点，可能产生出$\Omega(n)$段EI。简单把所有段取出，会用到$\Omega(n^2)$空间。</p>
+<div class="details admonition note">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>注意<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">这里似乎有点不太对，虽然每个线段会被分割成$\Omega(n)$段。但是每个线段的EI实际是有重叠的。如果只考虑上面所述的查询用结构，而不是每个分割线段都存储，就不会有这么大空间复杂度。可以看到还是跟端点数量对应的。这里应该是考虑到了每段线得存储。</div>
+        </div>
+    </div>
+<p>所以要把其空间复杂度控制住。</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>思路<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">这里的想法就是，观察到每个EI可以向上归并成一个连续的更长线段。所以可以用建立在端点上的树形结构来存储。</div>
+        </div>
+    </div>
+<p>这个树形结构就形如BBST，叶子节点就是每一个EI。当搜索的时候，通过从树根节点开始搜索，根据位置判断索引到最后叶子节点上的EI即可判断跟那些线段相交。但是每个EI上就要记录跟自己相交的有哪些线段，这导致即便使用BBST其空间复杂度依然是$\Omega(n^2)$。</p>
+<p>而观察就是对于同一层上，如果相邻的两个节点都被某个线段覆盖，则其父节点也被该线段覆盖。通过在父节点上关联目标线段可以有效减少这个线段引用存储。结构如下图：</p>
+<center><img src="./p12.png"></center>
+<p>这里定义了这种结构存储的方式。扩展了原来BBST结构。对于每一个节点上都可能有一个关联线段集合，而不是只在叶子节点上，这样一个集合标记为$Int(u)$。一个线段$X$属于这个$Int(u)$的时候，当且仅当$X$覆盖了$u$所表示的EI，标记为$EI(u)$，但是不覆盖$u$父节点所表示的EI。</p>
+<p>其实就相当于把线段如图投影拆分成更长的一系列$EI(u)$合集。这里考虑每一个线段$X$，首先可以看到构成其覆盖的节点合集，在每层上不超过2个，而且不会有同一个父节点。</p>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>思考问题<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">首先如果存放节点有同一个父节点，这说明父节点也被$X$覆盖。所以其会由父节点来存放，而不是两个子节点。然后考虑同一层中两个节点，可以发现对于两个存放节点之间的$EI(u)$也会被$X$覆盖，所以如果有三个节点，这说明一定有一个父节点可被覆盖。</div>
+        </div>
+    </div>
+<p>所以可以得到每条线段的存放空间复杂度不超过$O(logn)$。</p>
+<p>现在来考虑其构造方式，其实其方式显然可以自底而上从每个叶子EI来逐步构造出节点上的$Int(u)$。对于每个叶子，可以通过对端点排序来得到，然后自底向上考察每两个相邻叶子，然后合并$Int(u),Int(v)$即可。不过这样实际上变相的要求每个叶子上存放所有线段的引用$Int(u)$了。</p>
+<p>老师这里介绍的方式则是自顶而下的方式。即不停给入线段$X$来判断哪些$EI(u)$被包含在其中。判断过程自定向下如下：</p>
+<ul>
+<li>如果$EI(u)\subset X$则把X添加进入$Int(u)$。</li>
+<li>如果不完全包含。则肯定有一部分不重叠。
+<ul>
+<li>如果$u$的左孩子$lc(u)$与$X$重叠不为空，则递归查找$lc(u)$和$X$。</li>
+<li>如果$u$的右孩子$rc(u)$与$X$重叠不为空，则递归查找$rc(u)$和$X$。</li>
+</ul>
+</li>
+</ul>
+<p>判断重叠是否为空很简单，就是四个数值的判断问题。对于这样一次线段求交过程，我们可以看到，其在任何一层上涉及的节点数最多不超过4。其中有2个会存储$X$，另2个会递归。因此这个执行时间不超过$O(logn)$。</p>
+<p>现在来看查询过程，可以看到查询过程依旧。就是自顶向下的搜索。不太一样的是，对于这个查询过程中路过得所有节点，每个节点都会报告出其$Int(u)$集合。</p>
+<p>由上面可得这样一个结构</p>
+<ul>
+<li>其空间存储复杂度为$O(nlogn)$。</li>
+<li>构造复杂度为$O(nlogn)$。</li>
+<li>其查询复杂度为$O(r+logn)$。</li>
+</ul>
+<h1 id="vertiacl-segment-stabbing-query">Vertiacl Segment Stabbing Query</h1>
+<p>现在已经知道了线段树结构(Segment Tree)。现在回到最初的问题，即二维平面的一般线段的截窗查询问题。</p>
+<p>现在看一个任意方向线段，来考虑这个线段树结构。可以显然的发现，对于某一个方向来说，例如x方向，这个线段是可以投影到该方向上的，形成该方向上两个端点，进而可以组织成线段树。如下图：</p>
+<center><img src="./p13.png"></center>
+<p>回顾前面的问题，我们考虑一个垂直线段的$l$的相交查询问题。如下图：</p>
+<center><img src="./d1.drawio.png"></center>
+<ul>
+<li>先用$l_x$直接来查询线段树，着一个查询相当于一个y方向无穷的查询。这个可以在$O(logn)$时间内找到所有正则子集。</li>
+<li>然后我们关注这个查询线段的y方向的长度。即这里的线段高度$y_1,y_2$。然后相当于用$y_1,y_2$来做一个Range Query。</li>
+</ul>
+<p>这个Range Query是一个简单的1维Range Query。实际上可以看到这个时候以$l$所在的垂线，跟其他线段相交，有一系列交点，这个节点就是在该轴上的一个高度次序，用这个值结合Range Query可以确定哪些线段与$l$相交了。</p>
+<p>当然这个地方并不用遍历这些先去求这个交点。回到两条线段是否相交，实际上前面已经讲过了，通过To-Left测试即可。</p>
+<p>现在来看这样一个线段截窗查询，可以看到对于每一个节点上的$Int(u)$都要进行一波y-range Query。这一需要$r_v+logn$时间。所以总体要$logn$个正则子集。因为时间复杂度为$r+log^2n$</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-08-28</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
