@@ -96,7 +96,7 @@
             </div><div class="content" id="content"><h1 id="obdin基础介绍">Obdin基础介绍</h1>
 <p>Odin是一个Unity插件。根据官网介绍，器主要目的是使得用户可以享受强大，可自定义，用户友好的编辑器，而不写一行编辑器代码。即Odin实际是一个编辑器扩展插件，来方便做一些编辑器扩展。</p>
 <p>当安装Odin插件后，会在菜单栏Tools中增加一个OdinInpsector选项。
-<img src="../assets/odin_start_1.png"></p>
+<img src="./odin_start_1.png"></p>
 <p>通过GettingStarted可以入门编辑器内容。</p>
 <p>可以看到基础有四部分</p>
 <ul>
@@ -111,7 +111,7 @@
 <h2 id="attributes">Attributes</h2>
 <p>通过Odin可以只通过Attributes来设计Unity中的Inspector界面。这里所说的Attributes实际是指C#语言中的Attributes概念，即注解功能。通过注解，而不用写一些注解解释代码，借助Odin我们可以高自由度自定义设计Inspector界面。实际上Unity自身也带有一些属性反射到Inspector界面上的功能，该功能相当于是威力增强版。</p>
 <p>在Unity的OdinAttributesOverview中有所有Attributes的分类使用和说明。</p>
-<img src="../assets/odin_start_2.png">
+<img src="./odin_start_2.png">
 <p>在此只根据官方教程，介绍一些基础Attributes以及规则。经验性总结放在后面挖掘。</p>
 <ul>
 <li>可以组合多条Attributes</li>
@@ -145,7 +145,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><img src="../assets/odin_start_3.png">
+</div><img src="./odin_start_3.png">
 <ul>
 <li>可以用Group来完全修改布局方式</li>
 </ul>
@@ -177,7 +177,7 @@
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">float</span> <span class="n">Damage</span><span class="p">;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><img src="../assets/odin_start_4.png">
+</div><img src="./odin_start_4.png">
 <ul>
 <li>有很多属性可以来引用其他属性内容，方法等来扩展编辑器行为。</li>
 </ul>
@@ -221,7 +221,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><img src="../assets/odin_start_5.png">
+</div><img src="./odin_start_5.png">
 <p>剩下官方介绍了一些常用的属性方式</p>
 <ul>
 <li>GroupAttributes：布局用属性。</li>
@@ -265,7 +265,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><img src="../assets/odin_window_1.png">
+</div><img src="./odin_window_1.png">
 <p>对于面板的内容可以简单的通过Attributes来设计，配置。</p>
 <p>也可以在EditorWindow中渲染任意一个Object。方法是通过重载GetTarget方法，并且传入任意类型的一个实例来实现渲染。该类型不需要可序列化(Serializable)或者必须是一个UnityObject。</p>
 <h2 id="staticinspector">StaticInspector</h2>
@@ -276,8 +276,8 @@
 <h2 id="dictionary序列化问题">Dictionary序列化问题</h2>
 <p>Odin的Dictionary再2018版本后因为prefab改动。导致prefab的序列化出现问题。</p>
 <p>目前发现的是，对于场景中的物体，用Odin设置Dictionary中数值后，在运行游戏中并不会生效。不论该物体是否与Prefab相关联。</p>
-<img src="../assets/odin_record_1.png">
-<img src="../assets/odin_record_2.png">
+<img src="./odin_record_1.png">
+<img src="./odin_record_2.png">
 <p>但是对于ScriptableObject对象Dictionary任然生效可以用来做数据设置</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">

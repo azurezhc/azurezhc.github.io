@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6\/OdinInspector\/Odin%E5%AD%97%E6%AE%B5%E5%8A%9F%E8%83%BD%E8%AF%B4%E6%98%8E\/"
-        },"genre": "posts","wordcount":  2155 ,
+        },"genre": "posts","wordcount":  2104 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6\/OdinInspector\/Odin%E5%AD%97%E6%AE%B5%E5%8A%9F%E8%83%BD%E8%AF%B4%E6%98%8E\/","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,7 +69,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2155 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2104 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -95,7 +95,7 @@
 <h1 id="label相关">Label相关</h1>
 <h1 id="valuedropdown">ValueDropDown</h1>
 <p>ValueDropDown字段属性给Inspector中的对应字段栏目提供了一个下拉菜单UI。通过下拉菜单中的选项可以给字段赋值。简单示例如下：</p>
-<img src="../Odin字段功能说明assets/odin_key_1.png">
+<img src="./odin_key_1.png">
 ```CSharp
 [ValueDropdown("drop_down_list")]
 public int value_drop_down;
@@ -115,7 +115,7 @@ ValueDropdown属性中的ValuesGetter字段指明了下拉列表中的项目内�
 
 除了可以修饰普通的属性字段外，还可以修饰列表类型字段，此时添加操作中的数值会变成下拉列表形式。简单示例如下：
 
-&lt;img src=&#34;../Odin字段功能说明assets/odin_key_2.png&#34;&gt;
+&lt;img src=&#34;./odin_key_2.png&#34;&gt;
 
 ```CSharp
 [ValueDropdown(&#34;drop_down_list&#34;)]
@@ -130,7 +130,7 @@ private IEnumerable drop_down_list = new ValueDropdownList&lt;int&gt;
 </code></pre><p><font size = 4><strong>备注事项</strong></font></p>
 <ul>
 <li>使用ValueDropdown字段功能时。可直接用数据结构指定下拉列表。此时目标数据结构实际只会调用一次构造。虽然其列表显示是不同实例，且持久化后实际是不同对象。但是目标下拉列表中的数据实际只会构造一次，简单情况如下。
-<img src="../Odin字段功能说明assets/odin_key_3.png"></li>
+<img src="./odin_key_3.png"></li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -195,7 +195,7 @@ private IEnumerable drop_down_list = new ValueDropdownList&lt;int&gt;
 <p><font size = 4><strong>备注事项</strong></font></p>
 <ul>
 <li>除了文档中情况，实际上Button也可以修饰有返回值的函数，当修饰该类型函数时，实际会出现一个Invoke按钮，相当于调用该函数。并且点击调用后，返回值会以Result的形式，经过Odin序列化呈现在InspectorUI当中。简单如下：
-<img src="../Odin字段功能说明assets/odin_key_4.png"></li>
+<img src="./odin_key_4.png"></li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

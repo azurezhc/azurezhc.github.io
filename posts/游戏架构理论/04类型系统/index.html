@@ -100,7 +100,7 @@
 <h1 id="类型分派">类型分派</h1>
 <p>在代码架构中最常用的类型系统，就是类型分派结构。该结构一般被用在表驱动结构中，或者策略设计模式中。先从这种最简单的表驱动结构思考起。</p>
 <p>其结构图如下：</p>
-<center><img src ="../04类型系统.assets/p1.drawio.png"></center>
+<center><img src ="./p1.drawio.png"></center>
 <p>该结构特征跟Dispatcher类似，存在一个中心节点，该节点就是一个简单的Dict(Map)结构。</p>
 <p>其运行过程时，对于每一个传入或调用的实例对象会根据其指定的Tag字段，在Dict结构中查找处理用的TagHandler来处理数据。</p>
 <p>这个过程可以有以下的理解方式</p>
@@ -155,7 +155,7 @@
 <li>所谓继承，多态等特性，都是为了覆盖对统一数据结构上的统一名称的处理函数而定义的一套规则。</li>
 </ul>
 <p>这个结构如下图：</p>
-<center><img src ="../04类型系统.assets/d2.drawio.png"></center>
+<center><img src ="./d2.drawio.png"></center>
 <p>可以看到这套面向对象实际提供了一种对抽象类型概念的实践方式。这样一个类型可以认为做了两件事情：</p>
 <ul>
 <li>类申明的成员变量，决定这个数据块的数据结构。</li>
@@ -174,7 +174,7 @@
         </div>
     </div>
 <p>对于上面结构也可以通过如下图结构来实现：</p>
-<center><img src ="../04类型系统.assets/d3.drawio.png"></center>
+<center><img src ="./d3.drawio.png"></center>
 <p>这个结构遵循上面的思路，将每个处理函数与记录实体数据结构分开。<strong>这相当于把面向对象中，类的方法索引功能单独抽出成一个模块</strong>。这样一个结构我们可以看到如下：</p>
 <ul>
 <li>对于确定抽象类型可以控制的更加细致，有更强的扩展性。</li>
@@ -200,13 +200,13 @@
 <p>为方便描述，我们都先从HighLevel的数据结构与关联函数组成来看这些方式。然后再从语言来看这些东西。</p>
 <p>下图中的表格都表示一个类中，定义的成员变量以及成员方法组成。是一个面向对象的方式，但是其关联函数部分可以根据上面所说再进一步拆分。</p>
 <p><strong><font size = 4>继承</font></strong></p>
-<center><img src ="../04类型系统.assets/d4.drawio.png"></center>
+<center><img src ="./d4.drawio.png"></center>
 <p>继承跟绝大多数面向对象中的继承一致。这里我们来这样简略定义继承。继承发生在两个对象定义之间，例如Child与Base。当Child继承Base时。Child会拥有Base的数据结构，以及关联函数。同时可以覆盖部分函数来进行重载。</p>
 <p><strong><font size = 4>混入</font></strong></p>
-<center><img src ="../04类型系统.assets/d5.drawio.png"></center>
+<center><img src ="./d5.drawio.png"></center>
 <p>混入(MixIn)是在JavaScript中提到的一种结构组织方式，这种技术也是建立在两个对象定义之间。例如上面的Member和Base。通过提供的接口，可以将Member的成员变量声明和成员方法注入到Base中。使其拥有相同的数据结构字段。</p>
 <p><strong><font size = 4>组合</font></strong></p>
-<center><img src ="../04类型系统.assets/d6.drawio.png"></center>
+<center><img src ="./d6.drawio.png"></center>
 <p>组合则是建立在一种实例层之间的组合方式。其有一个容器，即这个map。这个map是一个容器结构，之前已经讨论过。这种属于实际运行时候建立的一种组合方式。其相当于动态的拥有了这些对象实例，并且放在自己身上。</p>
 <p>现在我们可以显而易见的发现，对于继承，与混入来说。其实都是一种代码定义层级的方式，即这两个方式操作的是数据结构以及关联函数定义的方式。但是组合则是一个实例层级的组合方式。</p>
 <p>很多书籍都会如下去讲述继承与组合之间的判定，继承表示is a即一个对象是一个什么，组合表示has a即一个对象。然而这是显然的，因为一个是数据结构定义层级，一个则是实例的组合方式。于是这个判定并没有告诉怎么去使用两者之间的结构。实际上两个就不是一个层级的故事。如果从数据结构定义，与实例之间，我们可以很清楚的看到之间的差异，以及运用场景。</p>
@@ -270,7 +270,7 @@
 <h1 id="泛型编程">泛型编程</h1>
 <p>现在来考虑</p>
 <hr>
-<p><a class="link-markdown-demo-site" href="/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E5%93%B2%E5%AD%A6%E7%90%86%E8%AE%BA/" rel="noopener">&raquo;游戏架构哲学理论</a></p>
+<p><a class="link-markdown-demo-site" href="./游戏架构哲学理论.md" rel="noopener">&raquo;游戏架构哲学理论</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

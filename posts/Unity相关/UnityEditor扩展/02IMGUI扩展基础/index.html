@@ -231,7 +231,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>最终显示效果如下：</p>
-<center><img src="../02.assets/p1.png"></center>
+<center><img src="./p1.png"></center>
 <p>而EditorLayout中还有更多一系列接口函数，可以设置更多的空间类型。这些可以参考前面相关文档，研究并绘制出想要的组件结构。</p>
 <p>对于Layout提供的接口中，大部分最后还是提供一个类型GUILayoutOption可变长参数列表。通过这些GUILaytoutOption对象则可以相应的调整显示的效果。</p>
 <p>例如对于IntField来说有：</p>
@@ -305,10 +305,10 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>最终效果如下：</p>
-<center><img src="../02.assets/p2.png"></center>
+<center><img src="./p2.png"></center>
 <h2 id="自动布局与位置计算">自动布局与位置计算</h2>
 <p>这里你会发现，前面并没有并没有直接用布局函数修改IntField来实现图中类似于Vector3的效果。这是因为其实对于Layout中接口来说，其都是带有自动布局效果的。如果直接使用HorizontalScope会发现其自动布局效果并不如意，如下。</p>
-<center><img src="../02.assets/p3.png"></center>
+<center><img src="./p3.png"></center>
 <p>可以发现这是因为这个IntField的Label是根据所在区域的宽度算出的一个固定值。这导致整个Field长度远远长于了Inspector的宽度。同时的是，不论对布局参数如何修改，都无法修改这一部分。其布局修改针对的主要是后面填写区域部分。</p>
 <p>这时候我们非要去制作这样一个显示，可想而知，就要自己去操作布局结构了。而这可以通过Layout对应的两个布局计算类来实现，即：</p>
 <ul>
@@ -364,7 +364,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>最终效果如下：</p>
-<center><img src="../02.assets/p4.png"></center>
+<center><img src="./p4.png"></center>
 <h1 id="propertydrawer">PropertyDrawer</h1>
 <p>通过上面的方法已经可以对目标类型进行Inspector扩展绘制了。但是这个粒度可能仍然不够使用，例如如下一些情况：</p>
 <ul>
@@ -447,7 +447,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>最终效果如下：</p>
-<center><img src="../02.assets/p5.png"></center>
+<center><img src="./p5.png"></center>
 <p>需要注意的是，PropertyAttribute只能标记字段类型，所以只能拿到可序列化字段相关的数据，以及相关类型的反射数据。并不能拿到相关对象。所以其虽然可以添加Button这样的GUI但是其功能受限的。</p>
 <p>另一方面是对于像是Button这样的功能结构，一般带有操作对象语义，实际上则可以通过Editor来实现，具体来说是走OnInspectorGUI来绘制。例如如下方式：</p>
 <ul>
@@ -624,7 +624,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>最后呈现出如下效果：</p>
-<center><img src="../02.assets/p6.png"></center>
+<center><img src="./p6.png"></center>
 <h1 id="最后">最后</h1>
 <p>这里只是如何扩展Unity Editor的基础介绍。但是很多结构实际上都是建立在基础结构之上一步步搭建起来的。</p>
 </div><div class="post-footer" id="post-footer">

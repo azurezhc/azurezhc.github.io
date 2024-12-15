@@ -5,14 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>02一维运动研究 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="02一维运动研究" />
-<meta property="og:description" content="一维运动研究 本文档主要研究一维上的运动效果。所谓运动效果，主要指目标数值随时间的变化效果。即的运动效果。 对于程序实现的运动而言，这相当于一套" />
+<meta property="og:description" content="一维运动研究 本文档主要研究一维上的运动效果。所谓运动效果，主要指目标数值随时间的变化效果。即$x=x(t)$的运动效果。 对于程序实现的运动而" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/02%E4%B8%80%E7%BB%B4%E8%BF%90%E5%8A%A8%E7%A0%94%E7%A9%B6/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-12-24T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-12-24T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
 
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="02一维运动研究"/>
-<meta name="twitter:description" content="一维运动研究 本文档主要研究一维上的运动效果。所谓运动效果，主要指目标数值随时间的变化效果。即的运动效果。 对于程序实现的运动而言，这相当于一套"/>
+<meta name="twitter:description" content="一维运动研究 本文档主要研究一维上的运动效果。所谓运动效果，主要指目标数值随时间的变化效果。即$x=x(t)$的运动效果。 对于程序实现的运动而"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB\/02%E4%B8%80%E7%BB%B4%E8%BF%90%E5%8A%A8%E7%A0%94%E7%A9%B6\/"
-        },"genre": "posts","wordcount":  3011 ,
+        },"genre": "posts","wordcount":  3926 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB\/02%E4%B8%80%E7%BB%B4%E8%BF%90%E5%8A%A8%E7%A0%94%E7%A9%B6\/","datePublished": "2023-12-24T00:00:00+00:00","dateModified": "2023-12-24T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,8 +69,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">02一维运动研究</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-12-24">2023-12-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3011 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-12-24">2023-12-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3926 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -86,11 +86,11 @@
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="一维运动研究">一维运动研究</h1>
-<p>本文档主要研究一维上的运动效果。所谓运动效果，主要指目标数值随时间的变化效果。即<data id="id-1" data-raw></data>的运动效果。</p>
+<p>本文档主要研究一维上的运动效果。所谓运动效果，主要指目标数值随时间的变化效果。即$x=x(t)$的运动效果。</p>
 <p>对于程序实现的运动而言，这相当于一套固定系统，描述了一个点随时间演化的情况。这种结构的研究，属于数学上的动力系统分支。</p>
 <p>这里面存在插值，映射，变化，以及动力系统等多种效果。这里记录其相关内容，来自于各种学科的知识。</p>
 <p>除此之外，对于高维的运动，很多也都可以拆解成对应几个一维度上的运动效果来，所以这部分相当于把基础打扎实。</p>
-<p>对于一维的只有两个关联变量<data id="id-2" data-raw></data>，故其可以表示在一个二维坐标系里面。这里我们可以通过Python来绘图整个曲线形状，同时我们也可以通过unity来绘制整个运动状态来看到整个表现。</p>
+<p>对于一维的只有两个关联变量$x,t$，故其可以表示在一个二维坐标系里面。这里我们可以通过Python来绘图整个曲线形状，同时我们也可以通过unity来绘制整个运动状态来看到整个表现。</p>
 <p>而对于一个一维运动也有很多方式来进行，最简单之间的例如插值运动。除此之外还有动力系统的方式。我这里逐步解析，观察程序控制运动能解构到什么程度。</p>
 <p>该部分一些内容也来自于二阶运动系统部分。</p>
 <p>研究的主体方向有：</p>
@@ -104,98 +104,180 @@
 <li>《数值分析》 电子工业出版社</li>
 </ul>
 <h1 id="从x_1变化到x_2">从$x_1$变化到$x_2$</h1>
-<p>游戏程序里面经常要求一个值<data id="id-3" data-raw></data>在固定时间内，如<data id="id-4" data-raw></data>内，从<data id="id-5" data-raw></data>变化到<data id="id-6" data-raw></data>。这个一般需要每帧去update更新数值来实现。而这里我们有几种视角方法来解决。</p>
+<p>游戏程序里面经常要求一个值$x$在固定时间内，如$1s$内，从$x_1$变化到$x_2$。这个一般需要每帧去update更新数值来实现。而这里我们有几种视角方法来解决。</p>
 <ul>
 <li>插值方式</li>
 <li>逐步更新的动力方式</li>
 </ul>
 <p>通常来说我们都会用插值的方式来解决，这里我们先研究插值方式的变化。最基础有线性插值方法：</p>
-<data id="id-7" data-raw></data>
+$$x(t)=x_1+(x_2-x_1)*t，t:0\to{}1$$
 <p>这就是线性插值效果，其效果也是目标数值线性变化，如果放在二维平面上可以看到其就是平动到目标地点，其运动图像就如下图。</p>
-<img src="../02.assets/p1.png">
+<img src="./p1.png">
 <p>这里可以做一写简单的分析。</p>
 <ul>
-<li>如果不是在单位时间，而是<data id="id-8" data-raw></data>时间内，我们可以简单用<data id="id-9" data-raw></data>取代<data id="id-10" data-raw></data>即可。此时整个图像会相当于左右水平拉伸的方式延展至<data id="id-11" data-raw></data>区间内。相当于横向等倍缩放。</li>
-<li>可以想到，实际上可以用一个<data id="id-12" data-raw></data>。来取代<data id="id-13" data-raw></data>，此时<data id="id-14" data-raw></data>的函数图像便会反映在图像上。例如sin函数cos函数，多项式函数，指数函数等效果。其效果可以如下图所示</li>
+<li>如果不是在单位时间，而是$T$时间内，我们可以简单用$\frac{t}{T}$取代$t$即可。此时整个图像会相当于左右水平拉伸的方式延展至$[0,T]$区间内。相当于横向等倍缩放。</li>
+<li>可以想到，实际上可以用一个$f(t)\in{}[0,1],t\in[0,1]$。来取代$t$，此时$f(t)$的函数图像便会反映在图像上。例如sin函数cos函数，多项式函数，指数函数等效果。其效果可以如下图所示</li>
 </ul>
-<img src="../02.assets/p2.png">
-<img src="../02.assets/p3.png">
-<p>这说明我们只要<data id="id-15" data-raw></data>函数图像满足<data id="id-16" data-raw></data>，替换<data id="id-17" data-raw></data>即可使得插值运动过程呈现出跟<data id="id-18" data-raw></data>一样的运动趋势。例如我们可以去一个多项式来进行插值。例如如下函数图像</p>
-<img src="../02.assets/p4.png">
+<img src="./p2.png">
+<img src="./p3.png">
+<p>这说明我们只要$f(t)$函数图像满足$f(0)=0,f(1)=1$，替换$t$即可使得插值运动过程呈现出跟$f(t)$一样的运动趋势。例如我们可以去一个多项式来进行插值。例如如下函数图像</p>
+<img src="./p4.png">
 <h1 id="hermit曲线控制">Hermit曲线控制</h1>
 <p>但是这样任然对于整个图像比较难以控制。在计算机中，还时常使用Hermit曲线进运动控制，Hermit曲线本身也是一种Bezier曲线，是一个三次曲线，但是其更关注开始结束点的切线部分。对于一维来说通常提供两边端点以及过端点的切线来控制。</p>
-<p>设目标曲线为<data id="id-19" data-raw></data>，根据前述应当给出起点终点值，以及对应时刻切线大小。显然起点为0，终点为1，若起点切线斜率为<data id="id-20" data-raw></data>，终点为<data id="id-21" data-raw></data>。则通过代数公式有：</p>
-<data id="id-22" data-raw></data>
+<p>设目标曲线为$s(t)=a+bt+ct^2+dt^3$，根据前述应当给出起点终点值，以及对应时刻切线大小。显然起点为0，终点为1，若起点切线斜率为$\alpha$，终点为$\beta$。则通过代数公式有：</p>
+$$
+\begin{bmatrix}
+s(0) \\
+s(1) \\
+s'(0)\\
+s'(1)\\
+\end{bmatrix}=
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+1 & 1 & 1 & 1 \\
+0 & 1 & 0 & 0 \\
+0 & 1 & 2 & 3\\
+\end{bmatrix}
+\begin{bmatrix}
+a \\ b \\ c \\ d
+\end{bmatrix}=
+\begin{bmatrix}
+0\\
+1\\
+\alpha \\
+\beta \\
+\end{bmatrix}
+$$
 <p>显然有
-<data id="id-23" data-raw></data></p>
+</p>
+$$
+\begin{bmatrix}
+a \\ b \\ c \\ d
+\end{bmatrix}=
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+-3 & 3 & -2 & -1 \\
+2 & -2 & 1 & 1\\
+\end{bmatrix}
+\begin{bmatrix}
+0\\
+1\\
+\alpha \\
+\beta \\
+\end{bmatrix}
+$$
 <p>所以
-<data id="id-24" data-raw></data></p>
-<p>这个标准曲线我们称之为<data id="id-25" data-raw></data>下Hermit曲线。</p>
+</p>
+$$s(t)=\alpha{}t+(3-2\alpha-\beta)t^2+(-2+\alpha+\beta)t^3$$
+<p>这个标准曲线我们称之为$[0,1,\alpha,\beta]$下Hermit曲线。</p>
 <p>例如开始结束都有-1的斜率，即一开始反方向变动，然后最后反方向进入最终点，则图像如下。
-<img src="../02.assets/p5.png"></p>
+<img src="./p5.png"></p>
 <p>在Unity中的AnimationCurve，UE中的FloatCurve都是用这个方式来控制一个曲线的运动轨迹效果。</p>
 <p>我们也可以带入公式直接实现效果如下：</p>
-<img src="../02.assets/g1.gif">
-<p>实际上上面的Hermit曲线还可以到任意维度<data id="id-26" data-raw></data>上去，其只是将这里的数值替换成了对应的点和切向量。</p>
-<p>下面我们考虑对时间的操作变换。因为通常来讲，我们会给定一个<data id="id-27" data-raw></data>上的曲线，然后通过时间变化放缩到任意时间长度<data id="id-28" data-raw></data>上。很显然通过<data id="id-29" data-raw></data>变化相当于把整个图像水平拉长，这个变化是否等同于<data id="id-30" data-raw></data>时刻到达目标值<data id="id-31" data-raw></data>呢？</p>
-<p>显然对于<data id="id-32" data-raw></data>时刻抵达<data id="id-33" data-raw></data>并有用斜率<data id="id-34" data-raw></data>可以从上面关系直接得出变化逆矩阵</p>
-<data id="id-35" data-raw></data>
-<p>可以验证<data id="id-36" data-raw></data>的情况，可以感觉到此时系数是只有部分混入了<data id="id-37" data-raw></data>变量的多项式。</p>
-<data id="id-38" data-raw></data>
-<p>可以看到与直接做<data id="id-39" data-raw></data>的缩放是不太一样的。其两个运动趋势如下(图中<data id="id-40" data-raw></data>为时间变化图像，<data id="id-41" data-raw></data>为使用T的Hermit曲线图像)：</p>
-<img src="../02.assets/p6.png">
-<p>可以看到其实Hermit保持了图像在任意尺度上的相似性。其实可以看到对于时间维度从<data id="id-42" data-raw></data>改为<data id="id-43" data-raw></data>后，相当于不仅做了变换 <data id="id-44" data-raw></data>之外还变化了<data id="id-45" data-raw></data>，这相当于把斜率也拉平了。而着也没法通过简单的对时间为<data id="id-46" data-raw></data>的曲线变换而来。</p>
-<p>值得注意的是这个逆矩阵公式跟起始值，结束值无关。只需将<data id="id-47" data-raw></data>变成<data id="id-48" data-raw></data>即可得到任意数值变化效果。考虑对<data id="id-49" data-raw></data>时间范围内从<data id="id-50" data-raw></data>变化到<data id="id-51" data-raw></data>的Hermit曲线运动模拟，则有：</p>
-<data id="id-52" data-raw></data>
-<p>注意这个方程跟直接在<data id="id-53" data-raw></data>上乘以<data id="id-54" data-raw></data>是不太一样的。这也说明了对于位置数值变化的Hermit曲线也是不能等比缩放的。</p>
+<img src="./g1.gif">
+<p>实际上上面的Hermit曲线还可以到任意维度$\mathbb{R}^n$上去，其只是将这里的数值替换成了对应的点和切向量。</p>
+<p>下面我们考虑对时间的操作变换。因为通常来讲，我们会给定一个$s(t),t\in[0,1]$上的曲线，然后通过时间变化放缩到任意时间长度$T$上。很显然通过$t=\frac{t}{T}$变化相当于把整个图像水平拉长，这个变化是否等同于$T$时刻到达目标值$x_2$呢？</p>
+<p>显然对于$T$时刻抵达$x_2$并有用斜率$\beta$可以从上面关系直接得出变化逆矩阵</p>
+$$
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+1 & T & T^2 & T^3 \\
+0 & 1 & 0 & 0 \\
+0 & 1 & 2T & 3T^2\\
+\end{bmatrix}^{-1}=
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+-3T^{-2} & 3T^{-2} & -2T^{-1} & -T^{-1} \\
+2T^{-3} & -2T^{-3} & T^{-2} & T^{-2}\\
+\end{bmatrix}
+$$
+<p>可以验证$T=1$的情况，可以感觉到此时系数是只有部分混入了$T$变量的多项式。</p>
+$$
+\begin{bmatrix}
+a \\ b \\ c \\ d
+\end{bmatrix}=
+\begin{bmatrix}
+0\\
+\alpha\\
+\frac{3-2\alpha{}T-\beta{}T}{T^2} \\
+\frac{-2+\alpha{}T+\beta{}T}{T^3}\\
+\end{bmatrix},
+s(t)=\alpha{}t+(\frac{3-2\alpha{}T-\beta{}T}{T^2})t^2+(\frac{-2+\alpha{}T+\beta{}T}{T^3})t^3
+$$
+<p>可以看到与直接做$t/T$的缩放是不太一样的。其两个运动趋势如下(图中$t/T$为时间变化图像，$T$为使用T的Hermit曲线图像)：</p>
+<img src="./p6.png">
+<p>可以看到其实Hermit保持了图像在任意尺度上的相似性。其实可以看到对于时间维度从$1$改为$T$后，相当于不仅做了变换 $t\to{}t/T$之外还变化了$\alpha,\beta\to{}\alpha{}T,\beta{}T$，这相当于把斜率也拉平了。而着也没法通过简单的对时间为$1$的曲线变换而来。</p>
+<p>值得注意的是这个逆矩阵公式跟起始值，结束值无关。只需将$0,1$变成$x_1,x_2$即可得到任意数值变化效果。考虑对$T$时间范围内从$0$变化到$x_2$的Hermit曲线运动模拟，则有：</p>
+$$
+s(t)=\alpha{}t+(\frac{3x_2-2\alpha{}T-\beta{}T}{T^2})t^2+(\frac{-2x_2+\alpha{}T+\beta{}T}{T^3})t^3
+$$
+<p>注意这个方程跟直接在$s(t)\in[0,1],t\in[0,1]$上乘以$x_2$是不太一样的。这也说明了对于位置数值变化的Hermit曲线也是不能等比缩放的。</p>
 <blockquote>
-<p>数值范围和时间范围差异的Hermit曲线是完全不一样的，不能简单通过对<data id="id-55" data-raw></data>的曲线来缩放完成。</p>
+<p>数值范围和时间范围差异的Hermit曲线是完全不一样的，不能简单通过对$$[0,1,\alpha,\beta],t\in[0,1]$的曲线来缩放完成。</p>
 </blockquote>
-<p>下面我们考虑将Hermit曲线(一个三次曲线)改用状态方程去模拟，即每帧根据时间间隔t来增量更新。我们考虑<data id="id-56" data-raw></data>内的曲线模拟。</p>
+<p>下面我们考虑将Hermit曲线(一个三次曲线)改用状态方程去模拟，即每帧根据时间间隔t来增量更新。我们考虑$$[0,1,\alpha,\beta],t\in[0,1]$内的曲线模拟。</p>
 <p>我们可以根据公式直接进行简单求导得出各个量的初始状态以及后续更新方式。这里我们先用最简单的欧拉方法(Euler Method)做尝试。</p>
-<data id="id-57" data-raw></data>
+$$
+s(0)=0,s'(0)=\alpha,s''(0)=2(3-2\alpha{}-\beta{}) \\
+s(t+\Delta)=s(t)+\Delta{}s'(t),s'(t+\Delta)= s(t)+\Delta{}s''(t),s''(t)=s''(0)+6(-2+\alpha{}+\beta{})t
+$$
 <p>两个对比图如下</p>
-<img src="../02.assets/p7.png">
+<img src="./p7.png">
 <p>可以看到稍有差异，这是因为Euler Method用切线计算实际上是有误差的。</p>
 <h1 id="动力系统的运动效果">动力系统的运动效果</h1>
 <p>我们考虑文章二阶运动系统中的运动公式</p>
-<data id="id-58" data-raw></data>
-<p>在这里我们可以把<data id="id-59" data-raw></data>当成<data id="id-60" data-raw></data>的简单多项式函数，例如最简单的<data id="id-61" data-raw></data>，这样便得到了一个基于单一数值变化的线性系统。这个系统类似于阻尼弹簧结构。对于这类系统的分析，建模可以看控制理论，动力系统。由此来得到更丰富的运动特性和论断。</p>
-<p>可以假设<data id="id-62" data-raw></data>并且目标物体在运动<data id="id-63" data-raw></data>之后禁止不懂，首先我们可以得到</p>
-<data id="id-64" data-raw></data>
+$$
+y+k_1\dot{y}+k_2\ddot{y}=x+k_3\dot{x}\\
+$$
+<p>在这里我们可以把$x(t)$当成$t$的简单多项式函数，例如最简单的$x=t$，这样便得到了一个基于单一数值变化的线性系统。这个系统类似于阻尼弹簧结构。对于这类系统的分析，建模可以看控制理论，动力系统。由此来得到更丰富的运动特性和论断。</p>
+<p>可以假设$x=t$并且目标物体在运动$t_1$之后禁止不懂，首先我们可以得到</p>
+$$
+y+k_1\dot{y}+k_2\ddot{y}=x+k_3\\
+$$
 <p>文中讨论依然生效我们有一个简单的动力学计算方式。</p>
-<data id="id-65" data-raw></data>
-<p>不妨假设<data id="id-66" data-raw></data>，我们可以通过这个状态方程计算出想要的结果。</p>
+$$
+\begin{align}
+ y[n+1]&=y[n]+T\dot{y}[n]\\
+\dot{y}[n+1]&=\frac{-T}{k_2}y[n]+\frac{k_2-T^2-Tk_1}{k_2}\dot{y}[n]+\frac{T}{k_2}x[n+1]+\frac{Tk_3}{k_2}
+\end{align}
+$$
+<p>不妨假设$y[0]=0,\dot{y}[0]=0$，我们可以通过这个状态方程计算出想要的结果。</p>
 <p>下面是一个简单参数给出的运动图像，可以看到有一个缓慢加速过程，然后冲向目标后发生一定的振荡后，稳定。</p>
-<data id="id-67" data-raw></data>
-<img src="../02.assets/p8.png">
+$$
+\zeta=0.3,f=2,r=0.5
+$$
+<img src="./p8.png">
 <p>我们可以看到，比起多项式曲线控制。其运动效果，具有更多的特性，如振荡等。</p>
-<p>从这个图像中我们可以看到，对于线性来说，后续跟进<data id="id-68" data-raw></data>在前面有一点缓慢启动加速，然后其有一段靠近之后接近目标，最后以一个相同速率移动到目标点，并且略微振荡后停止。这实际上来源于<data id="id-69" data-raw></data>。当其为<data id="id-70" data-raw></data>时，就会有围绕目标振荡的特点。对于线性移动来说，其振荡必会有超过的趋势，这点在<data id="id-71" data-raw></data>的时候会更加明显。</p>
-<p>但如果使用<data id="id-72" data-raw></data>效果就会好很多，其运动效果图如下。</p>
-<img src="../02.assets/p9.png">
+<p>从这个图像中我们可以看到，对于线性来说，后续跟进$y$在前面有一点缓慢启动加速，然后其有一段靠近之后接近目标，最后以一个相同速率移动到目标点，并且略微振荡后停止。这实际上来源于$\zeta$。当其为$0$时，就会有围绕目标振荡的特点。对于线性移动来说，其振荡必会有超过的趋势，这点在$\zeta=0$的时候会更加明显。</p>
+<p>但如果使用$x(t)=t^2$效果就会好很多，其运动效果图如下。</p>
+<img src="./p9.png">
 <p>我们将整个常微分方程做一个变换，可以得到如下公式：</p>
-<data id="id-73" data-raw></data>
+$$
+k_2\ddot{y}=x-y+k_3\dot{x}-k_1\dot{y}
+$$
 <p>这说明这个系统的动力有两部分来源</p>
 <ul>
-<li>来自于目标位置<data id="id-74" data-raw></data>与当前位置<data id="id-75" data-raw></data>的差值。</li>
-<li>来资源目标速度<data id="id-76" data-raw></data>与当前速度<data id="id-77" data-raw></data>的比例插值。</li>
+<li>来自于目标位置$x$与当前位置$y$的差值。</li>
+<li>来资源目标速度$k_3\dot{x}$与当前速度$k_1\dot{y}$的比例插值。</li>
 </ul>
-<p>这两部分可能与刚开始设计的时候有所不符。因为一旦<data id="id-78" data-raw></data>或者<data id="id-79" data-raw></data>。都会对整个运动产生一个减速效果。这就使得会出现上面的现象</p>
+<p>这两部分可能与刚开始设计的时候有所不符。因为一旦$y>x$或者$k_3\dot{x}>k_1\dot{y}$。都会对整个运动产生一个减速效果。这就使得会出现上面的现象</p>
 <ul>
 <li>先靠近之后有一段明显的减慢趋势。</li>
-<li>一直被压制在目标<data id="id-80" data-raw></data>之后的运动趋势。</li>
+<li>一直被压制在目标$x$之后的运动趋势。</li>
 </ul>
 <h1 id="逐步更新与多项式效果">逐步更新与多项式效果</h1>
 <p>本节主要思考多项式与动力系统更新之间结构的对应关系。</p>
 <p>前面可以看到，对于绝大部分运动效果可以通过多项式插值来描述，但是动力系统的更新更加通用，或者说能实现更加复杂的效果。</p>
 <p>但是通过一些数学分析知识，或者数值分析，可以知道，对于任意一个动力系统的所确定的运动效果，都可以通过一个多项式插值公式来无穷逼近。</p>
 <p>这也说明对于多项式插值，其与运动效果存在一定联系。</p>
-<p>例如就拿上面<data id="id-81" data-raw></data>上的Hermit曲线来说：</p>
-<data id="id-82" data-raw></data>
+<p>例如就拿上面$t\in[0,1]，s(0)=0,s(1)=1,s'(0)=\alpha,s'(1)=\beta$上的Hermit曲线来说：</p>
+$$s(t)=\alpha{}t+(3-2\alpha-\beta)t^2+(-2+\alpha+\beta)t^3$$
 <p>通过求导和一些物理概念对应。我们可以看到。</p>
 <ul>
-<li>其速度即<data id="id-83" data-raw></data>存在一个从<data id="id-84" data-raw></data>开始二次多项式的变化，改变化则是有加速度线性变化得出的。</li>
-<li>其加速度<data id="id-85" data-raw></data>则存在一个线性变化。</li>
+<li>其速度即$s'(t)$存在一个从$\alpha$开始二次多项式的变化，改变化则是有加速度线性变化得出的。</li>
+<li>其加速度$s''(t)$则存在一个线性变化。</li>
 </ul>
 <p>其实从动力系统简单可以知道，如果加速度为一个固定值，那么运动多项式最多2次曲线的。
 所以Herimit的多项式运动，也可以描述为一个有某个初速度值，加速度为线性变化所带来的运动效果。
@@ -206,7 +288,7 @@
 当然也可两者结合，但这需要更加细致的洞察。</p>
 <p>所以明白两者之间的关系是很重要的。</p>
 <hr>
-<p><a class="link-markdown-demo-site" href="/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB%E5%A4%A7%E7%BA%B2/" rel="noopener">&raquo;程序动画</a></p>
+<p><a class="link-markdown-demo-site" href="./程序动画大纲.md" rel="noopener">&raquo;程序动画</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -240,5 +322,5 @@
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"$x=x(t)$","id-10":"$t$","id-11":"$[0,T]$","id-12":"$f(t)\\in{}[0,1],t\\in[0,1]$","id-13":"$t$","id-14":"$f(t)$","id-15":"$f(t)$","id-16":"$f(0)=0,f(1)=1$","id-17":"$t$","id-18":"$f(t)$","id-19":"$s(t)=a+bt+ct^2+dt^3$","id-2":"$x,t$","id-20":"$\\alpha$","id-21":"$\\beta$","id-22":"$$\r\n\\begin{bmatrix}\r\ns(0) \\\\\r\ns(1) \\\\\r\ns'(0)\\\\\r\ns'(1)\\\\\r\n\\end{bmatrix}=\r\n\\begin{bmatrix}\r\n1 \u0026 0 \u0026 0 \u0026 0 \\\\\r\n1 \u0026 1 \u0026 1 \u0026 1 \\\\\r\n0 \u0026 1 \u0026 0 \u0026 0 \\\\\r\n0 \u0026 1 \u0026 2 \u0026 3\\\\\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\na \\\\ b \\\\ c \\\\ d\r\n\\end{bmatrix}=\r\n\\begin{bmatrix}\r\n0\\\\\r\n1\\\\\r\n\\alpha \\\\\r\n\\beta \\\\\r\n\\end{bmatrix}\r\n$$","id-23":"$$\r\n\\begin{bmatrix}\r\na \\\\ b \\\\ c \\\\ d\r\n\\end{bmatrix}=\r\n\\begin{bmatrix}\r\n1 \u0026 0 \u0026 0 \u0026 0 \\\\\r\n0 \u0026 0 \u0026 1 \u0026 0 \\\\\r\n-3 \u0026 3 \u0026 -2 \u0026 -1 \\\\\r\n2 \u0026 -2 \u0026 1 \u0026 1\\\\\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\n0\\\\\r\n1\\\\\r\n\\alpha \\\\\r\n\\beta \\\\\r\n\\end{bmatrix}\r\n$$","id-24":"$$s(t)=\\alpha{}t+(3-2\\alpha-\\beta)t^2+(-2+\\alpha+\\beta)t^3$$","id-25":"$[0,1,\\alpha,\\beta]$","id-26":"$\\mathbb{R}^n$","id-27":"$s(t),t\\in[0,1]$","id-28":"$T$","id-29":"$t=\\frac{t}{T}$","id-3":"$x$","id-30":"$T$","id-31":"$x_2$","id-32":"$T$","id-33":"$x_2$","id-34":"$\\beta$","id-35":"$$\r\n\\begin{bmatrix}\r\n1 \u0026 0 \u0026 0 \u0026 0 \\\\\r\n1 \u0026 T \u0026 T^2 \u0026 T^3 \\\\\r\n0 \u0026 1 \u0026 0 \u0026 0 \\\\\r\n0 \u0026 1 \u0026 2T \u0026 3T^2\\\\\r\n\\end{bmatrix}^{-1}=\r\n\\begin{bmatrix}\r\n1 \u0026 0 \u0026 0 \u0026 0 \\\\\r\n0 \u0026 0 \u0026 1 \u0026 0 \\\\\r\n-3T^{-2} \u0026 3T^{-2} \u0026 -2T^{-1} \u0026 -T^{-1} \\\\\r\n2T^{-3} \u0026 -2T^{-3} \u0026 T^{-2} \u0026 T^{-2}\\\\\r\n\\end{bmatrix}\r\n$$","id-36":"$T=1$","id-37":"$T$","id-38":"$$\r\n\\begin{bmatrix}\r\na \\\\ b \\\\ c \\\\ d\r\n\\end{bmatrix}=\r\n\\begin{bmatrix}\r\n0\\\\\r\n\\alpha\\\\\r\n\\frac{3-2\\alpha{}T-\\beta{}T}{T^2} \\\\\r\n\\frac{-2+\\alpha{}T+\\beta{}T}{T^3}\\\\\r\n\\end{bmatrix},\r\ns(t)=\\alpha{}t+(\\frac{3-2\\alpha{}T-\\beta{}T}{T^2})t^2+(\\frac{-2+\\alpha{}T+\\beta{}T}{T^3})t^3\r\n$$","id-39":"$t/T$","id-4":"$1s$","id-40":"$t/T$","id-41":"$T$","id-42":"$1$","id-43":"$T$","id-44":"$t\\to{}t/T$","id-45":"$\\alpha,\\beta\\to{}\\alpha{}T,\\beta{}T$","id-46":"$1$","id-47":"$0,1$","id-48":"$x_1,x_2$","id-49":"$T$","id-5":"$x_1$","id-50":"$0$","id-51":"$x_2$","id-52":"$$\r\ns(t)=\\alpha{}t+(\\frac{3x_2-2\\alpha{}T-\\beta{}T}{T^2})t^2+(\\frac{-2x_2+\\alpha{}T+\\beta{}T}{T^3})t^3\r\n$$","id-53":"$s(t)\\in[0,1],t\\in[0,1]$","id-54":"$x_2$","id-55":"$$[0,1,\\alpha,\\beta],t\\in[0,1]$","id-56":"$$[0,1,\\alpha,\\beta],t\\in[0,1]$","id-57":"$$\r\ns(0)=0,s'(0)=\\alpha,s''(0)=2(3-2\\alpha{}-\\beta{}) \\\\\r\ns(t+\\Delta)=s(t)+\\Delta{}s'(t),s'(t+\\Delta)= s(t)+\\Delta{}s''(t),s''(t)=s''(0)+6(-2+\\alpha{}+\\beta{})t\r\n$$","id-58":"$$\r\ny+k_1\\dot{y}+k_2\\ddot{y}=x+k_3\\dot{x}\\\\\r\n$$","id-59":"$x(t)$","id-6":"$x_2$","id-60":"$t$","id-61":"$x=t$","id-62":"$x=t$","id-63":"$t_1$","id-64":"$$\r\ny+k_1\\dot{y}+k_2\\ddot{y}=x+k_3\\\\\r\n$$","id-65":"$$\r\n\\begin{align}\r\n y[n+1]\u0026=y[n]+T\\dot{y}[n]\\\\\r\n\\dot{y}[n+1]\u0026=\\frac{-T}{k_2}y[n]+\\frac{k_2-T^2-Tk_1}{k_2}\\dot{y}[n]+\\frac{T}{k_2}x[n+1]+\\frac{Tk_3}{k_2}\r\n\\end{align}\r\n$$","id-66":"$y[0]=0,\\dot{y}[0]=0$","id-67":"$$\r\n\\zeta=0.3,f=2,r=0.5\r\n$$","id-68":"$y$","id-69":"$\\zeta$","id-7":"$$x(t)=x_1+(x_2-x_1)*t，t:0\\to{}1$$","id-70":"$0$","id-71":"$\\zeta=0$","id-72":"$x(t)=t^2$","id-73":"$$\r\nk_2\\ddot{y}=x-y+k_3\\dot{x}-k_1\\dot{y}\r\n$$","id-74":"$x$","id-75":"$y$","id-76":"$k_3\\dot{x}$","id-77":"$k_1\\dot{y}$","id-78":"$y\u003ex$","id-79":"$k_3\\dot{x}\u003ek_1\\dot{y}$","id-8":"$T$","id-80":"$x$","id-81":"$t\\in[0,1]，s(0)=0,s(1)=1,s'(0)=\\alpha,s'(1)=\\beta$","id-82":"$$s(t)=\\alpha{}t+(3-2\\alpha-\\beta)t^2+(-2+\\alpha+\\beta)t^3$$","id-83":"$s'(t)$","id-84":"$\\alpha$","id-85":"$s''(t)$","id-9":"$\\frac{t}{T}$"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

@@ -5,14 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>01插值研究 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="01插值研究" />
-<meta property="og:description" content="插值研究 本文章主要记录游戏开发中用到的一些插值技术，插值在游戏中主要都是用到一些运动效果过程中。例如最简单的线性插值 但插值相关的技术在更多方" />
+<meta property="og:description" content="插值研究 本文章主要记录游戏开发中用到的一些插值技术，插值在游戏中主要都是用到一些运动效果过程中。例如最简单的线性插值 $$x(t)=x_1&#43;(" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/01%E6%8F%92%E5%80%BC%E7%A0%94%E7%A9%B6/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-12-24T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-12-24T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
 
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="01插值研究"/>
-<meta name="twitter:description" content="插值研究 本文章主要记录游戏开发中用到的一些插值技术，插值在游戏中主要都是用到一些运动效果过程中。例如最简单的线性插值 但插值相关的技术在更多方"/>
+<meta name="twitter:description" content="插值研究 本文章主要记录游戏开发中用到的一些插值技术，插值在游戏中主要都是用到一些运动效果过程中。例如最简单的线性插值 $$x(t)=x_1&#43;("/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB\/01%E6%8F%92%E5%80%BC%E7%A0%94%E7%A9%B6\/"
-        },"genre": "posts","wordcount":  3313 ,
+        },"genre": "posts","wordcount":  4407 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB\/01%E6%8F%92%E5%80%BC%E7%A0%94%E7%A9%B6\/","datePublished": "2023-12-24T00:00:00+00:00","dateModified": "2023-12-24T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,8 +69,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">01插值研究</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-12-24">2023-12-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3313 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-12-24">2023-12-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4407 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -92,7 +92,7 @@
 </nav></div>
             </div><div class="content" id="content"><h1 id="插值研究">插值研究</h1>
 <p>本文章主要记录游戏开发中用到的一些插值技术，插值在游戏中主要都是用到一些运动效果过程中。例如最简单的线性插值</p>
-<data id="id-1" data-raw></data>
+$$x(t)=x_1+(x_2-x_1)*t，t:0\to{}1$$
 <p>但插值相关的技术在更多方面也存在应用，例如曲线控制。此外运动也跟动力系统相关联。</p>
 <p>目前看来运动变化主要有两种方式。</p>
 <ul>
@@ -110,83 +110,221 @@
 <p>插值方式有很多种，最经典的就是Bezier曲线插值，以及Hermite曲线插值。Bezier曲线插值有4个点构成控制点，Hermite曲线插值则关注2个点，以及这两个点上的切线值。除此之外还有Catmull-Rom曲线插值和Lagrange插值。</p>
 <p>在此做以简单的记录，对于插值部分的具体数学可以看《数值分析》或者《3D数学基础 图形和游戏开发》，这里也会相关引用一部分数学。</p>
 <h2 id="lagrange插值">Lagrange插值</h2>
-<p>Lagrange插值实际就是线性插值的一个自然推广，其有很多理解角度。其一是从每段的线性插值得来。先假设有两个要插值拟合的点<data id="id-2" data-raw></data>。我们要线性插值拟合这两个点，相当于值从在<data id="id-3" data-raw></data>时间内从<data id="id-4" data-raw></data>变化到<data id="id-5" data-raw></data>。</p>
+<p>Lagrange插值实际就是线性插值的一个自然推广，其有很多理解角度。其一是从每段的线性插值得来。先假设有两个要插值拟合的点$(t_1,x_1),(t_2,x_2)$。我们要线性插值拟合这两个点，相当于值从在$t_1\to{}t_2$时间内从$x_1$变化到$x_2$。</p>
 <p>那么自然有</p>
-<data id="id-6" data-raw></data>
-<p>那么自然如果有三个点<data id="id-7" data-raw></data>时候我们可以在原来的线性插值基础上再进行一次线性插值。即有</p>
-<data id="id-8" data-raw></data>
-<data id="id-9" data-raw></data>
+$$s(t)=\frac{(t_2-t)x_1+(t-t_1)x_2}{t_2-t_1}$$
+<p>那么自然如果有三个点$(t_1,x_1),(t_2,x_2),(t_3,x_3)$时候我们可以在原来的线性插值基础上再进行一次线性插值。即有</p>
+$$x_{12}=\frac{(t_2-t)x_1+(t-t_1)x_2}{t_2-t_1},x_{23}=\frac{(t_3-t)x_2+(t-t_2)x_3}{t_3-t_2}$$
+$$x_{123}=\frac{(t_3-t)x_{12}+(t-t_1)x_{23}}{t_3-t_1}$$
 <p>来构造过3个点的曲线。可以简单看出在每个时刻都经过对应的点。</p>
 <p>可以验证对于n个点同样方式可以构造出经过n个点的曲线。这个方式即差分方式的构造Lagrange插值即。</p>
-<data id="id-10" data-raw></data>
+$$
+x_i=x_i\\
+x_{12\ldots{}k}=\frac{(t_k-t)x_{12\ldots{}k-1}+(t-t_1)x_{2\ldots{}k}}{t_k-t_1}
+$$
 <p>可以简单数学归纳验证，每一步都是经过</p>
-<p>现在我们再从另一个角度来看，实际上我们将插值的系数抽象化，将每个点上的系数独立记为<data id="id-11" data-raw></data>，即经过n个点的曲线最后会是</p>
-<data id="id-12" data-raw></data>
-<p>这个<data id="id-13" data-raw></data>也称之为Lagrange基，可以注意到对于<data id="id-14" data-raw></data>来说。只当<data id="id-15" data-raw></data>是为1而其他<data id="id-16" data-raw></data>值都为0。所以对于最后公式来说，可以确保在每个<data id="id-17" data-raw></data>处经过<data id="id-18" data-raw></data>。但值得注意的是，实际上<data id="id-19" data-raw></data>为一个n-1次多项式，这实际上相当于过每个点的一个n阶多项式去拟合曲线。从Taylor展开我们可以知道，对于一个函数来说可以，用在<data id="id-20" data-raw></data>处的导数来线性表示，即表示成<data id="id-21" data-raw></data>的线性表示，这里也有类似含义，由<data id="id-22" data-raw></data>构成的基来构成这个线性表示。从数值分析中可以看到，如果这n个点，实际由一个函数生成，那么这个Lagrange插值的误差跟Taylor展开的误差是非常类似的。</p>
+<p>现在我们再从另一个角度来看，实际上我们将插值的系数抽象化，将每个点上的系数独立记为$l_i$，即经过n个点的曲线最后会是</p>
+$$
+x=l_1x_1+l_2x_2+\cdots+l_nx_n\\
+l_j(t)=\prod_{\substack{i=0\\{}i\neq{}i}}^n \frac{t-t_i}{t_j-t_i}
+$$
+<p>这个$l_j$也称之为Lagrange基，可以注意到对于$l_j$来说。只当$t=t_j$是为1而其他$t_i$值都为0。所以对于最后公式来说，可以确保在每个$t_i$处经过$x_i$。但值得注意的是，实际上$l_j$为一个n-1次多项式，这实际上相当于过每个点的一个n阶多项式去拟合曲线。从Taylor展开我们可以知道，对于一个函数来说可以，用在$t_0$处的导数来线性表示，即表示成$t-t_0,(t-t_0)^2,\cdots,(t-t_0)^n$的线性表示，这里也有类似含义，由$l_j$构成的基来构成这个线性表示。从数值分析中可以看到，如果这n个点，实际由一个函数生成，那么这个Lagrange插值的误差跟Taylor展开的误差是非常类似的。</p>
 <h2 id="hermite插值">Hermite插值</h2>
-<p>在上述结构中，我们只关注了对于该时间点上值的关系，如果我们还关注其n阶导数，那么相应的多项式就会更加复杂。即，我们所求的多项式<data id="id-23" data-raw></data>不经要在<data id="id-24" data-raw></data>个时间点上满足<data id="id-25" data-raw></data>的取值，还要满足么个点上的<data id="id-26" data-raw></data>阶导数取值，即<data id="id-27" data-raw></data>。这样的插值多项式称之为密切多项式。这个多项式的次数至少有<data id="id-28" data-raw></data>次。</p>
-<p>其中Hermit就是满足每个点上一阶导数也相等的插值多项式，即对每个点<data id="id-29" data-raw></data>的情况的点。对于n个点的Hermite插值多项式公式非常复杂，在《数值分析》一书中有介绍。是一个基于Lagrange基上的复合多项式。在此就不再描述。</p>
-<p>但是对于<data id="id-30" data-raw></data>，即两个点的情况下，则有比较明确简单的描述。参考前面的文章记录，对于</p>
-<p><data id="id-31" data-raw></data>四个条件确定的Hermite曲线<data id="id-32" data-raw></data>由如下方式确定。</p>
-<data id="id-33" data-raw></data>
+<p>在上述结构中，我们只关注了对于该时间点上值的关系，如果我们还关注其n阶导数，那么相应的多项式就会更加复杂。即，我们所求的多项式$x(t)$不经要在$t_0\cdots{}t_n$个时间点上满足$x_1\cdots{}x_n$的取值，还要满足么个点上的$m_i$阶导数取值，即$x^k(t)=x^k_i,k=1\cdots{}m_i$。这样的插值多项式称之为密切多项式。这个多项式的次数至少有$M=\sum_{i}m_i+n$次。</p>
+<p>其中Hermit就是满足每个点上一阶导数也相等的插值多项式，即对每个点$m_i=1$的情况的点。对于n个点的Hermite插值多项式公式非常复杂，在《数值分析》一书中有介绍。是一个基于Lagrange基上的复合多项式。在此就不再描述。</p>
+<p>但是对于$n=2$，即两个点的情况下，则有比较明确简单的描述。参考前面的文章记录，对于</p>
+$$s(0)=x_0,s(1)=x_1,s'(0)=\alpha,s'(1)=\beta$$
+<p>四个条件确定的Hermite曲线</p>
+$$s(t)=a+bt+ct^2+dt^3$$
+<p>由如下方式确定。</p>
+$$
+\begin{bmatrix}
+x_0 \\ x_1 \\ \alpha \\ \beta
+\end{bmatrix}=
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+1 & 1 & 1 & 1 \\
+0 & 1 & 0 & 0 \\
+0 & 1 & 2 & 3\\
+\end{bmatrix}
+\begin{bmatrix}
+a\\
+b\\
+c \\
+d \\
+\end{bmatrix}
+$$
 <p>求解逆矩阵可得
-<data id="id-34" data-raw></data></p>
-<data id="id-35" data-raw></data>
-<p>当在任意时间段<data id="id-36" data-raw></data>内变化的时候有
-<data id="id-37" data-raw></data></p>
+</p>
+$$
+\begin{bmatrix}
+a \\ b \\ c \\ d
+\end{bmatrix}=
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+-3 & 3 & -2 & -1 \\
+2 & -2 & 1 & 1\\
+\end{bmatrix}
+\begin{bmatrix}
+x_0\\
+x_1\\
+\alpha \\
+\beta \\
+\end{bmatrix}
+$$
+$$
+s(t)=\begin{bmatrix}
+a & b & c & d
+\end{bmatrix}
+\begin{bmatrix}
+1\\
+t\\
+t^2\\
+t^3
+\end{bmatrix}
+=\begin{bmatrix}
+x_0 & x_1 & \alpha & \beta
+\end{bmatrix}
+\begin{bmatrix}
+1-3t^2+2t^3 \\
+3t^2-2t^3 \\
+t-2t^2+t^3 \\
+-t^2+t^3
+\end{bmatrix}
+$$
+<p>当在任意时间段$t_0,t_1$内变化的时候有
+</p>
+$$
+\begin{bmatrix}
+x_0 \\ x_1 \\ \alpha \\ \beta
+\end{bmatrix}=
+\begin{bmatrix}
+1 & t_0 & t_0^2 & t_0^3 \\
+1 & t_1 & t_1^2 & t_1^3 \\
+0 & 1 & 2t_0 & 3t_0^2 \\
+0 & 1 & 2t_1 & 3t_1^2\\
+\end{bmatrix}
+\begin{bmatrix}
+a\\
+b\\
+c \\
+d \\
+\end{bmatrix}
+$$
 <h2 id="bezier插值">Bezier插值</h2>
 <p>先从构造的角度来生成Bezier曲线结构。在前面我们已经看到了Lagrange曲线，也看到其由连续两点之间的线性插值延展而来，实际上如果不要求经过中间点，而只经过起始点和终点，则存在另一种方式来插值表示，即我们在每一段区间上都以线性的方式移动，最后整体运动为每一段运动上的等时线性插值。</p>
 <p>详细过程可以参考《计算机图形学与几何造型导论》</p>
-<p>举例来说，假设现在有两个点<data id="id-38" data-raw></data>，需要在<data id="id-39" data-raw></data>时间内经过。那么显然有</p>
-<data id="id-40" data-raw></data>
-<p>当有三个点<data id="id-41" data-raw></data>的时候，我们开始递归构造，但是与Lagrange不同的是，我们没有要求中间点在什么时候经过。所以采用如下的方式进行。</p>
+<p>举例来说，假设现在有两个点$p_1,p_2$，需要在$t_1,t_2$时间内经过。那么显然有</p>
+$$s(t)=\frac{(t_2-t)p_1+(t-t_1)p_2}{t_2-t_1}$$
+<p>当有三个点$p_1，p_2，p_3$的时候，我们开始递归构造，但是与Lagrange不同的是，我们没有要求中间点在什么时候经过。所以采用如下的方式进行。</p>
 <ul>
-<li>在每两个点之间在<data id="id-42" data-raw></data>时间内线性插值移动形成对应移动的点<data id="id-43" data-raw></data>。</li>
-<li>针对每相邻的两段上移动的点<data id="id-44" data-raw></data>再在<data id="id-45" data-raw></data>时间内线性插值，直到最后只剩一段。</li>
+<li>在每两个点之间在$t_1,t_2$时间内线性插值移动形成对应移动的点$s_i(t)$。</li>
+<li>针对每相邻的两段上移动的点$s_i(t),s_{i+1}(t)$再在$t_1,t_2$时间内线性插值，直到最后只剩一段。</li>
 </ul>
-<p>可以注意到与Langrange不同的是，不用在指定时间，经过中间点。而中间点主要起到一个控制作用，因为自底向上构造过程中的每个点实际上要插值中间点。而对应的构造方法简而言之，就是在每个线段上线性移动化在逐步插值构成。例如在<data id="id-46" data-raw></data>之上进行操作有</p>
-<data id="id-47" data-raw></data>
+<p>可以注意到与Langrange不同的是，不用在指定时间，经过中间点。而中间点主要起到一个控制作用，因为自底向上构造过程中的每个点实际上要插值中间点。而对应的构造方法简而言之，就是在每个线段上线性移动化在逐步插值构成。例如在$p_1,p_2,p_3$之上进行操作有</p>
+$$
+s_{12}(t)=\frac{(t_2-t)p_1+(t-t_1)p_2}{t_2-t_1},s_{23}(t)=\frac{(t_2-t)p_2+(t-t_1)p_3}{t_2-t_1}\\
+s_{123}(t)=\frac{(t_2-t)s_{12}+(t-t_1)s_{23}}{t_2-t_1}
+$$
 <p>即
-<data id="id-48" data-raw></data></p>
-<p>根据公式我们可以看到自底向上的过程中实际上相当于反复乘以<data id="id-49" data-raw></data>。那么整个过程中可以看到对于每个值<data id="id-50" data-raw></data>其系数，是从底部到顶部的所有路径求和，而这个路径个数显然等同于二项式系数。也可以认为是从每个向上过程中，因为底部位置确定，所以有固定的选择向左或者向右的方式。</p>
+</p>
+$$
+p_i=p_i\\
+p_{12\ldots{}k}=\frac{(t_2-t)s_{12\ldots{}k-1}+(t-t_1)s_{2\ldots{}k}}{t_2-t_1}
+$$
+<p>根据公式我们可以看到自底向上的过程中实际上相当于反复乘以$\frac{t_2-t}{t_2-t_1},\frac{t-t_1}{t_2-t_1}$。那么整个过程中可以看到对于每个值$x_i$其系数，是从底部到顶部的所有路径求和，而这个路径个数显然等同于二项式系数。也可以认为是从每个向上过程中，因为底部位置确定，所以有固定的选择向左或者向右的方式。</p>
 <p>所以有递推公式
-<data id="id-51" data-raw></data></p>
-<p>此<data id="id-52" data-raw></data>就成为Bernstein基函数。是有n+1个点的Bezier曲线中跟第k个点关联的多项式系数。即有n+1个值的<data id="id-53" data-raw></data>的Bezier函数有如下形式。</p>
-<data id="id-54" data-raw></data>
+</p>
+$$
+B_k^n(t)=P(n,k)\frac{(t-t_1)^k(t_2-t)^{n-k}}{(t_2-t_1)^n}\\
+P(n,k)=P(n-1,k-1)+P(n-1,k)=\begin{pmatrix}
+    n\\k
+\end{pmatrix}\\
+B_k^n(t)=\begin{pmatrix}
+    n\\k
+\end{pmatrix}\frac{(t-t_1)^k(t_2-t)^{n-k}}{(t_2-t_1)^n}
+$$
+<p>此$B_k^n(t)$就成为Bernstein基函数。是有n+1个点的Bezier曲线中跟第k个点关联的多项式系数。即有n+1个值的$x_0,x_1,\cdots,x_n$的Bezier函数有如下形式。</p>
+$$
+s(t)=\sum_{i=0}^nB_i^n(t)p_i
+$$
 <p><strong>注意</strong>
-虽然这个推导过程中使用的是点，一般情况下书籍上也都是以2维以上的情况下为例。但是根据上面的构造生成过程也可以发现，其实际上可以在一维情况下建立。只是构造的曲线形状是建立在<data id="id-55" data-raw></data>坐标系上的。即形状注定是一个一维函数的形状，而不是一个二维平面的曲线。</p>
+虽然这个推导过程中使用的是点，一般情况下书籍上也都是以2维以上的情况下为例。但是根据上面的构造生成过程也可以发现，其实际上可以在一维情况下建立。只是构造的曲线形状是建立在$t-x$坐标系上的。即形状注定是一个一维函数的形状，而不是一个二维平面的曲线。</p>
 <p>将上述几种情况限制到3次多项式情况下，就是我们经常使用的插值函数了。但是对于各种情况我们要更加细节的分析明白其中的各种情况。</p>
 <h2 id="bezier插值与hermite关系">Bezier插值与Hermite关系</h2>
 <p>由于Hermite一般为2个点的3次曲线，所以Bezier曲线我们也关注3次曲线部分。即4个控制点的Bezier曲线。</p>
-<p>我们关注<data id="id-56" data-raw></data>时间段内一维情况下的变化，需要注意的是，此时Hermite曲线的语义依旧很明确，即在<data id="id-57" data-raw></data>时取的值以及切线值<data id="id-58" data-raw></data>。但是Bezier曲线，如果直接用构造点的方式，会发现并没有明确对应中间点的t坐标值。实际上这个时候的<data id="id-59" data-raw></data>都会是在x轴上的一个点而已，运动起来，根据构造，其都会是沿着<data id="id-60" data-raw></data>的方向去运动，而不会有往返震荡。</p>
-<p>例如对于一维取值<data id="id-61" data-raw></data>会有如下图像概念。</p>
-<img src="../01.assets/Figure_1.png">
+<p>我们关注$t:0\to{}1$时间段内一维情况下的变化，需要注意的是，此时Hermite曲线的语义依旧很明确，即在$t=0,t=1$时取的值以及切线值$dx/dt$。但是Bezier曲线，如果直接用构造点的方式，会发现并没有明确对应中间点的t坐标值。实际上这个时候的$p_1,p_2,p_3,p_4$都会是在x轴上的一个点而已，运动起来，根据构造，其都会是沿着$t:0\to{}1$的方向去运动，而不会有往返震荡。</p>
+<p>例如对于一维取值$[0,1,1,0]$会有如下图像概念。</p>
+<img src="./Figure_1.png">
 <p>注意到整个曲线任然满足Bezier闭包条件，同时构造的边实际都只有一个前进方向。</p>
 <ul>
 <li>Bezier曲线</li>
 </ul>
-<data id="id-62" data-raw></data>
+$$
+s(t)=(1-t)^3p_0+3(1-t)^2(t-0)p_1+3(1-t)(t-0)^2p_2+(t-0)^3p_3
+$$
 <ul>
 <li>Hermite曲线</li>
 </ul>
-<data id="id-63" data-raw></data>
-<p>对于Hermite曲线来说，显然对于<data id="id-64" data-raw></data>时刻<data id="id-65" data-raw></data>。对于Bezier曲线可以通过求导得到</p>
-<data id="id-66" data-raw></data>
+$$
+s(t)=(1-3t^2+2t^3)x_0+(3t^2-2t^3)x_1+(t-2t^2+t^3)\alpha+(-t^2+t^3)\beta
+$$
+<p>对于Hermite曲线来说，显然对于$t=0,t=1$时刻$s'(0)=\alpha,s'(1)=\beta$。对于Bezier曲线可以通过求导得到</p>
+$$
+s'(t)=-3(1-t)^2p_0+(-2(1-t)t+(1-t)^2)p_1+(-t^2+2t(1-t))p_2+3t^2p_3
+$$
 <p>故有</p>
-<data id="id-67" data-raw></data>
-<p>可以看到Bezier首个点的斜率只收前两个点的影响，末尾点的斜率只收后两个点的影响，这也是其一个重要特征，实际上可以相当，根据构造其开始阶段，收到最初两个点影响比例是100%，所以其斜率一定跟其有关。但可惜的是，并不完全是头两个点所形成的斜率（这里应该是<data id="id-68" data-raw></data>，但实际有一个倍数关系<data id="id-69" data-raw></data>。实际上对于任何维度都有当在时间<data id="id-70" data-raw></data>变化时有:</p>
-<data id="id-71" data-raw></data>
+$$
+s'(0)=-3p_0+3p_1,s'(1)=-3p_2+3p_3
+$$
+<p>可以看到Bezier首个点的斜率只收前两个点的影响，末尾点的斜率只收后两个点的影响，这也是其一个重要特征，实际上可以相当，根据构造其开始阶段，收到最初两个点影响比例是100%，所以其斜率一定跟其有关。但可惜的是，并不完全是头两个点所形成的斜率（这里应该是$p_1-p_0$，但实际有一个倍数关系$3(p_1-p_0)$。实际上对于任何维度都有当在时间$t:a\to{}b$变化时有:</p>
+$$
+\begin{array}{ll}
+s(a)=p_0 & x(b)=p_1 \\
+s'(a)=n\frac{p_1-p_0}{b-a} & s'(b)=n\frac{p_n-p_{n-1}}{b-a}\\
+s''(a)=n(n-1)\frac{p_2-2p_1+p_0}{(b-a)^2} & s''(b)=n(n-1)\frac{p_n-2p_{n-1}+p_{n-2}}{(b-a)^2}
+\end{array}
+$$
 <p>可以看到一阶导数是第一个点的变化率的n倍数。从这个公式也可以观察到递归构造带来的影响。</p>
-<p>同时这个公式就提示我们可以如下关联这两个曲线。例如当<data id="id-72" data-raw></data>时，那么两条曲线完全一致。这也提示我们这两个曲线本质一致性。后面可以看到很多曲线编辑器都是用这种方式去编辑的，例如Catmull-rom曲线方式。</p>
+<p>同时这个公式就提示我们可以如下关联这两个曲线。例如当$x_0=p_0,x_1=p_3,\alpha=3(p_1-p_0)，\beta=3(p_3-p_2)$时，那么两条曲线完全一致。这也提示我们这两个曲线本质一致性。后面可以看到很多曲线编辑器都是用这种方式去编辑的，例如Catmull-rom曲线方式。</p>
 <p><font size = 5> <strong>Catmull-rom</strong></font></p>
-<p>前面看到Bezier上曲线两端跟Hermite斜率上的关系。例如我们要插值<data id="id-73" data-raw></data>两点，我们可以假象前后存在两个假象点<data id="id-74" data-raw></data>。而对于我们要插值的点<data id="id-75" data-raw></data>其斜率部分的值相当于<data id="id-76" data-raw></data>。如下图。</p>
-<img src="../01.assets/p1.png">
+<p>前面看到Bezier上曲线两端跟Hermite斜率上的关系。例如我们要插值$p_{i-1},p_i$两点，我们可以假象前后存在两个假象点$p_{i-2},p_i$。而对于我们要插值的点$p_i$其斜率部分的值相当于$\tau(p_{i+1}-p_{i-1})$。如下图。</p>
+<img src="./p1.png">
 <p>那么此时，我们可以通过Herite矩阵简单得出此时的系数矩阵如下：</p>
-<data id="id-77" data-raw></data>
-<p>两个公式相乘可以的出矩阵，实际上就是矩阵的斜率值通过一些已经有的点给了出来。这里的<data id="id-78" data-raw></data>可以理解维曲线的紧张程度。</p>
+$$
+\begin{bmatrix}
+p_{i-1} \\ p_i \\ p_{i-1}' \\ p_i'
+\end{bmatrix}=
+\begin{bmatrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+-\tau & 0 & \tau & 0 \\
+0 & -\tau & 0 & \tau\\
+\end{bmatrix}
+\begin{bmatrix}
+p_{i-2}\\
+p_{i-1}\\
+p_{i} \\
+p_{i+1} \\
+\end{bmatrix},
+\begin{bmatrix}
+a \\ b \\ c \\ d
+\end{bmatrix}=
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+-3 & 3 & -2 & -1 \\
+2 & -2 & 1 & 1\\
+\end{bmatrix}
+\begin{bmatrix}
+p_{i-1} \\ p_i \\ p_{i-1}' \\ p_i'
+\end{bmatrix}
+$$
+<p>两个公式相乘可以的出矩阵，实际上就是矩阵的斜率值通过一些已经有的点给了出来。这里的$\tau$可以理解维曲线的紧张程度。</p>
 <p>这相当于一种通过前后点的比例关系来映射到系数上，进而控制曲线样式的方式。很多结构性的代码都是在曲线参数上又建立了一层参数映射来控制曲线。</p>
 <p>此外我们可以设想一个工具来调整我们的曲线。就是在点上有一个明确的直线部分来标识斜率部分，如上图，则通过控制这条线的方向长度可以控制曲线的完全效果。这也是大多数引擎工具提供曲线控制的方式。</p>
-<p>准确说，在一维情况下<data id="id-79" data-raw></data>还有两种控制方式。</p>
+<p>准确说，在一维情况下$t-x$还有两种控制方式。</p>
 <ul>
 <li>控制线单位化，只用其斜率表示该点一阶导数。</li>
 <li>控制线权重化，根据上面的Bezier或者Catmull-Rom的方式，取这两个点差值的比例值来控制一阶导数。</li>
@@ -195,9 +333,9 @@
 <p>在二维情况下，首先我们注意到两者就都有明确的语义概念。而且不再是以横轴为时间轴变化来演变。</p>
 <p><font size = 5> <strong>随时间变化的运动效果</strong></font></p>
 <h1 id="不同维度下的情况">不同维度下的情况</h1>
-<p>上面讨论的都是一维情况下。实际上针对每种插值效果，可以自然推广到更高维度去。只需将<data id="id-80" data-raw></data>替换为对应高维度的点<data id="id-81" data-raw></data>即可。</p>
+<p>上面讨论的都是一维情况下。实际上针对每种插值效果，可以自然推广到更高维度去。只需将$x_i$替换为对应高维度的点$p_i$即可。</p>
 <hr>
-<p><a class="link-markdown-demo-site" href="/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB%E5%A4%A7%E7%BA%B2/" rel="noopener">&raquo;程序动画</a></p>
+<p><a class="link-markdown-demo-site" href="./程序动画大纲.md" rel="noopener">&raquo;程序动画</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -231,5 +369,5 @@
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"$$x(t)=x_1+(x_2-x_1)*t，t:0\\to{}1$$","id-10":"$$\r\nx_i=x_i\\\\\r\nx_{12\\ldots{}k}=\\frac{(t_k-t)x_{12\\ldots{}k-1}+(t-t_1)x_{2\\ldots{}k}}{t_k-t_1}\r\n$$","id-11":"$l_i$","id-12":"$$\r\nx=l_1x_1+l_2x_2+\\cdots+l_nx_n\\\\\r\nl_j(t)=\\prod_{\\substack{i=0\\\\{}i\\neq{}i}}^n \\frac{t-t_i}{t_j-t_i}\r\n$$","id-13":"$l_j$","id-14":"$l_j$","id-15":"$t=t_j$","id-16":"$t_i$","id-17":"$t_i$","id-18":"$x_i$","id-19":"$l_j$","id-2":"$(t_1,x_1),(t_2,x_2)$","id-20":"$t_0$","id-21":"$t-t_0,(t-t_0)^2,\\cdots,(t-t_0)^n$","id-22":"$l_j$","id-23":"$x(t)$","id-24":"$t_0\\cdots{}t_n$","id-25":"$x_1\\cdots{}x_n$","id-26":"$m_i$","id-27":"$x^k(t)=x^k_i,k=1\\cdots{}m_i$","id-28":"$M=\\sum_{i}m_i+n$","id-29":"$m_i=1$","id-3":"$t_1\\to{}t_2$","id-30":"$n=2$","id-31":"$$s(0)=x_0,s(1)=x_1,s'(0)=\\alpha,s'(1)=\\beta$$","id-32":"$$s(t)=a+bt+ct^2+dt^3$$","id-33":"$$\r\n\\begin{bmatrix}\r\nx_0 \\\\ x_1 \\\\ \\alpha \\\\ \\beta\r\n\\end{bmatrix}=\r\n\\begin{bmatrix}\r\n1 \u0026 0 \u0026 0 \u0026 0 \\\\\r\n1 \u0026 1 \u0026 1 \u0026 1 \\\\\r\n0 \u0026 1 \u0026 0 \u0026 0 \\\\\r\n0 \u0026 1 \u0026 2 \u0026 3\\\\\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\na\\\\\r\nb\\\\\r\nc \\\\\r\nd \\\\\r\n\\end{bmatrix}\r\n$$","id-34":"$$\r\n\\begin{bmatrix}\r\na \\\\ b \\\\ c \\\\ d\r\n\\end{bmatrix}=\r\n\\begin{bmatrix}\r\n1 \u0026 0 \u0026 0 \u0026 0 \\\\\r\n0 \u0026 0 \u0026 1 \u0026 0 \\\\\r\n-3 \u0026 3 \u0026 -2 \u0026 -1 \\\\\r\n2 \u0026 -2 \u0026 1 \u0026 1\\\\\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\nx_0\\\\\r\nx_1\\\\\r\n\\alpha \\\\\r\n\\beta \\\\\r\n\\end{bmatrix}\r\n$$","id-35":"$$\r\ns(t)=\\begin{bmatrix}\r\na \u0026 b \u0026 c \u0026 d\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\n1\\\\\r\nt\\\\\r\nt^2\\\\\r\nt^3\r\n\\end{bmatrix}\r\n=\\begin{bmatrix}\r\nx_0 \u0026 x_1 \u0026 \\alpha \u0026 \\beta\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\n1-3t^2+2t^3 \\\\\r\n3t^2-2t^3 \\\\\r\nt-2t^2+t^3 \\\\\r\n-t^2+t^3\r\n\\end{bmatrix}\r\n$$","id-36":"$t_0,t_1$","id-37":"$$\r\n\\begin{bmatrix}\r\nx_0 \\\\ x_1 \\\\ \\alpha \\\\ \\beta\r\n\\end{bmatrix}=\r\n\\begin{bmatrix}\r\n1 \u0026 t_0 \u0026 t_0^2 \u0026 t_0^3 \\\\\r\n1 \u0026 t_1 \u0026 t_1^2 \u0026 t_1^3 \\\\\r\n0 \u0026 1 \u0026 2t_0 \u0026 3t_0^2 \\\\\r\n0 \u0026 1 \u0026 2t_1 \u0026 3t_1^2\\\\\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\na\\\\\r\nb\\\\\r\nc \\\\\r\nd \\\\\r\n\\end{bmatrix}\r\n$$","id-38":"$p_1,p_2$","id-39":"$t_1,t_2$","id-4":"$x_1$","id-40":"$$s(t)=\\frac{(t_2-t)p_1+(t-t_1)p_2}{t_2-t_1}$$","id-41":"$p_1，p_2，p_3$","id-42":"$t_1,t_2$","id-43":"$s_i(t)$","id-44":"$s_i(t),s_{i+1}(t)$","id-45":"$t_1,t_2$","id-46":"$p_1,p_2,p_3$","id-47":"$$\r\ns_{12}(t)=\\frac{(t_2-t)p_1+(t-t_1)p_2}{t_2-t_1},s_{23}(t)=\\frac{(t_2-t)p_2+(t-t_1)p_3}{t_2-t_1}\\\\\r\ns_{123}(t)=\\frac{(t_2-t)s_{12}+(t-t_1)s_{23}}{t_2-t_1}\r\n$$","id-48":"$$\r\np_i=p_i\\\\\r\np_{12\\ldots{}k}=\\frac{(t_2-t)s_{12\\ldots{}k-1}+(t-t_1)s_{2\\ldots{}k}}{t_2-t_1}\r\n$$","id-49":"$\\frac{t_2-t}{t_2-t_1},\\frac{t-t_1}{t_2-t_1}$","id-5":"$x_2$","id-50":"$x_i$","id-51":"$$\r\nB_k^n(t)=P(n,k)\\frac{(t-t_1)^k(t_2-t)^{n-k}}{(t_2-t_1)^n}\\\\\r\nP(n,k)=P(n-1,k-1)+P(n-1,k)=\\begin{pmatrix}\r\n    n\\\\k\r\n\\end{pmatrix}\\\\\r\nB_k^n(t)=\\begin{pmatrix}\r\n    n\\\\k\r\n\\end{pmatrix}\\frac{(t-t_1)^k(t_2-t)^{n-k}}{(t_2-t_1)^n}\r\n$$","id-52":"$B_k^n(t)$","id-53":"$x_0,x_1,\\cdots,x_n$","id-54":"$$\r\ns(t)=\\sum_{i=0}^nB_i^n(t)p_i\r\n$$","id-55":"$t-x$","id-56":"$t:0\\to{}1$","id-57":"$t=0,t=1$","id-58":"$dx/dt$","id-59":"$p_1,p_2,p_3,p_4$","id-6":"$$s(t)=\\frac{(t_2-t)x_1+(t-t_1)x_2}{t_2-t_1}$$","id-60":"$t:0\\to{}1$","id-61":"$[0,1,1,0]$","id-62":"$$\r\ns(t)=(1-t)^3p_0+3(1-t)^2(t-0)p_1+3(1-t)(t-0)^2p_2+(t-0)^3p_3\r\n$$","id-63":"$$\r\ns(t)=(1-3t^2+2t^3)x_0+(3t^2-2t^3)x_1+(t-2t^2+t^3)\\alpha+(-t^2+t^3)\\beta\r\n$$","id-64":"$t=0,t=1$","id-65":"$s'(0)=\\alpha,s'(1)=\\beta$","id-66":"$$\r\ns'(t)=-3(1-t)^2p_0+(-2(1-t)t+(1-t)^2)p_1+(-t^2+2t(1-t))p_2+3t^2p_3\r\n$$","id-67":"$$\r\ns'(0)=-3p_0+3p_1,s'(1)=-3p_2+3p_3\r\n$$","id-68":"$p_1-p_0$","id-69":"$3(p_1-p_0)$","id-7":"$(t_1,x_1),(t_2,x_2),(t_3,x_3)$","id-70":"$t:a\\to{}b$","id-71":"$$\r\n\\begin{array}{ll}\r\ns(a)=p_0 \u0026 x(b)=p_1 \\\\\r\ns'(a)=n\\frac{p_1-p_0}{b-a} \u0026 s'(b)=n\\frac{p_n-p_{n-1}}{b-a}\\\\\r\ns''(a)=n(n-1)\\frac{p_2-2p_1+p_0}{(b-a)^2} \u0026 s''(b)=n(n-1)\\frac{p_n-2p_{n-1}+p_{n-2}}{(b-a)^2}\r\n\\end{array}\r\n$$","id-72":"$x_0=p_0,x_1=p_3,\\alpha=3(p_1-p_0)，\\beta=3(p_3-p_2)$","id-73":"$p_{i-1},p_i$","id-74":"$p_{i-2},p_i$","id-75":"$p_i$","id-76":"$\\tau(p_{i+1}-p_{i-1})$","id-77":"$$\r\n\\begin{bmatrix}\r\np_{i-1} \\\\ p_i \\\\ p_{i-1}' \\\\ p_i'\r\n\\end{bmatrix}=\r\n\\begin{bmatrix}\r\n0 \u0026 1 \u0026 0 \u0026 0 \\\\\r\n0 \u0026 0 \u0026 1 \u0026 0 \\\\\r\n-\\tau \u0026 0 \u0026 \\tau \u0026 0 \\\\\r\n0 \u0026 -\\tau \u0026 0 \u0026 \\tau\\\\\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\np_{i-2}\\\\\r\np_{i-1}\\\\\r\np_{i} \\\\\r\np_{i+1} \\\\\r\n\\end{bmatrix},\r\n\\begin{bmatrix}\r\na \\\\ b \\\\ c \\\\ d\r\n\\end{bmatrix}=\r\n\\begin{bmatrix}\r\n1 \u0026 0 \u0026 0 \u0026 0 \\\\\r\n0 \u0026 0 \u0026 1 \u0026 0 \\\\\r\n-3 \u0026 3 \u0026 -2 \u0026 -1 \\\\\r\n2 \u0026 -2 \u0026 1 \u0026 1\\\\\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\np_{i-1} \\\\ p_i \\\\ p_{i-1}' \\\\ p_i'\r\n\\end{bmatrix}\r\n$$","id-78":"$\\tau$","id-79":"$t-x$","id-8":"$$x_{12}=\\frac{(t_2-t)x_1+(t-t_1)x_2}{t_2-t_1},x_{23}=\\frac{(t_3-t)x_2+(t-t_2)x_3}{t_3-t_2}$$","id-80":"$x_i$","id-81":"$p_i$","id-9":"$$x_{123}=\\frac{(t_3-t)x_{12}+(t-t_1)x_{23}}{t_3-t_1}$$"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

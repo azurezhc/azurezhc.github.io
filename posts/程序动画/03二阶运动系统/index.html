@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB\/03%E4%BA%8C%E9%98%B6%E8%BF%90%E5%8A%A8%E7%B3%BB%E7%BB%9F\/"
-        },"genre": "posts","wordcount":  1883 ,
+        },"genre": "posts","wordcount":  2319 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB\/03%E4%BA%8C%E9%98%B6%E8%BF%90%E5%8A%A8%E7%B3%BB%E7%BB%9F\/","datePublished": "2023-12-24T00:00:00+00:00","dateModified": "2023-12-24T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,8 +69,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">03二阶运动系统</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-12-24">2023-12-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1883 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-12-24">2023-12-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2319 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -85,39 +85,51 @@
 <p>youtube视频
 <a class="link-markdown-demo-site" href="https://www.youtube.com/watch?v=KPoeNZZ6H4s" rel="noopener">https://www.youtube.com/watch?v=KPoeNZZ6H4s</a></p>
 <p>视频里讲解的最重要就是二阶系统(Second-Order System)，该运动在视频中主要用来实现了跟随移动效果。但也可以用来实现其他功能。</p>
-<p>为方便讲解，视频中使用了<data id="id-1" data-raw></data>两个变量。实际上可以认为是一个点<data id="id-2" data-raw></data>是随时间确定变化，另一个点<data id="id-3" data-raw></data>通过一个函数关系跟<data id="id-4" data-raw></data>关联来更新自己的运动状态。只不过从视频可以看出，这是一个多阶段求算递归的过程。</p>
-<p>先在假设一个点变化如<data id="id-5" data-raw></data>，那么另一个点的运动可以通过如下的方式与其关联</p>
-<data id="id-6" data-raw></data>
+<p>为方便讲解，视频中使用了.$x,y$.两个变量。实际上可以认为是一个点.$x$.是随时间确定变化，另一个点.$y$.通过一个函数关系跟.$x$.关联来更新自己的运动状态。只不过从视频可以看出，这是一个多阶段求算递归的过程。</p>
+<p>先在假设一个点变化如.$x(t)$.，那么另一个点的运动可以通过如下的方式与其关联</p>
+<p>.</p>
+$$
+y+k_1\dot{y}+k_2\ddot{y}=x+k_3\dot{x}
+$$
+<p>.</p>
 <p>其中每一项可以这么理解来源</p>
 <ul>
-<li><data id="id-7" data-raw></data>是跟随点<data id="id-8" data-raw></data>的速度变化率</li>
-<li><data id="id-9" data-raw></data>是跟随点<data id="id-10" data-raw></data>的加速度变化率</li>
-<li><data id="id-11" data-raw></data>是目标点<data id="id-12" data-raw></data>的速度变化率，可认为来自于阻力</li>
+<li>.$\dot{y}$.是跟随点.$y$.的速度变化率</li>
+<li>.$\ddot{y}$.是跟随点.$y$.的加速度变化率</li>
+<li>.$\dot{x}$.是目标点.$x$.的速度变化率，可认为来自于阻力</li>
 </ul>
 <p>值得注意的是，绝大多数运动状态都可以通过该公式参数表示出来。因为这个就是一个关联运动方程求解。</p>
 <p>例如刚体被一个阻尼弹簧拖曳的图像：</p>
-<img src="../03.assets/p_1.png">
+<img src="./p_1.png">
 <p>例如一个有缓慢阻尼运动的图像：</p>
-<img src="../03.assets/p_2.png">
-<p>但是对于这里面<data id="id-13" data-raw></data>三个系数是不太直观的。对此要做一个转化让其变成易于我们理解的形式，结果如下：</p>
-<data id="id-14" data-raw></data>
-<p>在这个新的参数方程中三个新的参数<data id="id-15" data-raw></data>有新的语义来衡量整个曲线运动。</p>
+<img src="./p_2.png">
+<p>但是对于这里面.$k_1,k_2,k_3$.三个系数是不太直观的。对此要做一个转化让其变成易于我们理解的形式，结果如下：</p>
+<p>.</p>
+$$
+y+k_1\dot{y}+k_2\ddot{y}=x+k_3\dot{x}\\
+k_1=\frac{\zeta}{\pi{}f}\\
+k_2=\frac{1}{(2\pi{}f)^2}\\
+k_3=\frac{r\zeta}{2\pi{}f}\\
+y+\frac{\zeta}{\pi{}f}\dot{y}+\frac{1}{(2\pi{}f)^2}\ddot{y}=x+\frac{r\zeta}{2\pi{}f}\dot{x}\\
+$$
+<p>.</p>
+<p>在这个新的参数方程中三个新的参数.$f,\zeta,r$.有新的语义来衡量整个曲线运动。</p>
 <ul>
-<li><data id="id-16" data-raw></data>象征着系统的频率，可以用hz来度量。其描述了整个系统相应输入点<data id="id-17" data-raw></data>变化的速度。其数值越大，响应越快，越迅速跟谁目标点变化。</li>
-<li><data id="id-18" data-raw></data>称之为阻尼系数(damping coefficient)。其描述了整个系统怎么趋于最后的稳定状态。
+<li>.$f$.象征着系统的频率，可以用hz来度量。其描述了整个系统相应输入点.$x$.变化的速度。其数值越大，响应越快，越迅速跟谁目标点变化。</li>
+<li>.$\zeta$.称之为阻尼系数(damping coefficient)。其描述了整个系统怎么趋于最后的稳定状态。
 <ul>
-<li>当<data id="id-19" data-raw></data>。振荡不会停止，会变成一个无阻尼简谐振子。</li>
-<li>当<data id="id-20" data-raw></data>,系统会伴随一定振动后趋于稳定。</li>
-<li>当<data id="id-21" data-raw></data>,整个系统不会振动，会缓慢跟随上目标点，不会超越。unity使用1</li>
-<li>当有一定振动是，<data id="id-22" data-raw></data>的频率含义会更明显，其同时影响着振动的快慢。数值越大，振动越快，峰间距约小。</li>
+<li>当.$\zeta=0$.。振荡不会停止，会变成一个无阻尼简谐振子。</li>
+<li>当.$\zeta\in{}(0,1）$.,系统会伴随一定振动后趋于稳定。</li>
+<li>当.$\zeta{}\geq1$.,整个系统不会振动，会缓慢跟随上目标点，不会超越。unity使用1</li>
+<li>当有一定振动是，.$f$.的频率含义会更明显，其同时影响着振动的快慢。数值越大，振动越快，峰间距约小。</li>
 </ul>
 </li>
-<li><data id="id-23" data-raw></data>刻画了整个系统相对于运动的初始响应效果(inital response)。
+<li>.$r$.刻画了整个系统相对于运动的初始响应效果(inital response)。
 <ul>
-<li>当<data id="id-24" data-raw></data>启动需要一点加速时间，</li>
-<li>当<data id="id-25" data-raw></data>初始加速效果会加快。</li>
-<li>当<data id="id-26" data-raw></data>初始的加速效果会超过目标，然后再返回来。(overshoot)</li>
-<li>当<data id="id-27" data-raw></data>系统初始会与目标运动方向相反。</li>
+<li>当.$r=0$.启动需要一点加速时间，</li>
+<li>当.$r=(0,1)$.初始加速效果会加快。</li>
+<li>当.$r>1$.初始的加速效果会超过目标，然后再返回来。(overshoot)</li>
+<li>当.$r<0$.系统初始会与目标运动方向相反。</li>
 </ul>
 </li>
 </ul>
@@ -129,42 +141,66 @@
 <li>Verlet Integration</li>
 </ul>
 <p>这些都是用来求解微分积分的方法。这里作者使用了Semi-implicit Euler Method，恰巧有跟Verlet Integration一样的精度。</p>
-<p>需要预测目标点<data id="id-28" data-raw></data>的位移<data id="id-29" data-raw></data>和速度<data id="id-30" data-raw></data>。假如初始静止应该有如下结构
-<data id="id-31" data-raw></data></p>
+<p>需要预测目标点.$y$.的位移.$y$.和速度.$\dot{y}$.。假如初始静止应该有如下结构
+.</p>
+$$
+y[0]=x_0,\dot{y}[0]=0
+$$
+<p>.</p>
 <p>在此后游戏运行的每一帧中我们持续更新这些相关变量：
-<data id="id-32" data-raw></data></p>
-<p>下一步就是通过上面的微分方程组将<data id="id-33" data-raw></data>替换得来，注意的是这里替换是可以使用目标点<data id="id-34" data-raw></data>的当前位置和速度，以及跟随点<data id="id-35" data-raw></data>的当前位置即
-<data id="id-36" data-raw></data></p>
+.</p>
+$$
+\begin{align}
+ y[n+1]&=y[n]+T\dot{y}[n]\\
+\dot{y}[n+1]&=\dot{y}[n]+T\ddot{y}
+\end{align}
+$$
+<p>.</p>
+<p>下一步就是通过上面的微分方程组将.$\ddot{y}$.替换得来，注意的是这里替换是可以使用目标点.$x$.的当前位置和速度，以及跟随点.$y$.的当前位置即
+.</p>
+$$\ddot{y}=(x[n+1]+\dot{x}[n+1]-y[n+1]-k_1\dot{y}[n])/k_2$$
+<p>.</p>
 <p>最后即得到如下得一个更新公式</p>
-<img src="../03.assets/p_3.png">
-<p>这个计算公式视频中有实现，实现后可以看到已经有了对应效果。但是这个方法还有问题，存在着不稳定得风险，而这个来自于时间间隔<data id="id-37" data-raw></data>的扩大。</p>
-<p>其原因是因为可以发现上面公式中对每一步更新都会影响下一步更新，即每一步结果还会回来影响其原因(feedback system)。例如<data id="id-38" data-raw></data>过大最直接会影响<data id="id-39" data-raw></data>然后进入放大下一步中<data id="id-40" data-raw></data>的计算。不停使得误差放大。</p>
-<p>为了解决这个问题，就要用一些更系统的方法。想方法将公式写成<data id="id-41" data-raw></data>与<data id="id-42" data-raw></data>的关系。这可以通过代换第一个公式到第二个公式中<data id="id-43" data-raw></data>并整理方程组得到。</p>
+<img src="./p_3.png">
+<p>这个计算公式视频中有实现，实现后可以看到已经有了对应效果。但是这个方法还有问题，存在着不稳定得风险，而这个来自于时间间隔.$T$.的扩大。</p>
+<p>其原因是因为可以发现上面公式中对每一步更新都会影响下一步更新，即每一步结果还会回来影响其原因(feedback system)。例如.$T$.过大最直接会影响.$y[n+1]$.然后进入放大下一步中.$\dot{y}$.的计算。不停使得误差放大。</p>
+<p>为了解决这个问题，就要用一些更系统的方法。想方法将公式写成.$y[n+1],\dot{y}[n+1]$.与.$y[n],\dot{y}[n]$.的关系。这可以通过代换第一个公式到第二个公式中.$y[n+1]$.并整理方程组得到。</p>
 <p>经过整理之后可以得到如下的一个方程</p>
-<data id="id-44" data-raw></data>
+<p>.</p>
+$$
+\begin{align}
+ y[n+1]&=y[n]+T\dot{y}[n]\\
+\dot{y}[n+1]&=\frac{-T}{k_2}y[n]+\frac{k_2-T^2-Tk_1}{k_2}\dot{y}[n]+\frac{T}{k_2}x[n+1]+\frac{Tk_3}{k_2}\dot{x}[n+1]
+\end{align}
+$$
+<p>.</p>
 <p>可以看到这实际上可以用矩阵来表示。</p>
-<img src="../03.assets/p_4.png">
+<img src="./p_4.png">
 <p>这个也被人熟知为状态空间表示(state-space representation)，其中</p>
 <ul>
-<li>A表示了上一帧的<data id="id-45" data-raw></data>如何影响到下一帧的<data id="id-46" data-raw></data>。</li>
-<li>B表示了<data id="id-47" data-raw></data>部分如何作用到<data id="id-48" data-raw></data>上面。</li>
+<li>A表示了上一帧的.$y$.如何影响到下一帧的.$y$.。</li>
+<li>B表示了.$x$.部分如何作用到.$y$.上面。</li>
 </ul>
 <p>这样一个系统也被称之为线性物理系统(linear physical systems)</p>
 <p>我们的关注点在A上。实际上这里A承担一个转换转换作用。如果是1维，那A是一个常数，我们可以简单知道A的的大小影响着是否收敛。而这里A是一个矩阵，所以我们要让其行本征值小于1，这样向量变化的模长就不会被放大。计算得到有</p>
-<data id="id-49" data-raw></data>
-<p>当时间长度超过这个值的时候，可以让计算多运行几步。视频作者也用了别的方式来减少误差，例如反向计算<data id="id-50" data-raw></data>的方式，而且这样计算还可以有助于抵消抖动<data id="id-51" data-raw></data>。</p>
+<p>.</p>
+$$
+T<\sqrt{4k_2+k_1^2}-k_1,k_2>\frac{T^2}{4}+\frac{Tk_1}{2}
+$$
+<p>.</p>
+<p>当时间长度超过这个值的时候，可以让计算多运行几步。视频作者也用了别的方式来减少误差，例如反向计算.$k_2$.的方式，而且这样计算还可以有助于抵消抖动.$jitter$.。</p>
 <p>关于该系统有一篇很好的描述文章。
 <a class="link-markdown-demo-site" href="https://lpsa.swarthmore.edu/" rel="noopener">https://lpsa.swarthmore.edu/</a></p>
 <p>实际上这里的线性运动系统再Eirc Lengyel的《3D游戏与计算机图形雪中的数学方法也有介绍》(Mathematics for 3D Game Programming and Computer Graphics)。属于线性物理部分。</p>
 <p>看到该视频后，让我想到了数学物理分支。因为方程本质就是一个微分方程组。同时这个状态空间表示属于控制理论范围内结构。控制理论对于运动学上的影响。</p>
 <p>目前看到关联的三个分支</p>
 <ul>
-<li>动力系统：关联最紧密。刻画了固定规则下，目标点在<data id="id-52" data-raw></data>中随时间的演化情况。</li>
+<li>动力系统：关联最紧密。刻画了固定规则下，目标点在.$\mathbb{R}^n$.中随时间的演化情况。</li>
 <li>控制理论：也有系统分析部分，不过更多是稳定性，输入对最后结果的影响。</li>
 <li>数学物理：建模部分，有明确的二阶物理描述。</li>
 </ul>
 <hr>
-<p><a class="link-markdown-demo-site" href="/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB%E5%A4%A7%E7%BA%B2/" rel="noopener">&raquo;程序动画</a></p>
+<p><a class="link-markdown-demo-site" href="./程序动画大纲.md" rel="noopener">&raquo;程序动画</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -198,5 +234,5 @@
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"$x,y$","id-10":"$y$","id-11":"$\\dot{x}$","id-12":"$x$","id-13":"$k_1,k_2,k_3$","id-14":"$$\r\ny+k_1\\dot{y}+k_2\\ddot{y}=x+k_3\\dot{x}\\\\\r\nk_1=\\frac{\\zeta}{\\pi{}f}\\\\\r\nk_2=\\frac{1}{(2\\pi{}f)^2}\\\\\r\nk_3=\\frac{r\\zeta}{2\\pi{}f}\\\\\r\ny+\\frac{\\zeta}{\\pi{}f}\\dot{y}+\\frac{1}{(2\\pi{}f)^2}\\ddot{y}=x+\\frac{r\\zeta}{2\\pi{}f}\\dot{x}\\\\\r\n$$","id-15":"$f,\\zeta,r$","id-16":"$f$","id-17":"$x$","id-18":"$\\zeta$","id-19":"$\\zeta=0$","id-2":"$x$","id-20":"$\\zeta\\in{}(0,1）$","id-21":"$\\zeta{}\\geq1$","id-22":"$f$","id-23":"$r$","id-24":"$r=0$","id-25":"$r=(0,1)$","id-26":"$r\u003e1$","id-27":"$r\u003c0$","id-28":"$y$","id-29":"$y$","id-3":"$y$","id-30":"$\\dot{y}$","id-31":"$$\r\ny[0]=x_0,\\dot{y}[0]=0\r\n$$","id-32":"$$\r\n\\begin{align}\r\n y[n+1]\u0026=y[n]+T\\dot{y}[n]\\\\\r\n\\dot{y}[n+1]\u0026=\\dot{y}[n]+T\\ddot{y}\r\n\\end{align}\r\n$$","id-33":"$\\ddot{y}$","id-34":"$x$","id-35":"$y$","id-36":"$$\\ddot{y}=(x[n+1]+\\dot{x}[n+1]-y[n+1]-k_1\\dot{y}[n])/k_2$$","id-37":"$T$","id-38":"$T$","id-39":"$y[n+1]$","id-4":"$x$","id-40":"$\\dot{y}$","id-41":"$y[n+1],\\dot{y}[n+1]$","id-42":"$y[n],\\dot{y}[n]$","id-43":"$y[n+1]$","id-44":"$$\r\n\\begin{align}\r\n y[n+1]\u0026=y[n]+T\\dot{y}[n]\\\\\r\n\\dot{y}[n+1]\u0026=\\frac{-T}{k_2}y[n]+\\frac{k_2-T^2-Tk_1}{k_2}\\dot{y}[n]+\\frac{T}{k_2}x[n+1]+\\frac{Tk_3}{k_2}\\dot{x}[n+1]\r\n\\end{align}\r\n$$","id-45":"$y$","id-46":"$y$","id-47":"$x$","id-48":"$y$","id-49":"$$\r\nT\u003c\\sqrt{4k_2+k_1^2}-k_1,k_2\u003e\\frac{T^2}{4}+\\frac{Tk_1}{2}\r\n$$","id-5":"$x(t)$","id-50":"$k_2$","id-51":"$jitter$","id-52":"$\\mathbb{R}^n$","id-6":"$$\r\ny+k_1\\dot{y}+k_2\\ddot{y}=x+k_3\\dot{x}\r\n$$","id-7":"$\\dot{y}$","id-8":"$y$","id-9":"$\\ddot{y}$"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

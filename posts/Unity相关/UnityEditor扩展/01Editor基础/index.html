@@ -89,7 +89,7 @@
 <p>首先要理解Unity对于编辑器开发的一些框架。只有符合框架规范的代码才可以被Unity接受。首先最主要的便是Editor文件夹。Editor文件夹对于Unity来说是一个特殊的文件夹，其跟Plugin，Resources等一样是一个特殊的文件夹。具体内容可以参考官方文档：</p>
 <p><a class="link-markdown-demo-site" href="https://docs.unity3d.com/2021.3/Documentation/Manual/SpecialFolders.html" rel="noopener">https://docs.unity3d.com/2021.3/Documentation/Manual/SpecialFolders.html</a></p>
 <p>简单来说，对于Editor文件夹内的脚本，Unity会默认编译成名为Assembly-CSharp-Editor的程序集，进而排除在运行时代码之外。这也是理所应当，因为编辑器主要针对的是开发用的Editor环境，其必然不能跟运行逻辑有所纠葛。</p>
-<center><img src="../01.assets/p1.png"></center>
+<center><img src="./p1.png"></center>
 <p>除此之外对于Editor文件夹还有几点：</p>
 <ul>
 <li>对于名为Editor文件夹放在任何位置都可以，只要是这个名字之下的都会被包含进目标程序集。</li>
@@ -161,11 +161,11 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>最终显示出来的效果如下：</p>
-<center><img src="../01.assets/p2.png"></center>
+<center><img src="./p2.png"></center>
 <p>可以看到这些属性只能略微改变原有的显示样式。还达不到扩展Editor的效果。</p>
 <h1 id="odininspector">OdinInspector</h1>
 <p>这里就要隆重介绍OdinInspector。其是一个第三方插件。主要提供了大量属性(Attribute)。通过这些属性可以直接标注目标属性，然后在Inspector上绘制出想要的结构，有了这个工具基本上可以定制出大量自己想要的显示效果。</p>
-<center><img src="../01.assets/p3.png"></center>
+<center><img src="./p3.png"></center>
 <p>但是跟前面所述一样，对于结构属性之间的关联，其仍然是由使用人员来定义的。OdinInspector只是提供了一系列通用方便的工具结构。</p>
 <h1 id="事件通知接口">事件通知接口</h1>
 <p>除了基础的属性(Attribute)之外。Unity实际上还约定了几个专门的函数，这些函数在Unity约定的情况下会被调用，通过这些接口，就可以对这些情况进行自定义事件处理。</p>
