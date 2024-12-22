@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4\/"
-        },"genre": "posts","wordcount":  5017 ,
+        },"genre": "posts","wordcount":  5029 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4\/","datePublished": "2024-12-02T00:00:00+00:00","dateModified": "2024-12-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,7 +69,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">09世界，UI与屏幕空间</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-12-02">2024-12-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5017 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-12-02">2024-12-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5029 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -107,7 +107,7 @@
 <p>这里主要记录一下Unity下这三个概念所表示的含义。因为经常会在这些概念之间混淆，但同时我们又会经常会获得这些空间里面的数值。例如点击输入给出的坐标在屏幕空间，而UI的AnchoredPosition算是UI空间，通常的游戏对象算是在世界空间下。</p>
 <p>所以这里通过文章记录并理清这些关系。</p>
 <p>在RectTransform中有简单提到RectTransform与Transform的关系。从类型上来说是一个简单的继承，但是有着对Rect概念的封装表达。而其中也有部分涉及到UI空间与世界空间的关系。</p>
-<p>这里先简单的定义阐述一下这几个概念：</p>
+<p>这里先简单的阐述一下这几个概念：</p>
 <ul>
 <li>Transform本质表示一个变换。这个变换相当于将一个点从父节点所形成空间变换到当前节点的变换矩阵。所有的坐标，转向都是这么变换而来，也可以认为这些概念被这么一个变换表示。通俗的概念来讲s，此时这个Transform的坐标，都是该点在世界空间下连续变化而来，可以认为是对象的世界坐标的一个承载。</li>
 <li>RectTransform继承于Transform。也就是RectTransform本身也是一种变化，拥有Transform所有的概念语义。但它需要额外描述一个二维矩形概念。于是扩展出了Anchor等相关概念数据结构。所以RectTransform本身也有着一个世界坐标数据结构，其描述了Pivot点所在的世界坐标。而基于Anchor的变换结构，则单独给出了一个坐标描述结构。</li>
@@ -194,7 +194,7 @@
 <li>Scale Factor：
 缩放因子，控制着Screen大小和Canvas大小的比值。即相当于Canvas放大来填满整个屏幕空间。这个时候，RectTransform中Width和Height实际也会被放大。</li>
 <li>Reference Pixels Per Unit：
-该值主要跟Texture2D资产资源中的Pixels Per Unit对应。资产中的Pixels Per Unit表示，Unity中的1单位相当于该图片中多少像素。当图片放在Image组件上时，Set Native Size会根据该值计算出RectTransform的width和Height。Reference Pixels Per Unit则表示Texture2D中的1单位相当于Canvas下多少像素。简单来说，如果这两个值相同，会发现Set Native Size设置的大小就是图片资源原始大小。即，假设Pixels Per Unit为$V_{PPU}$，Reference Pixels Per Unit为$V_{RPPU}$最后设置大小为$s=s_{Texture2D}*V_{PPU}/V_{RPPU}$</li>
+该值主要跟Texture2D资产资源中的Pixels Per Unit对应。资产中的Pixels Per Unit表示的是，Unity中的1单位相当于该图片中多少像素。当图片放在Image组件上时，Set Native Size会根据图片像素值与该参数计算出RectTransform的width和Height。Reference Pixels Per Unit则表示Texture2D中的1单位相当于Canvas下多少像素。简单来说，如果这两个值相同，会发现Set Native Size设置的大小就是图片资源原始大小。即，假设Pixels Per Unit为$V_{PPU}$，Reference Pixels Per Unit为$V_{RPPU}$最后设置大小为$s=s_{Texture2D}*V_{PPU}/V_{RPPU}$</li>
 </ul>
 <h2 id="scaler-with-screen-size">Scaler With Screen Size</h2>
 <p>此时控件如下图：</p>
@@ -278,8 +278,8 @@ Pivot点可以直接取RectTransform的Postion坐标，对于Rect四个角落则
 </span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">screenPos</span> <span class="p">=</span> <span class="n">RectTransformUtility</span><span class="p">.</span><span class="n">WorldToScreenPoint</span><span class="p">(</span><span class="n">Camera</span><span class="p">.</span><span class="n">main</span><span class="p">,</span> <span class="n">list</span><span class="p">[</span><span class="m">0</span><span class="p">]);</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>当在ScreenSpace-Overlay模式下时，Camera部分应该传null。当穿Null的时候实际上直接返回的是传入坐标的$x,y$值。而另一点是ScreenSpace-Overlay模式下时这些点的世界坐标，也是屏幕空间下的坐标位置。</p>
-<p>当在ScreenSpace-Camera模式下时，Camera部分应该传渲染Canvas的Camera。其会将世界坐标，通过相机的投影变化一次。所以Overlay模式下，传入了相机的会导致计算错误。</p>
+</div><p>当在ScreenSpace-Overlay模式下时，Camera部分应该传null。当传null的时候实际上直接返回的是传入坐标的$x,y$值。而另一点是ScreenSpace-Overlay模式下时这些点的世界坐标，也是屏幕空间下的坐标位置。</p>
+<p>当在ScreenSpace-Camera模式下时，Camera部分应该传渲染Canvas的Camera。其会将世界坐标，通过相机的投影变化一次。所以Overlay模式下，传入了相机对象的话就会导致计算错误。</p>
 <p>对于RectTransform空间下任意点的坐标，则可以通过获取localToWorldMatrix转换到世界坐标后计算。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -318,11 +318,11 @@ Pivot点可以直接取RectTransform的Postion坐标，对于Rect四个角落则
 <pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">ScreenPointToWorldPointInRectangle</span><span class="p">(</span><span class="n">RectTransform</span> <span class="n">rect</span><span class="p">,</span> <span class="n">Vector2</span> <span class="n">screenPoint</span><span class="p">,</span> <span class="n">Camera</span> <span class="n">cam</span><span class="p">,</span> <span class="k">out</span> <span class="n">Vector3</span> <span class="n">worldPoint</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>当在ScreenSpace-Overlay模式下时，Camera部分应该传null。
-当在ScreenSpace-Camera模式下时，Camera部分应该传渲染Canvas的Camera。</p>
+</div><p>当在ScreenSpace-Overlay模式下时，Camera部分应该传null。</p>
+<p>当在ScreenSpace-Camera模式下时，Camera部分应该传渲染Canvas的Camera。</p>
 <h2 id="世界对象坐标到屏幕空间">世界对象坐标到屏幕空间</h2>
 <p>这种情况下，一般提供的是一个三维空间下物体的坐标。正常流程来说是，把这个物体根据相机的视窗矩阵，投影矩阵变换到屏幕空间下。</p>
-<p>而这个可以通过WorldToScreenPoint来直接转换，这个过程是带上了相机的透视。跟确定的方式，是通过相机的以下接口来进行操作</p>
+<p>而这个可以通过WorldToScreenPoint来直接转换，这个过程是带上了相机的透视。更确定的方式，是通过相机的以下接口来进行操作：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
