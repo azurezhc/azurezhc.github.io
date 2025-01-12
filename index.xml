@@ -7,11 +7,19 @@
             <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Fri, 18 Aug 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="http://azurezhc.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>群结构</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/03%E7%BE%A4%E7%BB%93%E6%9E%84/</link>
+    <pubDate>Sun, 12 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/03%E7%BE%A4%E7%BB%93%E6%9E%84/</guid>
+    <description><![CDATA[群结构]]></description>
+</item>
+<item>
     <title>子群相关</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/%E5%AD%90%E7%BE%A4%E7%9B%B8%E5%85%B3/</link>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/02%E5%AD%90%E7%BE%A4%E7%9B%B8%E5%85%B3/</link>
     <pubDate>Wed, 01 Jan 2025 00:00:00 &#43;0000</pubDate>
     <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/%E5%AD%90%E7%BE%A4%E7%9B%B8%E5%85%B3/</guid>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/02%E5%AD%90%E7%BE%A4%E7%9B%B8%E5%85%B3/</guid>
     <description><![CDATA[子群相关 先介绍定义概念 定义 子群的定义 如果群$G$的一个非空子集$H$在$G$的二元运算下是封闭的，且在$G$的诱导运算下$H$是一个群，那么]]></description>
 </item>
 <item>
@@ -32,10 +40,10 @@
 </item>
 <item>
     <title>群相关</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/%E7%BE%A4%E7%9B%B8%E5%85%B3/</link>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/01%E7%BE%A4%E7%9B%B8%E5%85%B3/</link>
     <pubDate>Sat, 14 Dec 2024 00:00:00 &#43;0000</pubDate>
     <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/%E7%BE%A4%E7%9B%B8%E5%85%B3/</guid>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/01%E7%BE%A4%E7%9B%B8%E5%85%B3/</guid>
     <description><![CDATA[群相关 群定义 先简单介绍一些群相关概念： 简单记录群的定义 定义 一个群(group)$\lang{}G,*\rang$描述了一个集合$G$以及一个]]></description>
 </item>
 <item>
@@ -77,14 +85,6 @@
     <author>azurezhc</author>
     <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/05Prefab%E7%9B%B8%E5%85%B3/</guid>
     <description><![CDATA[prefab相关 本文主要记录Unity中Prefab相关的一些细节。辅助理解Prefab这个在Unity中常用的对象究竟是什么。 UnityP]]></description>
-</item>
-<item>
-    <title>Unity问题记录</title>
-    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
-    <pubDate>Sun, 21 Apr 2024 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
-    <description><![CDATA[Unity问题记录 本文章主要记录Unity碰到的各种记录。 我只能说Unity还是各种隐藏坑啊！！ Unity AutoRefresh问题 Unity202]]></description>
 </item>
 </channel>
 </rss>
