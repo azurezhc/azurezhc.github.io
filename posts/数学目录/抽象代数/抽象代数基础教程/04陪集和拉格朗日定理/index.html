@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>陪集和拉格朗日定理 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="陪集和拉格朗日定理" />
+<meta property="og:description" content="陪集和拉格朗日定理 陪集可以说是群论中重要的一环。它是一种由群自然而生的分解结构。 我认为其实前面一些问题已经体现出了这种分解结构的必然出现。对" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/04%E9%99%AA%E9%9B%86%E5%92%8C%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-02-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-02-07T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="陪集和拉格朗日定理"/>
+<meta name="twitter:description" content="陪集和拉格朗日定理 陪集可以说是群论中重要的一环。它是一种由群自然而生的分解结构。 我认为其实前面一些问题已经体现出了这种分解结构的必然出现。对"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/04%E9%99%AA%E9%9B%86%E5%92%8C%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/03%E7%BE%A4%E7%BB%93%E6%9E%84/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "陪集和拉格朗日定理",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/04%E9%99%AA%E9%9B%86%E5%92%8C%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86\/"
+        },"genre": "posts","wordcount":  5004 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/04%E9%99%AA%E9%9B%86%E5%92%8C%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86\/","datePublished": "2025-02-07T00:00:00+00:00","dateModified": "2025-02-07T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">陪集和拉格朗日定理</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-02-07">2025-02-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5004 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;10 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ol>
+    <li><a href="#陪集和拉格朗日定理">陪集和拉格朗日定理</a>
+      <ol>
+        <li><a href="#问题思考">问题思考</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="陪集和拉格朗日定理">陪集和拉格朗日定理</h1>
+<p>陪集可以说是群论中重要的一环。它是一种由群自然而生的分解结构。</p>
+<p>我认为其实前面一些问题已经体现出了这种分解结构的必然出现。对于一个群$G$来说，使用其中一个元素$g$，作用到整个群上面，相当于对群的重排，即$gG=G$。</p>
+<p>对子群来说，同样成立，如果有子群$H$，使用其中一个元素$h\in{}H$。那么显然有$hH=H$，且对于不同的$h_1,h_2\in{}H$，必然有$hh_1\ne{}hh_2$。如果使用$G$中元素$g$，虽然$gH$不一定是子集。但是可以说明若$g_2\in{}g_1H$，那么存在$h_1\in{}H$，有$g_2=g_1h_1$，这说明$g_1=g_2h_1^{-1}$。所以对于$g_1H$有</p>
+<p>$$g_1H={g_1h|h\in{}H}={g_2h_1^{-1}h|h\in{}H}={g_2h&rsquo;|h&rsquo;\in{}H}=g_2H$$</p>
+<p>这说明$gH$中的元素作用在$H$上都给出了相同结构，而不在$gH$中元素则必然不同。当然这样的描述是不够的，远不比书中的版本严谨。</p>
+<p>书中是先从等价关系来出发的。最后再去详细定义为什么由陪集结构（因为等价关系产生划分），然后给出了陪集的性质以及结构。从等价关系出发，可以给出这种划分的必要性，同时也描述了陪集结构的另一个侧面。这个描述完定义再说。</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义</p>
+<p>设$H$是$G$中的子群，$G$上的关系$\sim_L$定义为</p>
+<p>$$a\sim_L{}b\quad{}\text{iff}\quad{}a^{-1}b\in{}H$$</p>
+<p>则$\sim_L$是$G$上的等价关系。</p>
+<p>同时可以定义$G$的子集$aH={ah|\in{}H}$称为包含$a$的$H$的左陪集(left coset)。</p>
+</div>
+<p>证明$\sim_L$是等价关系，只要说明关系满足，自反，传递，对称即可：</p>
+<ul>
+<li>自反性：因为$a^{-1}a=e\in{}H$，所以$a\sim_La$。</li>
+<li>对称性：假设$a\sim_Lb$，则有$a^{-1}b\in{}H$，因为$H$是子群，所以$(a^{-1}b)^{-1}=b^{-1}a\in{}H$。进而有$b\sim_La$。</li>
+<li>传递性：假设有$a\sim_Lb,b\sim_Lc$，则有$a^{-1}b\in{}H,b^{-1}c\in{}H$。所以有$(a^{-1}b)(b^{-1}c)=a^{-1}c\in{}H$。这说明$a\sim_Lc$。</li>
+</ul>
+<p>这说明$\sim_L$确实是等价关系。等价关系进而会给出划分，将$G$分成块。而这些分出的块就是一个个陪集，由与其中某一个元素$a$等价的所有元素$x$给出。然后可以说明这些等价元素的集合可以由$aH$给出。所有跟$a$等价的元素$x$，满足$a^{-1}x\in{}H$，这当且仅当有一个$h\in{}H$满足$a^{-1}x=h$，这说明$x=ah$。即所有等价元素都由$ah,h\in{}H$给出。</p>
+<p>但是等价关系给出了陪集的另一个侧面。</p>
+<ul>
+<li>陪集可由$gH,g\in{}G$给出。</li>
+<li>在同一个陪集中的元素$a,b$满足一个等价关系，同时有$a^{-1}b\in{}H$。</li>
+<li>因为满足等价关系划分，所以不同$g_1,g_2$给出的$g_1H,g_2H$两个子集要么完全相同，要么完全不同。不会出现非空交集。</li>
+</ul>
+<p>伴随着陪集概念最重要的定理，就是拉格朗日定理。揭示了群和子群之间阶的关系。</p>
+<div class="admonition note">
+<p class="admonition-title">定理 10.6</p>
+<p>设$H$是$G$的子群，那么对于任何$a\in{}G$，陪集$aH$的基数与$H$的相同。</p>
+</div>
+<p>证明简略描述，给定一个$a\in{}G$，可以定义一个映射$f(h)=ah，h\in{}H$，这个给出了一个$H\to{}aH$上的映射。可以说明这是一个一一到上的映射。</p>
+<ul>
+<li>任意不同的$h_1,h_2\in{}H$。显然$ah_1\ne{}ah_2$。这说明$f$是一个单射。</li>
+<li>任意$b\in{}aH$。这说明存在一个$h\in{}H$有$b=ah$因此$b=f(h)$。这说明$f$是一个满射。</li>
+</ul>
+<p>这个一一到上的映射，说明了$H,aH$有相同的基数。</p>
+<div class="admonition note">
+<p class="admonition-title">定理 10.7 拉格朗日定理</p>
+<p>设$H$是有限群$G$的子群，那么$H$的阶是$G$的阶的因数。</p>
+</div>
+<p>这是由上面定理的一个直接结果。设$H$的阶为$m$，$r$是划分为左陪集的个数。那么显然群$G$的阶$n$有$n=rm$。所以$m$是$n$的因数。</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义</p>
+<p>设$H$是群$G$的子群，$G$中$H$的左陪集的数量称为$G$中$H$的指数(index)，记为$(G:H)$</p>
+</div>
+<p>指数$(G:H)$可以是有限的，也可以是无限的。如果$G$是有限的，那么显然$(G:H)=|G|/|H|$。</p>
+<div class="admonition note">
+<p class="admonition-title">定理 10.11</p>
+<p>设$H$和$K$是群$G$的子群，$K\le{}H\le{}G$，假设$(H:K)$和$(G:H)$都是有限的。那么$(G:K)$是有限的，并且$(G:K)=(G:H)(H:K)$。</p>
+</div>
+<p>值得说明的是，针对一个子群$H$的左陪集概念对应的也有一个右陪集概念。仿照前面左陪集的定义，可以再定义一个右陪集的等价关系。</p>
+<p>左陪集等价关系：</p>
+<p>$$a\sim_L{}b\quad{}\text{iff}\quad{}a^{-1}b\in{}H$$</p>
+<p>右陪集等价关系：</p>
+<p>$$a\sim_R{}b\quad{}\text{iff}\quad{}ab^{-1}\in{}H$$</p>
+<p>可以简单的发现包含$a$的$H$的右陪集即$Ha={ha|h\in{}H}$。</p>
+<p>在交换群中，右陪集和左陪集是相同的，但对于非交换群它们通常是不同的。如果左右陪集相同，可以忽略左右，只说陪集。</p>
+<p>后面可以看到，针对陪集概念，将陪集集合定义为一个新的元素。并将陪集之间的运算定义为$(aH)(bH)=(ab)H$，这样陪集元素集合会构成一个新的群。此即商群。当然这需要说明$(aH)(bH)=(ab)H$的运算是成立的，且是良好的。即等式成立，且针对所有陪集运算可行。</p>
+<div class="admonition note">
+<p class="admonition-title">定理 10.17</p>
+<p>设$\phi:G\to{}G&rsquo;$是群同态。那么$Ker(\phi)$的左陪集和右陪集是相同的。此外，$a,b\in{}G$在$Ker(\phi)$的同一个陪集中当且仅当$\phi(a)=\phi(b)$。</p>
+</div>
+<p>大致来说来自于同态的特性。因为$\phi(a)=\phi(b)$，根据同态结构，有$\phi(a)^{-1}\phi(b)=\phi(a)\phi(b)^{-1}=e&rsquo;$。而同态保持对逆元的映射。所以有$a^{-1}b=ab^{-1}\in{}Ker(\phi)$。这正满足了$Ker(\phi)$的左右陪集等价关系。</p>
+<h2 id="问题思考">问题思考</h2>
+<p>陪集相关问题非常多，这里只说部分。相关很多细节记录在笔记本上。</p>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>设$H$是群$G$的子群</p>
+<ul>
+<li>使得所有$g\in{}G$，所有$h\in{}H$有$g^{-1}hg\in{}H$。证明每个左陪集$gH$与右陪集$Hg$相同。</li>
+<li>如果将$G$划分为$H$的左陪集与划分为$H$的右陪集是相同的，那么$g^{-1}hg\in{}H$对所有$g\in{}G$和所有$h\in{}H$都成立。</li>
+</ul>
+</div>
+<p>显然这两个方向互为逆命题。</p>
+<p>我们先说明第一个。我们尝试说明属于$gH$的也属于$Hg$，然后反方向也成立。进而说明$gH=Hg$。</p>
+<p>设$gh_1\in{}gH$，由命题条件可知，对于给定的$g$和$h_1$有$gh_1g^{-1}\in{}H$，这说明$gh_1g^{-1}=h_2\in{}H$。即有$gh_1=h_2{}g$。这说明$gh_1\in{}Hg$。同时反方向也成立，命题得证。</p>
+<p>通过等价关系的方式也可以说明。对于任何$b\in{}gH$，说明有$g^{-1}b\in{}H$。由命题条件可以得到$g(g^{-1}b)g^{-1}=bg^{-1}\in{}H$。而这正是$b$与$g$之间的等价关系成立方式。</p>
+<p>再说明第二个。划分为$H$的左陪集与右陪集都相同。说明给定任意的$g$都有$gH=Hg$。在此情况下，任意的$h_1,h_2\in{}H$有$gh_1=h_2g$。这说明必然有$gh_1g^{-1}=h_2\in{}H$。</p>
+<p>这个问题说明了左右陪集的等价条件。如果群$G$可交换，则必然有$g^{-1}hg=g^{-1}gh=h\in{}H$。所以交换群必然左右陪集等价。但是这个条件明显看上去更宽一些。</p>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>证明结论或给出反例。</p>
+<ul>
+<li>如果$aH=bH$，则$Ha=Hb$。</li>
+<li>如果$Ha=Hb$，则$b\in{}Ha$。</li>
+<li>如果$aH=bH$，则$Ha^{-1}=Hb^{-1}$。</li>
+<li>如果$aH=bH$，则$a^2H=b^2H$。</li>
+</ul>
+</div>
+<p>这个主要是考察对左右陪集相等情况。基本还是从定义出发。前面可以看到对于对于$aH=bH$来说，说明有：</p>
+<ul>
+<li>$a^{-1}b\in{}H,b^{-1}a\in{}H$。</li>
+<li>对于任意$h_1\in{}H$，存在$h_2\in{}H$，有$ah_1=bh_2$。即$b=ah$或者$a=bh$。</li>
+</ul>
+<p>现在来看命题。</p>
+<ul>
+<li>错误，这个成立，等价于说明，同一左陪集中的元素，必然也在同一右陪集中H。虽然这个左右陪集不一定相同。根据上面的第二点可以得到$b=ah$，所以有$ba^{-1}=aha^{-1}$要属于$H$。而这个不一定成立。
+举例说明，非交换群$D_3$群。$D_3={i,\mu,\rho,\rho_2,\mu\rho,\mu\rho_2}$，子群$H={i,\mu}$。$a=\rho,b=\mu\rho_2$。显然$aH=bH$。但是$Ha={\rho,\mu\rho},Hb={\mu\rho_2,\rho_2}$。并不相等。</li>
+<li>正确，显然$b\in{}Hb=Ha$。</li>
+<li>正确，根据上面有$a^{-1}b\in{}H$。所以就有$a^{-1}(b^{-1})^{-1}=a^{-1}b\in{}H$，进而有$Ha^{-1}=Hb^{-1}$。</li>
+<li>错误，先说明例子，依然是$D_3$群。$a=\rho,b=\mu\rho_2$，则$a^2=\rho^2,b^2=i$。显然$a^2H\ne{}b^2H$。
+根据上面来说，右侧要求成立，需要有$a^{-2}b^2\in{}H$。左侧条件有$a^{-1}b=h_1\in{}H$。即要求有$a^{-1}h_1b\in{}H$。</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>前面表明过每个偶数$2n$阶有限群都包含一个二阶元。利用拉格朗日定理，证明如果$n$是奇数，那么$2n$阶交换群恰好包含一个二阶元。</p>
+</div>
+<p>这个问题主要是说明切好包含一个二阶元。</p>
+<p>实际上根据有限生成群相关定理，可以快速得到结论。因为$n$是奇数，这说明群$G$的阶一定表示为$2p_1^{r_1}p_2^{r_2}\cdots{}p_n^{r_n}$。利用初等因子表示，可以得到$G$同构意义下一定同构于$\mathbb{Z}_2\times\cdots$一类的直积群，显然$G$只有一个同构于$\mathbb{Z}_2$的子群。</p>
+<p>现在来说明一下，假如有两个二阶元，设为$a,b$。那么有$a^2=b^2=e$。现在考虑元素$t=ab$，因为是交换群可以发现$t^2=abab=a^2b^2=e$。同时$ta=aba=b,tb=ab^2=a$。这说明$e,a,b,t$可以组成一个子群$H$，但$|H|=4$，根据拉格朗日定理$|H|$应该能整除$2n$。但是$n$是奇数，矛盾。所以不能存在两个以上二阶元。</p>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>证明有限群不能写成它的两个真子群的并集。如”两“替换为“三”，结论是否正确。</p>
+</div>
+<p>先说明前半部分。假设可以写成两个真子群的并。即$G=H_1\cup{}H_2$，如图：</p>
+<center><img src="./p1.drawio.png"></center>
+<p>这说明对于任意$g\notin{}H_1,g\in{}H_2$，同时由陪集特性知道$gH_1\subseteq{}H_2$。
+这说明对于任意$h_1\in{}H_1$，存在$h_2\in{}H_2$有$gh_1=h_2$，即$h_1=g^{-1}h_2$。因为$H_2$是个子群，所以$g^{-1}$也属于$H_2$，这说明任意$h_1$中元素也属于$H_2$，即$H_1\subseteq{}H_2$。实际上$gH_1\subseteq{}H_2$可知$H_1\subseteq{}g^{-1}H_2=H_2$。</p>
+<p>而$G=H_1\cup{}H_2=H_2$。与$H_2$是真子群矛盾。所以无法写成两个真子群的并。实际上可以发现，这个推到结论也可以说明$H_2\subseteq{}H_1$，即$H_1=H_2$。</p>
+<p>而改为“三”，首先有例子说明是可以的，即克莱因四元群，$\mathbb{Z}_2\times\mathbb{Z}_2$。</p>
+<p>$$\mathbb{Z_2}\times\mathbb{Z}_2={e,(1,0)}\cup{e,(0,1)}\cup{e,(1,1)}$$</p>
+<p>每一个都是一个二元群。如果相同证明出发，即$G=H_1\cup{}H_2\cup{}H_3$。可以说明对于$g\notin{}H_1,gH_1\subseteq{}H_2\cup{}H_3$。但是并无法说明$H_1$是某个群的子群，因为$g^{-1}$可能在$H_2$或$H_3$中。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2025-02-07</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/03%E7%BE%A4%E7%BB%93%E6%9E%84/" class="prev" rel="prev" title="群结构"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>群结构</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
