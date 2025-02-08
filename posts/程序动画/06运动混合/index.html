@@ -10,8 +10,8 @@
 <meta property="og:url" content="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/06%E8%BF%90%E5%8A%A8%E6%B7%B7%E5%90%88/" /><meta property="article:section" content="posts" />
 
 <meta property="og:site_name" content="一个小博客" />
-
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content=""/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="运动混合 对于游戏中的运动，我们可以较为统一的定义成四维空间(x,y,z,t)中的一条曲线。其通常拥有参数方程$P(x(t),y(t),z(t"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -44,7 +44,7 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a></div>
         </div>
@@ -59,14 +59,14 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
-            <div class="toc-content always-active" id="toc-content-auto"></div>
+            <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1436 words&nbsp;
@@ -77,36 +77,35 @@
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
+  <ol>
     <li><a href="#运动混合">运动混合</a></li>
     <li><a href="#运动的叠加效果">运动的叠加效果</a></li>
     <li><a href="#过渡混合">过渡混合</a></li>
     <li><a href="#曲线控制点移动">曲线控制点移动</a></li>
-  </ul>
+  </ol>
 </nav></div>
             </div><div class="content" id="content"><h1 id="运动混合">运动混合</h1>
 <p>对于游戏中的运动，我们可以较为统一的定义成四维空间(x,y,z,t)中的一条曲线。其通常拥有参数方程$P(x(t),y(t),z(t),t)$的形式。表示空间中某点位置(x,y,z)由参数t决定，而t则一般匀速增长，恰好对应现实中时间的增长。</p>
 <p>游戏中运动的效果实际都是由这么一条曲线展现给玩家。而对于某个物体的运动，有些时候其可以拆解成多条运动的叠加效果。例如</p>
-$$P=P_1+P_2$$
+<p>$$P=P_1+P_2$$</p>
 <p>当$P_1,P_2$都是连续的时候，我们可以简单判断出$P$也会是空间中一条连续的运动曲线。但是$P_1,P_2$的形式可能很简单，但是$P$的运行状态可能很复杂。而这就是运动混合，叠加所带来的效果。即一个混合运动轨迹可以表示为</p>
-$$P=F(P_1,P_2,\cdots,P_n)$$
+<p>$$P=F(P_1,P_2,\cdots,P_n)$$</p>
 <p>F表示一个混合函数，他决定了这些基础运动轨迹如何形成我们最终的轨迹效果。本文章主要就是研究函数F所产生的混合叠加效果。</p>
 <p>当一个物体的运动轨迹可以分解成某个运动轨迹$P_i$时，我们称该物体拥有运动状态$P_i$。而对于一个复杂运动状态分解成多个子状态，实际则是复杂的。</p>
 <h1 id="运动的叠加效果">运动的叠加效果</h1>
 <p>运动中，最常见的效果就是运动叠加效果。例如一个物体有一个向前运动状态$P_1$，同时又拥有一个向右的运动状态$P_2$。那么物体最终会按照两个运动轨迹叠加起来的形状运动。例如上述例子中有：$P=P_1+P_2$，其运动叠加效果如下。</p>
 <img src="../运动混合assets/motion_1.gif">
 <p>此时如果将运动方程中的系数进行归一化，我们可以得到如下的运动叠加方式：
-</p>
 $$
-P=a_1P_1+a_2P_2+\cdots+a_nP_n\\
+P=a_1P_1+a_2P_2+\cdots+a_nP_n\
 a_1+a_2+\cdots+a_n=1
-$$
+$$</p>
 <p>这个时候我们可以发现。对于确定的时刻t实际上P落在了由$P_1,P_2,\cdots,P_n$构成的仿射平面上。在只有两个点的情况下，很好理解，就是两个点的连线上面。$a_1,1-a_1$确定了在这条连线上的位置关系。当存在多个点的时候可以认为是依次连线后逐个确认插值点。</p>
 <img src="../运动混合assets/motion_2.gif">
 <p>单需要注意的是，此时这些运动曲线实际表示，运动作用在这个物体上之后的运动效果。所以一般都是有相同的开始点。</p>
 <h1 id="过渡混合">过渡混合</h1>
 <p>所谓过渡混合可以认为此时运动从一个对象的运动模式，切换到另一个物体的运动模式上面，最简单的依旧是线性插值模式。即</p>
-$$P=(1-t)P_1(t)+tP_2(t),t\in[0,1]$$
+<p>$$P=(1-t)P_1(t)+tP_2(t),t\in[0,1]$$</p>
 <p>当t为0的时候在$P_1$曲线位置，t为1的时候在$P_2$曲线位置。而随着时间的增长会逐渐从$P_1$过渡到$P_2$运动状态。显然当$P_1(t),P_2(t)$都是点的时候就是线性插值。</p>
 <p>如果$P_1$为一个运动曲线。我们可以轻松得出，对于每一个时间t，$q_1(t)$实际上决定了一个点。而当前所在位置为该点和$P_2$点连线插值为t的位置上。其运动轨迹大致如下：</p>
 <img src="../运动混合assets/motion_3.gif">
@@ -118,11 +117,11 @@ $$P=(1-t)P_1(t)+tP_2(t),t\in[0,1]$$
 <p>实际上对于上面运动混合的例子。如果$P_1,P_2$首尾相接，可以看出，实际上此时曲线就会是由三个点控制的Bezier曲线。其运动效果如下：</p>
 <img src="../运动混合assets/motion_5.gif">
 <p>因为在这个过程中实际的运动方程如下：</p>
-$$
+<p>$$
 P=(1-t)P_1(t)+tP_2(t)=(1-t)[(1-t)p_1+tp_2]+t[(1-t)p_2+tp_3]=(1-t)^2p_1+2t(1-t)p_2+t^2p_3
-$$
+$$</p>
 <p>这个实际上就是由$p_1,p_2,p_3$三个点控制的Bezier曲线，当然这种关系来自于Bezier混合函数。对于N阶的Bezier运动曲线，其有递归关系：</p>
-$$BEZ_{k_n}(u)=(1-u)BEZ_{k,n}(u)+uBEZ_{k_1,n_1}(u)$$
+<p>$$BEZ_{k_n}(u)=(1-u)BEZ_{k,n}(u)+uBEZ_{k_1,n_1}(u)$$</p>
 <p>但是也可以明显看到，当两个运动物体中运动规律不重叠的时候并没有这种确定的对应关系。</p>
 <h1 id="曲线控制点移动">曲线控制点移动</h1>
 </div><div class="post-footer" id="post-footer">
@@ -145,10 +144,13 @@ $$BEZ_{k_n}(u)=(1-u)BEZ_{k,n}(u)+uBEZ_{k_1,n_1}(u)$$
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
+
+    <div class="post-nav"><a href="/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/%E5%8A%A8%E5%8A%9B%E7%B3%BB%E7%BB%9F%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i></a>
+            <a href="/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/05%E4%BA%8C%E7%BB%B4%E8%BF%90%E5%8A%A8%E7%A0%94%E7%A9%B6/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
         </div>
     </footer></div>

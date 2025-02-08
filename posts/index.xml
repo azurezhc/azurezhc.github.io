@@ -4,13 +4,21 @@
         <link>http://azurezhc.github.io/posts/</link>
         <description>All Posts | azurezhc的游戏开发人生</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>azurezhc@gmail.com (azurezhc)</managingEditor>
-            <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Sun, 12 Jan 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://azurezhc.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Fri, 07 Feb 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://azurezhc.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>陪集和拉格朗日定理</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/04%E9%99%AA%E9%9B%86%E5%92%8C%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86/</link>
+    <pubDate>Fri, 07 Feb 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/04%E9%99%AA%E9%9B%86%E5%92%8C%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86/</guid>
+    <description><![CDATA[陪集和拉格朗日定理 陪集可以说是群论中重要的一环。它是一种由群自然而生的分解结构。 我认为其实前面一些问题已经体现出了这种分解结构的必然出现。对]]></description>
+</item>
+<item>
     <title>群结构</title>
     <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/03%E7%BE%A4%E7%BB%93%E6%9E%84/</link>
     <pubDate>Sun, 12 Jan 2025 00:00:00 &#43;0000</pubDate>
     <author>azurezhc</author>
     <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/03%E7%BE%A4%E7%BB%93%E6%9E%84/</guid>
-    <description><![CDATA[群结构]]></description>
+    <description><![CDATA[群结构 群结构，在我看来是抽象代数的精华之一。它揭示了，我在有这些定义结构之下时，会产什么什么样的特性。这些特性是基本的简单的。基于简单几条规]]></description>
 </item>
 <item>
     <title>子群相关</title>
@@ -42,7 +50,7 @@
     <pubDate>Sat, 14 Dec 2024 00:00:00 &#43;0000</pubDate>
     <author>azurezhc</author>
     <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/01%E7%BE%A4%E7%9B%B8%E5%85%B3/</guid>
-    <description><![CDATA[群相关 群定义 先简单介绍一些群相关概念： 简单记录群的定义 定义 一个群(group)$\lang{}G,*\rang$描述了一个集合$G$以及一个]]></description>
+    <description><![CDATA[群相关 群定义 先简单介绍一些群相关概念： 简单记录群的定义 定义 一个群(group)$\lang{}G,\rang$描述了一个集合$G$以及一个二]]></description>
 </item>
 <item>
     <title>09世界，UI与屏幕空间</title>
@@ -75,14 +83,6 @@
     <author>azurezhc</author>
     <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/06Timeline%E7%9B%B8%E5%85%B3/</guid>
     <description><![CDATA[06Timeline相关 Timeline是游戏开发中常见的工具。因为游戏是一个随着时间演变的过程。定义随时间的变化一系列事物是游戏中必然会涉]]></description>
-</item>
-<item>
-    <title>05Prefab相关</title>
-    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/05Prefab%E7%9B%B8%E5%85%B3/</link>
-    <pubDate>Sun, 19 May 2024 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/05Prefab%E7%9B%B8%E5%85%B3/</guid>
-    <description><![CDATA[prefab相关 本文主要记录Unity中Prefab相关的一些细节。辅助理解Prefab这个在Unity中常用的对象究竟是什么。 UnityP]]></description>
 </item>
 </channel>
 </rss>

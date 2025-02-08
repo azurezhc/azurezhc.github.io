@@ -10,8 +10,8 @@
 <meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/05%E7%82%B9%E9%9B%86%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Delaunary-Triangulation/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-08-25T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-08-25T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
-
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="计算几何课程"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="计算几何课程"/>
 <meta name="twitter:description" content="05点集三角刨分(Delaunary Triangulation) 计算几何-笔记目录 本章主体为点集三角刨分。即给定一个平面点集。求一个建立在点上的最大边集，且边没有交叉"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/05%E7%82%B9%E9%9B%86%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Delaunary-Triangulation\/"
-        },"genre": "posts","wordcount":  4635 ,
+        },"genre": "posts","wordcount":  8422 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/05%E7%82%B9%E9%9B%86%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Delaunary-Triangulation\/","datePublished": "2023-08-25T00:00:00+00:00","dateModified": "2023-08-25T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -44,7 +44,7 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a></div>
         </div>
@@ -59,25 +59,25 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
-            <div class="toc-content always-active" id="toc-content-auto"></div>
+            <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">计算几何课程</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-25">2023-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4635 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;10 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-25">2023-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;8422 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;17 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
+  <ol>
     <li><a href="#05点集三角刨分delaunary-triangulation">05点集三角刨分(Delaunary Triangulation)</a></li>
     <li><a href="#点集三角刨分介绍">点集三角刨分介绍</a></li>
     <li><a href="#delaunary-triangulation">Delaunary Triangulation</a></li>
@@ -85,11 +85,11 @@
     <li><a href="#构造问题">构造问题</a></li>
     <li><a href="#ric">RIC</a></li>
     <li><a href="#补充">补充</a>
-      <ul>
+      <ol>
         <li><a href="#incircletest">InCircleTest</a></li>
-      </ul>
+      </ol>
     </li>
-  </ul>
+  </ol>
 </nav></div>
             </div><div class="content" id="content"><h1 id="05点集三角刨分delaunary-triangulation">05点集三角刨分(Delaunary Triangulation)</h1>
 <p><a class="link-markdown-demo-site" href="./计算几何-笔记大纲.md" rel="noopener">计算几何-笔记目录</a></p>
@@ -195,14 +195,14 @@
 <p><strong><font size = 4>Gabriel Graph</font></strong></p>
 <p>先来看GabrielGraph定义：</p>
 <center><img src="./p5.png"></center>
-<p>直观来讲，就是如果一条边$pq$被$GG(S)$选中，那么以$pq$为直径的圆是空的。然后反观公式，满足$|pq|^2=|pr|^2+|rq|^2$的轨迹形成的是一个圆，如果落在圆内则有$|pq|^2>|pr|^2+|rq|^2$，进而$pq$不会被采用。</p>
+<p>直观来讲，就是如果一条边$pq$被$GG(S)$选中，那么以$pq$为直径的圆是空的。然后反观公式，满足$|pq|^2=|pr|^2+|rq|^2$的轨迹形成的是一个圆，如果落在圆内则有$|pq|^2&gt;|pr|^2+|rq|^2$，进而$pq$不会被采用。</p>
 <p>如果$pq$被采用，那么空圆存在，也满足之前$DT$的采用条件，所以显然有$GG(S)\subseteq{}DT(S)$</p>
 <p>除此之外也可以通过Voronoi图的视角来出发，对于Voronoi图来说，如果$Cell(p),Cell(q)$之间存在边界$e$。那么$pq$一定满足GabrielGraph定义，进而会被$GG(S)$采用。同时这也给出了一个Voronoi图来计算$GG(S)$的方法，遍历所有边，取其两侧的Site来构造即可。</p>
 <p><strong><font size = 4>Relative Neighborhood Graph</font></strong></p>
 <center><img src="./p6.png"></center>
 <p>直观来讲。$RNG(S)$来挑选边的原则是，以$pq$为半径，$p,q$为圆心的两个圆有一个相交的纺锤型区域，在这个区域内没有其他点。回到公式上来说，对于$S$中一点$r$，先取其到$p,q$上距离的最大值。然后再取这些距离的最近值即$pq$。</p>
 <p>从图形上来看，一个边$pq$属于$RNG(S)$，那么$pq$为直径的圆为空，所以$pq$必然属于$GG(S)$。进而有如下公式：</p>
-$$RNG(S)\subseteq{}GG(S)\subseteq{}DT(S)$$
+<p>$$RNG(S)\subseteq{}GG(S)\subseteq{}DT(S)$$</p>
 <p>现在考虑这两类图的求解复杂度，其思路任然是规约：</p>
 <center><img src="./p7.png"></center>
 <p>直接考虑1维情况，规约如下：</p>
@@ -233,7 +233,7 @@ $$RNG(S)\subseteq{}GG(S)\subseteq{}DT(S)$$
 <li>然后我们随便选一个点，然后按照上面有方向的环路前进。对于一个已经遍历过的点，我们只要跳过就可以了，直接走向下一个点即可了。</li>
 </ul>
 <p>这样一个结果，确实可以得到我们TSP问题的一个解。而对于这个过程得到的回路权重我们显然有如下结果：</p>
-$$|W|=2|EMST|<2|ESTP|$$
+<p>$$|W|=2|EMST|&lt;2|ESTP|$$</p>
 <p>因为我们将EMST拆分成了两条回路所以$|W|=2|EMST|$，而EMST严格小于ESTP。因为ESTP是一个环路，移除一条边后就是一颗树，而树中权重最小得就是最小生成树EMST。所以不等式得证。</p>
 <p><strong><font size = 4>Minimum Weighted Triangulation</font></strong></p>
 <p>即最小权重三角刨分，找到一个三角刨分，其所有边得权重是最小的。这个问题至今仍是一个开放问题。可以说明其仍然是一个NP-Hard问题。如下图：</p>
@@ -241,7 +241,7 @@ $$|W|=2|EMST|<2|ESTP|$$
 <h1 id="构造问题">构造问题</h1>
 <p>前面已经看到，对于点集三角刨分来说，其刨分方案存在无数种。但是其包含的三角形个数是给定的，只有$2(n-1)-h$个。首先便是建立在不变量上一个指标来度量三角刨分效果。</p>
 <p>这里取的就是所有三角形中所有角度，从小到大得一个排序，来作为度量。并且可以定义在这个度量上的一个字典序来定义度量的一个大小关系。</p>
-<p>假设所有角度一共有$6n-3h-6$个，构造一个向量$a=a_1,\cdots,a_{6n-2h-6}$。这个向量显然是跟每一种三角刨分关联的。然后定义其上的大小关系如下$a<b$当前仅当存在$k\$，当$i<k$时，$a_i=b_i$，而$a_k<b_k$。这样便建立了一个三角刨分的大小关系。</p>
+<p>假设所有角度一共有$6n-3h-6$个，构造一个向量$a=a_1,\cdots,a_{6n-2h-6}$。这个向量显然是跟每一种三角刨分关联的。然后定义其上的大小关系如下$a&lt;b$当前仅当存在$k$，当$i&lt;k$时，$a_i=b_i$，而$a_k&lt;b_k$。这样便建立了一个三角刨分的大小关系。</p>
 <p>而Delaunary三角刨分，则倾向于让这个值更大，或者换句话说，DT刨分，会避免非常尖锐角的出现。这个特性来自于DT刨分的空圆特性(Empty Circumcircle)，因为空圆，说明圆内没有其他点，其他点都在圆外，这说明当前任意三角形边所对的角，都比跟圆外的点所成的角大。</p>
 <p>对于构造来说，从前面来看也已经有很多确定算法方式了，例如：</p>
 <ul>
@@ -274,7 +274,8 @@ $$|W|=2|EMST|<2|ESTP|$$
 <ul>
 <li>按一个随机顺序插入Site点，每次插入一个。</li>
 <li>在每次添加Site点后，更新三角刨分。</li>
-</ul></div>
+</ul>
+</div>
         </div>
     </div>
 <p>这个算法已经知道了40多年了，但是它的期望复杂度直到1992年才被发现在$O(nlogn)$量级。</p>
@@ -323,7 +324,7 @@ $$|W|=2|EMST|<2|ESTP|$$
 <center><img src="./p14.png"></center>
 <p>现在来看插入第$i$个点之后，剩余点被Rebucketing的概率是多少。这也是个backward analysis方式。有一个明锐的观察可以看到，如果$q$被Rebucketing，那么$a,b,c$一定是刚刚插入的顶点。所以$q$被Rebucketing的概率为$3/i$。</p>
 <p>那么对于Rebucketing的期望，就是每一步中被Rebucketing的点的概率次数和。所以其期望值有：</p>
-$$\sum_{i=1}^n\frac{3}{i}(n-i)\leq\sum_{i=1}^n\frac{3}{i}n\leq{}3nlogn$$
+<p>$$\sum_{i=1}^n\frac{3}{i}(n-i)\leq\sum_{i=1}^n\frac{3}{i}n\leq{}3nlogn$$</p>
 <p>所以结合这两步的消耗我们可以得出最后的时间复杂度度是$O(nlogn)$</p>
 <div class="details admonition question">
         <div class="details-summary admonition-title">
@@ -337,112 +338,112 @@ $$\sum_{i=1}^n\frac{3}{i}(n-i)\leq\sum_{i=1}^n\frac{3}{i}n\leq{}3nlogn$$
 <h2 id="incircletest">InCircleTest</h2>
 <p>在RIC章节部分，老师给出了一个简短的InCircleTest计算方法。类似ToLeft测试一般，只用计算出符号就可以得出点$p$是否在三角形$a,b,c$的外界圆内，但是没有给出证明来源，这里做一个简短补充。</p>
 <p>计算公式如下：</p>
-$$
+<p>$$
 \begin{vmatrix}
-  a_x & a_y & a_x^2+a_y^2 & 1 \\\
-  b_x & b_y & b_x^2+b_y^2 & 1 \\\
-  c_x & c_y & c_x^2+c_y^2 & 1 \\\
-  p_x & p_y & p_x^2+p_y^2 & 1 \\\
+a_x &amp; a_y &amp; a_x^2+a_y^2 &amp; 1 \\
+b_x &amp; b_y &amp; b_x^2+b_y^2 &amp; 1 \\
+c_x &amp; c_y &amp; c_x^2+c_y^2 &amp; 1 \\
+p_x &amp; p_y &amp; p_x^2+p_y^2 &amp; 1 \\
 \end{vmatrix}
-$$
+$$</p>
 <p>这里其实计算的思路是，线性化和升维。对于一个二维圆公式我们有如下结构：</p>
-$$
-(x-t_x)^2+(y-t_y)^2=r^2 \\\
+<p>$$
+(x-t_x)^2+(y-t_y)^2=r^2 \\
 x^2-2xt_x+t_x^2+y^2-2yt_y+t_y^2=r^2
-$$
+$$</p>
 <p>这里我们可以认为点$t$就是这个圆的圆心，显然该公式是不能表示为$t_x,t_y$的线性化的，因为存在$t_x^2,t_y^2$两个项目。但是我们可以引入一个新的变量$R=r^2-t_x^2-t_y^2$则原公式可以做如下变形：</p>
-$$
-2xt_x+2yt_y+R=x^2+y^2\\\
+<p>$$
+2xt_x+2yt_y+R=x^2+y^2\\
 \begin{bmatrix}
-2x & 2y & 1
+2x &amp; 2y &amp; 1
 \end{bmatrix}
 \begin{bmatrix}
-t_x \\\
-t_y \\\ 
+t_x \\
+t_y \\
 R
 \end{bmatrix}=x^2+y^2
-$$
+$$</p>
 <p>这里注意到对于平面三点共圆相当于三个点都在圆上，三个点$a,b,c$都满足方程。所以有如下等式：</p>
-$$
+<p>$$
 \begin{bmatrix}
-a_x & a_y & 1 \\\
-b_x & b_y & 1 \\\
-c_x & c_y & 1 \\\
+a_x &amp; a_y &amp; 1 \\
+b_x &amp; b_y &amp; 1 \\
+c_x &amp; c_y &amp; 1 \\
 \end{bmatrix}
 \begin{bmatrix}
-2t_x \\\
-2t_y \\\ 
+2t_x \\
+2t_y \\
 R
 \end{bmatrix}=
 \begin{bmatrix}
-a_x^2+ a_y^2 \\\ 
-b_x^2+ b_y^2 \\\ 
-c_x^2+ c_y^2 \\\ 
+a_x^2+ a_y^2 \\
+b_x^2+ b_y^2 \\
+c_x^2+ c_y^2 \\
 \end{bmatrix}
-$$
+$$</p>
 <p>这个线性方程组可以通过Cramer&rsquo;s Rule来求解出$t_x,t_y,R$，而$R$实际上包含了半径数值。</p>
 <p>同时这个方法可以扩展到任意维度，三维就是要四个点，三个坐标。</p>
 <p>现在我们考虑一个新的点$p$，这个点是平面给上任意一个点。并且设$p$到圆心的距离为$u$。我们自然有：</p>
-$$
+<p>$$
 (p_x-t_x)^2+(p_y-t_y)^2=u^2
-$$
+$$</p>
 <p>我们现在考察如下结构</p>
-$$
+<p>$$
 \begin{bmatrix}
-a_x & a_y & 1 & 0\\\
-b_x & b_y & 1 & 0\\\
-c_x & c_y & 1 & 0\\\
-p_x & p_y & 1 & 1\\\
+a_x &amp; a_y &amp; 1 &amp; 0\\
+b_x &amp; b_y &amp; 1 &amp; 0\\
+c_x &amp; c_y &amp; 1 &amp; 0\\
+p_x &amp; p_y &amp; 1 &amp; 1\\
 \end{bmatrix}
 \begin{bmatrix}
-2t_x \\\
-2t_y \\\ 
-R \\\
+2t_x \\
+2t_y \\
+R \\
 U
 \end{bmatrix}=
 \begin{bmatrix}
-a_x^2+ a_y^2 \\\ 
-b_x^2+ b_y^2 \\\ 
-c_x^2+ c_y^2 \\\ 
-p_x^2+ p_y^2\\\
+a_x^2+ a_y^2 \\
+b_x^2+ b_y^2 \\
+c_x^2+ c_y^2 \\
+p_x^2+ p_y^2\\
 \end{bmatrix}
 ,U=u^2-r^2
-$$
+$$</p>
 <p>可以验证最后一行是成立的。将该方程表示为$AT=B$，$A$为左侧矩阵，$T$为中间向量，$B$为右侧向量。注意根据Cramer&rsquo;s Rule，我们可以看到U的值可以表示为：</p>
-$$
+<p>$$
 U = \frac{1}{|A|}
 \begin{vmatrix}
-a_x & a_y & 1 & a_x^2+a_y^2\\\
-b_x & b_y & 1 & b_x^2+b_y^2\\\
-c_x & c_y & 1 & c_x^2+c_y^2\\\
-p_x & p_y & 1 & p_x^2+p_y^2\\\
+a_x &amp; a_y &amp; 1 &amp; a_x^2+a_y^2\\
+b_x &amp; b_y &amp; 1 &amp; b_x^2+b_y^2\\
+c_x &amp; c_y &amp; 1 &amp; c_x^2+c_y^2\\
+p_x &amp; p_y &amp; 1 &amp; p_x^2+p_y^2\\
 \end{vmatrix}
-$$
+$$</p>
 <p>注意其中$|A|$为三角形$a,b,c$的按顺序有向面积。所以此时U的符号取决于后面行列式，注意的是$U=u^2-r^2$。刚好是到目标点的距离，其符号说明了在圈外还是圈内。当行列式值大于0说明在圈外，反之说明在圈内。</p>
 <p>此外值得注意的一点就是，我们考虑三个三维空间中的点$a,b,c$。三个点如果不共线，则可以确定一个平面这个平面可以表述如下：对于平面内的一点$p=(p_x,p_y,p_z)$有</p>
-$$
+<p>$$
 \vec{ap}\cdot(\vec{ab}\times\vec{ac})=0
-$$
+$$</p>
 <p>语义也非常明确即，面上$p$的点到$a$的向量都与面上的法向量$\vec{ab}\times\vec{ac}$垂直。在三维空间中如果用行列式展开有：</p>
-$$
+<p>$$
 \begin{vmatrix}
-p_x-a_x & p_y-a_y & p_z-a_z \\\
-b_x-a_x & b_y-a_y & b_z-a_z \\\
-c_x-a_x & c_y-a_y & b_z-a_z \\\
+p_x-a_x &amp; p_y-a_y &amp; p_z-a_z \\
+b_x-a_x &amp; b_y-a_y &amp; b_z-a_z \\
+c_x-a_x &amp; c_y-a_y &amp; b_z-a_z \\
 \end{vmatrix}=
 \begin{vmatrix}
-1 & 0 & 0 & 0 \\\
-0 & p_x-a_x & p_y-a_y & p_z-a_z \\\
-0 & b_x-a_x & b_y-a_y & b_z-a_z \\\
-0 & c_x-a_x & c_y-a_y & b_z-a_z \\\
+1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; p_x-a_x &amp; p_y-a_y &amp; p_z-a_z \\
+0 &amp; b_x-a_x &amp; b_y-a_y &amp; b_z-a_z \\
+0 &amp; c_x-a_x &amp; c_y-a_y &amp; b_z-a_z \\
 \end{vmatrix}=
 \begin{vmatrix}
-1 & a_x & a_y & a_z \\\
-1 & p_x & p_y & p_z \\\
-1 & b_x & b_y & b_z \\\
-1 & c_x & c_y & b_z \\\
+1 &amp; a_x &amp; a_y &amp; a_z \\
+1 &amp; p_x &amp; p_y &amp; p_z \\
+1 &amp; b_x &amp; b_y &amp; b_z \\
+1 &amp; c_x &amp; c_y &amp; b_z \\
 \end{vmatrix}
-$$
+$$</p>
 <p>如果该值大于0说明点$p$在平面法线上方，反之则在下方。对比这个公式跟我们上面的计算公式我们不难发现，对于平面上的点$a,b,c$，可以认为其就是做了一个映射，附加一个z方向值有$(a_x,a_y)\rightarrow(a_x,a_y,a_x^2+a_y^2)$。此时$p$在圈内的问题转化为了在平面上下方的问题。</p>
 <p>令$z=x^2+y^2$我们可以看到这个三维图像实际上是一个抛物面。而我们上面所作的映射使得，平面所有点都落在了这个抛物面上面。落在这个抛物面上的点，即可形成一个平面。根据我们上面描述在该平面下方的会落在圆内，而上方的会落在园外。现在我们关注这个平面跟抛物线的截面，该截面会把整个抛物面分成两部分。两部分都可被平面上的点映射过来，可以看到，其实圆内的点就是其中一个有限截面在平面上的投影部分。如下图</p>
 <center><img src = "./g_1.png"></center>
@@ -466,10 +467,13 @@ $$
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
+
+    <div class="post-nav"><a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/06%E7%82%B9%E5%AE%9A%E4%BD%8DPoint-Location/" class="prev" rel="prev" title="计算几何课程"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>计算几何课程</a>
+            <a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/04Voronoi%E5%9B%BEVoronoi-Diagram/" class="next" rel="next" title="计算几何课程">计算几何课程<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
         </div>
     </footer></div>
