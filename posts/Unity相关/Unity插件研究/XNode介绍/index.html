@@ -10,8 +10,8 @@
 <meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/XNode%E4%BB%8B%E7%BB%8D/" /><meta property="article:section" content="posts" />
 
 <meta property="og:site_name" content="一个小博客" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="XNode介绍 本文主要介绍我对XNode源码结构的刨析。查看一个其节点图的想法思路，方便我来进一步使用节点图，以及改造其结构。 网上也有一些视"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -44,7 +44,7 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a></div>
         </div>
@@ -59,14 +59,14 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2412 words&nbsp;
@@ -77,13 +77,13 @@
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ol>
+  <ul>
     <li><a href="#xnode介绍">XNode介绍</a></li>
     <li><a href="#xnode使用概述">XNode使用概述</a></li>
     <li><a href="#xnode整体结构">XNode整体结构</a></li>
     <li><a href="#xnode功能说明">XNode功能说明</a></li>
     <li><a href="#xnode运行时">XNode运行时</a></li>
-  </ol>
+  </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="xnode介绍">XNode介绍</h1>
 <p>本文主要介绍我对XNode源码结构的刨析。查看一个其节点图的想法思路，方便我来进一步使用节点图，以及改造其结构。</p>
@@ -124,22 +124,22 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">SkillActionNode</span> <span class="p">:</span> <span class="n">Node</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">SkillActionNode</span> <span class="p">:</span> <span class="n">Node</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="na">	[Input]</span>
-</span></span><span class="line"><span class="cl">	<span class="k">public</span> <span class="n">Node</span> <span class="n">prev</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="n">Node</span> <span class="n">prev</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="na">
 </span></span></span><span class="line"><span class="cl"><span class="na">	[Output]</span>
-</span></span><span class="line"><span class="cl">	<span class="k">public</span> <span class="n">Node</span> <span class="n">next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="n">Node</span> <span class="n">next</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="c1">// Use this for initialization</span>
-</span></span><span class="line"><span class="cl">	<span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="n">Init</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">protected</span> <span class="kd">override</span> <span class="k">void</span> <span class="n">Init</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="k">base</span><span class="p">.</span><span class="n">Init</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">		
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="c1">// Return the correct value of an output port when requested</span>
-</span></span><span class="line"><span class="cl">	<span class="k">public</span> <span class="k">override</span> <span class="kt">object</span> <span class="n">GetValue</span><span class="p">(</span><span class="n">NodePort</span> <span class="n">port</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="k">null</span><span class="p">;</span> <span class="c1">// Replace this</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kd">override</span> <span class="kt">object</span> <span class="n">GetValue</span><span class="p">(</span><span class="n">NodePort</span> <span class="n">port</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">// Replace this</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
@@ -165,11 +165,11 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 节点的静态缓存结构</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">NodeDataCache</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="k">class</span> <span class="nc">NodeDataCache</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="c1">// 节点缓存Dict </span>
-</span></span><span class="line"><span class="cl">	<span class="k">private</span> <span class="k">static</span> <span class="n">PortDataCache</span> <span class="n">portDataCache</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">private</span> <span class="kd">static</span> <span class="n">PortDataCache</span> <span class="n">portDataCache</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="c1">// PortDataCache 继承于 Dictionary结构 有Dictionary结构</span>
-</span></span><span class="line"><span class="cl">	<span class="k">private</span> <span class="k">class</span> <span class="nc">PortDataCache</span> <span class="p">:</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">System</span><span class="p">.</span><span class="n">Type</span><span class="p">,</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">NodePort</span><span class="p">&gt;&gt;</span> <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">private</span> <span class="k">class</span> <span class="nc">PortDataCache</span> <span class="p">:</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">System</span><span class="p">.</span><span class="n">Type</span><span class="p">,</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">NodePort</span><span class="p">&gt;&gt;</span> <span class="p">{</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -241,13 +241,10 @@
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
-
-    <div class="post-nav"><a href="/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/02%E6%96%87%E6%9C%AC%E6%90%9C%E7%B4%A2/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i></a>
-            <a href="/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E6%8F%92%E4%BB%B6%E7%A0%94%E7%A9%B6/OdinInspector/Odin%E5%AD%97%E6%AE%B5%E5%8A%9F%E8%83%BD%E8%AF%B4%E6%98%8E/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
         </div>
     </footer></div>

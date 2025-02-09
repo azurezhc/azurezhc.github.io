@@ -10,8 +10,8 @@
 <meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/06%E7%82%B9%E5%AE%9A%E4%BD%8DPoint-Location/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-08-25T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-08-25T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="计算几何课程"/>
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="计算几何课程"/>
 <meta name="twitter:description" content="06点定位(Point Location) 计算几何-笔记目录 从本章之后的部分主要关注于在线算法部分。在线算法即指，输入没有一次性给出所有输入，而是随着时间逐步"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -44,7 +44,7 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a></div>
         </div>
@@ -59,14 +59,14 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">计算几何课程</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-25">2023-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;10280 words&nbsp;
@@ -77,19 +77,19 @@
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ol>
+  <ul>
     <li><a href="#06点定位point-location">06点定位(Point Location)</a></li>
     <li><a href="#点定位介绍">点定位介绍</a></li>
     <li><a href="#slab-method">Slab Method</a></li>
     <li><a href="#pathnode-copying">Path/Node Copying</a></li>
     <li><a href="#kirkpatrick-structure">Kirkpatrick Structure</a></li>
     <li><a href="#trapezoidal-map">Trapezoidal Map</a>
-      <ol>
+      <ul>
         <li><a href="#ric">RIC</a></li>
         <li><a href="#算法复杂度分析">算法复杂度分析</a></li>
-      </ol>
+      </ul>
     </li>
-  </ol>
+  </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="06点定位point-location">06点定位(Point Location)</h1>
 <p><a class="link-markdown-demo-site" href="./计算几何-笔记大纲.md" rel="noopener">计算几何-笔记目录</a></p>
@@ -376,14 +376,14 @@
 <p>对于$S$的所有插入顺序枚举，期望来讲这样一次插入导致遮挡射线个数为常数量级。即$E[k(i)]=O(1)$</p>
 </blockquote>
 <p>方法也是后向分析，即第$i$步中，每一条线段被插入概率均等，而此前也是均匀随机的插入$i-1$条线段了。我们要考察这一步生成梯形的期望，为方便设一个函数$\delta(\Delta,s)$。考察当前图中，如果插入$s$导致梯形$\Delta$被创建，则$\delta(\Delta,s)=1$，否则$\delta(\Delta,s)=0$。所以可得：</p>
-<p>$$E[k(i)]=\frac{1}{i}\times\sum_{s\in{}S_i}\sum_{\Delta\in{}TM_i}\delta(\Delta,s)$$</p>
+$$E[k(i)]=\frac{1}{i}\times\sum_{s\in{}S_i}\sum_{\Delta\in{}TM_i}\delta(\Delta,s)$$
 <p>显然这里可以交换求和符号，简单来说，就是变成对于每个梯形$\Delta$来说，反观线段，即哪条$s$导致了梯形的生成。显然，这一共有四种可能产生这个梯形。所以$\sum_{s\in{}S_i}\delta(\Delta,s)=4$。此即可的$E[k(i)]=O(1)$</p>
 <p>现在来看点定位开销。实际上这个开销就是整个搜索结构的Query开销。这个先放在这里即$E[T(i)]=O(logn)$。所以每一步都是期望$O(logn)$开销，进而总共进行$n$步的开销即$O(nlogn)$。也就是这个构造算法是$O(nlogn)$复杂度。</p>
 <p>现在我们也可以来看这个算法的空间复杂度，实际上这个数值，就是每一次增加的梯形个数，从上面我们已经看到了，每一步期望增加的都是常数，所以总体期望空间复杂度是$O(n)$。实际上可以看搜索结构跟梯形图的对应，就会发现对应梯形图，多出来的数据结构就是黄色节点，即节点，这些节点由每次插入边时，跟多少射线相交产生。而这是期望常数个的。当然最坏情况就是$O(i)$个相交，复杂度也就是$O(n^2)$。</p>
 <p>现在来看这个查询的复杂度是多少。如果从最后结果来看，即对于一个点$q$考虑其查找路径的各种组合，那将会是非常复杂的。这里用的办法即考虑一个点$q$，考察其所在梯形的变化路径，因为这个梯形变化路径实际上就是它的查找路径。这个根据前面的搜索结构构造路径可以看出来。这个可以用下图看出：</p>
 <center><img src="./p13.png"></center>
 <p>而搜索深度增加只可能发生在第2种情况。而且根据前面的构造算法，这样一次操作最多让树增加3层。于是这个搜索深度，就变成了这第二种情况发生的概率综合。即每次插入一条新的线段以后，这个固定点$q$所属梯形发生了变化的概率。这个概率即</p>
-<p>$$3\times(P_1+P_2+\cdots+P_n)$$</p>
+$$3\times(P_1+P_2+\cdots+P_n)$$
 <p>在这里继续使用后向分析，在第$i$步种，这个梯形发生变化，只可能是其4条边是刚插入的边。所以概率为$4/i$。所带入后可得期望查询时间为$O(logn)$。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -405,13 +405,10 @@
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
-
-    <div class="post-nav"><a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E7%AC%94%E8%AE%B0%E5%A4%A7%E7%BA%B2/" class="prev" rel="prev" title="计算几何课程"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>计算几何课程</a>
-            <a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/05%E7%82%B9%E9%9B%86%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Delaunary-Triangulation/" class="next" rel="next" title="计算几何课程">计算几何课程<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
         </div>
     </footer></div>

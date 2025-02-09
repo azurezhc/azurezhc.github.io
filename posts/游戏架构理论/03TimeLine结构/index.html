@@ -10,8 +10,8 @@
 <meta property="og:url" content="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/03TimeLine%E7%BB%93%E6%9E%84/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-09-01T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-09-01T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="游戏架构理论"/>
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="游戏架构理论"/>
 <meta name="twitter:description" content="TimeLine结构 本文，主要总结我在写游戏代码过程中对于时间轴概念的理解和使用。 在游戏开发过程中，不管是客户端还是服务器开发，不可避免的会"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA\/03TimeLine%E7%BB%93%E6%9E%84\/"
-        },"genre": "posts","wordcount":  6114 ,
+        },"genre": "posts","wordcount":  5228 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA\/03TimeLine%E7%BB%93%E6%9E%84\/","datePublished": "2023-09-01T00:00:00+00:00","dateModified": "2023-09-01T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -44,7 +44,7 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a></div>
         </div>
@@ -59,40 +59,40 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">游戏架构理论</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-09-01">2023-09-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6114 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;13 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-09-01">2023-09-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5228 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ol>
+  <ul>
     <li><a href="#timeline结构">TimeLine结构</a></li>
     <li><a href="#全局timer">全局Timer</a>
-      <ol>
+      <ul>
         <li><a href="#时间轮与时间累计">时间轮与时间累计</a></li>
-      </ol>
+      </ul>
     </li>
     <li><a href="#全局还是局部">全局还是局部</a>
-      <ol>
+      <ul>
         <li><a href="#全局与协程">全局与协程</a></li>
-      </ol>
+      </ul>
     </li>
     <li><a href="#一次触发与持续修改">一次触发与持续修改</a></li>
     <li><a href="#时间膨胀">时间膨胀</a></li>
     <li><a href="#持续概念的封装">持续概念的封装</a></li>
-  </ol>
+  </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="timeline结构">TimeLine结构</h1>
 <p>本文，主要总结我在写游戏代码过程中对于时间轴概念的理解和使用。</p>
@@ -128,16 +128,16 @@
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">TimerManager</span>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">TimerManager</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 单一实例 </span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="n">TimerManager</span> <span class="n">instance</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">TimerManager</span> <span class="n">instance</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 存储所有tick的实例计数</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">SingleTimer</span><span class="p">&gt;</span> <span class="n">timer_dict</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">timer_index</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">SingleTimer</span><span class="p">&gt;</span> <span class="n">timer_dict</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="n">timer_index</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">// 添加一个在固定时间回调的函数，C#中Action 相当于一个无参数函数</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">AddTimer</span><span class="p">(</span><span class="kt">float</span> <span class="n">time</span><span class="p">,</span> <span class="n">Action</span> <span class="n">action</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">AddTimer</span><span class="p">(</span><span class="kt">float</span> <span class="n">time</span><span class="p">,</span> <span class="n">Action</span> <span class="n">action</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">instance</span><span class="p">.</span><span class="n">timer_index</span> <span class="p">+=</span> <span class="m">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="n">instance</span><span class="p">.</span><span class="n">timer_dict</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">instance</span><span class="p">.</span><span class="n">timer_index</span><span class="p">,</span> <span class="k">new</span> <span class="n">SingleTimer</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">action</span><span class="p">));</span>
@@ -145,11 +145,11 @@
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 记录经过多少时间的数据结构类</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">SingleTimer</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">SingleTimer</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">float</span> <span class="n">total_time</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">float</span> <span class="n">pass_time</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">Action</span> <span class="n">action</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">float</span> <span class="n">total_time</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">float</span> <span class="n">pass_time</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Action</span> <span class="n">action</span><span class="p">;</span> 
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -177,7 +177,7 @@
 <ul>
 <li>对于绝大部分情况来说，每次Tick只是在更新数据，真正生效的只有<code>pass_time</code>跨过<code>total_time</code>的时刻。</li>
 </ul>
-<p>但是累计时间似乎又是计算<code>pass_time</code>跨过<code>total_time</code>的必要部分。这相当于去计算$\sum_i^n{}t_i&gt;T$这件事情，但是可以简单发现一件事情，如果每次更新时间是一个固定数值即$t_i=t_0$那么可以简单计算出$n=T/t_0$。这相当于计算出第$n$次Tick的时候触发该事件，省略了之前累计时间的开销。这个结构可以用下图表示：</p>
+<p>但是累计时间似乎又是计算<code>pass_time</code>跨过<code>total_time</code>的必要部分。这相当于去计算$\sum_i^n{}t_i>T$这件事情，但是可以简单发现一件事情，如果每次更新时间是一个固定数值即$t_i=t_0$那么可以简单计算出$n=T/t_0$。这相当于计算出第$n$次Tick的时候触发该事件，省略了之前累计时间的开销。这个结构可以用下图表示：</p>
 <center><img src="./d2.drawio.png"></center>
 <ul>
 <li>每次Tick前进一格，查询该槽位中对象数量。</li>
@@ -246,21 +246,21 @@
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">GM</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">GM</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">Start</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// 启动一个协程</span>
 </span></span><span class="line"><span class="cl">        <span class="n">StartCoroutine</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">PrintInfo</span><span class="p">());</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">IEnumerator</span> <span class="n">PrintInfo</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">IEnumerator</span> <span class="n">PrintInfo</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// yield返回 3s之后再继续往下走</span>
 </span></span><span class="line"><span class="cl">        <span class="k">yield</span> <span class="k">return</span> <span class="k">new</span> <span class="n">WaitForSeconds</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&#34;PRINT INFO 1&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="kt">float</span> <span class="n">pass_time</span> <span class="p">=</span> <span class="m">0f</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">yield</span> <span class="k">return</span> <span class="k">new</span> <span class="n">WaitForSeconds</span><span class="p">(</span><span class="m">0.1f</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">pass_time</span> <span class="p">&gt;</span> <span class="m">1</span><span class="p">)</span>
@@ -300,16 +300,16 @@
 <p>对于很多客户端来说，都涉及到时间膨胀的概念。即时间流逝并不是固定的，对于很多游戏表现需求，这基本时必须的。</p>
 <p>正常状况下，游戏中流逝时间跟现实一样，即游戏中的1s相当于现实世界中的1s。但是有一些情况，我们需要加快或放慢游戏中的时间速率。例如，倍速&ndash;游戏中ns相当于现实中1s，游戏中所有流速加快。子弹时间&ndash;游戏中0.1s相当于现实中1s，游戏中速度变慢。</p>
 <p>也就是对于Tick的时间间隔不再固定，而是一个受到倍率参数控制缩放后的值。</p>
-<p>对于累计计时来说，处理就很简单了，对于每次累加的$\Delta{}t$，让其收到倍率参数控制即可，然后所有Timer就都受到了时间膨胀影响。但是时间轮呢？通过简单思考，如果对于加速Tick来说，似乎还可以处理，只需要每次跨越的槽位变多即可。但是如果时间变慢，慢到一帧流逝的时间小于槽位宽度$\Delta{}t&lt;t_0$似乎就无法处理了，因为粒度不够，无发区分槽位中应该触发哪些回调。实际上这里有几个方式来解决：</p>
+<p>对于累计计时来说，处理就很简单了，对于每次累加的$\Delta{}t$，让其收到倍率参数控制即可，然后所有Timer就都受到了时间膨胀影响。但是时间轮呢？通过简单思考，如果对于加速Tick来说，似乎还可以处理，只需要每次跨越的槽位变多即可。但是如果时间变慢，慢到一帧流逝的时间小于槽位宽度$\Delta{}t<t_0$似乎就无法处理了，因为粒度不够，无发区分槽位中应该触发哪些回调。实际上这里有几个方式来解决：</p>
 <ul>
 <li>细化最小单位槽位，即最小槽位标识的时间间隔更小。但是这会加大时间轮长度，而且实际限定了最小时间膨胀率。</li>
 <li>针对每个槽位Timer对象，添加一个槽位偏移值。然后记录一个累计值，对比累计值与列表中的值来完成回调。如下图：</li>
 </ul>
 <center><img src="./d7.drawio.png"></center>
 <ul>
-<li>我们会累计每次Tick时间间隔，记录为$t$，当$t$超过槽位边界的时候减少该槽位值。形成槽位上的余数值$t&rsquo;$，这相当于在该槽位中有一段。</li>
+<li>我们会累计每次Tick时间间隔，记录为$t$，当$t$超过槽位边界的时候减少该槽位值。形成槽位上的余数值$t'$，这相当于在该槽位中有一段。</li>
 <li>如果跨过槽位，显然槽位中所有Timer触发，跟原始逻辑一样。当有余数的时候，可以跟槽位中的Timer对比残留时间间隔，如果大于则触发该Timer。</li>
-<li>当时间间隔变为$t_2&lt;t_0$后。此时会在局部槽位中累计余数值$t&rsquo;$。根据上面所述依然会正确的触发对应Timer。而且不限制缩放倍率。</li>
+<li>当时间间隔变为$t_2<t_0$后。此时会在局部槽位中累计余数值$t'$。根据上面所述依然会正确的触发对应Timer。而且不限制缩放倍率。</li>
 </ul>
 <p>实际上可以认为，其实累计时间方式也是有个最小间隔，这个最小间隔就是浮点数能表示的最小数值。也就是说，时间膨胀最慢是每帧更新浮点数的最小间隔，这也是因为每次更新的$\Delta{}t$也是一个浮点数。但是用这个数值来直接划分槽位并不合适，于是在给的槽位宽度中才有一个局部的累计计时的方式来筛选触发的回调。不过浮点数的最小间隔并不是一个等距结构，是一个指数分布结构，这里面也不可否认的存在着累计浮点误差的问题。</p>
 <p>此外对于游戏更新来说，也有渲染帧，固定帧区分。对于渲染帧来说，其更新时间往往有一定浮动，例如卡顿，就会导致某一帧的时间间隔大于槽位间隔。此时时长也不可能精确按照槽位来走，也需要一种补充计算操作。
@@ -338,13 +338,10 @@
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
-
-    <div class="post-nav"><a href="/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/04%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" class="prev" rel="prev" title="游戏架构理论"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>游戏架构理论</a>
-            <a href="/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/02%E7%8A%B6%E6%80%81%E4%B8%8E%E5%87%BD%E6%95%B0/" class="next" rel="next" title="游戏架构理论">游戏架构理论<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
         </div>
     </footer></div>

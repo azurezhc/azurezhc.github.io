@@ -10,8 +10,8 @@
 <meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/04Voronoi%E5%9B%BEVoronoi-Diagram/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-08-25T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-08-25T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="计算几何课程"/>
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="计算几何课程"/>
 <meta name="twitter:description" content="04Voronoi图(Voronoi Diagram) 计算几何-笔记目录 本章主题介绍平面如何划分。通过对平面划分成距离点最近的区域，与Voronoi图相关联"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/04Voronoi%E5%9B%BEVoronoi-Diagram\/"
-        },"genre": "posts","wordcount":  11261 ,
+        },"genre": "posts","wordcount":  1114 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/04Voronoi%E5%9B%BEVoronoi-Diagram\/","datePublished": "2023-08-25T00:00:00+00:00","dateModified": "2023-08-25T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -44,7 +44,7 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"> 文章 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a></div>
         </div>
@@ -59,37 +59,37 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" title="">文章</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">计算几何课程</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-25">2023-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;11261 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;23 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-25">2023-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1114 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ol>
+  <ul>
     <li><a href="#04voronoi图voronoi-diagram">04Voronoi图(Voronoi Diagram)</a></li>
     <li><a href="#voronoi图介绍">Voronoi图介绍</a></li>
     <li><a href="#dcel结构">DCEL结构</a></li>
     <li><a href="#voronoi图复杂度分析">Voronoi图复杂度分析</a></li>
     <li><a href="#voronoi图构造">Voronoi图构造</a>
-      <ol>
+      <ul>
         <li><a href="#incremental-construction">Incremental Construction</a></li>
         <li><a href="#divide-and-conqure">Divide-And-Conqure</a></li>
         <li><a href="#plane-sweep">Plane-Sweep</a></li>
-      </ol>
+      </ul>
     </li>
-  </ol>
+  </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="04voronoi图voronoi-diagram">04Voronoi图(Voronoi Diagram)</h1>
 <p><a class="link-markdown-demo-site" href="./计算几何-笔记大纲.md" rel="noopener">计算几何-笔记目录</a></p>
@@ -170,7 +170,7 @@
 <li>这些区域，我们称之为Voronoi Cell，简成为Cell。从几何上来看，该Site之所以拥有这个Cell，是因为这个Cell中的点距离这个Site是最近的。</li>
 </ul>
 <p>用数学的方式定义来说如下：</p>
-<p>Voronoi图由一些d维空间中点$S=\Set{p_1,\cdots,p_n}$构成，每个点$p_i$称之为Site。对于每一个Site来说，存在一个区域Cell，该Cell包围目标$p_i$，该区域可表示为$Cell(p_i)=\set{q\in{}\mathbb{R}^n|d(q,p_i)&lt;d(q,p_j),\forall{}j\neq{}i}$。</p>
+<p>Voronoi图由一些d维空间中点$S=\Set{p_1,\cdots,p_n}$构成，每个点$p_i$称之为Site。对于每一个Site来说，存在一个区域Cell，该Cell包围目标$p_i$，该区域可表示为$Cell(p_i)=\set{q\in{}\mathbb{R}^n|d(q,p_i)<d(q,p_j),\forall{}j\neq{}i}$。</p>
 <ul>
 <li>对于这样围成各个Cell的边，我们称之为Voronoi Edge，Voronoi边。</li>
 <li>对于这样各个Cell的点，我们称之为Voronoi Vertex，Voronoi顶点。</li>
@@ -188,7 +188,7 @@
             <div class="admonition-content"><ul>
 <li>Voronoi图会包含线段，射线，以及直线</li>
 </ul>
-<p>只当所有点都在一条线上的时候会出现直线。因为存在直线，那么所有点间平分线都必须平行。有一个相交则都有交点。所以所有Site都在一条直线上。所以直线数目最哦多不超过$n-1$条。</div>
+<p>只当所有点都在一条线上的时候会出现直线。因为存在直线，那么所有点间平分线都必须平行。有一个相交则都有交点。所以所有Site都在一条直线上。所以直线数目最哦多不超过$n-1$条。</p></div>
         </div>
     </div>
 <blockquote>
@@ -214,7 +214,7 @@
             <div class="admonition-content"><ul>
 <li>构造一个情况，每个Vertex的度小于4，但任然有大于3个点是共圆的。</li>
 </ul>
-<p>注意这里没有说一定要是最近邻的点了。所以实际上取一个圆上4个点，使其构成的四边形不相互平行就可以了。</div>
+<p>注意这里没有说一定要是最近邻的点了。所以实际上取一个圆上4个点，使其构成的四边形不相互平行就可以了。</p></div>
         </div>
     </div>
 <p>最后我们可以考察一个点$x$在边上的运动。当一个点在边上运动的时候，考察其最大空圆，可以看到这个空圆伴随变化。等到了Voronoi Vertex的时候，就会看到这个最大空圆犹如发生了分裂，沿着其余各个线的方向传递过去。</p>
@@ -222,10 +222,11 @@
 <p>下面就是考虑Voronoi图的存储描述问题，如果其存储过大，那显然其结构不会简单，时间复杂度不会低。所以这个时候就需要对其规模进行一个界定。其实方法就是从平面图出发，可以注意到Voronoi图一定是一个平面图结构，就可以掏出我们无敌的欧拉公式来处理他，处理方式可以如下图。</p>
 <center><img src="./p2.png"></center>
 <p>可以添加一个无穷远点，并且将所有射线连接到这个无穷远点。这样就会成为一个标准的平面连通图。对于欧拉公式来说我们有：
-$$v-e+f-c=1$$</p>
+</p>
+$$v-e+f-c=1$$
 <p>其中$v$是顶点个数，$e$是边个数，$f$是面个数，而$c$则是连通分支个数。通常来说这个$c=1$，即只有一个连通分支。也是熟知连通平面图的欧拉公式。这里面我们有$n$个Site，所以$f=n$。</p>
-<p>此时我们还可以注意到对于Voronoi图来说，每个Vertex其度数一定大于等于3，即$3v&lt;D=2e$。结合两个公式有：</p>
-<p>$$e=v+n-2\leq{}\frac{2}{3}e+n-2\rightarrow{}n\leq{}3n-6$$</p>
+<p>此时我们还可以注意到对于Voronoi图来说，每个Vertex其度数一定大于等于3，即$3v<D=2e$。结合两个公式有：</p>
+$$e=v+n-2\leq{}\frac{2}{3}e+n-2\rightarrow{}n\leq{}3n-6$$
 <p>所以我们可以得出上界</p>
 <ul>
 <li>Voronoi Vertex个数为$O(2n-4)$</li>
@@ -290,7 +291,7 @@ $$v-e+f-c=1$$</p>
 <h1 id="voronoi图复杂度分析">Voronoi图复杂度分析</h1>
 <p>现在考虑给定点集合，构造出上述DCEL的时间复杂度。那么我们首先需要界定一下这个问题大致的难度。</p>
 <p>这里直接的想法就是规约。找到一个方法来界定下限。这里用到的规约方法就是如下的：</p>
-<p>$$Sorting\leq_N{}1D-VD\leq_N{}2D-VD$$</p>
+$$Sorting\leq_N{}1D-VD\leq_N{}2D-VD$$
 <p>其中$1D-VD$即1维的Voronoi图问题，对于1维来说，这即给定一系列点，确定其每个点间的最近距离平分线位置，所以规约如下进行。</p>
 <ul>
 <li>对于一个排序输入原封不动的传入1维Voronoi图算法。</li>
@@ -329,7 +330,7 @@ $$v-e+f-c=1$$</p>
 </ul>
 <center><img src="./p7.png"></center>
 <p>那么存在一个提升后$I$，其对应的原来点$i$落在了$J$张成的Cell中。那么如图所示，我们可以简单得到关系:</p>
-<p>$$d(x_i,x_j)&lt;d(x_i,x_J)&lt;d(x_i,x_I)=\frac{i}{n}\epsilon\leq{}\epsilon$$</p>
+$$d(x_i,x_j)<d(x_i,x_J)<d(x_i,x_I)=\frac{i}{n}\epsilon\leq{}\epsilon$$
 <p>由此可以得到$\epsilon-Closeness$问题的答案。</p>
 <h1 id="voronoi图构造">Voronoi图构造</h1>
 <p>最简单来讲，我们可以通过原始暴力算法来做。方法思路就是，每个点原始占用整个平面，然后通过计算每个点跟其他点的平分线来剪切整个平面，最后依次计算出每个Voronoi图Cell。显然这个方法非常笨重，甚至无法有效构造DCEL结构。所以后面来看更高效的思路。</p>
@@ -494,13 +495,10 @@ $$v-e+f-c=1$$</p>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
-
-    <div class="post-nav"><a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/05%E7%82%B9%E9%9B%86%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Delaunary-Triangulation/" class="prev" rel="prev" title="计算几何课程"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>计算几何课程</a>
-            <a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/03%E4%B8%89%E8%A7%92%E5%88%A8%E5%88%86Triangulation/" class="next" rel="next" title="计算几何课程">计算几何课程<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
                 </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
         </div>
     </footer></div>
