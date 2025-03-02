@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>环和域 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="环和域" />
+<meta property="og:description" content="环和域 本节开始将进入一个集合上有两个运算的结构之中。即环和域的结构之中。 定义 22.1 环(ring)$\lang{}R,&#43;,\cdot\rang$是" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/12%E7%8E%AF%E5%92%8C%E5%9F%9F/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-02-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-02-09T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="环和域"/>
+<meta name="twitter:description" content="环和域 本节开始将进入一个集合上有两个运算的结构之中。即环和域的结构之中。 定义 22.1 环(ring)$\lang{}R,&#43;,\cdot\rang$是"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/12%E7%8E%AF%E5%92%8C%E5%9F%9F/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/04%E9%99%AA%E9%9B%86%E5%92%8C%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/10%E8%A5%BF%E7%BD%97%E5%AE%9A%E7%90%86/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "环和域",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/12%E7%8E%AF%E5%92%8C%E5%9F%9F\/"
+        },"genre": "posts","wordcount":  6976 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/12%E7%8E%AF%E5%92%8C%E5%9F%9F\/","datePublished": "2025-02-09T00:00:00+00:00","dateModified": "2025-02-09T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">环和域</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-02-09">2025-02-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6976 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;14 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#环和域">环和域</a>
+      <ul>
+        <li><a href="#扩展思考">扩展思考</a></li>
+        <li><a href="#问题思考">问题思考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="环和域">环和域</h1>
+<p>本节开始将进入一个集合上有两个运算的结构之中。即环和域的结构之中。</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义 22.1</p>
+<p><strong>环</strong>(ring)$\lang{}R,+,\cdot\rang$是一个集合$R$。其上定义了两种运算$+$和$\cdot$，分别称为加法和乘法，满足以下公理:</p>
+<ul>
+<li>$\mathscr{R}_1$:$\lang{}R,+\rang$是交换群。</li>
+<li>$\mathscr{R}_2$:乘法满足结合律。</li>
+<li>$\mathscr{R}_3$:对所有$a,b,c\in{}R$，满足左分配律，$a\cdot(b+c)=(a\cdot{}b)+(a\cdot{}c)$。和右分配律，$(a+b)\cdot{}c=(a\cdot{}c)+(b\cdot{}c)$</li>
+</ul>
+</div>
+<p>可以看到环上面除了定义了满足交换群的加法之外，还定义了一种运算，乘法。但是对于乘法的运算要求，颇为简单。只要结合，暗含封闭即可。</p>
+<p>除此之外还定义了两个运算之间的一中关联方式，即分配律。而这个分配律决定了两个运算之间的一些必然关系。这个后面会涉及到。</p>
+<p>书中习惯上用字母并排写来替代乘法运算，即$ab$表示$a\cdot{}b$。后面也会按照这种惯用写法。</p>
+<p>对于我们通常见到的一些集合，也都是属于环的范畴，例如$\lang{}\mathbb{Z},+,\cdot\rang,\lang{}\mathbb{Q},+,\cdot\rang,\lang{}\mathbb{R},+,\cdot\rang,\lang{}\mathbb{C},+,\cdot\rang$都属于环。</p>
+<div class="admonition note">
+<p class="admonition-title">定理 22.8</p>
+<p>设$R$是有加法单位元0的环，则对于任何$a,b\in{}R$有</p>
+<ol>
+<li>$0a=a0=0$</li>
+<li>$a(-b)=(-a)b=-(ab)$</li>
+<li>(-a)(-b)=ab</li>
+</ol>
+</div>
+<p>这三条定理的成立主要依赖于分配律。我认为，正式因为分配律的结构，使得这些定理成立。而与乘法运算结构无关系。其中尤其是第一条，它说明了，加法的单位元，即0，在乘法运算中，必然是与任何数相乘为0。以群的角度来考虑就是说，这个0一定不会是乘法运算中的单位元。当然并没有说乘法运算构成群，目前还只有结合律。</p>
+<p>在后面扩展思考中，我对一些环中的概念进行了拓展思考。也方便后面问题思考的思路。</p>
+<p>现在说一下证明。对于性质1来说。有：</p>
+$$a0+a0=a(0+0)=a0=0+a0$$
+<p>由$\lang{}R,+\rang$是交换群得到$a0=0$，同理$0a=0$。关注整个过程，可以看到，第一步骤，只是拿两个$a0$来进行加法运算。并未涉及任何公理，而第一个等号则是由$\mathscr{R}_3$提供的。即分配律，这个分配律直接导致0的加法运算先进行。进而再借由群加法特性，得出。这个过程并没有涉及乘法运算的实际公里。</p>
+<p>对于性质2来说有类似流程：</p>
+$$a(-b)+ab=a(-b+b)=a0=0$$
+<p>$-(ab)$实际即$ab$的加法逆，也就是跟$ab$加法运算为0的元素。而这个流程中，用到的也主要是$\mathscr{R}_1,\mathscr{R}_3$。由于加法群特性，对于一个元素来说$b$，其必然存在逆$-b$。考虑对应元素在分配律下的乘积操作即可得出。</p>
+<p>而性质3可有连续使用两次性质2来得出。可以看到这整个过程主要都是$\mathscr{R}_3$的应用和结果。</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义 22.9</p>
+<p>对环$R$和$R'$，映射$\phi:R\to{}R'$称为一个同态，如果对所有$a,b\in{}R$满足以下两个条件:</p>
+<ol>
+<li>$\phi(a+b)=\phi(a)+\phi(b)$</li>
+<li>$\phi(ab)=\phi(a)\phi(b)$</li>
+</ol>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">定义 22.12</p>
+<p>从环$R$到环$R'$的既单又满的同态$\phi:R\to{}R'$称为同构。环$R$和$R'$称为是同构的(isomorphic)。</p>
+</div>
+<p>实际上群论中所有类似的概念性质都是可以迁移过来的。可以认为这种概念性质本身是一种固有结构，固有概念。例如同态，同构，以及后面的子环，子域等结构概念。例如环的子环是环的一个子集，在整个环的运算下构成环。更一劳永逸的说，如果有一个集合，以及一个特定类型的代数结构（群，环，域，整环，向量空间）等，则这个集合的任何子集，在自然诱导的代数运算下，产生一个同类型的代数结构，称为子结构。</p>
+<p>考虑只有一个元素的集合，即${0}$。显然这个集合满足$0+0=0$以及$(0)(0)=0$。亦满足环的公理，这个环称之为零环。</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义 22.14</p>
+<p>称一个对乘法有交换律的环称为<strong>交换环(commutative ring)</strong>。有乘法单位的环称为<strong>幺环(ring with unity)</strong>，乘法单位元称为<strong>幺元(unity)</strong>。一般用1表示。</p>
+</div>
+<p>为方便表示一般用$n\cdot{}1=1$。即表示$n$个$1$的求和。而不是定义在环$R$上的乘法运算。实际上这里$n$都不一定是环中元素。</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义 22.16</p>
+<p>设$R$为有单位元$1\ne{}0$的环。$R$中元素$u$称为$R$的<strong>单位(unit)</strong>，如果它在$R$中有乘法逆元，如果$R$的每个非零元都是单位，则称$R$为<strong>除环(division ring)</strong>(或斜域，skew field)。交换除环称为<strong>域(field)</strong>。非交换除环称为<strong>严格斜域(strictly skew field)</strong>。</p>
+</div>
+<p>这里介绍了单位的概念，也同时介绍了域的概念。
+对单位$a$来说，即有对应逆元$a^{-1}$满足$aa^{-1}=a^{-1}a=1$，跟群一样，这个逆元也是唯一的。</p>
+<p>域简单来说，就是交换除环。展开来说，要求$R$上的乘法要有单位元，同时每个非零元都是单位，即每个非零元都有乘法逆。这个在一定程度上说明了非零元部分，在乘法下满足群公理。如果这一部分还是交换的，则称该集合为域。</p>
+<h2 id="扩展思考">扩展思考</h2>
+<p>这一节主要是环和域的导言部分。介绍了大量的概念。但是，对于比较重要的结构特性，并没有解释清楚。这让我产生了很多疑问，例如如下几点。</p>
+<ul>
+<li>单位元，单位的存在关系？</li>
+<li>在同态下，这些概念的保持关系如何？</li>
+<li>在子结构下，这些概念的保持关系如何？</li>
+</ul>
+<p>这里主要是我针对自己疑问的点给出的一些说明。</p>
+<blockquote>
+<p>环一定有单位元么，单位元跟0可以相等么？</p>
+</blockquote>
+<p>环不一定有单位元，例如$2\mathbb{Z}$这个环。其没有单位元。没有单位元，也无从谈起单位。</p>
+<p>除去零环情况下，单位元跟0不相等。根据前面定理22.8，0跟任何元素的乘积都为0。这个是由环的基本公理决定的。如果两者相等。单位元与任何元素相乘都为0，根据单位元定义，单位元与任何元素相乘都为该元素，这说明所有元素都是0。即零环了。</p>
+<p>单位元，若存在则是唯一的。可根据前面的书中第一章的单位元唯一性定理得到。</p>
+<blockquote>
+<p>一个有单位元的环$R$，其子环$L\le{}R$一定也有单位元么？</p>
+</blockquote>
+<p>这个显然也不一定，例如$2\mathbb{Z}\le\mathbb{Z}$。但是$2\mathbb{Z}$是没有单位元的。但这个问题有很多延展的细节。</p>
+<ul>
+<li>如果环$R$有限，拥有单位元$1$，则子环$L\le{}R$一定也有单位元么？</li>
+</ul>
+<p>这个也不一定，例如环$\mathbb{Z}_8$。可以发现其子集$\{0,2,4,6\}$在诱导运算下成立，是个环。但是考虑其乘法可以发现$2*2=4,2*4=0,2*6=4$。没有单位元。</p>
+<ul>
+<li>如果环$R$有限，拥有单位元$1$，则子环$L\le{}R$一定也有单位元$1$么？</li>
+</ul>
+<p>这也不一定，例如环$\mathbb{Z}_6$。可以发现其子集$\{0,2,4\}$在诱导运算下成立，是个子环。但是其乘法单位元是$4$。跟$\mathbb{Z}_6$单位元$1$并不一致。</p>
+<ul>
+<li>如果环$R$有限，拥有单位元$1$，子环$L\le{}R$包含单位元 $1$，这可以推导出$L=R$么？</li>
+</ul>
+<p>这也不一定。例如环$\mathbb{Z}_5\times\mathbb{Z}_5$。这个环的单位显然是$(1,1)$。可以考虑$\lang(1,1)\rang$生成的环。这个很直接，实际同构于$\mathbb{Z}_5$。但是这个环并不等于$\mathbb{Z}_5\times\mathbb{Z}_5$。</p>
+<p>这么来看环的单位元特性，在子结构中。没有很好的结构支持，是否存在并不固定。</p>
+<blockquote>
+<p>假设$\phi:R\to{}R'$是环同态，环$R$拥有单位$1$。$\phi(1)$一定映射位$R'$的单位元$1'$么。</p>
+</blockquote>
+<p>这个答案是不一定的。例如假设$\phi:\mathbb{Z}\to\mathbb{Z}\times\mathbb{Z}$。$\phi(i)=(i,0)$。这个映射显然是一个环同态。但是$\phi(1)=(1,0)$并不是$\mathbb{Z}\times\mathbb{Z}$的单位$(1,1)$。但是我觉得可以说明$\phi(1)$一定是$\phi[R]$的单位元。</p>
+<p>实际上有同态定理可以得对于任意$a\in{}R$。有：</p>
+$$\phi(1)\phi(a)=\phi(1a)=\phi(a)$$
+<p>但是针对该公式，无法再进一步扩展。首先不能保证$R'$有单位元。其次有假设单位元，公式等于$(\phi(1)-1')\phi(a)=0$。但是不能保证消去律成立。因为存在零因子(这个概念在下一章介绍)。例如上面的映射$1=(1,0),1'=(1,1)$。两者相减等于$(0,-1)$与$\phi[R]$中所有元素的乘法都是$0$元素。</p>
+<p>但是上面公式已经可以直接的说明$\phi(1)$对于$\phi[R]$中任何元素相乘都等于$\phi(a)$。所以它是$\phi[R]$的单位元。</p>
+<p>另一方面可以说明$\phi(0)=0'$即加法一定映射到$R'$的零元上面。实际上这是可以由加法构成群，$\phi$依旧保持加法群同态来直接得出。</p>
+<h2 id="问题思考">问题思考</h2>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>给出所有从$\mathbb{Z}$到$\mathbb{Z}$的环同态。
+给出所有从$\mathbb{Z}$到$\mathbb{Z}\times\mathbb{Z}$的环同态。
+给出所有从$\mathbb{Z}\times\mathbb{Z}$到$\mathbb{Z}$的环同态。</p>
+</div>
+<p>先看第一个，首先最直接的想法就是全部映射到零元素上去。即$\phi(i)=0$。最终$\phi[\mathbb{Z}]=\{0\}$即零环。这个显然是满足同态条件的。现在考虑别的同态。</p>
+<p>还有一个直观的同态，就是$\phi(i)=i$。因为是$\phi:\mathbb{Z}\to\mathbb{Z}$同态，这个就是到自身同态。显然也是满足同态条件的。</p>
+<p>现在考虑是否有别的同态，首先由前面讨论可以知道对于任意$a\in{}\mathbb{Z}$需要有$\phi(1)\phi(a)=\phi(a)$。而对于$\mathbb{Z}$来说，$1$也是生成元，即对于任意$a\in{}\mathbb{Z},a=n\cdot{}1,n\in{}\mathbb{Z}$。可得$\phi(1)\phi(n\cdot{}1)=\phi(n\cdot{}1)$，进而可得$n\cdot(\phi(1)^2-\phi(1))=0$对于任意$n$成立。由于$\phi:\mathbb{Z}\to\mathbb{Z}$，目标环为$\mathbb{Z}$。所以必须有$\phi(1)^2-\phi(1)=0$。所以$\phi(1)=0\space{}or\space{}1$。</p>
+<p>实际上前面一段推导到$n\cdot(\phi(1)^2-\phi(1))=0$都只用了$\phi$定义域中的特性。所以只要从$\mathbb{Z}$中映射出都需要满足该条件。只是该条件在不同的值域中解可以不同。</p>
+<p>现在来看$\mathbb{Z}$到$\mathbb{Z}\times\mathbb{Z}$的环同态，已究考虑$n\cdot(\phi(1)^2-\phi(1))=0$。在$\mathbb{Z}\times\mathbb{Z}$下的解集。计算可的$\phi(1)$一共有四个可能性</p>
+<ul>
+<li>$\phi(1)=(0,0)$。这个就生成零环。</li>
+<li>$\phi(1)=(1,0)$。此时$\phi(i)=(i,0)$。</li>
+<li>$\phi(1)=(0,1)$。此时$\phi(i)=(0,i)$。</li>
+<li>$\phi(1)=(1,1)$。此时$\phi(i)=(i,i)$。</li>
+</ul>
+<p>一共这四个同态。</p>
+<p>现在在回顾这个推导过程。针对于$\mathbb{Z}$来说，主要用的就一个特性。即$1$是其生成元。换而言之，对于一个环来说，如果其单位元是其加法群的生成元，这个公式在同态下都应该成立。</p>
+<p>最后考虑从$\mathbb{Z}\times\mathbb{Z}$到$\mathbb{Z}$的环同态。这时候单位元变成$(1,1)$。但不是整个环加法群的生成元了。但可以有相同的推到思路。对于任意$a=(i,j)\in{}\mathbb{Z}\times\mathbb{Z}$理应有$a=i\cdot{}(1,0)+j\cdot{}(0,1)$。</p>
+<p>再考虑单位元作用。可由$\phi(1,1)\phi(a)=\phi(a)$得出：</p>
+$$i\cdot[\phi(1,0)^2-\phi(1,0)]+j\cdot{}[\phi(0,1)^2-\phi(0,1)]=0$$
+<p>该公式对任意$i,j$成立。根据加法群特性。所以两部分必须同时为$0$。即可的三种情况</p>
+<ul>
+<li>$\phi(1,0)=0,\phi(0,1)=0$可得$\phi(i,j)=0$。即映射到零环。</li>
+<li>$\phi(1,0)=1,\phi(0,1)=0$可得$\phi(i,j)=i$。即映射到第一部分。</li>
+<li>$\phi(1,0)=0,\phi(0,1)=1$可得$\phi((i,j))=j$。即映射到第二部分。</li>
+<li>$\phi(1,0)=1,\phi(0,1)=1$这并不是一个合法的环同态，因为$\phi(0,1)\phi(1,0)=\phi(0,0)=1$矛盾。$(0,0)$必须映射到$0$上。</li>
+<li></li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>证明环$2\mathbb{Z}$和$3\mathbb{Z}$不同构。证明域$\mathbb{R}$和$\mathbb{C}$不同构。</p>
+</div>
+<p>证明不同构，即说明没有既单又满的同态。</p>
+<p>考虑$2\mathbb{Z}$和$3\mathbb{Z}$情况。
+对于$2\mathbb{Z}$可知$2$为其生成元。即任意$a\in{}2\mathbb{Z},a=2n,n\in\mathbb{Z}$。对$3\mathbb{Z}$同理。现在可以假设存在同态$\phi$有$\phi(2)=3i$。则对于任意$\phi(2n)=3ni$。现在考虑$\phi(4n)=\phi(2(2n))=\phi(2)\phi(2n)=(3i)(3ni)=9ni^2$。同时$\phi(4n)=\phi(2n)+\phi(2n)=(3ni)+(3ni)=6ni$。这就要求有$9ni^2=6ni$对任意$n$成立。即$3ni(3ni-2)=0$对任意$n$成立。这只有$i=0$可以成立。而这是到0元素上的平凡同态。即不可能存在这样的同构。</p>
+<p>考虑域$\mathbb{R}$和$\mathbb{C}$情况。</p>
+<p>假设两者同构，则存在同构$\phi$，使得对于一个元素$a\in{}\mathbb{R}$有使得$\phi(a)=i\in{}\mathbb{C}$。那么根据运同态定理则有$\phi(a)^2=\phi(a^2)=-1$和$\phi(a)^4=\phi(a^4)=1$。这说明$\phi(a^2)+\phi(a^4)=0=\phi(0)$。由同构定理可知$a^2+a^4=0$在域$\mathbb{R}$上面成立。而这只可能在$a=0$的时候成立。即存在$\phi(0)=i$。矛盾，这不是一个良好的映射。所以同构不存在。</p>
+<p>这个过程对比$2\mathbb{Z}$和$3\mathbb{Z}$情况，假设的是同构存在。其中最主要的一点是$0=\phi(0)$的成立依赖于同构，第一个$0$是$\mathbb{C}$中的$0$。第二个则是$\mathbb{R}$中的0。这个等式是因为同构成立。如果是同态，这里可能存在其他元素$b\in{}\mathbb{R}$使得$\phi(b)=0\in\mathbb{C}$。</p>
+<p>这里就有一个问题，是否存在一个$\mathbb{R}$到$\mathbb{C}$上的环同态，使得$\phi(a)=i$?</p>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>证明环$R$的子集$S$是$R$的子环当且仅当以下条件成立：</p>
+<ul>
+<li>$0\in{}S$</li>
+<li>对于所有$a,b\in{}S$，都有$a-b\in{}S$</li>
+<li>对于所有$a,b\in{}S$，都有$ab\in{}S$</li>
+</ul>
+</div>
+<p>子环的验证条件。实际上前两个条件是加法群上子群的成立条件。即加法的单位元在子群中，同时定理5.15暗含着第二条必须成立。</p>
+<p>所以关键点，就是乘法运算上公理$\mathscr{R}_2,\mathscr{R}_3$的成立。</p>
+<p>假设$S$为子环。实际由环的封闭性可以得出对于所有$a,b\in{}S$，都有$ab\in{}S$.对于所有$a,b\in{}S$，都有$ab\in{}S$。</p>
+<p>假设$S$满足所有$a,b\in{}S$，都有$ab\in{}S$。检验公理$\mathscr{R}_2$。实际上对于任意$a,b,c\in{}S$都有$(ab)c=a(bc)$。这可以当作在$R$中的等式，限制到了$S$上面。即$R$本身使得所有元素的结合律是成立的。</p>
+<p>检验公理$\mathscr{R}_3$实际上这也是自然成立的，也可以由环$R$的分配律得出。</p>
+<p>所以满足所有$a,b\in{}S$，都有$ab\in{}S$主要是满足乘法元素的封闭性。对比群的条件。可以发现，这里并没有要求乘法运算的单位存在，也不要求逆元存在。在群的条件中，子集只有运算封闭未必是一个群。只有在有限群中才是。例如$\mathbb{Z}^+$满足加法运算封闭，但其不是一个群，因为没有加法逆元存在。所以这里可以看到，单位元与逆元存在的要求，在子结构上的延展。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2025-02-09</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

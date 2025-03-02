@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>商群计算和单群 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="商群计算和单群" />
+<meta property="og:description" content="商群计算和单群 本章主要是对针对商群结构上的加强理解。通过一些计算来强化商群的概念。本节主要处理的是正规子群，通常用$N$来表示群$G$的正规" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/06%E5%95%86%E7%BE%A4%E8%AE%A1%E7%AE%97%E5%92%8C%E5%8D%95%E7%BE%A4/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-02-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-02-09T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="商群计算和单群"/>
+<meta name="twitter:description" content="商群计算和单群 本章主要是对针对商群结构上的加强理解。通过一些计算来强化商群的概念。本节主要处理的是正规子群，通常用$N$来表示群$G$的正规"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/06%E5%95%86%E7%BE%A4%E8%AE%A1%E7%AE%97%E5%92%8C%E5%8D%95%E7%BE%A4/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/07%E7%BE%A4%E5%9C%A8%E9%9B%86%E5%90%88%E4%B8%8A%E7%9A%84%E4%BD%9C%E7%94%A8/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/05%E5%95%86%E7%BE%A4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "商群计算和单群",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/06%E5%95%86%E7%BE%A4%E8%AE%A1%E7%AE%97%E5%92%8C%E5%8D%95%E7%BE%A4\/"
+        },"genre": "posts","wordcount":  6326 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/06%E5%95%86%E7%BE%A4%E8%AE%A1%E7%AE%97%E5%92%8C%E5%8D%95%E7%BE%A4\/","datePublished": "2025-02-09T00:00:00+00:00","dateModified": "2025-02-09T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">商群计算和单群</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-02-09">2025-02-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6326 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;13 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#商群计算和单群">商群计算和单群</a>
+      <ul>
+        <li><a href="#单群">单群</a></li>
+        <li><a href="#中心子群和换位子群">中心子群和换位子群</a></li>
+        <li><a href="#问题思考">问题思考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="商群计算和单群">商群计算和单群</h1>
+<p>本章主要是对针对商群结构上的加强理解。通过一些计算来强化商群的概念。本节主要处理的是正规子群，通常用$N$来表示群$G$的正规子群而不是$H$。在商群$G/N$中，子群$N$会起到一个单位元的作用，其相当于将$N$的元素全部折叠成单个元素。而这种折叠后的结构，与原来的结构，在很多方面具有一致性。所以可以通过商群的结构，窥探部分原来$G$所有的特性。</p>
+<p>本节主要将一些例子，说明一般处理方式以及情况。</p>
+<div class="admonition example">
+<p class="admonition-title">例 13.6</p>
+<p>拉格朗日定理的逆不成立
+回顾拉格朗日定理，有限群$G$的子群的阶必整除$G$的阶。现在可以证明，尽管$A_{6}$有12个元素，6整除12，但$A_4$没有6阶子群。</p>
+</div>
+<p>假设$A_4$有一个6阶子群$H$。因为阶数为12的一半，可由陪集左右必相等得出$H$一定是正规子群。因此$A_4/H$只有两个元素$H,\sigma{}H$。其中$\sigma\in{}A_4$不在$H$中。针对$A_4/H$，这个商群只有两个元素。而二阶群结构一致，必须有$HH=H$和$(\sigma{}H)(\sigma{}H)=H$。因为商群中的计算可以返回到原群中计算。而这两个公式表明任何属于$H$的元素$\alpha$，都有$\alpha^2\in{}H$。以及每个$\beta\in\sigma{}H$必有$\beta^2\in{}H$。也就是说每个$A_4$元素的平方都在$H$中。</p>
+<p>但是可以在$A_4$中可以验证</p>
+$$(1,2,3)=(1,3,2)^2,(1,3,2)=(1,2,3)^2$$
+<p>所以$(1,2,3),(1,3,2)$在$H$中，同理可以验证$(1,2,4),(1,4,2),(1,3,4),(1,4,3),(2,3,4),(2,4,3)$都应该在$H$中。而这有8个元素，跟阶数6矛盾。</p>
+<p>现在来看几个简单的跟计算相关定理：</p>
+<div class="admonition note">
+<p class="admonition-title">定理 13.8</p>
+<p>设$G=H\times{}K$是群$H$和$K$的直积，则$\overline{H}=\{(h,e)|h\in{}H\}$是$G$的正规子群。并且$G/\overline{H}$与$K$自然同构。同样，自然有$G/\overline{K}\cong{}H$。</p>
+</div>
+<p>这个是比较显然的，有个核为$\overline{H}$的从$H\times{}K\to{}H$的同态，这个同态就是将元素只投影到其中一个值上面。借用定理12.14，这说明了商群同构的存在。</p>
+<div class="admonition note">
+<p class="admonition-title">定理 13.9</p>
+<p>如果群$G$是循环群，$N$是$G$的子群，那么$G/N$是循环群。</p>
+</div>
+<p>因为$G$是循环群，因此对某个$a\in{}G$，有$\lang{}a\rang=G$。设$N$是$G$的子群。因为$G$是交换的所以$N$必定是正规子群。现在看商群$G/N$中元素的特点，计算$aN$生成的循环子群。</p>
+$$\lang{}aN\rang=\{(aN)^n|n\in\mathbb{Z}\}=\{a^nN|n\in\mathbb{Z}\}$$
+<p>因为$\{a^n|n\in\mathbb{Z}\}=G$。这说明$\{a^nN|n\in\mathbb{Z}\}=\{gN|g\in{}G\}$。也就是说$\lang{}aN\rang$包含$G$的每个陪集，所以$G/N$是由$aN$生成的循环群。</p>
+<h2 id="单群">单群</h2>
+<div class="admonition abstract">
+<p class="admonition-title">定义 13.16</p>
+<p>如果一个非平凡群没有非平真正正规子群，则称该群是单群(simple group)。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">定理 13.17</p>
+<p>交错群$A_n$对于$n\geq5$是单的。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">定理 13.18</p>
+<p>设$\phi:G\to{}G'$是群同态。
+如果$N$是$G$的正规子群，则$\phi[N]$是$\phi[G]$的正规子群。
+同样，如果$N'$是$\phi[G]$的正规子群，则$\phi^{-1}[N']$是$G$的正规子群。</p>
+</div>
+<p>这几个定理后面有习题和提示来证明，放在问题思考里面来说。</p>
+<p>定理13.18说明了同态对正规子群的保持作用。需要注意的是整个子群并不是在$G'$中保持，而是只在$\phi[G]$中保持。例如$\phi:\mathbb{Z}_2\to{}S_3$，其中$\phi(0)=e$和$\phi(1)=(1,2)$，可以说明$\phi$是同态，但是$\{e,(1,2)\}$在$S_3$中并不是正规子群。</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义 13.19</p>
+<p>群$G$的极大正规子群(maximal normal subgroup)是不等于$G$的正规子群$M$，使得没有$G$的正规子群$N$真包含$M$。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">定理 13.20</p>
+<p>$M$是$G$的极大正规子群当且仅当$G/M$是单群。</p>
+</div>
+<p>说明，假设$M$是极大正规子群，考虑典范映射$\gamma:G\to{}G/M$。那么$\gamma$的核即$M$也即映射到的单位。现在考虑$G/M$的任何非平凡正规子群，这个子群一定包含$G/M$的单位元，而这个正规子群在$\gamma^{-1}$的映射下，一定也是一个正规子群，且这个正规子群包含$M$。所以$G/M$不可以有任何真正的非平凡正规子群，即单群。</p>
+<p>反之，定理13.18说明，如果$N$是$G$的正规子群真包含$M$，则$\gamma[N]$在$G/M$中正规。如果$N\neq{}G$。那么</p>
+$$\gamma[N]\neq{}G/M,\gamma\neq\{M\}$$
+<p>这说明$\gamma[N]$是正规子群，可是单群假设要求不可能有这样的$\gamma[N]$。所以$M$是极大的。</p>
+<h2 id="中心子群和换位子群">中心子群和换位子群</h2>
+<p>主要是定义两个子群的结构。</p>
+<p>$G$的中心$Z(G)$定义为</p>
+$$Z(G)=\{z\in{}G|zg=gz,g\in{}G\}$$
+<div class="admonition example">
+<p class="admonition-title">例 13.21</p>
+<p>可以说明$Z(G)$是一个正规子群，如果$G$是交换的，那么$Z(G)=G$。显然中心没什么用处。如果$Z(G)=e$。这种情况下，称$Z(G)$是平凡的(center trial)。</p>
+</div>
+<p>第二个就是换位子群。思路其实是想在研究一个非交换群的时候，构造出一个尽可能像的交换子群。然后交换子群来看非交换群的结构。即要求所有$a,b$都有$ab=ba$。及要求$aba^{-1}b^{-1}=e$。称$aba^{-1}b^{-1}$为换位子。</p>
+<div class="admonition note">
+<p class="admonition-title">定理 13.22</p>
+<p>设$G$是群。全部换位子$aba^{-1}b^{-1}(a,b\in{}G)$生成$G$的子群$C$(换位子群)。$C$是$G$的正规子群。此外，如果$N$是$G$的正规子群，那么$G/N$是交换的当且近当$C\leq{}N$。</p>
+</div>
+<h2 id="问题思考">问题思考</h2>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>证明定理13.18
+设$\phi:G\to{}G'$是群同态。
+如果$N$是$G$的正规子群，则$\phi[N]$是$\phi[G]$的正规子群。
+如果$N'$是$\phi[G]$的正规子群，则$\phi^{-1}[N']$是$G$的正规子群。</p>
+</div>
+<p>证明正规子群，肯定还是从等价定义入手。
+对于任意的$n'\in{}\phi[N]$和$g'\in{}\phi[G]$。根据同态定理，必然有$n\in{}N,和g\in{}G$，有$\phi(n)=n',\phi(g)=g'$。而且有</p>
+$$g'ng'^{-1}=\phi(g)\phi(n)\phi(g)^{-1}=\phi(gng^{-1})\in{}\phi[N]$$
+<p>其中最后一步用到$N$是正规子群，$gng^{-1}\in{}N$。所以$\phi[N]$在$\phi[G]$中是正规的。需要注意的就是$g$的取值。这也说明了，为什么不是$G'$的正规子群，因为可能存在$\phi$映射意外的值使得等式不满足。</p>
+<p>反方向基本同理。对于每一个$N'$中的元素，也必然有一个逆映射元。即$\phi^{-1}[N']$中元素。进而满足正规子群条件。</p>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>证明如果$G$是非交换群，那么商群$G/Z(G)$是交换的。</p>
+<p>例如该结论说明$pq$阶的非交换群$G$的中心是平凡的。(其中$p$和$q$是素数)。</p>
+</div>
+<p>证明等价的逆否命题，假设$G/Z(G)$是循环的。那么$G$是交换的。假设$G/Z(G)$是循环的，且不是平凡的，即存在$a\notin{}Z(G)$有$\{a^nZ(G)|n\in\mathbb{Z}\}=G/Z(G)$。即$\lang{}aZ(G)\rang$包含每个陪集。这说明对于$G$中每个元素都可以表示为$a^ib$形式，其中$b\in{}Z(G)$。</p>
+<p>对于$G$中任意两个元素$c_1=a^ib_1,c_2=a^jb_2$来说。</p>
+$$c_1c_2=(a^ib_1)(a^jb_2)=a^{i+j}b_1b_2=(a^jb_2)(a^ib_1)=c_2c_1$$
+<p>这说明$G$是交换的。对于交换群来说，$Z(G)=G$也就是说这种情况下$G/Z(G)$实际只有一个元素$\{Z(G)\}$。</p>
+<p>现在用该结论说明第二个命题。由拉格朗日定理可知，$G$的真子群的阶要么为$p$要么为$q$。可是这两个子群阶都为素数，说明他们是循环子群。由这个结论可以推出$G$是交换的，矛盾。所以$G$的中心只能是平凡的。</p>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>说明$A_n$对于$n\ge{}5$来说是单群。</p>
+<p>书中给了步骤，这里按步骤逐个论证。</p>
+</div>
+<ol>
+<li>对于$n\ge{}3$。证明$A_n$包含每个3循环。</li>
+</ol>
+<p>由$A_n$定义可知$A_n$包含所有偶置换。而偶置换即置换可表示成偶数个置换的乘积。对于任意一个3循环$(a,b,c)$来说都可以按照如下方式变成两个对换。</p>
+$$(a,b,c)=(a,c)(a,b)$$
+<p>即包含所有每个3循环。</p>
+<ol start="2">
+<li>对于$n\ge{}3$。证明$A_n$由3循环生成。</li>
+</ol>
+<p>任意一个偶置换可以表示为</p>
+$$(a_1,a_2)(a_3,a_4)\cdots(a_{2n-1},a_{2n})$$
+<p>其中$n$为一个偶数即$2k$。由提示可以注意到任意的$(a_i,a_j)(a_k,a_l)$分情况讨论。</p>
+<p>如果一共由四个元素构成，则四个元素都不一样则$(a_i,a_j)(a_k,a_l)=(a_i,a_k,a_j)(a_i,a_k,a_l)$。</p>
+<p>如果由三个元素构成，则说明其中有一个元素相等。因为对换表示的特点，可以假设$a_i=a_k$。即$(a_i,a_j)(a_i,a_l)=(a_i,a_l,a_j)$。</p>
+<p>如果由两个元素构成，实际上这两个元素合在一起就是单位元，没有变化。</p>
+<p>结合以上情况，说明$A_n$由3循环生成。</p>
+<ol start="3">
+<li>对于$n\ge{}3$。设$r,s$是$\{1,2,\cdots,n\}$中固定的元素。证明$A_n$是由形如$(r,s,i)$的特殊3循环生成的，$1\le{}i\le{}n$。</li>
+</ol>
+<p>提示计算几个特殊的形式，而这些形式表征了所有的3循环。如果这个成立，实际上说明整个群可以由这一组基生成。</p>
+<ul>
+<li>$(r,s,i)^2$
+$(r,s,i)^2=(r,i,s)$就是3循环的连续作用效果。</li>
+<li>$(r,s,j)(r,s,i)^2$
+$(r,s,j)(r,s,i)^2=(r,s,j)(r,i,s)=(r,i,j)$</li>
+<li>$(r,s,j)^2(r,s,i)$
+$(r,s,j)^2(r,s,i)=(r,j,s)(r,s,i)=(s,i,j)$
+这两条给出了以$r,s$开头所有位置的3循环。</li>
+<li>$(r,s,i)^2(r,s,k)(r,s,j)^2(r,s,i)$
+$(r,s,i)^2(r,s,k)(r,s,j)^2(r,s,i)=(r,i,s)(r,s,k)(s,i,j)=(i,j,k)$
+最后一条直接说明了任意3循环可以由上面的一组基生成。</li>
+</ul>
+<ol start="4">
+<li>对于$n\ge{}3$，设$N$是$A_n$的正规子群。证明如果$N$包含3循环，则$N=A_n$。</li>
+</ol>
+<p>假设$N$是正规子群，包含一个3循环。不妨假设这个3循环就是$(r,s,i)$。那么根据正规子群定义，任意$g\in{}A_n$都有$g(r,s,i)g^{-1}\in{}N$。取$g=(r,s)(i,j)$有</p>
+$$\begin{align}
+((r,s)(i,j))(r,s,i)^2((r,s)(i,j))^{-1}&=((r,s)(i,j))(r,i,s)((r,s)(i,j))\\
+&=(r,s,j)
+\end{align}$$
+<p>这个公式说明，任意$(r,s,j)$在子群$N$中。结合步骤3可以说明$N=A_n$。</p>
+<ol start="5">
+<li>最后一步，实际也是分各种情况讨论。对$n\ge{}5$，设$N$是$A_n$的正规子群。证明以下情况之一必须成立，并且在每种情况下都会推出$N=A_n$。进而说明$A_n$无正规子群。</li>
+</ol>
+<ul>
+<li>情况1:$N$包含3循环。</li>
+</ul>
+<p>由前面第四部分可以得到结论。</p>
+<ul>
+<li>情况2:$N$包含不想交循环的乘积，其中至少一个循环的长度大于3。</li>
+</ul>
+<p>因为$N$包含不想交循环的乘积，加上起有一个元素为$\sigma=\mu(a_1,a_2,\cdots,a_r)$。即$\sigma\in{}N$。因为$N$是正规子群。所以$\sigma^{-1}\in{}N$以及$(a_1,a_2,a_3)\sigma(a_1,a_2,a_3)^{-1}\in{}N$。</p>
+<p>考察计算$\sigma^{-1}(a_1,a_2,a_3)\sigma(a_1,a_2,a_3)^{-1}=\sigma^{-1}(a_1,a_2,a_3)\sigma(a_1,a_3,a_2)$。注意到，因为不相交循环乘积，所以$\sigma^{-1}=(a_1,a_2,\cdots,a_r)^{-1}\mu^{-1}$，且$a_1,a_2,a_3$在$\mu$中不出现。所以最后只用考察如下等式即可$(a_1,a_2,\cdots,a_r)^{-1}(a_1,a_2,a_3)(a_1,a_2,\cdots,a_r)(a_1,a_3,a_2)=(a_1,a_3,a_r)$。计算过程中，注意到对于$i\ge{}4$的$a_i$来说，实际上只第一第三个循环有涉及，且互为逆，所以最后会归为不变。所以只用考虑$a_1,a_2,a_3,a_r$即可。</p>
+<p>这个结论说明$N$包含3循环，进而$N=A_n$。</p>
+<ul>
+<li>情况3:$N$包含形如$\sigma=\mu(a_4,a_5,a_6)(a_1,a_2,a_3)$的不相交循环乘积。</li>
+</ul>
+<p>同上我们考察$\sigma^{-1}(a_1,a_2,a_4)\sigma(a_1,a_2,a_4)^{-1}$。根据相同的推导。我们最后计算$((a_4,a_5,a_6)(a_1,a_2,a_3))^{-1}(a_1,a_2,a_4)((a_4,a_5,a_6)(a_1,a_2,a_3))(a_1,a_2,a_4)^{-1}$即可。该式即计算$((a_1,a_3,a_2)(a_4,a_6,a_5))(a_1,a_2,a_4)((a_4,a_5,a_6)(a_1,a_2,a_3))(a_1,a_4,a_2)$该公式，从右至左，逐个合并即可。得出原式等于$(a_1,a_4,a_2,a_6,a_3)$这是一个没有$a_5$的5循环乘积。</p>
+<p>借由第二部分，说明$N=A_n$。</p>
+<ul>
+<li>情况4:$N$包含形如$\sigma=\mu(a_1,a_2,a_3)$的不相交循环乘积，其中$\mu$式不相交2循环的乘积。</li>
+</ul>
+<p>这个简单计算$\sigma^2=\mu^2(a_1,a_2,a_3)^2=(a_1,a_3,a_2)$包含一个3循环。</p>
+<ul>
+<li>情况5:$N$包含形如$\sigma=\mu(a_3,a_4)(a_1,a_2)$的不相交循环乘积，其中$\mu$是偶数个不相交2循环的乘积。</li>
+</ul>
+<p>依旧考虑$\sigma^{-1}(a_1,a_2,a_3)\sigma(a_1,a_2,a_3)^{-1}$，得出计算$((a_3,a_4)(a_1,a_2))^{-1}(a_1,a_2,a_3)((a_3,a_4)(a_1,a_2))(a_1,a_2,a_3)^{-1}=((a_3,a_4)(a_1,a_2))(a_1,a_2,a_3)((a_3,a_4)(a_1,a_2))(a_1,a_3,a_2)=(a_1,a_3)(a_2,a_4)$在$N$中。</p>
+<p>因为$n\ge5$，这说明存在$i\ne{}a_1,a_2,a_3,a_4$。设$\beta=(a_1,a_3,i),\alpha=(a_1,a_3)(a_2,a_4)$。显然$\beta^{-1}\alpha\beta\alpha\in{}N$。而$\beta^{-1}\alpha\beta\alpha=(a_1,i,a_3)(a_1,a_3)(a_2,a_4)(a_1,a_3,i)(a_1,a_3)(a_2,a_4)=(a_1,a_3,i)$。这说明$N$包含一个3循环。</p>
+<p>以上说明了个各种情况下都有$N=A_n$。</p>
+<p>现在还差一部分。就是说明子群$N$一定会落入这些情况之中。
+首先情况2说明了，如果不相交循环中有长度大于3的循环，会推到出$N=A_n$。所以对于一个$N$中元素$\alpha$，除去包含大于3循环的可能性，这说明$\alpha$只能有长度为2或3的循环结合而成。根据是否包含3循环来分类。如果只有一个3循环，则属于情况1。如果是一个3循环和n个2循环，则属于情况4。如果3循环个数大于1个，则属于情况2。这也就是说，如果不想交循环中有任意一个3循环，都会推导出$N=A_n$情况。剩下就是$\alpha$全部由长度为2的循环构成，因为$A_n$是偶置换集合，所以不相交2循环的乘积，一定是偶数个。这属于情况5。</p>
+<p>这也就说明了$N$的一定会落入这五种情况之一。进而说明$A_n$没有非平凡的真正正规子群。对于$n\ge{}5$来说，$A_n$是单群。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2025-02-09</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

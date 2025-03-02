@@ -7,6 +7,62 @@
             <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Fri, 18 Aug 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="http://azurezhc.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>商群</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/05%E5%95%86%E7%BE%A4/</link>
+    <pubDate>Sun, 09 Feb 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/05%E5%95%86%E7%BE%A4/</guid>
+    <description><![CDATA[商群 伴随着陪集概念的出现，可以发现，某些情况下，特定子群的陪集集合巧妙的构成了一个群结构。这即诞生了商群。前面可以看到，构成的陪集是一个集合]]></description>
+</item>
+<item>
+    <title>商群计算和单群</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/06%E5%95%86%E7%BE%A4%E8%AE%A1%E7%AE%97%E5%92%8C%E5%8D%95%E7%BE%A4/</link>
+    <pubDate>Sun, 09 Feb 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/06%E5%95%86%E7%BE%A4%E8%AE%A1%E7%AE%97%E5%92%8C%E5%8D%95%E7%BE%A4/</guid>
+    <description><![CDATA[商群计算和单群 本章主要是对针对商群结构上的加强理解。通过一些计算来强化商群的概念。本节主要处理的是正规子群，通常用$N$来表示群$G$的正规]]></description>
+</item>
+<item>
+    <title>环和域</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/07%E7%BE%A4%E5%9C%A8%E9%9B%86%E5%90%88%E4%B8%8A%E7%9A%84%E4%BD%9C%E7%94%A8/</link>
+    <pubDate>Sun, 09 Feb 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/07%E7%BE%A4%E5%9C%A8%E9%9B%86%E5%90%88%E4%B8%8A%E7%9A%84%E4%BD%9C%E7%94%A8/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>环和域</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/08G%E9%9B%86%E5%9C%A8%E8%AE%A1%E6%95%B0%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</link>
+    <pubDate>Sun, 09 Feb 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/08G%E9%9B%86%E5%9C%A8%E8%AE%A1%E6%95%B0%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>环和域</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/09%E5%90%8C%E6%9E%84%E5%AE%9A%E7%90%86/</link>
+    <pubDate>Sun, 09 Feb 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/09%E5%90%8C%E6%9E%84%E5%AE%9A%E7%90%86/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>环和域</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/10%E8%A5%BF%E7%BD%97%E5%AE%9A%E7%90%86/</link>
+    <pubDate>Sun, 09 Feb 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/10%E8%A5%BF%E7%BD%97%E5%AE%9A%E7%90%86/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>环和域</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/12%E7%8E%AF%E5%92%8C%E5%9F%9F/</link>
+    <pubDate>Sun, 09 Feb 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/12%E7%8E%AF%E5%92%8C%E5%9F%9F/</guid>
+    <description><![CDATA[环和域 本节开始将进入一个集合上有两个运算的结构之中。即环和域的结构之中。 定义 22.1 环(ring)$\lang{}R,+,\cdot\rang$是]]></description>
+</item>
+<item>
     <title>陪集和拉格朗日定理</title>
     <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/04%E9%99%AA%E9%9B%86%E5%92%8C%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86/</link>
     <pubDate>Fri, 07 Feb 2025 00:00:00 &#43;0000</pubDate>
@@ -29,62 +85,6 @@
     <author>azurezhc</author>
     <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/02%E5%AD%90%E7%BE%A4%E7%9B%B8%E5%85%B3/</guid>
     <description><![CDATA[子群相关 先介绍定义概念 定义 子群的定义 如果群$G$的一个非空子集$H$在$G$的二元运算下是封闭的，且在$G$的诱导运算下$H$是一个群，那么]]></description>
-</item>
-<item>
-    <title>从归并排序到最近点对</title>
-    <link>http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/02%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E5%88%B0%E6%9C%80%E8%BF%91%E7%82%B9%E5%AF%B9/</link>
-    <pubDate>Mon, 30 Dec 2024 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/02%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E5%88%B0%E6%9C%80%E8%BF%91%E7%82%B9%E5%AF%B9/</guid>
-    <description><![CDATA[从归并排序到最近点对 这个文章主要讨论下面三个问题的算法 归并排序 逆序对计数 查找最近点对 为什么提起这样一个顺序，主要是想讨论分而治之的一些情况。]]></description>
-</item>
-<item>
-    <title>抽象代数</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E6%A6%82%E8%A7%88/</link>
-    <pubDate>Sat, 14 Dec 2024 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E6%A6%82%E8%A7%88/</guid>
-    <description><![CDATA[抽象代数 Quote Unknown Quantity 人类对未知量的不舍追踪 请允许我直接引用《代数的历史：人类对未知量的不舍追踪》这本讲述代数历史的标题。这是一本讲述代数的历史书籍]]></description>
-</item>
-<item>
-    <title>群相关</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/01%E7%BE%A4%E7%9B%B8%E5%85%B3/</link>
-    <pubDate>Sat, 14 Dec 2024 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/01%E7%BE%A4%E7%9B%B8%E5%85%B3/</guid>
-    <description><![CDATA[群相关 群定义 先简单介绍一些群相关概念： 简单记录群的定义 定义 一个群(group)$\lang{}G,*\rang$描述了一个集合$G$以及一个]]></description>
-</item>
-<item>
-    <title>09世界，UI与屏幕空间</title>
-    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4/</link>
-    <pubDate>Mon, 02 Dec 2024 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4/</guid>
-    <description><![CDATA[09世界，UI与屏幕空间 这里主要记录一下Unity下这三个概念所表示的含义。因为经常会在这些概念之间混淆，但同时我们又会经常会获得这些空间里]]></description>
-</item>
-<item>
-    <title>08EventSystem</title>
-    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/08EventSystem/</link>
-    <pubDate>Mon, 16 Sep 2024 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/08EventSystem/</guid>
-    <description><![CDATA[EventSystem EventSystem是Unity中UI事件处理的中心。承担将UI层面鼠标点击事件进行分发处理的过程。我这里主要是记录一下EventSys]]></description>
-</item>
-<item>
-    <title>07Serialization相关</title>
-    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/07Serializaion%E7%9B%B8%E5%85%B3/</link>
-    <pubDate>Sun, 18 Aug 2024 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/07Serializaion%E7%9B%B8%E5%85%B3/</guid>
-    <description><![CDATA[Serialization相关 本文主要记录了UnitySerialization的一些细节。 大部分Unity书籍都有介绍到Serializa]]></description>
-</item>
-<item>
-    <title>06Timeline相关</title>
-    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/06Timeline%E7%9B%B8%E5%85%B3/</link>
-    <pubDate>Sat, 22 Jun 2024 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/06Timeline%E7%9B%B8%E5%85%B3/</guid>
-    <description><![CDATA[06Timeline相关 Timeline是游戏开发中常见的工具。因为游戏是一个随着时间演变的过程。定义随时间的变化一系列事物是游戏中必然会涉]]></description>
 </item>
 </channel>
 </rss>
