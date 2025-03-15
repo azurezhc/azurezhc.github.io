@@ -4,7 +4,47 @@
         <link>http://azurezhc.github.io/posts/</link>
         <description>All Posts | azurezhc的游戏开发人生</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>azurezhc@gmail.com (azurezhc)</managingEditor>
-            <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Sun, 09 Feb 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://azurezhc.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Sat, 15 Mar 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://azurezhc.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>多项式环</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/16%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%8E%AF/</link>
+    <pubDate>Sat, 15 Mar 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/16%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%8E%AF/</guid>
+    <description><![CDATA[多项式环 终于要进入环域理论中的核心对象，多项式部分。这部分]]></description>
+</item>
+<item>
+    <title>整环</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/14%E8%B4%B9%E9%A9%AC%E5%AE%9A%E7%90%86%E5%92%8C%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86/</link>
+    <pubDate>Sun, 09 Mar 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/14%E8%B4%B9%E9%A9%AC%E5%AE%9A%E7%90%86%E5%92%8C%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86/</guid>
+    <description><![CDATA[费马定理和欧拉定理 本章主要是费马定理和欧拉定理。初等数论中也有相关定理。这里是抽象代数角度思考的结构。有空再补一下初等代数的结构。 定理 24.1 费马]]></description>
+</item>
+<item>
+    <title>整环</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/15%E6%95%B4%E7%8E%AF%E7%9A%84%E5%95%86%E5%9F%9F/</link>
+    <pubDate>Sun, 09 Mar 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/15%E6%95%B4%E7%8E%AF%E7%9A%84%E5%95%86%E5%9F%9F/</guid>
+    <description><![CDATA[整环的商域 这里教材的表述有点复杂。是从扩充后的域来说明的。在我看来，这章主要是想说明。对于任意一个整环结构来说，有一种方式可以把他扩展成一个]]></description>
+</item>
+<item>
+    <title>整环</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/13%E6%95%B4%E7%8E%AF/</link>
+    <pubDate>Sun, 02 Mar 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/13%E6%95%B4%E7%8E%AF/</guid>
+    <description><![CDATA[整环 介绍整环之前，要先介绍零因子概念。（在环的基础上有多了新得术语）。 定义 23.2 如果$a$和$b$是环$R$得两个非零元满足$ab=0$，则成$]]></description>
+</item>
+<item>
+    <title>环和域</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/12%E7%8E%AF%E5%92%8C%E5%9F%9F/</link>
+    <pubDate>Sun, 23 Feb 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/12%E7%8E%AF%E5%92%8C%E5%9F%9F/</guid>
+    <description><![CDATA[环和域 本节开始将进入一个集合上有两个运算的结构之中。即环和域的结构之中。 定义 22.1 环(ring)$\lang{}R,+,\cdot\rang$是]]></description>
+</item>
+<item>
     <title>商群</title>
     <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/05%E5%95%86%E7%BE%A4/</link>
     <pubDate>Sun, 09 Feb 2025 00:00:00 &#43;0000</pubDate>
@@ -43,46 +83,6 @@
     <author>azurezhc</author>
     <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/09%E5%90%8C%E6%9E%84%E5%AE%9A%E7%90%86/</guid>
     <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>环和域</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/10%E8%A5%BF%E7%BD%97%E5%AE%9A%E7%90%86/</link>
-    <pubDate>Sun, 09 Feb 2025 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/10%E8%A5%BF%E7%BD%97%E5%AE%9A%E7%90%86/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>环和域</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/12%E7%8E%AF%E5%92%8C%E5%9F%9F/</link>
-    <pubDate>Sun, 09 Feb 2025 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/12%E7%8E%AF%E5%92%8C%E5%9F%9F/</guid>
-    <description><![CDATA[环和域 本节开始将进入一个集合上有两个运算的结构之中。即环和域的结构之中。 定义 22.1 环(ring)$\lang{}R,+,\cdot\rang$是]]></description>
-</item>
-<item>
-    <title>陪集和拉格朗日定理</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/04%E9%99%AA%E9%9B%86%E5%92%8C%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86/</link>
-    <pubDate>Fri, 07 Feb 2025 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/04%E9%99%AA%E9%9B%86%E5%92%8C%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86/</guid>
-    <description><![CDATA[陪集和拉格朗日定理 陪集可以说是群论中重要的一环。它是一种由群自然而生的分解结构。 我认为其实前面一些问题已经体现出了这种分解结构的必然出现。对]]></description>
-</item>
-<item>
-    <title>群结构</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/03%E7%BE%A4%E7%BB%93%E6%9E%84/</link>
-    <pubDate>Sun, 12 Jan 2025 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/03%E7%BE%A4%E7%BB%93%E6%9E%84/</guid>
-    <description><![CDATA[群结构 群结构，在我看来是抽象代数的精华之一。它揭示了，我在有这些定义结构之下时，会产什么什么样的特性。这些特性是基本的简单的。基于简单几条规]]></description>
-</item>
-<item>
-    <title>子群相关</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/02%E5%AD%90%E7%BE%A4%E7%9B%B8%E5%85%B3/</link>
-    <pubDate>Wed, 01 Jan 2025 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/02%E5%AD%90%E7%BE%A4%E7%9B%B8%E5%85%B3/</guid>
-    <description><![CDATA[子群相关 先介绍定义概念 定义 子群的定义 如果群$G$的一个非空子集$H$在$G$的二元运算下是封闭的，且在$G$的诱导运算下$H$是一个群，那么]]></description>
 </item>
 </channel>
 </rss>

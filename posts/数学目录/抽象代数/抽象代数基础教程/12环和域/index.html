@@ -8,15 +8,15 @@
 <meta property="og:description" content="环和域 本节开始将进入一个集合上有两个运算的结构之中。即环和域的结构之中。 定义 22.1 环(ring)$\lang{}R,&#43;,\cdot\rang$是" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/12%E7%8E%AF%E5%92%8C%E5%9F%9F/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2025-02-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2025-02-09T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+<meta property="article:published_time" content="2025-02-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-02-23T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
 
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="环和域"/>
 <meta name="twitter:description" content="环和域 本节开始将进入一个集合上有两个运算的结构之中。即环和域的结构之中。 定义 22.1 环(ring)$\lang{}R,&#43;,\cdot\rang$是"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/12%E7%8E%AF%E5%92%8C%E5%9F%9F/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/04%E9%99%AA%E9%9B%86%E5%92%8C%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/10%E8%A5%BF%E7%BD%97%E5%AE%9A%E7%90%86/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/12%E7%8E%AF%E5%92%8C%E5%9F%9F/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/05%E5%95%86%E7%BE%A4/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/13%E6%95%B4%E7%8E%AF/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -27,8 +27,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/12%E7%8E%AF%E5%92%8C%E5%9F%9F\/"
-        },"genre": "posts","wordcount":  6976 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/12%E7%8E%AF%E5%92%8C%E5%9F%9F\/","datePublished": "2025-02-09T00:00:00+00:00","dateModified": "2025-02-09T00:00:00+00:00","publisher": {
+        },"genre": "posts","wordcount":  7888 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/12%E7%8E%AF%E5%92%8C%E5%9F%9F\/","datePublished": "2025-02-23T00:00:00+00:00","dateModified": "2025-02-23T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -69,8 +69,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">环和域</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-02-09">2025-02-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6976 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;14 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-02-23">2025-02-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;7888 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;16 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -107,7 +107,7 @@
 <ol>
 <li>$0a=a0=0$</li>
 <li>$a(-b)=(-a)b=-(ab)$</li>
-<li>(-a)(-b)=ab</li>
+<li>$(-a)(-b)=ab$</li>
 </ol>
 </div>
 <p>这三条定理的成立主要依赖于分配律。我认为，正式因为分配律的结构，使得这些定理成立。而与乘法运算结构无关系。其中尤其是第一条，它说明了，加法的单位元，即0，在乘法运算中，必然是与任何数相乘为0。以群的角度来考虑就是说，这个0一定不会是乘法运算中的单位元。当然并没有说乘法运算构成群，目前还只有结合律。</p>
@@ -152,7 +152,7 @@ $$a(-b)+ab=a(-b+b)=a0=0$$
 <li>在同态下，这些概念的保持关系如何？</li>
 <li>在子结构下，这些概念的保持关系如何？</li>
 </ul>
-<p>这里主要是我针对自己疑问的点给出的一些说明。</p>
+<p>这里主要是我针对自己疑问的点给出的一些说明。（其实后面章节有逐步介绍到这些概念的一些方面，但是部分问题依然补足一下）</p>
 <blockquote>
 <p>环一定有单位元么，单位元跟0可以相等么？</p>
 </blockquote>
@@ -238,15 +238,37 @@ $$i\cdot[\phi(1,0)^2-\phi(1,0)]+j\cdot{}[\phi(0,1)^2-\phi(0,1)]=0$$
 </div>
 <p>子环的验证条件。实际上前两个条件是加法群上子群的成立条件。即加法的单位元在子群中，同时定理5.15暗含着第二条必须成立。</p>
 <p>所以关键点，就是乘法运算上公理$\mathscr{R}_2,\mathscr{R}_3$的成立。</p>
-<p>假设$S$为子环。实际由环的封闭性可以得出对于所有$a,b\in{}S$，都有$ab\in{}S$.对于所有$a,b\in{}S$，都有$ab\in{}S$。</p>
+<p>假设$S$为子环。实际由环的封闭性可以得出对于所有$a,b\in{}S$，都有$ab\in{}S$.</p>
 <p>假设$S$满足所有$a,b\in{}S$，都有$ab\in{}S$。检验公理$\mathscr{R}_2$。实际上对于任意$a,b,c\in{}S$都有$(ab)c=a(bc)$。这可以当作在$R$中的等式，限制到了$S$上面。即$R$本身使得所有元素的结合律是成立的。</p>
 <p>检验公理$\mathscr{R}_3$实际上这也是自然成立的，也可以由环$R$的分配律得出。</p>
-<p>所以满足所有$a,b\in{}S$，都有$ab\in{}S$主要是满足乘法元素的封闭性。对比群的条件。可以发现，这里并没有要求乘法运算的单位存在，也不要求逆元存在。在群的条件中，子集只有运算封闭未必是一个群。只有在有限群中才是。例如$\mathbb{Z}^+$满足加法运算封闭，但其不是一个群，因为没有加法逆元存在。所以这里可以看到，单位元与逆元存在的要求，在子结构上的延展。</p>
+<p>所以满足所有$a,b\in{}S$，都有$ab\in{}S$，主要是满足乘法元素的封闭性。对比群的条件。可以发现，这里并没有要求乘法运算的单位存在，也不要求逆元存在。在群的条件中，子集只有运算封闭未必是一个群。只有在有限群中才是。例如$\mathbb{Z}^+$满足加法运算封闭，但其不是一个群，因为没有加法逆元存在。所以这里可以看到，单位元与逆元存在的要求，在子结构上的延展。</p>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>考虑$\lang{}S,+,\cdot\rang$。其中$S$是集合，$+$和$\cdot$是$S$上的二元运算使得</p>
+<ul>
+<li>$\lang{}S,+\rang$是一个群。</li>
+<li>$\lang{}S^*,\cdot\rang$是一个群，其中$S^*$由$S$的所有除加法单位元以外的元素组成。</li>
+<li>对所有$a,b,c\in{}S$，有$a(b+c)=(ab)+(ac)$和$(a+b)c=(ac)+(bc)$。</li>
+</ul>
+<p>证明$\lang{}S,+,\cdot\rang$是一个除环。</p>
+</div>
+<p>先说明满足环的基本公里定义。</p>
+<p>由定理22.8类似证明过程，借由第三条成立。可以说明$S$满足$0a=a0=0$。即$0$是$+$的单位元。</p>
+<p>现在已知$\lang{}S,+\rang$是一个群，还需要说明其是交换的。提示对于$a,b\in{}S^*$考虑$(1+1)(a+b)$。分成两种形式来展开。$(1+1)(a+b)=1(a+b)+1(a+b)$和$(1+1)(a+b)=(1+1)a+(1+1)b$这说明有：
+</p>
+$$a+b+a+b=a+a+b+b$$
+<p>由$\lang{}S,+\rang$是一个群，逆元存在，消去律成立可以说明$b+a=a+b$。至此可以说明$S$是一个环。现在来看其为除环。因为$\lang{}S^*,\cdot\rang$是一个群所以存在单位元，即乘法的单位元，同时说明对于每一个非$0$元，都存在逆元，即每个非$0$元都是单位。所以其是一个除环。</p>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>称环$R$是布尔环，如果$a^2=a$对于所有$a\in{}R$成立，于是每个元素都是幂等的，证明布尔环是交换的。</p>
+</div>
+<p>这个问题我觉得可以这样来说明。对于$a^2=a$，考虑$(a+a)^2=a+a$可以得出$a+a=0$。即任意元素的自身加法求和为$0$元。再考虑任意$a,b\in{}R$。有$(a+b)^2=a^2+ab+ba+b^2=a+b$，进而可以的得出$ab+ba=0$。这只能说明$ab=-ba$。但是结合上面得出的任意元素有$a+a=0$，即$ab+ab=0=ab-ba$。进而可以得出任意$a,b\in{}R$有$ab=ba$。</p>
+<p>不过可以看出布尔环导致的结果很多。例如对于加法来说，说有元素的阶为2。而且是交换的。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-02-09</span>
+                <span>Updated on 2025-02-23</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
