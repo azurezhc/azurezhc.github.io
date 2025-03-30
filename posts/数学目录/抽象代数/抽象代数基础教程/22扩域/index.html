@@ -4,31 +4,31 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>整环 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="整环" />
-<meta property="og:description" content="费马定理和欧拉定理 本章主要是费马定理和欧拉定理。初等数论中也有相关定理。这里是抽象代数角度思考的结构。有空再补一下初等代数的结构。 定理 24.1 费马" />
+        <title>扩域 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="扩域" />
+<meta property="og:description" content="扩域" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/14%E8%B4%B9%E9%A9%AC%E5%AE%9A%E7%90%86%E5%92%8C%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2025-03-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2025-03-09T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/22%E6%89%A9%E5%9F%9F/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-03-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-03-16T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="整环"/>
-<meta name="twitter:description" content="费马定理和欧拉定理 本章主要是费马定理和欧拉定理。初等数论中也有相关定理。这里是抽象代数角度思考的结构。有空再补一下初等代数的结构。 定理 24.1 费马"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="扩域"/>
+<meta name="twitter:description" content="扩域"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/14%E8%B4%B9%E9%A9%AC%E5%AE%9A%E7%90%86%E5%92%8C%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/15%E6%95%B4%E7%8E%AF%E7%9A%84%E5%95%86%E5%9F%9F/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/16%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%8E%AF/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/22%E6%89%A9%E5%9F%9F/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/19%E7%B4%A0%E7%90%86%E6%83%B3%E5%92%8C%E6%9E%81%E5%A4%A7%E7%90%86%E6%83%B3/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/17%E5%9F%9F%E4%B8%8A%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%9A%84%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "整环",
+        "headline": "扩域",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/14%E8%B4%B9%E9%A9%AC%E5%AE%9A%E7%90%86%E5%92%8C%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86\/"
-        },"genre": "posts","wordcount":  1226 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/14%E8%B4%B9%E9%A9%AC%E5%AE%9A%E7%90%86%E5%92%8C%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86\/","datePublished": "2025-03-09T00:00:00+00:00","dateModified": "2025-03-09T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/22%E6%89%A9%E5%9F%9F\/"
+        },"genre": "posts","wordcount":  2 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/22%E6%89%A9%E5%9F%9F\/","datePublished": "2025-03-16T00:00:00+00:00","dateModified": "2025-03-16T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -67,10 +67,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">整环</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">扩域</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-03-09">2025-03-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1226 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-03-16">2025-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -78,55 +78,15 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#费马定理和欧拉定理">费马定理和欧拉定理</a>
-      <ul>
-        <li><a href="#欧拉的推广">欧拉的推广</a></li>
-      </ul>
-    </li>
+    <li><a href="#扩域">扩域</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="费马定理和欧拉定理">费马定理和欧拉定理</h1>
-<p>本章主要是费马定理和欧拉定理。初等数论中也有相关定理。这里是抽象代数角度思考的结构。有空再补一下初等代数的结构。</p>
-<div class="admonition note">
-<p class="admonition-title">定理 24.1 费马小定理</p>
-<p>如果$a\in \mathbb{Z}$且$p$不是整除$a$的素数，则$p$整除$a^{p-1}-1$，即对于$a\not \equiv 0(mod\space p)$，有$a^{p-1}\equiv1(mod\space p)$</p>
-</div>
-<p>考虑环$\mathbb{Z}_p$，前面可以知道有限整环都是域，所以这是一个域。因此$\lang\mathbb{Z}*,\cdot\rang$是有$p-1$个元素的群。根据群的定理，任何元素$b$的阶数整除群阶$p-1$。所以必然有$b^{p-1}=1\in\mathbb{Z}_p$。</p>
-<p>而费马小定理是$\mathbb{Z}$上的元素，环$\mathbb{Z}_p$和$\mathbb{Z}/p\mathbb{Z}$同构。其中元素$b$对应于陪集$b+p\mathbb{Z}$，对于不是$p$的任何倍数的$a$，必然存在某个$0\leq b\leq p-1$有$a+b\mathbb{Z}=b+p\mathbb{Z}$因此。</p>
-$$(a+p\mathbb{Z})^{p-1}=(b+p\mathbb{Z})^{p-1}=1+p\mathbb{Z}\in\mathbb{Z}/p\mathbb{Z}$$
-<p>换句话说$a^{p-1}\equiv 1(mod\space p)$。</p>
-<div class="admonition info">
-<p class="admonition-title">推论</p>
-<p>如果$a\in\mathbb{Z}$，则对于任何素数$p$有$a^p\equiv a(mod\space p)$。</p>
-</div>
-<h2 id="欧拉的推广">欧拉的推广</h2>
-<p>关注到$\mathbb{Z}_n$中元素的分类情况。对于一个属于$\mathbb{Z}_n$中的元素$k$。有以下三种情况：</p>
-<ul>
-<li>$k$是$0$。</li>
-<li>$gcd(n,k)=1$时，$k$为一个单位。</li>
-<li>$gcd(n,k)\ne 1$时，$k$为一个零因子。</li>
-</ul>
-<p>因此$\mathbb{Z}_n$中与$n$互素的非零元集合构成一个乘法群。而费马小定理作用在这个互素组成的乘法群上也是成立的。</p>
-<p>设$n$为正整数。$\varphi(n)$定义为小于或等于$n$的与$n$互素的正整数个数。注意$\phi(1)=1$则有如下欧拉定理：</p>
-<div class="admonition note">
-<p class="admonition-title">定理 24.7 欧拉定理</p>
-<p>如果$a$是一个与$n$互素的整数，则$a^{\varphi(n)}-1$可被$n$整除，即$a^{\varphi(n)}\equiv 1(mod\space n)$。</p>
-</div>
-<p>将上述定理，以及前面抽象代数的一些结论应用于同余方程可得到一些线性同余方程的结论。实际上跟数论中求解线性同余方程的结构是一致的。这可以算是一种解释。在我看来可以认为就是</p>
-<div class="admonition note">
-<p class="admonition-title">定理 24.10</p>
-<p>设$m$为正整数，且$a\in\mathbb{Z}_m$与$m$互素，对于每个$b\in \mathbb{Z}_m$，方程$ax=b$在$\mathbb{Z}_m$中有唯一解。</p>
-</div>
-<p>这个实际上是域的结果之一，因为$\mathbb{Z}_m$是域。所以每个非零元素都有乘法逆，直接乘逆解方程即可。</p>
-<div class="admonition note">
-<p class="admonition-title">定理 24.11</p>
-<p>设$m$为正整数，且$a,b\in\mathbb{Z}_m$。设$d$为$a$和$m$的最大公因子。方程$ax=b$在$\mathbb{Z}_m$中有解，当且仅当$d$整除$b$。当$d$整除$b$时，方程在$\mathbb{Z}_m$中恰好有$d$个解。</p>
-</div>
+            </div><div class="content" id="content"><h1 id="扩域">扩域</h1>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-03-09</span>
+                <span>Updated on 2025-03-16</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
