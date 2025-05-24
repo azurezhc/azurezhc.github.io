@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/18%E5%90%8C%E6%80%81%E5%92%8C%E5%95%86%E7%8E%AF\/"
-        },"genre": "posts","wordcount":  100 ,
+        },"genre": "posts","wordcount":  6114 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/18%E5%90%8C%E6%80%81%E5%92%8C%E5%95%86%E7%8E%AF\/","datePublished": "2025-03-30T00:00:00+00:00","dateModified": "2025-03-30T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,8 +69,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">同态和商环</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-03-30">2025-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;100 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-03-30">2025-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6114 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;13 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -78,11 +78,171 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#同态和商环">同态和商环</a></li>
+    <li><a href="#同态和商环">同态和商环</a>
+      <ul>
+        <li><a href="#同态">同态</a></li>
+        <li><a href="#同态基本定理">同态基本定理</a></li>
+        <li><a href="#问题思考">问题思考</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="同态和商环">同态和商环</h1>
 <p>本章重新进入环抽象理论的基础建构。将前面多项式部分的结论，抽象成基于环的结构。或者换句话说，看看前面的那些特性究竟来自于结构中的哪一部分。其中最重要的就是跟群论中商群处于相同地位的商环结构。</p>
+<p>在这一部分我们又可以看到，同态结构在群环域结构中的重要地位。</p>
+<p>先看整环$\mathbb{Z}$上的例子。可知$n\mathbb{Z}$是其加法子群，也是一个子环。因为加法是交换的，所以其是加法的一个正规子群。可以看出$\mathbb{Z}/n\mathbb{Z}=\{a+n\mathbb{Z}|a\in \mathbb{Z}\}$。构成了一个有陪集代表元组成的加法群。现在可以在其上定义一个乘法运算结构。这里定义为</p>
+$$(a+n\mathbb{Z})(b+n\mathbb{Z})=ab+n\mathbb{Z}$$
+<blockquote>
+<p>需要特别注意的是。这里是定义，而不是直接的说明左右两边的集合运算相等。实际上如果按照通常的集合上运算，并不能证明左右两个集合是相等的。</p>
+</blockquote>
+<p>先举一个例子说明左右两边集合并不完全相等。取加法正规子群$6\mathbb{Z}$。分别取陪集$2+6\mathbb{Z}$和$4+6\mathbb{Z}$。按照整数乘法运算作用在陪集集合中每个元素上有</p>
+$$(2+6\mathbb{Z})(4+6\mathbb{Z})=8+12\mathbb{Z}\subset8+6\mathbb{Z}$$
+<p>并不跟定义的右侧直接相等。这里跟商群运算的方式略有差异。</p>
+<blockquote>
+<p>所以这里表示的主要是定义上的概念。将左边两个代表元陪集的乘法运算定义成右边对应的陪集。对于定义来说，参考书上第一章，定义二元运算部分。主要需要满足两个条件。</p>
+<ul>
+<li>恰好一个元素对应于$S$的每个给定的有元素对。</li>
+<li>对于$S$的每一个有序元素对，与之对应的元素也在$S$中。</li>
+</ul>
+</blockquote>
+<p>对于第二条，这里显然是满足的。所以需要说明第一条，也是检查这个定理是良好的。这里，我们将加法陪集元素构成的集合看作$S$，元素也就是说对应的陪集。恰好一个元素对应于$S$的每个给定的有元素对，也就是说，上面公式对于不同的代表元来说，这个定义是成立的。因为如果映射到不同元素，也就是右边的陪集不是同一个，即$a'=a+nk,b'=b+nr$情况下$a'b'+n\mathbb{Z}\ne ab+n\mathbb{Z}$。因此</p>
+$$a'b'=(a+nk)(b+nr)=ab+n(kb+knr+ar)\in ab+n\mathbb{Z}$$
+<p>这说明，定义公式与代表元选择无关。而这种无关的特性，实际上来自于验证$+n(kb+knr+ar)\in n\mathbb{Z}$.</p>
+<p>现在会看这个运算定义，首先可以明确的是，单纯按照集合乘法运算是不能得出陪集乘法相等的。所以，这里准确说是定义了一个新的运算。运算简单基于陪集代表元，代表元的乘法作用定义的右侧陪集是同一个，说明这个新定义的乘法运算成立。</p>
+<p>对于一个环$R$，首先基于环中交换加法群的部分，可以知道对于加法运算的子群，一定是正规子群，所以存在商群概念。加上新定义的乘法如果成立。那么这个子群，就称之为，理想。</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义 30.2</p>
+<p>环$R$的加法子群$N$称为<strong>理想(ideal)</strong>，如果</p>
+$$aN=\{an|n\in N\},Na=\{ na|n\in N\}\subseteq N$$
+<p>对于所有$a\in R$成立。</p>
+</div>
+<p>伴随而来的，跟定理12.7类似的。正规子群和运算关系有对应联系一般。理想也有对应关系。</p>
+<div class="admonition note">
+<p class="admonition-title">定理 30.2</p>
+<p>设$H$是环$R$的加法子群。定义在$H$上的加法陪集上的乘法</p>
+$$(a+H)(b+H)=ab+H$$
+<p>是良好定义的当且仅当$H$是$R$的理想。</p>
+</div>
+<p>说明略。基本就是两侧说明，如果为理想，则对于不同代表元定义的运算来说是良好成立的。类似于上面的整数例子。如果运算定义是良好的，就构造证明$aH\subseteq H$ 和$Ha \subseteq H$。</p>
+<p>现在对于一个理想来说，有了陪集上的加法运算和乘法运算，所以自然可以定义一个基于陪集上的环结构。于是有如下推论</p>
+<div class="admonition info">
+<p class="admonition-title">推论 30.7 </p>
+<p>设$N$是环$R$的理想。则$N$的加法陪集构成一个环$R/N$，二元运算定义为</p>
+$$(a+N)+(b+N)=(a+b)+N$$
+<p>以及</p>
+$$(a+N)(b+N)=ab+N$$
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">定义 30.8</p>
+<p>上面推论中的环$R/N$称为$R$对$N$的<strong>因子环(fator ring)<strong>或</strong>商环(quotient ring)</strong></p>
+</div>
+<h2 id="同态">同态</h2>
+<p>现在来看整本书最重要的思路，或者说是概念。即同态。实际上我看到这个地方，以及后面。忽然就发现。不论是单运算商群概念中的正规子群，亦或是这里两种运算上的理想。都有着一个简单而清晰的方式来跟其关联。这个就是同态的核。</p>
+<p>包括之前，大费周章的对于零点的重新定义。将其定义为一个求值同态。最后都是为了用上这个同态这个犀利无比的武器。满足同态的映射，简单清晰。其核一定为正规子群，或者理想。进而可以将我们之前发现的工具全部用上。这是一个无比强大的思路。</p>
+<p>对于现在我来说，究竟是同态是这些的本质，亦或说这些概念本质都有着相同的点呢？</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义 30.9</p>
+<p>环$R$到环$R'$的映射$\phi$称为同态(homomorphism)，如果</p>
+$$\phi(a+b)=\phi(a)+\phi(b)$$
+<p>以及</p>
+$$\phi(ab)=\phi(a)\phi(b)$$
+<p>对于$R$中所有元素$a$和$b$成立。</p>
+</div>
+<p>现在来说明，环同态上的基本特性。跟群一样，其会将原本结构上的一堆概念一同的，从源带到目标结构上。</p>
+<div class="admonition note">
+<p class="admonition-title">定理 30.11</p>
+<p>设$\phi:R\to R'$是一个环同态。</p>
+<ol>
+<li>如果$0$是$R$中的加法单位元，则$\phi(0)=0'$是$R'$中的加法单位元。</li>
+<li>如果$a\in R$则$\phi(-a)=-\phi(a)$。</li>
+<li>如果$S$是$R$的子环，则$\phi[S]$是$R'$的子环。</li>
+<li>如果$S'$是$R'$的子环，则$\phi^{-1}[S']$是$R$的子环。</li>
+<li>如果$R$有单位元$1$，则$\phi(1)$是$\phi[R]$的单位元。</li>
+<li>如果$N$是$R$的理想，则$\phi[N]$是$\phi[R]$的理想。</li>
+<li>如果$N'$是$R'$或$\phi[R]$的理想，则$\phi^{-1}[N']$是$R$的理想。</li>
+</ol>
+</div>
+<p>其中有一部分直接来自于群同态上的结论。基于加法群上的结论，添加乘法运算同态可以说明其中3,4部分。说明如下：</p>
+<p>如果$S$是$R$的子环。显然$\lang \phi[S],+'\rang$是$\lang R',+'\rang$的子群。对于$\phi[S]$中两个元素$\phi(s_1),\phi(s_2)$。显然有$\phi(s_1)\phi(s_2)=\phi(s_1s_2)\in \phi[S]$，乘法运算封闭。所以为$R'$的子环。（证明子环，基于子群结构，再证明乘法结合即可）。</p>
+<p>反之，如果$S'$是$R'$的子环，则$\lang\phi^{-1}[S'],+\rang$是$\lang R,+\rang$的一个子群。令$a,b\in\phi^{-1}[S']$，使得$\phi(a)\in S'$且$\phi(b)\in S'$。则$\phi(ab)=\phi(a)\phi(b)$。由于$\phi(a),\phi(b)\in S'$。所以$\phi(ab)\in S'$。即有$ab\in \phi^{-1}[S']$。所以$\phi^{-1}[S']$乘法封闭。可得出逆是子环结论。</p>
+<p>如果$R$有单位元$1$，则对于所有$r\in R$有</p>
+$$\phi(r)=\phi(1r)=\phi(r1)=\phi(1)\phi(r)=\phi(r)\phi(1)$$
+<p>需要注意的一个是，该过程只能说明其是$\phi[R]$的单位元，并不能说明$\phi(1)$是$R'$的单位元。</p>
+<p>对于理想的部分，这里补充证明过程。</p>
+<p>假设$N$是$R$的理想。即对任意元素$r\in R$。都有$rN\subseteq N$和$Nr\subseteq N$。考虑$\phi[R]$中元素$\phi(r')$与$\phi[N]$中任意元素$\phi(n')$的乘积，$\phi(r')\phi(n')=\phi(r'n')$，因为$N$是理想，$r'n'\in N$，所以$\phi(r'n')\in\phi[N]$。这表明$\phi(r')\phi[N]\subseteq \phi[N]$。同理可以说明$\phi[N]\phi(r')\subseteq \phi[N]$。这两条说明$\phi[N]$是$\phi[R]$的理想。</p>
+<p>假设$N'$是$\phi[R]$的理想。对于使得$\phi(n)\in N'$和使得$\phi(r)\in \phi[R]$的元素$n,r$，必有$n\in \phi^{-1}[N'],r\in R$。考察$rn$乘积计算。考虑到$N'$是$R'$的理想。所以任意的$\phi(n),\phi(r)$都有$\phi(r)\phi(n)=\phi(rn)\in N'$这说明$rn\in \phi^{-1}[N']$。由此可以得出$r\phi^{-1}[N']\subseteq \phi^{-1}[N']$，同理可以得出$\phi^{-1}[N']r\subseteq \phi^{-1}[N']$。这表明$\phi^{-1}[N']$是$R$的理想。</p>
+<p>现在考虑$N'$是$R'$的理想。如果$\phi^{-1}[N']\subseteq R$则显然$N'\subseteq \phi[R]$。那么$N'$也会是$\phi[R]$的理想。上述论述同样适用。</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义 30.12</p>
+<p>设映射$\phi:R\to R'$是一个环同态。子环</p>
+$$\phi^{-1}[0']=\{r\in R|\phi(r)=0'\}$$
+<p>称为$\phi$的<strong>核(kernel)</strong>，记为$Ker(\phi)$</p>
+</div>
+<p>再度出现了同态的核的概念。这个概念随着对代数越来越理解，越发的理解其重要定义。有一个问题悠然而生，为什么核会这么重要，这些特性都来自于什么？有空值得研究。</p>
+<div class="admonition note">
+<p class="admonition-title">定理 30.13(与定理 10.17类似)</p>
+<p>设$\phi:R_1\to R_2$是一个环同态。元素$a,b\in R_1$在$Ker(\phi)$的同一加法陪集中当且仅当$\phi(a)=\phi(b)$</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">定理 30.14(与定理 10.19类似)</p>
+<p>环同态$\phi:R_1\to R_2$是单的当且仅当$Ker(\phi)=\{0\}$。</p>
+</div>
+<p>以及同态下最重要的定理。</p>
+<div class="admonition note">
+<p class="admonition-title">定理 30.15</p>
+<p>设$\phi:R_1\to R_2$是一个同态，则$Ker(\phi)$是$R_1$的理想。</p>
+</div>
+<h2 id="同态基本定理">同态基本定理</h2>
+<p>跟群类比，将会有相同的结构概念出现。这些概念组成了环上的同态基本定理。</p>
+<div class="admonition note">
+<p class="admonition-title">定理 30.16(与定理 12.12类似)</p>
+<p>设$N$是环$R$的理想，则有$\gamma(x)=x+N$给出的$\gamma:R\to R/N$是一个核为$N$的同态。</p>
+</div>
+<p>这个跟群一致。就是把加法陪集当成一个元素来看待。显然这个元素的加法是成立的，即加法商群。剩下的只需要说明乘法成立就可以。而这部分可以通过前面定义的理想运算方便得出。</p>
+<p>我觉得要再次注意的点是，这个商环元素的加法和乘法的定义。这里可以回顾之前商群的加法定义。会发现虽然商群陪集运算确为集合运算上的相等，不过这里的运算实际都是基于“良好定义的”这个概念去构建的。所以基于这样情况，同态基本定理的描述感觉是必要的。此外就是这里都是当成一个元素对象来看待，而不是一个集合对象。跟集合内元素的运算关系有一点联系，但不完全相等了。</p>
+<p>现在来描述同态基本定理：</p>
+<div class="admonition note">
+<p class="admonition-title">定理 30.17(同态基本定理)</p>
+<p>设$\phi:R \to R'$是具有核为$N$的环同态，则$\phi[R]$是一个环。且由$\mu(x+N)=\phi(x)$给出的映射$\mu:R/N\to \phi[R]$是一个同构。如果由$\gamma(x)=x+N$给出的$\gamma:R\to R/N$是同态，则对于每个$x\in R$有$\phi(x)=\mu\cdot\gamma(x)$。</p>
+</div>
+<h2 id="问题思考">问题思考</h2>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>证明从域到环的同态要么是单的，要么将所有元素映射到$0$。</p>
+<p>这个问题跟下面这个一致</p>
+<p>证明域的商环是一个元素的平凡(零)环或同构于该域。</p>
+</div>
+<p>实际上后面一个章节也会重述这个问题。对于域来说，其理想只有两个平凡子群。一个是$\{0\}$，一个是域本身$F$。从这个问题也可以推出相同的结论。</p>
+<p>现在先回过来看这个问题。先说明域到环同态要么是单的，要么所有元素映射到$0$。假设现在有域$F$，以及环$R$。$\phi:F\to R$是一个$F$到$R$上的环同态。假设其不是单的，那么即存在$a\ne b$有$\phi(a)=\phi(b)$。所以有$\phi(a)-\phi(b)=\phi(a-b)=0$。即存在一个不为$0$的元素$c\ne 0$有$\phi(c)=0$。因为$F$是域，所以$c$是单位，存在乘法逆$c^{-1}$，考虑$\phi(c)\phi(c^{-1})=\phi(1)=0\phi(c^{-1})=0$。这说明$\phi$将单位元映射到$R$的零元上面。根据同态的定义。可知所有元素都会被映射到$0$上面。原命题得证。</p>
+<p>现在进一步说明这几个问题的关联。本章可知。同态的核一定是环的理想。因为域$F$上出发的同态只有两种可能。</p>
+<ol>
+<li>为单射，这实际上说明不存在非零元素映射到$0$。所以此时对应的核即$\{0\}$。</li>
+<li>全部映射到$0$。这就说明整个核为$F$。</li>
+</ol>
+<p>进而说明域的理想只有两种可能。</p>
+<p>基于域的理想只有两种可能。我们来看商环的结构。商环基于环的理想$N$来构造。在上面两种可能性中。</p>
+<ol>
+<li>理想为$F$。则$F/F$相当于整个集合捏成一个元素。此时商环同构于$\{0\}$这样的一个元素的平凡环。</li>
+<li>理想为$\{0\}$。则$F/\{0\}$相当于每个元素不变。此时商环同构于$F$。</li>
+</ol>
+<p>实际上这里可以通过上面的同态基本定理来构建。因为已经有了上面两种情况的$\phi$。由基本定理可知，存在由$\mu(x+N)=\phi(x)$给出的从$R/N\to \phi[F]$上的同构。而$\phi[F]$显然已经描述了同构对象的结构，要么$\{0\}$要么$F$。</p>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>设$R$和$R'$是环，设$\phi:R\to R'$是环同态，使得$\phi[R]\ne\{0'\}$。证明如果$R$由单位元$1$且$R'$没有零因子，则$\phi(1)$是$R'$的单位元。</p>
+</div>
+<p>前面可以看到同态$\phi$只能保证$R$若存在单位元$1$。则$\phi(1)$为$\phi[R]$的单位元。这里给出了一个保证。</p>
+<p>回到问题，显然对于$1$来说，存在两种情况。$\phi(1)=0'$和$\phi(1)\ne 0'$。显然对于前一种情况会有$\phi[R]=0'$。所以存在$r'\in R'，r'\ne 0$有$\phi(1)=r'$。考虑$\phi(1)^2=r'^2=\phi(1)=r'$。这是一个幂等元。因为$R'$没有零因子，消去律成立。所以$r'$必然是$R'$的单位元。这个也可以参看整环部分的习题。</p>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>证明如果$R$是有单位元的环，$N$是$R$的理想，$N\ne R$，则$R/N$是有单位元的环。</p>
+</div>
+<p>根据前面描述，因为$N$为理想，有$\gamma:R\to R/N$上的典范同态，$\gamma(x)=x+N$。显然单位元$1$不属于$N$否则可以推导出$N=R$是一个平凡理想。所以$R/N$中存在$1+N$。</p>
+<p>现在考虑$R/N$上定义的乘法运算，对于其中任意元素可以表示为$x+N$。根据定义$(1+N)(x+N)=(1x)+N=x+N$。这说明$1+N$跟任意元素的乘法都等于元素本身。所以$1+N$为$R/N$的单位元。</p>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>设$R$是交换环，$a\in R$。证明$I_a=\{x\in R|ax=0\}$是$R$的理想。</p>
+</div>
+<p>$I_a$即由所有与$a$相乘为$0$的元素构成。考虑$I_a$中元素$x$，以及$R$中任意元素$y$。考察$yx$，显然对于$a(yx)=a(xy)=(ax)y=0y=0$。这表明$yx$也在$I_a$之中。这说明对于任意$y\in R$有$yI_a\subseteq I_a$。再考察$xy$，同理有$a(xy)=(ax)y=0y=0$。说明有$I_ay\subseteq I_a$。所以$I_a$是理想。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

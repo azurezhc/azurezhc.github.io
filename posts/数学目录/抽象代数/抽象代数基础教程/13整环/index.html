@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/13%E6%95%B4%E7%8E%AF\/"
-        },"genre": "posts","wordcount":  4265 ,
+        },"genre": "posts","wordcount":  4408 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/13%E6%95%B4%E7%8E%AF\/","datePublished": "2025-03-02T00:00:00+00:00","dateModified": "2025-03-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,7 +69,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">整环</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-03-02">2025-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4265 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-03-02">2025-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4408 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -178,7 +178,7 @@ $$rm=(b-nq)m=bm-nqm=(1-an)-nqm=1-n(a+qm)$$
 <ul>
 <li>证明$R$没有零因子。</li>
 <li>证明$bab=b$。</li>
-<li>证明$R$有的单位元。</li>
+<li>证明$R$有单位元。</li>
 <li>证明$R$是除环。</li>
 </ul>
 </div>
@@ -190,16 +190,17 @@ $$rm=(b-nq)m=bm-nqm=(1-an)-nqm=1-n(a+qm)$$
 <ul>
 <li>证明$bab=b$</li>
 </ul>
-<p>已经证明$R$没有零因子，所以$R$中消去律成立。对于某个费零的$a$以及对应的$b$，显然有$abab=ab$。所以必然有$bab=b$</p>
+<p>已经证明$R$没有零因子，所以$R$中消去律成立。对于某个非零的$a$以及对应的$b$，显然有$abab=ab$。所以必然有$bab=b$</p>
 <ul>
-<li>证明$R$有的单位元。</li>
+<li>证明$R$有单位元。</li>
 </ul>
-<p>现在来说明单位，实际上对于$a$来说如果有$aba=a$，如果单位存在，假设为$e$则必然$e=ab$。现在说明对于任意$c\in{}R$都有$ec=c$。由前面等式可得$abab=e^2=ab=e$，现在考虑$e(ec-c)=e^2c-ec=0$。由于$R$上的消去律成立，所以必然有$ec-c=0$。即对于任意$c\in{}R$都有$ec=c$。所以$e$即左单位元。同理可以说明$ba$为右单位元。因为单位元唯一所有必有$ab=ba=e$，即单位元。</p>
+<p>现在来说明单位元，实际上对于$a$来说如果有$aba=a$，如果单位存在，假设为$e$则必然$e=ab$。现在令$e=ab$，说明对于任意$c\in{}R$都有$ec=c$，进而说明$e$就是单位元。由前面等式可得$abab=e^2=ab=e$，现在考虑$e(ec-c)=e^2c-ec=0$。由于$R$上的消去律成立，所以必然有$ec-c=0$。即对于任意$c\in{}R$都有$ec=c$。所以$e$即左单位元。同理可以说明$ba$为右单位元。因为单位元唯一所有必有$ab=ba=e$，即单位元。</p>
+<p>实际上得出$e^2=e$并且消去律成立后并不用这么麻烦。根据消去律，这个公式说明了$e$要么为$0$要么就是单位元。显然$e$不是$0$。否则$ab=0$矛盾。所以这个环存在单位元。</p>
 <ul>
 <li>证明$R$是除环。</li>
 </ul>
-<p>除环即有单位元，所有元素都是单位的环。现在已经说了单位元的存在，且对于任意$a\in{}R$来说，这个唯一的$b$组成的$ab$即单位元。即$ab=e$，这说明每个元素都存在乘法逆元，即单位。</p>
-<p>这部分第三问我问了DeepSeek其还给出了一个正确的证明。没有用零因子，而是直接用唯一性来说明。这里简单描述一下。其实考虑上述中的$ec-c$若不为$0$。则有$d\in{}R,d=ec-c$。所以其存在一个对应的$b_d$有$db_dd=d$，考察$ded=(ec-c)e(ec-c)=0$，同第一步跟唯一的$b_d$矛盾。</p>
+<p>除环即有单位元，所有元素都是单位的环。现在已经说了单位元的存在，且对于任意$a\in{}R$来说，这个唯一的$b$组成的$ab$即单位元。即$ab=e$，这说明每个元素都存在乘法逆元，即单位。进而说明$R$四除环。</p>
+<p>这部分第三问我问了DeepSeek其还给出了一个正确的证明。没有用零因子，而是直接用唯一性来说明。这里简单描述一下。其实考虑上述中的$ec-c$若不为$0$。则有$d\in{}R,d=ec-c$。所以其存在一个对应的$b_d$有$db_dd=d$，考察$ded=(ec-c)e(ec-c)=0$，后续同第一步，这会跟唯一的$b_d$矛盾，存在$b_d+e$这样一个元素。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

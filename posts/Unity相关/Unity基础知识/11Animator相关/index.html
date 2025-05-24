@@ -5,18 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>10Animation相关 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="10Animation相关" />
-<meta property="og:description" content="10Animation相关 本文主要记录AnimationComponent相关内容。Animation是Unity最早最传统的动画处理方式。" />
+<meta property="og:description" content="11Animator相关" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10Animation%E7%9B%B8%E5%85%B3/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11Animator%E7%9B%B8%E5%85%B3/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-12-02T00:00:00+00:00" />
 <meta property="article:modified_time" content="2024-12-02T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
 
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="10Animation相关"/>
-<meta name="twitter:description" content="10Animation相关 本文主要记录AnimationComponent相关内容。Animation是Unity最早最传统的动画处理方式。"/>
+<meta name="twitter:description" content="11Animator相关"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10Animation%E7%9B%B8%E5%85%B3/" /><link rel="prev" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11Animator%E7%9B%B8%E5%85%B3/" /><link rel="next" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11Animator%E7%9B%B8%E5%85%B3/" /><link rel="prev" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/08EventSystem/" /><link rel="next" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10Animation%E7%9B%B8%E5%85%B3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -26,9 +26,9 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/10Animation%E7%9B%B8%E5%85%B3\/"
-        },"genre": "posts","wordcount":  636 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/10Animation%E7%9B%B8%E5%85%B3\/","datePublished": "2024-12-02T00:00:00+00:00","dateModified": "2024-12-02T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/11Animator%E7%9B%B8%E5%85%B3\/"
+        },"genre": "posts","wordcount":  12 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/11Animator%E7%9B%B8%E5%85%B3\/","datePublished": "2024-12-02T00:00:00+00:00","dateModified": "2024-12-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -69,8 +69,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">10Animation相关</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-12-02">2024-12-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;636 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-12-02">2024-12-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;12 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -78,26 +78,10 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#10animation相关">10Animation相关</a>
-      <ul>
-        <li><a href="#animation结构">Animation结构</a></li>
-      </ul>
-    </li>
+    <li><a href="#11animator相关">11Animator相关</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="10animation相关">10Animation相关</h1>
-<p>本文主要记录AnimationComponent相关内容。Animation是Unity最早最传统的动画处理方式。基本上只提供了动画播放相关接口。实际上其还有一部分接口可以用来做一些简单功能。另一方面，对于现在来说，有些简单的动画播放，例如动效部分，也可以简单的通过Animation来实现。</p>
-<p>不过另一方面是，Unity提供的最新动画系统是Animator，Animator的推广，以及支持比现在要广泛很多。所以两者都要多了解。</p>
-<p>因为并没有源码，这里主要记录各种接口，属性的功能。可以通过这些结构对Animation大概的模型有一定了解。</p>
-<p>官方文档地址：
-<a class="link-markdown-demo-site" href="https://docs.unity3d.com/2022.3/Documentation/Manual/Animations.html" rel="noopener">https://docs.unity3d.com/2022.3/Documentation/Manual/Animations.html</a></p>
-<h2 id="animation结构">Animation结构</h2>
-<center><img src="./p2.png"></center>
-<center><img src="./d1.png"></center>
-<p>其实简单来说，Animation组件存放了一个默认的Animation Clip以及一个Animation Clip列表。</p>
-<p>这些Clip被包进AnimationState这个类型对象中进行存放。同时，这个AnimationState对象，记录了当前Clip播放的状态。换而言之，就是当Animation播放对应动画的时候，播放时状态会直接记录在对应的AnimationState的实例上面。这个可以通过播放时输出AnimationState的属性来发现。</p>
-<p>我觉得可以认为这每一个AnimationState就是一个记录Clip的轨道。对应Clip播放的时候所有关联数据以及状态就是直接记录在AnimationState轨道上的。</p>
-<p>下面主要记录Animation上的各种接口效果与含义。</p>
+            </div><div class="content" id="content"><h1 id="11animator相关">11Animator相关</h1>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

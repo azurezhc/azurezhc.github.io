@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/17%E5%9F%9F%E4%B8%8A%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%9A%84%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3\/"
-        },"genre": "posts","wordcount":  5037 ,
+        },"genre": "posts","wordcount":  7761 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/17%E5%9F%9F%E4%B8%8A%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%9A%84%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3\/","datePublished": "2025-03-16T00:00:00+00:00","dateModified": "2025-03-16T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,8 +69,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">域上多项式的因式分解</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-03-16">2025-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5037 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-03-16">2025-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;7761 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;16 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -91,7 +91,7 @@
 <p>本章主要就是讲述域上多项式的因式分解。这里用到的方式很类似于带余除法的结构。即有一个多项式$f(x)$和$g(x)$。我们尝试用整除的方式用$f(x)$除以$g(x)$，将$f(x)$表示为$f(x)=g(x)h(x)+s(x)$的样式。针对这种方式的研究，我们可以得到一些多项式环上至关重要的结论。而这种性质在后面可以看到，本质来自于环结构上的各种特性。</p>
 <p>现在来看求值同态与因式分解的关系。设$E$和$F$是域，且$F\leq E$。对$f(x)\in F[x]$来说，求值同态$\phi(\alpha)$有</p>
 $$f(\alpha)=\phi_\alpha(f(x))=\phi_\alpha(g(x)h(x))=\phi_\alpha(g(x))\phi_\alpha(h(x))=g(\alpha)h(\alpha)$$
-<p>因此如果$f(\alpha)=0$当且仅当$g(\alpha)=0$或$h(\alpha)=0$。这个结论一部分来自于同态结构，如上。还有一部分来自于$F[X]$整环结构，消除率成立。</p>
+<p>因此如果$f(\alpha)=0$当且仅当$g(\alpha)=0$或$h(\alpha)=0$。这个结论一部分来自于同态结构，如上分解等式过程。还有一部分来自于$F[X]$是整环结构，消除律成立。</p>
 <div class="admonition note">
 <p class="admonition-title">引理 28.1</p>
 <p>设$F$是一个域，$f(x),g(x),s(x)\in F[x]$且$g(x)\ne 0$。如果</p>
@@ -101,9 +101,9 @@ $$deg(f(x)-g(x)s_1(x))\lt deg(f(x)-g(x)s(x))$$
 <p>或</p>
 $$f(x)-g(x)s_1(x)=0$$
 </div>
-<p>这个引理看起来表述比较繁琐，实际上在描述这样一件事情。就是我们可以定义多项式上的除法操作，使得$f(x)=g(x)h(x)+s(x)$的样式。其中$s(x)$的次数一定是小于$g(x)$的次数的。这个引理将这件事情明确化，并且实际上给出了这个除法的算法操作过程。</p>
+<p>这个引理看起来表述比较繁琐，实际上在描述这样一件事情。就是我们可以定义多项式上的除法操作，使得$f(x)=g(x)s(x)+h(x)$的样式。其中$h(x)$的次数一定是小于$g(x)$的次数的。这个引理将这件事情明确化，并且实际上给出了这个除法的算法操作过程。即如果余数$f(x)-g(x)s(x)$的次数大于$g(x)$，那么可以提高$s(x)$来降低余数$f(x)-g(x)s(x)$的次数。</p>
 <p><strong>简略证明：</strong></p>
-<p>思路就是假设$deg(f(x)-g(x)s(x))\ge deg(g(x))$可以构造出一个次数小于$g(x)$的$s_1(x)$。加上$n=deg(f(x)-g(x)s(x))$则对应可以表示为$f(x)-g(x)s(x)=a_nx^n+r(x)$。其中$a_n\ne 0$。因为$g(x)\ne 0$。所以$g(x)$可以表示为$g(x)=b_kx^k+g_1(x)$，且$n\ge k$。</p>
+<p>思路就是假设$deg(f(x)-g(x)s(x))\ge deg(g(x))$可以构造出一个次数小于$g(x)$的$s_1(x)$。假设$n=deg(f(x)-g(x)s(x))$则对应可以表示为$f(x)-g(x)s(x)=a_nx^n+r(x)$。其中$a_n\ne 0$。因为$g(x)\ne 0$。所以$g(x)$可以表示为$g(x)=b_kx^k+g_1(x)$，且$n\ge k$。</p>
 <p>构造的基本想法就是使得$a_nx^n+r(x)-g(x)s_1(x)$可以消除$n$次方项。显然可以让$s_1(x)$包含一个$\frac{a_n}{b_k}x^{n-k}$即可。令$s_1(x)=s(x)+\frac{a_n}{b_k}x^{n-k}$。验证</p>
 $$
 \begin{equation}
@@ -164,7 +164,7 @@ $$f(x)=(x-a_1)\cdots(x-a_r)q_r(x)$$
 <p>非常数多项式$f(x)\in F[x]$在$F$上称为<strong>不可约的(irreducible)<strong>或$F[x]$上的</strong>不可约多项式(irreducible polynomial)</strong>，如果$f(x)$不能表示为$F[x]$中的两个次数低于$f(x)$的多项式$g(x)$和$h(x)$的乘积$g(x)h(x)$。</p>
 <p>如果非常数多项式$f(x)\in F[x]$不是$F$上不可约的，则称$f(x)$为在$F$上的<strong>可约的(reducible)</strong>。</p>
 </div>
-<p>不可约多项式在后面的研究中有非常重要的地位。不过确定一个多项式$f(x)\in F[x]$在$F$上是否可约可能是困难的。我个人觉得，这可能与求解零点一样复杂，显然有零点的多项式是可约的。另一方面是判断多项式是否可约，并不完全等价于求解零点。一个多项式$f(x)$可能分解成$g(x)h(x)$。但是$g(x),h(x)$在$F$上都没有零点，$f(x)$也没有，不过$f(x)$是可约的。后面部分都是给出基本一些定理。可以快速判断某些多项式是不是克乐得。</p>
+<p>不可约多项式在后面的研究中有非常重要的地位。不过确定一个多项式$f(x)\in F[x]$在$F$上是否可约可能是困难的。我个人觉得，这可能与求解零点一样复杂，显然在域中有零点的多项式是可约的。另一方面是判断多项式是否可约，并不完全等价于求解零点。一个多项式$f(x)$可能分解成$g(x)h(x)$。但是$g(x),h(x)$在$F$上都没有零点，所以$f(x)$也没有，不过$f(x)$是可约的。后面部分都是给出基本一些定理。可以快速判断某些多项式是不是可约得。</p>
 <div class="admonition note">
 <p class="admonition-title">定理 28.11</p>
 <p>设$f(x)\in F[x]$，且$f(x)$的次数为$2$或$3$，那么$f(x)$在$F$上是可约的当且仅当它在$F$中有一个零点。</p>
@@ -194,13 +194,13 @@ $$\Phi_p(x)=\frac{x^p-1}{x-1}=x^{p-1}+^{p-2}+\cdots+x+1$$
 <p>前面已经强调过对于$F[x]$中的多项式可以以某种唯一的方式分解为不可约多项式的乘积。这建立在前面的多项式除法基础上推出的结论。这部分主要说明针对这种唯一的分解乘积，有着类似于$\mathbb{Z}$上的一些性质。</p>
 <div class="admonition note">
 <p class="admonition-title">定理 28.19</p>
-<p>设$p(x)$是$F[x]$中的不可约多项式。如果对于$r(x),s(x)\in F[x]$,$p(x)$整除$r(x)s(x)$，则要么$p(x)整除$r(x)$，要么$p(x)$整除$s(x)$。</p>
+<p>设$p(x)$是$F[x]$中的不可约多项式。如果对于$r(x),s(x)\in F[x]$,$p(x)$整除$r(x)s(x)$，则要么$p(x)$整除$r(x)$，要么$p(x)$整除$s(x)$。</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">推论 28.20</p>
 <p>设$p(x)$是$F[x]$中的不可约多项式。且对于$r_i(x)\in F[x]$，若$p(x)$整除乘积$r_1(x)r_2(x)\cdots r_n(x)$，则$p(x)$整除$r_i(x)$中至少一个。</p>
 </div>
-<p>这个证明见素理想和极大理想部分。</p>
+<p>这个证明见素理想和极大理想部分。(这也说明这种整除结构，是理想理论所带来的特性)。</p>
 <div class="admonition note">
 <p class="admonition-title">定理 28.21</p>
 <p>如果$F$是一个域，那么每个非常数多项式$f(x)\in F[x]$都可以在$F[x]$中分解为不可约多项式的乘积，这些不可约多项式处理次序和$F$中的单位因子外，是唯一的。</p>
@@ -216,6 +216,40 @@ $$\Phi_p(x)=\frac{x^p-1}{x-1}=x^{p-1}+^{p-2}+\cdots+x+1$$
 <p>如果$F$是域，$a\ne 0$是$F[x]$中$f(x)=a_0+a_1x+\cdots+a_nx^n$的零点，证明$1/a$是$a_n+a_{n-1}+\cdots+a_0x^n$的零点。</p>
 </div>
 <p>这个其实比较显然。因为$a\ne 0$为零点即，$f(a)=a_0+a_1a+\cdots+a_na^n=0$的零点。两边共同作用$(1/a)^n$那么显然有$a_0(\frac{1}{a})^n+a_1(\frac{1}{a})^{n-1}+\cdots+a_n=0$。左边等式等价于$\phi_{1/a}(a_n+a_{n-1}+\cdots+a_0x^n)$。这说明$1/a$为其零点。</p>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>(余数定理)设$f(x)\in F[x]$，其中$F$是一个域，并设$\alpha \in F$。根据带余除法，$f(x)$除以$x-\alpha$的余数是$f(\alpha)$。</p>
+</div>
+<p>这个问题的意思其实就是。对于任意一个$F$中的元素$\alpha$。$f(x)$除以$x-\alpha$的余数是$\alpha$对$f(x)$的求值。</p>
+<p>$f(x)$除以$x-\alpha$可以表示为$f(x)=(x-\alpha)h(x)+r(x)$。根据多项式除法，$r(x)$的次数小于1，所以$r(x)$实际上是$F$上的元素，可以假设为$c\in F$，即$f(x)=(x-\alpha)h(x)+c$。所求即$c$。考察$f(x)=(\alpha-\alpha)h(x)+c=c$。即$f(x)$除以$x-\alpha$的余数即$f(\alpha)$。</p>
+<div class="admonition question">
+<p class="admonition-title">问题</p>
+<p>设$\sigma_m:\mathbb{Z}\to \mathbb{Z}_m$是由$\sigma_m(a)=$($a$除以$m$的余数)给出的自然同态，$a\in \mathbb{Z}$。</p>
+<ol>
+<li>
+<p>证明下式给出的$\overline{\sigma_m}:\mathbb{Z}[x]\to\mathbb{Z}_m[x]$是$\mathbb{Z}[x]$到$\mathbb{Z}_m[x]$的满同态。
+</p>
+$$\overline{\sigma_m}(a_0+a_1x+\cdots+a_nx^n)=\sigma_m(a_0)+\sigma_m(a_1)x+\cdots+\sigma_m(a_n)x^n$$
+</li>
+<li>
+<p>证明如果$f(x)\in \mathbb{Z}[x]$和$\overline{\sigma_m}(f(x))$次数都为$n$，且$\overline{\sigma_m}(f(x))$在$\mathbb{Z}_m[x]$中不能分解为两个次数小于$n$的多项式乘积，则$f(x)$在$\mathbb{Q}[x]$中不可约。</p>
+</li>
+<li>
+<p>证明$x^3+17x+36$在$\mathbb{Q}[x]$中不可约。</p>
+</li>
+</ol>
+</div>
+<p>其实这个问题，又给出了一种判断不可约多项式的方式，通过取余的方式把参数范围从$\mathbb{Z}$映射到有限的$\mathbb{Z}_m$上，简化了整个判定的难度。</p>
+<p>先逐个思考。首先是说明到$\mathbb{Z}_m[x]$的满同态。$\mathbb{Z}_m[x]$的元素形如$f'(x)=a'_0+a'_1x+\cdots+a'_nx^n,a'_i\in \mathbb{Z}_m$。即每个$f'(x)$都有一个$f(x)\in\mathbb{Z}[x]$通过$\overline{\sigma_m}(f(x))$映射给出。显然对于每个$a'_i\in\mathbb{Z}_m$都可以自然的映射到$a'_i\in\mathbb{Z}$上。且对于这些元素有自然的$\sigma_m(a'_i)=a'_i$。也就是说将每一个$f'(x)\in\mathbb{Z}_m[x]$视为在$\mathbb{Z}[x]$上则可以自然得出$\overline{\sigma_m}(f'(x))=f'(x)$。即这个同态是满同态。</p>
+<p>当然这还有一部分，就是说明$\overline{\sigma_m}$是一个同态。这个要验证环同态定义部分。即说明$\overline{\sigma_m}(f(x)+g(x))=\overline{\sigma_m}(f(x))+\overline{\sigma_m}(g(x))$和$\overline{\sigma_m}(f(x)g(x))=\overline{\sigma_m}(f(x))\overline{\sigma_m}(g(x))$。这一部分主要是对多项式加法乘法的运算检验。最后可以借由$\sigma_m:\mathbb{Z}\to \mathbb{Z}_m$的自然同态说明系数相等成立来说明。</p>
+<p>现在来考虑第二个问题。显然已经有$\overline{\sigma_m}:\mathbb{Z}[x]\to\mathbb{Z}_m[x]$是满同态。考虑证明逆否，假设$f(x)\in \mathbb{Z}[x]$且$f(x)$可以被分解成两个次数小于$n$的乘积，$f(x)=g(x)h(x)$。则显然有$\overline{\sigma_m}(f(x))=\overline{\sigma_m}(g(x))\overline{\sigma_m}(h(x)))$。这个公式表明$\overline{\sigma_m}(f(x))$可以被分解成两个次数小于$n$的乘积。进而可以说明命题成立。</p>
+<p>但是这个说明过程，有个细节的地方。我们并没有使用到$f(x)\in \mathbb{Z}[x]$和$\overline{\sigma_m}(f(x))$次数都为$n$这个条件。实际上如果$\overline{\sigma_m}(f(x))$次数小于$n$。例如$\overline{\sigma_m}(f(x))$次数为$m\lt n$。那么对于原来的分解来说，有可能$\overline{\sigma_m}(g(x))$次数大于$m$小于$n$。进而导致其实际上无法分解为两个次数更低的多项式。也就是说，这种情况下，会出现$\overline{\sigma_m}(f(x))$无法分解，但是$f(x)$可约的情况。</p>
+<p>另一方面我们考虑$\overline{\sigma_m}(f(x))$可以被分解成两个次数小于$n$的乘积，看是否能说明$f(x)$可约呢？</p>
+<p>这个情况下有$\overline{\sigma_m}(f(x))=g'(x)h'(x),g'(x),h'(x)\in\mathbb{Z}_m[x]$。因为$\overline{\sigma_m}$是满同态。所以存在对应的逆元素$g(x),h(x)\in\mathbb{Z}[x]$有</p>
+$$\overline{\sigma_m}(f(x))=g'(x)h'(x)=\overline{\sigma_m}(g(x))\overline{\sigma_m}(h(x))=\overline{\sigma_m}(g(x)h(x))$$
+<p>剩下如果可以说明$f(x)=g(x)h(x)$则表明$f(x)$可以分解成两个乘积，即其可约。但是这个等式并不一定成立。</p>
+<p>现在补充一些信息。显然$deg(f(x))\ge deg(\overline{\sigma_m}(f(x)))$。即原多项式次数一定大于等于映射后的。</p>
+<p>第三个问题，简单考虑$\sigma_5$，有$\overline{\sigma_5}(f(x))=x^3+2x+1$。若其可约，则一定有一次因式，即有零点。考虑有限域上的元素。可得$f(0)=1,f(1)=4,f(2)=4,f(3)=4,f(4)=3$。这说明其在$\mathbb{Z}_5$上不可约。所以原式不可约。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
