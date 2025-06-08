@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/10Animation%E7%9B%B8%E5%85%B3\/"
-        },"genre": "posts","wordcount":  636 ,
+        },"genre": "posts","wordcount":  3669 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/10Animation%E7%9B%B8%E5%85%B3\/","datePublished": "2024-12-02T00:00:00+00:00","dateModified": "2024-12-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,8 +69,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">10Animation相关</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-12-02">2024-12-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;636 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-12-02">2024-12-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3669 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -81,23 +81,227 @@
     <li><a href="#10animation相关">10Animation相关</a>
       <ul>
         <li><a href="#animation结构">Animation结构</a></li>
+        <li><a href="#animation细节">Animation细节</a></li>
       </ul>
     </li>
+    <li><a href="#最后">最后</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="10animation相关">10Animation相关</h1>
 <p>本文主要记录AnimationComponent相关内容。Animation是Unity最早最传统的动画处理方式。基本上只提供了动画播放相关接口。实际上其还有一部分接口可以用来做一些简单功能。另一方面，对于现在来说，有些简单的动画播放，例如动效部分，也可以简单的通过Animation来实现。</p>
 <p>不过另一方面是，Unity提供的最新动画系统是Animator，Animator的推广，以及支持比现在要广泛很多。所以两者都要多了解。</p>
-<p>因为并没有源码，这里主要记录各种接口，属性的功能。可以通过这些结构对Animation大概的模型有一定了解。</p>
+<p>因为并没有源码，这里主要记录各种接口，属性的功能。可以通过这些结构对Animation大概的模型有一定了解。方便后面进行封装。</p>
+<p>Animation的很多结构现在看上去官方不在支持。例如button的动画表现也是跟Animator绑定。也就是很多功能关联后续会更多的跟Animator关联在一起。但是Animator本身也有一定问题，可以详见Aniamtor部分。</p>
 <p>官方文档地址：
 <a class="link-markdown-demo-site" href="https://docs.unity3d.com/2022.3/Documentation/Manual/Animations.html" rel="noopener">https://docs.unity3d.com/2022.3/Documentation/Manual/Animations.html</a></p>
+<p>其中Scripting部分对经典Animation也有说明。</p>
 <h2 id="animation结构">Animation结构</h2>
 <center><img src="./p2.png"></center>
 <center><img src="./d1.png"></center>
 <p>其实简单来说，Animation组件存放了一个默认的Animation Clip以及一个Animation Clip列表。</p>
-<p>这些Clip被包进AnimationState这个类型对象中进行存放。同时，这个AnimationState对象，记录了当前Clip播放的状态。换而言之，就是当Animation播放对应动画的时候，播放时状态会直接记录在对应的AnimationState的实例上面。这个可以通过播放时输出AnimationState的属性来发现。</p>
+<p>这些Clip被包进AnimationState这个类型对象中进行存放。同时，这个AnimationState对象，记录了当前Clip播放的状态。</p>
+<p>换而言之，就是当Animation播放对应动画的时候，播放时状态会直接记录在对应的AnimationState的实例上面。这个可以通过播放时输出AnimationState的属性来发现。</p>
 <p>我觉得可以认为这每一个AnimationState就是一个记录Clip的轨道。对应Clip播放的时候所有关联数据以及状态就是直接记录在AnimationState轨道上的。</p>
 <p>下面主要记录Animation上的各种接口效果与含义。</p>
+<h2 id="animation细节">Animation细节</h2>
+<p>Animation播放的动画主要是Unity自身的.Anim资源。这种类型可以通过Animation Window创建并且key帧。Animator也可以使用.Anim资源，但是两者资源设置上有区别。Animation是经典，老的动画播放系统。为了区分，Animation播放的.Anim资源要勾选Leagacy选项，该选项需要在Debug模式下才能可见。</p>
+<center><img src="./p3.png"></center>
+<p>对于Animation的Play接口主要有三类</p>
+<ul>
+<li>Play</li>
+<li>CrossFade</li>
+<li>Blend</li>
+</ul>
+<p>最常用的播放接口。接口使用效果如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 默认播放接口，会直接播放Animation组件中Animation字段的Clip</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">bool</span> <span class="n">Play</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 播放指定名称的Clip</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">bool</span> <span class="n">Play</span><span class="p">(</span><span class="kt">string</span> <span class="n">animation</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 播放指定名称的Clip 同时控制此次播放的停止效果 主要是根据State的层Layer来划分</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// PlayMode.StopSameLayer：停止相同层的动画</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// PlayMode.StopAll：停止所有层上的动画</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">bool</span> <span class="n">Play</span><span class="p">(</span><span class="kt">string</span> <span class="n">animation</span><span class="p">,</span> <span class="p">[</span><span class="n">DefaultValue</span><span class="p">(</span><span class="s">&#34;PlayMode.StopSameLayer&#34;</span><span class="p">)]</span> <span class="n">PlayMode</span> <span class="n">mode</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 当Animation正在播放时，重头开时播放动画 如果没有正在播放，不会响应</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">Rewind</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>从表现来看。当调用Play接口播放时，其运行状态直接记录在对应的AnimationState中。</p>
+<ul>
+<li>重复调用播放同一个Clip，如果对应Clip在播放中，则不会打断进行再次播放。</li>
+<li>如果调用播放不同Clip，则根据mode会停止其他动画播放。而对于层的概念则是放在AnimationState的Layer字段上，可以运行时修改。</li>
+<li>当Layer不同的时候，则不同Clip会同时播放。每个Clip按照各自的进度进行。如果Clip控制不同对象，则各自生效。</li>
+<li>但是如果播放时，不同Layer的Clip控制同一个物体。只有高Layer的Clip动画效果会生效，但是两个动画的播放状态为都在进行中。相当于一个高Layer覆盖效果。如果希望两个效果可以叠加在一起可以看Blend。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 停止播放所有动画Clip</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">Stop</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 停止指定名字的动画Clip</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">Stop</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Stop接口会停止所有由该Animtion驱动的动画状态。指定名称则停止指定名称的Clip。</li>
+<li>对于被停止的动画，目标状态会保持在动画被停止时最后一帧的状态。</li>
+<li>对于被停止的动画，可以再度Play播放，此时动画状态会从Clip的第一帧重新开时。</li>
+</ul>
+<p><font size = 5> <strong>AnimationState</strong></font></p>
+<p>对于播放时的动画状态可以通过对应的AnimationState来获取。其可以通过Animation的如下接口获取。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Animation实现了迭代器，可以通过Foreach遍历，其遍历的就是AnimationState列表。</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 此外Animation实现了this接口使其可以类似数组一样直接通过string取得State。</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">AnimationState</span> <span class="k">this</span><span class="p">[</span><span class="kt">string</span> <span class="n">name</span><span class="p">]</span> <span class="p">=&gt;</span> <span class="n">GetState</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 内部则是GetState和GetStateAtIndex来获取State对象。</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>而对于一个AnimationState来说，其主要有一些状态字段。这些字段都是描述当前这一个动画的状态值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// AnimationState字段</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 该state动画是否正在播放中</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">extern</span> <span class="kt">bool</span> <span class="n">enabled</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 播放的权重，会在混合的时候用到</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">extern</span> <span class="kt">float</span> <span class="n">weight</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 播放的循环模式 </span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Once--只播放一次 Loop--循环播放 Pingpong--往复播放 Default--使用Clip上默认指定的播放模式</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">extern</span> <span class="n">WrapMode</span> <span class="n">wrapMode</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 目前已经播放的时间 相当于一个动画的进度 这个值会收到Speed影响</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">extern</span> <span class="kt">float</span> <span class="n">time</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 归一化的播放时间 相当于time/length 进度归一化到0-1上</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">extern</span> <span class="kt">float</span> <span class="n">normalizedTime</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 动画的播放速度 1为正常播放速度</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">extern</span> <span class="kt">float</span> <span class="n">speed</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 动画的总时间长度</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">extern</span> <span class="kt">float</span> <span class="n">length</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 动画的总时间长度</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">extern</span> <span class="kt">int</span> <span class="n">layer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 动画的混合方式 Blend--按权重混合 Additive--叠加方式</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">extern</span> <span class="n">AnimationBlendMode</span> <span class="n">blendMode</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以通过修改State对象的属性值来控制动画播放的各种运行时效果。而对于CorssFade，Blend来说AnimationState状态则与其混合效果直接关联。</p>
+<p>CrossFade相当于时间维度混合，从动画ClipA过渡到动画ClipB。而Blend则相当于状态空间混合，将动画ClipA和动画ClipB叠加在一起。</p>
+<p><font size = 5> <strong>CrossFade</strong></font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 从当前动画状态向目标动画过度 默认时间0.3</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">CrossFade</span><span class="p">(</span><span class="kt">string</span> <span class="n">animation</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 带有过度时间的动画混合</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">CrossFade</span><span class="p">(</span><span class="kt">string</span> <span class="n">animation</span><span class="p">,</span> <span class="kt">float</span> <span class="n">fadeLength</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 例如这样一段代码，会在RedImageAnim播放的1s后逐步向BlueImageAnim过渡</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 此时会发现两个动画的Weight在0.3s内逐步变化。RedImageAnim从1到0，BlueImageAnim从0到1</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">IEnumerator</span> <span class="n">StartCrossFade</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">target_anim</span><span class="p">.</span><span class="n">Play</span><span class="p">(</span><span class="s">&#34;RedImageAnim&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">yield</span> <span class="k">return</span> <span class="k">new</span> <span class="n">WaitForSeconds</span><span class="p">(</span><span class="m">1f</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">target_anim</span><span class="p">.</span><span class="n">CrossFade</span><span class="p">(</span><span class="s">&#34;BlueImageAnim&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>CorssFade只会将相同Layer的动画向目标动画过渡。换句话说，如果是不同Layer的动画会保持播放。</li>
+</ul>
+<p><font size = 5> <strong>Blend</strong></font></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 混合播放目标动画，对于单个动画相当于调用Play，实际调用下面接口并且权重设置为1</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">Blend</span><span class="p">(</span><span class="kt">string</span> <span class="n">animation</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 带有权重的混合播放接口 targetWeight可以设置目标权重</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">Blend</span><span class="p">(</span><span class="kt">string</span> <span class="n">animation</span><span class="p">,</span> <span class="kt">float</span> <span class="n">targetWeight</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 带有过度时间的动画混合</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">extern</span> <span class="k">void</span> <span class="n">Blend</span><span class="p">(</span><span class="kt">string</span> <span class="n">animation</span><span class="p">,</span> <span class="p">[</span><span class="n">DefaultValue</span><span class="p">(</span><span class="s">&#34;1.0F&#34;</span><span class="p">)]</span> <span class="kt">float</span> <span class="n">targetWeight</span><span class="p">,</span> <span class="p">[</span><span class="n">DefaultValue</span><span class="p">(</span><span class="s">&#34;0.3F&#34;</span><span class="p">)]</span> <span class="kt">float</span> <span class="n">fadeLength</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 混合效果收到AnimationBlendMode影响</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// AnimationBlendMode.Blend--按权重比例混合动画效果</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// AnimationBlendMode.Additive--动画效果以叠加方式作用</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Blend可以同时播放同一Layer上的多个动画。所有参于动画混合的权重，在作用前都会被归一化。例如两个动画播放权重都为1，实际上相当于某个动画贡献0.5。播放效果还受到AnimationBlendMode参数影响。</li>
+</ul>
+<p><strong>AnimationBlendMode.Blend</strong></p>
+<p>权重比例混合。实际参于混合动画的所有效果会按照Weight比例混合。相当于</p>
+$$E_f=\sum w_iE_i$$
+<p>其中$E_i$相当于每个动画的左右效果，可能是位移，颜色等等。最终效果则是$E_f$。例如两个动画$A,B$。$A$向右移动200，$B$向上移动200。最终混合后会变成向右移动100向上移动100。需要注意的是最后动画结束时，会使得整个动画结束位置相当于各个动画均匀混合。</p>
+<p><strong>AnimationBlendMode.Additive</strong></p>
+<p>经过我大量测试，对于Unity创建的Anim资源，Additive模式似乎并不生效。从文档描述来看，应该是可以将目标动画直接以增量的方式叠加到当前动画状态上来执行。</p>
+<p>可以AnimationClip资源debug模式中看到，设置当前Clip相对动画。即AdditiveReferencePoseClip以及HasAdditiveReferencePose字段。但是这些设置只针对Animation的叠加模式适用。</p>
+<h1 id="最后">最后</h1>
+<p>作为Unity最经典，也是已经被废弃的动画播放系统。可以看到，Animtion实际只提供了一个Clip播放的功能。可以基于此控件，上面再搭建各种状态混合等结构。但是该系统依然确实很多动画播放功能。用来做简单播放可以，但是想要强大功能还是要另辟蹊径。</p>
+<p>Unity后续推出了Animator系统。该系统功能更完善，虽然任然有小的问题，但是该系统可以方便制作更多效果。此外后续Unity还推出了Playable结构，相当于暴漏Animator一些底层API可以做到更加管线化的播放定制。后面以Animator基础之上再添加功能更好。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
