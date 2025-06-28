@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>01UnityJobSystem - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="01UnityJobSystem" />
+<meta property="og:description" content="UnityJobSystem UnityJobSystem是Unity官方推出的一个多线程计算系统结构。可以将一些多线程计算任务分发的子线程，即Unity中的Job中取" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E8%BF%9B%E9%98%B6/01UnityJobSystem/" /><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="一个小博客" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="01UnityJobSystem"/>
+<meta name="twitter:description" content="UnityJobSystem UnityJobSystem是Unity官方推出的一个多线程计算系统结构。可以将一些多线程计算任务分发的子线程，即Unity中的Job中取"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E8%BF%9B%E9%98%B6/01UnityJobSystem/" /><link rel="prev" href="http://azurezhc.github.io/posts/IDE%E7%9B%B8%E5%85%B3/" /><link rel="next" href="http://azurezhc.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/04CSharp%E9%AB%98%E7%BA%A7%E7%BB%93%E6%9E%84/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "01UnityJobSystem",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E8%BF%9B%E9%98%B6\/01UnityJobSystem\/"
+        },"genre": "posts","wordcount":  5168 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E8%BF%9B%E9%98%B6\/01UnityJobSystem\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">01UnityJobSystem</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5168 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#unityjobsystem">UnityJobSystem</a>
+      <ul>
+        <li><a href="#jobsystem接口概述">JobSystem接口概述</a></li>
+        <li><a href="#简单的求和拆分运算">简单的求和拆分运算</a></li>
+        <li><a href="#补充信息">补充信息</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="unityjobsystem">UnityJobSystem</h1>
+<p>UnityJobSystem是Unity官方推出的一个多线程计算系统结构。可以将一些多线程计算任务分发的子线程，即Unity中的Job中取运算。提高运算效率。这一部分实际上跟很多变成语言中的多线程库，或者并行计算模型不谋而合。可以通过JobSystem来看并行计算的一些东西。</p>
+<p>而在Catlike大佬的基础教程中(<a class="link-markdown-demo-site" href="https://catlikecoding.com/unity/tutorials/basics/jobs/" rel="noopener">https://catlikecoding.com/unity/tutorials/basics/jobs/</a>)也提及了JobSystem的使用。用来做更新分形(Fractal)计算中批量更新物体位置。</p>
+<p>这里单独提出JobSystem并给予一些简单的并行计算任务来研究JobSystem。实际上JobSystem的背后是并行计算理论。</p>
+<h2 id="jobsystem接口概述">JobSystem接口概述</h2>
+<p>UnityJobSystem官方文档[https://docs.unity3d.com/Manual/job-system.html]。官方文档对JobSystem有个比较详细的叙述。</p>
+<p>要使用Unity的JobSystem非常简单。JobSystem提供了一组接口，只要自定义一个Struct并且实现对应接口便可以使用JobSystem将计算任务分发到Job线程中去进行。大部分接口都只需要实现一个<code>Execute</code>函数即可。该函数即JobSystem中子线程所调用运行的接口函数。</p>
+<p>这里需要注意几点：</p>
+<ul>
+<li>JobSystem分配线程方式由JobSystem决定。它有可能分配到主线程，也可能分配到系统内的子线程上面。所以说子线程并不准确，简单称之为Job线程。</li>
+<li>JobSystem在运行的时候，会将实现的Struct实例数据复制一份，放到各自Job线程中去运行。</li>
+</ul>
+<p>JobSystem提供的接口主要为以下四类：</p>
+<ul>
+<li>IJob：用于在一个Job线程上跑一个单独计算任务。</li>
+<li>IJobParallelFor：用于并行的跑一个计算任务。每个线程并行的运行，并且为了保证共享数据，在接口中提供了一个int参数起到索引作用。</li>
+<li>IJobFor：跟IJobParallelFor接口一样。但是允许非并行运行。即可以前后有一定任务依赖的方式运行，这种方式通过<code>Schedule</code>返回的JobHandle来实现。</li>
+<li>IJobParallelForTransform：跟IJobParallelFor接口一样。但是接口中会多一个Transform参数，用来计算Transform数据。</li>
+</ul>
+<p>运行一个Job大致可以描述为以下流程（以IJob为例）：</p>
+<ul>
+<li>创建Job：实现一个实现了IJob的Struct结构。</li>
+<li>规划Job：在对应Struct实例上面调用Schedule函数来分配计算任务。</li>
+<li>等待Job完成：Job会由JobSystem安排运行。其可能立即完成，也可能持续一段时间。JobSystem提供Complete函数，来确保对应的Job已经完成，可以由主线程来读取数据。</li>
+</ul>
+<p>前面也提到过用于跑Job的Struct会被复制到各个子线程上去。对于各线程读取数据来说，还无大碍。但是对于最后数据汇总的部分，其一定会有写入共享内存的问题。Unity为此提供了一套线程安全的数据类型，即NativeContainer类型。使用该类型，相当于让子线程访问跟主线程共享的一块内存区域，而不是一份copy。这样才能方便实现最后数据汇总流程。</p>
+<p>对于使用NativeContainer来说由两点需要注意的。</p>
+<ul>
+<li>读写权限</li>
+</ul>
+<p>对于一个默认实现的NativeContainer容器来说，子线程同时拥有读写权限。这样会稍微降低效率，可以通过Attribute标记字段来约定只读或只写来提高性能。Attribute对应如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="na">[ReadOnly]</span> <span class="c1">// 表示这个字段容器数据 子线程只用来读取</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">NativeArray</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">input</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">[WriteOnly]</span> <span class="c1">// 表示这个字段容器数据 子线程只用来写入</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">NativeArray</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">output</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>内存分配</li>
+</ul>
+<p>NativeContainer容器类型的内存都分配在非托管堆上面。所以这部分内存需要程序员手动控制释放，否则会造成内存泄漏。为了方便内存控制，unity对其实例化的参数中添加了生命周期控制参数：</p>
+<ul>
+<li>Allocator.Temp：最快分配内存方式。这个内存的生命周期为一帧或更短。不可以将该方式分配的内存实例赋值给实现Job的Struct字段。</li>
+<li>Allocator.TempJob：略慢于Temp但快于Persistent的方式。该内存的生命周期为四帧。重要提示：必须在四帧以内用Dispose接口释放该内存，否则会输出一个Warning。</li>
+<li>Allocator.Persistent：最慢的分配方式。但是可以按照你的需要存活任意时长，在不需要的时候需要用Dispose来释放该内存区域，否则会泄露。该方式实际上是直接调用<code>malloc</code>分配的一个包装。。</li>
+</ul>
+<p>这些接口的使用会在下面的例子中详细说明：</p>
+<h2 id="简单的求和拆分运算">简单的求和拆分运算</h2>
+<p>下面简单看一个例子来看JobSystem怎么运行的。这里以一个简单的求和任务为例子。在主线程写一个简单的大整数求和可以如下进行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">int</span> <span class="n">total_count</span> <span class="p">=</span> <span class="m">100000000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 给定一个数字，从0开时到该数字所有数字求和</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">SimpleSumNumber</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">total_coun</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span> <span class="p">+=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当数字很大的时候，这个计算会消耗很多时间。可以通过Unity的Profiler或者C#的Stopwatch来查看这段允运行的耗时。</p>
+<p>在我的电脑上这一段耗时如下图</p>
+<center><img src="./p1.png"></center>
+<p>可以看到耗时大概237.64ms。</p>
+<p>先用单个的Job来将该段运行放到Job线程中去。这个按照前面可以通过如下方式实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 实现IJob接口的Struct 承载计算要用到的数据和最后计算结果</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 因为计算主要用到一个只读的目标数字所以需要一个total_count字段</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 而最后的结果则需要返回到主线程所以使用一个NativeArray类型来传递</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">struct</span> <span class="nc">SumNumberJob</span> <span class="p">:</span> <span class="n">IJob</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">long</span> <span class="n">total_count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 因为最终结果只用来写入 标记WriteOnly</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// NativeArray则是一个数组容器结构，所以最后写入的时候默认第一位为结果</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [WriteOnly]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">NativeArray</span><span class="p">&lt;</span><span class="kt">long</span><span class="p">&gt;</span> <span class="n">result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Execute</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">long</span> <span class="n">temp</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">total_count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">temp</span> <span class="p">+=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="n">temp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 调度启用JobSystem函数</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">ScheduleSumNumerJob</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 实例化用于计算的JobStruct，result则实例化一个长度为1的NativeArray</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">job_struct</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SumNumberJob</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">total_count</span> <span class="p">=</span> <span class="n">total_count</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">NativeArray</span><span class="p">&lt;</span><span class="kt">long</span><span class="p">&gt;(</span><span class="m">1</span><span class="p">,</span> <span class="n">Allocator</span><span class="p">.</span><span class="n">Persistent</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 调用Schedule函数来让JobSystem规划该Job的计算，该函数会返回一个JobHandle对象。</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// JobHandle对象是一个Struct，用来记录Job的运行状态</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">job_handle</span> <span class="p">=</span> <span class="n">job_struct</span><span class="p">.</span><span class="n">Schedule</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// JobHandle有一个Complete函数。调用该函数，会阻塞当前线程。确保目标Job计算完成。相当于强制当前线程去等待目标线程。如果目标已经计算完毕，则会立即返回</span>
+</span></span><span class="line"><span class="cl">    <span class="n">job_handle</span><span class="p">.</span><span class="n">Complete</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 最后从Job共享内存部分取出计算数据</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="p">=</span> <span class="n">job_struct</span><span class="p">.</span><span class="n">result</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 因为NativeArray用的Persistent分配方式，需要手动Dispose来释放该内存。</span>
+</span></span><span class="line"><span class="cl">    <span class="n">job_struct</span><span class="p">.</span><span class="n">result</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>该实现实际上会在当帧内完成计算。因为在主线程函数<code>ScheduleSumNumerJob</code>中直接调用了<code>Complete</code>接口。这个会迫使等待Job计算完成。运行该函数，打开Profiler可以看到如下图。</p>
+<center><img src="./p2.png"></center>
+<p>我们可以看到这个Job是直接在主线程上运行了。<code>Complete</code>函数里面直接调用了JobStruct上的Execute函数来执行。</p>
+<p>现在我们考虑将这个任务分解成并行任务。这个任务实际上属于易并行任务一类（这个可以看并行计算相关书籍）。我们将任务划分成$n$个区间，每个区间$[S_i,S_{i+1}]$内的计算交给一个Job线程来运行。可以看到多个线程之间的计算互不影响，可并发执行。</p>
+<p>只要在上面的Job流程略加改造即可。在原有的JobStruct上添加区间范围，每个Job只是计数对应区间。在规划的时候创建多个Job来执行。最后汇总所有结果。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">struct</span> <span class="nc">SumNumberJob</span> <span class="p">:</span> <span class="n">IJob</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">long</span> <span class="n">from_num</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">long</span> <span class="n">to_num</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [WriteOnly]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">NativeArray</span><span class="p">&lt;</span><span class="kt">long</span><span class="p">&gt;</span> <span class="n">result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 计数改为区间范围</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Execute</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">long</span> <span class="n">temp</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="p">=</span> <span class="n">from_num</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">to_num</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">temp</span> <span class="p">+=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="n">temp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Job多线程规划的时候 则for循环一次启动多个Job 最后等到所有Job完成之后把每个结果累加起来即可</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">ScheduleSumNumerJob</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">job_count</span> <span class="p">=</span> <span class="m">8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">SumNumberJob</span><span class="p">[]</span> <span class="n">job_struct_array</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SumNumberJob</span><span class="p">[</span><span class="n">job_count</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NativeArray</span><span class="p">&lt;</span><span class="n">JobHandle</span><span class="p">&gt;</span> <span class="n">job_handle_array</span> <span class="p">=</span> <span class="k">new</span> <span class="n">NativeArray</span><span class="p">&lt;</span><span class="n">JobHandle</span><span class="p">&gt;(</span><span class="n">job_count</span><span class="p">,</span> <span class="n">Allocator</span><span class="p">.</span><span class="n">Persistent</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">job_count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">job_struct_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SumNumberJob</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">from_num</span> <span class="p">=</span> <span class="n">total_count</span> <span class="p">*</span> <span class="n">i</span> <span class="p">/</span> <span class="n">job_count</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">to_num</span> <span class="p">=</span> <span class="n">total_count</span> <span class="p">*</span> <span class="p">(</span><span class="n">i</span> <span class="p">+</span> <span class="m">1</span><span class="p">)</span> <span class="p">/</span> <span class="n">job_count</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">NativeArray</span><span class="p">&lt;</span><span class="kt">long</span><span class="p">&gt;(</span><span class="m">1</span><span class="p">,</span> <span class="n">Allocator</span><span class="p">.</span><span class="n">Persistent</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="n">job_handle_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="n">job_struct_array</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">Schedule</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 该函数相当于将所有的JobHandle合并为一个。调用all_handle的Complete相当于要求数组中所有JobHandle都完成。</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">all_handle</span> <span class="p">=</span> <span class="n">JobHandle</span><span class="p">.</span><span class="n">CombineDependencies</span><span class="p">(</span><span class="n">job_handle_array</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">all_handle</span><span class="p">.</span><span class="n">Complete</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">job_count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span> <span class="p">+=</span> <span class="n">job_struct_array</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">result</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">job_struct_array</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">result</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">job_handle_array</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>运行之后Profiler效果如下</p>
+<center><img src="./p3.png"></center>
+<p>可以明显看到，整个计算的时长缩短了。只用了约48ms左右。同时可以看到以下几个情况。</p>
+<ul>
+<li>Job栏中的Worker不再是Idle状态，而是在运行对应的SumNumberJob函数。</li>
+<li>并且Worker的个数与我们规划的Job个数一致。</li>
+<li>主线程中有个明显的WaitForJobGroup流程，在等待Job完成其工作。</li>
+</ul>
+<p>下面重新用并行接口版的<code>IJobFor</code>来实现该效果。其代码如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 改为实现IJobfor接口 这次只会实例化一个Job实例</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 所以传入数据部分改为提前传入划分好的区间结构 根据Execute传入的index来调整使用的计数区间</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">struct</span> <span class="nc">SumNumberParallelJob</span> <span class="p">:</span> <span class="n">IJobFor</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [Unity.Collections.ReadOnly]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">NativeArray</span><span class="p">&lt;</span><span class="kt">long</span><span class="p">&gt;</span> <span class="n">input</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [Unity.Collections.WriteOnly]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">NativeArray</span><span class="p">&lt;</span><span class="kt">long</span><span class="p">&gt;</span> <span class="n">result</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// IJobFor接口的Execute带有一个参数index 该index相当于一个标识符虽然数据一致，但每个线程计算有所不同区分</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// index跟Schedule中参数有关，规划了多少个会传入几</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">Execute</span><span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">long</span> <span class="n">temp</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">from_num</span> <span class="p">=</span> <span class="n">input</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">to_num</span> <span class="p">=</span> <span class="n">input</span><span class="p">[</span><span class="n">index</span> <span class="p">+</span> <span class="m">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="p">=</span> <span class="n">from_num</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">to_num</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">temp</span> <span class="p">+=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="p">=</span> <span class="n">temp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 使用IJobFor来并行计算任务</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">ScheduleSumNumerParallelJob</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">job_count</span> <span class="p">=</span> <span class="m">8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 实例化一个数据结构 该实例只有一份，会copy到各个运作Job线程上去</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">job_struct</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SumNumberParallelJob</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">input</span> <span class="p">=</span> <span class="k">new</span> <span class="n">NativeArray</span><span class="p">&lt;</span><span class="kt">long</span><span class="p">&gt;(</span><span class="n">job_count</span> <span class="p">+</span> <span class="m">1</span><span class="p">,</span> <span class="n">Allocator</span><span class="p">.</span><span class="n">Persistent</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">NativeArray</span><span class="p">&lt;</span><span class="kt">long</span><span class="p">&gt;(</span><span class="n">job_count</span><span class="p">,</span> <span class="n">Allocator</span><span class="p">.</span><span class="n">Persistent</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">job_count</span> <span class="p">+</span> <span class="m">1</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">job_struct</span><span class="p">.</span><span class="n">input</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="n">total_count</span> <span class="p">*</span> <span class="n">i</span> <span class="p">/</span> <span class="n">job_count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 并行规划接口调用ScheduleParallel</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 第一个参数相当于调用Execute次数，会在同一个或不同线程上调用Execute共job_count次数</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 第二个参数官方称之为workstealing，即工作偷取数量。即每个线程相当于来拿取任务个数。</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 例如为1，表示每个线程空闲时会尝试获取任务，每次只会拿去一个任务，其只会跑一次Execute函数，传入一个index。</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 等到结束之后，其会尝试再来偷取对应数量的任务个数。</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">job_handle</span> <span class="p">=</span> <span class="n">job_struct</span><span class="p">.</span><span class="n">ScheduleParallel</span><span class="p">(</span><span class="n">job_count</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="k">default</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">job_handle</span><span class="p">.</span><span class="n">Complete</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">job_count</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span> <span class="p">+=</span> <span class="n">job_struct</span><span class="p">.</span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">job_struct</span><span class="p">.</span><span class="n">input</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">job_struct</span><span class="p">.</span><span class="n">result</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>关于SchedulleParallel运行官网有个详细的图来描述，可见
+<a class="link-markdown-demo-site" href="https://docs.unity3d.com/Manual/job-system-parallel-for-jobs.html" rel="noopener">https://docs.unity3d.com/Manual/job-system-parallel-for-jobs.html</a></p>
+<p>运行之后，Profiler效果如下</p>
+<center><img src="./p4.png"></center>
+<p>可以看到计算效果跟前面相差无几。实际上并行变成有着效率提升的上限。也可以明显看到，一个计算划分为原来的$1/8$之后计算时间并没有缩减为$1/8$。这是因为调度线程本身就有性能消耗。所以即便再多的线程也有一个提升的上限。当我把我的job个数拉满到16之后，占满所有核，计算大概再30ms左右。</p>
+<h2 id="补充信息">补充信息</h2>
+<ul>
+<li>Job依赖
+前面有提到Job可以建立前后计算的依赖关系。这种主要为计算依赖服务。这个方式通过JobHandle来实现。在每个Schedule方法中实际都可以传入一个JobHandle对象。传入表示，当前规划Job依赖目标Job执行完成。其大致框架如下</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">JobDependency</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//...</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JobHandle</span> <span class="n">first_job_handle</span> <span class="p">=</span> <span class="n">job_data</span><span class="p">.</span><span class="n">Schedule</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 这个表示第二个Job以来第一个完成。 后续只用关系第二个Job的Complete即可</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JobHandle</span> <span class="n">second_job_handle</span> <span class="p">=</span> <span class="n">second_job_data</span><span class="p">.</span><span class="n">Schedule</span><span class="p">(</span><span class="n">first_job_handle</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Burst编译
+实际上JobSystem还有着配套的Burst编译系统，可以通过Attribute标记Burst编译来优化job的运行效果。Burst根据官方来看，试了LLVM编译来优化运行，可以提高并行运行效率。要使用其按如下标记即可</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="na">[BurstCompile]</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">struct</span> <span class="nc">SumNumberParallelJob</span> <span class="p">:</span> <span class="n">IJobFor</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用了Burst编译优化后，可以明显发现上面的计算任务提升很多。这可能跟把这个求和运算直接优化了有关。也有说，测试来看Burst编译优化不如il2cpp的直接转C++运行方式快。</p>
+<p>在我的机器上编译后运行耗时大概只有7ms。profiler如下</p>
+<center><img src="./p5.png"></center>
+<ul>
+<li>运行在主线程</li>
+</ul>
+<p>Job的规划接口，即Schedule接口。都是放在扩展方法里面的。其处理基础的Schedule接口外，还有如下几类接口</p>
+<ul>
+<li>Run：直接在当前线程上运行。</li>
+<li>xxByRef：当传递JobStruct不是值拷贝，而是引用方式。这样对于较大的数据快来说会比Schedule略快一些。</li>
+</ul>
+<p>这些接口在做某些类型并行计算时会非常有用。例如我在开启的Job线程中再开启一些Job计算。</p>
+<h1 id="总结">总结</h1>
+<p>在我看来，JobSystem其实有点类似于MPI那种</p>
+<p>还有其余一些并行计算可以看Catlike分形运动那一部分，即上面那篇文章。对此我也记录了一篇。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
