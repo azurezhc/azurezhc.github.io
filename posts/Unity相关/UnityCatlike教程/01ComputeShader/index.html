@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>01ComputeShader - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="01ComputeShader" />
+<meta property="og:description" content="ComputeShader 对应教程网址 https://catlikecoding.com/unity/tutorials/basics/compute-shaders/ 本篇主要用ComputeShader来进行大批量物体渲染。在之前的教程中大佬用一个个Cube来当一个像素点（或者说体素点）来" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/01ComputeShader/" /><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="一个小博客" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="01ComputeShader"/>
+<meta name="twitter:description" content="ComputeShader 对应教程网址 https://catlikecoding.com/unity/tutorials/basics/compute-shaders/ 本篇主要用ComputeShader来进行大批量物体渲染。在之前的教程中大佬用一个个Cube来当一个像素点（或者说体素点）来"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/01ComputeShader/" /><link rel="prev" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/02Fractal/" /><link rel="next" href="http://azurezhc.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3/CSharp/04CSharp%E9%AB%98%E7%BA%A7%E7%BB%93%E6%9E%84/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "01ComputeShader",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/UnityCatlike%E6%95%99%E7%A8%8B\/01ComputeShader\/"
+        },"genre": "posts","wordcount":  4676 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/UnityCatlike%E6%95%99%E7%A8%8B\/01ComputeShader\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">01ComputeShader</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4676 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;10 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#computeshader">ComputeShader</a>
+      <ul>
+        <li><a href="#使用computeshader">使用ComputeShader</a></li>
+        <li><a href="#shader渲染">Shader渲染</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="computeshader">ComputeShader</h1>
+<p>对应教程网址</p>
+<p><a class="link-markdown-demo-site" href="https://catlikecoding.com/unity/tutorials/basics/compute-shaders/" rel="noopener">https://catlikecoding.com/unity/tutorials/basics/compute-shaders/</a></p>
+<p>本篇主要用ComputeShader来进行大批量物体渲染。在之前的教程中大佬用一个个Cube来当一个像素点（或者说体素点）来进行三维程序运动模拟。基于Unity自带的Update接口方式，实现很多程序化造型和运动。在面对大量物体运动更新，渲染的时候，这种方式非常慢。</p>
+<p>在这种程序化造型运动过程中，所有的物体运动是相对独立的，所以很适合并行化运算。这里所讲述的就是基于ComputeShader，用显卡来并行计算每个物体的位置，同时直接渲染出对应物体的方式。</p>
+<p>关于ComputerShader的原理可以见很多图形学书籍，例如</p>
+<p>【Unity着色器圣经】[https://zhuanlan.zhihu.com/p/645676077]
+【UnityShaderBible与ComputeShader学习】[https://zhuanlan.zhihu.com/p/647520144]
+【ComputeShader官方文档】[https://docs.unity3d.com/Manual/class-ComputeShader.html]</p>
+<p>简单来说，ComputeShader允许使用GPU的计算单元来批量并行的进行相同计算。GPU作为SIMD并行计算结构，会将很多计算单元划分成组的形式，以SIMD形式并行计算。这样一组被称之为Warp，通常来说NVDIA显卡是32线程为一个Warp，ATI显卡是64线程为一个Warp。</p>
+<p>目标是用大量Cube模拟一个Wave波形图，这里的思路大致如下图:</p>
+<center><img src="./d1.drawio.png"></center>
+<h2 id="使用computeshader">使用ComputeShader</h2>
+<p>使用ComputeShader来进行计算工作，只需要在Unity中右键&ndash;Create&ndash;Shader&ndash;ComputeShader即可创建一个ComputeShader文件。其中最关键的部分就是定义每个计算单元上的计算函数。这个可以通过如下方式来声明</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-HLSL" data-lang="HLSL"><span class="line"><span class="cl"><span class="c1">// 定义核心计算函数 为下面的FunctionKernel函数</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#pragma kernel FunctionKernel</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 每一组中计算矩阵定义，相当于一组以8*8的方式运行,可以参看下面说明</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nd">numthreads</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">FunctionKernel</span><span class="p">(</span><span class="kt">uint3</span> <span class="n">id</span> <span class="o">:</span> <span class="nd">SV_DispatchThreadID</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>关于计算函数的参数语义与Attribute语义可以参考下图：</p>
+<center><img src="./p1.png"></center>
+<p>(来自于D3D11官网[https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/sm5-attributes-numthreads])</p>
+<p>这个是D3D11中Dispatch接口运作的解释。</p>
+<ul>
+<li>Dispatch函数接收三个参数，以三维的形式表示要发出的线程组的个数。每个线程组以三元组标记。</li>
+<li>每一个线程组也以三维形式划分，其大小用numthread来表示。其中每一个线程也以三元组标记。</li>
+<li><code>SV_GroupThreadID</code>表示每一个线程组中，线程的位置。</li>
+<li><code>SV_GroupID</code>表示线程组的位置标记。</li>
+<li><code>SV_DispatchThreadID</code>相当于全局情况下，当前线程的位置，可以通过
+$SV_{GroupID}*numthreads+SV_{GroupThreadID}$计算出一个三元组来标记。相当于将所有线程铺平后线程的位置。</li>
+</ul>
+<p>图中示例表示在<code>numthreads(10,8,3)</code>情况下，调用<code>Dispatch(5,3,2)</code>时的运行情况。<code>Dispatch(5,3,2)</code>相当于发起$5*3*2=30$个线程组。其中$(2,1,0)$标记的线程组中的$(7,5,0)$号线程，其对应的<code>SV_DispatchThreadID</code>即$(27,12,0)$。此即上面ComputeShader计算函数中传入的参数id的值。</p>
+<p>计算Wave波形图，相当于给定一个二维的位置$(i,j)$计算出对应的三维控件位置$(x(i,j),y(i,j),z(i,j))$。所以这里传入的<code>uint3 id : SV_DispatchThreadID</code>刚好可以作为二维的位置标记。</p>
+<p>所以这里ComputeShader中的Wave的波形计算可以由如下方式计算</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-HLSL" data-lang="HLSL"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 外部可设置参数 每一个Cube大小（图像步长） 累计时间</span>
+</span></span><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">_step</span><span class="p">,</span> <span class="n">_time</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">RWStructuredBuffer</span><span class="o">&lt;</span><span class="kt">float3</span><span class="o">&gt;</span> <span class="n">_position</span><span class="p">;</span><span class="c1">//一个可读可写的缓冲区，用于传递出计算后位置的数组</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 将线程组标记(i,j)映射到真实空间位置(-1,-1)到(1,1)矩形内</span>
+</span></span><span class="line"><span class="cl"><span class="kt">float2</span> <span class="n">GetUV</span><span class="p">(</span><span class="kt">uint3</span> <span class="n">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">id</span><span class="p">.</span><span class="n">xy</span> <span class="o">*</span> <span class="n">_step</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Wave计算函数，给如二维位置 程序造型给出随时间变化的波形效果 即y轴的sin波动</span>
+</span></span><span class="line"><span class="cl"><span class="kt">float3</span> <span class="n">Wave</span><span class="p">(</span><span class="kt">float</span> <span class="n">u</span><span class="p">,</span> <span class="kt">float</span> <span class="n">v</span><span class="p">,</span> <span class="kt">float</span> <span class="n">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float3</span> <span class="n">p</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">u</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">PI</span> <span class="o">*</span> <span class="p">(</span><span class="n">u</span> <span class="o">+</span> <span class="n">v</span> <span class="o">+</span> <span class="n">t</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 将计算出的3维位置 放入位置缓存数组中 传递给外面做后续计算</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">SetPosition</span><span class="p">(</span><span class="kt">uint3</span> <span class="n">id</span><span class="p">,</span> <span class="kt">float3</span> <span class="n">position</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">id</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">_resolution</span> <span class="o">&amp;&amp;</span> <span class="n">id</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">_resolution</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_position</span><span class="p">[</span><span class="n">id</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">id</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">_resolution</span><span class="p">]</span> <span class="o">=</span> <span class="n">position</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nd">numthreads</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">FunctionKernel</span><span class="p">(</span><span class="kt">uint3</span> <span class="n">id</span> <span class="o">:</span> <span class="nd">SV_DispatchThreadID</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float2</span> <span class="n">uv</span> <span class="o">=</span> <span class="n">GetUV</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SetPosition</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">Wave</span><span class="p">(</span><span class="n">uv</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">uv</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">_time</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>现在来看ComputeShader中计算就非常明确。以线程ID标记当前位置，然后用波函数计算出位置并传递出去。</p>
+<p>而外部脚步要使用这个ComputeShader来进行计算，则是需要声明ComputeShader变量赋值对应Shader并调用Dispatch来执行。具体来说如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">MonoComputeShader</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//申明Computershader变量，后面由Inspector上面赋值对应ComputeShader</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ComputeShader</span> <span class="n">compute_shader</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 用于传递位置数组的buff</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ComputeBuffer</span> <span class="n">position_buff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Shdaer要传递对应参数名称 需要把名称转换为对应ID来使用</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">position_id</span> <span class="p">=</span> <span class="n">Shader</span><span class="p">.</span><span class="n">PropertyToID</span><span class="p">(</span><span class="s">&#34;_position&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">resolution_id</span> <span class="p">=</span> <span class="n">Shader</span><span class="p">.</span><span class="n">PropertyToID</span><span class="p">(</span><span class="s">&#34;_resolution&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">step_id</span> <span class="p">=</span> <span class="n">Shader</span><span class="p">.</span><span class="n">PropertyToID</span><span class="p">(</span><span class="s">&#34;_step&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">time_id</span> <span class="p">=</span> <span class="n">Shader</span><span class="p">.</span><span class="n">PropertyToID</span><span class="p">(</span><span class="s">&#34;_time&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">OnEnable</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//初始化位置数组的大小 大小为计算的矩形空间大小 </span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//ComputeBuffer可以存储任意类型信息，只关心分配大小，其以每个元素使用byte数计数。</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//因为每个元素要存储三个float位置信息，所以使用3*4byte大小</span>
+</span></span><span class="line"><span class="cl">        <span class="n">position_buff</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ComputeBuffer</span><span class="p">(</span><span class="n">resolution</span> <span class="p">*</span> <span class="n">resolution</span><span class="p">,</span> <span class="m">3</span> <span class="p">*</span> <span class="m">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">UpdateFunctionOnGPU</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">float</span> <span class="n">step</span> <span class="p">=</span> <span class="m">2f</span> <span class="p">/</span> <span class="n">resolution</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 设置ComputeShader中对应的参数数值</span>
+</span></span><span class="line"><span class="cl">        <span class="n">compute_shader</span><span class="p">.</span><span class="n">SetInt</span><span class="p">(</span><span class="n">resolution_id</span><span class="p">,</span> <span class="n">resolution</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">compute_shader</span><span class="p">.</span><span class="n">SetFloat</span><span class="p">(</span><span class="n">step_id</span><span class="p">,</span> <span class="n">step</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">compute_shader</span><span class="p">.</span><span class="n">SetFloat</span><span class="p">(</span><span class="n">time_id</span><span class="p">,</span> <span class="n">Time</span><span class="p">.</span><span class="n">time</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//设置编号0为KernelFunction使用关联的</span>
+</span></span><span class="line"><span class="cl">        <span class="n">compute_shader</span><span class="p">.</span><span class="n">SetBuffer</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">position_id</span><span class="p">,</span> <span class="n">position_buff</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//Dispatch启动computshader </span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//第一个为目标编号的KernelFunction 后面三个参数对应启动的线程组个数</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">groups</span> <span class="p">=</span> <span class="n">Mathf</span><span class="p">.</span><span class="n">CeilToInt</span><span class="p">(</span><span class="n">resolution</span> <span class="p">/</span> <span class="m">8</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">compute_shader</span><span class="p">.</span><span class="n">Dispatch</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="m">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后将Mono脚本挂在一个Gameobject上，将对应的ComputeShader挂在上面即可。</p>
+<center><img src="./p2.png"></center>
+<p>这个时候<code>position_buff</code>中已经存放了所有计算好的位置信息，下面要用正常的渲染管线流程接受数据，批量渲染出Cube。</p>
+<h2 id="shader渲染">Shader渲染</h2>
+<p>Catlike大佬教程中同时有讲默认渲染管线与URP渲染管线下实现方式。先看一下默认管线下Shader的实现，两边的实现原理大致是一样的，但因为管线方式略有不同。</p>
+<p>因为要依赖于ComputeShader填充的buffer，需要把Shader的目标等级提升到4.5。(这个不是严格需要，但是可以指明我们需要ComputeShader支持。)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-HLSL" data-lang="HLSL"><span class="line"><span class="cl"><span class="n">SubShader</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="n">pragma</span> <span class="n">target</span> <span class="mf">4.5</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>程序化渲染类似于GPU instancing，可以指定程序化进行的函数操作。这里Shader进行的操作很简单。就是把位置信息设置到渲染的物体Cube上面。我们知道，对于每个物体来说，其位置信息可以由其变换矩阵来表示，最后经过相机空间，裁剪空间等等变换的屏幕上。所以这里实际操作就是根据<code>position_buff</code>信息来设置物体的世界空间下变换矩阵，使得目标渲染在预期位置。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-HLSL" data-lang="HLSL"><span class="line"><span class="cl"><span class="n">SubShader</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 指定程序化instancing函数为 ConfigureProcedural</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="n">pragma</span> <span class="n">instancing_options</span> <span class="n">assumeuniformscaling</span> <span class="n">procedural</span><span class="o">:</span><span class="n">ConfigureProcedural</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 计算用的参数如步长 位置缓存</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">_step</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// UNITY_PROCEDURAL_INSTANCING_ENABLED表示支持程序化Instancing技术</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="k">if</span> <span class="o">defined</span><span class="p">(</span><span class="n">UNITY_PROCEDURAL_INSTANCING_ENABLED</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">StructuredBuffer</span><span class="o">&lt;</span><span class="kt">float3</span><span class="o">&gt;</span> <span class="n">_position</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="n">endif</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">ConfigureProcedural</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="err">#</span><span class="k">if</span> <span class="o">defined</span><span class="p">(</span><span class="n">UNITY_PROCEDURAL_INSTANCING_ENABLED</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 程序化赋值物体的世界空间矩阵信息</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// unity_InstanceID物体实例的标识ID</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// unity_ObjectToWorld为ShaderLab中约定的当前物体实例的时间空间矩阵</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 设置位置参数为position_buffer中的对应值</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 缩放则为步长大小，这样每个Cube不会重叠</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">float3</span> <span class="n">position</span> <span class="o">=</span> <span class="n">_position</span><span class="p">[</span><span class="n">unity_InstanceID</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="n">unity_ObjectToWorld</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">unity_ObjectToWorld</span><span class="p">.</span><span class="n">_m03_m13_m23_m33</span> <span class="o">=</span> <span class="kt">float4</span><span class="p">(</span><span class="n">position</span><span class="p">,</span><span class="mf">1.0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">unity_ObjectToWorld</span><span class="p">.</span><span class="n">_m00_m11_m22</span> <span class="o">=</span> <span class="n">_step</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="err">#</span><span class="n">endif</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>之后使用该Shader，创建一个Material并在Mono脚本中调用即可。而在Mono中启用Instancing绘制需要如下调用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl">    <span class="c1">// 每帧Update调用UpdateFunctionOnGPU来更新绘制</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="k">void</span> <span class="n">Update</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">UpdateFunctionOnGPU</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">void</span> <span class="n">UpdateFunctionOnGPU</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ComputeShader计算出位置信息</span>
+</span></span><span class="line"><span class="cl">        <span class="p">......</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Material设置参数 将position_buffer跟instanceshader关联</span>
+</span></span><span class="line"><span class="cl">        <span class="n">material</span><span class="p">.</span><span class="n">SetBuffer</span><span class="p">(</span><span class="n">position_id</span><span class="p">,</span> <span class="n">position_buff</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">material</span><span class="p">.</span><span class="n">SetFloat</span><span class="p">(</span><span class="n">step_id</span><span class="p">,</span> <span class="n">step</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 调用Graphic接口 以目标mesh和material来批量绘制Cube</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">bounds</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Bounds</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">,</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">one</span> <span class="p">*</span> <span class="p">(</span><span class="m">2f</span> <span class="p">+</span> <span class="m">2f</span> <span class="p">/</span> <span class="n">resolution</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Graphics</span><span class="p">.</span><span class="n">DrawMeshInstancedProcedural</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">material</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">position_buff</span><span class="p">.</span><span class="n">count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>现在启动游戏就可以看到绘制后的Wave效果。</p>
+<center><img src="./p3.png"></center>
+<p>可以看到即便创建$200*200$的Cube绘制依然很流程。</p>
+<p>URP管线下比较方便的是使用ShaderGraph。但是ShaderGraph并不直接支持程序化定制绘制。但是支持添加自定义Code节点，可以通过自定义Code节点的方式来将类似默认管线中的代码，注入到ShaderGraph中去。而自定义节点，则需要HLSL文件。Unity并不支持右键Create直接创建HLSL文件，但是可以直接复制一个Shader文件更改扩展名为hlsl来实现。</p>
+<p>为了添加ShaderGraph中节点，添加一个新的hlsl文件。并且将上面的ComputeShader计算代码放入其中，其文件内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-hlsl" data-lang="hlsl"><span class="line"><span class="cl"><span class="c1">// Compute计算需要的函数部分逻辑</span>
+</span></span><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">_step</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#if defined(UNITY_PROCEDURAL_INSTANCING_ENABLED)</span>
+</span></span><span class="line"><span class="cl"><span class="kt">StructuredBuffer</span><span class="o">&lt;</span><span class="kt">float3</span><span class="o">&gt;</span> <span class="n">_position</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#endif</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">ConfigureProcedural</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="k">if</span> <span class="o">defined</span><span class="p">(</span><span class="n">UNITY_PROCEDURAL_INSTANCING_ENABLED</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float3</span> <span class="n">position</span> <span class="o">=</span> <span class="n">_position</span><span class="p">[</span><span class="n">unity_InstanceID</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">unity_ObjectToWorld</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">unity_ObjectToWorld</span><span class="p">.</span><span class="n">_m03_m13_m23_m33</span> <span class="o">=</span> <span class="kt">float4</span><span class="p">(</span><span class="n">position</span><span class="p">,</span><span class="mf">1.0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">unity_ObjectToWorld</span><span class="p">.</span><span class="n">_m00_m11_m22</span> <span class="o">=</span> <span class="n">_step</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="err">#</span><span class="n">endif</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 为了让ShaderGraph识别添加接口输入输出函数</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 这里的in out 就是针对ShaderGrpah中接口的描述 对于节点图中输入输出来说我们没有做任何更改所以直接把in赋值给out</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">ShaderGraphFunction_float</span> <span class="p">(</span><span class="kt">float3</span> <span class="n">In</span><span class="p">,</span> <span class="k">out</span> <span class="kt">float3</span> <span class="n">Out</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Out</span> <span class="o">=</span> <span class="n">In</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">ShaderGraphFunction_half</span> <span class="p">(</span><span class="kt">half3</span> <span class="n">In</span><span class="p">,</span> <span class="k">out</span> <span class="kt">half3</span> <span class="n">Out</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Out</span> <span class="o">=</span> <span class="n">In</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后可以创建一个ShaderGraph文件。在结点图中右键创建一个CustomFunction节点。如下设置节点数据：</p>
+<center><img src="./p4.png"></center>
+<ul>
+<li>设置节点类型为File。</li>
+<li>设置节点的Source为刚刚创建的hlsl文件。</li>
+<li>Name部分输入hlsl文件中约定的接口函数名称，即上面的ShaderGraphFunction。</li>
+<li>然后添加inputs和outputs分别为Vector3，这对应函数参数中的float3。因为我们主要修改目标物体的世界坐标，属于对顶点的世界position进行修改。</li>
+</ul>
+<p>对比默认管线下的流程，我们可以看到还少一步：</p>
+<ul>
+<li>指定渲染管线level，指明使用ConfigureProcedural作为程序化渲染函数。</li>
+</ul>
+<p>这也可以通过CustomFunction设置，其设置如下：</p>
+<center><img src="./p5.png"></center>
+<ul>
+<li>设置节点类型为String。标识直接用下面Body内的内容</li>
+<li>Name可以设置为一个合适的名字。</li>
+<li>Body设置为要嵌入的代码内容。其中前面两段即指定Level以及指定程序化函数宏。而最后一段则是标识输入输出端口设置，这部分名称需要跟上面inputs和outputs中添加接口对应。表示直接将In端口赋值到Out端口。</li>
+</ul>
+<p>最后使用URP下shader的Material一样可以看到程序化渲染后的效果。</p>
+<h1 id="总结">总结</h1>
+<p>这篇文章主要介绍一个ComputeShader入门。中间忽略了很多细节，只是抽出了大概的脉络来进行。细节部分可以直接看原教程。同时很多技术，例如ComputeShader细节，GPUInstance细节都没有涉及。这些还需要进行详细深入的补充教学。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
