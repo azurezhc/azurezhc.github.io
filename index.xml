@@ -7,6 +7,14 @@
             <webMaster>azurezhc@gmail.com (azurezhc)</webMaster><lastBuildDate>Fri, 18 Aug 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="http://azurezhc.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>StackLands</title>
+    <link>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/02StackLands/</link>
+    <pubDate>Sun, 24 Aug 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/02StackLands/</guid>
+    <description><![CDATA[StackLands StackLands，又名堆叠大陆。一直有听说这款游戏的名声。终于在空闲之余，体验了一下这款游戏。不得不说有很多可圈可点之处的。 Stack]]></description>
+</item>
+<item>
     <title>向量空间</title>
     <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/20%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4/</link>
     <pubDate>Sun, 01 Jun 2025 00:00:00 &#43;0000</pubDate>
@@ -29,6 +37,22 @@
     <author>azurezhc</author>
     <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/22%E6%89%A9%E5%9F%9F/</guid>
     <description><![CDATA[扩域 现在终于可以实现本书的一个基本目标了。简单来说，就是证明每个非常数多项式都有零点。 这些情况在初高中数学中基本被忽略，在我认知中都被当成一]]></description>
+</item>
+<item>
+    <title>The Bazaar</title>
+    <link>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/01TheBazaar/</link>
+    <pubDate>Sat, 24 May 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/01TheBazaar/</guid>
+    <description><![CDATA[The Bazaar 2025年的春天，因为长时间的加班，虽然有心想去做点自己的事情，但是基本没有时间尽力去进行一些推进。在焦躁，繁忙，以及不知道做什么好的时]]></description>
+</item>
+<item>
+    <title>游戏体验目录</title>
+    <link>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E7%9B%AE%E5%BD%95/</link>
+    <pubDate>Sat, 24 May 2025 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E7%9B%AE%E5%BD%95/</guid>
+    <description><![CDATA[游戏体验目录 这里主要记录一些我感兴趣的游戏体验分享。 文章内的想法都是我个人分析以及看法。因为可能我游玩的时间不够长，很多想法都很初步。因为我]]></description>
 </item>
 <item>
     <title>同态和商环</title>
@@ -61,30 +85,6 @@
     <author>azurezhc</author>
     <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/19%E7%B4%A0%E7%90%86%E6%83%B3%E5%92%8C%E6%9E%81%E5%A4%A7%E7%90%86%E6%83%B3/</guid>
     <description><![CDATA[素理想和极大理想 现在转入到理想跟对应商环的特性上面。很多例子可以说明，商环的结构并不确定。有如下几个例子： 环$\mathbb{Z}\time]]></description>
-</item>
-<item>
-    <title>多项式环</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/16%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%8E%AF/</link>
-    <pubDate>Sat, 15 Mar 2025 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/16%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%8E%AF/</guid>
-    <description><![CDATA[多项式环 本章终于要进入环域理论中的核心对象，多项式部分。因为多项式是代数中的核心定位，人们对于求解多项式零点，代数几何结构，都有着无尽的探求]]></description>
-</item>
-<item>
-    <title>整环</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/14%E8%B4%B9%E9%A9%AC%E5%AE%9A%E7%90%86%E5%92%8C%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86/</link>
-    <pubDate>Sun, 09 Mar 2025 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/14%E8%B4%B9%E9%A9%AC%E5%AE%9A%E7%90%86%E5%92%8C%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86/</guid>
-    <description><![CDATA[费马定理和欧拉定理 本章主要是费马定理和欧拉定理。初等数论中也有相关定理。这里是抽象代数角度思考的结构。有空再补一下初等代数的结构。 定理 24.1 费马]]></description>
-</item>
-<item>
-    <title>整环</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/15%E6%95%B4%E7%8E%AF%E7%9A%84%E5%95%86%E5%9F%9F/</link>
-    <pubDate>Sun, 09 Mar 2025 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/15%E6%95%B4%E7%8E%AF%E7%9A%84%E5%95%86%E5%9F%9F/</guid>
-    <description><![CDATA[整环的商域 这里教材的表述有点复杂。是从扩充后的域来说明的。在我看来，这章主要是想说明。对于任意一个整环结构来说，有一种方式可以把他扩展成一个]]></description>
 </item>
 </channel>
 </rss>
