@@ -4,31 +4,31 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title> - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="" />
-<meta property="og:description" content="" />
+        <title>基础算法之章 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="基础算法之章" />
+<meta property="og:description" content="基础算法之章 本文档主要记录一些平时见到，经常面试，或常用的一些算法结构。 一方面起到回顾了解作用，另一方面加深对基础算法的了解。虽然基础算法在" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/05%E4%BA%8C%E7%BB%B4%E8%BF%90%E5%8A%A8%E7%A0%94%E7%A9%B6/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E7%AB%A0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-09-03T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
 
-<meta property="og:site_name" content="一个小博客" />
-
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content=""/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="基础算法之章"/>
+<meta name="twitter:description" content="基础算法之章 本文档主要记录一些平时见到，经常面试，或常用的一些算法结构。 一方面起到回顾了解作用，另一方面加深对基础算法的了解。虽然基础算法在"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/05%E4%BA%8C%E7%BB%B4%E8%BF%90%E5%8A%A8%E7%A0%94%E7%A9%B6/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB/06%E8%BF%90%E5%8A%A8%E6%B7%B7%E5%90%88/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E7%AB%A0/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01%E5%AF%BB%E6%89%BE%E5%89%8DK%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0/" /><link rel="next" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E7%9B%B8%E5%85%B3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "",
+        "headline": "基础算法之章",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/azurezhc.github.io\/posts\/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB\/05%E4%BA%8C%E7%BB%B4%E8%BF%90%E5%8A%A8%E7%A0%94%E7%A9%B6\/"
-        },"genre": "posts","wordcount":  0 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/%E7%A8%8B%E5%BA%8F%E5%8A%A8%E7%94%BB\/05%E4%BA%8C%E7%BB%B4%E8%BF%90%E5%8A%A8%E7%A0%94%E7%A9%B6\/","publisher": {
+            "@id": "http:\/\/azurezhc.github.io\/posts\/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95\/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95\/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E7%AB%A0\/"
+        },"genre": "posts","wordcount":  212 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95\/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95\/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B9%8B%E7%AB%A0\/","datePublished": "2023-09-03T00:00:00+00:00","dateModified": "2023-09-03T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -67,21 +67,43 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">基础算法之章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;0 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;0 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-09-03">2023-09-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;212 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"></div><div class="post-footer" id="post-footer">
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#基础算法之章">基础算法之章</a></li>
+    <li><a href="#参考目录">参考目录</a></li>
+    <li><a href="#算法章节">算法章节</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="基础算法之章">基础算法之章</h1>
+<p>本文档主要记录一些平时见到，经常面试，或常用的一些算法结构。
+一方面起到回顾了解作用，另一方面加深对基础算法的了解。虽然基础算法在平时业务逻辑，架构等不一定会用到。但是其指引性会知道写出的代码跟具有好的效率。</p>
+<h1 id="参考目录">参考目录</h1>
+<p>对于绝大部分算法都可以通过相关算法书籍来获取，以下是我看过的一些算法书籍。</p>
+<div style = "float:left">《算法设计技巧与分析》</div>
+<div style = "text-align:right">[沙特] M. H. Alsuwaiyel</div>
+<div style = "float:left">《现代算法设计与分析》</div>
+<div style = "text-align:right">[印] Sandeep Sen, Amit Kumar</div>
+<div style = "float:left">《算法详解》四部曲</div>
+<div style = "text-align:right">[美] Tim Roughgarden</div>
+<h1 id="算法章节">算法章节</h1>
+<ul>
+<li><a class="link-markdown-demo-site" href="/posts/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01%E5%AF%BB%E6%89%BE%E5%89%8DK%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0/" rel="noopener"><font size=4>寻找前K个最大数</font></a></li>
+<li></li>
+</ul>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 0001-01-01</span>
+                <span>Updated on 2023-09-03</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>

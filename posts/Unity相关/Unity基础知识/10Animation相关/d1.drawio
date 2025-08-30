@@ -1,0 +1,76 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
+  <diagram name="第 1 页" id="YyKHlHEyLKXsO_Il9H3o">
+    <mxGraphModel dx="1090" dy="742" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=none;endFill=0;" parent="1" source="PG7C9IIjCFbNayXYeBVL-1" target="PG7C9IIjCFbNayXYeBVL-26" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-1" value="Animation" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#EDF7FF;" parent="1" vertex="1">
+          <mxGeometry x="80" y="240" width="240" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-5" value="简单动画组件对象" style="rounded=0;whiteSpace=wrap;html=1;" parent="PG7C9IIjCFbNayXYeBVL-1" vertex="1">
+          <mxGeometry y="30" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-9" value="clip&lt;br&gt;默认的AnimationClip对象" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="PG7C9IIjCFbNayXYeBVL-1" vertex="1">
+          <mxGeometry y="80" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-10" value="Animations&lt;br&gt;一个引用到的AnimationClip列表。要播放的动画，需要先放到列表里面" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="PG7C9IIjCFbNayXYeBVL-1" vertex="1">
+          <mxGeometry y="120" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-11" value="this[string name]=&amp;gt;AnimationState&lt;div&gt;Animation可以通过string类型直接像字典一样获取对应Clicp的AnimationState对象。&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="PG7C9IIjCFbNayXYeBVL-1" vertex="1">
+          <mxGeometry y="170" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-17" value="this[string name]=&amp;gt;AnimationState&lt;div&gt;Animation可以通过string类型直接像字典一样获取对应Clicp的AnimationState对象。&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="PG7C9IIjCFbNayXYeBVL-1" vertex="1">
+          <mxGeometry y="220" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-21" value="" style="line;strokeWidth=2;html=1;" parent="PG7C9IIjCFbNayXYeBVL-1" vertex="1">
+          <mxGeometry y="270" width="240" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-12" value="AnimationState" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#EDF7FF;" parent="1" vertex="1">
+          <mxGeometry x="520" y="240" width="240" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-13" value="AnimationClip在Animation中的包装对象&lt;br&gt;这个对象实际上包含了Clicp的运行状态" style="rounded=0;whiteSpace=wrap;html=1;" parent="PG7C9IIjCFbNayXYeBVL-12" vertex="1">
+          <mxGeometry y="30" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-14" value="enabled" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="PG7C9IIjCFbNayXYeBVL-12" vertex="1">
+          <mxGeometry y="80" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-15" value="Weight&lt;br&gt;播放权重" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="PG7C9IIjCFbNayXYeBVL-12" vertex="1">
+          <mxGeometry y="120" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-16" value="time&lt;br&gt;当前动画播放的时间" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="PG7C9IIjCFbNayXYeBVL-12" vertex="1">
+          <mxGeometry y="160" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-32" value="speed&lt;br&gt;播放速度" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="PG7C9IIjCFbNayXYeBVL-12" vertex="1">
+          <mxGeometry y="200" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-33" value="layer&lt;br&gt;层级，跟动画播放结构关联" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="PG7C9IIjCFbNayXYeBVL-12" vertex="1">
+          <mxGeometry y="240" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-23" style="edgeStyle=entityRelationEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="PG7C9IIjCFbNayXYeBVL-17" target="PG7C9IIjCFbNayXYeBVL-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-26" value="Animation方法集" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="560" width="240" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-22" value="Play()&lt;br&gt;播放默认的clip" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="PG7C9IIjCFbNayXYeBVL-26" vertex="1">
+          <mxGeometry y="30" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-31" value="Play(string name)&lt;br&gt;播放指定名称" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="PG7C9IIjCFbNayXYeBVL-26" vertex="1">
+          <mxGeometry y="70" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-24" value="PlayQueued()&lt;br&gt;按队列播放指定动画" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="PG7C9IIjCFbNayXYeBVL-26" vertex="1">
+          <mxGeometry y="110" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-25" value="CrossFade():&lt;div&gt;这个接口主要用来将当前播放状态，过渡到目标状态。&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="PG7C9IIjCFbNayXYeBVL-26" vertex="1">
+          <mxGeometry y="150" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="PG7C9IIjCFbNayXYeBVL-30" value="Blend()&lt;div&gt;这个接口，主要用来跟档当前状态进行一个动画混合。&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="PG7C9IIjCFbNayXYeBVL-26" vertex="1">
+          <mxGeometry y="200" width="240" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
