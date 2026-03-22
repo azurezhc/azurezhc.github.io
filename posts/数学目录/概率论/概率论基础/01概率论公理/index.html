@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>概率论公理 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="概率论公理" />
+<meta property="og:description" content="概率论公理 先定义概率论中的基础公理。这些公理来自于人们对实验等概念的抽象建模。 样本空间和事件 假设一个试验，其结果不可能肯定预测。但是其所有可" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/01%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%AC%E7%90%86/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2026-03-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2026-03-22T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="概率论公理"/>
+<meta name="twitter:description" content="概率论公理 先定义概率论中的基础公理。这些公理来自于人们对实验等概念的抽象建模。 样本空间和事件 假设一个试验，其结果不可能肯定预测。但是其所有可"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/01%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%AC%E7%90%86/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/02StackLands/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/02%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%92%8C%E7%8B%AC%E7%AB%8B%E6%80%A7/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "概率论公理",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/01%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%AC%E7%90%86\/"
+        },"genre": "posts","wordcount":  3114 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/01%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%AC%E7%90%86\/","datePublished": "2026-03-22T00:00:00+00:00","dateModified": "2026-03-22T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">概率论公理</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2026-03-22">2026-03-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3114 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#概率论公理">概率论公理</a>
+      <ul>
+        <li><a href="#样本空间和事件">样本空间和事件</a></li>
+        <li><a href="#概率论公理-1">概率论公理</a></li>
+        <li><a href="#问题与例子">问题与例子</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="概率论公理">概率论公理</h1>
+<p>先定义概率论中的基础公理。这些公理来自于人们对实验等概念的抽象建模。</p>
+<h2 id="样本空间和事件">样本空间和事件</h2>
+<p>假设一个试验，其结果不可能肯定预测。但是其所有可能的结果是一个可知范围，构成一个集合。</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义</p>
+<p>一个试验所有可能结果构成的集合，称为该实验的<strong>样本空间(sample space)</strong>，记为$S$。</p>
+</div>
+<p>例如扔一个六面骰子，其正面朝上的数字所有可能的结果构成集合${1,2,3,4,5,6}$。这个集合即这次试验的样本空间。</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义</p>
+<p>样本空间任一子集$E\subseteq S$称为<strong>事件(event)</strong>。</p>
+</div>
+<p>因为事件是样本空间的子集，也是一个集合。所以集合论中的操作可以同样作用在事件上面。即</p>
+<ul>
+<li>事件$E\cup F$称为事件$E$和事件$F$的并，表示事件$E$或事件$F$中的结果发生。</li>
+<li>事件$E\cap F$称为事件$E$和事件$F$的交，表示事件$E$和事件$F$同时发生。有时记录为$EF$。</li>
+<li>事件$E$的补记为$E^c$。表示包含在样本空间中但不包含在$E$中的所有结果构成的事件。$E^c$发生当且仅当$E$不发生。</li>
+<li>对于任意两个事件$E$和$F$。如果$E$的所有结果在$F$中，那么称$E$包含于$F$，计为$E\subset F$。</li>
+</ul>
+<p>如果$EF=\varnothing$，则称$E$和$F$是<strong>互不相容的(mutually exclusive)</strong>。</p>
+<p>可以用类似的方式记录多个事件的交并。</p>
+<p>设$E_1,E_2,\cdots$是一系列事件。</p>
+<ul>
+<li>这些事件的并记录为$\bigcup_{i=1}^{\infty}E_i$</li>
+<li>这些事件的交记录为$\bigcap_{i=1}^{\infty}E_i$</li>
+</ul>
+<p>集合论中的运算对于事件运算来说同样成立。例如</p>
+<ul>
+<li>交换律：$$E\cup F = F\cup E,EF = FE$$</li>
+<li>结合律：$$(E\cup F)\cup G = E\cup (E\cup G),(EF)G = E(FG)$$</li>
+<li>分配律：$$(E\cup F)G = EG\cup FG,(EF)\cup G = (E\cup G)(F\cup G)$$</li>
+</ul>
+<p>德摩根律(DeMorgan&rsquo;s laws)：</p>
+$$(\bigcup_{i=1}^{n}E_i)^c=\bigcap_{i=1}^{n}E_i^c \qquad (\bigcap_{i=1}^{n}E_i)^c=\bigcup_{i=1}^{n}E_i^c$$
+<h2 id="概率论公理-1">概率论公理</h2>
+<p>一种定义事件发生概率的方式是例用事件发生的相对频率。例如有一个样本空间为$S$的试验，相同条件下可重复进行。对于样本空间$S$中的事件$E$，记录重复试验$n$此情况下，事件$E$发生的次数，标记为$n(E)$。那么定义事件发生的概率为
+</p>
+$$P(E)=\lim_{n\rightarrow \infty}\frac{n(E)}{n}$$
+<p>这个定义方式便于对概率这个抽象概念的引入。非常直观，能跟现实操作逻辑关联。但从哲学基底上有很多缺陷。首先这个极限是否收敛到一个固定常数就是一个问题。其次对于概率很多抽象的本质无法深入探究。例如对于测度上某些事件的发生。</p>
+<p>这里使用直接对于概率概念的简单，明确公理方式来定义什么叫做概率。是一个基于集合论，抽象概率概念所持有简单特性的公理化方法。这也是现在绝大部分概率论教材用的公理化定义。</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义</p>
+<p>假设某个试验的样本空间为$S$，对于其中任意一个事件$E$，定义一个数$P(E)$，它满足如下三条公理。我们就称$P(E)$为事件$E$的概率。</p>
+<ul>
+<li>$\mathscr{P}_1$<strong>公理1</strong></li>
+</ul>
+$$0\leq P(E)\leq 1$$
+<ul>
+<li>$\mathscr{P}_2$<strong>公理2</strong></li>
+</ul>
+$$P(S)=1$$
+<ul>
+<li>$\mathscr{P}_3$<strong>公理3</strong></li>
+</ul>
+<p>对于一系列互不相容的事件$E_1,E_2,\cdots$(即如果$i\ne j$，则$E_iE_j=\varnothing$)，有</p>
+$$P(\bigcup_{i=1}^{\infty}E_i)=\sum_{i=1}^{\infty}P(E_i)$$
+</div>
+<p>简单来说。</p>
+<p>公理1说明任何事件概率必然在$0$到$1$之间。</p>
+<p>公理2说明，$S$是必然发生的事件。</p>
+<p>公理3则来说。对于互不相容的事件来说，其并发生的概率，等于每个事件发生的概率和。</p>
+<p>借由以上公理，可以推出一系列概率所拥有的基础特性。</p>
+<p><font size=5><strong>基础简单命题</strong></font></p>
+<div class="admonition note">
+<p class="admonition-title">命题</p>
+$$P(E^c)=1-P(E)$$
+</div>
+<p>因为$E$和$E^c$必然互不相容，而且$S=E\cup E^c$。根据公理3有$P(E\cup E^c)=P(E)+P(E^c)=1$。进而可以推出$P(\varnothing)=0$。</p>
+<div class="admonition note">
+<p class="admonition-title">命题</p>
+<p>如果$E\subset F$，则$P(E)\leq P(F)$</p>
+</div>
+<p>因为$E\subset F$，所以可以将$F$表示为$F=E\cup E^cF$。其中显然$E$和$E^cF$是互不相容的。所以由公理3可得</p>
+$$P(F)=P(E)+P(E^cF)$$
+<p>因为任意事件的概率都大于等于$0$，即$P(E^cF)\geq 0$。所以有$P(E)\leq P(F)$。</p>
+<div class="admonition note">
+<p class="admonition-title">命题</p>
+$$P(E\cup F)=P(E)+P(F)-P(EF)$$
+</div>
+<p>这个实际可以看作组合数学中计数方法容斥原理在概率论上的延展。这里可以由如下的方式来推出：</p>
+<p>首先$P(E\cup F)=P(E\cup E^cF)=P(E)+P(E^cF)$。其次关注$E^cF$和$EF$。有$E^cF\cup EF=(E^c\cup E)F=F$且$E^cF$和$EF$互不相容，所以有$P(F)=P(EF)+P(E^cF)$。进而可以得出：</p>
+$$P(E\cup F)=P(E)+P(E^cF)=P(E)+P(F)-P(EF)$$
+<p>实际上概率论公理3，互不相容并集的概率转为概率和。相当于事件集合中的结果，每个结果只记录发生一次。进而会跟计数容斥产生联系。自然也有如下命题。</p>
+<div class="admonition note">
+<p class="admonition-title">命题</p>
+$$P(E_1\cup E_2 \cdots \cup E_n)=\sum_{i=1}^nP(E_i)-\sum_{i_1\le i_2}P(E_{i_1}E_{i_2})+\cdots + 
+(-1)^{r+1}\sum_{i_1\le i_2\le \cdots \le i_r}P(E_{i_1}E_{i_2}\cdots E_{i_r})
+$$
+<p>其中$\sum_{i_1\le i_2\le \cdots \le i_r}P(E_{i_1}E_{i_2}\cdots E_{i_r})$表示对一切下标集合所对应值的求和。该和项一共包含$n\choose r$。</p>
+</div>
+<p>其实直观来看，就是对于一个在$\bigcup_i E_i$中的结果来说。两边都只统计其$1$次。简单说明，对于一个$\bigcup_i E_i$中的结果$e$来说，其必然属于其中$m$个事件中。即这个结果$e$属于$E_{i_1},E_{i_2}\cdots E_{i_m}$这$m$个集合。</p>
+<p>由于右侧是所有事件不同个数下标集合交的枚举。例如对于个$1$个集合，所有$n$个事件都被枚举求和。这里$m$个集合都被计算一次。一共计算$m\choose 1$次。对于$2$个集合的交，相当于$m$个集合中选取$2$个进行求交。所以一共统计$m \choose 2$次。由此可知，该结果$e$一共被统计</p>
+$${m\choose 1 }- {m \choose 2} \cdots \pm {m\choose m}$$
+<p>现在只需要说明这个值为$1$。而$1=\binom{m}{0}$。这相当于说明</p>
+$$\sum\binom{m}{i}(-1)^i=0$$
+<p>考虑到二项式系数即有$(-1+1)=\sum\binom{n}{i}(-1)^i=0$</p>
+<p>基于上述还可以得到事件并概率的上下界。即</p>
+$$P(\bigcup E_i)\leq \sum P(E_i)$$
+$$P(\bigcup E_i)\geq \sum P(E_i)-\sum P(E_{i_1}E_{i_2})$$
+$$P(\bigcup E_i)\leq\sum P(E_i)-\sum P(E_{i_1}E_{i_2})+\sum P(E_{i_1}E_{i_2}E_{i_3})$$
+<h2 id="问题与例子">问题与例子</h2>
+<p>现在来看一些概率中的经典问题与例子</p>
+<div class="admonition example">
+<p class="admonition-title">例 5m</p>
+<p>配对问题</p>
+<p>假设有$N$位男士参加舞会，所有人都将帽子扔到房间中央混在一起，然后每个人随机取一顶帽子。所有人都没有拿到自己帽子的概率是多少。</p>
+</div>
+<p>定义事件$E_i$表示事件——第$i$个人拿到了自己的帽。那么显然所求的概率即</p>
+$$P(\bigcup_{i=1}^n E_i)=\sum_{r=1}^n(-1)^{r+1}\sum P(E_{i_1}E_{i_2}\cdots E_{i_r})$$
+<p>其中每个事件的交是好明确概念和计算的。例如$E_{i_1}E_{i_2}\cdots E_{i_r}$就表示$i_1,i_2,\cdots i_r$这$r$个人拿到自己的帽子。如果把$N$个人表示为一个$N$维向量。这相当于固定其中$r$个人的位置为固定值，其他$N-r$个位置随意拿取。</p>
+<p>考虑样本空间和对应事件空间的结果个数。样本空间相当于随意排序即，其个数为$N!$。固定$r$个位置后结有$(N-r)!$种可能。所以可得</p>
+$$P(E_{i_1}E_{i_2}\cdots E_{i_r})=\frac{(N-r)!}{N!}$$
+<p>现在看$\sum P(E_{i_1}E_{i_2}\cdots E_{i_r})$，相当于$\binom{n}{r}$个上述项求和。所以有：</p>
+$$\sum P(E_{i_1}E_{i_2}\cdots E_{i_r})=\binom{n}{r}\frac{(N-r)!}{N!}=\frac{N!}{(N-r)!r!}\frac{(N-r)!}{N!}=\frac{1}{r!}$$
+<p>所以有</p>
+$$P(\bigcup_{i=1}^n E_i)=1-\frac{1}{2!}+\cdots+(-1)^{N+1}\frac{1}{N!}=\sum(-1)^i/i!$$
+<div class="admonition example">
+<p class="admonition-title">例 5n</p>
+<p>10对夫妇坐成一圈，计算所有妻子都不做在她丈夫旁边的概率。</p>
+</div>
+<p>与前面情况类似定义事件$E_i$表示事件——第$i$对夫妇坐在一起。所求概率即$1-P(\bigcup_{i=1}^n E_i)$。</p>
+<p>其中$P(\bigcup_{i=1}^n E_i)$可由容斥原理计算得来。而这之中重要一点就是计算$P(E_{i_1}E_{i_2}\cdots E_{i_r})$。</p>
+<p>这里考虑20个人排成一圈一共有$19!$中可能。全排列后，除去轮换移位不变性。现在考虑一对夫妻坐在一起的情况。这个时候可以把两个人当作一个人放到排列中去。即有$i$对夫妇相邻，相当于有$20-i$个人在圆桌排序。此时排列方式一共有$(20-i-1)!$种可能。在考虑夫妻之间交换也算作相邻。所以有</p>
+$$P(E_{i_1}E_{i_2}\cdots E_{i_r})=\frac{2^r(19-r)!}{19!}$$
+<p>由此可得出最后的概率。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-03-22</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
