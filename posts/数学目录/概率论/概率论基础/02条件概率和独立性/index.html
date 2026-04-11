@@ -5,18 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>02条件概率和独立性 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="02条件概率和独立性" />
-<meta property="og:description" content="条件概率和独立性 某些情况我们会研究在假定事件发生情况下的概率结果。这个时候的概率应该是一种条件概率。所以定义条件概率是有必要的。" />
+<meta property="og:description" content="条件概率和独立性 某些情况我们会研究在假定事件发生情况下的概率结果。这个时候的概率应该是一种条件概率。所以定义条件概率是有必要的。 假定存在两个" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/02%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%92%8C%E7%8B%AC%E7%AB%8B%E6%80%A7/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2026-03-22T00:00:00+00:00" />
 <meta property="article:modified_time" content="2026-03-22T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
 
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="02条件概率和独立性"/>
-<meta name="twitter:description" content="条件概率和独立性 某些情况我们会研究在假定事件发生情况下的概率结果。这个时候的概率应该是一种条件概率。所以定义条件概率是有必要的。"/>
+<meta name="twitter:description" content="条件概率和独立性 某些情况我们会研究在假定事件发生情况下的概率结果。这个时候的概率应该是一种条件概率。所以定义条件概率是有必要的。 假定存在两个"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/02%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%92%8C%E7%8B%AC%E7%AB%8B%E6%80%A7/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/01%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%AC%E7%90%86/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/02%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%92%8C%E7%8B%AC%E7%AB%8B%E6%80%A7/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/02%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%92%8C%E7%8B%AC%E7%AB%8B%E6%80%A7\/"
-        },"genre": "posts","wordcount":  64 ,
+        },"genre": "posts","wordcount":  3807 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/02%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%92%8C%E7%8B%AC%E7%AB%8B%E6%80%A7\/","datePublished": "2026-03-22T00:00:00+00:00","dateModified": "2026-03-22T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,8 +69,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">02条件概率和独立性</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2026-03-22">2026-03-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;64 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2026-03-22">2026-03-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3807 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -78,11 +78,159 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#条件概率和独立性">条件概率和独立性</a></li>
+    <li><a href="#条件概率和独立性">条件概率和独立性</a>
+      <ul>
+        <li><a href="#贝叶斯公式">贝叶斯公式</a></li>
+        <li><a href="#独立事件">独立事件</a></li>
+        <li><a href="#pcdotp--f是概率">是概率</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="条件概率和独立性">条件概率和独立性</h1>
 <p>某些情况我们会研究在假定事件发生情况下的概率结果。这个时候的概率应该是一种条件概率。所以定义条件概率是有必要的。</p>
+<p>假定存在两个事件$E$和$F$。在假定$F$发生的情况下$E$发生的条件概率记为$P(E|F)$。</p>
+<p>如果$F$发生了，为了$E$发生，那么其结果必然是既属于$E$也属于$F$的一点。即结果必然属于$EF$。同时既然假定知道$F$已经发生了。这个时候样本空间可以认为是$F$。因此此时$E$发生的条件概率，必然等于$EF$发生概率与$F$发生概率之比。所以有如下定义：</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义</p>
+<p>如果$P(F)>0$，那么</p>
+$$P(E|F)=P(EF)/P(F)$$
+</div>
+<p>由上述定义可以简单得到</p>
+$$P(EF)=P(F)P(E|F)=P(E)P(F|E)$$
+<p>即说明$E$和$F$同时发生的概率，等于$F$发生的概率乘以$F$发生条件下$E$发生的概率。</p>
+<p>将该公式推广到任意$n$个事件的并，可以得到乘法规则。</p>
+$$P(E_1E_2E_3\cdots E_n)=P(E_1)P(E_2|E_1)P(E_3|E_1E_2)\cdots P(E_N|E_1\cdots E_{n-1})$$
+<h2 id="贝叶斯公式">贝叶斯公式</h2>
+<p>贝叶斯公式本质非常简单直观。描述两个事件之间条件概率的关系。但是后续人们发现该公式在很多领域都有着广泛应用。甚至有些觉得，不论概率本质如何，贝叶斯公式所建立的关系可能是更加本质的存在。</p>
+<p>假设两个事件$E$和$F$。那么事件$E$可以表示为$E=EF\cup EF^c$。因为互补事件一定是互不相容的。根据概率论公理3有如下推导</p>
+$$
+\begin{equation}
+\begin{split}
+P(E)& =P(EF)+P(EF^c)\\
+& =P(E|F)P(F)+P(E|F^c)P(F^c)\\
+& =P(E|F)P(F)+P(E|F^c)[1-P(F)]
+\end{split}
+\end{equation}
+$$
+<p>该公式意思即说，$E$发生的概率等于在$F$发生的条件下$E$发生的条件概率与$F$不发生条件下$E$发生的条件概率的加权平均。</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义</p>
+<p>事件$A$的优势比定义为</p>
+$$\frac{P(A)}{P(A^c)}=\frac{P(A)}{1-P(A)}$$
+</div>
+<p>即一个事件的优势比，即该事件发生可能性是不发生可能性的倍数。例如如果$P(A)=2/3$。那么显然$P(A)=2P(A^c)$。即该事件的优势比等于2。</p>
+<p>后面会发现很多用贝叶斯公式计算的结论，会跟优势比直接挂钩。</p>
+<div class="admonition example">
+<p class="admonition-title">例 3i</p>
+<p>假设一个坛子中有两枚A类型硬币和一枚B类型硬币。当抛A类型硬币时，正面向上概率为$1/4$。当抛B类型硬币的时候，正面向上概率为$3/4$。</p>
+<p>现在随机取出一枚硬币并且抛出，结果是正面向上，则取出硬币为A类型的概率是多少？</p>
+</div>
+<p>令$A$为取出的是A类型硬币这个事件。$B=A^c$为取出的是B类型硬币事件。设抛硬币后得到正面朝上这个事件为$P(H)$。</p>
+<p>首先根据已知坛子中硬币数量可以得到$P(A)=2/3,P(B)=1/3$。
+同时有$P(H|A)=1/4,P(H/B)=3/4$。</p>
+<p>现在相当于求$P(A|H)$。现在有如下推导</p>
+$$P(A|H)=\frac{P(AH)}{P(H)}$$
+<p>而其中有</p>
+$$
+P(H)=P(H|A)P(A)+P(H|B)P(B)=5/12\\
+P(AH)=P(A)P(H|A)=2/12
+$$
+<p>所以有$P(A|H)=2/5$。</p>
+<p>但是还有另一种看法，即简单的求取优势比的方式。现在假定为正面朝上情况下，样本空间为$H$。只有两个可能结果$A,B$</p>
+<p>考虑</p>
+$$\frac{P(A|H)}{P(B|H)}=\frac{P(AH)}{P(BH)}=\frac{P(A)}{P(B)}\frac{P(H|A)}{P(H|B)}=\frac{2}{1}\frac{1}{3}=\frac{2}{3}$$
+<p>也就是说此条件下优势比为$2/3$。所以自然有$P(A|H)=2/5$。值得注意的是，可以发现，条件概率下的优势比，其实为对应事件本身的优势比，与对应事件发生情况下，条件发生的概率优势比之积。</p>
+<p>假定$F_1,F_2,\cdots,F_n$是互不相容的事件，且$\bigcup_{i=1}^n F_i=S$。换言之，这些事件中比有一件发生。</p>
+<p>那么对于任意一个事件$E$，有$E=\bigcup_{i=1}^n EF_i$，且$EF_i$皆为互不相容事件。基于此我们可以得到如下公式。</p>
+<div class="admonition note">
+<p class="admonition-title">全概率公式</p>
+$$P(E)=\sum_{i=1}^n P(EF_i)=\sum_{i=1}^nP(E|F_i)P(F_i)$$
+</div>
+<p>此即全概率公式。其相当于说，对于一个样本空间划分的事件集$F_1,F_2,\cdots,F_n$。可以通过对其中每个事件$F_i$加权该事件下$E$发生的条件概率来计算$P(E)$。</p>
+<p>再次，令$F_1,F_2,\cdots,F_n$是一组互不相容且穷举的事件。现在假设某个新事件$G$发生了。我们想要计算$F_j$发生的概率。即计算$P(F_j|G)$的值，表示在新证据$G$出现情况下$F_j$的可能性。由前面有。</p>
+$$P(F_j|G)=\frac{P(F_jG)}{P(G)}=\frac{P(G|F_j)P(F_j)}{\displaystyle\sum_{i=1}^nP(G|F_i)P(F_i)}$$
+<p>此即贝叶斯公式。</p>
+<div class="admonition note">
+<p class="admonition-title">贝叶斯公式</p>
+$$P(F_j|G)=\frac{P(F_jG)}{P(G)}=\frac{P(G|F_j)P(F_j)}{\displaystyle\sum_{i=1}^nP(G|F_i)P(F_i)}$$
+</div>
+<p>可以看到整个描述过程中$F_j$出现了两次，也称之为先验概率，和后验概率。第一次，相当于我们对整个事件集合的发生有一个估计，即$P(F_1),P(F_2),\cdots,P(F_n)$。当一个新的事件$G$发生之后，我们要对前面所有的估算进行一个修正。这个修正过程即贝叶斯公式。</p>
+<h2 id="独立事件">独立事件</h2>
+<p>前面已经描述了条件概率的概念。通常情况下，已知$F$发生情况下$E$发生的条件概率$P(E|F)$通常不会等于$P(E)$。即条件情况下$E$发生的概率是变化的。但有些情况下两者可能相等，即$P(E|F)=P(E)$。这说明$F$的发生对$E$发生的情况没有影响。此时称$E$和$F$独立。</p>
+<p>若$P(E|F)=P(E)$由条件概率定义可得$P(EF)=P(E)P(F)$。于是我们可以如下定义独立事件。</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义</p>
+<p>对于两个事件$E$和$F$，若</p>
+$$P(EF)=P(E)P(F)$$
+<p>则称他们是独立的(independent)。若两个事件$E$和$F$不独立，则称它们是相依的(dependent)，或互不独立。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">定理</p>
+<p>如果$E$和$F$独立，那么$E$和$F^c$也独立。</p>
+</div>
+<p>主要说明$P(EF^c)=P(E)P(F^c)$。</p>
+<p>因为$E=EF\cup EF^c$，有$P(E)=P(EF)+P(EF^c)=P(E)P(F)+P(EF^c)$。右边移项即$P(EF^c)=P(E)[1-P(F^c)]$。此即说明$E$和$F^c$也独立。</p>
+<p>现在考虑三个事件$E,F,G$之间的独立性。我们会发现，独立性不具有传递性。即$E，F$独立和$F,G$独立。我们并不能得出$E,G$独立。甚至$E$和$F$独立，又和$G$独立，$E$不一定和$FG$独立。这要说明，三个事件互相独立，需要更强的条件。</p>
+<p>简单说明一个例子，表明独立性不具有传递性。扔两枚骰子，令
+$E$——表示骰子点数和为7
+$F$——表示第一枚骰子点数为4
+$G$——表示第一枚骰子点数为3
+$G'$——表示第二枚骰子点数为3</p>
+<p>现在可以知道$P(E)=1/6,P(F)=1/6,P(G)=1/6$可以容易知道$P(EF)=1/36,P(EG)=1/36$。说明$E,F$独立，$E,G$独立。但是$F,G$之间没有独立性$FG$为不可能事件$P(FG)=0$。</p>
+<p>现在再看$E,F,G'$依然可得$E,F$独立，$E,G'$独立。这时考虑$E$和$FG'$。可以发现$FG'$发生则$E$一定发生$P(E|FG')=1\ne P(E)$。</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义</p>
+<p>三个事件$E,F,G$，如果</p>
+$$
+P(EFG)=P(E)P(F)P(G)\\
+P(EF)=P(E)P(F)\\
+P(EG)=P(E)P(G)\\
+P(FG)=P(F)P(G)
+$$
+<p>则我们称三个事件互相独立。</p>
+</div>
+<p>这个定义可以扩展到更多事件上去，只需相应的推广其条件。即事件集合中的任意子集都满足独立性公式。</p>
+<div class="admonition example">
+<p class="admonition-title">例 4j 点数问题</p>
+<p>假设在独立重复试验中，每次成功的概率为$p$，失败的概率为$1-p$。在$m$此失败前已有$n$次成功的概率有多大。</p>
+<p>这个问题可以换成这样一个背景。$A$和$B$进行这样的赌博。当试验成功的时候$A$得1分，失败的时候$B$的1分。如果$A$先得到$n$分则$A$获胜，如果$B$先得到$m$分，则$B$获胜。求$A$获胜的概率。</p>
+</div>
+<p>有两种方式解答，一种是重复试验递归的思路，很多解决会用到。令$P_{n,m}$表示$m$次失败前已经出现了$n$次成功的概率。那么考虑第一次试验的结果。</p>
+<p>如果成功，那么从这一刻起相当于$A$只用$n-1$次即可获胜，此时获胜概率即$P_{n-1,m}$。如果失败，那么从这一刻起相当于$B$只用$m-1$次即可获胜，此时获胜概率即$P_{n,m-1}$概率。可得一个递推公式</p>
+$$P_{n,m}=pP_{n-1,m}+(1-p)P_{n,m-1}$$
+<p>求解递推公式即可。</p>
+<p>还有一种是分析方式的。分析成功的条件特点。这个来自于费马。考虑把试验结果标记成一个序列。那么要$n$次成功出现在$m$次失败之前。必须要在前$m+n-1$次实验中至少有$n$次成功。我们来看这个分析。如果前$m+n-1$次中有$\leq n-1$次成功，那么其包含$\geq m$次失败。那么此时$B$必然已经获胜。反过来，若至少有$n$次成功，那么失败次数小于等于$m-1$次。所以这个刚好划分了$A,B$获胜的情况。</p>
+<p>如果提前出现$n$次成功。此时也表明后续试验无关重要，即成功失败都可以。所以统计大于所有至少有$n$次成功的情况即可。</p>
+<p>$m+n-1$次实验中有$k$次成功的概率可以如下得出</p>
+$$\binom{m+n-1}{k}p^k(1-p)^{m+n-1-k}$$
+<p>即选出$k$个位置标记成功。所以求和所有至少有$n$次成功的概率即可。</p>
+$$P_{n,m}=\sum_{k=n}^{m+n-1}\binom{m+n-1}{k}p^k(1-p)^{m+n-1-k}$$
+<div class="admonition example">
+<p class="admonition-title">例 4m 赌徒破产问题</p>
+<p>假设两个赌徒$A$和$B$进行这样的赌博。当试验成功的时候$B$将付给$A$一元，失败的时候$A$将付给$B$的一元。试验一直持续下去直到一方钱输光。现在假定试验成功概率为$p$钱开始时$A$有$i$元，而$B$有$N-i$元。</p>
+<p>问最后$A$赢得所有钱的概率有多大。</p>
+</div>
+<p>显然这个跟上面类似，加上在有$i$元情况下$A$获胜概率为$P_i$。那么考虑第一次试验。</p>
+<p>如果成功，此时相当于$A$有$i+1$块钱继续。如果失败则相当于$A$有$i-1$块继续。</p>
+<p>这说明</p>
+$$P_i=pP_{i+1}+(1-p)P_{i-1}$$
+<p>并且$P_0=0,P_N=1$。现在即求解这个递推公式。快捷的方法可以有组合数学中的特征函数解出即求解方程$x=px^2+(1-p)$。也可以通过组合解求$P_{i+1}+\alpha P_i=\beta(P_i+\alpha P_{i-1})$的方式求出。这两个方式本质时一样的。</p>
+<p>实际上观察到$P_i=pP_i+(1-p)P_i$可以得到$pP_i+(1-p)P_i=pP_{i+1}+(1-p)P_{i-1}$。</p>
+<p>有
+</p>
+$$P_{i+1}-P_i=\frac{1-p}{p}(P_i-P_{i-1})$$
+<p>由此可递推得出</p>
+$$P_{i}-P_1=P_1\sum_{i=1}^{i-1}(\frac{1-p}{p})^i$$
+<p>继而可以解出$P_{i}$，令$q=1-p$有</p>
+$$
+P_i=\begin{cases}
+\frac{1-(q/p)^i}{1-(q/p)}P_1 \quad if \space \frac{q}{p}\ne 1\\
+iP_1\quad if \space \frac{q}{p}= 1
+\end{cases}
+$$
+<p>结合$P_N=1$的边界条件可以确定$P_1$的数值</p>
+<h2 id="pcdotp--f是概率">$P(\cdotp | F)$是概率</h2>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

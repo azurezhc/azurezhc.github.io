@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95\/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/01UI%E5%B8%83%E5%B1%80%E9%94%9A%E7%82%B9%E7%BB%93%E6%9E%84\/"
-        },"genre": "posts","wordcount":  1230 ,
+        },"genre": "posts","wordcount":  1599 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95\/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/01UI%E5%B8%83%E5%B1%80%E9%94%9A%E7%82%B9%E7%BB%93%E6%9E%84\/","datePublished": "2023-12-23T00:00:00+00:00","dateModified": "2023-12-23T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,8 +69,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">01UI布局锚点结构</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-12-23">2023-12-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1230 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-12-23">2023-12-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1599 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -101,26 +101,159 @@
 <h1 id="到anchors变变换">到Anchors变变换</h1>
 <p>对于Anchors可以简单的用线性变换来描述：</p>
 <p>因为UI面板通常为二维布局，所以可以用两个点来表示控件所在的范围，即左上角和右下角。如果使用列向量来表示点，则可以表示为二维向量。但是由于UI控件存在点平移的感念，并不属于一个线性控件，应表示为仿射空间中的点，则可将UI范围如下表示：</p>
-<data id="id-1" data-raw></data>
-<p><data id="id-2" data-raw></data>就是控件布局的左上角点和右下角点，于是Rect就刻画了父UI控件所在的区域。</p>
-<p>然后则通过锚点比例结构变化到Anchors区域上面，锚点比例由Anchors中的Minimum和Maximum数值决定。Minimum决定了Anchors的左上角点<data id="id-3" data-raw></data>的位置，Maximum决定了Anchor是右下角点<data id="id-4" data-raw></data>的位置。</p>
-<p>Minimum和Maximum两者都是一个二维向量（或者说是两个比例值），可表示为<data id="id-5" data-raw></data>。其值说明的是这个点在父UI空间中的比例位置。即把父UI空间左上角点标记为<data id="id-6" data-raw></data>，右下角标记为<data id="id-7" data-raw></data>通过比例换算得出对应Anchors的店。</p>
-<p>所以Anchors的表示左上角点<data id="id-8" data-raw></data>和右下角点<data id="id-9" data-raw></data>可通过如下计算
-<data id="id-10" data-raw></data></p>
-<p>这里因为<data id="id-11" data-raw></data>这里都是点，取值像素点值。</p>
-<p>其中<data id="id-12" data-raw></data>是跟都是缩放变化，其与Anchors中Minimum，Maximum关联如下：</p>
-<data id="id-13" data-raw></data>
+$$
+P=\begin{bmatrix}
+  x\\
+  y\\
+  1
+\end{bmatrix}
+,
+Rect=\begin{bmatrix}
+  P_1 \\
+  P_2
+\end{bmatrix}
+$$
+<p>$P_1,P_2$就是控件布局的左上角点和右下角点，于是Rect就刻画了父UI控件所在的区域。</p>
+<p>然后则通过锚点比例结构变化到Anchors区域上面，锚点比例由Anchors中的Minimum和Maximum数值决定。Minimum决定了Anchors的左上角点$A1$的位置，Maximum决定了Anchor是右下角点$A2$的位置。</p>
+<p>Minimum和Maximum两者都是一个二维向量（或者说是两个比例值），可表示为$[Min.x,Min.y]，Min.x,Min.y\in[0,1]$。其值说明的是这个点在父UI空间中的比例位置。即把父UI空间左上角点标记为$[0,0]$，右下角标记为$[1,1]$通过比例换算得出对应Anchors的店。</p>
+<p>所以Anchors的表示左上角点$A1$和右下角点$A2$可通过如下计算
+</p>
+$$
+\begin{bmatrix}
+  A_1\\
+  A_2
+\end{bmatrix}
+=\begin{bmatrix}
+  P_1+(P_2-P_1)R_{min}\\
+  P_1+(P_2-P_1)R_{max}\\
+\end{bmatrix}
+=\begin{bmatrix}
+  I-R_{min} & R_{min}\\
+  I-R_{max} & R_{max}\\
+\end{bmatrix}
+\begin{bmatrix}
+  P_1\\
+  P_2
+\end{bmatrix}
+$$
+<p>这里因为$P_1,P_2$这里都是点，取值像素点值。</p>
+<p>其中$R_{min},R_{max}$是跟都是缩放变化，其与Anchors中Minimum，Maximum关联如下：</p>
+$$
+R_{min}=\begin{bmatrix}
+  Minimum.x &  & \\
+   & Minimum.y & \\
+   &  & 0 \\
+\end{bmatrix}
+,
+R_{max}=\begin{bmatrix}
+  Maximum.x & & \\
+   & Maximum.y & \\
+   &  & 0 \\
+\end{bmatrix}
+$$
 <h1 id="从anchors到子面板">从Anchors到子面板</h1>
 <p>然后对于Anchors再变化到子面板上面。我们先考虑Anchors为正方形的情况，如果Anchors为正方形，对应上下左右四边使用距离边的Offset值来计算。对于左边和上边实际相当于对左上角点进行平移操作，可通过平移变换实现。计算方式如下公式：</p>
-<data id="id-14" data-raw></data>
-<p><data id="id-15" data-raw></data>相当于对<data id="id-16" data-raw></data>点移动OffsetTop,OffsetLeft距离，<data id="id-17" data-raw></data>相当于对<data id="id-18" data-raw></data>点移动OffsetBottom,OffsetRight距离。
+$$
+T=\begin{bmatrix}
+  1 & 0 & x\\
+  0 & 1 & y\\
+  0 & 0 & 1 
+\end{bmatrix}
+,
+\begin{bmatrix}
+  C_1\\
+  C_2
+\end{bmatrix}=
+\begin{bmatrix}
+  T_1 & 0 \\
+  0 & T_2
+\end{bmatrix}
+\begin{bmatrix}
+  A_1\\
+  A_2
+\end{bmatrix}
+$$
+<p>$T_1$相当于对$A_1$点移动OffsetTop,OffsetLeft距离，$T_2$相当于对$A_2$点移动OffsetBottom,OffsetRight距离。
 然后对于点的情况，此时启用的是一个Positon值,Size值以及Alignment值。会先通过Poisition算出Alignment的点,然后按照图片从左上到右下0到1的比例来计算出自控件的宽度。我们任然以计算后的矩阵左上右下点来表示子控件区域,计算公式如下：</p>
-<p><data id="id-19" data-raw></data>
-<data id="id-20" data-raw></data></p>
+$$
+T_P=\begin{bmatrix}
+  1 & 0 & P_x\\
+  0 & 1 & P_y\\
+  0 & 0 & 1 
+\end{bmatrix}
+,
+T_{S1} = \begin{bmatrix}
+  1 & 0 & S_x*A_x\\
+  0 & 1 & S_y*A_y\\
+  0 & 0 & 1 
+\end{bmatrix}
+,
+T_{S2} = \begin{bmatrix}
+  1 & 0 & S_x*(1-A_x)\\
+  0 & 1 & S_y*(1-A_y)\\
+  0 & 0 & 1 
+\end{bmatrix}
+$$
+$$
+\begin{bmatrix}
+  C_1\\
+  C_2
+\end{bmatrix}=
+\begin{bmatrix}
+  T_{S1} & 0 \\
+  0 & T_{S2}
+\end{bmatrix}
+\begin{bmatrix}
+  T_P & 0 \\
+  0 & T_P
+\end{bmatrix}
+\begin{bmatrix}
+  A_1\\
+  A_2
+\end{bmatrix}=
+\begin{bmatrix}
+  T_{S1}T_P & 0 \\
+  0 & T_{S2}T_P
+\end{bmatrix}
+\begin{bmatrix}
+  A_1\\
+  A_2
+\end{bmatrix}
+$$
 <p>可以看到对于从Anchor转换到子空间UI布局最后都是一个对角矩阵变换。可以表示为</p>
-<data id="id-21" data-raw></data>
+$$
+\begin{bmatrix}
+  C_1\\
+  C_2
+\end{bmatrix}=
+\begin{bmatrix}
+  T_1 & 0 \\
+  0 & T_2
+\end{bmatrix}
+\begin{bmatrix}
+  A_1\\
+  A_2
+\end{bmatrix}
+$$
 <p>所以最终父子空间之间的坐标点关联可以表示为两个独立的坐标变化，公式如下：</p>
-<data id="id-22" data-raw></data>
+$$
+\begin{bmatrix}
+  C_1\\
+  C_2
+\end{bmatrix}=
+\begin{bmatrix}
+  T_1 & 0 \\
+  0 & T_2
+\end{bmatrix}
+\begin{bmatrix}
+  I-R_{min} & R_{min}\\
+  I-R_{max} & R_{max}\\
+\end{bmatrix}
+\begin{bmatrix}
+  P_1\\
+  P_2
+\end{bmatrix}
+$$
 <hr>
 <p><a class="link-markdown-demo-site" href="./基础知识之章.md" rel="noopener">&raquo;基础知识之章</a></p>
 </div><div class="post-footer" id="post-footer">
@@ -156,5 +289,5 @@
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"$$\r\nP=\\begin{bmatrix}\r\n  x\\\\\r\n  y\\\\\r\n  1\r\n\\end{bmatrix}\r\n,\r\nRect=\\begin{bmatrix}\r\n  P_1 \\\\\r\n  P_2\r\n\\end{bmatrix}\r\n$$","id-10":"$$\r\n\\begin{bmatrix}\r\n  A_1\\\\\r\n  A_2\r\n\\end{bmatrix}\r\n=\\begin{bmatrix}\r\n  P_1+(P_2-P_1)R_{min}\\\\\r\n  P_1+(P_2-P_1)R_{max}\\\\\r\n\\end{bmatrix}\r\n=\\begin{bmatrix}\r\n  I-R_{min} \u0026 R_{min}\\\\\r\n  I-R_{max} \u0026 R_{max}\\\\\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\n  P_1\\\\\r\n  P_2\r\n\\end{bmatrix}\r\n$$","id-11":"$P_1,P_2$","id-12":"$R_{min},R_{max}$","id-13":"$$\r\nR_{min}=\\begin{bmatrix}\r\n  Minimum.x \u0026  \u0026 \\\\\r\n   \u0026 Minimum.y \u0026 \\\\\r\n   \u0026  \u0026 0 \\\\\r\n\\end{bmatrix}\r\n,\r\nR_{max}=\\begin{bmatrix}\r\n  Maximum.x \u0026 \u0026 \\\\\r\n   \u0026 Maximum.y \u0026 \\\\\r\n   \u0026  \u0026 0 \\\\\r\n\\end{bmatrix}\r\n$$","id-14":"$$\r\nT=\\begin{bmatrix}\r\n  1 \u0026 0 \u0026 x\\\\\r\n  0 \u0026 1 \u0026 y\\\\\r\n  0 \u0026 0 \u0026 1 \r\n\\end{bmatrix}\r\n,\r\n\\begin{bmatrix}\r\n  C_1\\\\\r\n  C_2\r\n\\end{bmatrix}=\r\n\\begin{bmatrix}\r\n  T_1 \u0026 0 \\\\\r\n  0 \u0026 T_2\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\n  A_1\\\\\r\n  A_2\r\n\\end{bmatrix}\r\n$$","id-15":"$T_1$","id-16":"$A_1$","id-17":"$T_2$","id-18":"$A_2$","id-19":"$$\r\nT_P=\\begin{bmatrix}\r\n  1 \u0026 0 \u0026 P_x\\\\\r\n  0 \u0026 1 \u0026 P_y\\\\\r\n  0 \u0026 0 \u0026 1 \r\n\\end{bmatrix}\r\n,\r\nT_{S1} = \\begin{bmatrix}\r\n  1 \u0026 0 \u0026 S_x*A_x\\\\\r\n  0 \u0026 1 \u0026 S_y*A_y\\\\\r\n  0 \u0026 0 \u0026 1 \r\n\\end{bmatrix}\r\n,\r\nT_{S2} = \\begin{bmatrix}\r\n  1 \u0026 0 \u0026 S_x*(1-A_x)\\\\\r\n  0 \u0026 1 \u0026 S_y*(1-A_y)\\\\\r\n  0 \u0026 0 \u0026 1 \r\n\\end{bmatrix}\r\n$$","id-2":"$P_1,P_2$","id-20":"$$\r\n\\begin{bmatrix}\r\n  C_1\\\\\r\n  C_2\r\n\\end{bmatrix}=\r\n\\begin{bmatrix}\r\n  T_{S1} \u0026 0 \\\\\r\n  0 \u0026 T_{S2}\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\n  T_P \u0026 0 \\\\\r\n  0 \u0026 T_P\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\n  A_1\\\\\r\n  A_2\r\n\\end{bmatrix}=\r\n\\begin{bmatrix}\r\n  T_{S1}T_P \u0026 0 \\\\\r\n  0 \u0026 T_{S2}T_P\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\n  A_1\\\\\r\n  A_2\r\n\\end{bmatrix}\r\n$$","id-21":"$$\r\n\\begin{bmatrix}\r\n  C_1\\\\\r\n  C_2\r\n\\end{bmatrix}=\r\n\\begin{bmatrix}\r\n  T_1 \u0026 0 \\\\\r\n  0 \u0026 T_2\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\n  A_1\\\\\r\n  A_2\r\n\\end{bmatrix}\r\n$$","id-22":"$$\r\n\\begin{bmatrix}\r\n  C_1\\\\\r\n  C_2\r\n\\end{bmatrix}=\r\n\\begin{bmatrix}\r\n  T_1 \u0026 0 \\\\\r\n  0 \u0026 T_2\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\n  I-R_{min} \u0026 R_{min}\\\\\r\n  I-R_{max} \u0026 R_{max}\\\\\r\n\\end{bmatrix}\r\n\\begin{bmatrix}\r\n  P_1\\\\\r\n  P_2\r\n\\end{bmatrix}\r\n$$","id-3":"$A1$","id-4":"$A2$","id-5":"$[Min.x,Min.y]，Min.x,Min.y\\in[0,1]$","id-6":"$[0,0]$","id-7":"$[1,1]$","id-8":"$A1$","id-9":"$A2$"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

@@ -16,7 +16,7 @@
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/01%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%AC%E7%90%86/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/02StackLands/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/02%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%92%8C%E7%8B%AC%E7%AB%8B%E6%80%A7/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/01%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%AC%E7%90%86/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/02StackLands/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -150,29 +150,29 @@ $$P(\bigcup_{i=1}^{\infty}E_i)=\sum_{i=1}^{\infty}P(E_i)$$
 <p>公理2说明，$S$是必然发生的事件。</p>
 <p>公理3则来说。对于互不相容的事件来说，其并发生的概率，等于每个事件发生的概率和。</p>
 <p>借由以上公理，可以推出一系列概率所拥有的基础特性。</p>
-<p><font size=5><strong>基础简单命题</strong></font></p>
+<p><font size=5><strong>基础简单定理</strong></font></p>
 <div class="admonition note">
-<p class="admonition-title">命题</p>
+<p class="admonition-title">定理</p>
 $$P(E^c)=1-P(E)$$
 </div>
 <p>因为$E$和$E^c$必然互不相容，而且$S=E\cup E^c$。根据公理3有$P(E\cup E^c)=P(E)+P(E^c)=1$。进而可以推出$P(\varnothing)=0$。</p>
 <div class="admonition note">
-<p class="admonition-title">命题</p>
+<p class="admonition-title">定理</p>
 <p>如果$E\subset F$，则$P(E)\leq P(F)$</p>
 </div>
 <p>因为$E\subset F$，所以可以将$F$表示为$F=E\cup E^cF$。其中显然$E$和$E^cF$是互不相容的。所以由公理3可得</p>
 $$P(F)=P(E)+P(E^cF)$$
 <p>因为任意事件的概率都大于等于$0$，即$P(E^cF)\geq 0$。所以有$P(E)\leq P(F)$。</p>
 <div class="admonition note">
-<p class="admonition-title">命题</p>
+<p class="admonition-title">定理</p>
 $$P(E\cup F)=P(E)+P(F)-P(EF)$$
 </div>
 <p>这个实际可以看作组合数学中计数方法容斥原理在概率论上的延展。这里可以由如下的方式来推出：</p>
 <p>首先$P(E\cup F)=P(E\cup E^cF)=P(E)+P(E^cF)$。其次关注$E^cF$和$EF$。有$E^cF\cup EF=(E^c\cup E)F=F$且$E^cF$和$EF$互不相容，所以有$P(F)=P(EF)+P(E^cF)$。进而可以得出：</p>
 $$P(E\cup F)=P(E)+P(E^cF)=P(E)+P(F)-P(EF)$$
-<p>实际上概率论公理3，互不相容并集的概率转为概率和。相当于事件集合中的结果，每个结果只记录发生一次。进而会跟计数容斥产生联系。自然也有如下命题。</p>
+<p>实际上概率论公理3，互不相容并集的概率转为概率和。相当于事件集合中的结果，每个结果只记录发生一次。进而会跟计数容斥产生联系。自然也有如下定理。</p>
 <div class="admonition note">
-<p class="admonition-title">命题</p>
+<p class="admonition-title">定理</p>
 $$P(E_1\cup E_2 \cdots \cup E_n)=\sum_{i=1}^nP(E_i)-\sum_{i_1\le i_2}P(E_{i_1}E_{i_2})+\cdots + 
 (-1)^{r+1}\sum_{i_1\le i_2\le \cdots \le i_r}P(E_{i_1}E_{i_2}\cdots E_{i_r})
 $$

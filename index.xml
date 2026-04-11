@@ -12,7 +12,15 @@
     <pubDate>Sun, 22 Mar 2026 00:00:00 &#43;0000</pubDate>
     <author>azurezhc</author>
     <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/02%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%92%8C%E7%8B%AC%E7%AB%8B%E6%80%A7/</guid>
-    <description><![CDATA[条件概率和独立性 某些情况我们会研究在假定事件发生情况下的概率结果。这个时候的概率应该是一种条件概率。所以定义条件概率是有必要的。]]></description>
+    <description><![CDATA[条件概率和独立性 某些情况我们会研究在假定事件发生情况下的概率结果。这个时候的概率应该是一种条件概率。所以定义条件概率是有必要的。 假定存在两个]]></description>
+</item>
+<item>
+    <title>03随机变量</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/</link>
+    <pubDate>Sun, 22 Mar 2026 00:00:00 &#43;0000</pubDate>
+    <author>azurezhc</author>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/</guid>
+    <description><![CDATA[随机变量 前面我们都是关注试验结果集合中事件发生的概率。而有的时候我们更关注某一特性的发生。例如两枚骰子和的情况，扔硬币过程中正面朝上的情况。]]></description>
 </item>
 <item>
     <title>概率论公理</title>
@@ -77,14 +85,6 @@
     <author>azurezhc</author>
     <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/18%E5%90%8C%E6%80%81%E5%92%8C%E5%95%86%E7%8E%AF/</guid>
     <description><![CDATA[同态和商环 本章重新进入环抽象理论的基础建构。将前面多项式部分的结论，抽象成基于环的结构。或者换句话说，看看前面的那些特性究竟来自于结构中的哪]]></description>
-</item>
-<item>
-    <title>代数扩张</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/23%E4%BB%A3%E6%95%B0%E6%89%A9%E5%BC%A0/</link>
-    <pubDate>Sun, 16 Mar 2025 00:00:00 &#43;0000</pubDate>
-    <author>azurezhc</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/23%E4%BB%A3%E6%95%B0%E6%89%A9%E5%BC%A0/</guid>
-    <description><![CDATA[代数扩张]]></description>
 </item>
 </channel>
 </rss>
