@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=8918&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>群结构 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="群结构" />
-<meta property="og:description" content="群结构 群结构，在我看来是抽象代数的精华之一。它揭示了，我在有这些定义结构之下时，会产什么什么样的特性。这些特性是基本的简单的。基于简单几条规" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/03%E7%BE%A4%E7%BB%93%E6%9E%84/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2025-01-12T00:00:00+00:00" />
-<meta property="article:modified_time" content="2025-01-12T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+        <title>群结构 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/03%E7%BE%A4%E7%BB%93%E6%9E%84/">
+  <meta property="og:site_name" content="azurezhc的游戏开发人生">
+  <meta property="og:title" content="群结构">
+  <meta property="og:description" content="群结构 群结构，在我看来是抽象代数的精华之一。它揭示了，我在有这些定义结构之下时，会产什么什么样的特性。这些特性是基本的简单的。基于简单几条规则，就可以产生深远的性质。可以认为这些性质的本质，就是由群这种特性所产生的。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-01-12T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-01-12T00:00:00+00:00">
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="群结构"/>
-<meta name="twitter:description" content="群结构 群结构，在我看来是抽象代数的精华之一。它揭示了，我在有这些定义结构之下时，会产什么什么样的特性。这些特性是基本的简单的。基于简单几条规"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="群结构">
+  <meta name="twitter:description" content="群结构 群结构，在我看来是抽象代数的精华之一。它揭示了，我在有这些定义结构之下时，会产什么什么样的特性。这些特性是基本的简单的。基于简单几条规则，就可以产生深远的性质。可以认为这些性质的本质，就是由群这种特性所产生的。">
 <meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/03%E7%BE%A4%E7%BB%93%E6%9E%84/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/02%E5%AD%90%E7%BE%A4%E7%9B%B8%E5%85%B3/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/04%E9%99%AA%E9%9B%86%E5%92%8C%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/03%E7%BE%A4%E7%BB%93%E6%9E%84/" /><link rel="prev" href="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/02%E5%AD%90%E7%BE%A4%E7%9B%B8%E5%85%B3/" /><link rel="next" href="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/04%E9%99%AA%E9%9B%86%E5%92%8C%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -26,17 +31,28 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/03%E7%BE%A4%E7%BB%93%E6%9E%84\/"
-        },"genre": "posts","wordcount":  6984 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/03%E7%BE%A4%E7%BB%93%E6%9E%84\/","datePublished": "2025-01-12T00:00:00+00:00","dateModified": "2025-01-12T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/localhost:8918\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/03%E7%BE%A4%E7%BB%93%E6%9E%84\/"
+        },"genre": "posts","wordcount":  7646 ,
+        "url": "http:\/\/localhost:8918\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/03%E7%BE%A4%E7%BB%93%E6%9E%84\/","datePublished": "2025-01-12T00:00:00+00:00","dateModified": "2025-01-12T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
-                "name": "azurezhc"
+                "name": "xxxx"
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -44,8 +60,8 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
                 </a></div>
         </div>
     </div>
@@ -59,21 +75,21 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">Contents</h2>
+            <h2 class="toc-title">目录</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">群结构</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-01-12">2025-01-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6984 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;14 minutes&nbsp;</div>
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2025-01-12">2025-01-12</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 7646 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 16 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
-                    <span>Contents</span>
+                    <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
@@ -98,8 +114,7 @@
 <p class="admonition-title">定义</p>
 <p><strong>同态的定义</strong>
 设$G$和$G'$之间有映射$\phi:G\rightarrow{}G'$.如果同态性质</p>
-$$\phi(ab)=\phi(a)\phi(b)$$
-<p>对所有$a,b\in{}G$成立，则称映射$\phi$为同态(homomorphism).</p>
+$$\phi(ab)=\phi(a)\phi(b)$$<p>对所有$a,b\in{}G$成立，则称映射$\phi$为同态(homomorphism).</p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">定义</p>
@@ -136,8 +151,7 @@ $$\phi(ab)=\phi(a)\phi(b)$$
 <p>长度为2的循环称为对换(transposition)。</p>
 </div>
 <p>也比较直观，就是两个元素变换位置。前面已知，对于置换来说有一种循环表示法。而任意一个循环可以通过如下方式进行拆分：</p>
-$$(a_1,a_2,\cdots,a_n)=(a_1,a_n)(a_1,a_{n-1})\cdots(a_1,a_3)(a_1,a_2)$$
-<p>思路实际上就是通过一个元素来做中介。通过$a_1$来对换其他元素。</p>
+$$(a_1,a_2,\cdots,a_n)=(a_1,a_n)(a_1,a_{n-1})\cdots(a_1,a_3)(a_1,a_2)$$<p>思路实际上就是通过一个元素来做中介。通过$a_1$来对换其他元素。</p>
 <p>这说明只要有两个元素的有限集上的任何置换都是对换的乘积。</p>
 <div class="admonition abstract">
 <p class="admonition-title">定义</p>
@@ -157,8 +171,7 @@ sgn(\sigma)=
    1&\sigma\enspace{}is\enspace{}even\\
    -1& \sigma\enspace{}is\enspace{}odd\\
 \end{cases}
-$$
-<p>这是一个从置换群到$\{1,-1\}$的同态。</p>
+$$<p>这是一个从置换群到$\{1,-1\}$的同态。</p>
 <h2 id="问题思考">问题思考</h2>
 <p>还是记录一些感兴趣的问题。</p>
 <div class="admonition question">
@@ -199,10 +212,8 @@ $$
 <p>考察$(1,2,\cdots,n)^r$的效果，首先对于$(1,2,\cdots,n)^n$来说，其等于$e$即单位变化。对于数字$i$来说，其会被置换为$(i+r)mod\>{}n$。然后考虑$(1,2)$对换的作用。如果$(i+r)mod\>{}n$不为1或者2。那么对换不起作用，这一部分相当于直接略去兑换作用。所以这些数字最后都会被置换为自身，即$i\to{}(i+r)mod\>{}n\to{}i$。</p>
 <p>考虑被置换为1或者2的数字。即$(i+n-r)mod\>{}n=1\>or\>2$，得出$i=r+1\>or\>r+2$。经过$(1,2)$对换作用，可得出$r+1\to{}2,r+2\to{}1$。然后经过后续变换可得出$r+1\to{}r+2,r+2\to{}r+1$。</p>
 <p>也就是说上面循环相当于如下对换</p>
-$$(1,2,\cdots,n)^r(1,2)(1,2,\cdots,n)^{n-r}\to{}(r+1,r+2)$$
-<p>现在说明，任何对换都可以表示成$(1,2),(2,3),(3,4),\cdots,(n,1)$这$n$个对换。对于任何对换$(i,j)$来说，可以表示为如下结构。</p>
-$$(i,j)=(i,i+1)(i+1,i+2)\cdots(j-1,j)(j-2,j-1)\cdots(i,i+1)$$
-<p>考虑这个等式，可以验证，对于$i$来说，从左至右，主要作用对换的右半部分，依次变化会变换成$j$。对于$j$来说，从左至右，主要作用对换的左半部分，会变成$i$。</p>
+$$(1,2,\cdots,n)^r(1,2)(1,2,\cdots,n)^{n-r}\to{}(r+1,r+2)$$<p>现在说明，任何对换都可以表示成$(1,2),(2,3),(3,4),\cdots,(n,1)$这$n$个对换。对于任何对换$(i,j)$来说，可以表示为如下结构。</p>
+$$(i,j)=(i,i+1)(i+1,i+2)\cdots(j-1,j)(j-2,j-1)\cdots(i,i+1)$$<p>考虑这个等式，可以验证，对于$i$来说，从左至右，主要作用对换的右半部分，依次变化会变换成$j$。对于$j$来说，从左至右，主要作用对换的左半部分，会变成$i$。</p>
 <p>对于其他元素$i+1,i+2,\cdots{},j-1$来说，例如$i+r$。从左只有，第一次出现为右半部分中的$(i+r-1,i+r)$。变换成$i+r-1$之后直到左半部分的$(i+r-1,i+r)$才再次出现，这次对换，会变换会$i+r$导致这些元素未发生置换。简单来说，这是一个对称的山峰样式。只导致了$i,j$对换。</p>
 <h1 id="直积有限生成交换群">直积有限生成交换群</h1>
 <p>这一部分主要目的是讨论，根据已有的群来构建其他群的结构。这是一种自底向上的思路。</p>
@@ -225,14 +236,12 @@ $$(i,j)=(i,i+1)(i+1,i+2)\cdots(j-1,j)(j-2,j-1)\cdots(i,i+1)$$
 <div class="admonition note">
 <p class="admonition-title">定理 9.12 初等因子版本</p>
 <p>每个有限生成交换群$G$同构于一些循环群的直积，形如：</p>
-$$\mathbb{Z}_{p_1^{r_1}}\times\mathbb{Z}_{p_2^{r_2}}\times\cdots\mathbb{Z}_{p_n^{r_n}}\times\mathbb{Z}\times\mathbb{Z}\cdots\times\mathbb{Z}$$
-<p>其中$p_i$是素数，不一定是不同的。$r_i$是正整数，除了可能的因子重排，直积是唯一的。也就是说，因子$\mathbb{Z}$的数量[$G$的贝蒂数(Betti)]是唯一的，素数幂$p_i^{r_i}$也是唯一的。</p>
+$$\mathbb{Z}_{p_1^{r_1}}\times\mathbb{Z}_{p_2^{r_2}}\times\cdots\mathbb{Z}_{p_n^{r_n}}\times\mathbb{Z}\times\mathbb{Z}\cdots\times\mathbb{Z}$$<p>其中$p_i$是素数，不一定是不同的。$r_i$是正整数，除了可能的因子重排，直积是唯一的。也就是说，因子$\mathbb{Z}$的数量[$G$的贝蒂数(Betti)]是唯一的，素数幂$p_i^{r_i}$也是唯一的。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">定理 9.14 不变因子版本</p>
 <p>每个有限生成交换群$G$同构于一些循环群的直积，形如：</p>
-$$\mathbb{Z}_{d_1}\times\mathbb{Z}_{d_2}\times\cdots\mathbb{Z}_{d_k}\times\mathbb{Z}\times\mathbb{Z}\cdots\times\mathbb{Z}$$
-<p>其中每一个$d_i\ge{}2$是一个整数，$d_i$整除$d_i+1$，对于$1\le{}i\le{}k-1$，而且这种表示是唯一的。$d_i$称为不变因子(invariant factor)或挠数(torsion coefficient)。</p>
+$$\mathbb{Z}_{d_1}\times\mathbb{Z}_{d_2}\times\cdots\mathbb{Z}_{d_k}\times\mathbb{Z}\times\mathbb{Z}\cdots\times\mathbb{Z}$$<p>其中每一个$d_i\ge{}2$是一个整数，$d_i$整除$d_i+1$，对于$1\le{}i\le{}k-1$，而且这种表示是唯一的。$d_i$称为不变因子(invariant factor)或挠数(torsion coefficient)。</p>
 </div>
 <p>书中有对360阶的举例。我这里考虑，例如对于4来说。显然就有两种分解方式，一个是$\mathbb{Z}_4$，一个是$\mathbb{Z}_2\times\mathbb{Z}_2$。恰好对应了4阶群中的两个群结构。</p>
 <h2 id="问题思考-1">问题思考</h2>
@@ -280,16 +289,14 @@ $$\mathbb{Z}_{d_1}\times\mathbb{Z}_{d_2}\times\cdots\mathbb{Z}_{d_k}\times\mathb
 <p>证明如果有限交换群的阶是素数$p$的幂，那么群中每个元素的阶是$p$的幂。</p>
 </div>
 <p>根据初等因子版本结构，有限交换群结构同构意义下等同于</p>
-$$\mathbb{Z}_{p_1^{r_1}}\times\mathbb{Z}_{p_2^{r_2}}\times\cdots\mathbb{Z}_{p_n^{r_n}}\times\mathbb{Z}\times\mathbb{Z}\cdots\times\mathbb{Z}$$
-<p>因为有限交换群的阶是素数$p$的幂，那么说明：</p>
-$$p^r=p_1^{r_1}p_2^{r_2}\cdots{}p_n^{r_n}$$
-<p>这说明同构意义下等于$\mathbb{Z}_{p^r}=\mathbb{Z}_{p^{r_1}}\times\mathbb{Z}_{p^{r_2}}\times\cdots\mathbb{Z}_{p^{r_n}}$的分解版本。所以直积中每一部分元素的阶为$p$的幂。所以元素的阶为$p$的幂。</p>
+$$\mathbb{Z}_{p_1^{r_1}}\times\mathbb{Z}_{p_2^{r_2}}\times\cdots\mathbb{Z}_{p_n^{r_n}}\times\mathbb{Z}\times\mathbb{Z}\cdots\times\mathbb{Z}$$<p>因为有限交换群的阶是素数$p$的幂，那么说明：</p>
+$$p^r=p_1^{r_1}p_2^{r_2}\cdots{}p_n^{r_n}$$<p>这说明同构意义下等于$\mathbb{Z}_{p^r}=\mathbb{Z}_{p^{r_1}}\times\mathbb{Z}_{p^{r_2}}\times\cdots\mathbb{Z}_{p^{r_n}}$的分解版本。所以直积中每一部分元素的阶为$p$的幂。所以元素的阶为$p$的幂。</p>
 <p>另一方面，根据不变因子版本。也可以说明，对于每一个$d_i$都必须是$p$的幂，进而说明元素的阶也需为$p$的幂。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-01-12</span>
+                <span>更新于 2025-01-12</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -302,21 +309,27 @@ $$p^r=p_1^{r_1}p_2^{r_2}\cdots{}p_n^{r_n}$$
     <div class="post-info-more">
         <section class="post-tags"></section>
         <section>
-            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
+
+    <div class="post-nav"><a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/02%E5%AD%90%E7%BE%A4%E7%9B%B8%E5%85%B3/" class="prev" rel="prev" title="子群相关"><i class="fas fa-angle-left" aria-hidden="true"></i>子群相关</a>
+            <a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/04%E9%99%AA%E9%9B%86%E5%92%8C%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AE%9A%E7%90%86/" class="next" rel="next" title="陪集和拉格朗日定理">陪集和拉格朗日定理<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.159.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
         </div>
     </footer></div>
 
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
 </html>

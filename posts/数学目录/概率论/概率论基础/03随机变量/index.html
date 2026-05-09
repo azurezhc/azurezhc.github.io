@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=8918&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>03随机变量 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="03随机变量" />
-<meta property="og:description" content="随机变量 前面我们都是关注试验结果集合中事件发生的概率。而有的时候我们更关注某一特性的发生。例如两枚骰子和的情况，扔硬币过程中正面朝上的情况。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2026-03-22T00:00:00+00:00" />
-<meta property="article:modified_time" content="2026-03-22T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+        <title>03随机变量 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/">
+  <meta property="og:site_name" content="azurezhc的游戏开发人生">
+  <meta property="og:title" content="03随机变量">
+  <meta property="og:description" content="随机变量 前面我们都是关注试验结果集合中事件发生的概率。而有的时候我们更关注某一特性的发生。例如关心两枚骰子和的情况，扔硬币过程中正面朝上次数的情况。这个时候，我们关心的是基于样本空间上事件特性的量的结果。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-12T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-04-12T00:00:00+00:00">
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="03随机变量"/>
-<meta name="twitter:description" content="随机变量 前面我们都是关注试验结果集合中事件发生的概率。而有的时候我们更关注某一特性的发生。例如两枚骰子和的情况，扔硬币过程中正面朝上的情况。"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="03随机变量">
+  <meta name="twitter:description" content="随机变量 前面我们都是关注试验结果集合中事件发生的概率。而有的时候我们更关注某一特性的发生。例如关心两枚骰子和的情况，扔硬币过程中正面朝上次数的情况。这个时候，我们关心的是基于样本空间上事件特性的量的结果。">
 <meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/01%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%AC%E7%90%86/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/02%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%92%8C%E7%8B%AC%E7%AB%8B%E6%80%A7/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/" /><link rel="prev" href="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E6%A6%82%E8%A7%88/" /><link rel="next" href="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/04%E8%BF%9E%E7%BB%AD%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -26,17 +31,28 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F\/"
-        },"genre": "posts","wordcount":  150 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F\/","datePublished": "2026-03-22T00:00:00+00:00","dateModified": "2026-03-22T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/localhost:8918\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F\/"
+        },"genre": "posts","wordcount":  2346 ,
+        "url": "http:\/\/localhost:8918\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F\/","datePublished": "2026-04-12T00:00:00+00:00","dateModified": "2026-04-12T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
-                "name": "azurezhc"
+                "name": "xxxx"
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -44,8 +60,8 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
                 </a></div>
         </div>
     </div>
@@ -59,40 +75,286 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">Contents</h2>
+            <h2 class="toc-title">目录</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">03随机变量</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2026-03-22">2026-03-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;150 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-04-12">2026-04-12</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 2346 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
-                    <span>Contents</span>
+                    <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#随机变量">随机变量</a></li>
+    <li><a href="#随机变量">随机变量</a>
+      <ul>
+        <li><a href="#离散型随机变量">离散型随机变量</a></li>
+        <li><a href="#期望">期望</a></li>
+        <li><a href="#随机变量函数的期望">随机变量函数的期望</a></li>
+        <li><a href="#方差">方差</a></li>
+      </ul>
+    </li>
+    <li><a href="#各种类型离散随机变量">各种类型离散随机变量</a>
+      <ul>
+        <li><a href="#伯努利随机变量和二项随机变量">伯努利随机变量和二项随机变量</a></li>
+        <li><a href="#泊松随机变量">泊松随机变量</a></li>
+        <li><a href="#几何随机变量">几何随机变量</a></li>
+        <li><a href="#负二项随机变量">负二项随机变量</a></li>
+        <li><a href="#超几何随机变量">超几何随机变量</a></li>
+        <li><a href="#分布">分布</a></li>
+      </ul>
+    </li>
+    <li><a href="#随机变量和的期望">随机变量和的期望</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="随机变量">随机变量</h1>
-<p>前面我们都是关注试验结果集合中事件发生的概率。而有的时候我们更关注某一特性的发生。例如两枚骰子和的情况，扔硬币过程中正面朝上的情况。这个时候，我们关心的是基于样本空间上事件特性的量的结果。</p>
-<p>这个结果我们可以标记为类似于函数的一个变量，即随机变量。</p>
+<p>前面我们都是关注试验结果集合中事件发生的概率。而有的时候我们更关注某一特性的发生。例如关心两枚骰子和的情况，扔硬币过程中正面朝上次数的情况。这个时候，我们关心的是基于样本空间上事件特性的量的结果。</p>
+<p>这个结果我们可以标记为关联于样本空间上的一个变量，即随机变量。</p>
 <div class="admonition abstract">
 <p class="admonition-title">定义</p>
 <p>定义于样本空间上的实值函数，称之为随机变量。</p>
 </div>
+<p>例如扔3枚均匀硬币，如果令$Y$表示正面朝上的次数。那么$Y$的值建立在样本空间的事件上，并且将其映射到一个数值。其根据结果可取值为$0,1,2,3$之一。其分别拥有如下概率：</p>
+$$
+P\{Y=0\}=1/8\\
+P\{Y=1\}=3/8\\
+P\{Y=2\}=3/8\\
+P\{Y=3\}=1/8\\
+$$<p>随机变量是样本空间上的实值函数，其针对每个事件给出一个数值。每个数值根据原空间概率函数有个对应的概率值，可以看到对于随机变量具体取值的概率会用$P\{X=i\}$来进行表示。从某种角度来看，随机变量就跟函数中的自变量一样，是一个变化数值，只是定义于样本空间上。</p>
+<p>对于一个随机变量可以定义其累积分布函数(cumulative distribution function)。其定义如下</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义</p>
+<p>累计分布函数$F$定义为</p>
+$$F(x)=P\{X\le x\}\quad -\infty< x <\infty $$</div>
+<p>也可简称为分布函数。即分布函数是一个函数，对任一给定实数$x$，分布函数为该随机变量小于等于$x$的概率。</p>
+<h2 id="离散型随机变量">离散型随机变量</h2>
+<p>若一个随机变量最多有可数个可能取值，则称之为离散型随机变量。对于一个离散型随机变量$X$。我们可以定义$X$的概率分布列函数$p(a)$即</p>
+$$p(a)=P\{X=a\}$$<p>即概率赋值直接映射为函数值。对应的分布函数即</p>
+$$F(a)=\sum_{x\le a} p(a)$$<h2 id="期望">期望</h2>
+<p>现在来看概率轮种一个常用的概念，期望(expectation)。也称之为一阶矩。也常表示随机变量发生的结果的均值。对于离散型随机变量，其期望定义为</p>
+<div class="admonition abstract">
+<p class="admonition-title">定义</p>
+<p>随机变量$X$的期望为</p>
+$$E[X]=\sum xp(x)$$</div>
+<p>即随机变量每个可能值根据发生概率的加权平均值。</p>
+<h2 id="随机变量函数的期望">随机变量函数的期望</h2>
+<p>可以基于随机变量通过函数的方式定义新随机变量。例如已知一个随机变量$X$，可以定义$Y=X^2$。更通用的可以基于随机变量定义一个函数，表示为$g(X)$。</p>
+<p>现在来看离散随机变量函数的期望。假设现在有离散随机变量$X$,其分布列函数为$p(x)$。通过定义来看，我们应该针对$g(X)$值域的每个值，求取对应的概率值然后加权求和来求取$E[g(X)]$。</p>
+<p>但还有另一种理解，即当随机变量$X=x$时，$g(X)=g(x)$。此时其值得加权平均值即$p(x)$。即原来每个$g(X)$值得变量逐个拆解成$X$变量对应值的概率求和。所以可得随机变量函数的期望即：</p>
+<div class="admonition note">
+<p class="admonition-title">定理</p>
+<p>如果$X$是一个离散型随机变量，其可能取值为$x_i$，对应概率分布列函数为$p(x_i)$。那么对于任意实值函数$g(x)$都有</p>
+$$E[g(X)]=\sum g(x_i)p(x_i)$$</div>
+<p>这里涉及一个证明。实际上就是说明上述公式跟期望定义$g(X)$为随机变量是一致的。根据定义来描述，设$Y=g(X)$，其为一个随机变量，有其对应分布列函数，其分布列函数可表示为$p'(y)=P\{g(X)=y\}$。其期望应该是$E[g(X)]=\sum y_jp'(y_j)$。其中$y_j$为$Y$的所有不同可能取值。</p>
+<p>所以需要说明的其实就是针对$Y=g(X)$值域的一个取值$y_j$，定理中具有相同值的求和得到的结果即$y_jp'(y_j)$。因为$Y=g(X)$可以取值$y_j$表明至少存在一个$x_i$有$g(x_i)=y_j$。</p>
+<p>现在考虑求和式：</p>
+$$
+\begin{aligned}
+\sum g(x_i)p(x_i)&=\sum_j\sum_{i:g(x_i)=y_j}g(x_i)p(x_i)=\sum_j\sum_{i:g(x_i)=y_j}y_jp(x_i)\\
+&=\sum_j y_jP\{g(X)=y_j\}=E[g(X)]
+\end{aligned}
+$$<p>其中关键部分就是所有$g(x_i)=y_j$的概率和就是$P\{g(X)=y_j\}$。</p>
+<h2 id="方差">方差</h2>
+<div class="admonition abstract">
+<p class="admonition-title">定义</p>
+<p>如果随机变量$X$的期望为$\mu$，那么$X$的方差记为$Var(x)$。定义为</p>
+$$Var(X)=E[(X-\mu)^2]$$</div>
+<p>可以根据期望定义展开得到方差的另一种计算方式</p>
+$$
+\begin{aligned}
+Var(X)&=E[(X-\mu)^2]=\sum (x-\mu)^2p(x)\\
+&=\sum x^2p(x)-2\mu\sum xp(x)+\mu^2\sum p(x)^2\\
+&=E[X^2]-E[X]^2
+\end{aligned}
+$$<h1 id="各种类型离散随机变量">各种类型离散随机变量</h1>
+<p>下面主要介绍各种常见的随机离散变量。注意随机变量是定义在样本空间上的实值函数。所以都有对应的试验背景。然后定义我们关心的随机变量来进行表征。</p>
+<h2 id="伯努利随机变量和二项随机变量">伯努利随机变量和二项随机变量</h2>
+<p>考虑一个试验，结果分为两类，成功或失败。令事件$A$表示成功，事件$A^c$表示失败。现在每次试验可能成功也可能失败，所以可以给出一个概率赋值。令$P(A)=p$则$P(A^c)=1-p$。</p>
+<p>现在可以设一个建立在实验结果上的随机变量$X$。令</p>
+$$
+X=
+\begin{cases}
+1\qquad 试验成功\\
+0\qquad 试验失败
+\end{cases}
+$$<p>可以得到$X$的分布列$p(x)$为</p>
+$$
+p(0)=P\{X=0\}=P(A^c)=1-p\\
+p(1)=P\{X=1\}=P(A)=p\\
+$$<p>如果随机变量$X$的分布列由上式给出，则$X$为<strong>伯努利随机变量</strong>。</p>
+<p>现在假设进行$n$次独立重复实验。且每次成功概率都是$p$，失败概率为$1-p$。如果$X$表示$n$次实验中成功的次数，那么$X$为参数是$(n,p)$的<strong>二项随机变量(binomial)</strong>。</p>
+<p>根据离散数学可以得出参数$(n,p)$的二项随机变量分布列为：</p>
+$$
+p(i)=\binom{n}{i}p^i(1-p)^{n-i}\qquad i=0,1,\cdots,n
+$$<p><font size=4><b>二项随机变量的性质</b></font></p>
+<p>先计算$E[X^k]$。根据前面函数变量的期望计算有：</p>
+$$
+E[X^k]=\sum_{i=0}^{n} i^k\binom{n}{i}p^i(1-p)^{n-i}=\sum_{i=1}^{n} i^k\binom{n}{i}p^i(1-p)^{n-i}
+$$<p>例用恒等式</p>
+$$
+i\binom{n}{i}=n\binom{n-1}{i-1}
+$$<p>可以把一个$i$放进二项系数里面。原公式变为</p>
+$$
+\begin{aligned}
+E[X^k]&=n\sum_{i=1}^{n} i^{k-1}\binom{n-1}{i-1}p^i(1-p)^{n-i}=np\sum_{i=1}^ni^{k-1}\binom{n-1}{i-1}p^{i-1}(1-p)^{n-i}\\
+&=np\sum_{j=0}^{n-1}(j+1)^{n-1}\binom{n-1}{j}p^{j}(1-p)^{n-j-1}\qquad 令j=i-1\\
+&=npE[(Y+1)^{k-1}]
+\end{aligned}
+$$<p>这里面需要关注最后一个等式。很显然$\binom{n-1}{j}p^{j}(1-p)^{n-1-j}$是参数为$n-1$的二项展开系数。所以最后求和的部分相当于$E[(Y+1)^{k-1}]$。其中$Y$是一个参数为$(n-1,p)$的二项随机变量。</p>
+<p>上述公式表明二项系数的$n$阶矩有递推关系。现在令$k=1$。则有</p>
+$$
+E[X]=npE[(Y+1)^0]=npE[1]=np。
+$$<p>其中$E[1]$其实就是所有可能概率求和，自然就是$1$。也可以直接通过推导公式中令$n=1$发现求和部分就是二项随机变量分布列求和得到。</p>
+<p>现在看$E[X^2]$</p>
+$$
+E[X^2]=npE[(Y+1)]=np(E[Y]+1)=np[(n-1)p+1]
+$$<p>其中注意$Y$为参数$(n-1,p)$的二项随机变量。</p>
+<p>所以</p>
+$$Var(X)=E[X^2]-(E[X])^2=np[(n-1)p+1]-(np)^2=np(1-p)$$<div class="admonition note">
+<p class="admonition-title">定理</p>
+<p>如果$X$是一个参数为$(n,p)$的二项随机变量，其中$0<p<1$。那么当$k$从$0$到$n$时，$P\{X=k\}$一开始单调递增，然后一直单调递减。当$k=\lfloor(n+1)p\rfloor$时取得最大值。($\lfloor X\rfloor$表示小于等于$X$的最大整数)。</p>
+</div>
+<p>证明方式考虑$\frac{P\{X=k\}}{P\{X=k-1\}}$。其大于$1$表示涨，否则为跌。</p>
+<p>直接套用二项概率分布有</p>
+$$
+\frac{P\{X=k\}}{P\{X=k-1\}}=\frac{(n-k+1)p}{k(1-p)}
+$$<p>所以$P\{X=k\}\ge P\{X=k-1\}$当且仅当$(n-k+1)p\ge k(1-p)$。移项等价于$k\le (n+1)p$。</p>
+<h2 id="泊松随机变量">泊松随机变量</h2>
+<p>如果一个取值$0,1,2\cdots$的随机变量$X$对某一个$\lambda >0$满足如下概率分布列，</p>
+$$
+p(i)=P\{X=i\}=e^{-\lambda}\frac{\lambda^i}{i!}\qquad i=0,1,2\cdots
+$$<p>我们称该随机变量$X$为服从参数$\lambda$的<strong>泊松随机变量(Poisson)</strong>。</p>
+<p>值得说明的是泊松分布各个领域有广泛应用。这是由于当$n$足够大，$p$足够小，使得$np$保持适当大小时，参数为$(n,p)$的二项随机变量可以近似的看作参数为$\lambda=np$的泊松分布。</p>
+<p>假设$X$是一个服从参数为$(n,p)$的二项随机变量，并记$\lambda=np$那么：</p>
+$$
+\begin{align}
+p\{X=i\}&=\frac{n!}{(n-i)!i!}p^i(1-p)^{n-i}=\frac{n!}{(n-i)!i!}(\frac{\lambda}{n})^i(1-\frac{\lambda}{n})^{n-i}\\
+&=\frac{n(n-1)\cdots(n-i+1)}{n^i}\frac{\lambda^i}{i!}\frac{(1-\lambda/n)^n}{(1-\lambda/n)^i}
+\end{align}
+$$<p>注意$e^x$的定义为$\lim\limits_{x\to \infty}(1+\frac{x}{n})^n$。$n$足够大，$p$足够小所以有</p>
+$$
+(1-\frac{\lambda}{n})^n\approx e^{-\lambda}\qquad\frac{n(n-1)\cdots(n-i+1)}{n^i}\approx 1\qquad (1-\frac{\lambda}{n})^i\approx 1$$<p>可得出整个近似公式。话句话说，如果独立重复的$n$次试验次数足够大，每次成功概率$p$充分小。使得$np$适当的话，那么成功次数近似地服从参数为$\lambda=np$的泊松分布。</p>
+<p>现在计算一下$E[X^k]$。根据前面公式有</p>
+$$
+\begin{aligned}
+E[X^k]&=\sum_{i=0} i^k e^{-\lambda}\frac{\lambda^i}{i!}=\lambda\sum_{i=1}i^{k-1}e^{-\lambda}\frac{\lambda^{i-1}}{(i-1)!}  \\
+&=\lambda \sum_{j=0}(j+1)^{k-1}e^{-\lambda}\frac{\lambda^j}{j!}\qquad j=i-1 \\
+&=\lambda E[(Y+1)^{k-1}]
+\end{aligned}
+$$<p>其中有$y=i-1$以及变换后的求和公式说明$Y$也是符合参数为$\lambda$的泊松分布。</p>
+<p>由此可以推断出$E[X]=\lambda,E[X^2]=\lambda(\lambda+1)$可得出$Var(X)=\lambda$</p>
+<h2 id="几何随机变量">几何随机变量</h2>
+<p>几何随机变量是考虑这样一种试验。</p>
+<p>在独立重复试验，每次成功概率为$p$，重复试验知道试验首次成功为止。如果令$X$表示需要实验的次数，那么</p>
+$$
+p\{X=n\}=(1-p)^{n-1}p
+$$<p>推导也很直接。$X=n$的充分必要条件是前$n-1$次失败，而第$n$次试验成功。可以得出概率分布。该随机变量称为参数为$p$的<strong>几何随机变量(geometric)</strong></p>
+<p>现在计算$E[X^k]$，令$q=1-p$有</p>
+$$
+\begin{aligned}
+E[X^k]&=\sum_{i=1} i^kq^{i-1}p=\sum_{i=1}(i-1+1)^kq^{i-1}p\\
+&=\sum_{i=1}\sum_{j=0}^k\binom{k}{j}(i-1)^jq^{i-1}p\\
+&=\sum_{j=0}^k\binom{k}{j}\sum_{i=1}(i-1)^jq^{i-1}p\\
+&=\sum_{j=0}^k\binom{k}{j}\sum_{t=0}t^jq^tp
+\end{aligned}
+$$<p>最后这一段需要区分$j=0$的情况，当 $j=0$时，后续求和就是$\sum_{t=1}q^{t-1}p=1$。否则$t^j$在$t=0$情况下为$0$后续求和可转化为$q\sum_{t=1}t^jq^{t-1}p$。即原公式可变为</p>
+$$
+\begin{aligned}
+E[X^k]&=\sum_{j=1}^k\binom{k}{j}q\sum_{t=1}t^jq^{t-1}p+1\\
+&=\sum_{j=1}^k\binom{k}{j}qE[X^j]+1
+\end{aligned}
+$$<p>可以发现这是一个递推关系。只是其$n$阶矩跟之前所有系数有一定关联。当$k=1$时显然有</p>
+$$
+\begin{aligned}
+E[X]&=qE[X]+1
+\end{aligned}
+$$<p>可得$E[X]=1/(1-q)=1/p$</p>
+<p>当$k>1$时有</p>
+$$
+\begin{aligned}
+E[X^k]&=qE[X^k]+\sum_{j=1}^{k-1}\binom{k}{j}qE[X^j]+1
+\end{aligned}
+$$<p>这表明此时</p>
+$$E[X^k]=\frac{1}{p}(\sum_{j=1}^{k-1}\binom{k}{j}qE[X^j]+1)$$<p>所以$E[X^2]=1/p(2qE[X]+1)=(2q+p)/p^2$</p>
+<h2 id="负二项随机变量">负二项随机变量</h2>
+<p>假定在独立重复实验中，每次成功概率为$p$。持续进行试验直到累积$r$次成功为止，此时令$X$表示试验的总次数。则</p>
+$$
+P\{X=n\}=\binom{n-1}{r-1}p^r(1-p)^{n-r}
+$$<p>推导也很直接。整个流程相当于要执行$n$次试验，恰有$r$次成功，且最后一次成功。这相当于前$n-1$次有$r-1$次成功，并且最后成功。前面有$r-1$次成功可以由离散数学得出为$\binom{n-1}{r-1}p^{r-1}(1-p)^{n-r}$。再加上最后一次成功即可。</p>
+<p>现在计算$E[X^k]$：</p>
+$$
+\begin{aligned}
+E[X^k]&=\sum_{n=r}n^k\binom{n-1}{r-1}p^r(1-p)^{n-r}\\
+&=\frac{r}{p}\sum_{n=r}n^{k-1}\binom{n}{r}p^{r+1}(1-p)^{n-r}\\
+&=\frac{r}{p}\sum_{m=r+1}(m-1)^{k-1}\binom{m-1}{r}p^{r+1}(1-p)^{m-1-r}\qquad 令n=m-1\\
+&=\frac{r}{p}E[(Y-1)^{k-1}]
+\end{aligned}
+$$<p>其中$Y$是一个参数为$(r+1,p)$的负二项随机变量。由此得到递推关系。由此可求出
+</p>
+$$E[X]=r/p \qquad E[X^2]=r/p[(r+1)/p-1]$$<h2 id="超几何随机变量">超几何随机变量</h2>
+<p>假设一个坛子中共有$N$个球，其中有$m$个白球，$N-m$个黑球，从中随机的取$n$个球，令$X$表示取出来的白球个数。那么由离散数学部分可以得知</p>
+$$
+p\{X=i\}=\frac{\binom{m}{i}\binom{N-m}{n-i}}{\binom{N}{n}}
+$$<p>即随机取出的$n$个球中有$i$个白球的组合情况。由表示可知，这个概率由$N,n,m$三个参数确定。</p>
+<p>还是考虑计算参数为$N,n,m$的$E[X^k]$：</p>
+$$
+E[X^k]=\sum_{i=1}^ni^k\binom{m}{i}\binom{N-m}{n-i}/\binom{N}{n}
+$$<p>考虑到</p>
+$$
+i\binom{m}{i}=m\binom{m-1}{i-1}\qquad n\binom{N}{n}=N\binom{N-1}{n-1}
+$$<p>可以得</p>
+$$
+\begin{aligned}
+E[X^k]&=\frac{nm}{N}\sum_{i=1}^{n}i^{k-1}\binom{m-1}{i-1}\binom{N-m}{n-i}/\binom{N-1}{n-1}\\
+&=\frac{nm}{N}\sum_{j=0}^{n-1}(j+1)^{k-1}\binom{m-1}{j}\binom{N-m}{n-j-1}/\binom{N-1}{n-1}\\
+&=\frac{nm}{N}E[(Y+1)^{k-1}]
+\end{aligned}
+$$<p>其中$Y$是参数为$(n-1,N-1,m-1)$得超几何随机变量。</p>
+<p>所以可得</p>
+$$E[X]=\frac{nm}{N}\qquad E[X^2]=\frac{nm}{N}E[Y+1]=\frac{nm}{N}[\frac{(n-1)(m-1)}{N-1}+1]$$<h2 id="分布">$\zeta$分布</h2>
+<p>如果一个随机变量有如下分布列</p>
+$$P\{X=k\}=\frac{C}{k^{\alpha+1}},\qquad k=1,2,\cdots$$<p>我们就称该随机变量服从$\zeta$分布。其中$\alpha>0$,因为概率和分布必定为$1$。所以有</p>
+$$C=[\sum_{k=1}(\frac{1}{k})^{\alpha+1}]^{-1}$$<p>这实际上要求后面这个无限和时收敛的。当$\alpha=0$这实际上是调和级数，是发散的。而大于$1$之后这个和必然收敛存在。这个函数实际来自于如下分布</p>
+$$\zeta(s)=1+(\frac{1}{2})^s+(\frac{1}{3})^s+\cdots$$<p>即黎曼$\zeta$函数。</p>
+<h1 id="随机变量和的期望">随机变量和的期望</h1>
+<p>本节最重要的内容是说明：</p>
+<p>一组随机变量的和的期望与这组随机变量各自期望的和相等。</p>
+<p>换句话说，假设有$n$个随机变量$X_1,X_2,\cdots,X_n$。则有</p>
+$$E[\sum X_i]=\sum E[X_i]$$<p>论证的角度就是从随机变量的定义，以及期望的定义出发。</p>
+<p>随机变量是建立在样本空间上的实值函数。给定一个随机变量$X$，假设样本空间为$S$，那么对于$S$中的每一个元素$s\in S$(即一个结果)来说，可以用$X(s)$表示此结果下随机变量所表示的值。</p>
+<p>根据概率公理。可令$p(s)=P(\{s\})$表示$s$作为随机试验的结果的概率。对于任意事件$A$来说，其为有限个或者可数无限个互不相容的事件$\{s\}$的和。所以根据概率论公理可以得：</p>
+$$P(A)=\sum_{s\in A}P(\{s\})$$<p>现在考虑随机变量$X$得期望$E[X]$。从试验结果角度直观出发，当结果$s$发生得时候，$X$取值$X(s)$。而这个时候得概率为$p(s)$，所以有</p>
+<div class="admonition note">
+<p class="admonition-title">定理</p>
+$$E[X]=\sum_{s\in S}X(s)p(s)$$</div>
+<p>具体证明还需从$E[X]=xp(x)$出发。注意此时其中$x$为$X$可能取值，$p(x)$为$X$取$x$时得概率值。假设对于其中某一个取值$x_i$，样本空间必然有一系列结果使得$X$取值$x_i$。令这些结果组成事件$S_i=\{s:X(s)=x_i\}$。那么：</p>
+$$E[X]=\sum_i x_iP\{X=x_i\}=\sum_i x_i \sum_{s\in S_i}p(s)=\sum_i\sum_{s\in S_i}X(s)p(s)=\sum_{s\in S}X(s)p(s)$$<p>其实只管来说就是期望的定义，可以自然得引用在事件发生基础上。</p>
+<p>借由此定义可以方便得说明前面描述得定理</p>
+<div class="admonition note">
+<p class="admonition-title">定理</p>
+<p>对于随机变量$X_1,X_2,\cdots,X_n$</p>
+$$E[\sum_{i=1}^n X_i]=\sum_{i=1}^n E[X_i]$$</div>
+<p>证明设$Z=\sum_{i=1}^n X_i$，有</p>
+$$
+\begin{aligned}
+E[Z]&=\sum_{s\in S}Z(s)p(s)=\sum_{s\in S}(X_1(s)+X_2(s)+\cdots+X_n(s))p(s)\\
+&=\sum_{s\in S}X_1(s)p(s)+\sum_{s\in S}X_2(s)p(s)+\cdots+\sum_{s\in S}X_n(s))p(s)\\
+&=E[X_1]+E[X_2]+\cdots+E[X_n]
+\end{aligned}
+$$<p>这个证明其中有较为关键一步，就是$Z(s)$展开这一步。这一步实际是说，对于可能得$Z(s)$值，必然有该结果$s$推得的$X_1(s),X_2(s),\cdots,X_n(s)$之和构成。这个过程并没有关注$X_i$之间的独立性。即使这个结果$s$导致某些值必然关联(例如值相等)，上述推导依然成立。对于不同空间下的结果，也一样。所以这个结论适用情况非常广泛。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2026-03-22</span>
+                <span>更新于 2026-04-12</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -105,21 +367,27 @@
     <div class="post-info-more">
         <section class="post-tags"></section>
         <section>
-            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
+
+    <div class="post-nav"><a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E6%A6%82%E8%A7%88/" class="prev" rel="prev" title="离散数学概览"><i class="fas fa-angle-left" aria-hidden="true"></i>离散数学概览</a>
+            <a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/04%E8%BF%9E%E7%BB%AD%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/" class="next" rel="next" title="04连续型随机变量">04连续型随机变量<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.159.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
         </div>
     </footer></div>
 
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
 </html>

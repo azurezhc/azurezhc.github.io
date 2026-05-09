@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=8918&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>计算几何课程 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="计算几何课程" />
-<meta property="og:description" content="08截窗查询(Windowing Query) 计算几何-笔记目录 在第七章中讨论的Range Query是给定一个矩形，查询有多少落在矩形中的点。而在本章，" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-08-28T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-08-28T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+        <title>计算几何课程 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query/">
+  <meta property="og:site_name" content="azurezhc的游戏开发人生">
+  <meta property="og:title" content="计算几何课程">
+  <meta property="og:description" content="08截窗查询(Windowing Query) 计算几何-笔记目录
+在第七章中讨论的Range Query是给定一个矩形，查询有多少落在矩形中的点。而在本章，则相当于其一个扩展。对于点来说相当于对0维物体的查询，这里也可以对更高维度物体进行查询。例如对于1维来说，相当于给定一个矩形，查询与矩形相交的线段。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-08-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-08-28T00:00:00+00:00">
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="计算几何课程"/>
-<meta name="twitter:description" content="08截窗查询(Windowing Query) 计算几何-笔记目录 在第七章中讨论的Range Query是给定一个矩形，查询有多少落在矩形中的点。而在本章，"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="计算几何课程">
+  <meta name="twitter:description" content="08截窗查询(Windowing Query) 计算几何-笔记目录
+在第七章中讨论的Range Query是给定一个矩形，查询有多少落在矩形中的点。而在本章，则相当于其一个扩展。对于点来说相当于对0维物体的查询，这里也可以对更高维度物体进行查询。例如对于1维来说，相当于给定一个矩形，查询与矩形相交的线段。">
 <meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/04%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query/" /><link rel="prev" href="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search/" /><link rel="next" href="http://localhost:8918/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/04%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -26,17 +33,28 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query\/"
+            "@id": "http:\/\/localhost:8918\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query\/"
         },"genre": "posts","wordcount":  5329 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query\/","datePublished": "2023-08-28T00:00:00+00:00","dateModified": "2023-08-28T00:00:00+00:00","publisher": {
+        "url": "http:\/\/localhost:8918\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/08%E6%88%AA%E7%AA%97%E6%9F%A5%E8%AF%A2Windowing-Query\/","datePublished": "2023-08-28T00:00:00+00:00","dateModified": "2023-08-28T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
-                "name": "azurezhc"
+                "name": "xxxx"
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -44,8 +62,8 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
                 </a></div>
         </div>
     </div>
@@ -59,21 +77,21 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">Contents</h2>
+            <h2 class="toc-title">目录</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">计算几何课程</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-28">2023-08-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5329 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;</div>
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-28">2023-08-28</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 5329 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 11 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
-                    <span>Contents</span>
+                    <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
@@ -95,7 +113,7 @@
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="08截窗查询windowing-query">08截窗查询(Windowing Query)</h1>
-<p><a class="link-markdown-demo-site" href="./计算几何-笔记大纲.md" rel="noopener">计算几何-笔记目录</a></p>
+<p><a href="./%e8%ae%a1%e7%ae%97%e5%87%a0%e4%bd%95-%e7%ac%94%e8%ae%b0%e5%a4%a7%e7%ba%b2.md" rel="">计算几何-笔记目录</a></p>
 <p>在第七章中讨论的Range Query是给定一个矩形，查询有多少落在矩形中的点。而在本章，则相当于其一个扩展。对于点来说相当于对0维物体的查询，这里也可以对更高维度物体进行查询。例如对于1维来说，相当于给定一个矩形，查询与矩形相交的线段。</p>
 <ul>
 <li>Orthogonal Windowing Query
@@ -158,13 +176,13 @@
 <h1 id="截窗查询">截窗查询</h1>
 <p>这一章可以认为是第七章进一步的扩展。对于点查询，相当于对0维物体的查询。这里也可以对更高维度物体进行查询。</p>
 <div class="details admonition question open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>问题<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">截窗查询(Window Query)，即给定平面上一系列线段，以及一个矩形截窗。查询与矩形相交的线段有哪些。</div>
-        </div>
+    <div class="details-summary admonition-title">
+        <i class="icon far fa-circle-question" aria-hidden="true"></i>问题<i class="details-icon fas fa-angle-right" aria-hidden="true"></i>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">截窗查询(Window Query)，即给定平面上一系列线段，以及一个矩形截窗。查询与矩形相交的线段有哪些。</div>
+    </div>
+</div>
 <center><img src="./p1.png"></center>
 <p>这个问题，可以形式化的描述为：对于平面上存在一组线段集合$S=\set{s_i=[p_i,p_i\']\mid 1\leq i \leq n}$。给定一个截窗(query window)，即一个正交范围$W=[x,x\']\times[y,y\']$/。求出所有与正交范围相交的线段。</p>
 <p>为方便讨论，这里先假设线段方向不是任意的，只有两种类型的线段，垂直的以及水平的。</p>
@@ -185,13 +203,13 @@
 <h1 id="interval-tree">Interval Tree</h1>
 <p>为了解决这个Stabbing Query问题，所以要根据这些线段建立数据结构。这种数据结构就是Interval Tree。</p>
 <div class="details admonition tip open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>思路<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">根据一定的空间结构，将这一系列线段组合成一个树的形式来方便定位查询。通过这个树的结构，可以快速剔除一些不符合的线段。</div>
-        </div>
+    <div class="details-summary admonition-title">
+        <i class="icon far fa-lightbulb" aria-hidden="true"></i>思路<i class="details-icon fas fa-angle-right" aria-hidden="true"></i>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">根据一定的空间结构，将这一系列线段组合成一个树的形式来方便定位查询。通过这个树的结构，可以快速剔除一些不符合的线段。</div>
+    </div>
+</div>
 <p>首先要处理一下每个线段，对于每个线段来说可以标记其左端点和右端点。</p>
 <p>然后根据思路，我们应该恰当的划分线段集合。分成左右两部分，这里就是取用了所有端点的中位数点即可。然后根据中位数可以将整个线段集划分成三部分：如下图</p>
 <center><img src="./p4.png"></center>
@@ -238,13 +256,13 @@
 <h1 id="grounded-range-query">Grounded Range Query</h1>
 <p>本节主要是为了优化上面算法的空间复杂度，上面的Interval Tree加Range Tree结构。对比经典的BBST多了一个$logn$因子复杂度。但是我们期望其存储空间达到$O(n)$量级。</p>
 <div class="details admonition tip open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>思路<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">思路就是，观察这个范围查询特点，可以看到这个查询范围有一个无界方向。对于一个点是否落在内，其实就是看这个点是否足够远。</div>
-        </div>
+    <div class="details-summary admonition-title">
+        <i class="icon far fa-lightbulb" aria-hidden="true"></i>思路<i class="details-icon fas fa-angle-right" aria-hidden="true"></i>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">思路就是，观察这个范围查询特点，可以看到这个查询范围有一个无界方向。对于一个点是否落在内，其实就是看这个点是否足够远。</div>
+    </div>
+</div>
 <p>对于这样一种无界的Range Query可以看到其有一个方向是通天的或者落地的，对应的Range Query就称之位Grounded Range Query。</p>
 <h2 id="1d-grq">1D-GRQ</h2>
 <p>先来看1维情况。即，给定线段上一系列点$P=\set{p_1,\cdots,p_2}$。然后给定一个区间$I=(-\infin,q_x]$来查询。</p>
@@ -271,15 +289,15 @@
 <p>主义的是如图，这个y坐标中午树特性，在父子节点间并不用保持。只是两个子树之间的特性。例如0，1，2。点1，2都在0的左侧。</p>
 <p>这样一个结构即Priority Search Tree。这个结构可以通过$O(nlogn)$时间复杂度构建出来。选出集合中最小的点，然后按中位数划分剩下点集，递归执行即可构造出整个结构。每次划分规模减少一半，找到y中位数消耗$O(n)$，所以最后构造复杂度是$O(nlogn)$。</p>
 <div class="details admonition question open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>思考问题<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><p>如果点集已经按照y坐标排序好，则可以在$O(n)$时间内完成。</p>
+    <div class="details-summary admonition-title">
+        <i class="icon far fa-circle-question" aria-hidden="true"></i>思考问题<i class="details-icon fas fa-angle-right" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+        <div class="admonition-content"><p>如果点集已经按照y坐标排序好，则可以在$O(n)$时间内完成。</p>
 <p>跟Heap构造一样，自底向上构建。y已经排好，对于最底层得每3个点来说，常数时间构建一个最小Heap。然后自底向上把小Heap合并上去即可。</p>
 </div>
-        </div>
     </div>
+</div>
 <h2 id="2d-grq">2D-GRQ</h2>
 <p>现在来看建立在PST结构上得一个Grounded Range Query。</p>
 <p>在拥有这样一个结构之后我们来看这个查询算法。</p>
@@ -314,48 +332,48 @@
 <p>现在来看一般线段的截窗查询问题，看看前面的问题有没有借鉴。可以发现确实有可以借鉴的地方，就是要对数据结构做一定转化，此即线段树(Segment Tree)。</p>
 <p>对于这样一个线段集合依然可以分为Type A和Type B部分。对于Type A部分来说依然可以依靠之前的端点范围查询来解决。但对于Type B类的线段，如果我们还套用之前的方式会发现，其不再奏效。这来源于查询的直线不再是非平即直的了。</p>
 <div class="details admonition tip open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>思路<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">思路是将线段细分，划分成更细小的段。而在细小线段</div>
-        </div>
+    <div class="details-summary admonition-title">
+        <i class="icon far fa-lightbulb" aria-hidden="true"></i>思路<i class="details-icon fas fa-angle-right" aria-hidden="true"></i>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">思路是将线段细分，划分成更细小的段。而在细小线段</div>
+    </div>
+</div>
 <p>先来看一维情况。</p>
 <center><img src="./p11.png"></center>
 <p>现在考虑换一种结构，线段树(Segment Tree)。即将$n$条线段的$2n$个端点取出来，其会将整个数轴划分成$2n+1$
 个线段，每个段落称之为Elementary Interval(EI)。可以看到，当穿刺位置在同一个EI中时，其返回的结果时相同的。</p>
 <p>但是这样一个结构，有可能造成空间复杂度的爆炸。因为$n$条线段，每一条线段因为其他线段端点，可能产生出$\Omega(n)$段EI。简单把所有段取出，会用到$\Omega(n^2)$空间。</p>
 <div class="details admonition note">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>注意<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">这里似乎有点不太对，虽然每个线段会被分割成$\Omega(n)$段。但是每个线段的EI实际是有重叠的。如果只考虑上面所述的查询用结构，而不是每个分割线段都存储，就不会有这么大空间复杂度。可以看到还是跟端点数量对应的。这里应该是考虑到了每段线得存储。</div>
-        </div>
+    <div class="details-summary admonition-title">
+        <i class="icon far fa-pen-to-square" aria-hidden="true"></i>注意<i class="details-icon fas fa-angle-right" aria-hidden="true"></i>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">这里似乎有点不太对，虽然每个线段会被分割成$\Omega(n)$段。但是每个线段的EI实际是有重叠的。如果只考虑上面所述的查询用结构，而不是每个分割线段都存储，就不会有这么大空间复杂度。可以看到还是跟端点数量对应的。这里应该是考虑到了每段线得存储。</div>
+    </div>
+</div>
 <p>所以要把其空间复杂度控制住。</p>
 <div class="details admonition tip open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>思路<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">这里的想法就是，观察到每个EI可以向上归并成一个连续的更长线段。所以可以用建立在端点上的树形结构来存储。</div>
-        </div>
+    <div class="details-summary admonition-title">
+        <i class="icon far fa-lightbulb" aria-hidden="true"></i>思路<i class="details-icon fas fa-angle-right" aria-hidden="true"></i>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">这里的想法就是，观察到每个EI可以向上归并成一个连续的更长线段。所以可以用建立在端点上的树形结构来存储。</div>
+    </div>
+</div>
 <p>这个树形结构就形如BBST，叶子节点就是每一个EI。当搜索的时候，通过从树根节点开始搜索，根据位置判断索引到最后叶子节点上的EI即可判断跟那些线段相交。但是每个EI上就要记录跟自己相交的有哪些线段，这导致即便使用BBST其空间复杂度依然是$\Omega(n^2)$。</p>
 <p>而观察就是对于同一层上，如果相邻的两个节点都被某个线段覆盖，则其父节点也被该线段覆盖。通过在父节点上关联目标线段可以有效减少这个线段引用存储。结构如下图：</p>
 <center><img src="./p12.png"></center>
 <p>这里定义了这种结构存储的方式。扩展了原来BBST结构。对于每一个节点上都可能有一个关联线段集合，而不是只在叶子节点上，这样一个集合标记为$Int(u)$。一个线段$X$属于这个$Int(u)$的时候，当且仅当$X$覆盖了$u$所表示的EI，标记为$EI(u)$，但是不覆盖$u$父节点所表示的EI。</p>
 <p>其实就相当于把线段如图投影拆分成更长的一系列$EI(u)$合集。这里考虑每一个线段$X$，首先可以看到构成其覆盖的节点合集，在每层上不超过2个，而且不会有同一个父节点。</p>
 <div class="details admonition question open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>思考问题<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">首先如果存放节点有同一个父节点，这说明父节点也被$X$覆盖。所以其会由父节点来存放，而不是两个子节点。然后考虑同一层中两个节点，可以发现对于两个存放节点之间的$EI(u)$也会被$X$覆盖，所以如果有三个节点，这说明一定有一个父节点可被覆盖。</div>
-        </div>
+    <div class="details-summary admonition-title">
+        <i class="icon far fa-circle-question" aria-hidden="true"></i>思考问题<i class="details-icon fas fa-angle-right" aria-hidden="true"></i>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">首先如果存放节点有同一个父节点，这说明父节点也被$X$覆盖。所以其会由父节点来存放，而不是两个子节点。然后考虑同一层中两个节点，可以发现对于两个存放节点之间的$EI(u)$也会被$X$覆盖，所以如果有三个节点，这说明一定有一个父节点可被覆盖。</div>
+    </div>
+</div>
 <p>所以可以得到每条线段的存放空间复杂度不超过$O(logn)$。</p>
 <p>现在来考虑其构造方式，其实其方式显然可以自底而上从每个叶子EI来逐步构造出节点上的$Int(u)$。对于每个叶子，可以通过对端点排序来得到，然后自底向上考察每两个相邻叶子，然后合并$Int(u),Int(v)$即可。不过这样实际上变相的要求每个叶子上存放所有线段的引用$Int(u)$了。</p>
 <p>老师这里介绍的方式则是自顶而下的方式。即不停给入线段$X$来判断哪些$EI(u)$被包含在其中。判断过程自定向下如下：</p>
@@ -393,7 +411,7 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-08-28</span>
+                <span>更新于 2023-08-28</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -406,21 +424,27 @@
     <div class="post-info-more">
         <section class="post-tags"></section>
         <section>
-            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
+
+    <div class="post-nav"><a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search/" class="prev" rel="prev" title="计算几何课程"><i class="fas fa-angle-left" aria-hidden="true"></i>计算几何课程</a>
+            <a href="/posts/%E6%B8%B8%E6%88%8F%E6%9E%B6%E6%9E%84%E7%90%86%E8%AE%BA/04%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" class="next" rel="next" title="游戏架构理论">游戏架构理论<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.159.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
         </div>
     </footer></div>
 
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
 </html>

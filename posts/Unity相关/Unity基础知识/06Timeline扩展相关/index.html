@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=8918&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>06Timeline扩展相关 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="06Timeline扩展相关" />
-<meta property="og:description" content="06Timeline扩展相关 Timeline是游戏开发中常见的工具。因为游戏是一个随着时间演变的过程。定义随时间的变化一系列事物是游戏中必然" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/06Timeline%E6%89%A9%E5%B1%95%E7%9B%B8%E5%85%B3/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-06-22T00:00:00+00:00" />
-<meta property="article:modified_time" content="2024-06-22T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+        <title>06Timeline扩展相关 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://localhost:8918/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/06Timeline%E6%89%A9%E5%B1%95%E7%9B%B8%E5%85%B3/">
+  <meta property="og:site_name" content="azurezhc的游戏开发人生">
+  <meta property="og:title" content="06Timeline扩展相关">
+  <meta property="og:description" content="06Timeline扩展相关 Timeline是游戏开发中常见的工具。因为游戏是一个随着时间演变的过程。定义随时间的变化一系列事物是游戏中必然会涉及的功能。短如定义技能动作释放与特效逻辑配合。长如一段演出的定义。都可以视为在时间轴上的演变。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-06-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-06-22T00:00:00+00:00">
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="06Timeline扩展相关"/>
-<meta name="twitter:description" content="06Timeline扩展相关 Timeline是游戏开发中常见的工具。因为游戏是一个随着时间演变的过程。定义随时间的变化一系列事物是游戏中必然"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="06Timeline扩展相关">
+  <meta name="twitter:description" content="06Timeline扩展相关 Timeline是游戏开发中常见的工具。因为游戏是一个随着时间演变的过程。定义随时间的变化一系列事物是游戏中必然会涉及的功能。短如定义技能动作释放与特效逻辑配合。长如一段演出的定义。都可以视为在时间轴上的演变。">
 <meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/06Timeline%E6%89%A9%E5%B1%95%E7%9B%B8%E5%85%B3/" /><link rel="prev" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/05Prefab%E7%9B%B8%E5%85%B3/" /><link rel="next" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/07Serializaion%E7%9B%B8%E5%85%B3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:8918/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/06Timeline%E6%89%A9%E5%B1%95%E7%9B%B8%E5%85%B3/" /><link rel="prev" href="http://localhost:8918/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/05Prefab%E7%9B%B8%E5%85%B3/" /><link rel="next" href="http://localhost:8918/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/07Serializaion%E7%9B%B8%E5%85%B3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -26,17 +31,28 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/06Timeline%E6%89%A9%E5%B1%95%E7%9B%B8%E5%85%B3\/"
-        },"genre": "posts","wordcount":  2072 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/06Timeline%E6%89%A9%E5%B1%95%E7%9B%B8%E5%85%B3\/","datePublished": "2024-06-22T00:00:00+00:00","dateModified": "2024-06-22T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/localhost:8918\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/06Timeline%E6%89%A9%E5%B1%95%E7%9B%B8%E5%85%B3\/"
+        },"genre": "posts","wordcount":  2029 ,
+        "url": "http:\/\/localhost:8918\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/06Timeline%E6%89%A9%E5%B1%95%E7%9B%B8%E5%85%B3\/","datePublished": "2024-06-22T00:00:00+00:00","dateModified": "2024-06-22T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
-                "name": "azurezhc"
+                "name": "xxxx"
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -44,8 +60,8 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
                 </a></div>
         </div>
     </div>
@@ -59,21 +75,21 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">Contents</h2>
+            <h2 class="toc-title">目录</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">06Timeline扩展相关</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-06-22">2024-06-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2072 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2024-06-22">2024-06-22</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 2029 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
-                    <span>Contents</span>
+                    <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
@@ -87,11 +103,11 @@
 <p>Timeline是游戏开发中常见的工具。因为游戏是一个随着时间演变的过程。定义随时间的变化一系列事物是游戏中必然会涉及的功能。短如定义技能动作释放与特效逻辑配合。长如一段演出的定义。都可以视为在时间轴上的演变。</p>
 <p>准确来说，在时间维度上的演变操作，是可以被Timeline这样一个结构所描述的。</p>
 <p>timeline相关文档
-<a class="link-markdown-demo-site" href="https://docs.unity3d.com/Packages/com.unity.timeline@1.8/manual/index.html" rel="noopener">https://docs.unity3d.com/Packages/com.unity.timeline@1.8/manual/index.html</a></p>
+<a href="https://docs.unity3d.com/Packages/com.unity.timeline@1.8/manual/index.html" target="_blank" rel="noopener noreffer ">https://docs.unity3d.com/Packages/com.unity.timeline@1.8/manual/index.html</a></p>
 <p>教学视频
-<a class="link-markdown-demo-site" href="https://www.bilibili.com/video/BV1gt4y1Y7LY/?p=2&amp;spm_id_from=333.880.my_history.page.click&amp;vd_source=8d35ead0946519f56d2ab5f9c83045df" rel="noopener">https://www.bilibili.com/video/BV1gt4y1Y7LY/?p=2&spm_id_from=333.880.my_history.page.click&vd_source=8d35ead0946519f56d2ab5f9c83045df</a></p>
+<a href="https://www.bilibili.com/video/BV1gt4y1Y7LY/?p=2&amp;spm_id_from=333.880.my_history.page.click&amp;vd_source=8d35ead0946519f56d2ab5f9c83045df" target="_blank" rel="noopener noreffer ">https://www.bilibili.com/video/BV1gt4y1Y7LY/?p=2&spm_id_from=333.880.my_history.page.click&vd_source=8d35ead0946519f56d2ab5f9c83045df</a></p>
 <p>扩展
-<a class="link-markdown-demo-site" href="https://blog.unity.com/engine-platform/extending-timeline-practical-guide" rel="noopener">https://blog.unity.com/engine-platform/extending-timeline-practical-guide</a></p>
+<a href="https://blog.unity.com/engine-platform/extending-timeline-practical-guide" target="_blank" rel="noopener noreffer ">https://blog.unity.com/engine-platform/extending-timeline-practical-guide</a></p>
 <p>这里主要记录Tmeline扩展相关结构。Timeline部分还有很多细节待其他文档逐步补全。</p>
 <h1 id="timeline基础介绍">Timeline基础介绍</h1>
 <p>Timeline是Unity自带的一个时间轴编辑窗口。其整体结构如下：</p>
@@ -122,52 +138,27 @@ unity对Timeline的建模，也是遵循逻辑与行为分离的方针。即存�
 <li>LightControlTrack：灯光控制轴。</li>
 </ul>
 <p>其中LightControlTrack是一个空数据结构，只是用来声明这个Track上可以使用的PlayableAsset结构：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-CSharp" data-lang="CSharp"><span class="line"><span class="cl"><span class="c1">//TrackClipType 声明什么类型的Clip可以放在该轴上</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-CSharp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CSharp" data-lang="CSharp"><span class="line"><span class="cl"><span class="c1">//TrackClipType 声明什么类型的Clip可以放在该轴上</span>
 </span></span><span class="line"><span class="cl"><span class="na">[TrackClipType(typeof(Track_LightControlAsset))]</span>
 </span></span><span class="line"><span class="cl"><span class="c1">//TrackBindingType 该Track可以绑定一个什么类型的对象</span>
 </span></span><span class="line"><span class="cl"><span class="na">[TrackBindingType(typeof(Light))]</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Track_LightControlTrack</span> <span class="p">:</span> <span class="n">TrackAsset</span> <span class="p">{}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>而PlayableAsset则主要承担了两件事情。</p>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Track_LightControlTrack</span> <span class="p">:</span> <span class="n">TrackAsset</span> <span class="p">{}</span></span></span></code></pre></div></div>
+<p>而PlayableAsset则主要承担了两件事情。</p>
 <ul>
 <li>灯光控制执行时，需要预先编辑存放的数据。例如灯光颜色，亮度等等。以及一个需要预先放置，但是只在运行时需要绑定的灯光对象。可以注意到，有一部分数据是可以预先指定的。而还有一些对象，是需要跟着运行时环境所发生变化的。于是需要一个方式来进行区分。</li>
 <li>创建出对应的Behaviour对象。来承担该Clip开始时，运行时，结束时等一些时间节点的逻辑执行效果。</li>
 </ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-CSharp" data-lang="CSharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Track_LightControlAsset</span> <span class="p">:</span> <span class="n">PlayableAsset</span><span class="p">,</span> <span class="n">ITimelineClipAsset</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-CSharp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CSharp" data-lang="CSharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Track_LightControlAsset</span> <span class="p">:</span> <span class="n">PlayableAsset</span><span class="p">,</span> <span class="n">ITimelineClipAsset</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 编辑时声明的对象类型字段 注意的是light需要预览，运行时绑定不同对象。所以这需要什么一个ExposedReference超类型</span>
 </span></span><span class="line"><span class="cl">	<span class="c1">// public ExposedReference&lt;Light&gt; light;</span>
@@ -186,33 +177,14 @@ unity对Timeline的建模，也是遵循逻辑与行为分离的方针。即存�
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">playable</span><span class="p">;</span>   
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>而PlayableBehaviour对象功能则更为简单具体，其有一系列调用时点接口，在调用时触发。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-CSharp" data-lang="CSharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Track_LightControlBehaviour</span> <span class="p">:</span> <span class="n">PlayableBehaviour</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<p>而PlayableBehaviour对象功能则更为简单具体，其有一系列调用时点接口，在调用时触发。</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-CSharp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CSharp" data-lang="CSharp"><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">class</span> <span class="nc">Track_LightControlBehaviour</span> <span class="p">:</span> <span class="n">PlayableBehaviour</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="c1">// public Light light;</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Color</span> <span class="n">color</span><span class="p">;</span>
@@ -229,16 +201,14 @@ unity对Timeline的建模，也是遵循逻辑与行为分离的方针。即存�
 </span></span><span class="line"><span class="cl">			<span class="n">light</span><span class="p">.</span><span class="n">intensity</span> <span class="p">=</span> <span class="n">intensity</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">		<span class="p">}</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>以上主要都是示例网站中的示例结构。主要用来对Timeline结构组成起到一个说明作用。示例中还介绍了如何自定义Mixer混合效果，添加template来添加key镇功能。这里不做过多介绍，原文已经讲解的非常好了。</p>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<p>以上主要都是示例网站中的示例结构。主要用来对Timeline结构组成起到一个说明作用。示例中还介绍了如何自定义Mixer混合效果，添加template来添加key镇功能。这里不做过多介绍，原文已经讲解的非常好了。</p>
 <p>这里主要再记录Timeline整体结构的在编辑时，运行时，等结构细节。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2024-06-22</span>
+                <span>更新于 2024-06-22</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -251,21 +221,27 @@ unity对Timeline的建模，也是遵循逻辑与行为分离的方针。即存�
     <div class="post-info-more">
         <section class="post-tags"></section>
         <section>
-            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
+
+    <div class="post-nav"><a href="/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/05Prefab%E7%9B%B8%E5%85%B3/" class="prev" rel="prev" title="05Prefab相关"><i class="fas fa-angle-left" aria-hidden="true"></i>05Prefab相关</a>
+            <a href="/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/07Serializaion%E7%9B%B8%E5%85%B3/" class="next" rel="next" title="07Serialization相关">07Serialization相关<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.159.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
         </div>
     </footer></div>
 
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
 </html>

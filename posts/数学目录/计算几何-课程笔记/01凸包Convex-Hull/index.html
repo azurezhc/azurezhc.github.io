@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=8918&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>计算几何课程 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="计算几何课程" />
-<meta property="og:description" content="01凸包(Convex Hull) 计算几何-笔记目录 计算几何第一章课程主要讲述如何计算凸包。 章节由浅入深，由问题逐步引导出解决方法。讲的非常好。本文主" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/01%E5%87%B8%E5%8C%85Convex-Hull/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-08-25T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-08-25T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+        <title>计算几何课程 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/01%E5%87%B8%E5%8C%85Convex-Hull/">
+  <meta property="og:site_name" content="azurezhc的游戏开发人生">
+  <meta property="og:title" content="计算几何课程">
+  <meta property="og:description" content="01凸包(Convex Hull) 计算几何-笔记目录
+计算几何第一章课程主要讲述如何计算凸包。
+章节由浅入深，由问题逐步引导出解决方法。讲的非常好。本文主要依据课程小节划分，总结每章重要内容，做一总结笔记。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-08-25T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-08-25T00:00:00+00:00">
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="计算几何课程"/>
-<meta name="twitter:description" content="01凸包(Convex Hull) 计算几何-笔记目录 计算几何第一章课程主要讲述如何计算凸包。 章节由浅入深，由问题逐步引导出解决方法。讲的非常好。本文主"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="计算几何课程">
+  <meta name="twitter:description" content="01凸包(Convex Hull) 计算几何-笔记目录
+计算几何第一章课程主要讲述如何计算凸包。
+章节由浅入深，由问题逐步引导出解决方法。讲的非常好。本文主要依据课程小节划分，总结每章重要内容，做一总结笔记。">
 <meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/01%E5%87%B8%E5%8C%85Convex-Hull/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/02%E5%87%A0%E4%BD%95%E6%B1%82%E4%BA%A4Geometric-Intersection/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/01%E5%87%B8%E5%8C%85Convex-Hull/" /><link rel="prev" href="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/02%E5%87%A0%E4%BD%95%E6%B1%82%E4%BA%A4Geometric-Intersection/" /><link rel="next" href="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -26,17 +35,28 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/01%E5%87%B8%E5%8C%85Convex-Hull\/"
-        },"genre": "posts","wordcount":  11254 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/01%E5%87%B8%E5%8C%85Convex-Hull\/","datePublished": "2023-08-25T00:00:00+00:00","dateModified": "2023-08-25T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/localhost:8918\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/01%E5%87%B8%E5%8C%85Convex-Hull\/"
+        },"genre": "posts","wordcount":  11344 ,
+        "url": "http:\/\/localhost:8918\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\/01%E5%87%B8%E5%8C%85Convex-Hull\/","datePublished": "2023-08-25T00:00:00+00:00","dateModified": "2023-08-25T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
-                "name": "azurezhc"
+                "name": "xxxx"
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -44,8 +64,8 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
                 </a></div>
         </div>
     </div>
@@ -59,21 +79,21 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">Contents</h2>
+            <h2 class="toc-title">目录</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">计算几何课程</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-25">2023-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;11254 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;23 minutes&nbsp;</div>
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-25">2023-08-25</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 11344 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 23 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
-                    <span>Contents</span>
+                    <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
@@ -171,8 +191,7 @@
 <h1 id="极点与极边内容小节">极点与极边内容小节</h1>
 <p>对于凸包求解问题，我们可以用如下形式化的语言来描述：</p>
 <p>给定一个点集$S$。求解一个子集于$S$的最小的点集$P\subseteq{}S$，使得$S$中任意一个点都可以由$P$中的点仿射组合出来。即</p>
-$$\forall{}s\in{}S,s=\sum{}\lambda{}_ip_i,p_i\in{}P,\lambda_i\in{}[0,1],\sum\lambda_i=1$$
-<p>这里面有两个重要条件</p>
+$$\forall{}s\in{}S,s=\sum{}\lambda{}_ip_i,p_i\in{}P,\lambda_i\in{}[0,1],\sum\lambda_i=1$$<p>这里面有两个重要条件</p>
 <ul>
 <li>最小的子集\</li>
 <li>$S$中任意一点可被$P$中点仿射组合出来，就是说$S$被$P$张成的图形包裹在内。这个张成的图形就是所谓的凸包(convex hull)</li>
@@ -198,8 +217,7 @@ $$
 ToLeft(p,q,s)=true\\
 ToLeft(q,r,s)=true\\
 ToLeft(r,p,s)=true\\
-$$
-<p>而To-Left Test则可以通过叉积简单完成，更深入一点，几何积中2阶部分带有符号信息，是一个有向面积，恰好可以度量这一点。而且这种计算不需要计算三角函数，</p>
+$$<p>而To-Left Test则可以通过叉积简单完成，更深入一点，几何积中2阶部分带有符号信息，是一个有向面积，恰好可以度量这一点。而且这种计算不需要计算三角函数，</p>
 $$
 ToLeft(p,q,s)=
 \begin{vmatrix}
@@ -212,8 +230,7 @@ p.x & p.y & 1 \\
 q.x-p.x & q.y - p.y & 0 \\
 s.x-q.x & s.y - q.y & 0 \\
 \end{vmatrix} = \vec{pq}\wedge\vec{qs}
-$$
-<p>即实际用$\vec{pq},\vec{qs}$两个向量的外积值来判断其方向。</p>
+$$<p>即实际用$\vec{pq},\vec{qs}$两个向量的外积值来判断其方向。</p>
 <p>建立在上述方案中，我们有一个凸包的求解方案，方案如下：</p>
 <ul>
 <li>对于$S$中的点我们可以遍历所有点，然后枚举所有三角形判断是否存在一个三角形将其包括在内。如果包括了，则将其排除掉，否则其就是一个极点。</li>
@@ -272,16 +289,16 @@ $$
 对于最差的情况来说，就需要$O(n)$的时间了，如下图，所有边都是极边，每条边都走了一遍。</p>
 <p>显然这是一个输出敏感算法，即他的算法实际上，是跟输出的大小相关联的。这里如果令给定点集为$S$，则其凸包变数可表示为$h=|CH(S)|$那么算法复杂度将是$O(nh)$</p>
 <div class="details admonition question open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>思考问题<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><p>本章有个思考问题，给定n个点，找出沿着某个方向上的极点。这个其实非常容易做到，假设方向向量为$\vec{v}$。那么遍历所有点$p$，用点的坐标跟向量做内积即可，然后其极大，极小值所对应的那个点就是极点。</p>
+    <div class="details-summary admonition-title">
+        <i class="icon far fa-circle-question" aria-hidden="true"></i>思考问题<i class="details-icon fas fa-angle-right" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+        <div class="admonition-content"><p>本章有个思考问题，给定n个点，找出沿着某个方向上的极点。这个其实非常容易做到，假设方向向量为$\vec{v}$。那么遍历所有点$p$，用点的坐标跟向量做内积即可，然后其极大，极小值所对应的那个点就是极点。</p>
 <p>本章还提出了一个关键的算法类型：输出敏感算法(Ouput Sensitivity)</p>
 <p>输出敏感算法，其算法的效率将由输出集合的大小来确定。</p>
 </div>
-        </div>
     </div>
+</div>
 <h1 id="规约">规约</h1>
 <p>本章最重要的是引入了归约的概念。使用规约我们可以将两个问题关联起来，看到问题直接的相关性，甚至可以看到问题的下界。而知道下界，就相当于知道了这个问题可以做到的最好程度，进而看到问题之间的内禀联系。</p>
 <p>规约的思想可以简单表示为下图</p>
@@ -312,13 +329,13 @@ $$
 <center><img src="./p9.png"></center>
 <p>该规约给出$Sorting \leq_N{}2d-CH$，进而由该规约我们进而可以给出这个问题的下界$\Omega(nlogn)$。</p>
 <div class="details admonition question open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>思考<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">这个规约实际上也暗含了这样一个感觉，凸包问题本质上跟排序问题是类似的，至少在某种操作转化下会有一样的结构性质。虽然规约只是用来说明一个下界，而且并没用运用到目标问题A的算法，甚至对于找到的问题A可能都存在偏差，例如归约到了一个更低的层次上。但是好的规约似乎可以说明两个问题上一定的联系。我在这有个简单的想法，也是后面Graham Scan所用到的思路的感觉。就是对于凸包问题，如果给定凸包外一点$r$，可以构成该点到平面上所有点的一个向量集合$\vec{rx_i}$，解决这个向量集合的角度排序问题，就可以有效的解决凸包问题。而Graham Scan确实说明了这一点。实际上如果这个点是一个无限远点，这个向量角度就可以转化为到某一个方向上的投影点的排序问题。也是我们上面用的规约的抛物线方案。同时知道了这个$\vec{rx_i}$的排序，我们也可以直接快速的得到两个极点，即两条切线所在的点，对应角度最大，与最小点。通过这两个点，似乎按照某种方式就可以构造出凸包。</div>
-        </div>
+    <div class="details-summary admonition-title">
+        <i class="icon far fa-circle-question" aria-hidden="true"></i>思考<i class="details-icon fas fa-angle-right" aria-hidden="true"></i>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">这个规约实际上也暗含了这样一个感觉，凸包问题本质上跟排序问题是类似的，至少在某种操作转化下会有一样的结构性质。虽然规约只是用来说明一个下界，而且并没用运用到目标问题A的算法，甚至对于找到的问题A可能都存在偏差，例如归约到了一个更低的层次上。但是好的规约似乎可以说明两个问题上一定的联系。我在这有个简单的想法，也是后面Graham Scan所用到的思路的感觉。就是对于凸包问题，如果给定凸包外一点$r$，可以构成该点到平面上所有点的一个向量集合$\vec{rx_i}$，解决这个向量集合的角度排序问题，就可以有效的解决凸包问题。而Graham Scan确实说明了这一点。实际上如果这个点是一个无限远点，这个向量角度就可以转化为到某一个方向上的投影点的排序问题。也是我们上面用的规约的抛物线方案。同时知道了这个$\vec{rx_i}$的排序，我们也可以直接快速的得到两个极点，即两条切线所在的点，对应角度最大，与最小点。通过这两个点，似乎按照某种方式就可以构造出凸包。</div>
+    </div>
+</div>
 <h1 id="graham-scan">Graham Scan</h1>
 <p>基于上面一个到排序问题的规约，我们可以看到凸包跟排序是有着关联的。这里老师直接介绍了算法，但是我还是觉得可以从规约上看到一丝端倪。可以在凸包下界中看到操作，我们先看算法怎么执行的，并且描述其中一些细节点，说明一下关键要素。</p>
 <p>数据结构上：需要两个堆栈(Stack)。我们这里标记为堆栈$T$和$S$。对于栈顶的元素我们标记为$T[0]$和$S[0]$。
@@ -391,21 +408,21 @@ $$
 </ul>
 <p>最后本章讲到了一些额外的细节。例如一开始，给定点按照某个方向顺序已经排序好了。例如都按照x坐标从小到大的顺序排序好了。我们如果再去计算这个排序，不是浪费了之前的结构么？这个操作其实不用担心，因为你可想象有一个点$i$在无穷远处即可，此时因为非常远$i$到这些点的线都被拉成了直线了。所以这些时候只要直接按照顺序scan操作即可。实际上对于scan来说，需要用到该点的时候只有跟两边极点进行比较的时候，这个时候会有一个默认的向上的方向来作为一个判断。</p>
 <div class="details admonition question open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>思考1<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">这里用到了一个图论的常用公式欧拉定理，这个定理后面还会经常用到。即$V-E+R-F=1$。其中$V$为定点数，$E$为边数，$R$为面数，$F$ 为联通分支个数。这里联通分支就1个所以$V-E+R=2$，然后对于任意一个面来说其最少有3条边，而每条边最多属于2个面。即有$3R<2E$，这里有$n$个顶点$V=n$。带入就有$n+\frac{2}{3}E\geq{}2+E$ 进而得出上界。</div>
-        </div>
+    <div class="details-summary admonition-title">
+        <i class="icon far fa-circle-question" aria-hidden="true"></i>思考1<i class="details-icon fas fa-angle-right" aria-hidden="true"></i>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">这里用到了一个图论的常用公式欧拉定理，这个定理后面还会经常用到。即$V-E+R-F=1$。其中$V$为定点数，$E$为边数，$R$为面数，$F$ 为联通分支个数。这里联通分支就1个所以$V-E+R=2$，然后对于任意一个面来说其最少有3条边，而每条边最多属于2个面。即有$3R<2E$，这里有$n$个顶点$V=n$。带入就有$n+\frac{2}{3}E\geq{}2+E$ 进而得出上界。</div>
+    </div>
+</div>
 <div class="details admonition question open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>思考2<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">这个额外的细节操作就非常像我们前面规约中的操作。这进一步说明了两者的一致性。</div>
-        </div>
+    <div class="details-summary admonition-title">
+        <i class="icon far fa-circle-question" aria-hidden="true"></i>思考2<i class="details-icon fas fa-angle-right" aria-hidden="true"></i>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">这个额外的细节操作就非常像我们前面规约中的操作。这进一步说明了两者的一致性。</div>
+    </div>
+</div>
 <h1 id="分而治之">分而治之</h1>
 <p>从分而治之的思路出发，介绍了两个版本的凸包求解算法。这两个求解思路也在后面不断运用。</p>
 <h2 id="从mergesort到凸包问题">从MergeSort到凸包问题</h2>
@@ -484,7 +501,7 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2023-08-25</span>
+                <span>更新于 2023-08-25</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -497,21 +514,27 @@ $$
     <div class="post-info-more">
         <section class="post-tags"></section>
         <section>
-            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
+
+    <div class="post-nav"><a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/02%E5%87%A0%E4%BD%95%E6%B1%82%E4%BA%A4Geometric-Intersection/" class="prev" rel="prev" title="计算几何课程"><i class="fas fa-angle-left" aria-hidden="true"></i>计算几何课程</a>
+            <a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/07%E5%87%A0%E4%BD%95%E8%8C%83%E5%9B%B4%E6%9F%A5%E6%89%BEGeometric-Range-Search/" class="next" rel="next" title="计算几何课程">计算几何课程<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.159.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
         </div>
     </footer></div>
 
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
 </html>

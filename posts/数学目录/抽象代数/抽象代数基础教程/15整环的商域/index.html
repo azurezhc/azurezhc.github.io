@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=8918&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>整环 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="整环" />
-<meta property="og:description" content="整环的商域 这里教材的表述有点复杂。是从扩充后的域来说明的。在我看来，这章主要是想说明。对于任意一个整环结构来说，有一种方式可以把他扩展成一个" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/15%E6%95%B4%E7%8E%AF%E7%9A%84%E5%95%86%E5%9F%9F/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2025-03-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2025-03-09T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+        <title>整环 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/15%E6%95%B4%E7%8E%AF%E7%9A%84%E5%95%86%E5%9F%9F/">
+  <meta property="og:site_name" content="azurezhc的游戏开发人生">
+  <meta property="og:title" content="整环">
+  <meta property="og:description" content="整环的商域 这里教材的表述有点复杂。是从扩充后的域来说明的。在我看来，这章主要是想说明。对于任意一个整环结构来说，有一种方式可以把他扩展成一个域，这个扩展过程类似于从$\mathbb{Z}$变成$\mathbb{Q}$的方式。这种方式扩展成的域，称之为商域。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-03-09T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-09T00:00:00+00:00">
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="整环"/>
-<meta name="twitter:description" content="整环的商域 这里教材的表述有点复杂。是从扩充后的域来说明的。在我看来，这章主要是想说明。对于任意一个整环结构来说，有一种方式可以把他扩展成一个"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="整环">
+  <meta name="twitter:description" content="整环的商域 这里教材的表述有点复杂。是从扩充后的域来说明的。在我看来，这章主要是想说明。对于任意一个整环结构来说，有一种方式可以把他扩展成一个域，这个扩展过程类似于从$\mathbb{Z}$变成$\mathbb{Q}$的方式。这种方式扩展成的域，称之为商域。">
 <meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/15%E6%95%B4%E7%8E%AF%E7%9A%84%E5%95%86%E5%9F%9F/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/13%E6%95%B4%E7%8E%AF/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/14%E8%B4%B9%E9%A9%AC%E5%AE%9A%E7%90%86%E5%92%8C%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/15%E6%95%B4%E7%8E%AF%E7%9A%84%E5%95%86%E5%9F%9F/" /><link rel="prev" href="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/13%E6%95%B4%E7%8E%AF/" /><link rel="next" href="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/14%E8%B4%B9%E9%A9%AC%E5%AE%9A%E7%90%86%E5%92%8C%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -26,17 +31,28 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/15%E6%95%B4%E7%8E%AF%E7%9A%84%E5%95%86%E5%9F%9F\/"
-        },"genre": "posts","wordcount":  3014 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/15%E6%95%B4%E7%8E%AF%E7%9A%84%E5%95%86%E5%9F%9F\/","datePublished": "2025-03-09T00:00:00+00:00","dateModified": "2025-03-09T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/localhost:8918\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/15%E6%95%B4%E7%8E%AF%E7%9A%84%E5%95%86%E5%9F%9F\/"
+        },"genre": "posts","wordcount":  3151 ,
+        "url": "http:\/\/localhost:8918\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0\/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B\/15%E6%95%B4%E7%8E%AF%E7%9A%84%E5%95%86%E5%9F%9F\/","datePublished": "2025-03-09T00:00:00+00:00","dateModified": "2025-03-09T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
-                "name": "azurezhc"
+                "name": "xxxx"
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -44,8 +60,8 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
                 </a></div>
         </div>
     </div>
@@ -59,21 +75,21 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">Contents</h2>
+            <h2 class="toc-title">目录</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">整环</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-03-09">2025-03-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3014 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2025-03-09">2025-03-09</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 3151 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
-                    <span>Contents</span>
+                    <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
@@ -92,8 +108,7 @@
 <p>这里教材的表述有点复杂。是从扩充后的域来说明的。在我看来，这章主要是想说明。对于任意一个整环结构来说，有一种方式可以把他扩展成一个域，这个扩展过程类似于从$\mathbb{Z}$变成$\mathbb{Q}$的方式。这种方式扩展成的域，称之为商域。</p>
 <p>虽然这章并未在主线学习流程中。但是后面也多次用到。因为对于多项式来说，也是个整环，实际上我们也经常用到多项式除法的表示形式。</p>
 <p>先来看从$\mathbb{Z}$到$\mathbb{Q}$的构造过程来看看这个构造方式。这个方式在我看来，就有种感觉，分数是被扩充逆元构造出来的感觉。对于$\mathbb{Z}$来说，我们构造如下集合</p>
-$$F=\{\frac{a}{b}|a,b\in\mathbb{Z},b\ne 0\}$$
-<p>于是这个$F$是一个域，我们可以看到这个域就是有理数域$\mathbb{Q}$。</p>
+$$F=\{\frac{a}{b}|a,b\in\mathbb{Z},b\ne 0\}$$<p>于是这个$F$是一个域，我们可以看到这个域就是有理数域$\mathbb{Q}$。</p>
 <p>这个过程，我觉得就是乘法逆元的补充。当然要严格的来看这个过程有如下步骤。</p>
 <p>设$D$是一个整环，希望将其扩充成一个商域$F$，采用以下步骤：</p>
 <ul>
@@ -104,10 +119,8 @@ $$F=\{\frac{a}{b}|a,b\in\mathbb{Z},b\ne 0\}$$
 </ul>
 <h2 id="第一步">第一步</h2>
 <p>第一步是构造笛卡尔积，用有序对的方式来代表上面商的形式。即</p>
-$$D\times D = \{(a,b)|a,b\in D\}$$
-<p>对比分数形式的商$\frac{a}{b}$，$b$不能为$0$。所以这里还要削减一点。这部分我觉得实际上跟后面构建每个元素的乘法逆关联。实际上这一步相当于给定一个元素$b$我们添加一个元素$(a,b)$为其乘法逆。但是$0$是个特例，所以要移除去。构成如下集合：</p>
-$$S=\{(a,b)|a,b,\in D,b\ne 0\}$$
-<div class="admonition abstract">
+$$D\times D = \{(a,b)|a,b\in D\}$$<p>对比分数形式的商$\frac{a}{b}$，$b$不能为$0$。所以这里还要削减一点。这部分我觉得实际上跟后面构建每个元素的乘法逆关联。实际上这一步相当于给定一个元素$b$我们添加一个元素$(a,b)$为其乘法逆。但是$0$是个特例，所以要移除去。构成如下集合：</p>
+$$S=\{(a,b)|a,b,\in D,b\ne 0\}$$<div class="admonition abstract">
 <p class="admonition-title">定义 26.2</p>
 <p>$S$中的两个元素$(a,b)$和$(c,d)$是等价的(equivalent)，表示为$(a,b)\sim(c,d)$，当且仅当$ad=bc$。</p>
 </div>
@@ -118,10 +131,8 @@ $$S=\{(a,b)|a,b,\in D,b\ne 0\}$$
 <p class="admonition-title">引理 26.4</p>
 <p>对于$F$中的两个元素$[(a,b)]$和$[(c,d)]$定义如下的加法和乘法运算：</p>
 <p>加法运算</p>
-$$[(a,b)]+[(c,d)]=[(ad+bc,bd)]$$
-<p>乘法运算</p>
-$$[(a,b)] [(c,d)]=[(ac,bd)]$$
-</div>
+$$[(a,b)]+[(c,d)]=[(ad+bc,bd)]$$<p>乘法运算</p>
+$$[(a,b)] [(c,d)]=[(ac,bd)]$$</div>
 <p>现在要说明这个运算是良好的。</p>
 <p>首先如果$[(a,b)]$和$[(c,d)]$在$F$中，则$(a,b)$和$(c,d)$在$S$中，因此$b,d\ne{}0$所以$(ad+bc,bd)$和$(ac,bd)$都在$S$中。</p>
 <p>然后因为定义是在等价类上面，要说明对于等价类中选取任何元素计算的元素也都在相同的等价类中。即对于任意的$(a_1,b_1)\in [(a,b)]$和$(c_1,d_1)\in [(c,d)]$两个元素的加法以及乘法运算任然在目标等价类中。</p>
@@ -135,11 +146,9 @@ $$[(a,b)] [(c,d)]=[(ac,bd)]$$
 <p>构造映射$i:D\to F$。由$i(a)=[(a,1)]$给出。现在说明这是一个同构。显然$i$满足同态条件：</p>
 <p>对于加法有
 </p>
-$$i(a)+i(b)=[(a,1)]+[(b,1)]=[(a1+1b,1)]=[(a+b),1]=i(a+b)$$
-<p>对于乘法有
+$$i(a)+i(b)=[(a,1)]+[(b,1)]=[(a1+1b,1)]=[(a+b),1]=i(a+b)$$<p>对于乘法有
 </p>
-$$i(a)i(b)=[(a,1)][(b,1)]=[(ab),1]=i(ab)$$
-<p>然后说明$i$是单的，对于任意$a,b\in{}D$如果$i(a)=i(b)$则$[(a,1)]=[(b,1)]$由等价关系给出$a=b$。所以$i$是$D$到$D'$的一个同构。$D'$即有所有形如$[(a,1)]$的元素构成。显然这是一个子环。</p>
+$$i(a)i(b)=[(a,1)][(b,1)]=[(ab),1]=i(ab)$$<p>然后说明$i$是单的，对于任意$a,b\in{}D$如果$i(a)=i(b)$则$[(a,1)]=[(b,1)]$由等价关系给出$a=b$。所以$i$是$D$到$D'$的一个同构。$D'$即有所有形如$[(a,1)]$的元素构成。显然这是一个子环。</p>
 <div class="admonition note">
 <p class="admonition-title">定理 26.6</p>
 <p>任何整环$D$都可以扩展为(或嵌入)一个域$F$，使得$F$中的每个元素可以表示为$D$的两个元素的商。这样的域$F$称为$D$的商域(field of quotient)。</p>
@@ -173,7 +182,7 @@ $$i(a)i(b)=[(a,1)][(b,1)]=[(ab),1]=i(ab)$$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2025-03-09</span>
+                <span>更新于 2025-03-09</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -186,21 +195,27 @@ $$i(a)i(b)=[(a,1)][(b,1)]=[(ab),1]=i(ab)$$
     <div class="post-info-more">
         <section class="post-tags"></section>
         <section>
-            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
+
+    <div class="post-nav"><a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/13%E6%95%B4%E7%8E%AF/" class="prev" rel="prev" title="整环"><i class="fas fa-angle-left" aria-hidden="true"></i>整环</a>
+            <a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/14%E8%B4%B9%E9%A9%AC%E5%AE%9A%E7%90%86%E5%92%8C%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86/" class="next" rel="next" title="整环">整环<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.159.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
         </div>
     </footer></div>
 
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
 </html>

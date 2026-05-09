@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=8918&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>10Animation相关 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:title" content="10Animation相关" />
-<meta property="og:description" content="10Animation相关 本文主要记录AnimationComponent相关内容。Animation是Unity最早最传统的动画处理方式。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10Animation%E7%9B%B8%E5%85%B3/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-12-02T00:00:00+00:00" />
-<meta property="article:modified_time" content="2024-12-02T00:00:00+00:00" /><meta property="og:site_name" content="一个小博客" />
+        <title>10Animation相关 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://localhost:8918/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10Animation%E7%9B%B8%E5%85%B3/">
+  <meta property="og:site_name" content="azurezhc的游戏开发人生">
+  <meta property="og:title" content="10Animation相关">
+  <meta property="og:description" content="10Animation相关 本文主要记录AnimationComponent相关内容。Animation是Unity最早最传统的动画处理方式。基本上只提供了动画播放相关接口。实际上其还有一部分接口可以用来做一些简单功能。另一方面，对于现在来说，有些简单的动画播放，例如动效部分，也可以简单的通过Animation来实现。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-12-02T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-12-02T00:00:00+00:00">
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="10Animation相关"/>
-<meta name="twitter:description" content="10Animation相关 本文主要记录AnimationComponent相关内容。Animation是Unity最早最传统的动画处理方式。"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="10Animation相关">
+  <meta name="twitter:description" content="10Animation相关 本文主要记录AnimationComponent相关内容。Animation是Unity最早最传统的动画处理方式。基本上只提供了动画播放相关接口。实际上其还有一部分接口可以用来做一些简单功能。另一方面，对于现在来说，有些简单的动画播放，例如动效部分，也可以简单的通过Animation来实现。">
 <meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10Animation%E7%9B%B8%E5%85%B3/" /><link rel="prev" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11Animator%E7%9B%B8%E5%85%B3/" /><link rel="next" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:8918/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10Animation%E7%9B%B8%E5%85%B3/" /><link rel="prev" href="http://localhost:8918/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11Animator%E7%9B%B8%E5%85%B3/" /><link rel="next" href="http://localhost:8918/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -26,17 +31,28 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/10Animation%E7%9B%B8%E5%85%B3\/"
-        },"genre": "posts","wordcount":  3669 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/10Animation%E7%9B%B8%E5%85%B3\/","datePublished": "2024-12-02T00:00:00+00:00","dateModified": "2024-12-02T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/localhost:8918\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/10Animation%E7%9B%B8%E5%85%B3\/"
+        },"genre": "posts","wordcount":  3617 ,
+        "url": "http:\/\/localhost:8918\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/10Animation%E7%9B%B8%E5%85%B3\/","datePublished": "2024-12-02T00:00:00+00:00","dateModified": "2024-12-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
-                "name": "azurezhc"
+                "name": "xxxx"
             },"description": ""
     }
     </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -44,8 +60,8 @@
             <a href="/" title="azurezhc的游戏开发人生">主页</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
                 </a></div>
         </div>
     </div>
@@ -59,21 +75,21 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">Contents</h2>
+            <h2 class="toc-title">目录</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">10Animation相关</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-12-02">2024-12-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3669 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2024-12-02">2024-12-02</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 3617 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 8 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
-                    <span>Contents</span>
+                    <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
@@ -93,7 +109,7 @@
 <p>因为并没有源码，这里主要记录各种接口，属性的功能。可以通过这些结构对Animation大概的模型有一定了解。方便后面进行封装。</p>
 <p>Animation的很多结构现在看上去官方不在支持。例如button的动画表现也是跟Animator绑定。也就是很多功能关联后续会更多的跟Animator关联在一起。但是Animator本身也有一定问题，可以详见Aniamtor部分。</p>
 <p>官方文档地址：
-<a class="link-markdown-demo-site" href="https://docs.unity3d.com/2022.3/Documentation/Manual/Animations.html" rel="noopener">https://docs.unity3d.com/2022.3/Documentation/Manual/Animations.html</a></p>
+<a href="https://docs.unity3d.com/2022.3/Documentation/Manual/Animations.html" target="_blank" rel="noopener noreffer ">https://docs.unity3d.com/2022.3/Documentation/Manual/Animations.html</a></p>
 <p>其中Scripting部分对经典Animation也有说明。</p>
 <h2 id="animation结构">Animation结构</h2>
 <center><img src="./p2.png"></center>
@@ -113,21 +129,12 @@
 <li>Blend</li>
 </ul>
 <p>最常用的播放接口。接口使用效果如下。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 默认播放接口，会直接播放Animation组件中Animation字段的Clip</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-csharp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 默认播放接口，会直接播放Animation组件中Animation字段的Clip</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">bool</span> <span class="n">Play</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 播放指定名称的Clip</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">bool</span> <span class="n">Play</span><span class="p">(</span><span class="kt">string</span> <span class="n">animation</span><span class="p">);</span>
@@ -136,77 +143,46 @@
 </span></span><span class="line"><span class="cl"><span class="c1">// PlayMode.StopAll：停止所有层上的动画</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">bool</span> <span class="n">Play</span><span class="p">(</span><span class="kt">string</span> <span class="n">animation</span><span class="p">,</span> <span class="p">[</span><span class="n">DefaultValue</span><span class="p">(</span><span class="s">&#34;PlayMode.StopSameLayer&#34;</span><span class="p">)]</span> <span class="n">PlayMode</span> <span class="n">mode</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 当Animation正在播放时，重头开时播放动画 如果没有正在播放，不会响应</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">Rewind</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>从表现来看。当调用Play接口播放时，其运行状态直接记录在对应的AnimationState中。</p>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">Rewind</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span></span></span></code></pre></div></div>
+<p>从表现来看。当调用Play接口播放时，其运行状态直接记录在对应的AnimationState中。</p>
 <ul>
 <li>重复调用播放同一个Clip，如果对应Clip在播放中，则不会打断进行再次播放。</li>
 <li>如果调用播放不同Clip，则根据mode会停止其他动画播放。而对于层的概念则是放在AnimationState的Layer字段上，可以运行时修改。</li>
 <li>当Layer不同的时候，则不同Clip会同时播放。每个Clip按照各自的进度进行。如果Clip控制不同对象，则各自生效。</li>
 <li>但是如果播放时，不同Layer的Clip控制同一个物体。只有高Layer的Clip动画效果会生效，但是两个动画的播放状态为都在进行中。相当于一个高Layer覆盖效果。如果希望两个效果可以叠加在一起可以看Blend。</li>
 </ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 停止播放所有动画Clip</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-csharp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 停止播放所有动画Clip</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">Stop</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 停止指定名字的动画Clip</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">Stop</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">);</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">Stop</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">);</span></span></span></code></pre></div></div>
+<ul>
 <li>Stop接口会停止所有由该Animtion驱动的动画状态。指定名称则停止指定名称的Clip。</li>
 <li>对于被停止的动画，目标状态会保持在动画被停止时最后一帧的状态。</li>
 <li>对于被停止的动画，可以再度Play播放，此时动画状态会从Clip的第一帧重新开时。</li>
 </ul>
 <p><font size = 5> <strong>AnimationState</strong></font></p>
 <p>对于播放时的动画状态可以通过对应的AnimationState来获取。其可以通过Animation的如下接口获取。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Animation实现了迭代器，可以通过Foreach遍历，其遍历的就是AnimationState列表。</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-csharp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// Animation实现了迭代器，可以通过Foreach遍历，其遍历的就是AnimationState列表。</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 此外Animation实现了this接口使其可以类似数组一样直接通过string取得State。</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">AnimationState</span> <span class="k">this</span><span class="p">[</span><span class="kt">string</span> <span class="n">name</span><span class="p">]</span> <span class="p">=&gt;</span> <span class="n">GetState</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// 内部则是GetState和GetStateAtIndex来获取State对象。</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>而对于一个AnimationState来说，其主要有一些状态字段。这些字段都是描述当前这一个动画的状态值。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// AnimationState字段</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 内部则是GetState和GetStateAtIndex来获取State对象。</span></span></span></code></pre></div></div>
+<p>而对于一个AnimationState来说，其主要有一些状态字段。这些字段都是描述当前这一个动画的状态值。</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-csharp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// AnimationState字段</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 该state动画是否正在播放中</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">extern</span> <span class="kt">bool</span> <span class="n">enabled</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 播放的权重，会在混合的时候用到</span>
@@ -225,29 +201,16 @@
 </span></span><span class="line"><span class="cl"><span class="c1">// 动画的总时间长度</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">extern</span> <span class="kt">int</span> <span class="n">layer</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 动画的混合方式 Blend--按权重混合 Additive--叠加方式</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">extern</span> <span class="n">AnimationBlendMode</span> <span class="n">blendMode</span><span class="p">;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>可以通过修改State对象的属性值来控制动画播放的各种运行时效果。而对于CorssFade，Blend来说AnimationState状态则与其混合效果直接关联。</p>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">extern</span> <span class="n">AnimationBlendMode</span> <span class="n">blendMode</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>可以通过修改State对象的属性值来控制动画播放的各种运行时效果。而对于CorssFade，Blend来说AnimationState状态则与其混合效果直接关联。</p>
 <p>CrossFade相当于时间维度混合，从动画ClipA过渡到动画ClipB。而Blend则相当于状态空间混合，将动画ClipA和动画ClipB叠加在一起。</p>
 <p><font size = 5> <strong>CrossFade</strong></font></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 从当前动画状态向目标动画过度 默认时间0.3</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-csharp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 从当前动画状态向目标动画过度 默认时间0.3</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">CrossFade</span><span class="p">(</span><span class="kt">string</span> <span class="n">animation</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 带有过度时间的动画混合</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">CrossFade</span><span class="p">(</span><span class="kt">string</span> <span class="n">animation</span><span class="p">,</span> <span class="kt">float</span> <span class="n">fadeLength</span><span class="p">);</span>
@@ -258,27 +221,17 @@
 </span></span><span class="line"><span class="cl">    <span class="n">target_anim</span><span class="p">.</span><span class="n">Play</span><span class="p">(</span><span class="s">&#34;RedImageAnim&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">yield</span> <span class="k">return</span> <span class="k">new</span> <span class="n">WaitForSeconds</span><span class="p">(</span><span class="m">1f</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="n">target_anim</span><span class="p">.</span><span class="n">CrossFade</span><span class="p">(</span><span class="s">&#34;BlueImageAnim&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<ul>
 <li>CorssFade只会将相同Layer的动画向目标动画过渡。换句话说，如果是不同Layer的动画会保持播放。</li>
 </ul>
 <p><font size = 5> <strong>Blend</strong></font></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 混合播放目标动画，对于单个动画相当于调用Play，实际调用下面接口并且权重设置为1</span>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-csharp">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 混合播放目标动画，对于单个动画相当于调用Play，实际调用下面接口并且权重设置为1</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">Blend</span><span class="p">(</span><span class="kt">string</span> <span class="n">animation</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 带有权重的混合播放接口 targetWeight可以设置目标权重</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="k">void</span> <span class="n">Blend</span><span class="p">(</span><span class="kt">string</span> <span class="n">animation</span><span class="p">,</span> <span class="kt">float</span> <span class="n">targetWeight</span><span class="p">);</span>
@@ -286,16 +239,13 @@
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">extern</span> <span class="k">void</span> <span class="n">Blend</span><span class="p">(</span><span class="kt">string</span> <span class="n">animation</span><span class="p">,</span> <span class="p">[</span><span class="n">DefaultValue</span><span class="p">(</span><span class="s">&#34;1.0F&#34;</span><span class="p">)]</span> <span class="kt">float</span> <span class="n">targetWeight</span><span class="p">,</span> <span class="p">[</span><span class="n">DefaultValue</span><span class="p">(</span><span class="s">&#34;0.3F&#34;</span><span class="p">)]</span> <span class="kt">float</span> <span class="n">fadeLength</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 混合效果收到AnimationBlendMode影响</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// AnimationBlendMode.Blend--按权重比例混合动画效果</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// AnimationBlendMode.Additive--动画效果以叠加方式作用</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
+</span></span><span class="line"><span class="cl"><span class="c1">// AnimationBlendMode.Additive--动画效果以叠加方式作用</span></span></span></code></pre></div></div>
+<ul>
 <li>Blend可以同时播放同一Layer上的多个动画。所有参于动画混合的权重，在作用前都会被归一化。例如两个动画播放权重都为1，实际上相当于某个动画贡献0.5。播放效果还受到AnimationBlendMode参数影响。</li>
 </ul>
 <p><strong>AnimationBlendMode.Blend</strong></p>
 <p>权重比例混合。实际参于混合动画的所有效果会按照Weight比例混合。相当于</p>
-$$E_f=\sum w_iE_i$$
-<p>其中$E_i$相当于每个动画的左右效果，可能是位移，颜色等等。最终效果则是$E_f$。例如两个动画$A,B$。$A$向右移动200，$B$向上移动200。最终混合后会变成向右移动100向上移动100。需要注意的是最后动画结束时，会使得整个动画结束位置相当于各个动画均匀混合。</p>
+$$E_f=\sum w_iE_i$$<p>其中$E_i$相当于每个动画的左右效果，可能是位移，颜色等等。最终效果则是$E_f$。例如两个动画$A,B$。$A$向右移动200，$B$向上移动200。最终混合后会变成向右移动100向上移动100。需要注意的是最后动画结束时，会使得整个动画结束位置相当于各个动画均匀混合。</p>
 <p><strong>AnimationBlendMode.Additive</strong></p>
 <p>经过我大量测试，对于Unity创建的Anim资源，Additive模式似乎并不生效。从文档描述来看，应该是可以将目标动画直接以增量的方式叠加到当前动画状态上来执行。</p>
 <p>可以AnimationClip资源debug模式中看到，设置当前Clip相对动画。即AdditiveReferencePoseClip以及HasAdditiveReferencePose字段。但是这些设置只针对Animation的叠加模式适用。</p>
@@ -306,7 +256,7 @@ $$E_f=\sum w_iE_i$$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2024-12-02</span>
+                <span>更新于 2024-12-02</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -319,21 +269,27 @@ $$E_f=\sum w_iE_i$$
     <div class="post-info-more">
         <section class="post-tags"></section>
         <section>
-            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
+
+    <div class="post-nav"><a href="/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11Animator%E7%9B%B8%E5%85%B3/" class="prev" rel="prev" title="10Animation相关"><i class="fas fa-angle-left" aria-hidden="true"></i>10Animation相关</a>
+            <a href="/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4/" class="next" rel="next" title="09世界，UI与屏幕空间">09世界，UI与屏幕空间<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.122.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">azurezhc</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.159.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
         </div>
     </footer></div>
 
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
 </html>
