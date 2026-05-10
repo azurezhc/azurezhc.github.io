@@ -7,7 +7,9 @@
         <title>06期望的性质 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8/">
   <meta property="og:site_name" content="azurezhc的游戏开发人生">
   <meta property="og:title" content="06期望的性质">
-  <meta property="og:description" content="期望的性质">
+  <meta property="og:description" content="期望的性质 本章主要是进一步讨论期望值的性质。首先回顾一下，期望的定义。在离散下有：
+$$ E[X]=\sum_x xp(x) $$连续情况下有
+$$ E[X]=\int_{-\infty}^{\infty} xf(x)dx $$并且可以说明对于随机变量函数的期望各自为">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -16,7 +18,9 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="06期望的性质">
-  <meta name="twitter:description" content="期望的性质">
+  <meta name="twitter:description" content="期望的性质 本章主要是进一步讨论期望值的性质。首先回顾一下，期望的定义。在离散下有：
+$$ E[X]=\sum_x xp(x) $$连续情况下有
+$$ E[X]=\int_{-\infty}^{\infty} xf(x)dx $$并且可以说明对于随机变量函数的期望各自为">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site">
 <meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -32,7 +36,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8\/"
-        },"genre": "posts","wordcount":  5 ,
+        },"genre": "posts","wordcount":  2150 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8\/","datePublished": "2026-05-05T00:00:00+00:00","dateModified": "2026-05-05T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -85,8 +89,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">06期望的性质</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-05">2026-05-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 5 字&nbsp;
-                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-05">2026-05-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 2150 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -95,9 +99,151 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#期望的性质">期望的性质</a></li>
+    <li><a href="#随机变量和的期望">随机变量和的期望</a></li>
+    <li><a href="#实验序列中事件发生次数的矩">实验序列中事件发生次数的矩</a></li>
+    <li><a href="#随机变量和的协方差方差及相关系数">随机变量和的协方差、方差及相关系数</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="期望的性质">期望的性质</h1>
+<p>本章主要是进一步讨论期望值的性质。首先回顾一下，期望的定义。在离散下有：</p>
+$$
+E[X]=\sum_x xp(x)
+$$<p>连续情况下有</p>
+$$
+E[X]=\int_{-\infty}^{\infty} xf(x)dx
+$$<p>并且可以说明对于随机变量函数的期望各自为</p>
+$$
+E[g(X)]=\sum_x g(x)p(x)\quad E[g(X)]=\int_{-\infty}^{\infty} g(x)f(x)dx
+$$<h1 id="随机变量和的期望">随机变量和的期望</h1>
+<p>在上一章中引入了随机变量的联合分布。现在将随机变量函数的期望扩展上去。即如下定理</p>
+<div class="admonition note">
+<p class="admonition-title">定理</p>
+<p>如果$X,Y$服从二元分布列$p(x,y)$，那么有：</p>
+$$
+E[g(X,Y)]=\sum_x\sum_yg(x,y)p(x,y)
+$$<p>如果$X,Y$具有联合分布密度函数$p(x,y)$，那么：</p>
+$$
+E[g(X,Y)]=\int_{-\infty}^\infty\int_{-\infty}^{\infty}g(x,y)f(x,y)dxdy
+$$</div>
+<p>证明思路跟连续型随机变量证明有一定类似性。这里略。</p>
+<p>这个定理有个最直接的应用就是，两个连续型随机变量的和。设$E[X],E[Y]$均是有限的，则令$g(X,Y)=X+Y$。另有命题可得</p>
+$$
+\begin{aligned}
+E[X+Y]&=\int_{-\infty}^\infty\int_{-\infty}^{\infty}(x+y)f(x,y)dxdy\\
+&=\int_{-\infty}^\infty xf_X(x)dx+\int_{-\infty}^\infty yf_Y(y)dy=E[X]+E[Y]
+\end{aligned}
+$$<p>一般情形下，结论任然成立。因此，当$E[X],E[Y]$均是有限时，有</p>
+$$
+E[X+Y]=E[X]+E[Y]
+$$<p>进一步用归纳法可知对于一组随机变量$X_i,i=1,2\cdots,n$。只要它们期望均有限就会有</p>
+$$
+E[X_1+X_2+\cdots+X_n]=E[X_1]+E[X_2]+\cdots+E[X_n]
+$$<p>这个结论跟离散随机变量和的期望相对应。都指明，随机变量和的期望，与各自期望的和相等。</p>
+<p>针对该特性最多应用的方式就是示性变量的应用。示性变量在前面部分也有出现，其是一个随机变量，主要用来指示某个事件是否发生。对于某个事件$A$，其一般定义为：</p>
+$$
+X=
+\begin{cases}
+1\quad & 若A发生 \\
+0\quad & 其他
+\end{cases}
+$$<p>其有一些直接引用跟前面结论相对应。</p>
+<p><font size=4><b>二项随机变量的期望</b></font></p>
+<p>设$X$为二项随机变量参数为$(n,p)$。根据定义，可以认为这是$n$次独立重复实验，每次成功概率为$p$。设每次独立试验的示性变量为$X_i$，则</p>
+$$
+X=\sum_i X_i
+$$<p>而每次试验的示性变量有</p>
+$$
+X_i=
+\begin{cases}
+1\quad & 第i次试验成功 \\
+0\quad & 第i次试验失败
+\end{cases}
+$$<p>进而有
+</p>
+$$
+E[X]=\sum E[X_i]=np
+$$<p><font size=4><b>负二项随机变量的期望</b></font></p>
+<p>负二项随机变量为一系列重复独立试验知道有$r$次成功所需的试验次数。现在构造其和表达式。从每次成功试验所需次数来出发。即$X_i$表示在第$i_1$次成功之后，到第$i$次成功时所需试验次数。则</p>
+$$X=X_1+X_2+\cdots+X_r$$<p>现在看$X_i$的表示。可以发现其就是几何分布。即</p>
+$$
+P\{X_i=n\}=p(n)=(1-p)^{n-1}p
+$$<p>进而有</p>
+$$E[X_i]=\sum_i ip(i)=\frac{1}{p}$$<p>所以有$E[X]=\sum E[X_i]=r/p$</p>
+<p><font size=4><b>超几何变量的期望</b></font></p>
+<p>超几何变量为，从有$N$个球，$m$个白球中随机取出$n$个球，其中白球个数的值。这里考虑每个指定白球被取出事件的示性变量。即$X_i$表示第$i$个白球的被取出事件的示性变量，即其被取出时$X_i=1$。则</p>
+$$
+X=X_1+X_2+\cdots+X_m
+$$<p>其中$X_i$为$1$即被取出概率有</p>
+$$p\{X_i=1\}=\frac{\binom{1}{1}\binom{N-1}{n-1}}{\binom{N}{n}}=\frac{n}{N}$$<p>所以有$E[X]=\sum E[X_i]=nm/N$</p>
+<p>这一章有一个例子跟计算机算法关联。就是快速排序的对比次数期望，也即快速排序的算法复杂度。部分算法分析中也会将这个期望获得方式。与这里基本一致。这里只是系统的从概率论角度上去出发。</p>
+<div class="admonition example">
+<p class="admonition-title">例 7b</p>
+<p>快速排序算法的比较次数期望</p>
+</div>
+<p>记$X$为对$n$个不同数排序所需的比较次数，则$E[X]$时对这个排序算法时间复杂度的一个度量。现在寻找和式表达式。首先将数组从小到大排序好的元素一次比较为$1,2\cdots,n$。现在考虑数组中任意两个元素例如$i,j$位置元素比较次数。通过算法可以知道，两个元素发生比较之后就切分了，不会再进行比较。即比较次数要么为$1$要么为$0$，即可以定义</p>
+$$
+I_{i,j}=
+\begin{cases}
+1\quad & 在排序中i,j比较过\\
+0\quad & 其他
+\end{cases}
+$$<p>显然</p>
+$$
+X=\sum_{i=1}^{n-1}\sum_{j=i+1}^n I_{i,j}
+$$<p>现在看$I_{i,j}$比较的概率。在排序过程中，随机选择一个比较点，然后进行比较。针对两个给定位置$i,j$，如果选择的比较点比$i$小或者比$j$大，则$i,j$会进入下一轮。如果比较点在$i$到$j$之间。即$i,i+1,\cdots,j$中一个。则细分两类，如果选择恰好为$i,j$则两者直接比较，否则，两者再也不会比较。注意要算法终结，必须要在$i$到$j$之间选择一次比较点。</p>
+<p>也就是说，其最后必须在$i$到$j$之间选择一个点。这时选中$i,j$的概率就是$2/(j-i+1)$。</p>
+<p>所以</p>
+$$
+E[X]=\sum_{i=1}^{n-1}\sum_{j=i+1}^n \frac{2}{j-i+1}
+$$<p>计算这个可以通过转换积分方式来估计。考虑$\sum_i^n1/x$，由图像面积关系可以得</p>
+$$
+\ln \frac{n+1}{i}=\int_{i}^{n+1}\frac{1}{x} dx <\sum_i^n1/x< \int_{i-1}^{n}\frac{1}{x}dx =\ln \frac{n}{i-1}
+$$<p>所以有</p>
+$$
+\begin{aligned}
+\sum_{i=1}^{n-1}\sum_{j=i+1}^n \frac{2}{j-i+1} &< \sum_{i=1}^{n-1}2(\ln (x-i+1)|_i^n)\\
+&=\sum_{i=1}^{n-1} 2\ln(n-i+1)\\
+&=\sum_{i=1}^{n-1} 2\ln(i+1)\\
+&<2(n-1)\ln(n)
+\end{aligned}
+$$<p>书上是用积分直接近似得到的，离散求和和积分之间确实由直接的近似关系：</p>
+$$
+\sum_{j=i+1}^n \frac{2}{j-i+1}\approx \int_{i+1}^n\frac{2}{x-i+1}dx==2\ln(n-i+1)\\
+\sum_{i=1}^{n-1}2\ln(n-i+1)\approx \int_{i}^{n-1}\ln(n-x+1) dx=2\int_2^n\ln(x)dx=2(x\ln x-x)|_2^n\approx2n\ln n
+$$<h1 id="实验序列中事件发生次数的矩">实验序列中事件发生次数的矩</h1>
+<p>在随机变量章节中介绍过，随机变量的k阶矩即$E[X^k]$。本节通过随机变量和的组合关系的特性给出一个求出矩的方式。</p>
+<p>在前面，许多例子都具有下列形式：
+给定事件序列$A_1,\cdots,A_n$，求出$E[X]$，其中$X$是这些事件在实验中发生的次数。解法是给每个事件示性变量$I_i$有</p>
+$$
+I_i=
+\begin{cases}
+1\quad & 若A_i发生\\
+0\quad & 其他
+\end{cases}
+$$<p>而</p>
+$$X=\sum_i I_i$$<p>进而有</p>
+$$E[X]=\sum_iE[I_i]=\sum_iP(A_i)$$<p>现在考虑对成对事件出现次数感兴趣。即如果事件$A_i$与$A_j$在实验中发生，则$I_iI_j=1$，反之则$I_iI_j=0$。所以成对发生次数即和式$\sum I_iI_j$的值。另一方面因为$X$表示整个事件发生的次数，有组合可知，其中成对发生的次数恰为$\binom{X}{2}$。由此可得</p>
+$$
+\binom{X}{2}=\sum_{i<j}I_iI_j
+$$<p>把左边视为随机变量的函数，两边同时求期望即有</p>
+$$
+E[\binom{X}{2}]=E[\frac{X(X-1)}{2}]=E[\sum_{i<j}I_iI_j]=\sum_{i<j}E[I_iI_j]=\sum_{i<j}P(A_iA_j)
+$$<p>由此可以解得$E[X^2]$的值，进而求出$Var(X)=E[X^2]-E^2[X]$的值等。</p>
+<p>针对上述过程可以扩展。考虑$k$个不同事件组的出现次数，即可得</p>
+$$
+E[\binom{X}{k}]=\sum_{i_1<i_2<\cdots<i_k}E[I_1I_2\cdots I_k]=\sum_{i_1<i_2<\cdots<i_k}P(A_{i_1}A_{i_2}\cdots A_{i_k})
+$$<h1 id="随机变量和的协方差方差及相关系数">随机变量和的协方差、方差及相关系数</h1>
+<p>本节主要独立随机变量得乘积期望，以及协方差定义。</p>
+<div class="admonition note">
+<p class="admonition-title">定理</p>
+<p>如果$X,Y$互相独立，那么对任何函数$h$和$g$有下式成立：</p>
+$$E[g(X)h(Y)]=E[g(X)]E[h(y)]$$</div>
+<div class="admonition abstract">
+<p class="admonition-title">定义</p>
+<p>$X$和$Y$之间得协方差$Cov(X,Y)$为</p>
+$$
+Cov(X,Y)=E[(X-E[X])(Y-E[Y])]
+$$</div>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
