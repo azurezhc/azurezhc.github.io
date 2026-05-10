@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Compute_geometry_class - 标签 - azurezhc的游戏开发人生</title>
-        <link>http://localhost:8918/tags/compute_geometry_class/</link>
+        <link>http://azurezhc.github.io/tags/compute_geometry_class/</link>
         <description>Compute_geometry_class - 标签 - azurezhc的游戏开发人生</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 25 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://localhost:8918/tags/compute_geometry_class/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 25 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://azurezhc.github.io/tags/compute_geometry_class/" rel="self" type="application/rss+xml" /><item>
     <title>计算几何课程</title>
-    <link>http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E7%AC%94%E8%AE%B0%E5%A4%A7%E7%BA%B2/</link>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E7%AC%94%E8%AE%B0%E5%A4%A7%E7%BA%B2/</link>
     <pubDate>Fri, 25 Aug 2023 00:00:00 &#43;0000</pubDate>
     <author>xxxx</author>
-    <guid>http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E7%AC%94%E8%AE%B0%E5%A4%A7%E7%BA%B2/</guid>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E7%AC%94%E8%AE%B0%E5%A4%A7%E7%BA%B2/</guid>
     <description><![CDATA[<h1 id="计算几何-笔记大纲">计算几何-笔记大纲</h1>
 <p>本系列笔记主要记录学堂在线上，清华大学计算几何的教学内容。</p>
 <p><a class="link-markdown-demo-site" href="https://www.xuetangx.com/course/THU08091000327/16906681?channel=i.area.manual_search" rel="noopener">清华大学-计算几何</a></p>

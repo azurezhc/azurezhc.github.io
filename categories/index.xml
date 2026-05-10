@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on azurezhc的游戏开发人生</title>
-    <link>http://localhost:8918/categories/</link>
+    <link>http://azurezhc.github.io/categories/</link>
     <description>Recent content in Categories on azurezhc的游戏开发人生</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
-    <atom:link href="http://localhost:8918/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://azurezhc.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

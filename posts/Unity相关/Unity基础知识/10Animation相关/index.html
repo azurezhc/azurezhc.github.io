@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=8918&amp;path=livereload" data-no-instant defer></script>
+    <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>10Animation相关 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://localhost:8918/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10Animation%E7%9B%B8%E5%85%B3/">
+        <title>10Animation相关 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10Animation%E7%9B%B8%E5%85%B3/">
   <meta property="og:site_name" content="azurezhc的游戏开发人生">
   <meta property="og:title" content="10Animation相关">
   <meta property="og:description" content="10Animation相关 本文主要记录AnimationComponent相关内容。Animation是Unity最早最传统的动画处理方式。基本上只提供了动画播放相关接口。实际上其还有一部分接口可以用来做一些简单功能。另一方面，对于现在来说，有些简单的动画播放，例如动效部分，也可以简单的通过Animation来实现。">
@@ -21,9 +21,9 @@
 <meta name="apple-mobile-web-app-title" content="My cool site">
 <meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:8918/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10Animation%E7%9B%B8%E5%85%B3/" /><link rel="prev" href="http://localhost:8918/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11Animator%E7%9B%B8%E5%85%B3/" /><link rel="next" href="http://localhost:8918/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10Animation%E7%9B%B8%E5%85%B3/" /><link rel="prev" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11Animator%E7%9B%B8%E5%85%B3/" /><link rel="next" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/09%E4%B8%96%E7%95%8CUI%E4%B8%8E%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -31,9 +31,9 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/localhost:8918\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/10Animation%E7%9B%B8%E5%85%B3\/"
+            "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/10Animation%E7%9B%B8%E5%85%B3\/"
         },"genre": "posts","wordcount":  3617 ,
-        "url": "http:\/\/localhost:8918\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/10Animation%E7%9B%B8%E5%85%B3\/","datePublished": "2024-12-02T00:00:00+00:00","dateModified": "2024-12-02T00:00:00+00:00","publisher": {
+        "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/Unity%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/10Animation%E7%9B%B8%E5%85%B3\/","datePublished": "2024-12-02T00:00:00+00:00","dateModified": "2024-12-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -109,7 +109,7 @@
 <p>因为并没有源码，这里主要记录各种接口，属性的功能。可以通过这些结构对Animation大概的模型有一定了解。方便后面进行封装。</p>
 <p>Animation的很多结构现在看上去官方不在支持。例如button的动画表现也是跟Animator绑定。也就是很多功能关联后续会更多的跟Animator关联在一起。但是Animator本身也有一定问题，可以详见Aniamtor部分。</p>
 <p>官方文档地址：
-<a href="https://docs.unity3d.com/2022.3/Documentation/Manual/Animations.html" target="_blank" rel="noopener noreffer ">https://docs.unity3d.com/2022.3/Documentation/Manual/Animations.html</a></p>
+<a class="link-markdown-demo-site" href="https://docs.unity3d.com/2022.3/Documentation/Manual/Animations.html" rel="noopener">https://docs.unity3d.com/2022.3/Documentation/Manual/Animations.html</a></p>
 <p>其中Scripting部分对经典Animation也有说明。</p>
 <h2 id="animation结构">Animation结构</h2>
 <center><img src="./p2.png"></center>
@@ -291,5 +291,5 @@ $$E_f=\sum w_iE_i$$<p>其中$E_i$相当于每个动画的左右效果，可能�
         <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
 </html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=8918&amp;path=livereload" data-no-instant defer></script>
+    <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>05随机变量的联合分布 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83/">
+        <title>05随机变量的联合分布 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83/">
   <meta property="og:site_name" content="azurezhc的游戏开发人生">
   <meta property="og:title" content="05随机变量的联合分布">
   <meta property="og:description" content="随机变量的联合分布 本章主要关注两个或两个以上的随机变量的有关概率问题。为此定义任意两个随机变量$X$和$Y$的联合累积概率分布(joint cumulative probability distribution function)。
@@ -25,9 +25,9 @@
 <meta name="apple-mobile-web-app-title" content="My cool site">
 <meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83/" /><link rel="prev" href="http://localhost:8918/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/08%E6%A8%A1%E6%8B%9F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -35,9 +35,9 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/localhost:8918\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83\/"
+            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83\/"
         },"genre": "posts","wordcount":  97 ,
-        "url": "http:\/\/localhost:8918\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83\/","datePublished": "2026-05-05T00:00:00+00:00","dateModified": "2026-05-05T00:00:00+00:00","publisher": {
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83\/","datePublished": "2026-05-05T00:00:00+00:00","dateModified": "2026-05-05T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -204,10 +204,10 @@ $$
 F_{X+Y}(a)=P\{X+Y\le a\}&=\iint_{x+y\le a}f_X(x)f_Y(y)dxdy=\int_{-\infty}^\infty\int_{-\infty}^{a-y}f_X(x)dxf_Y(y)dy\\
 &=\int_{-\infty}^\infty F_X(a-y)f_Y(y)dy
 \end{aligned}
-$$<p>累积分布函数$F_{X+Y}$称为分布函数$F_X,F_Y$的卷积(convolution)。求导即可得概率密度函数为</p>
+$$<p>累积分布函数$F_{X+Y}$称为分布函数$F_X,F_Y$的<strong>卷积(convolution)</strong>。针对$a$求导即可得概率密度函数为</p>
 $$
 f_{X+Y}(a)=\int_{-\infty}^\infty f_X(a-y)f_Y(y)dy
-$$<p>针对前一章中几个类型的连续型随机变量分别得出以下的变量和分布。</p>
+$$<p>将对应密度函数带入上述公式，针对前一章中几个类型的连续型随机变量分别得出以下的变量和分布。</p>
 <p><font size=4><b>$\Gamma$随机变量</b></font></p>
 <div class="admonition note">
 <p class="admonition-title">定理</p>
@@ -232,12 +232,13 @@ $$<p>针对前一章中几个类型的连续型随机变量分别得出以下的
 <p>前面介绍过概率中的条件分布。针对两个事件$E,F$。给定$F$的条件下$E$发生的概率定义为</p>
 $$
 P(E|F)=\frac{P(EF)}{P(F)}
-$$<p>现在将其扩展到随机变量上面。</p>
+$$<p>注意这里是基于事件上的概率函数，现在将其扩展到随机变量上面。</p>
 <h2 id="离散情况下条件分布">离散情况下条件分布</h2>
 <p>假设$X,Y$都是离散型随机变量。如果已知$Y=y$情况下，很自然的定义$X$的分布列如下：</p>
 $$
 p_{X|Y}(x|y)=P\{X=x|Y=y\}=\frac{P\{X=x,Y=y\}}{P\{Y=y\}}=\frac{p(x,y)}{p_Y(y)}
 $$<p>类似可以定义已知$Y=y$情况下$X$的条件概率分布函数。</p>
+<p>换言之，条件分布于普通分布的概念上是完全一样的。只是涉及的事件都变成在$Y=y$的条件下发生的事件。</p>
 <p>如果$X,Y$独立那么：</p>
 $$
 p_{X|Y}(x|y)=\frac{P\{X=x,Y=y\}}{P\{Y=y\}}=\frac{P\{X=x\}P\{Y=y\}}{P\{Y=y\}}=P\{X=x\}
@@ -252,20 +253,32 @@ f_{X|Y}(x|y)dx&=\frac{f(x,y)dxdy}{f_Y(f)dy}\approx \frac{P\{x\le X\le x+dx,y\le 
 &=P\{x\le X\le x+dx|y\le Y\le y+dy\}
 \end{aligned}
 $$<p>可以理解为$Y$取值于$(y,y+dy)$之间的条件下，$X$取值于$(x,x+dx)$的条件概率值。换句话说条件概率密度相当于一个极限值，在$Y$取值$y$附近邻域时，$X$的取值于$x$的概率密度。</p>
-<h1 id="随机变量函数的联合分布">随机变量函数的联合分布</h1>
+<p>如果$X,Y$独立，$X$的条件密度同非条件密度是一样的。</p>
+$$
+f_{X|Y}(x|y)=\frac{f(x,y)}{f_Y(y)}=\frac{f_X(x)f_Y(y)}{f_Y(y)}=f_X(x)
+$$<h1 id="随机变量函数的联合分布">随机变量函数的联合分布</h1>
 <p>本节跟连续型随机变量函数的分布对应。将其扩展到多个随机变量上的情况。</p>
-<p>假设$X_1,X_2$是联合连续的随机变量，具有联合概率密度函数$f_{X_1,X_2}$。$Y_1,Y_2$分别为$X_1,X_2$的函数。具体地说就是$Y_1=g_1(x_2,x_2),Y_2=g_2(x_1,x_2)$。现在要求出$Y_1,Y_2$的联合分布。</p>
+<p>其中有很多重要结论，对于计算机中模拟某类随机变量至关重要。</p>
+<p>假设$X_1,X_2$是联合连续的随机变量，具有联合概率密度函数$f_{X_1,X_2}$。$Y_1,Y_2$分别为$X_1,X_2$的函数。具体地说就是$Y_1=g_1(X_2,X_2),Y_2=g_2(X_1,x_2)$。现在要求出$Y_1,Y_2$的联合分布。</p>
 <p>对$g_1,g_2$两个函数需要满足如下两个条件：</p>
+<ul>
+<li>
 <ol>
 <li>方程组</li>
 </ol>
+</li>
+</ul>
 $$
 y_1=g_1(x_1,x_2)\\
 y_2=g_2(x_1,x_2)
 $$<p>可唯一的求解出$x_1,x_2$的表达式，即求出$x_1=h_1(y_1,y_2),x_2=h_2(y_1,y_2)$。</p>
+<ul>
+<li>
 <ol start="2">
 <li>函数$g_1,g_2$对一切$(x_1,x_2)$有连续偏导数，并且下面的行列式对一切$x_1,x_2$有</li>
 </ol>
+</li>
+</ul>
 $$
 J(x_1,x_2)=
 \begin{vmatrix}
@@ -275,8 +288,69 @@ J(x_1,x_2)=
 $$<p>在这两个条件下可以证明$Y_1,Y_2$的联合密度函数为</p>
 $$
 f_{Y_1,Y_2}(y_1,y_2)=f_{X_1,X_2}(x_1,x_2)\left|J(x_1,x_2)\right|^{-1}
-$$<p>证明方式还是从联合概率分布函数入手。通过高等微积分说明。</p>
-<p>随机变量函数的联合分布有个重要的例子。如下：</p>
+$$<p>证明方式还是从联合概率分布函数入手。通过高等微积分说明。证明暂且省略。</p>
+<p>随机变量函数的联合分布有几个重要的例子。如下：</p>
+<div class="admonition example">
+<p class="admonition-title">例 7b</p>
+<p>设$(X,Y)$表示平面上的一个随机点，并假设其直角坐标$X$和$Y$是互相独立的标准正态随机变量。我们感兴趣的是随机点$(x,y)$的极坐标$R,\Theta$的联合分布。</p>
+</div>
+<p>根据描述可知$X$和$Y$是互相独立的标准正态随机变量，所以即</p>
+$$f_X(x)=\frac{1}{\sqrt{2\pi}}e^{-x^2/2},f_Y(y)=\frac{1}{\sqrt{2\pi}}e^{-y^2/2}$$<p>所以联合分布有</p>
+$$f(x,y)=\frac{1}{2\pi}e^{-(x^2+y^2)/2}$$<p>考虑极坐标变换$r=g_1(x,y)=\sqrt{x^2+y^2},\theta =g_2(x,y)= \arctan y/x$。根据前述联合密度函数变换需求得：</p>
+$$
+\begin{aligned}
+\frac{\partial g_1}{\partial x}&=\frac{x}{\sqrt{x^2+y^2}}\\
+\frac{\partial g_1}{\partial y}&=\frac{y}{\sqrt{x^2+y^2}}\\
+\frac{\partial g_2}{\partial x}&=\frac{1}{1+(y/x)^2}(\frac{-y}{x^2})=\frac{-y}{x^2+y^2}\\
+\frac{\partial g_2}{\partial y}&=\frac{1}{1+(y/x)^2}(\frac{1}{x})=\frac{x}{x^2+y^2}
+\end{aligned}
+$$<p>所以</p>
+$$
+J(x,y)=\frac{x^2}{(x^2+y^2)^{3/2}}+\frac{y^2}{(x^2+y^2)^{3/2}}=\frac{1}{\sqrt{x^2+y^2}}=\frac{1}{r}
+$$<p>由此可得</p>
+$$
+f_{R,\Theta}(r,\theta)=f_{X,Y}(x,y)\left|J(x,y)\right|^{-1}=\frac{1}{2\pi}re^{-r^2/2}
+$$<p>可以注意到这个公式中没有$\theta$，更可以拆分成$R,\Theta$的边缘密度函数乘积。所以$R,\Theta$是相互独立的。其中$\Theta$为$(0,2\pi)$上的均匀分布。而$R$的分布为著名的瑞利分布，密度函数为</p>
+$$f(r)=re^{-r^2/2}\quad 0<r<\infty$$<p>这个结论表明，我们关心平面随机打靶情况时，假设射击时上下左右误差为独立的标准正态分布情况下。那么这个着点坐标对于角度来说，是均匀分布的，而距离圆心的距离为瑞利分布。这也是符合预期的。</p>
+<p>从另一个角度来看，会发现一个坐标有相互独立的标准正态随机变量构成的随机向量，其极坐标变化的夹角不仅服从均匀分布，而且跟向量距离远点的距离大小无关。我觉得这有两个提示点。</p>
+<ul>
+<li>根据随机变量函数的关系，这说明存在从均匀分布来模拟正态分布的一种方式。</li>
+<li>暗含了函数$e^{-x^2}$跟圆之间的一种关系。</li>
+</ul>
+<p>现在来考虑如何用两个独立的$(0,1)$上均匀分布来模拟正态分布。</p>
+<hr>
+<p>先按照书上的流程来说明：</p>
+<p>考虑$R^2,\Theta$的分布。此时有$d=r^2=g_1(x,y)=x^2+y^2,\theta=g_2(x,y)=\arctan(y/x)$。</p>
+<p>有
+</p>
+$$
+J(d,\theta)=
+\begin{vmatrix}
+2x & 2y \\
+\frac{-y}{x^2+y^2}& \frac{x}{x^2+y^2}  
+\end{vmatrix}=2
+$$<p>所以有$f(d,\theta)=\frac{1}{2}e^{-d/2}\frac{1}{2\pi}$。这说明$R^2$服从参数为$1/2$的指数分布。而$\Theta$服从$(0,2\pi)$的均匀分布。</p>
+<p>现在假设可以得到两个独立$(0,1)$上的均匀随机变量$U_1,U_2$，我们希望模拟出前面得到的$X,Y$为正态分布。即求出$X=g_1(U_1,U_2),Y=g_2(U_1,U_2)$表达式，使得$X,Y$为正态分布。</p>
+<p>思路上我们先通过联合分布函数，模拟出$R^2,\Theta$。然后通过前面$r^2=x^2+y^2,\theta=\arctan(y/x)$，求出$x,y$的逆函数表示，那么$(X,Y)$就是符合要求的两个独立正态随机变量。可以说明$-2\ln U_1$ 具有参数为$1/2$的指数分布。对于$x>0$有</p>
+$$
+P\{-2\ln U_1<x\}=P\{\ln U_1>-x/2\}=P\{U_1>e^{-x/2}\}=1-e^{-x/2}
+$$<p>$2\pi U_2$为$(0,2\pi)$上的均匀随机变量，所以这两个函数可以产生$R^2,\Theta$。即令</p>
+$$
+\begin{aligned}
+R^2&=-2\ln U_1\\
+\Theta&=2\pi U_2
+\end{aligned}
+$$<p>即可模拟出$R^2,\Theta$。其中$R^2$为$(X,Y)$到原点距离的平方，$\Theta$为$(X,Y)$的方位角。所以得</p>
+$$
+X=\sqrt{-2\ln U_1}\cos(2\pi U_2)\quad X_2=\sqrt{-2\ln U_1} \sin (2\pi U_2)
+$$<p>即是相互独立的正态标准随机变量。</p>
+<hr>
+<p>其实可以从$R,\Theta$直接入手。并且用前一章节中函数分布的结论来直接求取函数表达式。这一部分内容在模拟章节中会再次表述。模拟重点就在于如何用均匀分布的随机变量模拟出想要的概率分布情况。</p>
+<p>仍然假设可以得到两个独立$(0,1)$上的均匀随机变量$U_1,U_2$。已知随机变量$R$的密度函数为$f(r)=re^{-r^2/2}$。可求得其分布函数为$F(a)=1-e^{-r^2/2}$。由前面可知令$R=F^{-1}(U)$，即可令$R$服从所需分布。即</p>
+$$R=F^{-1}(U_1)=\sqrt{-2\ln (1-U_1)}$$<p>同理有$\Theta = 2\pi U_2$。然后同样通过$R,\Theta$与$X,Y$联合分布求出$X,Y$表达式即可得</p>
+$$
+X=\sqrt{-2\ln (1-U_1)}\cos(2\pi U_2)\quad X_2=\sqrt{-2\ln (1-U_1)} \sin (2\pi U_2)
+$$<p>可以注意到与前面结论稍有差别。其实这是因为$1-U_1$和$U_1$是相同的分布。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -298,7 +372,8 @@ $$<p>证明方式还是从联合概率分布函数入手。通过高等微积分
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8/" class="prev" rel="prev" title="06期望的性质"><i class="fas fa-angle-left" aria-hidden="true"></i>06期望的性质</a></div>
+    <div class="post-nav"><a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8/" class="prev" rel="prev" title="06期望的性质"><i class="fas fa-angle-left" aria-hidden="true"></i>06期望的性质</a>
+            <a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/08%E6%A8%A1%E6%8B%9F/" class="next" rel="next" title="08模拟">08模拟<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
@@ -315,5 +390,5 @@ $$<p>证明方式还是从联合概率分布函数入手。通过高等微积分
         <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
 </html>

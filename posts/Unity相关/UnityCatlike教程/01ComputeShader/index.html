@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=8918&amp;path=livereload" data-no-instant defer></script>
+    <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>01ComputeShader - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://localhost:8918/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/01ComputeShader/">
+        <title>01ComputeShader - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/01ComputeShader/">
   <meta property="og:site_name" content="azurezhc的游戏开发人生">
   <meta property="og:title" content="01ComputeShader">
   <meta property="og:description" content="ComputeShader 对应教程网址
@@ -25,9 +25,9 @@ https://catlikecoding.com/unity/tutorials/basics/compute-shaders/
 <meta name="apple-mobile-web-app-title" content="My cool site">
 <meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:8918/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/01ComputeShader/" /><link rel="prev" href="http://localhost:8918/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E8%BF%9B%E9%98%B6/01UnityJobSystem/" /><link rel="next" href="http://localhost:8918/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/02StackLands/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/01ComputeShader/" /><link rel="prev" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E8%BF%9B%E9%98%B6/01UnityJobSystem/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E6%A6%82%E8%A7%88/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -35,9 +35,9 @@ https://catlikecoding.com/unity/tutorials/basics/compute-shaders/
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/localhost:8918\/posts\/Unity%E7%9B%B8%E5%85%B3\/UnityCatlike%E6%95%99%E7%A8%8B\/01ComputeShader\/"
+            "@id": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/UnityCatlike%E6%95%99%E7%A8%8B\/01ComputeShader\/"
         },"genre": "posts","wordcount":  4523 ,
-        "url": "http:\/\/localhost:8918\/posts\/Unity%E7%9B%B8%E5%85%B3\/UnityCatlike%E6%95%99%E7%A8%8B\/01ComputeShader\/","datePublished": "2025-06-28T00:00:00+00:00","dateModified": "2025-06-28T00:00:00+00:00","publisher": {
+        "url": "http:\/\/azurezhc.github.io\/posts\/Unity%E7%9B%B8%E5%85%B3\/UnityCatlike%E6%95%99%E7%A8%8B\/01ComputeShader\/","datePublished": "2025-06-28T00:00:00+00:00","dateModified": "2025-06-28T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -109,7 +109,7 @@ https://catlikecoding.com/unity/tutorials/basics/compute-shaders/
 </nav></div>
             </div><div class="content" id="content"><h1 id="computeshader">ComputeShader</h1>
 <p>对应教程网址</p>
-<p><a href="https://catlikecoding.com/unity/tutorials/basics/compute-shaders/" target="_blank" rel="noopener noreffer ">https://catlikecoding.com/unity/tutorials/basics/compute-shaders/</a></p>
+<p><a class="link-markdown-demo-site" href="https://catlikecoding.com/unity/tutorials/basics/compute-shaders/" rel="noopener">https://catlikecoding.com/unity/tutorials/basics/compute-shaders/</a></p>
 <p>本篇主要用ComputeShader来进行大批量物体渲染。在之前的教程中大佬用一个个Cube来当一个像素点（或者说体素点）来进行三维程序运动模拟。基于Unity自带的Update接口方式，实现很多程序化造型和运动。在面对大量物体运动更新，渲染的时候，这种方式非常慢。</p>
 <p>在这种程序化造型运动过程中，所有的物体运动是相对独立的，所以很适合并行化运算。这里所讲述的就是基于ComputeShader，用显卡来并行计算每个物体的位置，同时直接渲染出对应物体的方式。</p>
 <p>关于ComputerShader的原理可以见很多图形学书籍，例如</p>
@@ -383,7 +383,7 @@ $SV_{GroupID}*numthreads+SV_{GroupThreadID}$计算出一个三元组来标记。
     </div>
 
     <div class="post-nav"><a href="/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E8%BF%9B%E9%98%B6/01UnityJobSystem/" class="prev" rel="prev" title="01UnityJobSystem"><i class="fas fa-angle-left" aria-hidden="true"></i>01UnityJobSystem</a>
-            <a href="/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/02StackLands/" class="next" rel="next" title="StackLands">StackLands<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+            <a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E6%A6%82%E8%A7%88/" class="next" rel="next" title="线性代数">线性代数<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
@@ -400,5 +400,5 @@ $SV_{GroupID}*numthreads+SV_{GroupThreadID}$计算出一个三元组来标记。
         <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
 </html>

@@ -4,38 +4,36 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>线性代数 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E6%A6%82%E8%A7%88/">
+        <title>08模拟 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/08%E6%A8%A1%E6%8B%9F/">
   <meta property="og:site_name" content="azurezhc的游戏开发人生">
-  <meta property="og:title" content="线性代数">
-  <meta property="og:description" content="线性代数 参考教材 线性代数参考书籍非常多。
-《代码大全》(第2版) [美]Steve McConnell">
+  <meta property="og:title" content="08模拟">
+  <meta property="og:description" content="模拟">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-08-10T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-08-10T00:00:00+00:00">
+    <meta property="article:published_time" content="2026-05-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-05-10T00:00:00+00:00">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="线性代数">
-  <meta name="twitter:description" content="线性代数 参考教材 线性代数参考书籍非常多。
-《代码大全》(第2版) [美]Steve McConnell">
+  <meta name="twitter:title" content="08模拟">
+  <meta name="twitter:description" content="模拟">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site">
 <meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E6%A6%82%E8%A7%88/" /><link rel="prev" href="http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/01ComputeShader/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/02StackLands/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/08%E6%A8%A1%E6%8B%9F/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/07%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "线性代数",
+        "headline": "08模拟",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E6%A6%82%E8%A7%88\/"
-        },"genre": "posts","wordcount":  40 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E6%A6%82%E8%A7%88\/","datePublished": "2025-08-10T00:00:00+00:00","dateModified": "2025-08-10T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/08%E6%A8%A1%E6%8B%9F\/"
+        },"genre": "posts","wordcount":  2 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/08%E6%A8%A1%E6%8B%9F\/","datePublished": "2026-05-10T00:00:00+00:00","dateModified": "2026-05-10T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -85,9 +83,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">线性代数</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">08模拟</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2025-08-10">2025-08-10</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 40 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-10">2026-05-10</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 2 字&nbsp;
                 <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -96,19 +94,15 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#线性代数">线性代数</a></li>
-    <li><a href="#参考教材">参考教材</a></li>
+    <li><a href="#模拟">模拟</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="线性代数">线性代数</h1>
-<h1 id="参考教材">参考教材</h1>
-<p>线性代数参考书籍非常多。</p>
-<div style = "float:left">《代码大全》(第2版)</div>
-<div style = "text-align:right">[美]Steve McConnell</div></div><div class="post-footer" id="post-footer">
+            </div><div class="content" id="content"><h1 id="模拟">模拟</h1>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2025-08-10</span>
+                <span>更新于 2026-05-10</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -125,8 +119,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/01ComputeShader/" class="prev" rel="prev" title="01ComputeShader"><i class="fas fa-angle-left" aria-hidden="true"></i>01ComputeShader</a>
-            <a href="/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/02StackLands/" class="next" rel="next" title="StackLands">StackLands<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83/" class="prev" rel="prev" title="05随机变量的联合分布"><i class="fas fa-angle-left" aria-hidden="true"></i>05随机变量的联合分布</a>
+            <a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/07%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" class="next" rel="next" title="07极限定理">07极限定理<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
