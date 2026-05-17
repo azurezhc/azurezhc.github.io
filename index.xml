@@ -19,7 +19,9 @@
     <pubDate>Sun, 10 May 2026 00:00:00 &#43;0000</pubDate>
     <author>xxxx</author>
     <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/08%E6%A8%A1%E6%8B%9F/</guid>
-    <description><![CDATA[<h1 id="模拟">模拟</h1>]]></description>
+    <description><![CDATA[<h1 id="模拟">模拟</h1>
+<p>用实验的方法来确定概率值的方式称之为模拟。</p>
+<p>而我们最常见的模拟即用计算机来模拟对应的概率分布，或者一个实验过程等。通常来说计算机都有一内置程序，成为随机数发生器，它产生一个伪随机数序列。就实用目的来说，这个伪随机数序列，与来自$(0,1)$均匀分布的样本没有区别。也就是相当于我们有一个均匀分布的随机变量。这个随机变量我们通常用$U$来表示。</p>]]></description>
 </item>
 <item>
     <title>05随机变量的联合分布</title>

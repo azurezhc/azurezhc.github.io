@@ -7,7 +7,8 @@
         <title>08模拟 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/08%E6%A8%A1%E6%8B%9F/">
   <meta property="og:site_name" content="azurezhc的游戏开发人生">
   <meta property="og:title" content="08模拟">
-  <meta property="og:description" content="模拟">
+  <meta property="og:description" content="模拟 用实验的方法来确定概率值的方式称之为模拟。
+而我们最常见的模拟即用计算机来模拟对应的概率分布，或者一个实验过程等。通常来说计算机都有一内置程序，成为随机数发生器，它产生一个伪随机数序列。就实用目的来说，这个伪随机数序列，与来自$(0,1)$均匀分布的样本没有区别。也就是相当于我们有一个均匀分布的随机变量。这个随机变量我们通常用$U$来表示。">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -16,7 +17,8 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="08模拟">
-  <meta name="twitter:description" content="模拟">
+  <meta name="twitter:description" content="模拟 用实验的方法来确定概率值的方式称之为模拟。
+而我们最常见的模拟即用计算机来模拟对应的概率分布，或者一个实验过程等。通常来说计算机都有一内置程序，成为随机数发生器，它产生一个伪随机数序列。就实用目的来说，这个伪随机数序列，与来自$(0,1)$均匀分布的样本没有区别。也就是相当于我们有一个均匀分布的随机变量。这个随机变量我们通常用$U$来表示。">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site">
 <meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -32,7 +34,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/08%E6%A8%A1%E6%8B%9F\/"
-        },"genre": "posts","wordcount":  2 ,
+        },"genre": "posts","wordcount":  767 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/08%E6%A8%A1%E6%8B%9F\/","datePublished": "2026-05-10T00:00:00+00:00","dateModified": "2026-05-10T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -85,8 +87,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">08模拟</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-10">2026-05-10</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 2 字&nbsp;
-                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-10">2026-05-10</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 767 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -95,9 +97,105 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#模拟">模拟</a></li>
+    <li><a href="#模拟连续型随机变量的一般方法">模拟连续型随机变量的一般方法</a>
+      <ul>
+        <li><a href="#逆变换法">逆变换法</a></li>
+        <li><a href="#舍取法">舍取法</a></li>
+      </ul>
+    </li>
+    <li><a href="#几个模拟例子">几个模拟例子</a>
+      <ul>
+        <li><a href="#正态分布">正态分布</a></li>
+        <li><a href="#圆内均匀分布">圆内均匀分布</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="模拟">模拟</h1>
+<p>用实验的方法来确定概率值的方式称之为模拟。</p>
+<p>而我们最常见的模拟即用计算机来模拟对应的概率分布，或者一个实验过程等。通常来说计算机都有一内置程序，成为随机数发生器，它产生一个伪随机数序列。就实用目的来说，这个伪随机数序列，与来自$(0,1)$均匀分布的样本没有区别。也就是相当于我们有一个均匀分布的随机变量。这个随机变量我们通常用$U$来表示。</p>
+<h1 id="模拟连续型随机变量的一般方法">模拟连续型随机变量的一般方法</h1>
+<p>本节主要介绍两种利用随机数模拟连续型随机变量的一般方法。</p>
+<h2 id="逆变换法">逆变换法</h2>
+<div class="admonition note">
+<p class="admonition-title">定理 1</p>
+<p>设$U$为$(0,1)$上均匀随机变量，$F$为任意一个连续分布函数，如果定义随机变量</p>
+$$Y=F^{-1}(U)$$<p>则$Y$具有分布函数$F$。</p>
+</div>
+<p>这个定理实际上就对应第5章问题26，29。证明方式一致，从分布函数出发。</p>
+$$
+F_Y(a)=P\{Y\le a\}=P\{F^{-1}(U)\le a\}
+$$<p>注意$F$为分布函数一定是单调递增函数，所以逆函数也是单调递增函数。所以$F^{-1}(U)\le a$成立当且仅当$U\le F(a)$。于是上是变成：</p>
+$$
+F_Y(a)=P\{U\le F(a)\}=F(a)
+$$<p>所以通常可以令$X=F^{-1}(U)$来模拟具有连续分布函数$F$得随机变量$X$。</p>
+<h2 id="舍取法">舍取法</h2>
+<p>舍取法，其实类似于重复采样筛选出符合条件的值。这里更数学的表示这种方式的正确性。</p>
+<p>假设有一种方式可以模拟密度函数为$g(x)$的随机变量，我们先模拟出一个密度函数为$g$的随机变量$Y$。然后以正比于$f(Y)/g(Y)$的概率采用$Y$的值，这样就能够模拟一个密度为$f(x)$的随机变量。</p>
+<p>具体来说，如果存在一个常数$c$有</p>
+$$
+\frac{f(y)}{g(y)}\le c
+$$<p>
+则可以通过如下方式来模拟具有密度$f$的随机变量</p>
+<ul>
+<li>模拟具有密度$g$的$Y$，同时产生一随机数$U$。</li>
+<li>若$U\le f(Y)/[cg(Y)]$，则$X=Y$，否则回到第一步。</li>
+</ul>
+<p><strong>证明</strong></p>
+<p>设$X$为舍取法模拟的随机变量，其由上述算法经过$N$次循环来模拟。</p>
+$$
+P\{X\le x\}=P\{Y_N\le x\}=P\{Y\le x|U\le \frac{f(Y)}{cg(Y)}\}
+$$<p>根据算法步骤，最终$X<x$的情况，需在$U\le f(Y)/[cg(Y)]$条件下，使得最后生成的$Y$也小于$x$。即最后一部分条件概率。根据条件概率有：</p>
+$$
+P\{Y\le x|U\le \frac{f(Y)}{cg(Y)}\}=P\{Y\le x,U\le \frac{f(Y)}{cg(Y)}\}/P\{U\le \frac{f(Y)}{cg(Y)}\}
+$$<p>现在考虑$Y,U$两个随机变量，其为独立随机变量。$Y$符合概率密度为$g$的分布，$U$为$(0,1)$上的均匀分布。则$Y,U$的联合概率密度为两个分布的乘积，即有：</p>
+$$
+f(y,u)=g(y)\quad 0<u<1
+$$<p>令$K=P\{U\le f(Y)/cg(Y)\}$则原概率表达式有</p>
+$$
+\frac{1}{K}P\{Y\le x,U\le \frac{f(Y)}{cg(Y)}\}=\frac{1}{K}\int_{-\infty}^x\int_0^{f(y)/cg(y)}g(y)dudy=\frac{1}{K}\int_{-\infty}^xf(y)/cdy=\frac{1}{cK}\int_{-\infty}^xf(y)dy
+$$<p>注意其中$\int_{-\infty}^xf(y)dy$实际上就是$X$的概率分布表达式。现在令$x\to \infty$。可得</p>
+$$
+1=\frac{1}{cK}\int_{-\infty}^\infty f(y)dy\frac{1}{cK}
+$$<p>这说明$cK$值必然为1。进而说明此时的$X$即具有概览密度为$f$的随机变量。</p>
+<h1 id="几个模拟例子">几个模拟例子</h1>
+<p>这里需要记录几个常用的模拟方式。</p>
+<h2 id="正态分布">正态分布</h2>
+<p>在随机变量的联合分布章节中，其实有提过模拟正态分布的方式。若$X,Y$是相互独立的标准正态随机变量，则他们的极坐标$R=\sqrt{X^2+Y^2}$和$\Theta=\arctan(Y/X)$各自独立。$R^2$服从均值为2的指数随机变量。$\Theta$服从$(0,2\pi)$上的均匀分布。</p>
+<p>所以设$U_1,U_2$为随机数则</p>
+$$
+X=R\cos \Theta=(-2\ln U_1)^\frac{1}{2}\cos(2\pi U_2)\\
+X=R\sin \Theta=(-2\ln U_1)^\frac{1}{2}\sin(2\pi U_2)\\
+$$<p>为两个独立的标准正态分布。</p>
+<h2 id="圆内均匀分布">圆内均匀分布</h2>
+<p>游戏常见随机在圆内生成物体。这要求生成一个坐标$(x,y)$其服从半径为$1$内的均匀分布。简单来说其要生成两个联合随机变量$(X,Y)$满足如下的概率密度函数：</p>
+$$
+f_{X,Y}(x,y)=
+\begin{cases}
+\frac{1}{\pi} \quad &\text{if }x^2+y^2\le 1\\
+0\quad &\text{other} 
+\end{cases}
+$$<p>模拟圆分布的一个问题是，模拟的随机变量要限制在圆内，满足圆约束。或者说$X,Y$不是相互独立的。</p>
+<p>方法1也是通过舍取法来获得。即生成两个$(-1,1)$上的均匀随机变量$U_1,U_2$。其相当于在$(-1,1)$的正方形内均匀分布。如果$(x,y)$满足在圆内，则使用。否则舍弃。这个方式是可以生成圆内均匀的随机变量。但是其存在多次求取过程。循环次数等于$4/\pi$。</p>
+<p>还有一种方式是尝试通过联合分布函数将$X,Y$拆解成两个可以独立的随机变量。再各自模拟对应的随机变量来求取。最直接的就是极坐标表示。</p>
+<p>令$R=(X^2+Y^2)^{1/2}$和$\Theta=\arctan(Y/X)$。我们现在来看$R,\Theta$的分布。</p>
+<p>根据随机变量函数的联合分布有</p>
+$$
+f_{R,\Theta}(r,\theta)=f_{X,Y}(x,y)\left|J(x,y)\right|^{-1}
+$$<p>其中</p>
+$$
+\left|J(x,y)\right|^{-1}=\begin{vmatrix}
+\frac{x}{\sqrt{x^2+y^2}}&\frac{y}{\sqrt{x^2+y^2}}\\
+-\frac{y}{x^2+y^2}&\frac{x}{x^2+y^2}\\
+\end{vmatrix}^{-1}=\sqrt{x^2+y^2}
+$$<p>可得</p>
+$$
+f_{R,\Theta}(r,\theta)=
+\begin{cases}
+\frac{r}{\pi}\quad &\text{if }-1\le r\le 1\space 0\le\theta\le 2\pi\\
+0\quad &\text{other}    
+\end{cases}
+$$<p>所以可以看到$R,\Theta$独立，$R$服从密度函数为$r/2$的分布函数。而$\Theta$为$(0,2\pi)$上的均匀分布。所以现在通过随机数模拟$R,\Theta$再转换成$X,Y$即可。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
