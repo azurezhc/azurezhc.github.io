@@ -32,7 +32,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F\/"
-        },"genre": "posts","wordcount":  2435 ,
+        },"genre": "posts","wordcount":  5486 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F\/","datePublished": "2026-04-12T00:00:00+00:00","dateModified": "2026-04-12T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -85,8 +85,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">03随机变量</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-04-12">2026-04-12</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 2435 字&nbsp;
-                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-04-12">2026-04-12</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 5486 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 11 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -133,7 +133,7 @@ $$<p>随机变量是样本空间上的实值函数，其针对每个事件给出
 <div class="admonition abstract">
 <p class="admonition-title">定义</p>
 <p>累计分布函数$F$定义为</p>
-$$F(x)=P\{X\le x\}\quad -\infty< x <\infty $$</div>
+$$F(x)=P\{X\le x\}\quad -\infty\lt x \lt\infty $$</div>
 <p>也可简称为分布函数。即分布函数是一个函数，对任一给定实数$x$，分布函数为该随机变量小于等于$x$的概率。</p>
 <h2 id="离散型随机变量">离散型随机变量</h2>
 <p>若一个随机变量最多有可数个可能取值，则称之为离散型随机变量。对于一个离散型随机变量$X$。我们可以定义$X$的概率分布列函数$p(a)$即</p>
@@ -222,7 +222,7 @@ $$<p>其中注意$Y$为参数$(n-1,p)$的二项随机变量。</p>
 <p>所以</p>
 $$Var(X)=E[X^2]-(E[X])^2=np[(n-1)p+1]-(np)^2=np(1-p)$$<div class="admonition note">
 <p class="admonition-title">定理</p>
-<p>如果$X$是一个参数为$(n,p)$的二项随机变量，其中$0<p<1$。那么当$k$从$0$到$n$时，$P\{X=k\}$一开始单调递增，然后一直单调递减。当$k=\lfloor(n+1)p\rfloor$时取得最大值。($\lfloor X\rfloor$表示小于等于$X$的最大整数)。</p>
+<p>如果$X$是一个参数为$(n,p)$的二项随机变量，其中$0\lt p\lt 1$。那么当$k$从$0$到$n$时，$P\{X=k\}$一开始单调递增，然后一直单调递减。当$k=\lfloor(n+1)p\rfloor$时取得最大值。($\lfloor X\rfloor$表示小于等于$X$的最大整数)。</p>
 </div>
 <p>证明方式考虑$\frac{P\{X=k\}}{P\{X=k-1\}}$。其大于$1$表示涨，否则为跌。</p>
 <p>直接套用二项概率分布有</p>

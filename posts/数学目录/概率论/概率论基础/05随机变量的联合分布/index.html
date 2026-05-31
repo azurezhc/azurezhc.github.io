@@ -36,7 +36,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83\/"
-        },"genre": "posts","wordcount":  97 ,
+        },"genre": "posts","wordcount":  5695 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83\/","datePublished": "2026-05-05T00:00:00+00:00","dateModified": "2026-05-05T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -89,8 +89,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">05随机变量的联合分布</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-05">2026-05-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 97 字&nbsp;
-                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-05">2026-05-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 5695 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 12 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -119,10 +119,10 @@
 <p class="admonition-title">定义</p>
 <p><strong>联合累积概率分布</strong></p>
 $$
-F(a,b)=P\{X\le a,Y\le b\}\quad -\infty<a,b<\infty
+F(a,b)=P\{X\le a,Y\le b\}\quad -\infty\lt a,b\lt \infty
 $$</div>
 <p>通过计算可得。</p>
-$$P(a_1<X\le a_2,b_1<Y\le b_2)=F(a_2,b_2)-F(a_1,b_2)-F(a_2,b_1)+F(a_1,b_1)$$<p>这个也可以通过覆盖区域直观理解得到。</p>
+$$P(a_1\lt X\le a_2,b_1\lt Y\le b_2)=F(a_2,b_2)-F(a_1,b_2)-F(a_2,b_1)+F(a_1,b_1)$$<p>这个也可以通过覆盖区域直观理解得到。</p>
 <p>当$X$和$Y$都是离散随机变量时，可对应定义$X$和$Y$的联合概率分布列(joint probability mass function)。</p>
 $$
 p(x,y)=P\{X=x,Y=y\}
@@ -144,7 +144,7 @@ $$F(a,b)=F_X(a)F_Y(b)$$<p>则$X,Y$独立。在$X,Y$联合连续的情形下，�
 $$f(x,y)=f_X(x)f_Y(y)$$<div class="admonition note">
 <p class="admonition-title">定理</p>
 <p>连续型(离散型)随机变量$X$和$Y$相互独立，当且仅当其联合概率密度函数(联合分布列)可以写成</p>
-$$f_{X,Y}(x,y)=h(x)g(y)\quad -\infty<x<\infty,-\infty<y<\infty$$</div>
+$$f_{X,Y}(x,y)=h(x)g(y)\quad -\infty\lt x\lt \infty,-\infty\lt y\lt \infty$$</div>
 <div class="admonition example">
 <p class="admonition-title">例 2g</p>
 <p><strong>计算机怎样选择随机子集</strong> 大部分计算机都产生或模拟$(0,1)$均匀随机变量的值。现在希望从给定集合$\{1,2,\cdots,n\}$中均匀随机选择$k$个对象，使得$\binom{n}{k}$种不同组合等概率地被选上。</p>
@@ -153,7 +153,7 @@ $$f_{X,Y}(x,y)=h(x)g(y)\quad -\infty<x<\infty,-\infty<y<\infty$$</div>
 <p>计算机可以通过模拟一个$(0,1)$均匀随机数变量$U$。给定一个值$p$，并令</p>
 $$
 I=\begin{cases}
-1\quad & U<p\\
+1\quad & U\lt p\\
 0\quad & U\ge p
 \end{cases}
 $$<p>$I$称之为示性变量。这种变量值一般只取$0$或$1$，其中$1$用来表示某个特性发生这个概念。这里思路是构造$n$个示性变量$I_1,I_2,\cdots,I_n$。使得其中恰好$k$个为$1$。这个$k$个值位置就是我们要的子集。</p>
@@ -165,13 +165,13 @@ $$<p>$I$称之为示性变量。这种变量值一般只取$0$或$1$，其中$1$
 <p>直观来说，这个是合理的。如果一直没有元素选择进去，则最后$k$个会被选入。建立于此构造示性变量定义</p>
 $$
 I_1=\begin{cases}
-1\quad & U_1< \frac{k}{n}\\
+1\quad & U_1\lt \frac{k}{n}\\
 0\quad & other
 \end{cases}
 $$<p>同时递归定义$I_{i+1}$为</p>
 $$
 I_{i+1}=\begin{cases}
-1\quad & U_{i+1}< \frac{k-(I_1+I_2+\cdots+I_i)}{n-i}\\
+1\quad & U_{i+1}\lt \frac{k-(I_1+I_2+\cdots+I_i)}{n-i}\\
 0\quad & other
 \end{cases}
 $$<p>即第$i+1$个元素被放入$(I_{i+1}=1)$的概率。等同于子集中还需要放入的元素个数除以剩余总数目。</p>
@@ -184,7 +184,7 @@ $$<p>即第$i+1$个元素被放入$(I_{i+1}=1)$的概率。等同于子集中还
 <p>此时相当于$I_1=1$。子集有$k$个元素在子集中，相当于：</p>
 $$
 P\{I_1=I_{i_2}=\cdots=I_{i_k}=1,I_j=0\text{ for other }j\}=P\{I_1=1\}P\{I_{i_2}=\cdots=I_{i_k}=1,I_j=0|I_1=1\}
-$$<p>$I_1=1$的概率由算法可知为$k/n$。在给定$I_1=1$的条件下，算法针对剩余元素选取可以看作从剩下$n-1$个元素中选取大小为$k-1$的子集。由前面归纳假设知道此时$n-1+k-1=l-2<l$此时相当于选取一个大小为$k-1$的概率。所以有</p>
+$$<p>$I_1=1$的概率由算法可知为$k/n$。在给定$I_1=1$的条件下，算法针对剩余元素选取可以看作从剩下$n-1$个元素中选取大小为$k-1$的子集。由前面归纳假设知道此时$n-1+k-1=l-2\lt l$此时相当于选取一个大小为$k-1$的概率。所以有</p>
 $$
 P\{I_1=1\}P\{I_{i_2}=\cdots=I_{i_k}=1,I_j=0|I_1=1\}=\frac{k}{n}\frac{1}{\binom{n-1}{k-1}}=\frac{1}{\binom{n}{k}}
 $$<ul>
@@ -193,7 +193,7 @@ $$<ul>
 <p>此时相当于有</p>
 $$
 P\{I_{i_1}=I_{i_2}=\cdots=I_{i_k}=1,I_j=0\text{ for other }j\}=P\{I_1=0\}P\{I_{i_1}=\cdots=I_{i_k}=1,I_j=0|I_1=0\}
-$$<p>$I_1=0$的概率由算法可知为$1-k/n$，在给定$I_1=0$的条件下，算法针对剩余元素选取可以看作从剩下$n-1$个元素中选取大小为$k$的子集。由前面归纳假设知道此时$n-1+k=l-1<l$此时相当于选取一个大小为$k$的概率。所以有：</p>
+$$<p>$I_1=0$的概率由算法可知为$1-k/n$，在给定$I_1=0$的条件下，算法针对剩余元素选取可以看作从剩下$n-1$个元素中选取大小为$k$的子集。由前面归纳假设知道此时$n-1+k=l-1\lt l$此时相当于选取一个大小为$k$的概率。所以有：</p>
 $$
 P\{I_1=0\}P\{I_{i_1}=\cdots=I_{i_k}=1,I_j=0|I_1=0\}=（1-\frac{k}{n}）\frac{1}{\binom{n-1}{k}}=\frac{1}{\binom{n}{k}}
 $$<p>由此可得此时选取任何一个大小为$k$的子集概率为$1/\binom{n}{k}$。</p>
@@ -311,7 +311,7 @@ $$<p>由此可得</p>
 $$
 f_{R,\Theta}(r,\theta)=f_{X,Y}(x,y)\left|J(x,y)\right|^{-1}=\frac{1}{2\pi}re^{-r^2/2}
 $$<p>可以注意到这个公式中没有$\theta$，更可以拆分成$R,\Theta$的边缘密度函数乘积。所以$R,\Theta$是相互独立的。其中$\Theta$为$(0,2\pi)$上的均匀分布。而$R$的分布为著名的瑞利分布，密度函数为</p>
-$$f(r)=re^{-r^2/2}\quad 0<r<\infty$$<p>这个结论表明，我们关心平面随机打靶情况时，假设射击时上下左右误差为独立的标准正态分布情况下。那么这个着点坐标对于角度来说，是均匀分布的，而距离圆心的距离为瑞利分布。这也是符合预期的。</p>
+$$f(r)=re^{-r^2/2}\quad 0\lt r\lt \infty$$<p>这个结论表明，我们关心平面随机打靶情况时，假设射击时上下左右误差为独立的标准正态分布情况下。那么这个着点坐标对于角度来说，是均匀分布的，而距离圆心的距离为瑞利分布。这也是符合预期的。</p>
 <p>从另一个角度来看，会发现一个坐标有相互独立的标准正态随机变量构成的随机向量，其极坐标变化的夹角不仅服从均匀分布，而且跟向量距离远点的距离大小无关。我觉得这有两个提示点。</p>
 <ul>
 <li>根据随机变量函数的关系，这说明存在从均匀分布来模拟正态分布的一种方式。</li>
@@ -333,7 +333,7 @@ $$<p>所以有$f(d,\theta)=\frac{1}{2}e^{-d/2}\frac{1}{2\pi}$。这说明$R^2$�
 <p>现在假设可以得到两个独立$(0,1)$上的均匀随机变量$U_1,U_2$，我们希望模拟出前面得到的$X,Y$为正态分布。即求出$X=g_1(U_1,U_2),Y=g_2(U_1,U_2)$表达式，使得$X,Y$为正态分布。</p>
 <p>思路上我们先通过联合分布函数，模拟出$R^2,\Theta$。然后通过前面$r^2=x^2+y^2,\theta=\arctan(y/x)$，求出$x,y$的逆函数表示，那么$(X,Y)$就是符合要求的两个独立正态随机变量。可以说明$-2\ln U_1$ 具有参数为$1/2$的指数分布。对于$x>0$有</p>
 $$
-P\{-2\ln U_1<x\}=P\{\ln U_1>-x/2\}=P\{U_1>e^{-x/2}\}=1-e^{-x/2}
+P\{-2\ln U_1\lt x\}=P\{\ln U_1>-x/2\}=P\{U_1>e^{-x/2}\}=1-e^{-x/2}
 $$<p>$2\pi U_2$为$(0,2\pi)$上的均匀随机变量，所以这两个函数可以产生$R^2,\Theta$。即令</p>
 $$
 \begin{aligned}

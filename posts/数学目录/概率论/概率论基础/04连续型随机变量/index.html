@@ -36,7 +36,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/04%E8%BF%9E%E7%BB%AD%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F\/"
-        },"genre": "posts","wordcount":  727 ,
+        },"genre": "posts","wordcount":  4747 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/04%E8%BF%9E%E7%BB%AD%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F\/","datePublished": "2026-04-26T00:00:00+00:00","dateModified": "2026-04-26T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -89,8 +89,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">04连续型随机变量</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-04-26">2026-04-26</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 727 字&nbsp;
-                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-04-26">2026-04-26</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 4747 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 10 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -127,7 +127,7 @@ $$P\{X\in B\}=\int_{B}f(x)dx$$<p>则称$X$为连续型随机变量(continuous)�
 </div>
 <p>由概率定义可知，因为$X$必须取一个值。所以有</p>
 $$1=P\{X\in (-\infty,\infty) \}=\int_{-\infty}^{\infty}f(x)dx$$<p>再考虑累积分布函数定义有：</p>
-$$F(a)=P\{X\le a\}= P\{X< a\}=\int_{-\infty}^af(x)dx$$<h1 id="连续型随机变量的期望和方差">连续型随机变量的期望和方差</h1>
+$$F(a)=P\{X\le a\}= P\{X\lt a\}=\int_{-\infty}^af(x)dx$$<h1 id="连续型随机变量的期望和方差">连续型随机变量的期望和方差</h1>
 <p>用类似于离散的方式我们可以定义</p>
 <div class="admonition abstract">
 <p class="admonition-title">定义</p>
@@ -141,9 +141,9 @@ $$E[g(X)]=\int_{-\infty}^{\infty}g(x)f(x)dx$$</div>
 <div class="admonition note">
 <p class="admonition-title">引理</p>
 <p>对于一个非负随机变量$Y$有</p>
-$$E[Y]=\int_{0}^{\infty}P\{Y > y\}dy$$</div>
+$$E[Y]=\int_{0}^{\infty}P\{Y \gt y\}dy$$</div>
 <p>这个引理注意表达，其中积分内为一个概率表示即$P\{Y > y\}$。展开右侧即为</p>
-$$\int_{0}^{\infty}P\{Y > y\}dy=\int_{0}^{\infty}\int_{y}^{\infty}f_Y(x)dxdy$$<p>这里主要用到的是积分次序交换。内部积分是从$y\to \infty$即外部给定一个$y$之后积分到$\infty$。可以放到$xy$坐标系中，其大概是$y=x$坐标轴下方区域。所以可以交换这个积分为内$y:0\to x$外部为$x:0\to \infty$。</p>
+$$\int_{0}^{\infty}P\{Y \gt y\}dy=\int_{0}^{\infty}\int_{y}^{\infty}f_Y(x)dxdy$$<p>这里主要用到的是积分次序交换。内部积分是从$y\to \infty$即外部给定一个$y$之后积分到$\infty$。可以放到$xy$坐标系中，其大概是$y=x$坐标轴下方区域。所以可以交换这个积分为内$y:0\to x$外部为$x:0\to \infty$。</p>
 <p>即</p>
 $$
 \begin{aligned}
@@ -156,7 +156,7 @@ $$<h1 id="常见连续型随机变量">常见连续型随机变量</h1>
 $$
 f(x)=
 \begin{cases}
-1\quad 1<x<1\\
+1\quad 1\lt x\lt 1\\
 0\quad other
 \end{cases}
 $$<p>称随机变量$X$在$(0,1)$区间上均匀分布(uniformly distribution)</p>
@@ -165,7 +165,7 @@ $$
 F(x)=
 \begin{cases}
 0\quad &x\le 0\\
-x \quad &0<x<1\\
+x \quad &0\lt x\lt 1\\
 1 \quad &x\ge1
 \end{cases}
 $$<h2 id="正态随机变量">正态随机变量</h2>
@@ -212,7 +212,7 @@ $$
 f(x)=
 \begin{cases}
 \lambda e^{-\lambda x}\quad &x\ge 0\\
-0 \quad &x<0
+0 \quad &x\lt 0
 \end{cases}
 $$<p>则称随机变量是参数为$\lambda$的指数随机变量。指数随机变量的分布函数$F(a)$如下：</p>
 $$F(a)=\int_{0}^a\lambda e^{-\lambda x}dx=1-e^{-\lambda a}$$<p>现在计算一下其期望和方差，关注$E[X^k]$有：</p>
@@ -245,7 +245,7 @@ $$
 f(x)=
 \begin{cases}
 \frac{\lambda e^{-\lambda x}(\lambda x)^{\alpha -1}}{\Gamma(\alpha)}\quad &x\ge 0\\
-0 \quad &x<0
+0 \quad &x\lt 0
 \end{cases}
 $$<p>我们就称其为$\Gamma$分布。其中$\Gamma(\alpha)$称为$\Gamma$函数。其参数为$(\alpha,\lambda),\alpha > 0,\lambda>0$。其定义如下：</p>
 $$
@@ -260,7 +260,7 @@ $$
 f(x)=
 \begin{cases}
 0 &x\le \nu\\
-1-\exp\{-(\frac{x-\nu}{\alpha})^\beta\} \quad &x<0
+1-\exp\{-(\frac{x-\nu}{\alpha})^\beta\} \quad &x\lt 0
 \end{cases}
 $$<h2 id="柯西分布">柯西分布</h2>
 <p>柯西分布的密度函数形如：</p>
@@ -271,7 +271,7 @@ $$<h2 id="分布-1">$\beta$分布</h2>
 $$
 f(x)=
 \begin{cases}
-\frac{1}{B(a,b)}x^{\alpha-1}(1-x)^{b-1}\quad &0<x<1\\
+\frac{1}{B(a,b)}x^{\alpha-1}(1-x)^{b-1}\quad &0\lt x\lt 1\\
 0\quad & \text{other}
 \end{cases}
 $$<p>其中$B(a,b)$为</p>

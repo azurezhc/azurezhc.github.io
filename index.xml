@@ -11,7 +11,13 @@
     <pubDate>Sun, 10 May 2026 00:00:00 &#43;0000</pubDate>
     <author>xxxx</author>
     <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/07%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/</guid>
-    <description><![CDATA[<h1 id="极限定理">极限定理</h1>]]></description>
+    <description><![CDATA[<h1 id="极限定理">极限定理</h1>
+<p>极限定理是概率论中最重要的理论结果。其最核心的两个就是<strong>大数定律</strong>和<strong>中心极限定理</strong>。</p>
+<h1 id="切比雪夫不等式及弱大数定律">切比雪夫不等式及弱大数定律</h1>
+<div class="admonition note">
+<p class="admonition-title">定理 2.1</p>
+<p>马尔可夫不等式</p>
+<p>设$X$为取非负值得随机变量，则对于任何常数$a\gt 0$有</p>]]></description>
 </item>
 <item>
     <title>08模拟</title>

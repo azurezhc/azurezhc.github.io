@@ -36,7 +36,7 @@ $$ E[X]=\int_{-\infty}^{\infty} xf(x)dx $$并且可以说明对于随机变量�
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8\/"
-        },"genre": "posts","wordcount":  2151 ,
+        },"genre": "posts","wordcount":  4916 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8\/","datePublished": "2026-05-05T00:00:00+00:00","dateModified": "2026-05-05T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -89,8 +89,8 @@ $$ E[X]=\int_{-\infty}^{\infty} xf(x)dx $$并且可以说明对于随机变量�
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">06期望的性质</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-05">2026-05-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 2151 字&nbsp;
-                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-05">2026-05-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 4916 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 10 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -205,14 +205,14 @@ $$
 E[X]=\sum_{i=1}^{n-1}\sum_{j=i+1}^n \frac{2}{j-i+1}
 $$<p>计算这个可以通过转换积分方式来估计。考虑$\sum_i^n1/x$，由图像面积关系可以得</p>
 $$
-\ln \frac{n+1}{i}=\int_{i}^{n+1}\frac{1}{x} dx <\sum_i^n1/x< \int_{i-1}^{n}\frac{1}{x}dx =\ln \frac{n}{i-1}
+\ln \frac{n+1}{i}=\int_{i}^{n+1}\frac{1}{x} dx \lt \sum_i^n1/x\lt \int_{i-1}^{n}\frac{1}{x}dx =\ln \frac{n}{i-1}
 $$<p>所以有</p>
 $$
 \begin{aligned}
-\sum_{i=1}^{n-1}\sum_{j=i+1}^n \frac{2}{j-i+1} &< \sum_{i=1}^{n-1}2(\ln (x-i+1)|_i^n)\\
+\sum_{i=1}^{n-1}\sum_{j=i+1}^n \frac{2}{j-i+1} &\lt \sum_{i=1}^{n-1}2(\ln (x-i+1)|_i^n)\\
 &=\sum_{i=1}^{n-1} 2\ln(n-i+1)\\
 &=\sum_{i=1}^{n-1} 2\ln(i+1)\\
-&<2(n-1)\ln(n)
+&\lt 2(n-1)\ln(n)
 \end{aligned}
 $$<p>书上是用积分直接近似得到的，离散求和和积分之间确实由直接的近似关系：</p>
 $$
@@ -232,14 +232,14 @@ $$<p>而</p>
 $$X=\sum_i I_i$$<p>进而有</p>
 $$E[X]=\sum_iE[I_i]=\sum_iP(A_i)$$<p>现在考虑对成对事件出现次数感兴趣。即如果事件$A_i$与$A_j$在实验中发生，则$I_iI_j=1$，反之则$I_iI_j=0$。所以成对发生次数即和式$\sum I_iI_j$的值。另一方面因为$X$表示整个事件发生的次数，有组合可知，其中成对发生的次数恰为$\binom{X}{2}$。由此可得</p>
 $$
-\binom{X}{2}=\sum_{i<j}I_iI_j
+\binom{X}{2}=\sum_{i\lt j}I_iI_j
 $$<p>把左边视为随机变量的函数，两边同时求期望即有</p>
 $$
-E[\binom{X}{2}]=E[\frac{X(X-1)}{2}]=E[\sum_{i<j}I_iI_j]=\sum_{i<j}E[I_iI_j]=\sum_{i<j}P(A_iA_j)
+E[\binom{X}{2}]=E[\frac{X(X-1)}{2}]=E[\sum_{i\lt j}I_iI_j]=\sum_{i\lt j}E[I_iI_j]=\sum_{i\lt j}P(A_iA_j)
 $$<p>由此可以解得$E[X^2]$的值，进而求出$Var(X)=E[X^2]-E^2[X]$的值等。</p>
 <p>针对上述过程可以扩展。考虑$k$个不同事件组的出现次数，即可得</p>
 $$
-E[\binom{X}{k}]=\sum_{i_1<i_2<\cdots<i_k}E[I_1I_2\cdots I_k]=\sum_{i_1<i_2<\cdots<i_k}P(A_{i_1}A_{i_2}\cdots A_{i_k})
+E[\binom{X}{k}]=\sum_{i_1\lt i_2\lt \cdots\lt i_k}E[I_1I_2\cdots I_k]=\sum_{i_1\lt i_2\lt \cdots\lt i_k}P(A_{i_1}A_{i_2}\cdots A_{i_k})
 $$<h1 id="随机变量和的协方差方差及相关系数">随机变量和的协方差、方差及相关系数</h1>
 <p>本节主要独立随机变量得乘积期望，以及协方差定义。</p>
 <div class="admonition note">
@@ -422,7 +422,7 @@ $$<p>本书中经典的概率分布有如下表：</p>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: center">二项分布<br>参数$(n,p),0<p<1$</td>
+          <td style="text-align: center">二项分布<br>参数$(n,p),0\lt p\lt 1$</td>
           <td style="text-align: center">$\binom{n}{x}p^x(1-p)^{n-x}$</td>
           <td style="text-align: center">$(pe^t+1-p)^n$</td>
           <td style="text-align: center">$np$</td>
@@ -465,21 +465,21 @@ $$<p>本书中经典的概率分布有如下表：</p>
   <tbody>
       <tr>
           <td style="text-align: center">$(a,b)$上均匀分布</td>
-          <td style="text-align: center">$f(x)=\begin{cases}\frac{1}{b-a} \quad a<x<b\\0\quad other\end{cases}$</td>
+          <td style="text-align: center">$f(x)=\begin{cases}\frac{1}{b-a} \quad a\lt x\lt b\\0\quad other\end{cases}$</td>
           <td style="text-align: center">$\frac{e^{tb}-e^{ta}}{t(b-a)}$</td>
           <td style="text-align: center">$\frac{a+b}{2}$</td>
           <td style="text-align: center">$\frac{(b-a)^2}{12}$</td>
       </tr>
       <tr>
           <td style="text-align: center">指数分布</td>
-          <td style="text-align: center">$f(x)=\begin{cases}\lambda e^{-\lambda x} \quad x\ge 0\\0\quad x<0\end{cases}$</td>
+          <td style="text-align: center">$f(x)=\begin{cases}\lambda e^{-\lambda x} \quad x\ge 0\\0\quad x\lt 0\end{cases}$</td>
           <td style="text-align: center">$\frac{\lambda}{\lambda-t}$</td>
           <td style="text-align: center">$\frac{1}{\lambda}$</td>
           <td style="text-align: center">$\frac{1}{\lambda^2}$</td>
       </tr>
       <tr>
           <td style="text-align: center">$\Gamma$分布<br>参数$(s,\lambda),\lambda>0$</td>
-          <td style="text-align: center">$f(x)=\begin{cases}\frac{\lambda e^{-\lambda x}(\lambda x)^{s-1}}{\Gamma(s)} \quad x\ge 0\\0\quad x<0\end{cases}$</td>
+          <td style="text-align: center">$f(x)=\begin{cases}\frac{\lambda e^{-\lambda x}(\lambda x)^{s-1}}{\Gamma(s)} \quad x\ge 0\\0\quad x\lt 0\end{cases}$</td>
           <td style="text-align: center">$(\frac{\lambda}{\lambda-t})^s$</td>
           <td style="text-align: center">$\frac{s}{\lambda}$</td>
           <td style="text-align: center">$\frac{s}{\lambda^2}$</td>

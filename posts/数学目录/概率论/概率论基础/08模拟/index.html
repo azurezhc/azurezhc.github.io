@@ -34,7 +34,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/08%E6%A8%A1%E6%8B%9F\/"
-        },"genre": "posts","wordcount":  767 ,
+        },"genre": "posts","wordcount":  1958 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/08%E6%A8%A1%E6%8B%9F\/","datePublished": "2026-05-10T00:00:00+00:00","dateModified": "2026-05-10T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -87,8 +87,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">08模拟</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-10">2026-05-10</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 767 字&nbsp;
-                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-10">2026-05-10</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 1958 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -145,18 +145,21 @@ $$<p>
 <p>设$X$为舍取法模拟的随机变量，其由上述算法经过$N$次循环来模拟。</p>
 $$
 P\{X\le x\}=P\{Y_N\le x\}=P\{Y\le x|U\le \frac{f(Y)}{cg(Y)}\}
-$$<p>根据算法步骤，最终$X<x$的情况，需在$U\le f(Y)/[cg(Y)]$条件下，使得最后生成的$Y$也小于$x$。即最后一部分条件概率。根据条件概率有：</p>
+$$<p>根据算法步骤，最终$X\lt x$的情况，需在$U\le f(Y)/[cg(Y)]$条件下，使得最后生成的$Y$也小于$x$。即最后一部分条件概率。根据条件概率有：</p>
 $$
 P\{Y\le x|U\le \frac{f(Y)}{cg(Y)}\}=P\{Y\le x,U\le \frac{f(Y)}{cg(Y)}\}/P\{U\le \frac{f(Y)}{cg(Y)}\}
 $$<p>现在考虑$Y,U$两个随机变量，其为独立随机变量。$Y$符合概率密度为$g$的分布，$U$为$(0,1)$上的均匀分布。则$Y,U$的联合概率密度为两个分布的乘积，即有：</p>
 $$
-f(y,u)=g(y)\quad 0<u<1
+f(y,u)=g(y)\quad 0\lt u\lt 1
 $$<p>令$K=P\{U\le f(Y)/cg(Y)\}$则原概率表达式有</p>
 $$
-\frac{1}{K}P\{Y\le x,U\le \frac{f(Y)}{cg(Y)}\}=\frac{1}{K}\int_{-\infty}^x\int_0^{f(y)/cg(y)}g(y)dudy=\frac{1}{K}\int_{-\infty}^xf(y)/cdy=\frac{1}{cK}\int_{-\infty}^xf(y)dy
+\begin{aligned}
+\frac{1}{K}P\{Y\le x,U\le \frac{f(Y)}{cg(Y)}\}&=\frac{1}{K}\int_{-\infty}^x\int_0^{f(y)/cg(y)}g(y)dudy\\
+&=\frac{1}{cK}\int_{-\infty}^xf(y)dy    
+\end{aligned}
 $$<p>注意其中$\int_{-\infty}^xf(y)dy$实际上就是$X$的概率分布表达式。现在令$x\to \infty$。可得</p>
 $$
-1=\frac{1}{cK}\int_{-\infty}^\infty f(y)dy\frac{1}{cK}
+1=\frac{1}{cK}\int_{-\infty}^\infty f(y)dy=\frac{1}{cK}
 $$<p>这说明$cK$值必然为1。进而说明此时的$X$即具有概览密度为$f$的随机变量。</p>
 <h1 id="几个模拟例子">几个模拟例子</h1>
 <p>这里需要记录几个常用的模拟方式。</p>
@@ -176,7 +179,7 @@ f_{X,Y}(x,y)=
 0\quad &\text{other} 
 \end{cases}
 $$<p>模拟圆分布的一个问题是，模拟的随机变量要限制在圆内，满足圆约束。或者说$X,Y$不是相互独立的。</p>
-<p>方法1也是通过舍取法来获得。即生成两个$(-1,1)$上的均匀随机变量$U_1,U_2$。其相当于在$(-1,1)$的正方形内均匀分布。如果$(x,y)$满足在圆内，则使用。否则舍弃。这个方式是可以生成圆内均匀的随机变量。但是其存在多次求取过程。循环次数等于$4/\pi$。</p>
+<p>一种方式也是通过舍取法来获得。即生成两个$(-1,1)$上的均匀随机变量$U_1,U_2$。其相当于在$(-1,1)$的正方形内均匀分布。如果$(x,y)$满足在圆内，则使用。否则舍弃。这个方式是可以生成圆内均匀的随机变量。但是其存在多次求取过程。循环次数等于$4/\pi$。</p>
 <p>还有一种方式是尝试通过联合分布函数将$X,Y$拆解成两个可以独立的随机变量。再各自模拟对应的随机变量来求取。最直接的就是极坐标表示。</p>
 <p>令$R=(X^2+Y^2)^{1/2}$和$\Theta=\arctan(Y/X)$。我们现在来看$R,\Theta$的分布。</p>
 <p>根据随机变量函数的联合分布有</p>
@@ -192,11 +195,19 @@ $$<p>可得</p>
 $$
 f_{R,\Theta}(r,\theta)=
 \begin{cases}
-\frac{r}{\pi}\quad &\text{if }-1\le r\le 1\space 0\le\theta\le 2\pi\\
+\frac{1}{2\pi}2r\quad &\text{if }0\le r\le 1\space 0\le\theta\le 2\pi\\
 0\quad &\text{other}    
 \end{cases}
-$$<p>所以可以看到$R,\Theta$独立，$R$服从密度函数为$r/2$的分布函数。而$\Theta$为$(0,2\pi)$上的均匀分布。所以现在通过随机数模拟$R,\Theta$再转换成$X,Y$即可。</p>
-</div><div class="post-footer" id="post-footer">
+$$<p>所以可以看到$R,\Theta$独立，$R$服从密度函数为$r/2$的分布函数。而$\Theta$为$(0,2\pi)$上的均匀分布。所以现在通过逆变法用随机数模拟$R,\Theta$再转换成$X,Y$即可。</p>
+<p>由$f_R(r)=2r$可得$F_R(a)=a^2$其中$0\le a \le 1$。所以要用$U_1,U_2$模拟$R,\Theta$得分布可令</p>
+$$
+R=F^{-1}(U_1)=\sqrt{U_1} \\
+\Theta=2\pi U_2
+$$<p>最后转化成$X,Y$即可：</p>
+$$
+X=R\cos\Theta=\sqrt{U_1}\cos2\pi U_2\\
+y=R\sin\Theta=\sqrt{U_1}\sin2\pi U_2\\
+$$</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

@@ -7,7 +7,10 @@
         <title>07极限定理 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/07%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">
   <meta property="og:site_name" content="azurezhc的游戏开发人生">
   <meta property="og:title" content="07极限定理">
-  <meta property="og:description" content="极限定理">
+  <meta property="og:description" content="极限定理 极限定理是概率论中最重要的理论结果。其最核心的两个就是大数定律和中心极限定理。
+切比雪夫不等式及弱大数定律 定理 2.1
+马尔可夫不等式
+设$X$为取非负值得随机变量，则对于任何常数$a\gt 0$有">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -16,7 +19,10 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="07极限定理">
-  <meta name="twitter:description" content="极限定理">
+  <meta name="twitter:description" content="极限定理 极限定理是概率论中最重要的理论结果。其最核心的两个就是大数定律和中心极限定理。
+切比雪夫不等式及弱大数定律 定理 2.1
+马尔可夫不等式
+设$X$为取非负值得随机变量，则对于任何常数$a\gt 0$有">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site">
 <meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -32,7 +38,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/07%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86\/"
-        },"genre": "posts","wordcount":  4 ,
+        },"genre": "posts","wordcount":  2607 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/07%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86\/","datePublished": "2026-05-10T00:00:00+00:00","dateModified": "2026-05-10T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -85,8 +91,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">07极限定理</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-10">2026-05-10</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 4 字&nbsp;
-                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-10">2026-05-10</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 2607 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -95,10 +101,187 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#极限定理">极限定理</a></li>
+    <li><a href="#切比雪夫不等式及弱大数定律">切比雪夫不等式及弱大数定律</a></li>
+    <li><a href="#中心极限定理">中心极限定理</a></li>
+    <li><a href="#强大数定律">强大数定律</a></li>
+    <li><a href="#其他不等式">其他不等式</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="极限定理">极限定理</h1>
-</div><div class="post-footer" id="post-footer">
+<p>极限定理是概率论中最重要的理论结果。其最核心的两个就是<strong>大数定律</strong>和<strong>中心极限定理</strong>。</p>
+<h1 id="切比雪夫不等式及弱大数定律">切比雪夫不等式及弱大数定律</h1>
+<div class="admonition note">
+<p class="admonition-title">定理 2.1</p>
+<p>马尔可夫不等式</p>
+<p>设$X$为取非负值得随机变量，则对于任何常数$a\gt 0$有</p>
+$$P\{X\ge a\}\le \frac{E[X]}{a}$$</div>
+<p>证明</p>
+<p>对于随机变量$X$来说，可以设一个示性变量$I$。其指示$X$的值是否大于$a$。即其定义为：</p>
+$$
+I=\begin{cases}
+1 & 若X\ge a\\
+0 & 其他
+\end{cases}
+$$<p>注意到对于$I$的值来说，当$X\ge a$的时候才为1，也就是说任何情况下都有$I\le X/a$。并且注意到到$E[I]$即事件$I$发生的概率，即$P\{X\ge a\}$的概率。对不等式$I\le X/a$两边求期望有下述不等式</p>
+$$
+P\{X\ge a\}=E[I]\le E[\frac{X}{a}]=\frac{E[X]}{a}
+$$<div class="admonition note">
+<p class="admonition-title">定理 2.2</p>
+<p>切比雪夫不等式</p>
+<p>设$X$是一随机变量，均值为$\mu$，方差为$\sigma^2$。两者均有限。则对任何$k\gt 0$有：</p>
+$$
+P\{|X-\mu|\ge k\}\le\frac{\sigma^2}{k^2}
+$$</div>
+<p>这里是考虑随机变量$(X-\mu)^2$。因为$(X-\mu)^2$一定为非负随机变量。根据马尔可夫不等式，令$a=k^2$就有</p>
+$$
+P\{(X-\mu)^2\ge k^2\}\le\frac{E[(X-\mu)^2]}{k^2}=\frac{\sigma^2}{k^2}
+$$<p>考虑到不等式$(X-\mu)^2\ge k^2$即$|X-\mu|\ge k$。可得原命题不等式得证。</p>
+<p>切比雪夫不等式和马尔可夫不等式的重要性在于。我们能够在只知道分布的均值和方差时，可以利用他们推导出概率的上界。当然如果概率分布已知，可以直接计算准确的概率。</p>
+<p>由于切比雪夫不等式适用于所有分布，在通常情况下，得到的概率上界与实际概率相差较大。</p>
+<div class="admonition note">
+<p class="admonition-title">定理 2.3</p>
+<p>若$Var(X)=0$则：</p>
+$$
+p\{X=E[X]\}=1
+$$<p>换言之，一个随机变量方差为0的充要条件是这个随机变量以概率1等于常数。</p>
+</div>
+<p>证明方式利用切比雪夫不等式即可。因为方差为0，即表示对于任意$k\gt 0$ 来说有</p>
+$$
+P\{|X-\mu|\ge k\}\le 0
+$$<p>取$k=1/n$并且取$n\to \infty$。有</p>
+$$
+0=\lim_{n\to \infty}P\{|X-\mu|\ge \frac{1}{n}\}=P\{\lim_{n\to \infty}|X-\mu|\ge \frac{1}{n}\}=P\{X\ne \mu\}
+$$<div class="admonition note">
+<p class="admonition-title">定理 2.4</p>
+<p>弱大数定律</p>
+<p>设$X_1,X_2,\cdots$ 为独立同分布的随机变量序列，其有公共均值$E[X_i]=\mu$有限。则对任何$\epsilon\gt 0$</p>
+$$
+P\{\left|\frac{X_1+\cdots+X_n}{n}-\mu \right|\ge \epsilon\}\to 0\quad n\to \infty
+$$</div>
+<p>证明只在$Var(X_i)=\sigma^2$为有限的情况下证明此定理。此时，对于期望来说有</p>
+$$
+E[\frac{X_1+\cdots+X_n}{n}]=\mu
+$$<p>对于方差来说，因为$X_i$之间独立同分布。所以</p>
+$$
+Var(\frac{X_1+\cdots+X_n}{n})=\frac{1}{n^2}\sum_{i=1}^nVar(X_i)=\frac{\sigma^2}{n}
+$$<p>例用切比雪夫不等式有</p>
+$$
+P\{\left|\frac{X_1+\cdots+X_n}{n}-\mu \right|\ge \epsilon\}\le\frac{\sigma^2}{n\epsilon^2}
+$$<p>当$n$趋于无穷时，右侧趋于0。原命题得证。</p>
+<h1 id="中心极限定理">中心极限定理</h1>
+<p>中心极限定理是概率论中最著名的定理之一。粗略地说，它说明大量独立随机变量的和近似地服从正态分布。因此，中心极限定理不仅提供里计算独立随机变量和的有关概率的近似值方法，同时也揭示了现实世界中许多实际的总体分布的频率曲线呈现正态分布的原因。</p>
+<div class="admonition note">
+<p class="admonition-title">定理 3.1</p>
+<p>中心极限定理</p>
+<p>设$X-1,X_2,\cdots$为独立同分布的随机变量序列，其公共的均值为$\mu$，方差为$\sigma^2$。当$n\to \infty$时，随机变量</p>
+$$
+\frac{X_1+\cdots+X_n-n\mu}{\sigma\sqrt{n}}
+$$<p>的分布趋向于整天分布。即对于任何$-\infty\lt a\lt \infty$.</p>
+$$
+P\{\frac{X_1+\cdots+X_n-n\mu}{\sigma \sqrt{n}}\le a\}\to \frac{1}{\sqrt{2\pi}}\int_{-\infty}^ae^{-x^2/2}dx
+$$</div>
+<p>证明关键在于如下引理，书中只给出了引理的陈述而不做证明。</p>
+<div class="admonition note">
+<p class="admonition-title">引理 3.2</p>
+<p>设$Z_1,Z_2\cdots$为一公共分布函数为$F_{Z_n}$的随机变量序列，相应的矩母函数为$M_{Z_n},n\ge 1$。
+又设$Z$的分布为$F_Z$，矩母函数为$M_Z$。
+若$M_{Z_n}(t)\to M_Z(t)$成立，则$F_{Z_n}(t)\to F_Z(t)$对$F_Z(t)$的所有连续点成立。</p>
+</div>
+<h1 id="强大数定律">强大数定律</h1>
+<p>强打书定律表明了独立同分布的随机变量序列的均值以概率1收敛到分布的均值。</p>
+<div class="admonition note">
+<p class="admonition-title">定理 4.1</p>
+<p>强大数定律</p>
+<p>设$X-1,X_2,\cdots$为独立同分布的随机变量序列，其公共均值$\mu=E[X_i]$则下式以概率1成立：</p>
+$$
+\frac{X_1+X_2+\cdots+X_n}{n}\to \mu \quad n\to\infty
+$$</div>
+<p>作为强大数定律最直接的应用。其实就是频率与概率之间的关系。针对某一事件，通过定义示性变量$X_i$为</p>
+$$
+X_i=\begin{cases}
+1& E在第i次事件发生\\
+0& E在第i次事件不发生
+\end{cases}
+$$<p>那么根据强大数定律以概率1有</p>
+$$
+\frac{X_1+\cdots+X_n}{n}\to E[X]=P(E)
+$$<p>此事说明事件$E$在前$n$次实验中发生的频率以概率1收敛到它的概率$P(E)$上。</p>
+<h1 id="其他不等式">其他不等式</h1>
+<div class="admonition note">
+<p class="admonition-title">定理 5.1</p>
+<p>单边的切比雪夫不等式</p>
+<p>设$X$具有$0$均值和有限方差$\sigma^2$。则对任意$a\gt 0$</p>
+$$
+P\{X\ge a\}\le \frac{\sigma^2}{\sigma^2+a^2}
+$$</div>
+<p>证明</p>
+<p>令$b\gt 0$，注意到</p>
+$$
+X\ge a \Leftrightarrow X+b\ge a+b 
+$$<p>所以有</p>
+$$
+P\{X\ge a\}=P\{X+b\ge a+b \}\le P\{(X+b)^2\ge (a+b)^2 \}
+$$<p>第二个不等式来自于$a\gt 0,b\gt 0$所以$a+b\gt 0$。所以$X+b\ge a+b$可推得$(X+b)^2\ge (a+b)^2$。所以前一个事件发生后面一个事件必然发生。可得不等式。也可通过集合覆盖来看待。再利用马尔可夫不等式有。</p>
+$$
+P\{X\ge a\}\le P\{(X+b)^2\ge (a+b)^2 \}=\frac{E[(X+b)^2]}{(a+b)^2}=\frac{\sigma^2+b^2}{(a+b)^2}
+$$<p>对于$b$来说，可以取任何常数。取$b=\sigma^2/a$。便可得到结论。</p>
+<p>当随机变量$X$得矩母函数已知时，我们可以得到更加有效的$P\{X\ge a\}$得上界。令</p>
+$$
+M(t)=E[e^{tX}]
+$$<p>因为指数函数是恒大于0的单调增函数。对于$t\gt 0$有：</p>
+$$
+P\{X\ge a\}=P\{e^{tX}\ge e^{ta}\}
+$$<p>应为$e^{tX}$恒大于0，由马尔可夫不等式有：</p>
+$$
+P\{X\ge a\}=P\{e^{tX}\ge e^{ta}\}=\frac{E[e^{tX}]}{e^{ta}}
+$$<p>同理对于$t\lt 0$有</p>
+$$
+P\{X\ge a\}=P\{e^{tX}\le e^{ta}\}=\frac{E[e^{tX}]}{e^{ta}}
+$$<div class="admonition note">
+<p class="admonition-title">定理 5.2</p>
+<p>切尔诺夫界</p>
+$$
+P\{X\ge a\}\le e^{-ta}M(t)\quad 对一切t\gt 0
+$$<p>
+</p>
+$$
+P\{X\le a\}\le e^{-ta}M(t)\quad 对一切t\lt 0
+$$</div>
+<div class="admonition note">
+<p class="admonition-title">定理 5.3</p>
+<p>詹森不等式</p>
+<p>若$f(x)$是凸函数，$E[X]$存在且有限，则</p>
+$$
+E[f(X)]\ge f(E[X])
+$$</div>
+<p>这个定理跟微积分的中值地理很像。入手是从函数的taylor展开入手。</p>
+<p>对于$f(x)$在$\mu=E[X]$处有：</p>
+$$
+f(x)=f(\mu)+f'(\mu)(x-\mu)+f''(\xi)\frac{(x-\mu)^2}{2}
+$$<p>因为$f(x)$是凸函数即$f''(\xi)\ge 0$，所以必有$f''(\xi)\frac{(x-\mu)^2}{2}\ge 0$。进而有$f(x)\ge(\mu)+f'(\mu)(x-\mu)$。因为$X$是随机变量，而$f(x)$是函数，对于每个随机变量取值都有：</p>
+$$
+f(X)\ge f(\mu)+f'(\mu)(X-\mu)
+$$<p>两边取期望有</p>
+$$E[f(x)]\ge E[f(\mu)]+E[f'(\mu)(X-\mu)]=E[f(\mu)]+f'(\mu)E[(X-\mu)]=E[f(\mu)]$$<div class="admonition note">
+<p class="admonition-title">定理 5.4</p>
+<p>若$f$和$g$是递增函数，则</p>
+$$
+E[f(X)g(X)]\ge E[f(X)]E[g(X)]
+$$</div>
+<p>注意这里$f,g$都是随机变量$X$的函数。如果两个随机变量$X,Y$相互独立，根据前面有$E[f(X)g(Y)]=E[f(X)]E[g(Y)]$。</p>
+<p>在假设$X,Y$独立同分布。因为$f,g$都是递增函数，所以当$X\gt Y$时，$f(X)-f(Y)\gt 0,g(X)-g(Y)\gt 0$。同理当$X\lt Y$时，$f(X)-f(Y)\lt 0,g(X)-g(Y)\lt 0$。因此两个数的乘积一定大于等于0。故有</p>
+$$
+(f(X)-f(Y))(g(X)-g(Y))\ge 0
+$$<p>两边求期望有</p>
+$$
+E[(f(X)-f(Y))(g(X)-g(Y))]\ge 0
+$$<p>展开有</p>
+$$
+E[f(X)g(X)]-E[f(X)g(Y)]-E[g(X)f(Y)]+E[g(Y)g(Y)]\ge 0
+$$<p>注意到$X,Y$独立且同分布，根据独立变量的期望定理有$E[f(X)g(Y)]=E[f(X)]E[g(Y)]=E[f(X)]E[g(X)]$。且$E[g(Y)g(Y)]=E[g(X)g(X)]$进而有：</p>
+$$
+2E[f(X)g(X)]-2E[f(X)]E[g(X)]\ge 0
+$$</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
