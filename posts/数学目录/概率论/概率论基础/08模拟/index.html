@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=6239&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>08模拟 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/08%E6%A8%A1%E6%8B%9F/">
+        <title>08模拟 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://localhost:6239/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/08%E6%A8%A1%E6%8B%9F/">
   <meta property="og:site_name" content="azurezhc的游戏开发人生">
   <meta property="og:title" content="08模拟">
   <meta property="og:description" content="模拟 用实验的方法来确定概率值的方式称之为模拟。
@@ -23,9 +23,9 @@
 <meta name="apple-mobile-web-app-title" content="My cool site">
 <meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/08%E6%A8%A1%E6%8B%9F/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83/" /><link rel="next" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/07%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:6239/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/08%E6%A8%A1%E6%8B%9F/" /><link rel="prev" href="http://localhost:6239/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83/" /><link rel="next" href="http://localhost:6239/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/07%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -33,9 +33,9 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/08%E6%A8%A1%E6%8B%9F\/"
-        },"genre": "posts","wordcount":  1958 ,
-        "url": "http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/08%E6%A8%A1%E6%8B%9F\/","datePublished": "2026-05-10T00:00:00+00:00","dateModified": "2026-05-10T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/localhost:6239\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/08%E6%A8%A1%E6%8B%9F\/"
+        },"genre": "posts","wordcount":  2523 ,
+        "url": "http:\/\/localhost:6239\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/08%E6%A8%A1%E6%8B%9F\/","datePublished": "2026-05-10T00:00:00+00:00","dateModified": "2026-05-10T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -87,8 +87,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">08模拟</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-10">2026-05-10</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 1958 字&nbsp;
-                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-10">2026-05-10</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 2523 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -134,7 +134,7 @@ $$<p>所以通常可以令$X=F^{-1}(U)$来模拟具有连续分布函数$F$得�
 <p>假设有一种方式可以模拟密度函数为$g(x)$的随机变量，我们先模拟出一个密度函数为$g$的随机变量$Y$。然后以正比于$f(Y)/g(Y)$的概率采用$Y$的值，这样就能够模拟一个密度为$f(x)$的随机变量。</p>
 <p>具体来说，如果存在一个常数$c$有</p>
 $$
-\frac{f(y)}{g(y)}\le c
+\frac{f(y)}{g(y)}\le c \quad \text{for all }y
 $$<p>
 则可以通过如下方式来模拟具有密度$f$的随机变量</p>
 <ul>
@@ -160,7 +160,9 @@ $$
 $$<p>注意其中$\int_{-\infty}^xf(y)dy$实际上就是$X$的概率分布表达式。现在令$x\to \infty$。可得</p>
 $$
 1=\frac{1}{cK}\int_{-\infty}^\infty f(y)dy=\frac{1}{cK}
-$$<p>这说明$cK$值必然为1。进而说明此时的$X$即具有概览密度为$f$的随机变量。</p>
+$$<p>这说明$cK$值必然为1。进而说明此时的$X$即具有概率密度为$f$的随机变量。</p>
+<p>其实这个算法过程就相当于模拟一个量，随机一个指定位置，然后用$f(Y)/[cg(Y)]$比例来筛选是否合格。合格则接受这个值，否则拒绝。因为存在失败可能性，所以存在多次模拟可能性。</p>
+<p>根据算法可见，每次循环独立地接受$Y$的概率为$P\{U\le f(Y)/[cg(Y)]\}=K=1/c$。可知循环次数为以$c$为均值的几何分布。</p>
 <h1 id="几个模拟例子">几个模拟例子</h1>
 <p>这里需要记录几个常用的模拟方式。</p>
 <h2 id="正态分布">正态分布</h2>
@@ -168,8 +170,20 @@ $$<p>这说明$cK$值必然为1。进而说明此时的$X$即具有概览密度�
 <p>所以设$U_1,U_2$为随机数则</p>
 $$
 X=R\cos \Theta=(-2\ln U_1)^\frac{1}{2}\cos(2\pi U_2)\\
-X=R\sin \Theta=(-2\ln U_1)^\frac{1}{2}\sin(2\pi U_2)\\
-$$<p>为两个独立的标准正态分布。</p>
+Y=R\sin \Theta=(-2\ln U_1)^\frac{1}{2}\sin(2\pi U_2)\\
+$$<p>为两个独立的标准正态分布。这个方法也成为Box_Muller方法。</p>
+<p>由于计算正弦值和余弦值，算法效率会收到影响。有一种方法可以避免潜在的费时的困难。这个方式就是通过舍取法模拟圆内的均匀分布，给出坐标$(V_1,V_2)$。因为是圆内的均匀分布，可以证明，其极坐标表示$\bar{R},\bar{\Theta}$相互独立，$\bar{\Theta}$服从$(0,2\pi)$上的均匀分布，$\bar{R}^2$服从$(0,1)$上的均匀分布。同时有</p>
+$$
+\sin\Theta=\frac{V_2}{\sqrt{V_1^2+V_2^2}}=\frac{V_2}{\bar{R}} \quad \cos\Theta=\frac{V_1}{\sqrt{V_1^2+V_2^2}}=\frac{V_1}{\bar{R}}
+$$<p>进而可以化简原来模拟函数中的三角函数计算部分，即有：</p>
+$$
+X=R\cos \Theta=(-2\ln U_1)^\frac{1}{2}V_2/\bar{R}\\
+Y=R\sin \Theta=(-2\ln U_1)^\frac{1}{2}V_1/\bar{R}
+$$<p>还可以注意到$\bar{R}^2$服从$(0,1)$上的均匀分布这正好是均匀变量$U$的分布所以可以直接用$\bar{R}^2$来替换$U_1$即有：</p>
+$$
+X=R\cos \Theta=(-2\ln \bar{R}^2)^\frac{1}{2}V_2/\bar{R}\\
+Y=R\sin \Theta=(-2\ln \bar{R}^2)^\frac{1}{2}V_1/\bar{R}
+$$<p>这个方式是避免了三角函数的计算。但是因为舍取法的问题，会有重复计算的问题。</p>
 <h2 id="圆内均匀分布">圆内均匀分布</h2>
 <p>游戏常见随机在圆内生成物体。这要求生成一个坐标$(x,y)$其服从半径为$1$内的均匀分布。简单来说其要生成两个联合随机变量$(X,Y)$满足如下的概率密度函数：</p>
 $$
@@ -179,7 +193,8 @@ f_{X,Y}(x,y)=
 0\quad &\text{other} 
 \end{cases}
 $$<p>模拟圆分布的一个问题是，模拟的随机变量要限制在圆内，满足圆约束。或者说$X,Y$不是相互独立的。</p>
-<p>一种方式也是通过舍取法来获得。即生成两个$(-1,1)$上的均匀随机变量$U_1,U_2$。其相当于在$(-1,1)$的正方形内均匀分布。如果$(x,y)$满足在圆内，则使用。否则舍弃。这个方式是可以生成圆内均匀的随机变量。但是其存在多次求取过程。循环次数等于$4/\pi$。</p>
+<p>一种方式也是通过舍取法来获得。即生成两个$(-1,1)$上的均匀随机变量$U_1,U_2$。其相当于在$(-1,1)$的正方形内均匀分布。如果$(x,y)$满足在圆内，则使用。否则舍弃。
+这个方式是可以生成圆内均匀分布的随机变量。也是前面正态分布中用来优化三角函数选取的方式。可以知道其存在循环求取过程，循环次数等于$4/\pi$。</p>
 <p>还有一种方式是尝试通过联合分布函数将$X,Y$拆解成两个可以独立的随机变量。再各自模拟对应的随机变量来求取。最直接的就是极坐标表示。</p>
 <p>令$R=(X^2+Y^2)^{1/2}$和$\Theta=\arctan(Y/X)$。我们现在来看$R,\Theta$的分布。</p>
 <p>根据随机变量函数的联合分布有</p>
@@ -246,5 +261,5 @@ $$</div><div class="post-footer" id="post-footer">
         <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
 </html>

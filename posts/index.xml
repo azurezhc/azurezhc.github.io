@@ -3,101 +3,38 @@
         <title>所有文章 - azurezhc的游戏开发人生</title>
         <link>http://azurezhc.github.io/posts/</link>
         <description>所有文章 | azurezhc的游戏开发人生</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 10 May 2026 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://azurezhc.github.io/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>07极限定理</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/07%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/</link>
-    <pubDate>Sun, 10 May 2026 00:00:00 &#43;0000</pubDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 03 May 2026 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://azurezhc.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>概率论</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/</link>
+    <pubDate>Sun, 03 May 2026 00:00:00 &#43;0000</pubDate>
     <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/07%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/</guid>
-    <description><![CDATA[<h1 id="极限定理">极限定理</h1>
-<p>极限定理是概率论中最重要的理论结果。其最核心的两个就是<strong>大数定律</strong>和<strong>中心极限定理</strong>。</p>
-<h1 id="切比雪夫不等式及弱大数定律">切比雪夫不等式及弱大数定律</h1>
-<div class="admonition note">
-<p class="admonition-title">定理 2.1</p>
-<p>马尔可夫不等式</p>
-<p>设$X$为取非负值得随机变量，则对于任何常数$a\gt 0$有</p>]]></description>
-</item>
-<item>
-    <title>08模拟</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/08%E6%A8%A1%E6%8B%9F/</link>
-    <pubDate>Sun, 10 May 2026 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/08%E6%A8%A1%E6%8B%9F/</guid>
-    <description><![CDATA[<h1 id="模拟">模拟</h1>
-<p>用实验的方法来确定概率值的方式称之为模拟。</p>
-<p>而我们最常见的模拟即用计算机来模拟对应的概率分布，或者一个实验过程等。通常来说计算机都有一内置程序，成为随机数发生器，它产生一个伪随机数序列。就实用目的来说，这个伪随机数序列，与来自$(0,1)$均匀分布的样本没有区别。也就是相当于我们有一个均匀分布的随机变量。这个随机变量我们通常用$U$来表示。</p>]]></description>
-</item>
-<item>
-    <title>05随机变量的联合分布</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83/</link>
-    <pubDate>Tue, 05 May 2026 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83/</guid>
-    <description><![CDATA[<h1 id="随机变量的联合分布">随机变量的联合分布</h1>
-<p>本章主要关注两个或两个以上的随机变量的有关概率问题。为此定义任意两个随机变量$X$和$Y$的联合累积概率分布(joint cumulative probability distribution function)。</p>
-<div class="admonition abstract">
-<p class="admonition-title">定义</p>
-<p><strong>联合累积概率分布</strong></p>]]></description>
-</item>
-<item>
-    <title>06期望的性质</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8/</link>
-    <pubDate>Tue, 05 May 2026 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8/</guid>
-    <description><![CDATA[<h1 id="期望的性质">期望的性质</h1>
-<p>本章主要是进一步讨论期望值的性质。首先回顾一下，期望的定义。在离散下有：</p>
-$$
-E[X]=\sum_x xp(x)
-$$<p>连续情况下有</p>
-$$
-E[X]=\int_{-\infty}^{\infty} xf(x)dx
-$$<p>并且可以说明对于随机变量函数的期望各自为</p>]]></description>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/</guid>
+    <description><![CDATA[<h1 id="数学分析">数学分析</h1>
+<p>我个人粗浅的认为，分析学，实际就是研究极限的特性。明确刻画出极限概念之后，研究基于极限所带来的各种理论分支。最常见的分支就是微积分，这也是最早人们所涉及到的分析领域。此后关于微积分数学根基的探讨，即无穷小量的深入刻画，带来更加广阔的领域。重新建立的数学分析原理体系，从集合论监督建立，不仅明确了连续性，可微，可积等概念，更建立起四大分析的伟大格局。</p>]]></description>
 </item>
 <item>
     <title>概率论</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E6%A6%82%E8%A7%88/</link>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/</link>
     <pubDate>Sun, 03 May 2026 00:00:00 &#43;0000</pubDate>
     <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E6%A6%82%E8%A7%88/</guid>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/</guid>
     <description><![CDATA[<h1 id="概率论">概率论</h1>
 <p>概率论教材多种多样。这里主要结合各种教材，略去书中已有描述，记录整理一些有意思的点。</p>
 <h2 id="概率论基础">概率论基础</h2>
 <ul>
-<li><a class="link-markdown-demo-site" href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/01%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%AC%E7%90%86/" rel="noopener">01概率论公理</a></li>
-<li><a class="link-markdown-demo-site" href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/02%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%92%8C%E7%8B%AC%E7%AB%8B%E6%80%A7/" rel="noopener">02条件概率和独立性</a></li>
-<li><a class="link-markdown-demo-site" href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/" rel="noopener">03随机变量</a></li>
-<li><a class="link-markdown-demo-site" href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/04%E8%BF%9E%E7%BB%AD%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/" rel="noopener">04连续型随机变量</a></li>
-<li><a class="link-markdown-demo-site" href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83/" rel="noopener">05随机变量的联合分布</a></li>
-<li><a class="link-markdown-demo-site" href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8/" rel="noopener">06期望的性质</a></li>
-<li><a class="link-markdown-demo-site" href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/07%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" rel="noopener">07极限定理</a></li>
-<li><a class="link-markdown-demo-site" href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/08%E6%A8%A1%E6%8B%9F/" rel="noopener">08模拟</a></li>
+<li><a class="link-markdown-demo-site" href="../概率论基础/01概率论公理/index.md" rel="noopener">01概率论公理</a></li>
+<li><a class="link-markdown-demo-site" href="../概率论基础/02条件概率和独立性/index.md" rel="noopener">02条件概率和独立性</a></li>
+<li><a class="link-markdown-demo-site" href="../概率论基础/03随机变量/index.md" rel="noopener">03随机变量</a></li>
+<li><a class="link-markdown-demo-site" href="../概率论基础/04连续型随机变量/index.md" rel="noopener">04连续型随机变量</a></li>
+<li><a class="link-markdown-demo-site" href="../概率论基础/05随机变量的联合分布/index.md" rel="noopener">05随机变量的联合分布</a></li>
+<li><a class="link-markdown-demo-site" href="../概率论基础/06期望的性质/index.md" rel="noopener">06期望的性质</a></li>
+<li><a class="link-markdown-demo-site" href="../概率论基础/07极限定理/index.md" rel="noopener">07极限定理</a></li>
+<li><a class="link-markdown-demo-site" href="../概率论基础/08模拟/index.md" rel="noopener">08模拟</a></li>
 </ul>
 <h1 id="参考教材">参考教材</h1>
 <div style = "float:left">《概率论基础教程》(原书第10版)</div>
 <div style = "text-align:right">[美]Sheldon M.Ross</div>
 <div style = "text-align:right">机械工业出版社</div>]]></description>
-</item>
-<item>
-    <title>04连续型随机变量</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/04%E8%BF%9E%E7%BB%AD%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/</link>
-    <pubDate>Sun, 26 Apr 2026 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/04%E8%BF%9E%E7%BB%AD%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/</guid>
-    <description><![CDATA[<h1 id="连续型随机变量">连续型随机变量</h1>
-<p>本章主要讲述随机变量中的，连续型随机变量部分。这类随机变量，它们的可能取值集合是不可数的。</p>
-<div class="admonition abstract">
-<p class="admonition-title">定义</p>
-<p>设$X$是一个随机变量，如果存在一个定义在实数轴上的非负函数$f$，使得对于任一实数集$B$，满足</p>]]></description>
-</item>
-<item>
-    <title>03随机变量</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/</link>
-    <pubDate>Sun, 12 Apr 2026 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/03%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/</guid>
-    <description><![CDATA[<h1 id="随机变量">随机变量</h1>
-<p>前面我们都是关注试验结果集合中事件发生的概率。而有的时候我们更关注某一特性的发生。例如关心两枚骰子和的情况，扔硬币过程中正面朝上次数的情况。这个时候，我们关心的是基于样本空间上事件特性的量的结果。</p>]]></description>
 </item>
 <item>
     <title>离散数学概览</title>
@@ -109,25 +46,70 @@ $$<p>并且可以说明对于随机变量函数的期望各自为</p>]]></descri
 <p>离散数学也称之为组合数学。其涵盖内容较为繁杂，但也是生活中，尤其是计算机中经常用到的计算方式。</p>]]></description>
 </item>
 <item>
-    <title>02条件概率和独立性</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/02%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%92%8C%E7%8B%AC%E7%AB%8B%E6%80%A7/</link>
-    <pubDate>Sun, 22 Mar 2026 00:00:00 &#43;0000</pubDate>
+    <title>StackLands</title>
+    <link>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/02StackLands/</link>
+    <pubDate>Sun, 24 Aug 2025 00:00:00 &#43;0000</pubDate>
     <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/02%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%92%8C%E7%8B%AC%E7%AB%8B%E6%80%A7/</guid>
-    <description><![CDATA[<h1 id="条件概率和独立性">条件概率和独立性</h1>
-<p>某些情况我们会研究在假定事件发生情况下的概率结果。这个时候的概率应该是一种条件概率。所以定义条件概率是有必要的。</p>
-<p>假定存在两个事件$E$和$F$。在假定$F$发生的情况下$E$发生的条件概率记为$P(E|F)$。</p>]]></description>
+    <guid>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/02StackLands/</guid>
+    <description><![CDATA[<h1 id="stacklands">StackLands</h1>
+<p>StackLands，又名堆叠大陆。一直有听说这款游戏的名声。终于在空闲之余，体验了一下这款游戏。不得不说有很多可圈可点之处的。</p>
+<p>StackLands，准确来说，我觉得算是一款策略类游戏，更进一步说我觉得其实它带有探索生产线类游戏的特点。但是他将这些内容巧妙通过卡牌堆叠的方式结合起来了。</p>]]></description>
 </item>
 <item>
-    <title>概率论公理</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/01%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%AC%E7%90%86/</link>
-    <pubDate>Sun, 22 Mar 2026 00:00:00 &#43;0000</pubDate>
+    <title>线性代数</title>
+    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E6%A6%82%E8%A7%88/</link>
+    <pubDate>Sun, 10 Aug 2025 00:00:00 &#43;0000</pubDate>
     <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/01%E6%A6%82%E7%8E%87%E8%AE%BA%E5%85%AC%E7%90%86/</guid>
-    <description><![CDATA[<h1 id="概率论公理">概率论公理</h1>
-<p>先定义概率论中的基础公理。这些公理来自于人们对实验等概念的抽象建模。</p>
-<h2 id="样本空间和事件">样本空间和事件</h2>
-<p>假设一个试验，其结果不可能肯定预测。但是其所有可能的结果是一个可知范围，构成一个集合。</p>]]></description>
+    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E6%A6%82%E8%A7%88/</guid>
+    <description><![CDATA[<h1 id="线性代数">线性代数</h1>
+<p>线性代数是现代数学以及计算机科学中重要的一部分。其除了在解方程中有应用之外，在图形学，图形变换，在动力系统中亦有至关重要的作用。现在AI中更是必须了解的内容。除此之外，理论数学中也用很多深刻的研究。</p>]]></description>
+</item>
+<item>
+    <title>01ComputeShader</title>
+    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/01ComputeShader/</link>
+    <pubDate>Sat, 28 Jun 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/01ComputeShader/</guid>
+    <description><![CDATA[<h1 id="computeshader">ComputeShader</h1>
+<p>对应教程网址</p>
+<p><a class="link-markdown-demo-site" href="https://catlikecoding.com/unity/tutorials/basics/compute-shaders/" rel="noopener">https://catlikecoding.com/unity/tutorials/basics/compute-shaders/</a></p>
+<p>本篇主要用ComputeShader来进行大批量物体渲染。在之前的教程中大佬用一个个Cube来当一个像素点（或者说体素点）来进行三维程序运动模拟。基于Unity自带的Update接口方式，实现很多程序化造型和运动。在面对大量物体运动更新，渲染的时候，这种方式非常慢。</p>]]></description>
+</item>
+<item>
+    <title>01UnityJobSystem</title>
+    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E8%BF%9B%E9%98%B6/01UnityJobSystem/</link>
+    <pubDate>Sat, 28 Jun 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E8%BF%9B%E9%98%B6/01UnityJobSystem/</guid>
+    <description><![CDATA[<h1 id="unityjobsystem">UnityJobSystem</h1>
+<p>UnityJobSystem是Unity官方推出的一个多线程计算系统结构。可以将一些多线程计算任务分发的子线程，即Unity中的Job中取运算。提高运算效率。这一部分实际上跟很多变成语言中的多线程库，或者并行计算模型不谋而合。可以通过JobSystem来看并行计算的一些东西。</p>]]></description>
+</item>
+<item>
+    <title>02Fractal</title>
+    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/02Fractal/</link>
+    <pubDate>Sat, 28 Jun 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/02Fractal/</guid>
+    <description><![CDATA[<h1 id="fractal">Fractal</h1>]]></description>
+</item>
+<item>
+    <title>The Bazaar</title>
+    <link>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/01TheBazaar/</link>
+    <pubDate>Sat, 24 May 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/01TheBazaar/</guid>
+    <description><![CDATA[<h1 id="the-bazaar">The Bazaar</h1>
+<p>2025年的春天，因为长时间的加班，虽然有心想去做点自己的事情，但是基本没有时间尽力去进行一些推进。在焦躁，繁忙，以及不知道做什么好的时候。一款自走棋类游戏走进了忙碌于无尽加班过程中的我的视野。当从直播上看到这个游戏的游玩过程时，我便觉得这是一款设计精良的游戏。其很多细节符合了我想解决自走棋的一些问题。</p>]]></description>
+</item>
+<item>
+    <title>游戏体验目录</title>
+    <link>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E7%9B%AE%E5%BD%95/</link>
+    <pubDate>Sat, 24 May 2025 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E7%9B%AE%E5%BD%95/</guid>
+    <description><![CDATA[<h1 id="游戏体验目录">游戏体验目录</h1>
+<p>这里主要记录一些我感兴趣的游戏体验分享。</p>
+<p>文章内的想法都是我个人分析以及看法。因为可能我游玩的时间不够长，很多想法都很初步。因为我游玩深度可能不深，很多观点可能不甚正确。主要都是我有所感悟，所以写一些文章分享我的理解。</p>]]></description>
 </item>
 </channel>
 </rss>
