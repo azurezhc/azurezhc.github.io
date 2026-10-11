@@ -1,307 +1,109 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=6239&amp;path=livereload" data-no-instant defer></script>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="noodp" />
-        <title>06期望的性质 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://localhost:6239/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8/">
-  <meta property="og:site_name" content="azurezhc的游戏开发人生">
-  <meta property="og:title" content="06期望的性质">
-  <meta property="og:description" content="期望的性质 本章主要是进一步讨论期望值的性质。首先回顾一下，期望的定义。在离散下有：
+<!doctype html><html lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>06期望的性质 - azurezhc的游戏开发人生</title><meta name=Description content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8/"><meta property="og:site_name" content="azurezhc的游戏开发人生"><meta property="og:title" content="06期望的性质"><meta property="og:description" content="期望的性质 本章主要是进一步讨论期望值的性质。首先回顾一下，期望的定义。在离散下有：
 $$ E[X]=\sum_x xp(x) $$连续情况下有
-$$ E[X]=\int_{-\infty}^{\infty} xf(x)dx $$并且可以说明对于随机变量函数的期望各自为">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-05-05T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-05-05T00:00:00+00:00">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="06期望的性质">
-  <meta name="twitter:description" content="期望的性质 本章主要是进一步讨论期望值的性质。首先回顾一下，期望的定义。在离散下有：
+$$ E[X]=\int_{-\infty}^{\infty} xf(x)dx $$并且可以说明对于随机变量函数的期望各自为"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2026-05-05T00:00:00+00:00"><meta property="article:modified_time" content="2026-05-05T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="06期望的性质"><meta name=twitter:description content="期望的性质 本章主要是进一步讨论期望值的性质。首先回顾一下，期望的定义。在离散下有：
 $$ E[X]=\sum_x xp(x) $$连续情况下有
-$$ E[X]=\int_{-\infty}^{\infty} xf(x)dx $$并且可以说明对于随机变量函数的期望各自为">
-<meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site">
-<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:6239/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8/" /><link rel="prev" href="http://localhost:6239/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/" /><link rel="next" href="http://localhost:6239/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "BlogPosting",
-        "headline": "06期望的性质",
-        "inLanguage": "zh-CN",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "http:\/\/localhost:6239\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8\/"
-        },"genre": "posts","wordcount":  4916 ,
-        "url": "http:\/\/localhost:6239\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8\/","datePublished": "2026-05-05T00:00:00+00:00","dateModified": "2026-05-05T00:00:00+00:00","publisher": {
-            "@type": "Organization",
-            "name": ""},"author": {
-                "@type": "Person",
-                "name": "xxxx"
-            },"description": ""
-    }
-    </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
-          const query = window.matchMedia('(prefers-color-scheme: dark)');
-          function applyTheme() {
-            let theme = window.localStorage?.getItem('theme') || 'auto';
-            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
-            document.body.setAttribute('theme', isDark? 'dark' : 'light');
-            document.body.setAttribute('cfg-theme', theme);
-          }
-
-          applyTheme();
-          query.addEventListener('change', applyTheme);
-        </script>
-
-        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-    <div class="header-wrapper">
-        <div class="header-title">
-            <a href="/" title="azurezhc的游戏开发人生">主页</a>
-        </div>
-        <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
-                    <i class="fas fa-adjust" aria-hidden="true"></i>
-                </a></div>
-        </div>
-    </div>
-</header><header class="mobile" id="header-mobile">
-    <div class="header-container">
-        <div class="header-wrapper">
-            <div class="header-title">
-                <a href="/" title="azurezhc的游戏开发人生">主页</a>
-            </div>
-            <div class="menu-toggle" id="menu-toggle-mobile">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
-                <i class="fas fa-adjust" aria-hidden="true"></i>
-            </a></div>
-    </div>
-</header><main class="main">
-                <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">目录</h2>
-            <div class="toc-content always-active" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">06期望的性质</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>xxxx</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-05-05">2026-05-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 4916 字&nbsp;
-                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 10 分钟&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  data-kept="">
-                <div class="details-summary toc-title">
-                    <span>目录</span>
-                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
-                </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#期望的性质">期望的性质</a></li>
-    <li><a href="#随机变量和的期望">随机变量和的期望</a></li>
-    <li><a href="#实验序列中事件发生次数的矩">实验序列中事件发生次数的矩</a></li>
-    <li><a href="#随机变量和的协方差方差及相关系数">随机变量和的协方差、方差及相关系数</a></li>
-    <li><a href="#条件期望">条件期望</a>
-      <ul>
-        <li><a href="#通过取条件计算期望">通过取条件计算期望</a></li>
-        <li><a href="#通过条件计算概率">通过条件计算概率</a></li>
-      </ul>
-    </li>
-    <li><a href="#条件期望及预测">条件期望及预测</a></li>
-    <li><a href="#矩母函数">矩母函数</a></li>
-  </ul>
-</nav></div>
-            </div><div class="content" id="content"><h1 id="期望的性质">期望的性质</h1>
-<p>本章主要是进一步讨论期望值的性质。首先回顾一下，期望的定义。在离散下有：</p>
-$$
+$$ E[X]=\int_{-\infty}^{\infty} xf(x)dx $$并且可以说明对于随机变量函数的期望各自为"><meta name=application-name content="My cool site"><meta name=apple-mobile-web-app-title content="My cool site"><meta name=referrer content="no-referrer"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8/><link rel=prev href=http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%E6%A6%82%E8%A7%88/><link rel=next href=http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83/><link rel=stylesheet href=/css/style.min.css><link rel=preload href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css></noscript><link rel=preload href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"06期望的性质","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8\/"},"genre":"posts","wordcount":4916,"url":"http:\/\/azurezhc.github.io\/posts\/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95\/%E6%A6%82%E7%8E%87%E8%AE%BA\/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80\/06%E6%9C%9F%E6%9C%9B%E7%9A%84%E6%80%A7%E8%B4%A8\/","datePublished":"2026-05-05T00:00:00+00:00","dateModified":"2026-05-05T00:00:00+00:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"xxxx"},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script>const query=window.matchMedia("(prefers-color-scheme: dark)");function applyTheme(){let e=window.localStorage?.getItem("theme")||"auto",t=e==="dark"||e==="auto"&&query.matches;document.body.setAttribute("theme",t?"dark":"light"),document.body.setAttribute("cfg-theme",e)}applyTheme(),query.addEventListener("change",applyTheme)</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=azurezhc的游戏开发人生>主页</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95>程序 </a><a class=menu-item href=/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95>数学 </a><a class=menu-item href=/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95>设计 </a><a class=menu-item href=/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95>杂谈 </a><span class="menu-item delimiter"></span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust" aria-hidden=true></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=azurezhc的游戏开发人生>主页</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><a class=menu-item href=/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95 title>程序</a><a class=menu-item href=/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95 title>数学</a><a class=menu-item href=/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95 title>设计</a><a class=menu-item href=/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95 title>杂谈</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust" aria-hidden=true></i></a></div></div></header><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class="toc-content always-active" id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">06期望的性质</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle" aria-hidden=true></i>xxxx</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt" aria-hidden=true></i>&nbsp;<time datetime=2026-05-05>2026-05-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden=true></i>&nbsp;约 4916 字&nbsp;
+<i class="far fa-clock" aria-hidden=true></i>&nbsp;预计阅读 10 分钟&nbsp;</div></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#期望的性质>期望的性质</a></li><li><a href=#随机变量和的期望>随机变量和的期望</a></li><li><a href=#实验序列中事件发生次数的矩>实验序列中事件发生次数的矩</a></li><li><a href=#随机变量和的协方差方差及相关系数>随机变量和的协方差、方差及相关系数</a></li><li><a href=#条件期望>条件期望</a><ul><li><a href=#通过取条件计算期望>通过取条件计算期望</a></li><li><a href=#通过条件计算概率>通过条件计算概率</a></li></ul></li><li><a href=#条件期望及预测>条件期望及预测</a></li><li><a href=#矩母函数>矩母函数</a></li></ul></nav></div></div><div class=content id=content><h1 id=期望的性质>期望的性质</h1><p>本章主要是进一步讨论期望值的性质。首先回顾一下，期望的定义。在离散下有：</p>$$
 E[X]=\sum_x xp(x)
-$$<p>连续情况下有</p>
-$$
+$$<p>连续情况下有</p>$$
 E[X]=\int_{-\infty}^{\infty} xf(x)dx
-$$<p>并且可以说明对于随机变量函数的期望各自为</p>
-$$
+$$<p>并且可以说明对于随机变量函数的期望各自为</p>$$
 E[g(X)]=\sum_x g(x)p(x)\quad E[g(X)]=\int_{-\infty}^{\infty} g(x)f(x)dx
-$$<h1 id="随机变量和的期望">随机变量和的期望</h1>
-<p>在上一章中引入了随机变量的联合分布。现在将随机变量函数的期望扩展上去。即如下定理</p>
-<div class="admonition note">
-<p class="admonition-title">定理 1</p>
-<p>如果$X,Y$服从二元分布列$p(x,y)$，那么有：</p>
-$$
+$$<h1 id=随机变量和的期望>随机变量和的期望</h1><p>在上一章中引入了随机变量的联合分布。现在将随机变量函数的期望扩展上去。即如下定理</p><div class="admonition note"><p class=admonition-title>定理 1</p><p>如果$X,Y$服从二元分布列$p(x,y)$，那么有：</p>$$
 E[g(X,Y)]=\sum_x\sum_yg(x,y)p(x,y)
-$$<p>如果$X,Y$具有联合分布密度函数$p(x,y)$，那么：</p>
-$$
+$$<p>如果$X,Y$具有联合分布密度函数$p(x,y)$，那么：</p>$$
 E[g(X,Y)]=\int_{-\infty}^\infty\int_{-\infty}^{\infty}g(x,y)f(x,y)dxdy
-$$</div>
-<p>证明思路跟连续型随机变量证明有一定类似性。这里略。</p>
-<p>这个定理有个最直接的应用就是，两个连续型随机变量的和。设$E[X],E[Y]$均是有限的，则令$g(X,Y)=X+Y$。另有命题可得</p>
-$$
+$$</div><p>证明思路跟连续型随机变量证明有一定类似性。这里略。</p><p>这个定理有个最直接的应用就是，两个连续型随机变量的和。设$E[X],E[Y]$均是有限的，则令$g(X,Y)=X+Y$。另有命题可得</p>$$
 \begin{aligned}
 E[X+Y]&=\int_{-\infty}^\infty\int_{-\infty}^{\infty}(x+y)f(x,y)dxdy\\
 &=\int_{-\infty}^\infty xf_X(x)dx+\int_{-\infty}^\infty yf_Y(y)dy=E[X]+E[Y]
 \end{aligned}
-$$<p>一般情形下，结论任然成立。因此，当$E[X],E[Y]$均是有限时，有</p>
-$$
+$$<p>一般情形下，结论任然成立。因此，当$E[X],E[Y]$均是有限时，有</p>$$
 E[X+Y]=E[X]+E[Y]
-$$<p>进一步用归纳法可知对于一组随机变量$X_i,i=1,2\cdots,n$。只要它们期望均有限就会有</p>
-$$
+$$<p>进一步用归纳法可知对于一组随机变量$X_i,i=1,2\cdots,n$。只要它们期望均有限就会有</p>$$
 E[X_1+X_2+\cdots+X_n]=E[X_1]+E[X_2]+\cdots+E[X_n]
-$$<p>这个结论跟离散随机变量和的期望相对应。都指明，随机变量和的期望，与各自期望的和相等。</p>
-<p>针对该特性最多应用的方式就是示性变量的应用。示性变量在前面部分也有出现，其是一个随机变量，主要用来指示某个事件是否发生。对于某个事件$A$，其一般定义为：</p>
-$$
+$$<p>这个结论跟离散随机变量和的期望相对应。都指明，随机变量和的期望，与各自期望的和相等。</p><p>针对该特性最多应用的方式就是示性变量的应用。示性变量在前面部分也有出现，其是一个随机变量，主要用来指示某个事件是否发生。对于某个事件$A$，其一般定义为：</p>$$
 X=
 \begin{cases}
 1\quad & 若A发生 \\
 0\quad & 其他
 \end{cases}
-$$<p>其有一些直接引用跟前面结论相对应。</p>
-<p><font size=4><b>二项随机变量的期望</b></font></p>
-<p>设$X$为二项随机变量参数为$(n,p)$。根据定义，可以认为这是$n$次独立重复实验，每次成功概率为$p$。设每次独立试验的示性变量为$X_i$，则</p>
-$$
+$$<p>其有一些直接引用跟前面结论相对应。</p><p><font size=4><b>二项随机变量的期望</b></font></p><p>设$X$为二项随机变量参数为$(n,p)$。根据定义，可以认为这是$n$次独立重复实验，每次成功概率为$p$。设每次独立试验的示性变量为$X_i$，则</p>$$
 X=\sum_i X_i
-$$<p>而每次试验的示性变量有</p>
-$$
+$$<p>而每次试验的示性变量有</p>$$
 X_i=
 \begin{cases}
 1\quad & 第i次试验成功 \\
 0\quad & 第i次试验失败
 \end{cases}
-$$<p>进而有
-</p>
-$$
+$$<p>进而有</p>$$
 E[X]=\sum E[X_i]=np
-$$<p><font size=4><b>负二项随机变量的期望</b></font></p>
-<p>负二项随机变量为一系列重复独立试验知道有$r$次成功所需的试验次数。现在构造其和表达式。从每次成功试验所需次数来出发。即$X_i$表示在第$i_1$次成功之后，到第$i$次成功时所需试验次数。则</p>
-$$X=X_1+X_2+\cdots+X_r$$<p>现在看$X_i$的表示。可以发现其就是几何分布。即</p>
-$$
+$$<p><font size=4><b>负二项随机变量的期望</b></font></p><p>负二项随机变量为一系列重复独立试验知道有$r$次成功所需的试验次数。现在构造其和表达式。从每次成功试验所需次数来出发。即$X_i$表示在第$i_1$次成功之后，到第$i$次成功时所需试验次数。则</p>$$X=X_1+X_2+\cdots+X_r$$<p>现在看$X_i$的表示。可以发现其就是几何分布。即</p>$$
 P\{X_i=n\}=p(n)=(1-p)^{n-1}p
-$$<p>进而有</p>
-$$E[X_i]=\sum_i ip(i)=\frac{1}{p}$$<p>所以有$E[X]=\sum E[X_i]=r/p$</p>
-<p><font size=4><b>超几何变量的期望</b></font></p>
-<p>超几何变量为，从有$N$个球，$m$个白球中随机取出$n$个球，其中白球个数的值。这里考虑每个指定白球被取出事件的示性变量。即$X_i$表示第$i$个白球的被取出事件的示性变量，即其被取出时$X_i=1$。则</p>
-$$
+$$<p>进而有</p>$$E[X_i]=\sum_i ip(i)=\frac{1}{p}$$<p>所以有$E[X]=\sum E[X_i]=r/p$</p><p><font size=4><b>超几何变量的期望</b></font></p><p>超几何变量为，从有$N$个球，$m$个白球中随机取出$n$个球，其中白球个数的值。这里考虑每个指定白球被取出事件的示性变量。即$X_i$表示第$i$个白球的被取出事件的示性变量，即其被取出时$X_i=1$。则</p>$$
 X=X_1+X_2+\cdots+X_m
-$$<p>其中$X_i$为$1$即被取出概率有</p>
-$$p\{X_i=1\}=\frac{\binom{1}{1}\binom{N-1}{n-1}}{\binom{N}{n}}=\frac{n}{N}$$<p>所以有$E[X]=\sum E[X_i]=nm/N$</p>
-<p>这一章有一个例子跟计算机算法关联。就是快速排序的对比次数期望，也即快速排序的算法复杂度。部分算法分析中也会将这个期望获得方式。与这里基本一致。这里只是系统的从概率论角度上去出发。</p>
-<div class="admonition example">
-<p class="admonition-title">例 7b</p>
-<p>快速排序算法的比较次数期望</p>
-</div>
-<p>记$X$为对$n$个不同数排序所需的比较次数，则$E[X]$时对这个排序算法时间复杂度的一个度量。现在寻找和式表达式。首先将数组从小到大排序好的元素一次比较为$1,2\cdots,n$。现在考虑数组中任意两个元素例如$i,j$位置元素比较次数。通过算法可以知道，两个元素发生比较之后就切分了，不会再进行比较。即比较次数要么为$1$要么为$0$，即可以定义</p>
-$$
+$$<p>其中$X_i$为$1$即被取出概率有</p>$$p\{X_i=1\}=\frac{\binom{1}{1}\binom{N-1}{n-1}}{\binom{N}{n}}=\frac{n}{N}$$<p>所以有$E[X]=\sum E[X_i]=nm/N$</p><p>这一章有一个例子跟计算机算法关联。就是快速排序的对比次数期望，也即快速排序的算法复杂度。部分算法分析中也会将这个期望获得方式。与这里基本一致。这里只是系统的从概率论角度上去出发。</p><div class="admonition example"><p class=admonition-title>例 7b</p><p>快速排序算法的比较次数期望</p></div><p>记$X$为对$n$个不同数排序所需的比较次数，则$E[X]$时对这个排序算法时间复杂度的一个度量。现在寻找和式表达式。首先将数组从小到大排序好的元素一次比较为$1,2\cdots,n$。现在考虑数组中任意两个元素例如$i,j$位置元素比较次数。通过算法可以知道，两个元素发生比较之后就切分了，不会再进行比较。即比较次数要么为$1$要么为$0$，即可以定义</p>$$
 I_{i,j}=
 \begin{cases}
 1\quad & 在排序中i,j比较过\\
 0\quad & 其他
 \end{cases}
-$$<p>显然</p>
-$$
+$$<p>显然</p>$$
 X=\sum_{i=1}^{n-1}\sum_{j=i+1}^n I_{i,j}
-$$<p>现在看$I_{i,j}$比较的概率。在排序过程中，随机选择一个比较点，然后进行比较。针对两个给定位置$i,j$，如果选择的比较点比$i$小或者比$j$大，则$i,j$会进入下一轮。如果比较点在$i$到$j$之间。即$i,i+1,\cdots,j$中一个。则细分两类，如果选择恰好为$i,j$则两者直接比较，否则，两者再也不会比较。注意要算法终结，必须要在$i$到$j$之间选择一次比较点。</p>
-<p>也就是说，其最后必须在$i$到$j$之间选择一个点。这时选中$i,j$的概率就是$2/(j-i+1)$。</p>
-<p>所以</p>
-$$
+$$<p>现在看$I_{i,j}$比较的概率。在排序过程中，随机选择一个比较点，然后进行比较。针对两个给定位置$i,j$，如果选择的比较点比$i$小或者比$j$大，则$i,j$会进入下一轮。如果比较点在$i$到$j$之间。即$i,i+1,\cdots,j$中一个。则细分两类，如果选择恰好为$i,j$则两者直接比较，否则，两者再也不会比较。注意要算法终结，必须要在$i$到$j$之间选择一次比较点。</p><p>也就是说，其最后必须在$i$到$j$之间选择一个点。这时选中$i,j$的概率就是$2/(j-i+1)$。</p><p>所以</p>$$
 E[X]=\sum_{i=1}^{n-1}\sum_{j=i+1}^n \frac{2}{j-i+1}
-$$<p>计算这个可以通过转换积分方式来估计。考虑$\sum_i^n1/x$，由图像面积关系可以得</p>
-$$
+$$<p>计算这个可以通过转换积分方式来估计。考虑$\sum_i^n1/x$，由图像面积关系可以得</p>$$
 \ln \frac{n+1}{i}=\int_{i}^{n+1}\frac{1}{x} dx \lt \sum_i^n1/x\lt \int_{i-1}^{n}\frac{1}{x}dx =\ln \frac{n}{i-1}
-$$<p>所以有</p>
-$$
+$$<p>所以有</p>$$
 \begin{aligned}
 \sum_{i=1}^{n-1}\sum_{j=i+1}^n \frac{2}{j-i+1} &\lt \sum_{i=1}^{n-1}2(\ln (x-i+1)|_i^n)\\
 &=\sum_{i=1}^{n-1} 2\ln(n-i+1)\\
 &=\sum_{i=1}^{n-1} 2\ln(i+1)\\
 &\lt 2(n-1)\ln(n)
 \end{aligned}
-$$<p>书上是用积分直接近似得到的，离散求和和积分之间确实由直接的近似关系：</p>
-$$
+$$<p>书上是用积分直接近似得到的，离散求和和积分之间确实由直接的近似关系：</p>$$
 \sum_{j=i+1}^n \frac{2}{j-i+1}\approx \int_{i+1}^n\frac{2}{x-i+1}dx==2\ln(n-i+1)\\
 \sum_{i=1}^{n-1}2\ln(n-i+1)\approx \int_{i}^{n-1}\ln(n-x+1) dx=2\int_2^n\ln(x)dx=2(x\ln x-x)|_2^n\approx2n\ln n
-$$<h1 id="实验序列中事件发生次数的矩">实验序列中事件发生次数的矩</h1>
-<p>在随机变量章节中介绍过，随机变量的k阶矩即$E[X^k]$。本节通过随机变量和的组合关系的特性给出一个求出矩的方式。</p>
-<p>在前面，许多例子都具有下列形式：
-给定事件序列$A_1,\cdots,A_n$，求出$E[X]$，其中$X$是这些事件在实验中发生的次数。解法是给每个事件示性变量$I_i$有</p>
-$$
+$$<h1 id=实验序列中事件发生次数的矩>实验序列中事件发生次数的矩</h1><p>在随机变量章节中介绍过，随机变量的k阶矩即$E[X^k]$。本节通过随机变量和的组合关系的特性给出一个求出矩的方式。</p><p>在前面，许多例子都具有下列形式：
+给定事件序列$A_1,\cdots,A_n$，求出$E[X]$，其中$X$是这些事件在实验中发生的次数。解法是给每个事件示性变量$I_i$有</p>$$
 I_i=
 \begin{cases}
 1\quad & 若A_i发生\\
 0\quad & 其他
 \end{cases}
-$$<p>而</p>
-$$X=\sum_i I_i$$<p>进而有</p>
-$$E[X]=\sum_iE[I_i]=\sum_iP(A_i)$$<p>现在考虑对成对事件出现次数感兴趣。即如果事件$A_i$与$A_j$在实验中发生，则$I_iI_j=1$，反之则$I_iI_j=0$。所以成对发生次数即和式$\sum I_iI_j$的值。另一方面因为$X$表示整个事件发生的次数，有组合可知，其中成对发生的次数恰为$\binom{X}{2}$。由此可得</p>
-$$
+$$<p>而</p>$$X=\sum_i I_i$$<p>进而有</p>$$E[X]=\sum_iE[I_i]=\sum_iP(A_i)$$<p>现在考虑对成对事件出现次数感兴趣。即如果事件$A_i$与$A_j$在实验中发生，则$I_iI_j=1$，反之则$I_iI_j=0$。所以成对发生次数即和式$\sum I_iI_j$的值。另一方面因为$X$表示整个事件发生的次数，有组合可知，其中成对发生的次数恰为$\binom{X}{2}$。由此可得</p>$$
 \binom{X}{2}=\sum_{i\lt j}I_iI_j
-$$<p>把左边视为随机变量的函数，两边同时求期望即有</p>
-$$
+$$<p>把左边视为随机变量的函数，两边同时求期望即有</p>$$
 E[\binom{X}{2}]=E[\frac{X(X-1)}{2}]=E[\sum_{i\lt j}I_iI_j]=\sum_{i\lt j}E[I_iI_j]=\sum_{i\lt j}P(A_iA_j)
-$$<p>由此可以解得$E[X^2]$的值，进而求出$Var(X)=E[X^2]-E^2[X]$的值等。</p>
-<p>针对上述过程可以扩展。考虑$k$个不同事件组的出现次数，即可得</p>
-$$
+$$<p>由此可以解得$E[X^2]$的值，进而求出$Var(X)=E[X^2]-E^2[X]$的值等。</p><p>针对上述过程可以扩展。考虑$k$个不同事件组的出现次数，即可得</p>$$
 E[\binom{X}{k}]=\sum_{i_1\lt i_2\lt \cdots\lt i_k}E[I_1I_2\cdots I_k]=\sum_{i_1\lt i_2\lt \cdots\lt i_k}P(A_{i_1}A_{i_2}\cdots A_{i_k})
-$$<h1 id="随机变量和的协方差方差及相关系数">随机变量和的协方差、方差及相关系数</h1>
-<p>本节主要独立随机变量得乘积期望，以及协方差定义。</p>
-<div class="admonition note">
-<p class="admonition-title">定理 2</p>
-<p>如果$X,Y$互相独立，那么对任何函数$h$和$g$有下式成立：</p>
-$$E[g(X)h(Y)]=E[g(X)]E[h(y)]$$</div>
-<div class="admonition abstract">
-<p class="admonition-title">定义 3</p>
-<p>$X$和$Y$之间得协方差$Cov(X,Y)$为</p>
-$$
+$$<h1 id=随机变量和的协方差方差及相关系数>随机变量和的协方差、方差及相关系数</h1><p>本节主要独立随机变量得乘积期望，以及协方差定义。</p><div class="admonition note"><p class=admonition-title>定理 2</p><p>如果$X,Y$互相独立，那么对任何函数$h$和$g$有下式成立：</p>$$E[g(X)h(Y)]=E[g(X)]E[h(y)]$$</div><div class="admonition abstract"><p class=admonition-title>定义 3</p><p>$X$和$Y$之间得协方差$Cov(X,Y)$为</p>$$
 Cov(X,Y)=E[(X-E[X])(Y-E[Y])]
-$$</div>
-<p>把协方差定义展开可得</p>
-$$
+$$</div><p>把协方差定义展开可得</p>$$
 \begin{aligned}
 Cov(X,Y)&=E[XY-E[X]Y-XE[Y]+E[X]E[Y]]\\
 &=E[XY]-E[X]E[Y]-E[X]E[Y]+E[X]E[Y]\\
 &=E[XY]-E[X]E[Y]
 \end{aligned}
-$$<p>所以如果两个随机变量$X,Y$独立。有前面定理可知$E[XY]=E[X]E[Y]$。进而有$Cov(X,Y)=0$。但注意$Cov(X,Y)=0$并不能说明$X,Y$独立。$Cov(X,Y)=0$只要期望刚好满足，或者两者都为0即可。所以独立性是更强的条件。</p>
-<p>关于协方差有以下特点。</p>
-<div class="admonition note">
-<p class="admonition-title">定理 4</p>
-<ul>
-<li>$Cov(X,Y)=Cov(Y,X)$</li>
-<li>$Cov(X,X)=Var(X)$</li>
-<li>$Cov(aX,Y)=aCov(X,Y)$</li>
-<li>$Cov(\sum_{i=1}^nX_i,\sum_{j=1}^mY_j)=\sum_{i=1}^n\sum_{j=1}^mCov(X_i,Y_j)$</li>
-</ul>
-</div>
-<p>证明方式从协方差定义入手即可。</p>
-<p>结合上述定理，可以得到关于随机变量和的方差的一些有用信息。令上述定理中第四条中$Y_j=X_j,j=1,\cdots,n$。即相同变量和的协方差。有如下公式：</p>
-$$
+$$<p>所以如果两个随机变量$X,Y$独立。有前面定理可知$E[XY]=E[X]E[Y]$。进而有$Cov(X,Y)=0$。但注意$Cov(X,Y)=0$并不能说明$X,Y$独立。$Cov(X,Y)=0$只要期望刚好满足，或者两者都为0即可。所以独立性是更强的条件。</p><p>关于协方差有以下特点。</p><div class="admonition note"><p class=admonition-title>定理 4</p><ul><li>$Cov(X,Y)=Cov(Y,X)$</li><li>$Cov(X,X)=Var(X)$</li><li>$Cov(aX,Y)=aCov(X,Y)$</li><li>$Cov(\sum_{i=1}^nX_i,\sum_{j=1}^mY_j)=\sum_{i=1}^n\sum_{j=1}^mCov(X_i,Y_j)$</li></ul></div><p>证明方式从协方差定义入手即可。</p><p>结合上述定理，可以得到关于随机变量和的方差的一些有用信息。令上述定理中第四条中$Y_j=X_j,j=1,\cdots,n$。即相同变量和的协方差。有如下公式：</p>$$
 \begin{aligned}
 Var(\sum_{i=1}^nX_i)&=Cov(\sum_{i=1}^nX_i,\sum_{j=1}^nX_j)=\sum_{i=1}^n\sum_{j=1}^nCov(X_i,X_j)\\
 &=\sum_{i=1}^nVar(X_i)+\sum\sum_{i\ne j}Cov(X_i,X_j)
 \end{aligned}
-$$<p>可以注意到当$i=j$时$X_i=X_j$即方差值。这个公式表面，随机变量和的方差，等于各自方差的和，加上所以不同变量之间协方差的和。如果$X_1,\cdots,X_n$两两独立，即对于$i\ne j$,$X_i$和$X_j$相互独立。则$Cov(X_i,X_j)=0$所以有：</p>
-$$
+$$<p>可以注意到当$i=j$时$X_i=X_j$即方差值。这个公式表面，随机变量和的方差，等于各自方差的和，加上所以不同变量之间协方差的和。如果$X_1,\cdots,X_n$两两独立，即对于$i\ne j$,$X_i$和$X_j$相互独立。则$Cov(X_i,X_j)=0$所以有：</p>$$
 Var(\sum_{i=1}^nX_i)=\sum_{i=1}^nVar(X_i)
-$$<h1 id="条件期望">条件期望</h1>
-<p>在前面章节中定义过随机变量的条件分布。当$X,Y$联合分布离散时，当$P\{Y=y\}>0$时，$X$的条件分布列为：</p>
-$$
+$$<h1 id=条件期望>条件期望</h1><p>在前面章节中定义过随机变量的条件分布。当$X,Y$联合分布离散时，当$P\{Y=y\}>0$时，$X$的条件分布列为：</p>$$
 p_{X|Y}(x|y)=P\{X=x|Y=y\}=\frac{p(x,y)}{p_Y(y)}
-$$<p>其也是一个概率分布，可以自然的定义$X$在给定$Y=y$之下的条件期望为：</p>
-<div class="admonition abstract">
-<p class="admonition-title">定义 5</p>
-<p>$X,Y$联合分布离散时，$X$在给定$Y=y$之下的条件期望</p>
-$$
+$$<p>其也是一个概率分布，可以自然的定义$X$在给定$Y=y$之下的条件期望为：</p><div class="admonition abstract"><p class=admonition-title>定义 5</p><p>$X,Y$联合分布离散时，$X$在给定$Y=y$之下的条件期望</p>$$
 E[X|Y=y]=\sum_x xP\{X=x|Y=y\}=\sum_x xp_{X|Y}(x|y)
-$$</div>
-<p>类似地，当$X,Y$联合分布连续时，其联合概率密度函数为$f(x,y)$，对于个给定地$Y=y$，当$f_Y(y)>0$时，条件概率密度函数为定义为</p>
-$$
+$$</div><p>类似地，当$X,Y$联合分布连续时，其联合概率密度函数为$f(x,y)$，对于个给定地$Y=y$，当$f_Y(y)>0$时，条件概率密度函数为定义为</p>$$
 f_{X|Y}(x|y)=\frac{f(x,y)}{f_Y(y)}
-$$<div class="admonition abstract">
-<p class="admonition-title">定义 6</p>
-<p>$X,Y$联合分布连续时，$X$在给定$Y=y$之下的条件期望</p>
-$$
+$$<div class="admonition abstract"><p class=admonition-title>定义 6</p><p>$X,Y$联合分布连续时，$X$在给定$Y=y$之下的条件期望</p>$$
 E[X|Y=y]=\int_{-\infty}^\infty xf_{X|Y}(x|y) dx
-$$</div>
-<p>正如条件概率满足概率的所有性质，条件期望也满足通常期望的性质。例如如下公式：</p>
-$$
+$$</div><p>正如条件概率满足概率的所有性质，条件期望也满足通常期望的性质。例如如下公式：</p>$$
 E[g(X)|Y=y]=
 \left\{
 \begin{aligned}
@@ -309,50 +111,33 @@ E[g(X)|Y=y]=
 &\int_{-\infty}^\infty g(x)f_{X|Y}(x|y)dx \quad 连续情形
 \end{aligned}
 \right.
-$$<p>即条件概率下，随机变量的函数依然可以直接带入函数来计算期望。同理，期望的加和性质也成立即:</p>
-$$
+$$<p>即条件概率下，随机变量的函数依然可以直接带入函数来计算期望。同理，期望的加和性质也成立即:</p>$$
 E[\sum_{i=1}^nX_i|Y=y]=\sum_{i=1}^nE[X_i|Y=y]
-$$<p>事实上，给定$Y=y$的条件下条件期望，可以看成是减小了样本空间中的普通期望，这个减小的样本空间由满足$Y=y$条件的那些样本点组成。</p>
-<h2 id="通过取条件计算期望">通过取条件计算期望</h2>
-<p>根据前面定义。$E[X|Y=y]$表示在随机变量$Y$取值$y$的情况下对$X$的期望。即针对每一个给定的$Y=y$值，$E[X|Y]$给出一个数值。可当作$g(y)=E[X|Y=y]$。所以实际上可以把$E[X|Y]$视为随机变量$Y$的函数。由此可证明如下定理：</p>
-<div class="admonition note">
-<p class="admonition-title">定理 7</p>
-$$E[X]=E[E[X|Y]]$$</div>
-<p>在这个公式中，实际上$E[X|Y]$视为随机变量$Y$的函数。所以$E[E[X|Y]]$实际相当于对随机变量$Y$的函数的一个期望。</p>
-<p>换句话说，如果$Y$是离散随机变量则</p>
-$$
+$$<p>事实上，给定$Y=y$的条件下条件期望，可以看成是减小了样本空间中的普通期望，这个减小的样本空间由满足$Y=y$条件的那些样本点组成。</p><h2 id=通过取条件计算期望>通过取条件计算期望</h2><p>根据前面定义。$E[X|Y=y]$表示在随机变量$Y$取值$y$的情况下对$X$的期望。即针对每一个给定的$Y=y$值，$E[X|Y]$给出一个数值。可当作$g(y)=E[X|Y=y]$。所以实际上可以把$E[X|Y]$视为随机变量$Y$的函数。由此可证明如下定理：</p><div class="admonition note"><p class=admonition-title>定理 7</p>$$E[X]=E[E[X|Y]]$$</div><p>在这个公式中，实际上$E[X|Y]$视为随机变量$Y$的函数。所以$E[E[X|Y]]$实际相当于对随机变量$Y$的函数的一个期望。</p><p>换句话说，如果$Y$是离散随机变量则</p>$$
 E[X]=E[E[X|Y]]=\sum_y E[X|Y=y]P\{Y=y\}
-$$<p>$Y$是连续型随机变量则</p>
-$$
+$$<p>$Y$是连续型随机变量则</p>$$
 E[X]=\int_{-\infty}^\infty E[X|Y=y]f_Y(y)dy
-$$<p>证明思路就是讲公式中的各个表达展开。例如对于离散情况下来说有：</p>
-$$
+$$<p>证明思路就是讲公式中的各个表达展开。例如对于离散情况下来说有：</p>$$
 \begin{aligned}
 \sum_y E[X|Y=y]P\{Y=y\}&=\sum_y(\sum_x xP\{X=x|Y=y\})P\{Y=y\}\\
 &=\sum_y(\sum_x x\frac{P\{X=x,Y=y\}}{P\{Y=y\}}P\{Y=y\})\\
 &=\sum_y\sum_x xP\{X=x,Y=y\}=E[X]
 \end{aligned}
-$$<p>对于连续情况下来说有：</p>
-$$
+$$<p>对于连续情况下来说有：</p>$$
 \begin{aligned}
-\int_{-\infty}^\infty E[X|Y=y]f_Y(y)dy&=\int_{-\infty}^\infty (\int_{-\infty}^\infty xf_{X|Y}(x|y) dx)f_Y(y)dy  \\
+\int_{-\infty}^\infty E[X|Y=y]f_Y(y)dy&=\int_{-\infty}^\infty (\int_{-\infty}^\infty xf_{X|Y}(x|y) dx)f_Y(y)dy \\
 &=\int_{-\infty}^\infty\int_{-\infty}^\infty xf(x,y) dxdy=E[X]
 \end{aligned}
-$$<p>这个定理可以这样来解释，期望值$E[X]$可以看成是条件期望$E[X|Y=y]$的加权平均，其权重刚好是$Y=y$的概率。这个定义跟随机变量的期望是一样的。回顾期望的定义，期望是随机变量每个可能值根据发生概率的加权平均值。这里的可能指就是$E[X|Y=y]$。</p>
-<h2 id="通过条件计算概率">通过条件计算概率</h2>
-<p>取条件期望的方法还可以计算概率。方式通过示性变量来关联期望和概率。设$A$为一个随机事件，令$X$为$A$的示性变量，即</p>
-$$
+$$<p>这个定理可以这样来解释，期望值$E[X]$可以看成是条件期望$E[X|Y=y]$的加权平均，其权重刚好是$Y=y$的概率。这个定义跟随机变量的期望是一样的。回顾期望的定义，期望是随机变量每个可能值根据发生概率的加权平均值。这里的可能指就是$E[X|Y=y]$。</p><h2 id=通过条件计算概率>通过条件计算概率</h2><p>取条件期望的方法还可以计算概率。方式通过示性变量来关联期望和概率。设$A$为一个随机事件，令$X$为$A$的示性变量，即</p>$$
 X=
 \begin{cases}
-1 & A发生    \\
-0 & A不发生    \\
+1 & A发生 \\
+0 & A不发生 \\
 \end{cases}
-$$<p>则显然有</p>
-$$
+$$<p>则显然有</p>$$
 E[X]=P(A)\\
-E[X|Y=y]=P(A|Y=y) 
-$$<p>重新引用期望公式即有</p>
-$$
+E[X|Y=y]=P(A|Y=y)
+$$<p>重新引用期望公式即有</p>$$
 E[X]=P(A)=
 \left\{
 \begin{aligned}
@@ -360,37 +145,23 @@ E[X]=P(A)=
 &\int_{-\infty}^\infty P(A|Y=y)f_Y(y)dy \quad 连续情形
 \end{aligned}
 \right.
-$$<p>注意到如果$Y$为离散型随机变量，那么针对每个值定义事件$B_i=\{Y=y_i\}$，即哪些所有使的随机变量为$y_i$的结果包成一个事件。则上述公式会变成全概率公式。即</p>
-$$
+$$<p>注意到如果$Y$为离散型随机变量，那么针对每个值定义事件$B_i=\{Y=y_i\}$，即哪些所有使的随机变量为$y_i$的结果包成一个事件。则上述公式会变成全概率公式。即</p>$$
 P(A)=\sum_i P(A|B_i)P(B_i)
-$$<p>从这里可以看到随机变量条件概率跟事件条件概率之间的关联性。</p>
-<h1 id="条件期望及预测">条件期望及预测</h1>
-<p>这里讨论的主要问题是，观测到随机变量$X$的值，然后基于$X$的值，对第二个随机变量$Y$进行预测。即用$g(X)$来预测表示$Y$这个随机变量。现在显然希望能选择$g$使得$g(X)$最接近$Y$。选择$g$的一个标准是极小化$E[(Y-g(X))^2]$。</p>
-<p>下面证明，$Y$的最优预测值为$g(X)=E[Y|X]$。即用$X=x$情况下$Y$发生的期望值来预测$Y$。</p>
-<div class="admonition note">
-<p class="admonition-title">定理 8</p>
-$$
+$$<p>从这里可以看到随机变量条件概率跟事件条件概率之间的关联性。</p><h1 id=条件期望及预测>条件期望及预测</h1><p>这里讨论的主要问题是，观测到随机变量$X$的值，然后基于$X$的值，对第二个随机变量$Y$进行预测。即用$g(X)$来预测表示$Y$这个随机变量。现在显然希望能选择$g$使得$g(X)$最接近$Y$。选择$g$的一个标准是极小化$E[(Y-g(X))^2]$。</p><p>下面证明，$Y$的最优预测值为$g(X)=E[Y|X]$。即用$X=x$情况下$Y$发生的期望值来预测$Y$。</p><div class="admonition note"><p class=admonition-title>定理 8</p>$$
 E[(Y-g(X))^2]\ge E[(Y-E[Y|X])^2]
-$$</div>
-<p>定理是说对于$X$的任何函数预测偏差都比$E[Y|X]$要大。从$X$条件期望入手：</p>
-$$
+$$</div><p>定理是说对于$X$的任何函数预测偏差都比$E[Y|X]$要大。从$X$条件期望入手：</p>$$
 \begin{aligned}
 E[(Y-g(X))^2|X]&=E[(Y-E[Y|X]+E[Y|X]-g(X))^2|X]\\
 &=E[(Y-E[Y|X])^2|X]+E[(E[Y|X]-g(X))^2|X]\\
 &\quad+2E[(Y-E[Y|X])(E[Y|X]-g(X))|X]
 \end{aligned}
-$$<p>在公式添加$E[Y|X]$项之后平方展开。这里最需要关注的是最后一项。对于给定的$X$值，注意$E[Y|X]-g(X)$是关于$X$的函数，给定值之后其相当于常数所以有</p>
-$$
+$$<p>在公式添加$E[Y|X]$项之后平方展开。这里最需要关注的是最后一项。对于给定的$X$值，注意$E[Y|X]-g(X)$是关于$X$的函数，给定值之后其相当于常数所以有</p>$$
 E[(Y-E[Y|X])(E[Y|X]-g(X))|X]=(E[Y|X]-g(X))E[Y-E[Y|X]|X]
-$$<p>注意$E[E[Y|X]|X]$可视为一个随机变量关于$X$的期望，由定理7可得$E[E[Y|X]|X]=E[Y|X]$。所以有</p>
-$$
+$$<p>注意$E[E[Y|X]|X]$可视为一个随机变量关于$X$的期望，由定理7可得$E[E[Y|X]|X]=E[Y|X]$。所以有</p>$$
 E[Y-E[Y|X]|X]=E[Y|X]-E[Y|X]=0
-$$<p>由此可得</p>
-$$
+$$<p>由此可得</p>$$
 E[(Y-g(X))^2|X] \ge E[(Y-E[Y|X])^2|X]
-$$<h1 id="矩母函数">矩母函数</h1>
-<p>随机变量$X$的矩母函数$M(t)$由下式定义：</p>
-$$
+$$<h1 id=矩母函数>矩母函数</h1><p>随机变量$X$的矩母函数$M(t)$由下式定义：</p>$$
 M(t)=E[e^{tX}]=
 \left\{
 \begin{aligned}
@@ -398,142 +169,13 @@ M(t)=E[e^{tX}]=
 &\int_{-\infty}^\infty e^{tx}f(x)dx \quad 连续情形
 \end{aligned}
 \right.
-$$<p>只所以称之为矩母函数，因为$X$的所有各阶矩都可以从$M(t)$的各阶微分中得到。例如</p>
-$$
+$$<p>只所以称之为矩母函数，因为$X$的所有各阶矩都可以从$M(t)$的各阶微分中得到。例如</p>$$
 M'(t)=\frac{d}{dt}E[e^{tX}]=E[\frac{d}{dt}e^{tX}]=E[Xe^{tX}]
-$$<p>上市有个假定，即微分和期望两个运算可以交换次序。在通常情况下，这个是可以交换的。特别是本书中提到的分布都能满足上述要求。</p>
-<p>现在令$t=0$则有$M'(0)=E[X]$。一般地，对$M(t)$求$n$次导数可得</p>
-$$
+$$<p>上市有个假定，即微分和期望两个运算可以交换次序。在通常情况下，这个是可以交换的。特别是本书中提到的分布都能满足上述要求。</p><p>现在令$t=0$则有$M'(0)=E[X]$。一般地，对$M(t)$求$n$次导数可得</p>$$
 M^n(t)=E[X^ne^{tX}]
-$$<p>从而有</p>
-$$
+$$<p>从而有</p>$$
 M^n(0)=E[X^n]
-$$<p>本书中经典的概率分布有如下表：</p>
-<p>离散型概率分布</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: center"></th>
-          <th style="text-align: center">分布列</th>
-          <th style="text-align: center">矩母函数</th>
-          <th style="text-align: center">均值</th>
-          <th style="text-align: center">方差</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center">二项分布<br>参数$(n,p),0\lt p\lt 1$</td>
-          <td style="text-align: center">$\binom{n}{x}p^x(1-p)^{n-x}$</td>
-          <td style="text-align: center">$(pe^t+1-p)^n$</td>
-          <td style="text-align: center">$np$</td>
-          <td style="text-align: center">$np(1-p)$</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">泊松分布<br>参数$\lambda>0$</td>
-          <td style="text-align: center">$\frac{\lambda^x}{x!}e^{-\lambda}$</td>
-          <td style="text-align: center">$exp\{\lambda(e^t-1)\}$</td>
-          <td style="text-align: center">$\lambda$</td>
-          <td style="text-align: center">$\lambda$</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">几何分布<br>参数$0\le p\le 1$</td>
-          <td style="text-align: center">$p(1-p)^{x-1}$</td>
-          <td style="text-align: center">$\frac{pe^t}{1-(1-p)e^t}$</td>
-          <td style="text-align: center">$\frac{1}{p}$</td>
-          <td style="text-align: center">$\frac{1-p}{p^2}$</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">负二项分布<br>参数$r,p,0\le p\le 1$</td>
-          <td style="text-align: center">$\binom{n-1}{r-1}p^r(1-p)^{n-r}$</td>
-          <td style="text-align: center">$[\frac{pe^t}{1-(1-p)e^t}]^r$</td>
-          <td style="text-align: center">$\frac{r}{p}$</td>
-          <td style="text-align: center">$\frac{r(1-p)}{p^2}$</td>
-      </tr>
-  </tbody>
-</table>
-<p>连续型概率分布</p>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: center"></th>
-          <th style="text-align: center">分布列</th>
-          <th style="text-align: center">矩母函数</th>
-          <th style="text-align: center">均值</th>
-          <th style="text-align: center">方差</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center">$(a,b)$上均匀分布</td>
-          <td style="text-align: center">$f(x)=\begin{cases}\frac{1}{b-a} \quad a\lt x\lt b\\0\quad other\end{cases}$</td>
-          <td style="text-align: center">$\frac{e^{tb}-e^{ta}}{t(b-a)}$</td>
-          <td style="text-align: center">$\frac{a+b}{2}$</td>
-          <td style="text-align: center">$\frac{(b-a)^2}{12}$</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">指数分布</td>
-          <td style="text-align: center">$f(x)=\begin{cases}\lambda e^{-\lambda x} \quad x\ge 0\\0\quad x\lt 0\end{cases}$</td>
-          <td style="text-align: center">$\frac{\lambda}{\lambda-t}$</td>
-          <td style="text-align: center">$\frac{1}{\lambda}$</td>
-          <td style="text-align: center">$\frac{1}{\lambda^2}$</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">$\Gamma$分布<br>参数$(s,\lambda),\lambda>0$</td>
-          <td style="text-align: center">$f(x)=\begin{cases}\frac{\lambda e^{-\lambda x}(\lambda x)^{s-1}}{\Gamma(s)} \quad x\ge 0\\0\quad x\lt 0\end{cases}$</td>
-          <td style="text-align: center">$(\frac{\lambda}{\lambda-t})^s$</td>
-          <td style="text-align: center">$\frac{s}{\lambda}$</td>
-          <td style="text-align: center">$\frac{s}{\lambda^2}$</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">正态分布<br>参数$(\mu,\sigma^2)$</td>
-          <td style="text-align: center">$f(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-(x-\mu)^2/2\sigma^2}$</td>
-          <td style="text-align: center">$exp\{\mu t+ \sigma^2t^2/2\}$</td>
-          <td style="text-align: center">$\mu$</td>
-          <td style="text-align: center">$\sigma^2$</td>
-      </tr>
-  </tbody>
-</table>
-<p>矩母函数有个重要性质是，独立随机变量和的矩母函数等于各随机变量各自矩母函数的乘积。换句话说，设$X$和$Y$为相互独立的随机变量，其矩母函数分别为$M_X(t)$和$M_Y(t)$。记$M_{X+Y}(t)$为$X+Y$的矩母函数则：</p>
-$$
+$$<p>本书中经典的概率分布有如下表：</p><p>离散型概率分布</p><table><thead><tr><th style=text-align:center></th><th style=text-align:center>分布列</th><th style=text-align:center>矩母函数</th><th style=text-align:center>均值</th><th style=text-align:center>方差</th></tr></thead><tbody><tr><td style=text-align:center>二项分布<br>参数$(n,p),0\lt p\lt 1$</td><td style=text-align:center>$\binom{n}{x}p^x(1-p)^{n-x}$</td><td style=text-align:center>$(pe^t+1-p)^n$</td><td style=text-align:center>$np$</td><td style=text-align:center>$np(1-p)$</td></tr><tr><td style=text-align:center>泊松分布<br>参数$\lambda>0$</td><td style=text-align:center>$\frac{\lambda^x}{x!}e^{-\lambda}$</td><td style=text-align:center>$exp\{\lambda(e^t-1)\}$</td><td style=text-align:center>$\lambda$</td><td style=text-align:center>$\lambda$</td></tr><tr><td style=text-align:center>几何分布<br>参数$0\le p\le 1$</td><td style=text-align:center>$p(1-p)^{x-1}$</td><td style=text-align:center>$\frac{pe^t}{1-(1-p)e^t}$</td><td style=text-align:center>$\frac{1}{p}$</td><td style=text-align:center>$\frac{1-p}{p^2}$</td></tr><tr><td style=text-align:center>负二项分布<br>参数$r,p,0\le p\le 1$</td><td style=text-align:center>$\binom{n-1}{r-1}p^r(1-p)^{n-r}$</td><td style=text-align:center>$[\frac{pe^t}{1-(1-p)e^t}]^r$</td><td style=text-align:center>$\frac{r}{p}$</td><td style=text-align:center>$\frac{r(1-p)}{p^2}$</td></tr></tbody></table><p>连续型概率分布</p><table><thead><tr><th style=text-align:center></th><th style=text-align:center>分布列</th><th style=text-align:center>矩母函数</th><th style=text-align:center>均值</th><th style=text-align:center>方差</th></tr></thead><tbody><tr><td style=text-align:center>$(a,b)$上均匀分布</td><td style=text-align:center>$f(x)=\begin{cases}\frac{1}{b-a} \quad a\lt x\lt b\\0\quad other\end{cases}$</td><td style=text-align:center>$\frac{e^{tb}-e^{ta}}{t(b-a)}$</td><td style=text-align:center>$\frac{a+b}{2}$</td><td style=text-align:center>$\frac{(b-a)^2}{12}$</td></tr><tr><td style=text-align:center>指数分布</td><td style=text-align:center>$f(x)=\begin{cases}\lambda e^{-\lambda x} \quad x\ge 0\\0\quad x\lt 0\end{cases}$</td><td style=text-align:center>$\frac{\lambda}{\lambda-t}$</td><td style=text-align:center>$\frac{1}{\lambda}$</td><td style=text-align:center>$\frac{1}{\lambda^2}$</td></tr><tr><td style=text-align:center>$\Gamma$分布<br>参数$(s,\lambda),\lambda>0$</td><td style=text-align:center>$f(x)=\begin{cases}\frac{\lambda e^{-\lambda x}(\lambda x)^{s-1}}{\Gamma(s)} \quad x\ge 0\\0\quad x\lt 0\end{cases}$</td><td style=text-align:center>$(\frac{\lambda}{\lambda-t})^s$</td><td style=text-align:center>$\frac{s}{\lambda}$</td><td style=text-align:center>$\frac{s}{\lambda^2}$</td></tr><tr><td style=text-align:center>正态分布<br>参数$(\mu,\sigma^2)$</td><td style=text-align:center>$f(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-(x-\mu)^2/2\sigma^2}$</td><td style=text-align:center>$exp\{\mu t+ \sigma^2t^2/2\}$</td><td style=text-align:center>$\mu$</td><td style=text-align:center>$\sigma^2$</td></tr></tbody></table><p>矩母函数有个重要性质是，独立随机变量和的矩母函数等于各随机变量各自矩母函数的乘积。换句话说，设$X$和$Y$为相互独立的随机变量，其矩母函数分别为$M_X(t)$和$M_Y(t)$。记$M_{X+Y}(t)$为$X+Y$的矩母函数则：</p>$$
 M_{X+Y}(t)=E[e^{t(X+Y)}]=E[e^{tX}]E[e^{tY}]=M_X(t)M_Y(t)
-$$</div><div class="post-footer" id="post-footer">
-    <div class="post-info">
-        <div class="post-info-line">
-            <div class="post-info-mod">
-                <span>更新于 2026-05-05</span>
-            </div></div>
-        <div class="post-info-line">
-            <div class="post-info-md"></div>
-            <div class="post-info-share">
-                <span></span>
-            </div>
-        </div>
-    </div>
-
-    <div class="post-info-more">
-        <section class="post-tags"></section>
-        <section>
-            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
-        </section>
-    </div>
-
-    <div class="post-nav"><a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/" class="prev" rel="prev" title="概率论"><i class="fas fa-angle-left" aria-hidden="true"></i>概率论</a>
-            <a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83/" class="next" rel="next" title="05随机变量的联合分布">05随机变量的联合分布<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
-</div>
-</article></div>
-            </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.159.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
-                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
-        </div>
-    </footer></div>
-
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
-                <i class="fas fa-arrow-up" aria-hidden="true"></i>
-            </a>
-        </div>
-
-        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
-                <i class="fas fa-comment" aria-hidden="true"></i>
-            </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
-</html>
+$$</div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2026-05-05</span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%E6%A6%82%E8%A7%88/ class=prev rel=prev title=概率论><i class="fas fa-angle-left" aria-hidden=true></i>概率论</a>
+<a href=/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/05%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E8%81%94%E5%90%88%E5%88%86%E5%B8%83/ class=next rel=next title=05随机变量的联合分布>05随机变量的联合分布<i class="fas fa-angle-right" aria-hidden=true></i></a></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.159.2">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden=true></i> LoveIt</a></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright" aria-hidden=true></i><span itemprop=copyrightYear>2022 - 2026</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/ target=_blank>xxxx</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up" aria-hidden=true></i></a></div><div id=fixed-buttons-hidden><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment" aria-hidden=true></i></a></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css><script src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script src=https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/mhchem.min.js></script><script>window.config={comment:{},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!0,left:"\\begin{equation}",right:"\\end{equation}"},{display:!0,left:"\\begin{equation*}",right:"\\end{equation*}"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!0,left:"\\begin{align*}",right:"\\end{align*}"},{display:!0,left:"\\begin{alignat}",right:"\\end{alignat}"},{display:!0,left:"\\begin{alignat*}",right:"\\end{alignat*}"},{display:!0,left:"\\begin{gather}",right:"\\end{gather}"},{display:!0,left:"\\begin{CD}",right:"\\end{CD}"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1}}</script><script src=/js/theme.js></script></body></html>
