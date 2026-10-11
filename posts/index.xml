@@ -1,115 +1,17 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>所有文章 - azurezhc的游戏开发人生</title>
-        <link>http://azurezhc.github.io/posts/</link>
-        <description>所有文章 | azurezhc的游戏开发人生</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 03 May 2026 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://azurezhc.github.io/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>概率论</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/</link>
-    <pubDate>Sun, 03 May 2026 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/</guid>
-    <description><![CDATA[<h1 id="数学分析">数学分析</h1>
-<p>我个人粗浅的认为，分析学，实际就是研究极限的特性。明确刻画出极限概念之后，研究基于极限所带来的各种理论分支。最常见的分支就是微积分，这也是最早人们所涉及到的分析领域。此后关于微积分数学根基的探讨，即无穷小量的深入刻画，带来更加广阔的领域。重新建立的数学分析原理体系，从集合论监督建立，不仅明确了连续性，可微，可积等概念，更建立起四大分析的伟大格局。</p>]]></description>
-</item>
-<item>
-    <title>概率论</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/</link>
-    <pubDate>Sun, 03 May 2026 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/</guid>
-    <description><![CDATA[<h1 id="概率论">概率论</h1>
-<p>概率论教材多种多样。这里主要结合各种教材，略去书中已有描述，记录整理一些有意思的点。</p>
-<h2 id="概率论基础">概率论基础</h2>
-<ul>
-<li><a class="link-markdown-demo-site" href="../概率论基础/01概率论公理/index.md" rel="noopener">01概率论公理</a></li>
-<li><a class="link-markdown-demo-site" href="../概率论基础/02条件概率和独立性/index.md" rel="noopener">02条件概率和独立性</a></li>
-<li><a class="link-markdown-demo-site" href="../概率论基础/03随机变量/index.md" rel="noopener">03随机变量</a></li>
-<li><a class="link-markdown-demo-site" href="../概率论基础/04连续型随机变量/index.md" rel="noopener">04连续型随机变量</a></li>
-<li><a class="link-markdown-demo-site" href="../概率论基础/05随机变量的联合分布/index.md" rel="noopener">05随机变量的联合分布</a></li>
-<li><a class="link-markdown-demo-site" href="../概率论基础/06期望的性质/index.md" rel="noopener">06期望的性质</a></li>
-<li><a class="link-markdown-demo-site" href="../概率论基础/07极限定理/index.md" rel="noopener">07极限定理</a></li>
-<li><a class="link-markdown-demo-site" href="../概率论基础/08模拟/index.md" rel="noopener">08模拟</a></li>
-</ul>
-<h1 id="参考教材">参考教材</h1>
-<div style = "float:left">《概率论基础教程》(原书第10版)</div>
-<div style = "text-align:right">[美]Sheldon M.Ross</div>
-<div style = "text-align:right">机械工业出版社</div>]]></description>
-</item>
-<item>
-    <title>离散数学概览</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E6%A6%82%E8%A7%88/</link>
-    <pubDate>Sun, 12 Apr 2026 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E6%A6%82%E8%A7%88/</guid>
-    <description><![CDATA[<h1 id="离散数学概览">离散数学概览</h1>
-<p>离散数学也称之为组合数学。其涵盖内容较为繁杂，但也是生活中，尤其是计算机中经常用到的计算方式。</p>]]></description>
-</item>
-<item>
-    <title>StackLands</title>
-    <link>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/02StackLands/</link>
-    <pubDate>Sun, 24 Aug 2025 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/02StackLands/</guid>
-    <description><![CDATA[<h1 id="stacklands">StackLands</h1>
-<p>StackLands，又名堆叠大陆。一直有听说这款游戏的名声。终于在空闲之余，体验了一下这款游戏。不得不说有很多可圈可点之处的。</p>
-<p>StackLands，准确来说，我觉得算是一款策略类游戏，更进一步说我觉得其实它带有探索生产线类游戏的特点。但是他将这些内容巧妙通过卡牌堆叠的方式结合起来了。</p>]]></description>
-</item>
-<item>
-    <title>线性代数</title>
-    <link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E6%A6%82%E8%A7%88/</link>
-    <pubDate>Sun, 10 Aug 2025 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E6%A6%82%E8%A7%88/</guid>
-    <description><![CDATA[<h1 id="线性代数">线性代数</h1>
-<p>线性代数是现代数学以及计算机科学中重要的一部分。其除了在解方程中有应用之外，在图形学，图形变换，在动力系统中亦有至关重要的作用。现在AI中更是必须了解的内容。除此之外，理论数学中也用很多深刻的研究。</p>]]></description>
-</item>
-<item>
-    <title>01ComputeShader</title>
-    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/01ComputeShader/</link>
-    <pubDate>Sat, 28 Jun 2025 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/01ComputeShader/</guid>
-    <description><![CDATA[<h1 id="computeshader">ComputeShader</h1>
-<p>对应教程网址</p>
-<p><a class="link-markdown-demo-site" href="https://catlikecoding.com/unity/tutorials/basics/compute-shaders/" rel="noopener">https://catlikecoding.com/unity/tutorials/basics/compute-shaders/</a></p>
-<p>本篇主要用ComputeShader来进行大批量物体渲染。在之前的教程中大佬用一个个Cube来当一个像素点（或者说体素点）来进行三维程序运动模拟。基于Unity自带的Update接口方式，实现很多程序化造型和运动。在面对大量物体运动更新，渲染的时候，这种方式非常慢。</p>]]></description>
-</item>
-<item>
-    <title>01UnityJobSystem</title>
-    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E8%BF%9B%E9%98%B6/01UnityJobSystem/</link>
-    <pubDate>Sat, 28 Jun 2025 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/Unity%E5%9F%BA%E7%A1%80%E8%BF%9B%E9%98%B6/01UnityJobSystem/</guid>
-    <description><![CDATA[<h1 id="unityjobsystem">UnityJobSystem</h1>
-<p>UnityJobSystem是Unity官方推出的一个多线程计算系统结构。可以将一些多线程计算任务分发的子线程，即Unity中的Job中取运算。提高运算效率。这一部分实际上跟很多变成语言中的多线程库，或者并行计算模型不谋而合。可以通过JobSystem来看并行计算的一些东西。</p>]]></description>
-</item>
-<item>
-    <title>02Fractal</title>
-    <link>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/02Fractal/</link>
-    <pubDate>Sat, 28 Jun 2025 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/Unity%E7%9B%B8%E5%85%B3/UnityCatlike%E6%95%99%E7%A8%8B/02Fractal/</guid>
-    <description><![CDATA[<h1 id="fractal">Fractal</h1>]]></description>
-</item>
-<item>
-    <title>The Bazaar</title>
-    <link>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/01TheBazaar/</link>
-    <pubDate>Sat, 24 May 2025 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/01TheBazaar/</guid>
-    <description><![CDATA[<h1 id="the-bazaar">The Bazaar</h1>
-<p>2025年的春天，因为长时间的加班，虽然有心想去做点自己的事情，但是基本没有时间尽力去进行一些推进。在焦躁，繁忙，以及不知道做什么好的时候。一款自走棋类游戏走进了忙碌于无尽加班过程中的我的视野。当从直播上看到这个游戏的游玩过程时，我便觉得这是一款设计精良的游戏。其很多细节符合了我想解决自走棋的一些问题。</p>]]></description>
-</item>
-<item>
-    <title>游戏体验目录</title>
-    <link>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E7%9B%AE%E5%BD%95/</link>
-    <pubDate>Sat, 24 May 2025 00:00:00 &#43;0000</pubDate>
-    <author>xxxx</author>
-    <guid>http://azurezhc.github.io/posts/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C/%E6%B8%B8%E6%88%8F%E4%BD%93%E9%AA%8C%E7%9B%AE%E5%BD%95/</guid>
-    <description><![CDATA[<h1 id="游戏体验目录">游戏体验目录</h1>
-<p>这里主要记录一些我感兴趣的游戏体验分享。</p>
-<p>文章内的想法都是我个人分析以及看法。因为可能我游玩的时间不够长，很多想法都很初步。因为我游玩深度可能不深，很多观点可能不甚正确。主要都是我有所感悟，所以写一些文章分享我的理解。</p>]]></description>
-</item>
-</channel>
-</rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>所有文章 - azurezhc的游戏开发人生</title><link>http://azurezhc.github.io/posts/</link><description>所有文章 | azurezhc的游戏开发人生</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 14 Sep 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://azurezhc.github.io/posts/" rel="self" type="application/rss+xml"/><item><title>02护盾效果</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/02%E6%8A%A4%E7%9B%BE%E6%95%88%E6%9E%9C/</link><pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/02%E6%8A%A4%E7%9B%BE%E6%95%88%E6%9E%9C/</guid><description><![CDATA[<h1 id="02护盾效果">02护盾效果</h1>
+<p>本节主要记录一下，教程中护盾效果。其基础原理很简单，就是圆形几何运算。但其亮块区域的实现则有很多细节。</p>
+<h1 id="基础效果">基础效果</h1>
+<p>最基础的效果，只要绘制一个过渡的圆即可。绘制圆只要结合<code>distance</code>和<code>step</code>函数即可。绘制过渡范围则需要结合使用<code>smoothstep</code>函数。具体来说计算如下</p>]]></description></item><item><title>01UV坐标操控</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/01UV%E5%9D%90%E6%A0%87%E6%93%8D%E6%8E%A7/</link><pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/01UV%E5%9D%90%E6%A0%87%E6%93%8D%E6%8E%A7/</guid><description>&lt;h1 id="01uv坐标操控">01UV坐标操控&lt;/h1>
+&lt;p>教程初期使用VisualShader，但后期统一使用GDShader来进行操作。课程的初期其实是介绍图形学管线中的基础流程和概念，从2D入手开始讲解各种效果的实现细节。其中最重要的一部分便是UV的使用和讲解。&lt;/p></description></item><item><title>01UV坐标操控</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/03%E5%A4%96%E6%8F%8F%E8%BE%B9/</link><pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/03%E5%A4%96%E6%8F%8F%E8%BE%B9/</guid><description><![CDATA[<h1 id="03外描边">03外描边</h1>
+<p>这里的外描边其实就是outline。这里的描边实际上主要指2D图形的描边，使用教程中的资源，最终效果如下：</p>
+<center></center>
+<p>2D图形的描边，常用的方式简单描述就是：将原始图形渲染成纯色后，四周偏移一定像素作为背景跟原图形混合。具体来说可以分为以下一系列步骤：</p>]]></description></item><item><title>01UV坐标操控</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/04%E5%83%8F%E7%B4%A0%E5%8C%96/</link><pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/04%E5%83%8F%E7%B4%A0%E5%8C%96/</guid><description>&lt;h1 id="04像素化">04像素化&lt;/h1>
+&lt;p>像素艺术一般指一种风格，一般其中会有一个基础大小色块，色块中为一种同一颜色。而整张图案则是由这些基础色块构成。这实际跟计算机渲染图案一直。一般图片都有一个大小，这个大小实际就是横纵的像素个数。只是一般这些像素非常多，让整个图案看起来是连续的。&lt;/p></description></item><item><title>01UV坐标操控</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/05%E9%9A%8F%E6%9C%BA%E5%99%AA%E5%A3%B0/</link><pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/05%E9%9A%8F%E6%9C%BA%E5%99%AA%E5%A3%B0/</guid><description>&lt;h1 id="05随机噪声">05随机噪声&lt;/h1>
+&lt;p>噪声的绝大部分效果都可以通过噪声贴图来实现。godot中也内置了很多噪声贴图生成方式，这些生成的贴图足以实现各种效果。这里生成这些贴图的方式，实际也是各种随机化算法。&lt;/p></description></item><item><title>01UV坐标操控</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/06%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C/</link><pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/06%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C/</guid><description><![CDATA[<h1 id="06过渡效果">06过渡效果</h1>
+<p>本章的主题其实是转场过渡。不过更进一步讲，是为了处理如何在非规则图形上使用统一的形状。</p>
+<p>在前面章节中大量使用的是UV坐标系，在2Dsprite中，这个坐标系不论原始图形如何，都是默认从左上角到右下角为$(0,0)\to (1,1)$。这在原图是正方形的时候可以直接使用，但如果原图是矩形，中间显然存在着坐标系变化，会使得整个图形并不按照预期运行。</p>]]></description></item><item><title>01UV坐标操控</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/07%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E6%95%88%E6%9E%9C/</link><pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/07%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E6%95%88%E6%9E%9C/</guid><description><![CDATA[<h1 id="07三角函数效果">07三角函数效果</h1>
+<p>教程中用了大量篇幅来讲三角函数部分，并且进行了很多实操练习。在前面部分，也已经记录了三角函数部分的引用，详细可以见<a class="link-markdown-demo-site" href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/02%E6%8A%A4%E7%9B%BE%E6%95%88%E6%9E%9C/" rel="noopener">02护盾效果</a></p>]]></description></item><item><title>01UV坐标操控</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/08%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/</link><pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/08%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/</guid><description>&lt;h1 id="0矩阵运算">0矩阵运算&lt;/h1>
+&lt;p>矩阵运算实在是太熟悉了，这里只是简单说明一下矩阵记录。同时表明一下即使2Dshader也可以使用3维矩阵来操作化。&lt;/p></description></item><item><title>Godot相关</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Godot%E7%9B%B8%E5%85%B3/</link><pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Godot%E7%9B%B8%E5%85%B3/</guid><description><![CDATA[<p>这里主要记录一下Godot开源引擎相关的细节。</p>
+<h1 id="godotshader">GodotShader</h1>
+<p>作为Shader来说，虽然每个引擎编辑shader的语言略有不同，但使用什么引擎其实并无特别大影响。关键点是对计算机图形学底层的理解，几何，计算的结合使用。</p>]]></description></item><item><title>概率论</title><link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/</link><pubDate>Sun, 03 May 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/</guid><description>&lt;h1 id="数学分析">数学分析&lt;/h1>
+&lt;p>我个人粗浅的认为，分析学，实际就是研究极限的特性。明确刻画出极限概念之后，研究基于极限所带来的各种理论分支。最常见的分支就是微积分，这也是最早人们所涉及到的分析领域。此后关于微积分数学根基的探讨，即无穷小量的深入刻画，带来更加广阔的领域。重新建立的数学分析原理体系，从集合论监督建立，不仅明确了连续性，可微，可积等概念，更建立起四大分析的伟大格局。&lt;/p></description></item></channel></rss>
