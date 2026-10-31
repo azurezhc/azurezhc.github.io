@@ -1,22 +1,109 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>azurezhc的游戏开发人生</title><link>http://azurezhc.github.io/</link><description>一个热爱游戏的平凡程序</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 18 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://azurezhc.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>02护盾效果</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/02%E6%8A%A4%E7%9B%BE%E6%95%88%E6%9E%9C/</link><pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/02%E6%8A%A4%E7%9B%BE%E6%95%88%E6%9E%9C/</guid><description><![CDATA[<h1 id="02护盾效果">02护盾效果</h1>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>azurezhc的游戏开发人生</title>
+        <link>http://azurezhc.github.io/</link>
+        <description>一个热爱游戏的平凡程序</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 18 Aug 2023 00:00:00 &#43;0000</lastBuildDate>
+            <atom:link href="http://azurezhc.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>01UV坐标操控</title>
+    <link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/%E5%9F%BA%E7%A1%80%E6%BA%B6%E8%A7%A3/</link>
+    <pubDate>Thu, 29 Oct 2026 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/%E5%9F%BA%E7%A1%80%E6%BA%B6%E8%A7%A3/</guid>
+    <description><![CDATA[<h1 id="基础溶解">基础溶解</h1>
+<p>这里主要记录扩展的溶解效果，基础溶解效果可以见<a class="link-markdown-demo-site" href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/08-%E5%9F%BA%E7%A1%80%E6%BA%B6%E8%A7%A3/" rel="noopener"><font size=4>08-基础溶解</font></a></p>
+<p>基础溶解效果有点类似于整体消失，即根据噪音贴图的数值，全局的从某个地方随机开始消失。这里我想做一个带有一定方向性的消失，例如逐步从上往下消失，如果直接用UV来截取，可以做出一个水平线扫过的消失效果。但这里想有一定的随机蔓延效果。</p>]]></description>
+</item>
+<item>
+    <title>01UV坐标操控</title>
+    <link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/07-%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E6%95%88%E6%9E%9C/</link>
+    <pubDate>Thu, 29 Oct 2026 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/07-%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E6%95%88%E6%9E%9C/</guid>
+    <description><![CDATA[<h1 id="07三角函数效果">07三角函数效果</h1>
+<p>教程中用了大量篇幅来讲三角函数部分，并且进行了很多实操练习。在前面部分，也已经记录了三角函数部分的引用，详细可以见<a class="link-markdown-demo-site" href="../02护盾效果/index.md" rel="noopener">02护盾效果</a></p>
+<p>理解三角函数主要有几个部分。</p>]]></description>
+</item>
+<item>
+    <title>01UV坐标操控</title>
+    <link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/08-%E5%9F%BA%E7%A1%80%E6%BA%B6%E8%A7%A3/</link>
+    <pubDate>Thu, 29 Oct 2026 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/08-%E5%9F%BA%E7%A1%80%E6%BA%B6%E8%A7%A3/</guid>
+    <description><![CDATA[<h1 id="08基础溶解">08基础溶解</h1>
+<p>这里主要还是记录一下教程中的基础溶解效果，更多的溶解效果在效果实现文档中去逐步探索。</p>
+<p>溶解效果实际上就是让整个图片的alpha值逐步变成0的过程。这种消融溶解可以坐在很多美术效果上。例如最简单的火焰燃烧消失溶解效果。</p>]]></description>
+</item>
+<item>
+    <title>01UV坐标操控</title>
+    <link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/09-%E7%9F%A9%E9%98%B5%E5%9F%BA%E7%A1%80/</link>
+    <pubDate>Thu, 29 Oct 2026 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/09-%E7%9F%A9%E9%98%B5%E5%9F%BA%E7%A1%80/</guid>
+    <description><![CDATA[<h1 id="09矩阵运算">09矩阵运算</h1>
+<p>矩阵运算实在是太熟悉了，这里只是简单说明一下矩阵记录。同时表明一下即使2Dshader也可以使用3维矩阵来操作化。</p>
+<p>矩阵跟线性变换，仿射变换等息息相关。将其理解为对目标的一种操作，其可以对图形进行平移，缩放，转动等操作。部分射影变换也可以由此来构造表示。</p>]]></description>
+</item>
+<item>
+    <title>02护盾效果</title>
+    <link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/02-%E6%8A%A4%E7%9B%BE%E6%95%88%E6%9E%9C/</link>
+    <pubDate>Mon, 14 Sep 2026 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/02-%E6%8A%A4%E7%9B%BE%E6%95%88%E6%9E%9C/</guid>
+    <description><![CDATA[<h1 id="02护盾效果">02护盾效果</h1>
 <p>本节主要记录一下，教程中护盾效果。其基础原理很简单，就是圆形几何运算。但其亮块区域的实现则有很多细节。</p>
 <h1 id="基础效果">基础效果</h1>
-<p>最基础的效果，只要绘制一个过渡的圆即可。绘制圆只要结合<code>distance</code>和<code>step</code>函数即可。绘制过渡范围则需要结合使用<code>smoothstep</code>函数。具体来说计算如下</p>]]></description></item><item><title>01UV坐标操控</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/01UV%E5%9D%90%E6%A0%87%E6%93%8D%E6%8E%A7/</link><pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/01UV%E5%9D%90%E6%A0%87%E6%93%8D%E6%8E%A7/</guid><description>&lt;h1 id="01uv坐标操控">01UV坐标操控&lt;/h1>
-&lt;p>教程初期使用VisualShader，但后期统一使用GDShader来进行操作。课程的初期其实是介绍图形学管线中的基础流程和概念，从2D入手开始讲解各种效果的实现细节。其中最重要的一部分便是UV的使用和讲解。&lt;/p></description></item><item><title>01UV坐标操控</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/03%E5%A4%96%E6%8F%8F%E8%BE%B9/</link><pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/03%E5%A4%96%E6%8F%8F%E8%BE%B9/</guid><description><![CDATA[<h1 id="03外描边">03外描边</h1>
+<p>最基础的效果，只要绘制一个过渡的圆即可。绘制圆只要结合<code>distance</code>和<code>step</code>函数即可。绘制过渡范围则需要结合使用<code>smoothstep</code>函数。具体来说计算如下</p>]]></description>
+</item>
+<item>
+    <title>01UV坐标操控</title>
+    <link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/%E5%83%8F%E7%B4%A0%E5%8C%96%E6%B6%88%E8%9E%8D/</link>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/%E5%83%8F%E7%B4%A0%E5%8C%96%E6%B6%88%E8%9E%8D/</guid>
+    <description><![CDATA[<h1 id="像素化消融">像素化消融</h1>
+<p>本文主要记录复刻如下像素化消融shader的过程要点。</p>
+<p><a class="link-markdown-demo-site" href="https://www.bilibili.com/list/watchlater/?spm_id_from=333.1007.view_later.pip&amp;bvid=BV1m24y1u7vL&amp;t=2&amp;oid=781136392&amp;vd_source=8d35ead0946519f56d2ab5f9c83045df" rel="noopener">https://www.bilibili.com/list/watchlater/?spm_id_from=333.1007.view_later.pip&bvid=BV1m24y1u7vL&t=2&oid=781136392&vd_source=8d35ead0946519f56d2ab5f9c83045df</a></p>
+<p>感觉作为一个练习来说很不错，下面主要是直接复刻思考的方式。最后发现教程来自于一个UE5教程，并且使用了自发光等。</p>]]></description>
+</item>
+<item>
+    <title>01UV坐标操控</title>
+    <link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/01-UV%E5%9D%90%E6%A0%87%E6%93%8D%E6%8E%A7/</link>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/01-UV%E5%9D%90%E6%A0%87%E6%93%8D%E6%8E%A7/</guid>
+    <description><![CDATA[<h1 id="01uv坐标操控">01UV坐标操控</h1>
+<p>教程初期使用VisualShader，但后期统一使用GDShader来进行操作。课程的初期其实是介绍图形学管线中的基础流程和概念，从2D入手开始讲解各种效果的实现细节。其中最重要的一部分便是UV的使用和讲解。</p>]]></description>
+</item>
+<item>
+    <title>01UV坐标操控</title>
+    <link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/03-%E5%A4%96%E6%8F%8F%E8%BE%B9/</link>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/03-%E5%A4%96%E6%8F%8F%E8%BE%B9/</guid>
+    <description><![CDATA[<h1 id="03外描边">03外描边</h1>
 <p>这里的外描边其实就是outline。这里的描边实际上主要指2D图形的描边，使用教程中的资源，最终效果如下：</p>
 <center></center>
-<p>2D图形的描边，常用的方式简单描述就是：将原始图形渲染成纯色后，四周偏移一定像素作为背景跟原图形混合。具体来说可以分为以下一系列步骤：</p>]]></description></item><item><title>01UV坐标操控</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/04%E5%83%8F%E7%B4%A0%E5%8C%96/</link><pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/04%E5%83%8F%E7%B4%A0%E5%8C%96/</guid><description>&lt;h1 id="04像素化">04像素化&lt;/h1>
-&lt;p>像素艺术一般指一种风格，一般其中会有一个基础大小色块，色块中为一种同一颜色。而整张图案则是由这些基础色块构成。这实际跟计算机渲染图案一直。一般图片都有一个大小，这个大小实际就是横纵的像素个数。只是一般这些像素非常多，让整个图案看起来是连续的。&lt;/p></description></item><item><title>01UV坐标操控</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/05%E9%9A%8F%E6%9C%BA%E5%99%AA%E5%A3%B0/</link><pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/05%E9%9A%8F%E6%9C%BA%E5%99%AA%E5%A3%B0/</guid><description>&lt;h1 id="05随机噪声">05随机噪声&lt;/h1>
-&lt;p>噪声的绝大部分效果都可以通过噪声贴图来实现。godot中也内置了很多噪声贴图生成方式，这些生成的贴图足以实现各种效果。这里生成这些贴图的方式，实际也是各种随机化算法。&lt;/p></description></item><item><title>01UV坐标操控</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/06%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C/</link><pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/06%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C/</guid><description><![CDATA[<h1 id="06过渡效果">06过渡效果</h1>
-<p>本章的主题其实是转场过渡。不过更进一步讲，是为了处理如何在非规则图形上使用统一的形状。</p>
-<p>在前面章节中大量使用的是UV坐标系，在2Dsprite中，这个坐标系不论原始图形如何，都是默认从左上角到右下角为$(0,0)\to (1,1)$。这在原图是正方形的时候可以直接使用，但如果原图是矩形，中间显然存在着坐标系变化，会使得整个图形并不按照预期运行。</p>]]></description></item><item><title>01UV坐标操控</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/07%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E6%95%88%E6%9E%9C/</link><pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/07%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E6%95%88%E6%9E%9C/</guid><description><![CDATA[<h1 id="07三角函数效果">07三角函数效果</h1>
-<p>教程中用了大量篇幅来讲三角函数部分，并且进行了很多实操练习。在前面部分，也已经记录了三角函数部分的引用，详细可以见<a class="link-markdown-demo-site" href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/02%E6%8A%A4%E7%9B%BE%E6%95%88%E6%9E%9C/" rel="noopener">02护盾效果</a></p>]]></description></item><item><title>01UV坐标操控</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/08%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/</link><pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/08%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/</guid><description>&lt;h1 id="0矩阵运算">0矩阵运算&lt;/h1>
-&lt;p>矩阵运算实在是太熟悉了，这里只是简单说明一下矩阵记录。同时表明一下即使2Dshader也可以使用3维矩阵来操作化。&lt;/p></description></item><item><title>Godot相关</title><link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Godot%E7%9B%B8%E5%85%B3/</link><pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Godot%E7%9B%B8%E5%85%B3/</guid><description><![CDATA[<p>这里主要记录一下Godot开源引擎相关的细节。</p>
-<h1 id="godotshader">GodotShader</h1>
-<p>作为Shader来说，虽然每个引擎编辑shader的语言略有不同，但使用什么引擎其实并无特别大影响。关键点是对计算机图形学底层的理解，几何，计算的结合使用。</p>]]></description></item><item><title>07极限定理</title><link>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/07%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/</link><pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate><author>xxxx</author><guid>http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/07%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/</guid><description><![CDATA[<h1 id="极限定理">极限定理</h1>
-<p>极限定理是概率论中最重要的理论结果。其最核心的两个就是<strong>大数定律</strong>和<strong>中心极限定理</strong>。</p>
-<h1 id="切比雪夫不等式及弱大数定律">切比雪夫不等式及弱大数定律</h1>
-<div class="admonition note">
-<p class="admonition-title">定理 2.1</p>
-<p>马尔可夫不等式</p>
-<p>设$X$为取非负值得随机变量，则对于任何常数$a\gt 0$有</p>]]></description></item></channel></rss>
+<p>2D图形的描边，常用的方式简单描述就是：将原始图形渲染成纯色后，四周偏移一定像素作为背景跟原图形混合。具体来说可以分为以下一系列步骤：</p>]]></description>
+</item>
+<item>
+    <title>01UV坐标操控</title>
+    <link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/04-%E5%83%8F%E7%B4%A0%E5%8C%96/</link>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/04-%E5%83%8F%E7%B4%A0%E5%8C%96/</guid>
+    <description><![CDATA[<h1 id="04像素化">04像素化</h1>
+<p>像素艺术一般指一种风格，一般其中会有一个基础大小色块，色块中为一种同一颜色。而整张图案则是由这些基础色块构成。这实际跟计算机渲染图案一直。一般图片都有一个大小，这个大小实际就是横纵的像素个数。只是一般这些像素非常多，让整个图案看起来是连续的。</p>]]></description>
+</item>
+<item>
+    <title>01UV坐标操控</title>
+    <link>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/05-%E9%9A%8F%E6%9C%BA%E5%99%AA%E5%A3%B0/</link>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 &#43;0000</pubDate>
+    <author>xxxx</author>
+    <guid>http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/05-%E9%9A%8F%E6%9C%BA%E5%99%AA%E5%A3%B0/</guid>
+    <description><![CDATA[<h1 id="05随机噪声">05随机噪声</h1>
+<p>噪声的绝大部分效果都可以通过噪声贴图来实现。godot中也内置了很多噪声贴图生成方式，这些生成的贴图足以实现各种效果。这里生成这些贴图的方式，实际也是各种随机化算法。</p>]]></description>
+</item>
+</channel>
+</rss>

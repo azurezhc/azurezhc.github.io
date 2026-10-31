@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>01UV坐标操控 - azurezhc的游戏开发人生</title><meta name="Description" content="一个热爱游戏的平凡程序"><meta property="og:url" content="http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/08-%E5%9F%BA%E7%A1%80%E6%BA%B6%E8%A7%A3/">
+  <meta property="og:site_name" content="azurezhc的游戏开发人生">
+  <meta property="og:title" content="01UV坐标操控">
+  <meta property="og:description" content="08基础溶解 这里主要还是记录一下教程中的基础溶解效果，更多的溶解效果在效果实现文档中去逐步探索。
+溶解效果实际上就是让整个图片的alpha值逐步变成0的过程。这种消融溶解可以坐在很多美术效果上。例如最简单的火焰燃烧消失溶解效果。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-10-29T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-10-29T00:00:00+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="01UV坐标操控">
+  <meta name="twitter:description" content="08基础溶解 这里主要还是记录一下教程中的基础溶解效果，更多的溶解效果在效果实现文档中去逐步探索。
+溶解效果实际上就是让整个图片的alpha值逐步变成0的过程。这种消融溶解可以坐在很多美术效果上。例如最简单的火焰燃烧消失溶解效果。">
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/08-%E5%9F%BA%E7%A1%80%E6%BA%B6%E8%A7%A3/" /><link rel="prev" href="http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/09-%E7%9F%A9%E9%98%B5%E5%9F%BA%E7%A1%80/" /><link rel="next" href="http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/07-%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E6%95%88%E6%9E%9C/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "01UV坐标操控",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/azurezhc.github.io\/posts\/Godot%E7%9B%B8%E5%85%B3\/Shader%E6%95%99%E7%A8%8B\/08-%E5%9F%BA%E7%A1%80%E6%BA%B6%E8%A7%A3\/"
+        },"genre": "posts","wordcount":  1272 ,
+        "url": "http:\/\/azurezhc.github.io\/posts\/Godot%E7%9B%B8%E5%85%B3\/Shader%E6%95%99%E7%A8%8B\/08-%E5%9F%BA%E7%A1%80%E6%BA%B6%E8%A7%A3\/","datePublished": "2026-10-29T00:00:00+00:00","dateModified": "2026-10-29T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "azurezhc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="azurezhc的游戏开发人生">主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95"> 程序 </a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95"> 数学 </a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95"> 设计 </a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95"> 杂谈 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="azurezhc的游戏开发人生">主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95" title="">程序</a><a class="menu-item" href="/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95" title="">数学</a><a class="menu-item" href="/%E8%AE%BE%E8%AE%A1%E7%9B%AE%E5%BD%95" title="">设计</a><a class="menu-item" href="/%E6%9D%82%E8%B0%88%E7%9B%AE%E5%BD%95" title="">杂谈</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">01UV坐标操控</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>azurezhc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-10-29">2026-10-29</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 1272 字&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#08基础溶解">08基础溶解</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="08基础溶解">08基础溶解</h1>
+<p>这里主要还是记录一下教程中的基础溶解效果，更多的溶解效果在效果实现文档中去逐步探索。</p>
+<p>溶解效果实际上就是让整个图片的alpha值逐步变成0的过程。这种消融溶解可以坐在很多美术效果上。例如最简单的火焰燃烧消失溶解效果。</p>
+<p>基础溶解效果只要用到噪音贴图(Noise Texture)即可，噪音贴图很多地方跟随机噪声一样。只是改成了直接生成在二维的贴图上面，有很多经典基础算法可以生成这样的噪音贴图。使用噪音贴图的溶解流程如下：</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-glsl">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-glsl" data-lang="glsl"><span class="line"><span class="cl"><span class="k">uniform</span> <span class="k">sampler2D</span> <span class="n">noise</span><span class="p">;</span> <span class="c1">// 噪音贴图 参数里面赋值</span>
+</span></span><span class="line"><span class="cl"><span class="k">uniform</span> <span class="k">float</span> <span class="n">progress</span> <span class="o">:</span> <span class="n">hint_range</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">);</span> <span class="c1">// 消融进度</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">void</span> <span class="n">fragment</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">float</span> <span class="n">noise_alpha</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span><span class="n">UV</span><span class="p">).</span><span class="n">r</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">COLOR</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">progress</span><span class="p">,</span> <span class="n">noise_alpha</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<p>设定progress之后效果如下：</p>
+<center><img src="./p1.png"></center>
+<p>其中<code>noise</code>变量需要在ShaderParameters设置一个<code>NoiseTexture2D</code>对象。里面可以生成一张噪音贴图。可以设置贴图大小，以及生成方式等等，如图。</p>
+<p>实现局部溶解的方式也很简单，直接用一个float值取裁剪噪音贴图采样出的部分。其实可以把噪音贴图采样数值想象成一个连绵的山川，然后用一个水位线去逐步没过整个山丘。就像一个平面，数值在其下的部分<code>alpha</code>值直接设置为0。随着<code>progress</code>值的连续变化，整个溶解范围也会连续的扩大，由此产生一个溶解消失效果。</p>
+<p>这样产生的效果也有的人称之为硬边溶解。因为分界线两边只有0和1的区别。表现出来就是有一个很明显的分水岭。要做一定过度方式也很简单改用<code>smoothstep</code>即可，其可以产生一段连续的过度范围如下：</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-glsl">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-glsl" data-lang="glsl"><span class="line"><span class="cl"><span class="k">uniform</span> <span class="k">sampler2D</span> <span class="n">noise</span><span class="p">;</span> <span class="c1">// 噪音贴图 参数里面赋值</span>
+</span></span><span class="line"><span class="cl"><span class="k">uniform</span> <span class="k">float</span> <span class="n">progress</span> <span class="o">:</span> <span class="n">hint_range</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">);</span> <span class="c1">// 消融进度</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">void</span> <span class="n">fragment</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">float</span> <span class="n">noise_alpha</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span><span class="n">UV</span><span class="p">).</span><span class="n">r</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">COLOR</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">progress</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">progress</span><span class="p">,</span> <span class="n">noise_alpha</span><span class="p">);</span> <span class="c1">// 0.3表示中间过渡区间的宽度</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<p>根据<code>smoothstep(a,b,c)</code>函数特点。当$c<a$时返回0，$c>b$时返回1，中间部分用一个三次曲线连续。计算就会在<code>progress-0.3,progress</code>范围内产生一个过渡效果。这个边上的溶解就会软和化，有人也称之为软边溶解。</p>
+<p>不过这样溶解有一个问题，就是要完全溶解<code>progress</code>的溶解进度不再是$0\to 1$而是$0.3\to 1.3$。这个只要根据参数做一次重映射即可。</p>
+<p>教程里面的公式与这里略不一样，其为</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-glsl">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="复制到剪贴板"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-glsl" data-lang="glsl"><span class="line"><span class="cl"><span class="k">uniform</span> <span class="k">sampler2D</span> <span class="n">noise</span><span class="p">;</span> <span class="c1">// 噪音贴图 参数里面赋值</span>
+</span></span><span class="line"><span class="cl"><span class="k">uniform</span> <span class="k">float</span> <span class="n">progress</span> <span class="o">:</span> <span class="n">hint_range</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">);</span> <span class="c1">// 消融进度</span>
+</span></span><span class="line"><span class="cl"><span class="k">uniform</span> <span class="k">float</span> <span class="n">gradient_progress</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">void</span> <span class="n">fragment</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">float</span> <span class="n">noise_alpha</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span><span class="n">UV</span><span class="p">).</span><span class="n">r</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">COLOR</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">progress</span><span class="p">,</span> <span class="n">noise_alpha</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">COLOR</span><span class="p">.</span><span class="n">a</span> <span class="o">+=</span> <span class="n">smoothstep</span><span class="p">(</span><span class="n">noise_alpha</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">gradient_progress</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<p>这个方式需要调控两个参数才能达到逐渐消融过程。首先<code>progress</code>参数决定了最终消失后的范围形状，而<code>gradient_progress</code>则决定了在已经消失的部分上如何过渡。<code>smoothstep</code>计算出的值只在前面透明度为0的区域上会添加一个alpha渐变过渡。</p>
+<p>现在分析<code>gradient_progress</code>控制部分。如果其值为0，则透明区域上附加值为1，也就是说此时没有透明区域，完全可见。如果其值小于<code>noise_alpha</code>,就是噪音贴图的采样值，这个时候，附加值为0，也就是说此时相当于硬边溶解。由于透明区域的噪音贴图采样值也各不一样，所以<code>gradient_progress</code>控制了显示区间，从$0 \to 1$变化，则原有透明区域会呈现一个逐渐从有到无的过程。当在$(0,a_{noise})$是，会有个渐变插值过渡。</p>
+<p>跟多实现效果可以见 Shader效果实现中的溶解部分。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2026-10-29</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/09-%E7%9F%A9%E9%98%B5%E5%9F%BA%E7%A1%80/" class="prev" rel="prev" title="01UV坐标操控"><i class="fas fa-angle-left" aria-hidden="true"></i>01UV坐标操控</a>
+            <a href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/07-%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E6%95%88%E6%9E%9C/" class="next" rel="next" title="01UV坐标操控">01UV坐标操控<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.159.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/mhchem.min.js"></script><script>window.config={"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script src="/js/theme.js"></script></body>
+</html>
