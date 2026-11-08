@@ -23,7 +23,7 @@ GodotShader 作为Shader来说，虽然每个引擎编辑shader的语言略有�
 <meta name="apple-mobile-web-app-title" content="My cool site">
 <meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Godot%E7%9B%B8%E5%85%B3/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/07%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" /><link rel="next" href="http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/14-2D%E5%85%89%E6%BA%90%E5%9F%BA%E7%A1%80/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Godot%E7%9B%B8%E5%85%B3/" /><link rel="prev" href="http://azurezhc.github.io/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/07%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" /><link rel="next" href="http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/14-%E5%AD%90%E8%A7%86%E5%8F%A3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -34,7 +34,7 @@ GodotShader 作为Shader来说，虽然每个引擎编辑shader的语言略有�
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/Godot%E7%9B%B8%E5%85%B3\/Godot%E7%9B%B8%E5%85%B3\/"
-        },"genre": "posts","wordcount":  542 ,
+        },"genre": "posts","wordcount":  572 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/Godot%E7%9B%B8%E5%85%B3\/Godot%E7%9B%B8%E5%85%B3\/","datePublished": "2026-08-05T00:00:00+00:00","dateModified": "2026-08-05T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -87,7 +87,7 @@ GodotShader 作为Shader来说，虽然每个引擎编辑shader的语言略有�
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Godot相关</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-08-05">2026-08-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 542 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-08-05">2026-08-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 572 字&nbsp;
                 <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -122,9 +122,15 @@ GodotShader 作为Shader来说，虽然每个引擎编辑shader的语言略有�
 <li><a class="link-markdown-demo-site" href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/06-%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C/" rel="noopener"><font size=4>06-过渡效果</font></a></li>
 <li><a class="link-markdown-demo-site" href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/07-%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E6%95%88%E6%9E%9C/" rel="noopener"><font size=4>07-三角函数效果</font></a></li>
 <li><a class="link-markdown-demo-site" href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/08-%E5%9F%BA%E7%A1%80%E6%BA%B6%E8%A7%A3/" rel="noopener"><font size=4>08-基础溶解</font></a></li>
+<li><a class="link-markdown-demo-site" href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/09-%E7%9F%A9%E9%98%B5%E5%9F%BA%E7%A1%80/" rel="noopener"><font size=4>09-矩阵基础</font></a></li>
 </ul>
 <h2 id="shader效果">Shader效果</h2>
 <p>这里主要记录看见的各种有意思的效果，尝试自己去复现类似效果结构，记录复刻，思考与感悟。</p>
+<ul>
+<li><a class="link-markdown-demo-site" href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/%E5%9F%BA%E7%A1%80%E6%BA%B6%E8%A7%A3/" rel="noopener"><font size=4>01-基础溶解</font></a></li>
+<li><a class="link-markdown-demo-site" href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/%E5%83%8F%E7%B4%A0%E5%8C%96%E6%B6%88%E8%9E%8D/" rel="noopener"><font size=4>02-像素化溶解</font></a></li>
+<li><a class="link-markdown-demo-site" href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/%E9%A2%9C%E8%89%B2%E5%9F%BA%E7%A1%80/" rel="noopener"><font size=4>03-像素化溶解</font></a></li>
+</ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -147,7 +153,7 @@ GodotShader 作为Shader来说，虽然每个引擎编辑shader的语言略有�
     </div>
 
     <div class="post-nav"><a href="/posts/%E6%95%B0%E5%AD%A6%E7%9B%AE%E5%BD%95/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80/07%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" class="prev" rel="prev" title="07极限定理"><i class="fas fa-angle-left" aria-hidden="true"></i>07极限定理</a>
-            <a href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/14-2D%E5%85%89%E6%BA%90%E5%9F%BA%E7%A1%80/" class="next" rel="next" title="01UV坐标操控">01UV坐标操控<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+            <a href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/14-%E5%AD%90%E8%A7%86%E5%8F%A3/" class="next" rel="next" title="01UV坐标操控">01UV坐标操控<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

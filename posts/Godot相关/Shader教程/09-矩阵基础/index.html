@@ -34,7 +34,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/Godot%E7%9B%B8%E5%85%B3\/Shader%E6%95%99%E7%A8%8B\/09-%E7%9F%A9%E9%98%B5%E5%9F%BA%E7%A1%80\/"
-        },"genre": "posts","wordcount":  1070 ,
+        },"genre": "posts","wordcount":  1172 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/Godot%E7%9B%B8%E5%85%B3\/Shader%E6%95%99%E7%A8%8B\/09-%E7%9F%A9%E9%98%B5%E5%9F%BA%E7%A1%80\/","datePublished": "2026-10-29T00:00:00+00:00","dateModified": "2026-10-29T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -87,7 +87,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">01UV坐标操控</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-10-29">2026-10-29</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 1070 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-10-29">2026-10-29</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 1172 字&nbsp;
                 <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -180,7 +180,7 @@ $$<p>运用矩阵计算操作，即使Sprite2D也能展现出一定的伪3D效�
 <p>常见的坐标系变换就是：</p>
 <p>局部空间&ndash;世界空间&ndash;(相机空间)&ndash;裁剪空间</p>
 <p>在Godot里面局部空间到世界空间使用模型矩阵<code>MODEL_MATRIX</code>。
-建一个物体各个顶点坐标转换到世界坐标可以如下运算：</p>
+建一个<code>Sprite2D</code>各个顶点坐标转换到世界坐标可以如下运算：</p>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-glsl">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
@@ -190,8 +190,9 @@ $$<p>运用矩阵计算操作，即使Sprite2D也能展现出一定的伪3D效�
 </span></span><span class="line"><span class="cl"><span class="k">void</span> <span class="n">vertex</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">world_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">MODEL_MATRIX</span> <span class="o">*</span> <span class="k">vec4</span><span class="p">(</span><span class="n">VERTEX</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">)).</span><span class="n">xy</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
-<p>其中<code>MODEL_MATRIX</code>表示到世界空间的变换矩阵其为$4*4$大小。而<code>VERTEX</code>表示面片顶点的各个局部坐标。这样变换之后得到的就是对应的世界空间坐标。</p>
-<p>这个坐标如果想在片段着色器中使用。就要经过光栅化插值处理，将这些部分都计算到某个片元上去。所以要声明变量<code>varying vec2 world_pos</code>。</p>
+<p>其中<code>MODEL_MATRIX</code>表示到世界空间的变换矩阵，其为$4*4$大小。而<code>VERTEX</code>表示面片顶点的各个局部坐标。这样变换之后得到的就是对应的世界空间坐标。</p>
+<p>这个坐标如果想在片段着色器中使用。就要经过光栅化插值处理，将这些部分都计算到某个片元上去。所以要声明变量<code>varying vec2 world_pos</code>。之后便可以在片段着色器中访问<code>world_pos</code>变量。而且该变量值会经过光栅化处理，变成每一个片元上对应的数值。</p>
+<p>获得世界坐标后，可以做一系列跟全局位置关联的操作。这些内容就留待效果实现去探索。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

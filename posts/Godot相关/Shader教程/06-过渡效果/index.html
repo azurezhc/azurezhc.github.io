@@ -25,7 +25,7 @@
 <meta name="apple-mobile-web-app-title" content="My cool site">
 <meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/06-%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C/" /><link rel="prev" href="http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/10-%E7%94%BB%E9%9D%A2%E6%94%BE%E5%A4%A7/" /><link rel="next" href="http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/05-%E9%9A%8F%E6%9C%BA%E5%99%AA%E5%A3%B0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/06-%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C/" /><link rel="prev" href="http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/10-Canvas%E7%9D%80%E8%89%B2%E5%99%A8/" /><link rel="next" href="http://azurezhc.github.io/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/05-%E9%9A%8F%E6%9C%BA%E5%99%AA%E5%A3%B0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -36,7 +36,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/azurezhc.github.io\/posts\/Godot%E7%9B%B8%E5%85%B3\/Shader%E6%95%99%E7%A8%8B\/06-%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C\/"
-        },"genre": "posts","wordcount":  1632 ,
+        },"genre": "posts","wordcount":  1669 ,
         "url": "http:\/\/azurezhc.github.io\/posts\/Godot%E7%9B%B8%E5%85%B3\/Shader%E6%95%99%E7%A8%8B\/06-%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C\/","datePublished": "2026-08-05T00:00:00+00:00","dateModified": "2026-08-05T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -89,7 +89,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">01UV坐标操控</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>azurezhc</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-08-05">2026-08-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 1632 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-08-05">2026-08-05</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;约 1669 字&nbsp;
                 <i class="far fa-clock" aria-hidden="true"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -105,7 +105,7 @@
 <p>本章的主题是转场过渡，目标是在整个屏幕上做一个逐渐缩放的可视圆效果。</p>
 <p>不过更进一步讲，其实是为了处理如何在非规则图形上形成统一的形状。</p>
 <p>在前面章节中大量使用的是UV坐标系，在2Dsprite中，这个坐标系不论原始图形如何，都是默认从左上角到右下角为$(0,0)\to (1,1)$。这在原图是正方形的时候可以直接使用，但如果原图是矩形，中间显然存在着坐标系变化，会使得整个图形并不按照预期运行。</p>
-<p>举例来说，使用<code>Sprite2D</code>Node类型，但是通过缩放使其横纵比为$x:y$。直接使用如下UV坐标来画出一个圆：</p>
+<p>举例来说，使用<code>Sprite2D</code>Node类型，但是通过缩放使其横纵比为$w:h$，非一比一比例。直接使用如下UV坐标来画出一个圆：</p>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-glsl">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
@@ -118,11 +118,11 @@
 <p>会发现其实际显示不是圆而是一个椭圆。其原因就来自于开头的那段坐标系变换问题，其可以用下图表示：</p>
 <center><img src="./d1.png"></center>
 <p>这里针对不同情况有多种处理方式。这里要根据所用到的渲染流程以及方式决定用什么方式来。</p>
-<p>而本质来说，都是把坐标变换从$(0,0)\to (1,1)$映射回$(0,0)\to (x,y)$。这其中有个问题是，如何知道原始的$x,y$值。</p>
+<p>而本质来说，都是把坐标变换从$(0,0)\to (1,1)$映射回$(0,0)\to (w,h)$。这其中有个问题是，如何知道原始的$w,h$值。</p>
 <ul>
 <li><font size = 4> <strong>给定比例值</strong></font></li>
 </ul>
-<p>最简单的方式就是作为参数输入。例如把$x,y$作为参数传入，然后如下反向修正UV坐标结构就可以得到规整的正圆：</p>
+<p>最简单的方式就是作为参数输入。例如把$w,h$作为参数传入，然后如下反向修正UV坐标结构就可以得到规整的正圆：</p>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-glsl">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
@@ -136,22 +136,23 @@
 </span></span><span class="line"><span class="cl">    <span class="k">float</span> <span class="n">circle</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="k">vec2</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span><span class="n">UV</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="n">COLOR</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="n">circle</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
-<p>此时整个图像的坐标空间会变成从左上$(0,0)$到右下的$(x,y)$。那么按照距离中心点$(x/2,y/2)$画圆即可。注意这个时候$(0.5,0.5)$这个位置点不再是图的正中心，而是$(0,0)\to (x,y)$中的$(0.5,0.5)$这个位置上。</p>
+<p>此时整个图像的坐标空间会变成从左上$(0,0)$到右下的$(w,h)$。那么按照距离中心点$(w/2,h/2)$画圆即可。注意这个时候$(0.5,0.5)$这个位置点不再是图的正中心，而是$(0,0)\to (w,h)$这个坐标系中的$(0.5,0.5)$这个位置点上。</p>
 <p>而在视频教程中则使用如下的方式来实现这个坐标系变换：</p>
 <center><img src="./p1.png"></center>
-<p>这实际上相当于保持$(0.5,0.5)$仍然为图像中心的语义。如果希望$(0.5,0.5)$任然保持为图形中心的含义。那么坐标变换的时候可以固定一边的取值范围为$0\to 1$。例如固定$v$值为$0\to 1$，那么$u$的变化范围就要对应变成$0\to x/y$。为了维持$0.5$任然为中心位置，那么需要做如下变换$(u-0.5)*x/y+0.5$。话句话说对于$u$来说相当于做如下变换$u*x/y+(1-x/y)*0.5$。这其实相当于从$0.5$到$u$做线性插值。在glsl中这个相当于函数<code>mix(0.5,u,x/y)</code>。</p>
+<p>这实际上相当于保持$(0.5,0.5)$仍然为图像中心的语义。</p>
+<p>如果希望$(0.5,0.5)$任然保持为图形中心的含义。那么坐标变换的时候可以固定一边的取值范围为$0\to 1$。例如固定$v$值为$0\to 1$，那么$u$的变化范围就要对应变成$0\to w/h$。为了维持$0.5$任然为中心位置，那么需要做如下变换$(u-0.5)*w/h+0.5$。话句话说对于$u$来说相当于做如下变换$u*w/h+(1-w/h)*0.5$。这其实相当于从$0.5$到$u$按比例$w/h$做线性插值。在glsl中这个相当于函数<code>mix(0.5,u,w/h)</code>。</p>
 <p>mix函数
 <a class="link-markdown-demo-site" href="https://registry.khronos.org/OpenGL-Refpages/gl4/html/mix.xhtml" rel="noopener">https://registry.khronos.org/OpenGL-Refpages/gl4/html/mix.xhtml</a></p>
 <p>mix函数接受三个参数<code>mix(x,y,a)</code>，其输出为$x*(1-a)+y*a$。这个实际上是$x,y$之间的线性插值。可以想象$x,y$分别是两个点。当$a=0$时其在$x$，当$a=1$时其在$y$。中间随着$a$变化经过一个线性移动。从另一个角度来看，对于固定的$a$来说，其相当于一个按比例拉近缩放，对于变化的两个点之间按照比例进行一个缩放控制。</p>
 <ul>
 <li><font size = 4> <strong>UV变化导数</strong></font></li>
 </ul>
-<p>设置比例值可以临时解决问题，但是如果用在不同的图上面，比例值不同，其比例也要调整，这样就不是很方便。
-所以最好的方式是去获取当前UV值到实际显示像素比例的函数的斜率。即认为UV是实际像素的一个函数$u=1/xw,v=1/yh$。我们需要的数值就是这个函数的斜率，或者说$du/dw=1/x,dv/dh=1/y$。</p>
+<p>设置比例值可以临时解决问题，但是如果用在不同的图上面，比例值不同，其比例也要调整，这样就不是很方便。</p>
+<p>所以最好的方式是去获取当前UV值到实际显示像素比例的函数的斜率。即认为UV是实际像素的一个函数$u=\frac{1}{w}x,v=\frac{1}{h}y$。我们需要的数值就是这个函数的斜率，或者说$du/dx=1/w,dv/dy=1/h$。</p>
 <p>这个计算过程，在Shader中就是通过<code>dFdx(p),dFdy(p)</code>函数来实现。</p>
 <p><a class="link-markdown-demo-site" href="https://registry.khronos.org/OpenGL-Refpages/gl4/html/dFdx.xhtml" rel="noopener">https://registry.khronos.org/OpenGL-Refpages/gl4/html/dFdx.xhtml</a></p>
-<p>该函数只能在片段着色器(Fragment Shader)中使用。其返回的是表达式$p$关于屏幕坐标$x,y$的偏导数。其具体实现大致是用当前片元的数值和相邻偏远的数值差来计算。语义上相当于去计算这个函数的偏导数。由上可得：</p>
-$$(x,y)=(\frac{1}{dFdx(UV.x)},\frac{1}{dFdy(UV.y)})$$<p>shader可以如下书写</p>
+<p>该函数只能在片段着色器(Fragment Shader)中使用。其返回的是表达式$p$关于屏幕坐标$w,h$的偏导数。其具体实现大致是用当前片元的数值和相邻偏远的数值差来计算。语义上相当于去计算这个函数的偏导数。由上可得：</p>
+$$(w,h)=(\frac{1}{dFdx(UV.x)},\frac{1}{dFdy(UV.y)})$$<p>shader可以如下书写</p>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-glsl">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
@@ -166,7 +167,7 @@ $$(x,y)=(\frac{1}{dFdx(UV.x)},\frac{1}{dFdy(UV.y)})$$<p>shader可以如下书写
 </span></span><span class="line"><span class="cl">    <span class="k">float</span> <span class="n">circle</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="k">vec2</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">partial_ratio</span><span class="p">,</span><span class="n">ratio_uv</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="n">COLOR</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">circle_size</span><span class="p">,</span><span class="n">circle</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
-<p>即可在正中心画出一个圆，不过需要注意此时的坐标范围是$(0,0)\to (x,y)$。所以圆的半径需要大一点才能看到挖出的圆孔。</p>
+<p>即可在正中心画出一个圆，不过需要注意此时的坐标范围是$(0,0)\to (w,h)$。所以圆的半径需要大一点才能看到挖出的圆孔。</p>
 <p>如果要做转场过渡等全屏效果，这种变化是常用的。因为全屏效果往往屏幕分辨率不一，要统一形成图形要做一定的屏幕适配变换。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -189,7 +190,7 @@ $$(x,y)=(\frac{1}{dFdx(UV.x)},\frac{1}{dFdy(UV.y)})$$<p>shader可以如下书写
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/10-%E7%94%BB%E9%9D%A2%E6%94%BE%E5%A4%A7/" class="prev" rel="prev" title="01UV坐标操控"><i class="fas fa-angle-left" aria-hidden="true"></i>01UV坐标操控</a>
+    <div class="post-nav"><a href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/10-Canvas%E7%9D%80%E8%89%B2%E5%99%A8/" class="prev" rel="prev" title="01UV坐标操控"><i class="fas fa-angle-left" aria-hidden="true"></i>01UV坐标操控</a>
             <a href="/posts/Godot%E7%9B%B8%E5%85%B3/Shader%E6%95%99%E7%A8%8B/05-%E9%9A%8F%E6%9C%BA%E5%99%AA%E5%A3%B0/" class="next" rel="next" title="01UV坐标操控">01UV坐标操控<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
